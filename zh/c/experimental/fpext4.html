@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>浮点扩展部分 4 ：补充函数</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/experimental/fpext4","wgTitle":"c/experimental/fpext4","wgCurRevisionId":80378,"wgArticleId":8195,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/experimental/fpext4","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_experimental_fpext4 skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">浮点扩展部分 4 ：补充函数</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../experimental.html" title="c/experimental">experimental</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../experimental.html" title="c/experimental">技术规范</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/embedded&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/embedded（页面不存在）">对嵌入式处理器的扩展</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dynamic.html" title="c/experimental/dynamic">动态内存扩展</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fpext1.html" title="c/experimental/fpext1">浮点扩展部分 1 ：二进制浮点</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">浮点扩展部分 4 ：补充函数</strong> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink">浮点扩展部分 4 ：补充函数</strong><div class="t-navbar-menu"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=Template:c/experimental/fpext4/navbar_content&amp;action=edit&amp;redlink=1" class="new" title="Template:c/experimental/fpext4/navbar content（页面不存在）">Template:c/experimental/fpext4/navbar content</a><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>C 浮点扩展 - 部分 4 ：补充函数， ISO/IEC TS 18661-4:2015 ，为 C 标准库定义下列新组件，它们为 ISO/IEC/IEEE 60559:2011 （ IEEE-754 的当前版本）所推荐
+</p><p>以下所列的补充数学函数已并入 C2x 标准。
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E9.A2.84.E5.AE.9A.E4.B9.89.E5.8A.9F.E8.83.BD.E7.89.B9.E6.80.A7.E6.B5.8B.E8.AF.95.E5.AE.8F">  预定义功能特性测试宏 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>__STDC_IEC_60559_FUNCS__</span></span></div></div>
+</td>
+<td>   拥有 <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span> 类型和值 <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">201506L</span></span></span> 的整数常量 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E8.A1.A5.E5.85.85.E6.95.B0.E5.AD.A6.E5.87.BD.E6.95.B0">  补充数学函数 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/math.html" title="c/header/math"><tt>&lt;math.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/exp2m1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/exp2m1（页面不存在）"> <span class="t-lines"><span>exp2m1 exp2m1f exp2m1l</span><span>exp2m1fN exp2m1fNx</span><span>exp2m1dN exp2m1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">2<span class="t-su">x<br></span>-1</span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/exp10&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/exp10（页面不存在）"> <span class="t-lines"><span>exp10 exp10f exp10l</span><span>exp10fN exp10fNx</span><span>exp10dN exp10dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">10<span class="t-su">x<br></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/exp10m1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/exp10m1（页面不存在）"> <span class="t-lines"><span>exp10m1 exp10m1f exp10m1l</span><span>exp10m1fN exp10m1fNx</span><span>exp10m1dN exp10m1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">10<span class="t-su">x<br></span>-1</span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/logp1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/logp1（页面不存在）"> <span class="t-lines"><span>logp1 logp1f logp1l</span><span>logp1fN logp1fNx</span><span>logp1dN logp1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 ln(1+x) （与 <span class="t-lc"><a href="../numeric/math/log1p.html" title="c/numeric/math/log1p">log1p</a></span> 相同） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/log2p1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/log2p1（页面不存在）"> <span class="t-lines"><span>log2p1 log2p1f log2p1l</span><span>log2p1fN log2p1fNx</span><span>log2p1dN log2p1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">log<span class="t-su t-su-b">2</span>(1+x)</span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/log10p1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/log10p1（页面不存在）"> <span class="t-lines"><span>log10p1 log10p1f log10p1l</span><span>log10p1fN log10p1fNx</span><span>log10p1dN log10p1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">log<span class="t-su t-su-b">10</span>(1+x)</span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/rsqrt&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/rsqrt（页面不存在）"> <span class="t-lines"><span>rsqrt rsqrtf rsqrtl</span><span>rsqrtfN rsqrtfNx</span><span>rsqrtdN rsqrtdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算平方根倒数 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">x<span class="t-su">-1/2<br></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/compoundn&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/compoundn（页面不存在）"> <span class="t-lines"><span>compoundn compoundnf compoundnl</span><span>compoundnfN compoundnfNx</span><span>compoundndN compoundndNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算复利 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">(1+x)<span class="t-su">n<br></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/rootn&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/rootn（页面不存在）"> <span class="t-lines"><span>rootn rootnf rootnl</span><span>rootnfN rootnfNx</span><span>rootndN rootndNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 x 的 n 次方根 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">x<span class="t-su">1/n<br></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/pown&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/pown（页面不存在）"> <span class="t-lines"><span>pown pownf pownl</span><span>pownfN pownfNx</span><span>powndN powndNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 x 的 n 次幂，其中 n 为整数 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/powr&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/powr（页面不存在）"> <span class="t-lines"><span>powr powrf powrl</span><span>powrfN powrfNx</span><span>powrdN powrdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 x 的 y 次幂 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">x<span class="t-su">y<br></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/acospi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/acospi（页面不存在）"> <span class="t-lines"><span>acospi acospif acospil</span><span>acospifN acospifNx</span><span>acospidN acospidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 arccos(x)/π （以半圆周为单位度量角） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/asinpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/asinpi（页面不存在）"> <span class="t-lines"><span>asinpi asinpif asinpil</span><span>asinpifN asinpifNx</span><span>asinpidN asinpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 arcsin(x)/π （以半圆周为单位度量角） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/atanpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/atanpi（页面不存在）"> <span class="t-lines"><span>atanpi atanpif atanpil</span><span>atanpifN atanpifNx</span><span>atanpidN atanpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 arctan(x)/π （以半圆周为单位度量角） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/atan2pi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/atan2pi（页面不存在）"> <span class="t-lines"><span>atan2pi atan2pif atan2pil</span><span>atan2pifN atan2pifNx</span><span>atan2pidN atan2pidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 arctan(y/x)/π （以半圆周为单位度量角） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/cospi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/cospi（页面不存在）"> <span class="t-lines"><span>cospi cospif cospil</span><span>cospifN cospifNx</span><span>cospidN cospidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 cos(πx) （以半圆周为单位度量角） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/sinpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/sinpi（页面不存在）"> <span class="t-lines"><span>sinpi sinpif sinpil</span><span>sinpifN sinpifNx</span><span>sinpidN sinpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 sin(πx) （以半圆周为单位度量角） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/tanpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/tanpi（页面不存在）"> <span class="t-lines"><span>tanpi tanpif tanpil</span><span>tanpifN tanpifNx</span><span>tanpidN tanpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算 tan(πx) （以半圆周为单位度量角） <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E7.BC.A9.E5.87.8F.E5.87.BD.E6.95.B0">  缩减函数 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/math.html" title="c/header/math"><tt>&lt;math.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sum&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sum（页面不存在）"> <span class="t-lines"><span>reduc_sum reduc_sumf reduc_suml</span><span>reduc_sumfN reduc_sumfNx</span><span>reduc_sumdN reduc_sumdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算数组的 n 个元素之和 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sumabs&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sumabs（页面不存在）"> <span class="t-lines"><span>reduc_sumabs reduc_sumabsf reduc_sumabsl</span><span>reduc_sumabsfN reduc_sumabsfNx</span><span>reduc_sumabsdN reduc_sumabsdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算数组的 n 个元素绝对值之和 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sumsq&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sumsq（页面不存在）"> <span class="t-lines"><span>reduc_sumsq reduc_sumsqf reduc_sumsql</span><span>reduc_sumsqfN reduc_sumsqfNx</span><span>reduc_sumsqdN reduc_sumsqdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算数组的 n 个元素的平方和 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sumprod&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sumprod（页面不存在）"> <span class="t-lines"><span>reduc_sumprod reduc_sumprodf reduc_sumprodl</span><span>reduc_sumprodfN reduc_sumprodfNx</span><span>reduc_sumproddN reduc_sumproddNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算两个数组各自 n 个元素之间的点积 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/scaled_prod&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/scaled prod（页面不存在）"> <span class="t-lines"><span>scaled_prod scaled_prodf scaled_prodl</span><span>scaled_prodfN scaled_prodfNx</span><span>scaled_proddN scaled_proddNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算数组 n 个元素的积，结果为有效数位值和缩放系数 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/scaled_prodsum&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/scaled prodsum（页面不存在）"> <span class="t-lines"><span>scaled_prodsum scaled_prodsumf scaled_prodsuml</span><span>scaled_prodsumfN scaled_prodsumfNx</span><span>scaled_prodsumdN scaled_prodsumdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算二个数组 n 对元素逐对和的积，结果为有效数位值和缩放系数 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/scaled_proddiff&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/scaled proddiff（页面不存在）"> <span class="t-lines"><span>scaled_proddiff scaled_proddifff scaled_proddiffl</span><span>scaled_proddifffN scaled_proddifffNx</span><span>scaled_proddiffdN scaled_proddiffdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  计算二个数组 n 对元素逐对差的积，结果为有效数位值和缩放系数 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.90.84.E5.87.BD.E6.95.B0.E7.9A.84.E5.87.86.E7.A1.AE.E8.88.8D.E5.85.A5.E7.89.88.E6.9C.AC">  各函数的准确舍入版本 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/math.html" title="c/header/math"><tt>&lt;math.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/exp.html" title="c/numeric/math/exp">exp</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexpm1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/expm1.html" title="c/numeric/math/expm1">expm1</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp2<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/exp2.html" title="c/numeric/math/exp2">exp2</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp2m1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">exp2m1</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp10<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">exp10</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp10m1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">exp10m1</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/log.html" title="c/numeric/math/log">log</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog2<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">log2</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog10<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/log10.html" title="c/numeric/math/log10">log10</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog1p<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/log1p.html" title="c/numeric/math/log1p">log1p</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlogp1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">logp1</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog2p1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">log2p1</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog10p1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">log10p1</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crrsqrt<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">rsqrt</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcompoundn<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">compoundn</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crrootn<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">rootn</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crpown<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">pown</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crpow<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/pow.html" title="c/numeric/math/pow">pow</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crpowr<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">powr</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsin<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/sin.html" title="c/numeric/math/sin">sin</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcos<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/cos.html" title="c/numeric/math/cos">cos</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crtan<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/tan.html" title="c/numeric/math/tan">tan</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsinpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">sinpi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcospi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">cospi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crtanpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">tanpi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crasinpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">asinpi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracospi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">acospi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracospi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">acospi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratanpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">atanpi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratan2pi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">atan2pi</span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crasin<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/asin.html" title="c/numeric/math/asin">asin</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracos<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/acos.html" title="c/numeric/math/acos">acos</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratan<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/atan.html" title="c/numeric/math/atan">atan</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratan2<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/atan2.html" title="c/numeric/math/atan2">atan2</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsinh<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/sinh.html" title="c/numeric/math/sinh">sinh</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcosh<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/cosh.html" title="c/numeric/math/cosh">cosh</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crtanh<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/tanh.html" title="c/numeric/math/tanh">tanh</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crasinh<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/asinh.html" title="c/numeric/math/asinh">asinh</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracosh<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/acosh.html" title="c/numeric/math/acosh">acosh</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratanh<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/atanh.html" title="c/numeric/math/atanh">atanh</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crhypot<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../numeric/math/hypot.html" title="c/numeric/math/hypot">hypot</a></span> 的准确舍入版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.90.84.E5.87.BD.E6.95.B0.E7.9A.84.E5.A4.8D.E6.95.B0.E7.89.88.E6.9C.AC">  各函数的复数版本 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/complex.html" title="c/header/complex"><tt>&lt;complex.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cexp2m1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">exp2m1</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cexp10<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">exp10</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cexp10m1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">exp10m1</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>clogp1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">logp1</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>clog2p1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">log2p1</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>clog10p1<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">log10p1</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsqrt <span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">rsqrt</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ccompoundn <span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">compoundn</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crootn<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">rootn</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cpown <span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">pown</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cpowr<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">powr</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cacospi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">acospi</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>casinpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">asinpi</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>catanpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">atanpi</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ccospi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">cospi</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>csinpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">sinpi</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ctanpi<span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts" style="white-space: nowrap;">(FP 扩展4 TS)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc">tanpi</span> 的复数版本 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id=".E6.B3.A8.E6.84.8F">注意</span></h3>
+<p>仅若在包含 math.h 前定义宏 <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_IEC_60559_FUNCS_EXT__</span></span> ，才声明此扩展添加到 C 库的所有函数。
+</p><p>仅若在包含 math.h 前定义宏 <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_IEC_60559_DFP_EXT__</span></span> ，才定义每个函数的十进制浮点变体。
+</p><p>仅若在包含 math.h 前定义宏 <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_IEC_60559_TYPES_EXT__</span></span> ，才定义每个函数的扩展精度变体。
+</p><p>所有函数的准确舍入版本（带 <span class="t-c"><span class="mw-geshi c source-c">cr<span class="sy2">-</span></span></span> 前缀者）都是可选的。
+</p>
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 9939/1000000
+Preprocessor generated node count: 11367/1000000
+Post‐expand include size: 417999/4194304 bytes
+Template argument size: 130492/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:8195-0!*!0!!zh!*!zh!* and timestamp 20250318194332 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4&amp;oldid=80378">https://zh.cppreference.com/mwiki/index.php?title=c/experimental/fpext4&amp;oldid=80378</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/experimental/fpext4">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2023年11月1日 (星期三) 06:27。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 1.593 secs. -->
+	</body>
+<!-- Cached 20250318194333 -->
+</html>

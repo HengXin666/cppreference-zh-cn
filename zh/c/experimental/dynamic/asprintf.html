@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>asprintf, aswprintf, vasprintf, vaswprintf</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/experimental/dynamic/asprintf","wgTitle":"c/experimental/dynamic/asprintf","wgCurRevisionId":80377,"wgArticleId":14739,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/experimental/dynamic/asprintf","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_experimental_dynamic_asprintf skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">asprintf, aswprintf, vasprintf, vaswprintf</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../c.html" title="c">c</a>‎ | <a href="../../experimental.html" title="c/experimental">experimental</a>‎ | <a href="../dynamic.html" title="c/experimental/dynamic">dynamic</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../experimental.html" title="c/experimental">技术规范</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/embedded&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/embedded（页面不存在）">对嵌入式处理器的扩展</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../dynamic.html" title="c/experimental/dynamic">动态内存扩展</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../fpext1.html" title="c/experimental/fpext1">浮点扩展部分 1 ：二进制浮点</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../fpext4.html" title="c/experimental/fpext4">浮点扩展部分 4 ：补充函数</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../dynamic.html" title="c/experimental/dynamic"> 动态内存扩展</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/dynamic/fmemopen&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/dynamic/fmemopen（页面不存在）"><span class="t-lines"><span>fmemopen</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/dynamic/open_memstream&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/dynamic/open memstream（页面不存在）"><span class="t-lines"><span>open_memstream</span><span>open_wmemstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>asprintf</span><span>aswprintf</span><span>vasprintf</span><span>vaswprintf</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="getline.html" title="c/experimental/dynamic/getline"><span class="t-lines"><span>getline</span><span>getwline</span><span>getdelim</span><span>getwdelim</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="strdup.html" title="c/experimental/dynamic/strdup"><span class="t-lines"><span>strdup</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="strndup.html" title="c/experimental/dynamic/strndup"><span class="t-lines"><span>strndup</span></span></a></div></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../../header/stdio.html" title="c/header/stdio"><tt>&lt;stdio.h&gt;</tt></a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> asprintf<span class="br0">(</span> <span class="kw4">char</span> <span class="sy2">**</span><span class="kw4">restrict</span> strp, <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> fmt, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-dynamic-tr t-mark-ts" style="white-space: nowrap;">(动态内存 TR)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> aswprintf<span class="br0">(</span> <span class="kw4">wchar_t</span> <span class="sy2">**</span><span class="kw4">restrict</span> strp, <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> fmt, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-dynamic-tr t-mark-ts" style="white-space: nowrap;">(动态内存 TR)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> vasprintf<span class="br0">(</span> <span class="kw4">char</span> <span class="sy2">**</span><span class="kw4">restrict</span> strp, <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> fmt,<br>
+               va_list arg <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (3) </td>
+<td> <span class="t-mark-rev t-since-dynamic-tr t-mark-ts" style="white-space: nowrap;">(动态内存 TR)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> vaswprintf<span class="br0">(</span> <span class="kw4">wchar_t</span> <span class="sy2">**</span><span class="kw4">restrict</span> strp, <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> fmt,<br>
+                va_list arg <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (4) </td>
+<td> <span class="t-mark-rev t-since-dynamic-tr t-mark-ts" style="white-space: nowrap;">(动态内存 TR)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 类同于 <span class="t-lc"><a href="../../io/fprintf.html" title="c/io/fprintf">sprintf</a></span>，但它会如同调用 <span class="t-lc"><a href="../../memory/malloc.html" title="c/memory/malloc">malloc</a></span> 那样分配足够大的存储空间，以持有包含该空终止字符的输出，并通过其第一个实参返回指向该存储的指针。当不再需要此存储时，应当将这个指针传递给 <span class="t-lc"><a href="../../memory/free.html" title="c/memory/free">free</a></span> 来予以释放。</div>
+<div class="t-li1"><span class="t-li">2)</span> 与 <span class="t-v">(1)</span> 相同，但它对宽字符 <span class="t-lc">wchar_t</span> 工作（类同于 <span class="t-lc"><a href="../../io/fwprintf.html" title="c/io/fwprintf">swprintf</a></span>）。</div>
+<div class="t-li1"><span class="t-li">3)</span> 与 <span class="t-v">(1)</span> 相同，但以 <code>arg</code> 替代可变实参列表，它应以 <span class="t-lc">va_start</span> 宏（以及后续可能的 <span class="t-lc">va_arg</span> 调用）初始化。</div>
+<div class="t-li1"><span class="t-li">4)</span> 与 <span class="t-v">(3)</span> 相同，但它对宽字符 <span class="t-lc">wchar_t</span> 工作。</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  strp
+</td>
+<td> -
+</td>
+<td>  <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">char</span><span class="sy2">*</span></span></span> 或 <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">wchar_t</span><span class="sy2">*</span></span></span> 的指针，其中包含格式化输出
+</td></tr>
+<tr class="t-par">
+<td>  fmt
+</td>
+<td> -
+</td>
+<td>  与 <span class="t-lc"><a href="../../io/fprintf.html" title="c/io/fprintf">printf</a></span>/<span class="t-lc"><a href="../../io/fwprintf.html" title="c/io/fwprintf">wprintf</a></span> 等相关函数相同的格式字符串
+</td></tr>
+<tr class="t-par">
+<td>  arg
+</td>
+<td> -
+</td>
+<td>  额外实参，与 <span class="t-lc"><a href="../../io/vfprintf.html" title="c/io/vfprintf">vsprintf</a></span> 和 <span class="t-lc"><a href="../../io/vfwprintf.html" title="c/io/vfwprintf">vswprintf</a></span> 相同
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<p>所写出的字符数量，分别与 <span class="t-lc"><a href="../../io/fprintf.html" title="c/io/fprintf">sprintf</a></span> <span class="t-v">(1)</span>, <span class="t-lc"><a href="../../io/fwprintf.html" title="c/io/fwprintf">swprintf</a></span> <span class="t-v">(2)</span>, <span class="t-lc"><a href="../../io/vfprintf.html" title="c/io/vfprintf">vsprintf</a></span> <span class="t-v">(3)</span>, 和 <span class="t-lc"><a href="../../io/vfwprintf.html" title="c/io/vfwprintf">vswprintf</a></span> <span class="t-v">(4)</span> 相同。如果不可能分配内存，或发生某些其他错误，则这些函数将返回 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">-</span><span class="nu0">1</span></span></span>，而 <code>strp</code> 的内存则未定义。
+</p>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>这些函数是 GNU 扩展，而非 C 或 POSIX 函数。它们在 *BSD 下也可用。FreeBSD 的实现在错误发生时会将 <code>strp</code> 设为 <code>NULL</code>。
+</p><p>函数 <code>vasprintf</code> 和 <code>vaswprintf</code> 并不调用 <span class="t-lc">va_end</span> 宏。
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><p>可在 clang 上测试 (C11)</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;stdlib.h&gt;</span>
+<span class="co2">#include &lt;stdarg.h&gt;</span>
+ 
+<span class="kw4">void</span> test<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>fmt, ...<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">char</span><span class="sy2">*</span> dyn_buf<span class="sy4">;</span>
+ 
+    <a href="../../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"Demo asprintf:<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">const</span> <span class="kw4">int</span> written_1 <span class="sy1">=</span> asprintf<span class="br0">(</span><span class="sy3">&amp;</span>dyn_buf, <span class="st0">"%s"</span>, fmt<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"dyn_buf: <span class="es1">\"</span>%s<span class="es1">\"</span>; %i chars were written<span class="es1">\n</span>"</span>, dyn_buf, written_1<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../memory/free.html"><span class="kw406">free</span></a><span class="br0">(</span>dyn_buf<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"Demo vasprintf:<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+    va_list args<span class="sy4">;</span>
+    va_start<span class="br0">(</span>args, fmt<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">const</span> <span class="kw4">int</span> written_2 <span class="sy1">=</span> vasprintf<span class="br0">(</span><span class="sy3">&amp;</span>dyn_buf, fmt, args<span class="br0">)</span><span class="sy4">;</span>
+    va_end<span class="br0">(</span>args<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"dyn_buf: <span class="es1">\"</span>%s<span class="es1">\"</span>; %i chars were written<span class="es1">\n</span>"</span>, dyn_buf, written_2<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../memory/free.html"><span class="kw406">free</span></a><span class="br0">(</span>dyn_buf<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    test<span class="br0">(</span><span class="st0">"Testing... %d, %d, %d"</span>, <span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Demo asprintf:
+dyn_buf: "Testing... %d, %d, %d"; 21 chars were written
+Demo vasprintf:
+dyn_buf: "Testing... 1, 2, 3"; 18 chars were written</pre></div></div> 
+</div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 1977/1000000
+Preprocessor generated node count: 6558/1000000
+Post‐expand include size: 33604/4194304 bytes
+Template argument size: 8898/4194304 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:14739-0!*!0!!zh!*!zh!* and timestamp 20250318224826 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/experimental/dynamic/asprintf&amp;oldid=80377">https://zh.cppreference.com/mwiki/index.php?title=c/experimental/dynamic/asprintf&amp;oldid=80377</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/experimental/dynamic/asprintf">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2023年11月1日 (星期三) 06:13。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<!-- Served in 0.462 secs. -->
+	</body>
+<!-- Cached 20250318224826 -->
+</html>

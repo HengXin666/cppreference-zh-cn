@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>scanf, fscanf, sscanf, scanf_s, fscanf_s, sscanf_s</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/io/fscanf","wgTitle":"c/io/fscanf","wgCurRevisionId":97836,"wgArticleId":979,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/io/fscanf","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_io_fscanf skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">scanf, fscanf, sscanf, scanf_s, fscanf_s, sscanf_s</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../io.html" title="c/io">io</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../io.html" title="c/io"> 文件输入/输出</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">类型与对象</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="std_streams.html" title="c/io/std streams"><span class="t-lines"><span>stdin</span><span>stdout</span><span>stderr</span></span></a></div><div><span class="t-lines"><span><code>        </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="FILE.html" title="c/io/FILE"><span class="t-lines"><span>FILE</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fpos_t.html" title="c/io/fpos t"><span class="t-lines"><span>fpos_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">函数</td></tr>
+<tr class="t-nv-h2"><td colspan="5">文件访问</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fopen.html" title="c/io/fopen"><span class="t-lines"><span>fopen</span><span>fopen_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="freopen.html" title="c/io/freopen"><span class="t-lines"><span>freopen</span><span>freopen_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwide.html" title="c/io/fwide"><span class="t-lines"><span>fwide</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="setbuf.html" title="c/io/setbuf"><span class="t-lines"><span>setbuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="setvbuf.html" title="c/io/setvbuf"><span class="t-lines"><span>setvbuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fclose.html" title="c/io/fclose"><span class="t-lines"><span>fclose</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fflush.html" title="c/io/fflush"><span class="t-lines"><span>fflush</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">无格式输入/输出</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetc.html" title="c/io/fgetc"><span class="t-lines"><span>fgetc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgets.html" title="c/io/fgets"><span class="t-lines"><span>fgets</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputc.html" title="c/io/fputc"><span class="t-lines"><span>fputc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputs.html" title="c/io/fputs"><span class="t-lines"><span>fputs</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="getchar.html" title="c/io/getchar"><span class="t-lines"><span>getchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gets.html" title="c/io/gets"><span class="t-lines"><span>gets</span><span>gets_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-c11" style="white-space: nowrap;">(C11 前)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="putchar.html" title="c/io/putchar"><span class="t-lines"><span>putchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="puts.html" title="c/io/puts"><span class="t-lines"><span>puts</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ungetc.html" title="c/io/ungetc"><span class="t-lines"><span>ungetc</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetwc.html" title="c/io/fgetwc"><span class="t-lines"><span>fgetwc</span><span>getwc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetws.html" title="c/io/fgetws"><span class="t-lines"><span>fgetws</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputwc.html" title="c/io/fputwc"><span class="t-lines"><span>fputwc</span><span>putwc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputws.html" title="c/io/fputws"><span class="t-lines"><span>fputws</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="getwchar.html" title="c/io/getwchar"><span class="t-lines"><span>getwchar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="putwchar.html" title="c/io/putwchar"><span class="t-lines"><span>putwchar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ungetwc.html" title="c/io/ungetwc"><span class="t-lines"><span>ungetwc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">有格式输入</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>scanf</span><span>fscanf</span><span>sscanf</span><span>scanf_s</span><span>fscanf_s</span><span>sscanf_s</span></span></strong></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwscanf.html" title="c/io/fwscanf"><span class="t-lines"><span>wscanf</span><span>fwscanf</span><span>swscanf</span><span>wscanf_s</span><span>fwscanf_s</span><span>swscanf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfscanf.html" title="c/io/vfscanf"><span class="t-lines"><span>vscanf</span><span>vfscanf</span><span>vsscanf</span><span>vscanf_s</span><span>vfscanf_s</span><span>vsscanf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfwscanf.html" title="c/io/vfwscanf"><span class="t-lines"><span>vwscanf</span><span>vfwscanf</span><span>vswscanf</span><span>vwscanf_s</span><span>vfwscanf_s</span><span>vswscanf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">直接输入/输出</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fread.html" title="c/io/fread"><span class="t-lines"><span>fread</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwrite.html" title="c/io/fwrite"><span class="t-lines"><span>fwrite</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">有格式输出</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fprintf.html" title="c/io/fprintf"><span class="t-lines"><span>printf</span><span>fprintf</span><span>sprintf</span><span>snprintf</span><span>printf_s</span><span>fprintf_s</span><span>sprintf_s</span><span>snprintf_s</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwprintf.html" title="c/io/fwprintf"><span class="t-lines"><span>wprintf</span><span>fwprintf</span><span>swprintf</span><span>wprintf_s</span><span>fwprintf_s</span><span>swprintf_s</span><span>snwprintf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfprintf.html" title="c/io/vfprintf"><span class="t-lines"><span>vprintf</span><span>vfprintf</span><span>vsprintf</span><span>vsnprintf</span><span>vprintf_s</span><span>vfprintf_s</span><span>vsprintf_s</span><span>vsnprintf_s</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfwprintf.html" title="c/io/vfwprintf"><span class="t-lines"><span>vwprintf</span><span>vfwprintf</span><span>vswprintf</span><span>vwprintf_s</span><span>vfwprintf_s</span><span>vswprintf_s</span><span>vsnwprintf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">文件寻位</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ftell.html" title="c/io/ftell"><span class="t-lines"><span>ftell</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetpos.html" title="c/io/fgetpos"><span class="t-lines"><span>fgetpos</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fseek.html" title="c/io/fseek"><span class="t-lines"><span>fseek</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fsetpos.html" title="c/io/fsetpos"><span class="t-lines"><span>fsetpos</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rewind.html" title="c/io/rewind"><span class="t-lines"><span>rewind</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">错误处理</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clearerr.html" title="c/io/clearerr"><span class="t-lines"><span>clearerr</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feof.html" title="c/io/feof"><span class="t-lines"><span>feof</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ferror.html" title="c/io/ferror"><span class="t-lines"><span>ferror</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="perror.html" title="c/io/perror"><span class="t-lines"><span>perror</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">文件上的操作</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="remove.html" title="c/io/remove"><span class="t-lines"><span>remove</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tmpfile.html" title="c/io/tmpfile"><span class="t-lines"><span>tmpfile</span><span>tmpfile_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rename.html" title="c/io/rename"><span class="t-lines"><span>rename</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tmpnam.html" title="c/io/tmpnam"><span class="t-lines"><span>tmpnam</span><span>tmpnam_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/stdio.html" title="c/header/stdio"><tt>&lt;stdio.h&gt;</tt></a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(1)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> scanf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">char</span>          <span class="sy2">*</span>format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-c99" style="white-space: nowrap;">(C99 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> scanf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99 起)</span> </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(2)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fscanf<span class="br0">(</span> <a href="../io.html"><span class="kw881">FILE</span></a>          <span class="sy2">*</span>stream, <span class="kw4">const</span> <span class="kw4">char</span>          <span class="sy2">*</span>format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-c99" style="white-space: nowrap;">(C99 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fscanf<span class="br0">(</span> <a href="../io.html"><span class="kw881">FILE</span></a> <span class="sy2">*</span><span class="kw4">restrict</span> stream, <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99 起)</span> </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(3)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> sscanf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">char</span>          <span class="sy2">*</span>buffer, <span class="kw4">const</span> <span class="kw4">char</span>          <span class="sy2">*</span>format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-c99" style="white-space: nowrap;">(C99 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> sscanf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> buffer, <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99 起)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> scanf_s<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ...<span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (4) </td>
+<td> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fscanf_s<span class="br0">(</span><a href="../io.html"><span class="kw881">FILE</span></a> <span class="sy2">*</span><span class="kw4">restrict</span> stream, <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ...<span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (5) </td>
+<td> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> sscanf_s<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> buffer, <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ...<span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (6) </td>
+<td> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>从各种资源读取数据，按照 <code>format</code> 转译，并将结果存储到指定位置。
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 从 <span class="t-lc"><a href="../io.html" title="c/io">stdin</a></span> 读取数据</div>
+<div class="t-li1"><span class="t-li">2)</span> 从文件流 <code>stream</code> 读取数据</div>
+<div class="t-li1"><span class="t-li">3)</span> 从空终止字符串 <code>buffer</code> 读取数据。抵达字符串结尾等价于 <code>fscanf</code> 的抵达文件尾条件</div>
+<div class="t-li1"><span class="t-li">4-6)</span> 同 <span class="t-v">(1-3)</span> ，除了 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>c</span></span> 、 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>s</span></span> 及 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span><span class="br0">[</span></span></span> 转换指示符要求二个参数（通常的指针和指示获取用数组大小的 <span class="t-lc">rsize_t</span> 类型的值，在以 %c 读取单个字符时可以为 1 ），并调用当前安装的<a href="../error/set_constraint_handler_s.html" title="c/error/set constraint handler s">约束处理函数</a>：
+<dl><dd><ul><li> 任何指针类型的参数为空指针
+</li><li> <code>format</code> 、 <code>stream</code> 或 <code>buffer</code> 为空指针
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>c</span></span> 、 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>s</span></span> 或 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span><span class="br0">[</span></span></span> 会写入的字符数，加上空终止字符，要超过提供给这些转换指示符的第二个（ rsize_t ）参数
+</li><li> 可选，任何其他可检测错误，例如未知转换指示符
+</li></ul>
+</dd><dd>同所有边界检查函数，<code>scanf_s</code>、<code>fscanf_s</code> 与 <code>sscanf_s</code>，仅若实现定义 <span class="t-c"><span class="mw-geshi c source-c">__STDC_LIB_EXT1__</span></span> 且用户在包含 <a href="../header/stdio.html" title="c/header/stdio"><tt>&lt;stdio.h&gt;</tt></a> 前定义 <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_LIB_EXT1__</span></span> 为整数常量 1 才保证可用。</dd></dl></div>
+
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  stream
+</td>
+<td> -
+</td>
+<td>  要读取的输入文件流
+</td></tr>
+<tr class="t-par">
+<td>  buffer
+</td>
+<td> -
+</td>
+<td>  指向要读取的空终止字符串的指针
+</td></tr>
+<tr class="t-par">
+<td>  format
+</td>
+<td> -
+</td>
+<td>  指向指定读取输入方式的空终止字符串的指针
+</td></tr>
+<tr class="t-par">
+<td>  ...
+</td>
+<td> -
+</td>
+<td>  各接收实参
+</td></tr></table>
+<p><br>
+格式字符串由下列内容组成 
+</p>
+<ul><li> 非空白多字节字符，除了 <code><b>%</b></code>：每个格式字符串中的这种字符处理一个来自输入流的完全相同的字符，或在它与流的下个字符比较不相等时导致函数失败。
+</li><li> 空白字符：任何格式字符串中的单个空白字符处理所有来自输入的可用连续空白字符（如同通过于循环中调用 <span class="t-lc"><a href="../string/byte/isspace.html" title="c/string/byte/isspace">isspace</a></span> 确定）。注意，格式字符串中 <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"<span class="es1">\n</span>"</span></span></span>、<span class="t-c"><span class="mw-geshi c source-c"><span class="st0">" "</span></span></span>、<span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"<span class="es1">\t</span><span class="es1">\t</span>"</span></span></span> 或其他空白无区别。
+</li><li> 转换指示：每个转换指示拥有下列格式：
+</li></ul>
+<dl><dd><ul><li> 引入用 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span></span></span> 字符
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark" style="white-space: nowrap;">(可选)</span> 赋值抑制字符 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">*</span></span></span>。如果存在此选项，那么此函数不将结果赋值给任何接收用实参。
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark" style="white-space: nowrap;">(可选)</span> 指定<i>最大字段宽度</i> ﻿的整数数字（大于零），即函数进行在当前转换指示所指定的转换时，允许处理的最大字符数。注意如果没有提供宽度，那么 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>s</span></span> 和 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span><span class="br0">[</span></span></span> 可能导致缓冲区溢出。
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark" style="white-space: nowrap;">(可选)</span> 指定接收实参大小的<i>长度修饰符</i>，即实际目标类型。这影响转换准确性和溢出规则。默认目标类型对每个转换类型有所不同（见下表）。
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 转换格式指示符。
+</li></ul>
+</dd></dl>
+<p>下列格式指示符可用：
+</p>
+<table class="wikitable" style="text-align: center;">
+
+<tr>
+<th style="word-break: keep-all;"> 转换指示符 
+</th>
+<th>解释
+</th>
+<th colspan="9">期望的实参类型
+</th></tr>
+<tr>
+<th colspan="2" style="text-align: right;">长度修饰符→
+</th>
+<th>hh
+</th>
+<th>h
+</th>
+<th style="font-weight: normal;">无
+</th>
+<th>l
+</th>
+<th>ll
+</th>
+<th>j
+</th>
+<th>z
+</th>
+<th>t
+</th>
+<th>L
+</th></tr>
+<tr>
+<th colspan="2" style="text-align: right;">仅从 C99 起可用→
+</th>
+<th style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="font-weight: normal;">是</span>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="font-weight: normal;">是</span>
+</th>
+<th style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="font-weight: normal;">是</span>
+</th>
+<th style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="font-weight: normal;">是</span>
+</th>
+<th style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="font-weight: normal;">是</span>
+</th>
+<th>
+</th></tr>
+<tr>
+<th><code>%</code>
+</th>
+<td style="text-align: left;">
+<div style="width: 430px;">匹配字面 <code><b>%</b></code>。</div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td></tr>
+<tr>
+<th><code>c</code>
+</th>
+<td style="text-align: left;">
+<p>匹配一个<b>字符</b>或<b>字符</b>的序列。
+</p>
+<ul><li> 如果使用了宽度指示符，那么匹配恰好<i>宽度</i>个字符（该实参必须是指向有充足空间的数组的指针）。
+</li><li> 与 %s 和 %[ 不同，它不会在数组后附加空字符。
+</li></ul>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td rowspan="3"><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">char</span><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="3"><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">wchar_t</span><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td></tr>
+<tr>
+<th><code>s</code>
+</th>
+<td style="text-align: left;">
+<p>匹配非空白字符的序列（一个<b>字符串</b>）。
+</p>
+<ul><li> 如果使用宽度指示符，那么至多匹配<i>宽度</i>个字符，或匹配到首个提前出现的空白符前。
+</li><li> 总是在匹配的字符后存储一个空字符（因此实参数组必须有至少<i>宽度 +1</i>个字符的空间）。
+</li></ul>
+</td></tr>
+<tr>
+<th><code>[</code><span class="t-spar">集合</span> ﻿<code>]</code>
+</th>
+<td style="text-align: left;">
+<p>匹配<span class="t-spar">集合</span> ﻿中的字符的一个非空字符序列。
+</p>
+<ul><li> 如果集合的首字符是 <code>^</code>，那么匹配所有不在集合中的字符。
+</li><li> 如果集合以 <code>]</code> 或 <code>^]</code> 开始，那么 <code>]</code> 字符也会被包含入集合。
+</li><li> 在扫描集合的非最初位置的字符 <code>-</code> 是否可以指示范围，如 <code>[0-9]</code>，由实现定义。
+</li><li> 如果使用宽度指示符，那么最多匹配到<i>宽度</i>。
+</li><li> 总是在匹配的字符后存储一个空字符（因此实参数组必须有至少<i>宽度 +1</i>个字符的空间）。
+</li></ul>
+</td></tr>
+<tr>
+<th><code>d</code>
+</th>
+<td style="text-align: left;">
+<p>匹配一个<b>十进制整数</b>。
+</p>
+<ul><li> 该数的格式与 <span class="t-lc"><a href="../string/byte/strtol.html" title="c/string/byte/strtol">strtol</a></span> 以值 <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">10</span></span></span> 为 <span class="t-c"><span class="mw-geshi c source-c">base</span></span> 时期望的格式相同。
+</li></ul>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span><span class="sy2">*</span></span> 或 <span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">short</span><span class="sy2">*</span></span> 或 <span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">short</span><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">int</span><span class="sy2">*</span></span> 或 <span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">long</span><span class="sy2">*</span></span> 或 <span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">long</span> <span class="kw4">long</span><span class="sy2">*</span></span> 或 <span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><a href="../types/integer.html"><span class="kw118">intmax_t</span></a><span class="sy2">*</span></span> 或 <span class="mw-geshi c source-c"><a href="../types/integer.html"><span class="kw132">uintmax_t</span></a><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><a href="../types/size_t.html"><span class="kw100">size_t</span></a><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6"><div class="t-vertical"><div><span class="mw-geshi c source-c"><a href="../types/ptrdiff_t.html"><span class="kw101">ptrdiff_t</span></a><span class="sy2">*</span></span></div></div>
+</td>
+<td rowspan="6" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td></tr>
+<tr>
+<th><code>i</code>
+</th>
+<td style="text-align: left;">
+<p>匹配一个<b>整数</b>。
+</p>
+<ul><li> 该数的格式与 <span class="t-lc"><a href="../string/byte/strtol.html" title="c/string/byte/strtol">strtol</a></span> 以值 <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> 为 <span class="t-c"><span class="mw-geshi c source-c">base</span></span> 时期望的格式相同。
+</li></ul>
+</td></tr>
+<tr>
+<th><code>u</code>
+</th>
+<td style="text-align: left;">
+<p>匹配一个无符号<b>十进制整数</b>。
+</p>
+<ul><li> 该数的格式与 <span class="t-lc"><a href="../string/byte/strtoul.html" title="c/string/byte/strtoul">strtoul</a></span> 以值 <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">10</span></span></span> 为 <span class="t-c"><span class="mw-geshi c source-c">base</span></span> 时期望的格式相同。
+</li></ul>
+</td></tr>
+<tr>
+<th><code>o</code>
+</th>
+<td style="text-align: left;">
+<p>匹配一个无符号<b>八进制数</b>。
+</p>
+<ul><li> 该数的格式与 <span class="t-lc"><a href="../string/byte/strtoul.html" title="c/string/byte/strtoul">strtoul</a></span> 以值 <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">8</span></span></span> 为 <span class="t-c"><span class="mw-geshi c source-c">base</span></span> 时期望的格式相同。
+</li></ul>
+</td></tr>
+<tr>
+<th><code>x</code><br><code>X</code>
+</th>
+<td style="text-align: left;">
+<p>匹配一个无符号<b>十六进制整数</b>。
+</p>
+<ul><li> 该数的格式与 <span class="t-lc"><a href="../string/byte/strtoul.html" title="c/string/byte/strtoul">strtoul</a></span> 以值 <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">16</span></span></span> 为 <span class="t-c"><span class="mw-geshi c source-c">base</span></span> 时期望的格式相同。
+</li></ul>
+</td></tr>
+<tr>
+<th><code>n</code>
+</th>
+<td style="text-align: left;">
+<p>返回<b>迄今读取的字符数</b>。
+</p>
+<ul><li> 不消耗输出。不增加赋值计数。
+</li><li> 如果此指示符拥有赋值抑制运算符，那么行为未定义。
+</li></ul>
+</td></tr>
+<tr>
+<th><code>a</code> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span><br><code>A</code> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span><br><code>e</code><br><code>E</code><br><code>f</code><br><code>F</code> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span><br><code>g</code><br><code>G</code>
+</th>
+<td style="text-align: left;">
+<p>匹配一个<b>浮点数</b>。
+</p>
+<ul><li> 该数的格式与 <span class="t-lc"><a href="../string/byte/strtof.html" title="c/string/byte/strtof">strtof</a></span> 期望的格式相同。
+</li></ul>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">float</span><span class="sy2">*</span></span></div></div>
+</td>
+<td><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">double</span><span class="sy2">*</span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span><span class="sy2">*</span></span></div></div>
+</td></tr>
+<tr>
+<th><code>p</code>
+</th>
+<td style="text-align: left;">
+<p>匹配定义了一个<b>指针</b>的由实现定义的字符序列。
+</p>
+<ul><li> <code>printf</code> 系列函数使用 <code><b>%p</b></code> 格式指示符时应该产生同样的序列。
+</li></ul>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td><div class="t-vertical"><div><span class="mw-geshi c source-c"><span class="kw4">void</span><span class="sy2">**</span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td></tr>
+<tr>
+<th colspan="11">注解
+</th></tr>
+<tr>
+<td colspan="11" style="text-align: start;">
+<p>对于每个 <span class="t-c"><span class="mw-geshi c source-c">n</span></span> 以外的转换指示符，不超过任何指定字段宽度，且要么恰好是转换指示符所期待，要么是其所期待的前缀的最长输入字符序列，即是从流中消耗的内容。此消耗序列后的首个字符如果存在，那么保持未读取。如果被消耗序列长度为零，或被消耗序列不能转换成上面所指定的项目，那么发生匹配失败，除非遇到文件尾、编码错误，或阻止从流输入的读取错误，此情况下此为输入失败。
+</p><p>所有异于 <span class="t-c"><span class="mw-geshi c source-c"><span class="br0">[</span></span></span>、<span class="t-c"><span class="mw-geshi c source-c">c</span></span> 和 <span class="t-c"><span class="mw-geshi c source-c">n</span></span> 的转换指示符，在尝试分析输入前消耗并舍弃所有前导空白字符（如同以调用 <span class="t-lc"><a href="../string/byte/isspace.html" title="c/string/byte/isspace">isspace</a></span> 来确定）。这些被消耗的字符不计入指定的最大字段宽度。
+</p><p>转换指示符 <span class="t-c"><span class="mw-geshi c source-c">lc</span></span>、<span class="t-c"><span class="mw-geshi c source-c">ls</span></span> 和 <span class="t-c"><span class="mw-geshi c source-c">l<span class="br0">[</span></span></span> 进行多字节到宽字符转换，如同如同在转换首字符前，通过用初始化为零的 <span class="t-lc"><a href="../string/multibyte/mbstate_t.html" title="c/string/multibyte/mbstate t">mbstate_t</a></span> 对象调用 <span class="t-lc"><a href="../string/multibyte/mbrtowc.html" title="c/string/multibyte/mbrtowc">mbrtowc</a></span>。
+</p><p>转换指示符 <span class="t-c"><span class="mw-geshi c source-c">s</span></span> 与 <span class="t-c"><span class="mw-geshi c source-c"><span class="br0">[</span></span></span> 始终在匹配字符之后存储一个空字符。目标数组的大小必须至少比指定字段宽度大一。未指定目标数组大小时，对 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>s</span></span> 或 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span><span class="br0">[</span></span></span> 的使用，与 <span class="t-lc"><a href="gets.html" title="c/io/gets">gets</a></span> 同样不安全。
+</p><p><a href="../types/integer.html" title="c/types/integer">定宽整数类型</a>（<span class="t-lc"><a href="../types/integer.html" title="c/types/integer">int8_t</a></span> 等）的正确的转换指示在标头 <a href="../types/integer.html" title="c/types/integer">&lt;inttypes.h&gt;</a> 定义（虽然 <a href="../types/integer.html" title="c/types/integer"><tt>SCNdMAX</tt></a>、<a href="../types/integer.html" title="c/types/integer"><tt>SCNuMAX</tt></a> 等就是 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>jd</span></span>、<span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>ju</span></span> 等的别名）。
+</p><p>在每个转换指示符后有一个<a href="../language/eval_order.html" title="c/language/eval order">序列点</a>；这允许存储多个字段到同一“池”变量中。
+</p><p>在分析以无数字指数为结尾的不完整浮点数，如以转换指示符 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>f</span></span> 分析 <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"100er"</span></span></span> 时，消耗序列 <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"100e"</span></span></span> （可能为合法浮点数的最长前缀），并导致匹配错误（被消耗序列不能转换成浮点数），而留下 <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"r"</span></span></span>。某些既存实现不遵守此规则并回滚，通过消耗 <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"100"</span></span></span> 而留下 <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"er"</span></span></span>，例如 <a rel="nofollow" class="external text" href="https://sourceware.org/bugzilla/show_bug.cgi?id=1765">glibc 漏洞 1765</a>。
+</p><p>如果转换指示非法，那么行为未定义。
+</p>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<div class="t-li1"><span class="t-li">1-3)</span> 被成功赋值的接收参数的数量（可以为零，在首个接收用参数赋值前就发生匹配失败的情况下），或者若在首个接收用参数赋值前就发生输入失败，则为 <span class="t-lc"><a href="../io.html" title="c/io">EOF</a></span>。</div>
+<div class="t-li1"><span class="t-li">4-6)</span> 同 <span class="t-v">(1-3)</span> ，除了当发生运行时制约违规时，亦返回 <span class="t-lc"><a href="../io.html" title="c/io">EOF</a></span>。</div>
+<h3><span class="mw-headline" id=".E5.A4.8D.E6.9D.82.E5.BA.A6">复杂度</span></h3>
+<p>无保证。需要注意的是，有些 <code>sscanf</code> 的实现为 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>，其中 <span class="t-c"><span class="mw-geshi c source-c">N <span class="sy1">=</span> <a href="../string/byte/strlen.html"><span class="kw558">strlen</span></a><span class="br0">(</span>buffer<span class="br0">)</span></span></span> <a rel="nofollow" class="external autonumber" href="https://sourceware.org/bugzilla/show_bug.cgi?id=17577">[1]</a>。
+</p>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>因为多数转换指示符首先消耗掉所有连续空白符，如下的代码
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">scanf<span class="br0">(</span><span class="st0">"%d"</span>, <span class="sy3">&amp;</span>a<span class="br0">)</span><span class="sy4">;</span>
+scanf<span class="br0">(</span><span class="st0">"%d"</span>, <span class="sy3">&amp;</span>b<span class="br0">)</span><span class="sy4">;</span></pre></div></div>
+<p>将读取在不同行上（第二个 %d 会消耗第一个剩下的换行符）或同一行由空格或制表符分隔（第二个 %d 会消耗空格或制表符）的整数。
+</p><p>不消耗前导空白符的转换指示符，如 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>c</span></span>，可以通过在格式字符串中前置一个空白符令它如此：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">scanf<span class="br0">(</span><span class="st0">"%d"</span>, <span class="sy3">&amp;</span>a<span class="br0">)</span><span class="sy4">;</span>
+scanf<span class="br0">(</span><span class="st0">" %c"</span>, <span class="sy3">&amp;</span>c<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 消耗 %d 后的所有后继空白符，然后读一个 char</span></pre></div></div>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#define __STDC_WANT_LIB_EXT1__ 1</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;stddef.h&gt;</span>
+<span class="co2">#include &lt;locale.h&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> i, j<span class="sy4">;</span>
+    <span class="kw4">float</span> x, y<span class="sy4">;</span>
+    <span class="kw4">char</span> str1<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span>, str2<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span><span class="sy4">;</span>
+    <span class="kw4">wchar_t</span> warr<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy4">;</span>
+    <a href="../locale/setlocale.html"><span class="kw898">setlocale</span></a><span class="br0">(</span><a href="../locale/LC_categories.html"><span class="kw901">LC_ALL</span></a>, <span class="st0">"en_US.utf8"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw4">char</span> input<span class="br0">[</span><span class="br0">]</span> <span class="sy1">=</span> <span class="st0">"25 54.32E-1 Thompson 56789 0123 56ß水"</span><span class="sy4">;</span>
+    <span class="coMULTI">/* 按下列分析：
+       %d ：整数
+       %f ：浮点值
+       %9s ：最多有 9 个非空白符的字符串
+       %2d ：两位整数（数位 5 和 6）
+       %f ：浮点值（数位 7、8、9）
+       %*d ：不存储于任何位置的整数
+       ' ' ：所有连续空白符
+       %3[0-9] ：至多有 3 个十进制数字的字符串（数位 5 和 6）
+       %2lc ：两个宽字符，使用多字节到宽转换  */</span>
+    <span class="kw4">int</span> ret <span class="sy1">=</span> sscanf<span class="br0">(</span>input, <span class="st0">"%d%f%9s%2d%f%*d %3[0-9]%2lc"</span>,
+                     <span class="sy3">&amp;</span>i, <span class="sy3">&amp;</span>x, str1, <span class="sy3">&amp;</span>j, <span class="sy3">&amp;</span>y, str2, warr<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="fprintf.html"><span class="kw848">printf</span></a><span class="br0">(</span><span class="st0">"Converted %d fields:<span class="es1">\n</span>"</span>
+           <span class="st0">"i = %d<span class="es1">\n</span>"</span>
+           <span class="st0">"x = %f<span class="es1">\n</span>"</span>
+           <span class="st0">"str1 = %s<span class="es1">\n</span>"</span>
+           <span class="st0">"j = %d<span class="es1">\n</span>"</span>
+           <span class="st0">"y = %f<span class="es1">\n</span>"</span>
+           <span class="st0">"str2 = %s<span class="es1">\n</span>"</span>
+           <span class="st0">"warr[0] = U+%x<span class="es1">\n</span>"</span>
+           <span class="st0">"warr[1] = U+%x<span class="es1">\n</span>"</span>,
+           ret, i, x, str1, j, y, str2, warr<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>, warr<span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="co2">#ifdef __STDC_LIB_EXT1__</span>
+    <span class="kw4">int</span> n <span class="sy1">=</span> sscanf_s<span class="br0">(</span>input, <span class="st0">"%d%f%s"</span>, <span class="sy3">&amp;</span>i, <span class="sy3">&amp;</span>x, str1, <span class="br0">(</span>rsize_t<span class="br0">)</span><span class="kw4">sizeof</span> str1<span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// 向 i 写入 25，向 x 写入 5.432，向 str1 写入 9 个字节 "thompson\0"，并向 n 写入 3。</span>
+<span class="co2">#endif</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Converted 7 fields:
+i = 25
+x = 5.432000
+str1 = Thompson
+j = 56
+y = 789.000000
+str2 = 56
+warr[0] = U+df
+warr[1] = U+6c34</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-17">
+<ul><li> C17 标准（ISO/IEC 9899:2018）：
+</li></ul>
+<dl><dd><ul><li> 7.21.6.2 The fscanf function （第 231-236 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.21.6.4 The scanf function （第 236-237 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.21.6.7 The sscanf function （第 238-239 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.5.3.2 The fscanf_s function （第 430-431 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.5.3.4 The scanf_s function （第 432 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.5.3.7 The sscanf_s function （第 433 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 标准（ISO/IEC 9899:2011）：
+</li></ul>
+<dl><dd><ul><li> 7.21.6.2 The fscanf function （第 317-324 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.21.6.4 The scanf function （第 325 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.21.6.7 The sscanf function （第 326 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.5.3.2 The fscanf_s function （第 592-593 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.5.3.4 The scanf_s function （第 594 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.5.3.7 The sscanf_s function （第 596 页）
+</li></ul>
+</dd></dl>
+<div class="t-ref-std-c99">
+<ul><li> C99 标准（ISO/IEC 9899:1999）：
+</li></ul>
+<dl><dd><ul><li> 7.19.6.2 The fscanf function （第 282-289 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.19.6.4 The scanf function （第 290 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.19.6.7 The sscanf function （第 291 页）
+</li></ul>
+</dd></dl>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 标准（ISO/IEC 9899:1990）： 
+</li></ul>
+<dl><dd><ul><li> 4.9.6.2 The fscanf function 
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4.9.6.4 The scanf function 
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4.9.6.6 The sscanf function 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="vfscanf.html" title="c/io/vfscanf"> <span class="t-lines"><span>vscanf</span><span>vfscanf</span><span>vsscanf</span><span>vscanf_s</span><span>vfscanf_s</span><span>vsscanf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   从 <span class="t-lc"><a href="../io.html" title="c/io">stdin</a></span>、文件流或缓冲区读取格式化输入<br>使用可变参数列表 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="fgets.html" title="c/io/fgets"> <span class="t-lines"><span>fgets</span></span></a></div></div>
+</td>
+<td>   从文件流获取一个字符串 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="fprintf.html" title="c/io/fprintf"> <span class="t-lines"><span>printf</span><span>fprintf</span><span>sprintf</span><span>snprintf</span><span>printf_s</span><span>fprintf_s</span><span>sprintf_s</span><span>snprintf_s</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   打印格式化输出到 <span class="t-lc"><a href="../io.html" title="c/io">stdout</a></span>、文件流或缓冲区  <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class="t-dsc-see-tt"><span>scanf</span>, <span>fscanf</span>, <span>sscanf</span></span> 的 <span><span><a href="../../cpp/io/c/fscanf.html" title="cpp/io/c/fscanf">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table></div>
+</div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 9169/1000000
+Preprocessor generated node count: 14663/1000000
+Post‐expand include size: 255638/4194304 bytes
+Template argument size: 51390/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:979-0!*!0!!zh!*!zh!* and timestamp 20250318203210 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/io/fscanf&amp;oldid=97836">https://zh.cppreference.com/mwiki/index.php?title=c/io/fscanf&amp;oldid=97836</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/io/fscanf">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年1月16日 (星期四) 02:50。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 2.103 secs. -->
+	</body>
+<!-- Cached 20250318203210 -->
+</html>

@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>lambda 表达式 (C++11 起)</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/lambda","wgTitle":"cpp/language/lambda","wgCurRevisionId":99364,"wgArticleId":2726,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/language/lambda","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_lambda skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">lambda 表达式 <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language">C++ 语言</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">一般主题</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../preprocessor.html" title="cpp/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../comment.html" title="cpp/comment">注释</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../keyword.html" title="cpp/keyword">关键词</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="statements.html" title="cpp/language/statements">流程控制</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">条件执行语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重复语句（循环）</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="range-for.html" title="cpp/language/range-for">范围 <span class="mw-geshi cpp source-cpp"><span class="kw1">for</span></span></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="do.html" title="cpp/language/do"><code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">跳转语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="functions.html" title="cpp/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">lambda 函数表达式</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><span class="mw-geshi cpp source-cpp"><span class="kw1">inline</span></span> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="except_spec.html" title="cpp/language/except spec">动态异常说明</a> <span class="t-mark" style="white-space: nowrap;">(<span title="C++11 中弃用">C++17 前*</span>)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept_spec.html" title="cpp/language/noexcept spec"><span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">异常</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><span class="mw-geshi cpp source-cpp"><span class="kw1">throw</span></span> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="try.html" title="cpp/language/try"><span class="mw-geshi cpp source-cpp"><span class="kw1">try</span></span> 块</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="catch.html" title="cpp/language/catch"><code>catch</code> 处理块</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">命名空间</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace.html" title="cpp/language/namespace">命名空间声明</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace_alias.html" title="cpp/language/namespace alias">命名空间别名</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="types.html" title="cpp/language/types">基础类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="enum.html" title="cpp/language/enum">枚举类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数类型</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类/结构体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="union.html" title="cpp/language/union">联合体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">说明符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="cv.html" title="cpp/language/cv"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>/<span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="consteval.html" title="cpp/language/consteval"><tt>consteval</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constinit.html" title="cpp/language/constinit"><tt>constinit</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="storage_duration.html" title="cpp/language/storage duration">存储期说明符</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html" title="cpp/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_initialization.html" title="cpp/language/default initialization">默认初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_initialization.html" title="cpp/language/value initialization">值初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="zero_initialization.html" title="cpp/language/zero initialization">零初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="list_initialization.html" title="cpp/language/list initialization">列表初始化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="expressions.html" title="cpp/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">运算符优先级</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">替代表示</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#.E5.AD.97.E9.9D.A2.E9.87.8F" title="cpp/language/expressions">字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔</a> - <a href="integer_literal.html" title="cpp/language/integer literal">整数</a> - <a href="floating_literal.html" title="cpp/language/floating literal">浮点</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符</a> - <a href="string_literal.html" title="cpp/language/string literal">字符串</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">工具</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="attributes.html" title="cpp/language/attributes">属性</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typedef.html" title="cpp/language/typedef"><code>typedef</code> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="type_alias.html" title="cpp/language/type alias">类型别名声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">内存分配</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="classes.html" title="cpp/language/classes">类</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constructor.html" title="cpp/language/constructor">构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="this.html" title="cpp/language/this"><code>this</code> 指针</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="access.html" title="cpp/language/access">访问说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="friend.html" title="cpp/language/friend"><code>friend</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类特有的函数性质</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="virtual.html" title="cpp/language/virtual">虚函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="override.html" title="cpp/language/override"><code>override</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="final.html" title="cpp/language/final"><code>final</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static.html" title="cpp/language/static"><tt>static</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">特殊成员函数</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_constructor.html" title="cpp/language/default constructor">默认构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="copy_assignment.html" title="cpp/language/copy assignment">复制赋值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_assignment.html" title="cpp/language/move assignment">移动赋值</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="destructor.html" title="cpp/language/destructor">析构函数</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates">模板</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class_template.html" title="cpp/language/class template">类模板</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function_template.html" title="cpp/language/function template">函数模板</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="template_specialization.html" title="cpp/language/template specialization">模板特化</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="pack.html" title="cpp/language/pack">形参包</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">杂项</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="asm.html" title="cpp/language/asm">内联汇编</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="history.html" title="cpp/language/history">C++ 的历史</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="expressions.html" title="cpp/language/expressions"> 表达式</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">概述</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_expression.html" title="cpp/language/constant expression">常量表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="expressions.html#.E5.88.9D.E7.AD.89.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">初等表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><strong class="selflink">lambda 表达式</strong> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="requires.html" title="cpp/language/requires">requires 表达式</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="pack_indexing.html#.E5.8C.85.E7.B4.A2.E5.BC.95.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/pack indexing">包索引表达式</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="expressions.html#.E6.BD.9C.E5.9C.A8.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">潜在求值表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">字面量</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="integer_literal.html" title="cpp/language/integer literal">整数字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="floating_literal.html" title="cpp/language/floating literal">浮点字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符字面量</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string_literal.html" title="cpp/language/string literal">字符串字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="nullptr.html" title="cpp/language/nullptr">空指针字面量</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义字面量</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">运算符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="operator_assignment.html" title="cpp/language/operator assignment">赋值运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_incdec.html" title="cpp/language/operator incdec">自增与自减</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_arithmetic.html" title="cpp/language/operator arithmetic">算术运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_logical.html" title="cpp/language/operator logical">逻辑运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_comparison.html" title="cpp/language/operator comparison">比较运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_member_access.html" title="cpp/language/operator member access">成员访问运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_other.html" title="cpp/language/operator other">其他运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><code>throw</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="alignof.html" title="cpp/language/alignof"><code>alignof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="sizeof.html" title="cpp/language/sizeof"><code>sizeof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="sizeof....html" title="cpp/language/sizeof..."><code>sizeof...</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typeid.html" title="cpp/language/typeid"><code>typeid</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept.html" title="cpp/language/noexcept"><code>noexcept</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="fold.html" title="cpp/language/fold">折叠表达式</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">运算符的代用表示</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">优先级和结合性</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符重载</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="default_comparisons.html" title="cpp/language/default comparisons">预置比较</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="usual_arithmetic_conversions.html" title="cpp/language/usual arithmetic conversions">一般算术转换</a>    </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="cast_operator.html" title="cpp/language/cast operator">用户定义转换</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><code>const_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><code>static_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><code>dynamic_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><code>reinterpret_cast</code></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="functions.html" title="cpp/language/functions"> 函数</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">声明</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html#.E5.BD.A2.E5.8F.82.E5.88.97.E8.A1.A8" title="cpp/language/function">函数形参列表</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html#.E5.87.BD.E6.95.B0.E5.AE.9A.E4.B9.89" title="cpp/language/function">函数定义</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html#.E5.87.BD.E6.95.B0.E5.A5.91.E7.BA.A6.E8.AF.B4.E6.98.8E.E7.AC.A6" title="cpp/language/function">函数契约说明符</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="default_arguments.html" title="cpp/language/default arguments">默认实参</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="variadic_arguments.html" title="cpp/language/variadic arguments">变长实参</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><code>inline</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">lambda 表达式</strong> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="coroutines.html" title="cpp/language/coroutines">协程</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="replacement_function.html" title="cpp/language/replacement function">替换函数</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">函数调用</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="adl.html" title="cpp/language/adl">实参依赖查找</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_other.html#.E5.86.85.E5.BB.BA.E7.9A.84.E5.87.BD.E6.95.B0.E8.B0.83.E7.94.A8.E8.BF.90.E7.AE.97.E7.AC.A6" title="cpp/language/operator other">函数调用运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req/FunctionObject.html" title="cpp/named req/FunctionObject">函数对象</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重载</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="overload_resolution.html" title="cpp/language/overload resolution">重载决议</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符重载</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="overloaded_address.html" title="cpp/language/overloaded address">重载集的地址</a></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>构造<a href="https://en.wikipedia.org/wiki/Closure_(computer_science)" class="extiw" title="enwiki:Closure (computer science)">闭包</a>（能够捕获作用域中的变量的无名函数对象）。
+</p>
+<h3><span class="mw-headline" id=".E8.AF.AD.E6.B3.95">语法</span></h3>
+<h4><span class="mw-headline" id=".E6.B2.A1.E6.9C.89.E6.98.BE.E5.BC.8F.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82.E7.9A.84_lambda_.E8.A1.A8.E8.BE.BE.E5.BC.8F.EF.BC.88.E5.8F.AF.E4.BB.A5.E4.B8.8D.E6.B3.9B.E5.9E.8B.EF.BC.89">没有显式模板形参的 lambda 表达式（可以不泛型）</span></h4>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>]</b></code> <span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>(</b></code><span class="t-spar">形参列表</span> ﻿<code><b>)</b></code> <span class="t-spar">说明符</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">异常</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span><br><span class="t-spar">后属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约束</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>] {</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>]</b></code> <span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>]</b></code> <span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">异常</span><br><span class="t-spar">后属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>]</b></code> <span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">说明符</span> <span class="t-spar">异常</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span><br><span class="t-spar">后属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (4)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<h4><span class="mw-headline" id=".E6.9C.89.E6.98.BE.E5.BC.8F.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82.E7.9A.84_lambda_.E8.A1.A8.E8.BE.BE.E5.BC.8F.EF.BC.88.E5.BF.85.E7.84.B6.E6.B3.9B.E5.9E.8B.EF.BC.89_.28C.2B.2B20_.E8.B5.B7.29">有显式模板形参的 lambda 表达式（必然泛型） <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></h4>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>] &lt;</b></code><span class="t-spar">模板形参</span> ﻿<code><b>&gt;</b></code> <span class="t-spar">模板约束</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>(</b></code><span class="t-spar">形参列表</span> ﻿<code><b>)</b></code> <span class="t-spar">说明符</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span><br><span class="t-spar">异常</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">后属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约束</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>] &lt;</b></code><span class="t-spar">模板形参</span> ﻿<code><b>&gt;</b></code> <span class="t-spar">模板约束</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>] &lt;</b></code><span class="t-spar">模板形参</span> ﻿<code><b>&gt;</b></code> <span class="t-spar">模板约束</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span><br><span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>] &lt;</b></code><span class="t-spar">模板形参</span> ﻿<code><b>&gt;</b></code> <span class="t-spar">模板约束</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">异常</span><br><span class="t-spar">后属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code><span class="t-spar">捕获</span> ﻿<code><b>] &lt;</b></code><span class="t-spar">模板形参</span> ﻿<code><b>&gt;</b></code> <span class="t-spar">模板约束</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">前属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">说明符</span> <span class="t-spar">异常</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span><br><span class="t-spar">后属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">尾随类型</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <span class="t-spar">约定说明</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>{</b></code> <span class="t-spar">函数体</span> <code><b>}</b></code>
+</td>
+<td> (4)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> 带形参列表的 lambda 表达式。</div>
+<div class="t-li1"><span class="t-li">2-4)</span> 不带形参列表的 lambda 表达式。</div>
+<div class="t-li2"><span class="t-li">2)</span> 最简形式，无法应用<span class="t-spar">后属性</span>。</div>
+<div class="t-li2"><span class="t-li">3,4)</span> 只有在有出现<span class="t-spar">说明符</span> ﻿或<span class="t-spar">异常</span> ﻿的情况下才能应用<span class="t-spar">后属性</span>。</div>
+<h3><span class="mw-headline" id=".E8.A7.A3.E9.87.8A">解释</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> <span class="t-spar">捕获</span>
+</td>
+<td> -
+</td>
+<td> 指定要被<a href="lambda.html#lambda_.E6.8D.95.E8.8E.B7">捕获</a>的实体。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">模板形参</span>
+</td>
+<td> -
+</td>
+<td> 非空的<a href="template_parameters.html" title="cpp/language/template parameters">模板形参</a>列表，用于为泛型 lambda 提供各模板形参的名字（见下文的 <code>闭包类型::operator()</code>）。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">模板约束</span>
+</td>
+<td> -
+</td>
+<td> 向<span class="t-spar">模板形参</span> ﻿添加<a href="constraints.html" title="cpp/language/constraints">约束。</a>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx23"><td>
+<p>如果<span class="t-spar">模板约束</span> ﻿以属性说明符序列结尾，那么该序列中的属性会被视为<span class="t-spar">前属性</span> ﻿中的属性。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">前属性</span>
+</td>
+<td> -
+</td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span> 适用于闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的<a href="attributes.html" title="cpp/language/attributes">属性说明符序列</a>（因此可以使用 <code>[[<a href="attributes/noreturn.html" title="cpp/language/attributes/noreturn">noreturn</a>]]</code> 属性）。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">形参列表</span>
+</td>
+<td> -
+</td>
+<td> 闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的<a href="function.html#.E5.BD.A2.E5.8F.82.E5.88.97.E8.A1.A8" title="cpp/language/function">形参列表</a>。
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx23"><td>
+<p>它可以有一个<a href="function.html#.E5.BD.A2.E5.8F.82.E5.88.97.E8.A1.A8" title="cpp/language/function">显式对象形参</a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">说明符</span>
+</td>
+<td> -
+</td>
+<td> 可包含以下说明符的序列，每个说明符在序列中最多允许出现一次。
+<table class="wikitable">
+<tr>
+<th>说明符
+</th>
+<th>效果
+</th></tr>
+<tr>
+<td><span class="mw-geshi cpp source-cpp">mutable</span>
+</td>
+<td>允许<span class="t-spar">函数体</span> ﻿修改复制捕获的对象，以及调用它们的非 const 成员函数。
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx23"><td>
+<ul><li> 存在显式对象形参时不能使用。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+</td></tr>
+<tr>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td>显式指定 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 为 <a href="constexpr.html#constexpr_.E5.87.BD.E6.95.B0" title="cpp/language/constexpr">constexpr 函数</a>。
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>满足针对 constexpr 函数的所有要求，那么即使没有指定 <span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 也会是 constexpr 的。
+</li></ul>
+</td></tr>
+<tr>
+<td><span class="mw-geshi cpp source-cpp">consteval</span><br><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td>指定 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 为<a href="consteval.html" title="cpp/language/consteval">立即函数</a>。
+<ul><li> 不能同时指定 <span class="mw-geshi cpp source-cpp">consteval</span> 和 <span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span>。
+</li></ul>
+</td></tr>
+<tr>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">static</span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td>指定 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 为<a href="static.html#.E9.9D.99.E6.80.81.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0" title="cpp/language/static">静态成员函数</a>。
+<ul><li> 不能同时指定 <span class="mw-geshi cpp source-cpp"><span class="kw4">static</span></span> 和 <span class="mw-geshi cpp source-cpp">mutable</span>。
+</li><li> <span class="t-spar">捕获</span> ﻿不为空，或者存在显式对象形参时不能使用。
+</li></ul>
+</td></tr></table>
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">异常</span>
+</td>
+<td> -
+</td>
+<td> 为闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 提供<span class="t-rev-inl t-until-cxx20"><span><a href="except_spec.html" title="cpp/language/except spec">动态异常说明</a>或</span><span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></span></span> <a href="noexcept_spec.html" title="cpp/language/noexcept spec">noexcept 说明符</a>。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">后属性</span>
+</td>
+<td> -
+</td>
+<td> 适用于闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的类型的<a href="attributes.html" title="cpp/language/attributes">属性说明序列</a>（因此不能使用 <code>[[<a href="attributes/noreturn.html" title="cpp/language/attributes/noreturn">noreturn</a>]]</code> 属性）。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">尾随类型</span>
+</td>
+<td> -
+</td>
+<td> <code><b>-&gt;</b></code> <span class="t-spar">返回类型</span>，其中<span class="t-spar">返回类型</span> ﻿指定返回类型。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">约束</span>
+</td>
+<td> -
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> 向闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 添加<a href="constraints.html" title="cpp/language/constraints">约束</a>。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">约定说明</span>
+</td>
+<td> -
+</td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> 闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的<a href="function.html#.E5.87.BD.E6.95.B0.E7.BA.A6.E5.AE.9A.E8.AF.B4.E6.98.8E.E7.AC.A6.E5.88.97" title="cpp/language/function">函数约定说明符列</a>表。
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">函数体</span>
+</td>
+<td> -
+</td>
+<td> lambda 表达式的函数体。
+</td></tr></table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>当以 <a href="auto.html" title="cpp/language/auto"><code>auto</code></a> 为形参类型<span class="t-rev-inl t-since-cxx20"><span>或显式提供模板形参列表</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>时，该 lambda 是<i>泛型 lambda</i>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></td></tr>
+</table>
+<p>变量 <span class="t-c"><span class="mw-geshi cpp source-cpp">__func__</span></span> 在<span class="t-spar">函数体</span> ﻿的开头隐式定义，它的语义可以参考<a href="function.html#func" title="cpp/language/function">这里</a>。
+</p>
+<h3><span class="mw-headline" id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B">闭包类型</span></h3>
+<p>lambda 表达式是纯右值表达式，它的类型是独有的无名非<a href="union.html" title="cpp/language/union">联合体</a>非<a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合体</a>类类型，被称为<i>闭包类型</i>，它（对于<a href="adl.html" title="cpp/language/adl">实参依赖查找</a>而言）声明于含有该 lambda 表达式的最小块作用域、类作用域或命名空间作用域。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>当且仅当<span class="t-spar">捕获</span> ﻿为空时，闭包类型是<a href="template_parameters.html#.E6.A8.A1.E6.9D.BF.E9.9D.9E.E7.B1.BB.E5.9E.8B.E5.BD.A2.E5.8F.82" title="cpp/language/template parameters">结构化</a>类型。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>闭包类型有下列成员，它们不能<span class="t-rev-inl t-since-cxx14"><span>被<a href="function_template.html#.E6.98.BE.E5.BC.8F.E5.AE.9E.E4.BE.8B.E5.8C.96" title="cpp/language/function template">显式实例化</a>，被<a href="template_specialization.html" title="cpp/language/template specialization">显式特化</a>，或</span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></span></span>在<a href="friend.html" title="cpp/language/friend">友元声明</a>中指名：
+</p><p><span id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B.E5.87.BD.E6.95.B0.E8.B0.83.E7.94.A8.E8.BF.90.E7.AE.97.E7.AC.A6"></span>
+</p>
+<div class="t-member">
+<h2> <span class="mw-headline" id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B::operator.28.29.28.E5.BD.A2.E5.8F.82.29"><span style="font-size:0.8em; line-height:125%">闭包类型::</span>operator()(<span class="t-spar">形参</span>)</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp">返回类型 operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>形参<span class="br0">)</span> <span class="br0">{</span> 函数体 <span class="br0">}</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark" style="white-space: nowrap;">(static 和 const 可能会出现，见下文)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx14">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span>模板形参<span class="sy1">&gt;</span><br>
+返回类型 operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>形参<span class="br0">)</span> <span class="br0">{</span> 函数体 <span class="br0">}</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span> <br><span class="t-mark" style="white-space: nowrap;">(泛型 lambda，static 和 const 可能会出现，见下文)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>当被调用时，执行 lambda 表达式的函数体。当访问变量时，访问的是它被捕获的副本（对于按复制捕获的实体）或原对象（对于按引用捕获的实体）。
+</p><p><span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的形参列表在提供了<span class="t-spar">形参列表</span> ﻿时是该形参列表，否则为空。
+</p><p><span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的返回类型是<span class="t-spar">尾随类型</span> ﻿中指定的类型。
+</p><p>如果没有提供<span class="t-spar">尾随类型</span>，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的返回类型会被自动<a href="function.html#.E8.BF.94.E5.9B.9E.E7.B1.BB.E5.9E.8B.E6.8E.A8.E5.AF.BC" title="cpp/language/function">推导</a>。<sup id="cite_ref-1" class="reference"><a href="lambda.html#cite_note-1">[1]</a></sup>
+</p><p>除非 lambda 的说明符中使用了关键词 <span class="mw-geshi cpp source-cpp">mutable</span><span class="t-rev-inl t-since-cxx23"><span>，或者存在显式对象形参</span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></span>，否则 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的 cv 限定符都会是 <span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>，并且无法从这个 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的内部修改按复制捕获的对象。<span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 始终非虚，并且不能包含 <span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span> 限定符。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<p>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 满足针对 <a href="constexpr.html" title="cpp/language/constexpr">constexpr 函数</a>的要求，那么它始终是 constexpr 的。如果在 lambda 的说明符中使用了关键词 <span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span>，那么它也是 constexpr 的。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>如果在 lambda 的说明符中使用了关键词 <span class="mw-geshi cpp source-cpp">consteval</span>，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 是<a href="consteval.html" title="cpp/language/consteval">立即函数</a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p>如果在 lambda 的说明符中使用了关键词 <span class="mw-geshi cpp source-cpp"><span class="kw4">static</span></span>，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 是<a href="static.html#.E9.9D.99.E6.80.81.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0" title="cpp/language/static">静态成员函数</a>。
+</p><p>如果<span class="t-spar">形参列表</span> ﻿有一个显式对象形参，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 是<a href="member_functions.html#.E6.98.BE.E5.BC.8F.E5.AF.B9.E8.B1.A1.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0" title="cpp/language/member functions">显式对象成员函数</a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>对于<span class="t-spar">形参</span> ﻿中每个类型指定为 <span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span> 的形参，以它们的出现顺序向<span class="t-spar">模板形参</span> ﻿中添加一个虚设的模板形参。当虚设的模板形参所对应的<span class="t-spar">形参</span> ﻿中的函数形参是函数形参包时，它可以是<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">形参包</a>。
+</p>
+<div style="text-align: left; width:45em; overflow-x: hidden;" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 泛型 lambda，operator() 是有两个形参的模板</span>
+<span class="kw4">auto</span> glambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a, <span class="kw4">auto</span><span class="sy3">&amp;&amp;</span> b<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> a <span class="sy1">&lt;</span> b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">bool</span> b <span class="sy1">=</span> glambda<span class="br0">(</span><span class="nu0">3</span>, <span class="nu16">3.14</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// ok</span>
+ 
+<span class="co1">// 泛型 lambda，operator() 是有一个形参的模板</span>
+<span class="kw4">auto</span> vglambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> printer<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span><span class="sy3">&amp;&amp;</span>... <span class="me1">ts</span><span class="br0">)</span> <span class="co1">// 泛型 lambda，ts 是形参包</span>
+    <span class="br0">{</span> 
+        printer<span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>decltype<span class="br0">(</span>ts<span class="br0">)</span><span class="sy1">&gt;</span><span class="br0">(</span>ts<span class="br0">)</span>...<span class="br0">)</span><span class="sy4">;</span>
+        <span class="co1">// 零元 lambda （不接受形参）</span>
+        <span class="kw1">return</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span> <span class="br0">{</span> printer<span class="br0">(</span>ts...<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">auto</span> p <span class="sy1">=</span> vglambda<span class="br0">(</span><span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> v1, <span class="kw4">auto</span> v2, <span class="kw4">auto</span> v3<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> v1 <span class="sy1">&lt;&lt;</span> v2 <span class="sy1">&lt;&lt;</span> v3<span class="sy4">;</span>
+<span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">auto</span> q <span class="sy1">=</span> p<span class="br0">(</span><span class="nu0">1</span>, <span class="st0">'a'</span>, <span class="nu16">3.14</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 输出 1a3.14</span>
+q<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>                      <span class="co1">// 输出 1a3.14</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></td></tr>
+</table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>如果 lambda 定义使用了显式的模板形参列表，该列表会用于 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>。对于<span class="t-spar">形参</span> ﻿中的每个类型指定为 <span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span> 的形参，都会向模板形参列表追加一个虚设的模板形参：
+</p>
+<div style="text-align: left; width:45em" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 泛型 lambda，operator() 是一个拥有两个（模板）形参的模板</span>
+<span class="kw4">auto</span> glambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span><span class="br0">(</span>T a, <span class="kw4">auto</span><span class="sy3">&amp;&amp;</span> b<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> a <span class="sy1">&lt;</span> b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// 泛型 lambda，operator() 是一个拥有一个形参包的模板</span>
+<span class="kw4">auto</span> f <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="sy1">&lt;</span><span class="kw1">typename</span>... <span class="me1">Ts</span><span class="sy1">&gt;</span><span class="br0">(</span>Ts<span class="sy3">&amp;&amp;</span>... <span class="me1">ts</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> foo<span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Ts<span class="sy1">&gt;</span><span class="br0">(</span>ts<span class="br0">)</span>...<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>lambda 表达式上的异常说明<span class="t-spar">异常</span> ﻿应用于 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>。
+</p><p>对于<a href="lookup.html" title="cpp/language/lookup">名字查找</a>、确定 <a href="this.html" title="cpp/language/this"><span class="t-c"><span class="mw-geshi cpp source-cpp">this</span></span> 指针</a>的类型和值以及对于访问非静态类成员而言，闭包类型的函数调用运算符的函数体被认为处于 lambda 表达式的语境中。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="kw4">int</span> x, y<span class="sy4">;</span>
+    <span class="kw4">int</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="co1">// 下列 lambda 的语境是成员函数 X::f</span>
+        <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">int</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>this<span class="sy2">-</span><span class="sy1">&gt;</span>x <span class="sy2">+</span> y<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// X::operator()(this-&gt;x + (*this).y)</span>
+                                            <span class="co1">// this 拥有类型 X*</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<h3> <span class="mw-headline" id=".E6.82.AC.E5.9E.82.E5.BC.95.E7.94.A8">悬垂引用</span></h3>
+<p>如果按引用隐式或显式捕获非引用实体，而在该实体的生存期结束之后调用闭包对象的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>，那么会发生未定义行为。C++ 的闭包并不延长按引用捕获的对象的生存期。
+</p><p>这同样适用于通过 <code><b>this</b></code> 捕获的当前 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> 对象的生存期。
+</p>
+</div>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="lambda.html#cite_ref-1">↑</a></span> <span class="reference-text">尽管函数返回类型推导在 C++14 中引入，但是 C++11 中已经可以使用相应规则推导 lambda 返回类型。</span>
+</li>
+</ol>
+<div class="t-member">
+<h2> <span class="mw-headline" id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B::operator_.E8.BF.94.E5.9B.9E.E7.B1.BB.E5.9E.8B.28.2A.29.28.E5.BD.A2.E5.8F.82.29.28.29"><span style="font-size:0.8em; line-height:125%">闭包类型::</span>operator <span class="t-spar">返回类型</span>(*)(<span class="t-spar">形参</span>)()</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl-h">
+<td> <div>无捕获的非泛型 lambda</div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev">
+<tr class="t-dcl t-until-cxx17">
+<td><div><span class="mw-geshi cpp source-cpp"><span class="kw1">using</span> F <span class="sy1">=</span> 返回类型<span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span>形参<span class="br0">)</span><span class="sy4">;</span><br>
+operator F<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">using</span> F <span class="sy1">=</span> 返回类型<span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span>形参<span class="br0">)</span><span class="sy4">;</span><br>
+<span class="kw4">constexpr</span> operator F<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-h">
+<td> <div>无捕获的泛型 lambda</div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev">
+<tr class="t-dcl t-since-cxx14 t-until-cxx17">
+<td><div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span>模板形参<span class="sy1">&gt;</span> <span class="kw1">using</span> fptr_t <span class="sy1">=</span> <span class="coMULTI">/* 见下文 */</span><span class="sy4">;</span><br>
+<p><span class="kw1">template</span><span class="sy1">&lt;</span>模板形参<span class="sy1">&gt;</span><br>
+</p>
+operator fptr_t<span class="sy1">&lt;</span>模板形参<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span> <br><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span>模板形参<span class="sy1">&gt;</span> <span class="kw1">using</span> fptr_t <span class="sy1">=</span> <span class="coMULTI">/* 见下文 */</span><span class="sy4">;</span><br>
+<p><span class="kw1">template</span><span class="sy1">&lt;</span>模板形参<span class="sy1">&gt;</span><br>
+</p>
+<span class="kw4">constexpr</span> operator fptr_t<span class="sy1">&lt;</span>模板形参<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>只有在 lambda 表达式没有<span class="t-spar">捕获</span> ﻿<span class="t-rev-inl t-since-cxx23"><span>且没有显式对象形参</span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></span>时才定义这个<a href="cast_operator.html" title="cpp/language/cast operator">用户定义转换函数</a>。它是闭包对象的公开、<span class="t-rev-inl t-since-cxx17"><span>constexpr、</span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>非虚、非显式、const noexcept 成员函数。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>如果函数调用运算符（或对于泛型 lambda 的函数调用运算符特化）是立即函数，那么此函数是<a href="consteval.html" title="cpp/language/consteval">立即函数</a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>泛型无捕获 lambda 拥有一个用户定义的转换函数模板，它具有与 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 模板相同的虚设模板形参列表。
+</p>
+<div style="text-align: left; width:45em" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f1<span class="br0">(</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="kw4">void</span> f2<span class="br0">(</span><span class="kw4">char</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="kw4">void</span> h<span class="br0">(</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>  <span class="co1">// #1</span>
+<span class="kw4">void</span> h<span class="br0">(</span><span class="kw4">char</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// #2</span>
+ 
+<span class="kw4">auto</span> glambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> a<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+f1<span class="br0">(</span>glambda<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+f2<span class="br0">(</span>glambda<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误：不可转换</span>
+h<span class="br0">(</span>glambda<span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// OK：调用 #1，因为 #2 不可转换</span>
+ 
+<span class="kw4">int</span><span class="sy3">&amp;</span> <span class="br0">(</span><span class="sy2">*</span>fpi<span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span> <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span><span class="sy2">*</span> a<span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">auto</span><span class="sy3">&amp;</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="sy2">*</span>a<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></td></tr>
+</table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx14"><td>
+<p>这个转换函数返回一个指向具有 C++ <a href="language_linkage.html" title="cpp/language/language linkage">语言连接</a>的函数的指针，调用该函数的效果与在默认构造的闭包类型实例上调用闭包类型的函数调用运算符的效果相同。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx14" style="white-space: nowrap;">(C++14 前)</span></td></tr>
+<tr class="t-rev t-since-cxx14 t-until-cxx23"><td>
+<p>这个转换函数（模板）返回一个指向具有 C++ <a href="language_linkage.html" title="cpp/language/language linkage">语言连接</a>的函数的指针，调用该函数的效果与下列效果相同：
+</p>
+<ul><li> 对于非泛型 lambda，在默认构造的闭包类型实例上调用闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>。
+</li><li> 对于泛型 lambda，在默认构造的闭包类型实例上调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 模板的泛型 lambda 对应特化。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span><br><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p>这个转换函数（模板）：
+</p>
+<ul><li> 在 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 是静态的情况下返回一个指向具有 C++ <a href="language_linkage.html" title="cpp/language/language linkage">语言连接</a>的该 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的指针。
+</li><li> 否则返回一个指向具有 C++ <a href="language_linkage.html" title="cpp/language/language linkage">语言连接</a>的函数的指针，调用该函数的效果与下列效果相同：
+<ul><li> 对于非泛型 lambda，在默认构造的闭包类型实例上调用闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>。
+</li><li> 对于泛型 lambda，在默认构造的闭包类型实例上调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 模板的泛型 lambda 对应特化。
+</li></ul>
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<p>如果函数调用运算符（或对于泛型 lambda 是它的特化）是 constexpr 的，那么此函数也是 constexpr 的。
+</p>
+<div style="text-align: left; width:45em; overflow-x: hidden;" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">auto</span> Fwd <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">(</span><span class="sy2">*</span>fp<span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span>, <span class="kw4">auto</span> a<span class="br0">)</span><span class="br0">{</span> <span class="kw1">return</span> fp<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">auto</span> C <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span><span class="br0">{</span> <span class="kw1">return</span> a<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+static_assert<span class="br0">(</span>Fwd<span class="br0">(</span>C, <span class="nu0">3</span><span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// OK</span>
+ 
+<span class="kw4">auto</span> NC <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span><span class="br0">{</span> <span class="kw4">static</span> <span class="kw4">int</span> s<span class="sy4">;</span> <span class="kw1">return</span> a<span class="sy4">;</span><span class="br0">}</span><span class="sy4">;</span>
+static_assert<span class="br0">(</span>Fwd<span class="br0">(</span>NC, <span class="nu0">3</span><span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误：因为 static s 而不能为 constexpr 的特化</span></pre></div></div>
+<p>如果闭包对象的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 具有无抛出异常说明，那么此函数返回的指针具有指向 noexcept 函数的指针类型。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+</table>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B::.E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B.28.29"><span style="font-size:0.8em; line-height:125%">闭包类型::</span>闭包类型()</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">闭包类型<span class="br0">(</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> <br><span class="t-mark" style="white-space: nowrap;">(仅当未指定任何捕获时)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">闭包类型<span class="br0">(</span><span class="kw4">const</span> 闭包类型<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">闭包类型<span class="br0">(</span>闭包类型<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>闭包类型非<a href="../named_req/DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>。闭包类型没有默认构造函数。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>如果没有指定<span class="t-spar">捕获</span>，那么闭包类型拥有预置的默认构造函数。否则，它没有默认构造函数（这包含有<span class="t-spar">默认捕获符</span> ﻿的情况，即使它实际上没有捕获任何变量）。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>复制构造函数与移动构造函数声明为预置，并可能按照<a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a>与<a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a>的通常规则隐式定义。
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B::operator.3D.28const_.E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B.26.29"><span style="font-size:0.8em; line-height:125%">闭包类型::</span>operator=(const 闭包类型&amp;)</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl t-until-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">闭包类型<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> 闭包类型<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">闭包类型<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> 闭包类型<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span><br>
+闭包类型<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>闭包类型<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> <br><span class="t-mark" style="white-space: nowrap;">(仅当未指定任何捕获时)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">闭包类型<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> 闭包类型<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> <br><span class="t-mark" style="white-space: nowrap;">(其他情况)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>复制赋值运算符被定义为弃置的（且未声明移动赋值运算符）。闭包类型不<a href="../named_req/CopyAssignable.html" title="cpp/named req/CopyAssignable"><span style="font-style:italic">可复制赋值</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(CopyAssignable)</span> </a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>如果没有指定 <span class="t-spar">捕获</span>，那么闭包类型拥有预置的复制赋值运算符和预置的移动赋值运算符。否则，它拥有弃置的复制赋值运算符（这包含有<span class="t-spar">默认捕获符</span> ﻿的情况，即使它实际上没有捕获任何变量）。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B::.7E.E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B.28.29"><span style="font-size:0.8em; line-height:125%">闭包类型::</span>~闭包类型()</span></h2>
+<table class="t-dcl-begin"><tbody>
+
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">~闭包类型<span class="br0">(</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>析构函数是隐式声明的。
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id=".E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B::.E6.8D.95.E8.8E.B7"><span style="font-size:0.8em; line-height:125%">闭包类型::</span><span class="t-spar">捕获</span></span></h2>
+<table class="t-dcl-begin"><tbody>
+
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">T1 a<span class="sy4">;</span><br>
+<p>T2 b<span class="sy4">;</span><br>
+</p>
+...</span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>如果 lambda 表达式按复制（隐式地以捕获子句 <code><b>[=]</b></code> 或显式地以不含字符 &amp; 的捕获符，例如 <code><b>[a, b, c]</b></code>）捕获了任何内容，那么闭包类型包含保有所有被如此捕获的实体的副本的无名非静态数据成员，它们以未指明的顺序声明。
+</p><p>如果数据成员对应的捕获符没有初始化器，那么它们在求值 lambda 表达式时被<a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a>。如果有初始化器，那么按它的初始化器的要求初始化（可为复制或直接初始化）。如果捕获了数组，那么各数组元素以下标递增顺序直接初始化。初始化各数据成员所用的顺序是它们的声明顺序（即未指明）。
+</p><p>每个数据成员的类型是它对应的被捕获实体的类型，除非实体拥有引用类型（此时到函数的引用被捕获为到被引用函数的左值引用，而到对象的引用被捕获为被引用对象的副本）。
+</p><p>对于按引用捕获（以<span class="t-spar">默认捕获符</span> <code><b>[&amp;]</b></code> 或使用了字符 &amp;，例如 <code><b>[&amp;a, &amp;b, &amp;c]</b></code>）的实体，闭包类型中是否声明额外的数据成员是未指明的<span class="t-rev-inl t-since-cxx17"><span>，但任何这种附加成员必须满足<a href="../named_req/LiteralType.html" title="cpp/named req/LiteralType"><span style="font-style:italic">字面类型</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LiteralType)</span> </a></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>。
+</p>
+</div>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p><span id=".E4.B8.8D.E6.B1.82.E5.80.BC.E8.AF.AD.E5.A2.83.E4.B8.AD.E7.9A.84_lambda"></span>
+不允许在<a href="expressions.html#.E4.B8.8D.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">不求值表达式</a>、<a href="template_parameters.html" title="cpp/language/template parameters">模板实参</a>、<a href="type_alias.html" title="cpp/language/type alias">别名声明</a>、<a href="typedef.html" title="cpp/language/typedef">typedef 声明</a>，以及函数（或函数模板）声明中除了函数体和函数的<a href="default_arguments.html" title="cpp/language/default arguments">默认实参</a>以外的任何位置中出现 lambda 表达式。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="lambda_.E6.8D.95.E8.8E.B7">lambda 捕获</span></h3>
+<p><span class="t-spar">捕获</span> ﻿定义了可以从 lambda 函数体之内访问的外部变量。它的语法定义如下：
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">默认捕获符</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">捕获符列表</span>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">默认捕获符</span> <code><b>,</b></code> <span class="t-spar">捕获符列表</span>
+</td>
+<td> (3)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> <span class="t-spar">默认捕获符</span>
+</td>
+<td> -
+</td>
+<td> <code><b>&amp;</b></code> 和 <code><b>=</b></code> 之一
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">捕获符列表</span>
+</td>
+<td> -
+</td>
+<td> 逗号分隔的<span class="t-spar">捕获符</span> ﻿列表
+</td></tr></table>
+<p><br>
+<span class="t-spar">捕获符</span> ﻿的语法定义如下：
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">标识符</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">标识符</span> <code><b>...</b></code>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">标识符</span> <span class="t-spar">初始化器</span>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <span class="t-spar">标识符</span>
+</td>
+<td> (4)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <span class="t-spar">标识符</span> <code><b>...</b></code>
+</td>
+<td> (5)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <span class="t-spar">标识符</span> <span class="t-spar">初始化器</span>
+</td>
+<td> (6)
+</td>
+<td> <span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>this</b></code>
+</td>
+<td> (7)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>*this</b></code>
+</td>
+<td> (8)
+</td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>...</b></code> <span class="t-spar">标识符</span> <span class="t-spar">初始化器</span>
+</td>
+<td> (9)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <code><b>...</b></code> <span class="t-spar">标识符</span> <span class="t-spar">初始化器</span>
+</td>
+<td> (10)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> 简单的按复制捕获</div>
+<div class="t-li1"><span class="t-li">2)</span> 作为<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">包展开</a>的简单的按复制捕获 </div>
+<div class="t-li1"><span class="t-li">3)</span> 带<a href="initialization.html" title="cpp/language/initialization">初始化器</a>的按复制捕获</div>
+<div class="t-li1"><span class="t-li">4)</span> 简单的按引用捕获</div>
+<div class="t-li1"><span class="t-li">5)</span> 作为<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">包展开</a>的简单的按引用捕获</div>
+<div class="t-li1"><span class="t-li">6)</span> 带初始化器的按引用捕获</div>
+<div class="t-li1"><span class="t-li">7)</span> 当前对象的简单的按引用捕获</div>
+<div class="t-li1"><span class="t-li">8)</span> 当前对象的简单的按复制捕获</div>
+<div class="t-li1"><span class="t-li">9)</span> 初始化器为包展开的按复制捕获</div>
+<div class="t-li1"><span class="t-li">10)</span> 初始化器为包展开的按引用捕获</div>
+<p>当<span class="t-spar">默认捕获符</span> ﻿是 <code><b>&amp;</b></code> 时，后继的简单捕获符不能以 <code><b>&amp;</b></code> 开始。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S2 <span class="br0">{</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> S2<span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>          <span class="co1">// OK：默认按引用捕获</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, i<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>       <span class="co1">// OK：按引用捕获，但 i 按值捕获</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, <span class="sy3">&amp;</span>i<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>      <span class="co1">// 错误：按引用捕获为默认时的按引用捕获</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>    <span class="co1">// OK：等价于 [&amp;]</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, this, i<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK：等价于 [&amp;, i]</span>
+<span class="br0">}</span></pre></div></div>
+<p>当<span class="t-spar">默认捕获符</span> ﻿是 <code><b>=</b></code> 时，后继的简单捕获符必须以 <code><b>&amp;</b></code>、<span class="t-rev-inl t-since-cxx17"><span><code><b>*this</b></code></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>、<span class="t-rev-inl t-since-cxx20"><span><code><b>this</b></code></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span> 之一开始。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S2 <span class="br0">{</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> S2<span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>        <span class="co1">// OK：默认按复制捕获</span>
+    <span class="br0">[</span><span class="sy1">=</span>, <span class="sy3">&amp;</span>i<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>    <span class="co1">// OK：按复制捕获，但 i 按引用捕获</span>
+    <span class="br0">[</span><span class="sy1">=</span>, <span class="sy2">*</span>this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// C++17 前：错误：无效语法</span>
+                   <span class="co1">// C++17 起：OK：按复制捕获外围的 S2</span>
+    <span class="br0">[</span><span class="sy1">=</span>, this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// C++20 前：错误：= 为默认时的 this</span>
+                   <span class="co1">// C++20 起：OK：同 [=]</span>
+<span class="br0">}</span></pre></div></div>
+<p>任何捕获符只可以出现一次，并且名字不能与任何形参名相同：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S2 <span class="br0">{</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> S2<span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="br0">[</span>i, i<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>        <span class="co1">// 错误：i 重复</span>
+    <span class="br0">[</span>this, <span class="sy2">*</span>this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 错误："this" 重复（C++17）</span>
+ 
+    <span class="br0">[</span>i<span class="br0">]</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>   <span class="co1">// 错误：形参和捕获的名字相同</span>
+<span class="br0">}</span></pre></div></div>
+<p>如果变量满足下列条件之一，那么 lambda 表达式在使用它前不需要先捕获：
+</p>
+<ul><li> 该变量是非局部变量，或具有静态或线程局部<a href="storage_duration.html" title="cpp/language/storage duration">存储期</a>（此时无法捕获该变量）。
+</li><li> 该变量是以<a href="constant_expression.html#.E5.B8.B8.E9.87.8F.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">常量表达式</a>初始化的引用。
+</li></ul>
+<p>如果变量满足下列条件之一，那么 lambda 表达式在读取它的值前不需要先捕获：
+</p>
+<ul><li> 该变量具有 const 而非 volatile 的整型或枚举类型，并已经用<a href="constant_expression.html#.E5.B8.B8.E9.87.8F.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">常量表达式</a>初始化。
+</li><li> 该变量是 constexpr 的且没有 mutable 成员。
+</li></ul>
+<p>当出现任一<span class="t-spar">默认捕获符</span> ﻿时，都能隐式捕获当前对象（<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>）。如果隐式捕获它，那么会始终按引用捕获，即使<span class="t-spar">默认捕获符</span> ﻿是 <code><b>=</b></code>。<span class="t-rev-inl t-since-cxx20"><span>当<span class="t-spar">默认捕获符</span> ﻿是 <code><b>=</b></code> 时，<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> 的隐式捕获被弃用。</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>
+</p><p>只有满足以下条件的 lambda 表达式能拥有<span class="t-spar">默认捕获符</span> ﻿或无初始化器的<span class="t-spar">捕获符</span>：
+</p>
+<ul><li> 它的最内层<a href="scope.html" title="cpp/language/scope">外围作用域</a>是<a href="scope.html#.E5.9D.97.E4.BD.9C.E7.94.A8.E5.9F.9F" title="cpp/language/scope">块作用域</a>。
+</li><li> 它在<a href="data_members.html#.E6.88.90.E5.91.98.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/language/data members">默认成员初始化器</a>中出现，并且它的最内层外围作用域是<a href="scope.html#.E7.B1.BB.E4.BD.9C.E7.94.A8.E5.9F.9F" title="cpp/language/scope">类作用域</a>。
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx26"><td>
+<ul><li> 它在<a href="contracts.html" title="cpp/language/contracts">约定断言</a>中出现，并且它的最内层外围作用域是对应的<a href="scope.html#.E7.BA.A6.E5.AE.9A.E6.96.AD.E8.A8.80.E4.BD.9C.E7.94.A8.E5.9F.9F" title="cpp/language/scope">约定断言作用域</a>。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+</table>
+<p>对于这种 lambda 表达式，它的<i>可达作用域 ﻿</i>定义为它最内层的外围函数（及它的形参）内（包含自身）的外围作用域的集合。这其中包含各个嵌套的块作用域，以及当此 lambda 为嵌套的 lambda 时也包含它的各个外围 lambda 的作用域。
+</p><p>（除了 <code><b>this</b></code> 捕获符之外的）任何无初始化器的捕获符中的<span class="t-spar">标识符</span> ﻿，都使用通常的<a href="lookup.html" title="cpp/language/lookup">无限定名字查找</a>在 lambda 的<i>可达作用域 ﻿</i>中查找。查找结果必须是在可达作用域中声明的且具有自动存储期的<a href="object.html" title="cpp/language/object">变量</a><span class="t-rev-inl t-since-cxx20"><span>，或对应变量满足这种要求的<a href="structured_binding.html" title="cpp/language/structured binding">结构化绑定</a></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>。该实体被<i>显式捕获</i>。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>带有初始化器的捕获符（称为<i>初始化捕获符</i>），其行为如同声明并显式捕获以 <a href="auto.html" title="cpp/language/auto">auto</a> 类型说明符声明并拥有相同初始化器的变量，该变量的作用域是 lambda 表达式体（即不在初始化器的作用域内），但：
+</p>
+<ul><li> 如果按复制捕获，则因而引入的闭包对象的非静态数据成员和该变量将被视为引用同一对象；
+<ul><li> 换言之，源变量并不实际存在，而经由 <span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span> 的类型推导和初始化均应用到该非静态数据成员；
+</li></ul>
+</li><li> 如果按引用捕获，那么引用变量的生存期在闭包对象的生存期结束时结束。
+</li></ul>
+<p>这可以用于，以 <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">=</span> std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>x<span class="br0">)</span></span></span> 这样的捕获符捕获仅可移动的类型。
+</p><p>这也使得通过 const 引用进行捕获成为可能，比如以 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;</span>cr <span class="sy1">=</span> <a href="../utility/as_const.html"><span class="kw1124">std::<span class="me2">as_const</span></span></a><span class="br0">(</span>x<span class="br0">)</span></span></span> 或类似的方式。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span>
+ 
+<span class="kw4">auto</span> y <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span>r <span class="sy1">=</span> x, x <span class="sy1">=</span> x <span class="sy2">+</span> <span class="nu0">1</span><span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">int</span>
+<span class="br0">{</span>
+    r <span class="sy2">+</span><span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span>
+    <span class="kw1">return</span> x <span class="sy2">*</span> x<span class="sy4">;</span>
+<span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 更新 ::x 到 6 并初始化 y 为 25。</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></td></tr>
+</table>
+<p>如果<span class="t-spar">捕获</span> ﻿具有<span class="t-spar">默认捕获符</span>，且未显式（以 <span class="t-c"><span class="mw-geshi cpp source-cpp">this</span></span> 或 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>）捕获它的外围对象，或任何在 lambda 体内<a href="definition.html#ODR_.E4.BD.BF.E7.94.A8" title="cpp/language/definition">可 ODR 使用</a>的自动存储期变量<span class="t-rev-inl t-since-cxx20"><span>，或对应变量拥有自动存储期的<a href="structured_binding.html" title="cpp/language/structured binding">结构化绑定</a></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>，则如果<a href="expressions.html#.E6.BD.9C.E5.9C.A8.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">潜在求值</a>的表达式内的表达式（包括在使用非静态类成员前添加的隐式 <span class="t-c"><span class="mw-geshi cpp source-cpp">this<span class="sy2">-</span><span class="sy1">&gt;</span></span></span>）指名了该实体，则捕获列表<i>隐式</i>捕获该实体。
+</p><p>就确定隐式捕获的目的而言，标准认为 <a href="typeid.html" title="cpp/language/typeid"><code>typeid</code></a> 决不使其操作数不求值。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<p>即使实体仅在 lambda 函数体的<a href="if.html#constexpr_if" title="cpp/language/if">舍弃语句</a>内被指名，它们也可能被隐式捕获。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span>, <span class="kw4">const</span> <span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>   <span class="co1">// #1</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy3">&amp;</span>, <span class="kw4">const</span> <span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// #2</span>
+ 
+<span class="kw1">struct</span> NoncopyableLiteralType
+<span class="br0">{</span>
+    <span class="kw4">constexpr</span> <span class="kw1">explicit</span> NoncopyableLiteralType<span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span> <span class="sy4">:</span> n_<span class="br0">(</span>n<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    NoncopyableLiteralType<span class="br0">(</span><span class="kw4">const</span> NoncopyableLiteralType<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+ 
+    <span class="kw4">int</span> n_<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> test<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">const</span> <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">17</span><span class="sy4">;</span>
+ 
+    <span class="kw4">auto</span> l0 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">{</span> f<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>           <span class="co1">// OK：调用 #1，不捕获 x</span>
+    <span class="kw4">auto</span> g0 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span> <span class="br0">{</span> f<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// 同上</span>
+ 
+    <span class="kw4">auto</span> l1 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">{</span> f<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>          <span class="co1">// OK：（P0588R1 起）捕获 x 并调用 #1</span>
+                                     <span class="co1">// 捕获能被优化掉</span>
+    <span class="kw4">auto</span> g1 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span> <span class="br0">{</span> f<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 同上</span>
+ 
+    <span class="kw4">auto</span> ltid <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">{</span> <span class="kw1">typeid</span><span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>   <span class="co1">// OK：（P0588R1 起）捕获 x</span>
+                                     <span class="co1">// 尽管不求值 x</span>
+                                     <span class="co1">// 捕获能被优化掉</span>
+ 
+    <span class="kw4">auto</span> g2 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> selector<span class="br0">[</span>sizeof<span class="br0">(</span>a<span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">1</span> <span class="sy4">?</span> <span class="nu0">1</span> <span class="sy4">:</span> <span class="nu0">2</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+        f<span class="br0">(</span>x, selector<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK：捕获 x</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw4">auto</span> g3 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">typeid</span><span class="br0">(</span>a <span class="sy2">+</span> x<span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// 捕获 x 而不管 a + x 是否为不求值操作数</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw4">constexpr</span> NoncopyableLiteralType w<span class="br0">{</span><span class="nu0">42</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> l4 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">{</span> <span class="kw1">return</span> w.<span class="me1">n_</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>      <span class="co1">// OK：不 ODR 使用 w，捕获是不必要的</span>
+    <span class="co1">// auto l5 = [=]{ return w.n_; };  // 错误：需要按复制捕获 w</span>
+<span class="br0">}</span></pre></div></div>
+<p>如果 lambda 体 <a href="definition.html#ODR_.E4.BD.BF.E7.94.A8" title="cpp/language/definition">ODR 使用</a>了按复制捕获的实体，那么它访问的是闭包类型的成员。如果它未 ODR 使用该实体，那么访问的是原对象：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">const</span> <span class="kw4">int</span> N <span class="sy1">=</span> <span class="nu0">10</span><span class="sy4">;</span>
+    <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span>
+    <span class="br0">{</span> 
+        <span class="kw4">int</span> arr<span class="br0">[</span>N<span class="br0">]</span><span class="sy4">;</span> <span class="co1">// 非 ODR 使用：指代 g 的 const int N</span>
+        f<span class="br0">(</span><span class="sy3">&amp;</span>N<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// ODR 使用：导致 N 被（以复制）捕获</span>
+               <span class="co1">// &amp;N 是闭包对象的成员 N 的地址，而非 g 中的 N</span>
+    <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>如果 lambda ODR 使用了按引用捕获的引用，那么它使用原引用所指代的对象，而非被捕获的引用自身：
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw4">auto</span> make_function<span class="br0">(</span><span class="kw4">int</span><span class="sy3">&amp;</span> x<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> x <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> f <span class="sy1">=</span> make_function<span class="br0">(</span>i<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// f 中对 x 的使用直接绑定到 i</span>
+    i <span class="sy1">=</span> <span class="nu0">5</span><span class="sy4">;</span>
+    f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK：打印 5</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<p>在带<span class="t-spar">默认捕获符</span> <code><b>=</b></code> 的 lambda 体内，任何可捕获实体的类型都如同它被捕获一样（从而在 lambda 非 <span class="mw-geshi cpp source-cpp">mutable</span> 时通常会加上 const 限定），即使该实体在不求值操作数中且未被捕获（例如在 <a href="decltype.html" title="cpp/language/decltype"><code>decltype</code></a> 中）也是如此：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f3<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">float</span> x, <span class="sy3">&amp;</span>r <span class="sy1">=</span> x<span class="sy4">;</span>
+    <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span>
+    <span class="br0">{</span> <span class="co1">// x 和 r 未被捕获（在 decltype 的操作数中出现并不是 ODR 使用）</span>
+        decltype<span class="br0">(</span>x<span class="br0">)</span> y1<span class="sy4">;</span>        <span class="co1">// y1 拥有 float 类型</span>
+        decltype<span class="br0">(</span><span class="br0">(</span>x<span class="br0">)</span><span class="br0">)</span> y2 <span class="sy1">=</span> y1<span class="sy4">;</span> <span class="co1">// y2 拥有 float const&amp; 类型，因为此 lambda</span>
+                               <span class="co1">// 非 mutable 且 x 是左值</span>
+        decltype<span class="br0">(</span>r<span class="br0">)</span> r1 <span class="sy1">=</span> y1<span class="sy4">;</span>   <span class="co1">// r1 拥有 float&amp; 类型（不考虑变换）</span>
+        decltype<span class="br0">(</span><span class="br0">(</span>r<span class="br0">)</span><span class="br0">)</span> r2 <span class="sy1">=</span> y2<span class="sy4">;</span> <span class="co1">// r2 拥有 float const&amp; 类型</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>lambda（隐式或显式）捕获的任何实体均被该 lambda 表达式 ODR 使用（因此嵌套的 lambda 的隐式捕获将触发它的外围 lambda 的隐式捕获）。
+</p><p>所有隐式捕获的变量必须已在 lambda 的<i>可达作用域 ﻿</i>中声明。
+</p><p>如果 lambda（以 <code><b>this</b></code> 或 <code><b>*this</b></code>）捕获了它的外围对象，那么要么它的最接近的外围函数必须是非静态成员函数，要么该 lambda 必须处于某个<a href="data_members.html#.E6.88.90.E5.91.98.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/language/data members">默认成员初始化器</a>中：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> s2
+<span class="br0">{</span>
+    <span class="kw4">double</span> ohseven <span class="sy1">=</span> <span class="nu18">.007</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> f<span class="br0">(</span><span class="br0">)</span> <span class="co1">// 以下两个 lambda 的最接近外围函数</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <span class="br0">[</span>this<span class="br0">]</span>      <span class="co1">// 按引用捕获外围的 s2</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> <span class="br0">[</span><span class="sy2">*</span>this<span class="br0">]</span> <span class="co1">// 按复制捕获外围的 s2（C++17）</span>
+            <span class="br0">{</span>
+                <span class="kw1">return</span> ohseven<span class="sy4">;</span> <span class="co1">// OK</span>
+            <span class="br0">}</span>
+        <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">auto</span> g<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <span class="br0">[</span><span class="br0">]</span> <span class="co1">// 无捕获</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> <span class="br0">[</span><span class="sy2">*</span>this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 错误：*this 未被外层 lambda 表达式所捕获</span>
+        <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>如果 lambda 表达式<span class="t-rev-inl t-since-cxx14"><span>（或泛型 lambda 的函数调用运算符的一个特化）</span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></span></span> ODR 使用了 <span class="t-c"><span class="mw-geshi cpp source-cpp">this</span></span> 或任何具有自动存储期的变量，那么它必须被该 lambda 表达式所捕获。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f1<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> <span class="kw4">const</span> N <span class="sy1">=</span> <span class="nu0">20</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> m1 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> <span class="kw4">const</span> M <span class="sy1">=</span> <span class="nu0">30</span><span class="sy4">;</span>
+        <span class="kw4">auto</span> m2 <span class="sy1">=</span> <span class="br0">[</span>i<span class="br0">]</span>
+        <span class="br0">{</span>
+            <span class="kw4">int</span> x<span class="br0">[</span>N<span class="br0">]</span><span class="br0">[</span>M<span class="br0">]</span><span class="sy4">;</span> <span class="co1">// N 与 M 未被 ODR 使用（它们可以不被捕获）</span>
+            x<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy1">=</span> i<span class="sy4">;</span> <span class="co1">// i 被 m2 显式捕获，并被 m1 隐式捕获</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">struct</span> s1 <span class="co1">// f1() 中的局部类</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> f<span class="sy4">;</span>
+        <span class="kw4">void</span> work<span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span> <span class="co1">// 非静态成员函数</span>
+        <span class="br0">{</span>
+            <span class="kw4">int</span> m <span class="sy1">=</span> n <span class="sy2">*</span> n<span class="sy4">;</span>
+            <span class="kw4">int</span> j <span class="sy1">=</span> <span class="nu0">40</span><span class="sy4">;</span>
+            <span class="kw4">auto</span> m3 <span class="sy1">=</span> <span class="br0">[</span>this, m<span class="br0">]</span>
+            <span class="br0">{</span>
+                <span class="kw4">auto</span> m4 <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span>, j<span class="br0">]</span> <span class="co1">// 错误：j 未被 m3 捕获</span>
+                <span class="br0">{</span>
+                    <span class="kw4">int</span> x <span class="sy1">=</span> n<span class="sy4">;</span> <span class="co1">// 错误：n 被 m4 隐式捕获，但未被 m3 捕获</span>
+                    x <span class="sy2">+</span><span class="sy1">=</span> m<span class="sy4">;</span>    <span class="co1">// OK：m 被 m4 捕获，且被 m3 显式捕获</span>
+                    x <span class="sy2">+</span><span class="sy1">=</span> i<span class="sy4">;</span>    <span class="co1">// 错误：i 在可达作用域之外（该作用域在 work() 结束）</span>
+                    x <span class="sy2">+</span><span class="sy1">=</span> f<span class="sy4">;</span>    <span class="co1">// OK：this 被 m4 隐式捕获，且被 m3 显式捕获</span>
+                <span class="br0">}</span><span class="sy4">;</span>
+            <span class="br0">}</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>以不带有初始化器的捕获符无法显式捕获类成员（如上提及，<span class="t-spar">捕获符列表</span> ﻿中只能有<a href="object.html" title="cpp/language/object">变量</a>）：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+    <span class="co1">//  auto l1 = [i, x] { use(i, x); };    // 错误：x 不是变量</span>
+        <span class="kw4">auto</span> l2 <span class="sy1">=</span> <span class="br0">[</span>i, x <span class="sy1">=</span> x<span class="br0">]</span> <span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// OK，复制捕获</span>
+        i <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> l2<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 调用 use(0, 0)</span>
+        <span class="kw4">auto</span> l3 <span class="sy1">=</span> <span class="br0">[</span>i, <span class="sy3">&amp;</span>x <span class="sy1">=</span> x<span class="br0">]</span> <span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK，引用捕获</span>
+        i <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> l3<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 调用 use(1, 2)</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>当 lambda 用隐式的按复制捕获捕获了某个成员时，它并不产生该成员变量的副本：对成员变量 <code>m</code> 的使用被处理成表达式 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span>.<span class="me1">m</span></span></span>，而 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> 始终被隐式按引用捕获：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+ 
+        <span class="kw4">auto</span> l1 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span> <span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 捕获 i 的副本和 this 指针的副本</span>
+        i <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> l1<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>           <span class="co1">// 调用 use(0, 1)，如同 i 按复制而 x 按引用捕获</span>
+ 
+        <span class="kw4">auto</span> l2 <span class="sy1">=</span> <span class="br0">[</span>i, this<span class="br0">]</span> <span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 同上，改为显式捕获</span>
+        i <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> l2<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>           <span class="co1">// 调用 use(1, 2)，如同 i 按复制而 x 按引用捕获</span>
+ 
+        <span class="kw4">auto</span> l3 <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span> <span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 按引用捕获 i，并捕获 this 指针的副本</span>
+        i <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> l3<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>           <span class="co1">// 调用 use(3, 2)，如同 i 与 x 均按引用捕获</span>
+ 
+        <span class="kw4">auto</span> l4 <span class="sy1">=</span> <span class="br0">[</span>i, <span class="sy2">*</span>this<span class="br0">]</span> <span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 制造 *this 的副本，包含 x 的副本</span>
+        i <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> l4<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>           <span class="co1">// 调用 use(3, 2)，如同 i 与 x 均按复制捕获</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>如果 lambda 表达式在<a href="default_arguments.html" title="cpp/language/default arguments">默认实参</a>中出现，那么它不能显式或隐式捕获任何内容<span class="t-rev-inl t-since-cxx14"><span>，除非所有捕获都带有初始化器，并满足可以在默认实参中出现的表达式的约束条件</span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></span></span>：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f2<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> g1<span class="br0">(</span> <span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">[</span>i<span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误：有捕获内容</span>
+    <span class="kw4">void</span> g2<span class="br0">(</span> <span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">[</span>i<span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误：有捕获内容</span>
+    <span class="kw4">void</span> g3<span class="br0">(</span> <span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误：有捕获内容</span>
+ 
+    <span class="kw4">void</span> g4<span class="br0">(</span> <span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// OK：无捕获</span>
+    <span class="kw4">void</span> g5<span class="br0">(</span> <span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> sizeof i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK：无捕获</span>
+ 
+    <span class="co1">// C++14</span>
+    <span class="kw4">void</span> g6<span class="br0">(</span> <span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">[</span>x <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK：1 可以在默认实参中出现</span>
+    <span class="kw4">void</span> g7<span class="br0">(</span> <span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">[</span>x <span class="sy1">=</span> i<span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误：i 不能在默认实参中出现</span>
+<span class="br0">}</span></pre></div></div>
+<p>不能捕获<a href="union.html" title="cpp/language/union">匿名联合体</a>的成员。只能以复制捕获<a href="bit_field.html" title="cpp/language/bit field">位域</a>。
+</p><p>如果嵌套的 lambda <code>m2</code> 捕获了也被它的直接外围 lambda <code>m1</code> 所捕获的实体，那么以如下方式将 <code>m2</code> 的捕获进行变换：
+</p>
+<ul><li> 如果外围 lambda <code>m1</code> 按复制捕获，那么 <code>m2</code> 捕获 <code>m1</code> 的闭包类型的非静态数据成员，而非原变量或 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>；如果 <code>m1</code> 非 <code>mutable</code>，那么认为该非静态数据成员有 const 限定。
+</li><li> 如果外围 lambda <code>m1</code> 按引用捕获，那么 <code>m2</code> 捕获原变量或 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>。
+</li></ul>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> a <span class="sy1">=</span> <span class="nu0">1</span>, b <span class="sy1">=</span> <span class="nu0">1</span>, c <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+ 
+    <span class="kw4">auto</span> m1 <span class="sy1">=</span> <span class="br0">[</span>a, <span class="sy3">&amp;</span>b, <span class="sy3">&amp;</span>c<span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> mutable
+    <span class="br0">{</span>
+        <span class="kw4">auto</span> m2 <span class="sy1">=</span> <span class="br0">[</span>a, b, <span class="sy3">&amp;</span>c<span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> mutable
+        <span class="br0">{</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> a <span class="sy1">&lt;&lt;</span> b <span class="sy1">&lt;&lt;</span> c <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+            a <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> b <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> c <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+        a <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span> b <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span> c <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span>
+        m2<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    a <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> b <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> c <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span>
+ 
+    m1<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>                             <span class="co1">// 调用 m2() 并打印 123</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> a <span class="sy1">&lt;&lt;</span> b <span class="sy1">&lt;&lt;</span> c <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// 打印 234</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx23"><td>
+<p>如果 lambda 有捕获，那么函数调用表达式的显式对象形参（如果存在）的类型只能是以下之一：
+</p>
+<ul><li> 闭包类型。
+</li><li> 公开且无歧义地从闭包类型派生的类类型。
+</li><li> 到可有 cv 限定性的这种类型的引用类型。
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> C 
+<span class="br0">{</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+    C<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> func<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> 
+<span class="br0">{</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span>this <span class="kw4">auto</span><span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// OK</span>
+    <span class="kw4">int</span> y <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span>this C<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// 错误</span>
+    <span class="kw4">int</span> z <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>this C<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="nu0">42</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// OK</span>
+ 
+    <span class="kw4">auto</span> lambda <span class="sy1">=</span> <span class="br0">[</span>n <span class="sy1">=</span> <span class="nu0">42</span><span class="br0">]</span> <span class="br0">(</span>this <span class="kw4">auto</span> self<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> n<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw1">using</span> Closure <span class="sy1">=</span> decltype<span class="br0">(</span>lambda<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">struct</span> D <span class="sy4">:</span> <span class="kw1">private</span> Closure <span class="br0">{</span>
+        D<span class="br0">(</span>Closure l<span class="br0">)</span> <span class="sy4">:</span> Closure<span class="br0">(</span>l<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+        <span class="kw1">using</span> Closure<span class="sy4">::</span><span class="me2">operator</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+        <span class="kw1">friend</span> Closure<span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+    D<span class="br0">{</span>lambda<span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误</span>
+<span class="br0">}</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<table class="wikitable">
+
+<tr>
+<th>功能特性测试宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lambdas" title="cpp/feature test"><code>__cpp_lambdas</code></a></td>
+<td><a href="../compiler_support/11.html#cpp_lambdas_200907L" title="cpp/compiler support/11"><code>200907L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++11)</span></td>
+<td>lambda 表达式
+</td></tr>
+<tr>
+<td rowspan="2"><a href="../feature_test.html#cpp_generic_lambdas" title="cpp/feature test"><code>__cpp_generic_lambdas</code></a></td>
+<td><a href="../compiler_support/14.html#cpp_generic_lambdas_201304L" title="cpp/compiler support/14"><code>201304L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++14)</span></td>
+<td>泛型 lambda 表达式
+</td></tr>
+<tr>
+<td><a href="../compiler_support/20.html#cpp_generic_lambdas_201707L" title="cpp/compiler support/20"><code>201707L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td>泛型 lambda 表达式的显式模板形参列表
+</td></tr>
+<tr>
+<td rowspan="2"><a href="../feature_test.html#cpp_init_captures" title="cpp/feature test"><code>__cpp_init_captures</code></a></td>
+<td><a href="../compiler_support/14.html#cpp_init_captures_201304L" title="cpp/compiler support/14"><code>201304L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++14)</span></td>
+<td>lambda 初始化捕获
+</td></tr>
+<tr>
+<td><a href="../compiler_support/20.html#cpp_init_captures_201803L" title="cpp/compiler support/20"><code>201803L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td>允许 lambda 初始化捕获中的包展开
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_capture_star_this" title="cpp/feature test"><code>__cpp_capture_star_this</code></a></td>
+<td><a href="../compiler_support/17.html#cpp_capture_star_this_201603L" title="cpp/compiler support/17"><code>201603L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td>按值捕获 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>，如 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">[</span><span class="sy1">=</span>, <span class="sy2">*</span>this<span class="br0">]</span></span></span>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_constexpr" title="cpp/feature test"><code>__cpp_constexpr</code></a></td>
+<td><a href="../compiler_support/17.html#cpp_constexpr_201603L" title="cpp/compiler support/17"><code>201603L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td>constexpr 的 lambda
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_static_call_operator" title="cpp/feature test"><code>__cpp_static_call_operator</code></a></td>
+<td><a href="../compiler_support/23.html#cpp_static_call_operator_202207L" title="cpp/compiler support/23"><code>202207L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++23)</span></td>
+<td>无捕获 lambda 的静态 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr></table>
+<p>缺陷报告 <a rel="nofollow" class="external text" href="https://wg21.link/P0588R1">P0588R1</a> 稍微更改了隐式 lambda 捕获的规则。到 2023-10 为止，一些主要实现没有完全实现该缺陷报告，从而有时仍在使用检测 <a href="definition.html#ODR_.E4.BD.BF.E7.94.A8" title="cpp/language/definition">ODR 使用</a>的旧规则。
+</p>
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">P0588R1 前的旧规则</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<p>如果<span class="t-spar">捕获</span> ﻿具有<span class="t-spar">默认捕获符</span>，且未显式（以 <code><b>this</b></code> 或 <code><b>*this</b></code>）捕获它的外围对象，或任何在 lambda 体内<a href="definition.html#ODR_.E4.BD.BF.E7.94.A8" title="cpp/language/definition">可 ODR 使用</a>的自动存储期变量<span class="t-rev-inl t-since-cxx20"><span>，或对应变量拥有自动存储期的<a href="structured_binding.html" title="cpp/language/structured binding">结构化绑定</a></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>，那么在实体符合下列条件时捕获列表会<i>隐式 ﻿</i>捕获该实体：
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<ul><li> 为依赖泛型 lambda 模板形参的表达式之内的<a href="expressions.html#.E6.BD.9C.E5.9C.A8.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">潜在求值</a>表达式中所指名，或
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></td></tr>
+</table>
+<ul><li> 被 lambda 函数体 <a href="definition.html#ODR_.E4.BD.BF.E7.94.A8" title="cpp/language/definition">ODR 使用</a>。
+</li></ul>
+</td></tr></table></div>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><p>此示例演示如何传递 lambda 给泛型算法，以及 lambda 表达式所产生的对象能如何存储于 <span class="t-lc"><a href="../utility/functional/function.html" title="cpp/utility/functional/function">std::function</a></span> 对象。</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;algorithm&gt;</span>
+<span class="co2">#include &lt;functional&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;vector&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> c<span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span>, <span class="nu0">4</span>, <span class="nu0">5</span>, <span class="nu0">6</span>, <span class="nu0">7</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">5</span><span class="sy4">;</span>
+    c.<span class="me1">erase</span><span class="br0">(</span><a href="../algorithm/remove.html"><span class="kw1596">std::<span class="me2">remove_if</span></span></a><span class="br0">(</span>c.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, c.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, <span class="br0">[</span>x<span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> n <span class="sy1">&lt;</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span>, c.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"c: "</span><span class="sy4">;</span>
+    <a href="../algorithm/for_each.html"><span class="kw1572">std::<span class="me2">for_each</span></span></a><span class="br0">(</span>c.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, c.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 闭包的类型不能被指名，但可用 auto 提及</span>
+    <span class="co1">// C++14 起，lambda 可以有默认实参</span>
+    <span class="kw4">auto</span> func1 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">6</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> i <span class="sy2">+</span> <span class="nu0">4</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"func1: "</span> <span class="sy1">&lt;&lt;</span> func1<span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 与所有可调用对象相同，闭包能可以被捕获到 std::function 之中</span>
+    <span class="co1">// （这可能带来不必要的开销）</span>
+    <a href="../utility/functional/function.html"><span class="kw1064">std::<span class="me2">function</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy1">&gt;</span> func2 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> i <span class="sy2">+</span> <span class="nu0">4</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"func2: "</span> <span class="sy1">&lt;&lt;</span> func2<span class="br0">(</span><span class="nu0">6</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <span class="kw4">constexpr</span> <span class="kw4">int</span> fib_max <span class="br0">{</span><span class="nu0">8</span><span class="br0">}</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"模仿递归 lambda 调用：<span class="es1">\n</span>斐波那契数："</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> nth_fibonacci <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../utility/functional/function.html"><span class="kw1064">std::<span class="me2">function</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="br0">(</span><span class="kw4">int</span>, <span class="kw4">int</span>, <span class="kw4">int</span><span class="br0">)</span><span class="sy1">&gt;</span> fib <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> n, <span class="kw4">int</span> a, <span class="kw4">int</span> b<span class="br0">)</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> n <span class="sy4">?</span> fib<span class="br0">(</span>n <span class="sy2">-</span> <span class="nu0">1</span>, a <span class="sy2">+</span> b, a<span class="br0">)</span> <span class="sy4">:</span> b<span class="sy4">;</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+        <span class="kw1">return</span> fib<span class="br0">(</span>n, <span class="nu0">0</span>, <span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy1">&lt;=</span> fib_max<span class="sy4">;</span> <span class="sy2">++</span>i<span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> nth_fibonacci<span class="br0">(</span>i<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>i <span class="sy1">&lt;</span> fib_max <span class="sy4">?</span> <span class="st0">", "</span> <span class="sy4">:</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"另一种 lambda 递归方案：<span class="es1">\n</span>斐波那契数："</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> nth_fibonacci2 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> self, <span class="kw4">int</span> n, <span class="kw4">int</span> a <span class="sy1">=</span> <span class="nu0">0</span>, <span class="kw4">int</span> b <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">int</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> n <span class="sy4">?</span> self<span class="br0">(</span>self, n <span class="sy2">-</span> <span class="nu0">1</span>, a <span class="sy2">+</span> b, a<span class="br0">)</span> <span class="sy4">:</span> b<span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy1">&lt;=</span> fib_max<span class="sy4">;</span> <span class="sy2">++</span>i<span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> nth_fibonacci2<span class="br0">(</span>nth_fibonacci2, i<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>i <span class="sy1">&lt;</span> fib_max <span class="sy4">?</span> <span class="st0">", "</span> <span class="sy4">:</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="co2">#ifdef __cpp_explicit_this_parameter</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"C++23 的 lambda 递归方案：<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> nth_fibonacci3 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>this <span class="kw4">auto</span> self, <span class="kw4">int</span> n, <span class="kw4">int</span> a <span class="sy1">=</span> <span class="nu0">0</span>, <span class="kw4">int</span> b <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">int</span>
+    <span class="br0">{</span>
+         <span class="kw1">return</span> n <span class="sy4">?</span> self<span class="br0">(</span>n <span class="sy2">-</span> <span class="nu0">1</span>, a <span class="sy2">+</span> b, a<span class="br0">)</span> <span class="sy4">:</span> b<span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy1">&lt;=</span> fib_max<span class="sy4">;</span> <span class="sy2">++</span>i<span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> nth_fibonacci3<span class="br0">(</span>i<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>i <span class="sy1">&lt;</span> fib_max <span class="sy4">?</span> <span class="st0">", "</span> <span class="sy4">:</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="co2">#endif</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">c: 5 6 7
+func1: 10
+func2: 10
+模仿递归 lambda 调用：
+斐波那契数：0, 1, 1, 2, 3, 5, 8, 13
+另一种 lambda 递归方案：
+斐波那契数：0, 1, 1, 2, 3, 5, 8, 13</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/974.html">CWG 974</a>
+</td>
+<td> C++11
+</td>
+<td> lambda 表达式的形参列表中不能有默认实参
+</td>
+<td> 可以有
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1048.html">CWG 1048</a><br>(<a rel="nofollow" class="external text" href="https://wg21.link/N3638">N3638</a>)
+</td>
+<td> C++11
+</td>
+<td> 只能对仅包含一个 <span class="mw-geshi cpp source-cpp"><span class="kw1">return</span></span> 语句的 lambda 体推导返回类型
+</td>
+<td> 改进返回类型推导
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1249.html">CWG 1249</a>
+</td>
+<td> C++11
+</td>
+<td> 不明确外围非 mutable 的 lambda 所捕获的成员是否为 <span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>
+</td>
+<td> 认为它为 <span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1557.html">CWG 1557</a>
+</td>
+<td> C++11
+</td>
+<td> 未指定闭包类型的转换函数的返回函数类型的语言链接
+</td>
+<td> 它具有 C++ 语言链接
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1607.html">CWG 1607</a>
+</td>
+<td> C++11
+</td>
+<td> lambda 表达式可以在函数和函数模板签名中出现
+</td>
+<td> 已禁止
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1612.html">CWG 1612</a>
+</td>
+<td> C++11
+</td>
+<td> 可以捕获匿名联合体的成员
+</td>
+<td> 已禁止
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1722.html">CWG 1722</a>
+</td>
+<td> C++11
+</td>
+<td> 无捕获的 lambda 的转换函数的异常说明未指明
+</td>
+<td> 转换函数为 noexcept
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1772.html">CWG 1772</a>
+</td>
+<td> C++11
+</td>
+<td> lambda 体内 <span class="t-c"><span class="mw-geshi cpp source-cpp">__func__</span></span> 的语义不明确
+</td>
+<td> 它指代闭包类的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1780.html">CWG 1780</a>
+</td>
+<td> C++14
+</td>
+<td> 不明确泛型 lambda 的闭包类型的成员是否可以被显式实例化或被显式特化
+</td>
+<td> 两者都不允许
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1891.html">CWG 1891</a>
+</td>
+<td> C++11
+</td>
+<td> 闭包带有弃置的默认构造函数和隐含的复制/移动构造函数
+</td>
+<td> 无默认及预置的复制/移动
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1937.html">CWG 1937</a>
+</td>
+<td> C++11
+</td>
+<td> 未指明调用转换函数的返回值的效果与调用哪个对象的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 相同
+</td>
+<td> 与调用默认构造的闭包类型<br>实例的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 相同
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1973.html">CWG 1973</a>
+</td>
+<td> C++11
+</td>
+<td> 闭包类型的 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> 的形参列表可以指代<span class="t-spar">尾随类型</span> ﻿中的形参列表
+</td>
+<td> 只能指代<span class="t-spar">形参列表</span>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2011.html">CWG 2011</a>
+</td>
+<td> C++11
+</td>
+<td> 对于按引用捕获的引用，未指明该捕获符的标识符表示的是哪个实体
+</td>
+<td> 表示的是原来引用的实体
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2095.html">CWG 2095</a>
+</td>
+<td> C++11
+</td>
+<td> 按复制捕获到函数的右值引用的行为不明确
+</td>
+<td> 使之明确
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2211.html">CWG 2211</a>
+</td>
+<td> C++11
+</td>
+<td> 未指明捕获与形参的名字相同时的行为
+</td>
+<td> 此时程序非良构
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2358.html">CWG 2358</a>
+</td>
+<td> C++14
+</td>
+<td> 在默认实参中的 lambda 表达式不能有任何捕获，<br>即使它们都被可以在默认实参内出现的表达式初始化
+</td>
+<td> 这种带捕获的 lambda 表达式<br>可以在默认实参中出现
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2509.html">CWG 2509</a>
+</td>
+<td> C++17
+</td>
+<td> 说明符序列里每个声明符可以多次出现
+</td>
+<td> 只能各出现最多一次
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2561.html">CWG 2561</a>
+</td>
+<td> C++23
+</td>
+<td> 有显式对象形参的 lambda 表达式可能拥有到不想要的函数指针类型的转换函数
+</td>
+<td> 没有这种转换函数
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2881.html">CWG 2881</a>
+</td>
+<td> C++23
+</td>
+<td> 有显式对象形参的 <span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span> 能对继承非公开或有歧义的派生类实例化
+</td>
+<td> 使之非良构
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://wg21.link/P0588R1">P0588R1</a>
+</td>
+<td> C++11
+</td>
+<td> 隐式 lambda 捕获的规则检测 ODR 使用
+</td>
+<td> 简化了规则
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <a href="auto.html" title="cpp/language/auto"> <code>auto</code> 说明符</a><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>
+</td>
+<td>  指定从表达式推导的类型</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/functional/function.html" title="cpp/utility/functional/function"> <span class="t-lines"><span>function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  任意可复制构造的可调用对象的可复制包装 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/functional/move_only_function.html" title="cpp/utility/functional/move only function"> <span class="t-lines"><span>move_only_function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  任意可调用对象的仅移动包装，支持给定调用签名中的限定符 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E5.A4.96.E9.83.A8.E9.93.BE.E6.8E.A5">外部链接</span></h3>
+<table style="border-top:solid 1px;border-bottom:none;border-left:none;border-right:none;">
+
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Nested_function" class="extiw" title="enwiki:Nested function">嵌套函数</a> - 一个函数定义于另一个（<i>外围</i>）函数之内。
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 17318/1000000
+Preprocessor generated node count: 30425/1000000
+Post‐expand include size: 359993/4194304 bytes
+Template argument size: 120049/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:2726-0!*!0!!zh!*!zh!* and timestamp 20250323193438 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/language/lambda&amp;oldid=99364">https://zh.cppreference.com/mwiki/index.php?title=cpp/language/lambda&amp;oldid=99364</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/language/lambda">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月23日 (星期日) 09:54。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 11.259 secs. -->
+	</body>
+<!-- Cached 20250323193438 -->
+</html>

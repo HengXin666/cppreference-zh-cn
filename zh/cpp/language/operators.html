@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>运算符重载</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/operators","wgTitle":"cpp/language/operators","wgCurRevisionId":98294,"wgArticleId":2742,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/language/operators","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_operators skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">运算符重载</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language">C++ 语言</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">一般主题</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../preprocessor.html" title="cpp/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../comment.html" title="cpp/comment">注释</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../keyword.html" title="cpp/keyword">关键词</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="statements.html" title="cpp/language/statements">流程控制</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">条件执行语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重复语句（循环）</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="range-for.html" title="cpp/language/range-for">范围 <span class="mw-geshi cpp source-cpp"><span class="kw1">for</span></span></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="do.html" title="cpp/language/do"><code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">跳转语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="functions.html" title="cpp/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 函数表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><span class="mw-geshi cpp source-cpp"><span class="kw1">inline</span></span> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="except_spec.html" title="cpp/language/except spec">动态异常说明</a> <span class="t-mark" style="white-space: nowrap;">(<span title="C++11 中弃用">C++17 前*</span>)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept_spec.html" title="cpp/language/noexcept spec"><span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">异常</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><span class="mw-geshi cpp source-cpp"><span class="kw1">throw</span></span> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="try.html" title="cpp/language/try"><span class="mw-geshi cpp source-cpp"><span class="kw1">try</span></span> 块</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="catch.html" title="cpp/language/catch"><code>catch</code> 处理块</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">命名空间</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace.html" title="cpp/language/namespace">命名空间声明</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace_alias.html" title="cpp/language/namespace alias">命名空间别名</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="types.html" title="cpp/language/types">基础类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="enum.html" title="cpp/language/enum">枚举类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数类型</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类/结构体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="union.html" title="cpp/language/union">联合体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">说明符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="cv.html" title="cpp/language/cv"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>/<span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="consteval.html" title="cpp/language/consteval"><tt>consteval</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constinit.html" title="cpp/language/constinit"><tt>constinit</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="storage_duration.html" title="cpp/language/storage duration">存储期说明符</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html" title="cpp/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_initialization.html" title="cpp/language/default initialization">默认初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_initialization.html" title="cpp/language/value initialization">值初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="zero_initialization.html" title="cpp/language/zero initialization">零初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="list_initialization.html" title="cpp/language/list initialization">列表初始化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="expressions.html" title="cpp/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><strong class="selflink">运算符</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">运算符优先级</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">替代表示</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#.E5.AD.97.E9.9D.A2.E9.87.8F" title="cpp/language/expressions">字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔</a> - <a href="integer_literal.html" title="cpp/language/integer literal">整数</a> - <a href="floating_literal.html" title="cpp/language/floating literal">浮点</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符</a> - <a href="string_literal.html" title="cpp/language/string literal">字符串</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">工具</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="attributes.html" title="cpp/language/attributes">属性</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typedef.html" title="cpp/language/typedef"><code>typedef</code> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="type_alias.html" title="cpp/language/type alias">类型别名声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">内存分配</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="classes.html" title="cpp/language/classes">类</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constructor.html" title="cpp/language/constructor">构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="this.html" title="cpp/language/this"><code>this</code> 指针</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="access.html" title="cpp/language/access">访问说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="friend.html" title="cpp/language/friend"><code>friend</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类特有的函数性质</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="virtual.html" title="cpp/language/virtual">虚函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="override.html" title="cpp/language/override"><code>override</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="final.html" title="cpp/language/final"><code>final</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static.html" title="cpp/language/static"><tt>static</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">特殊成员函数</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_constructor.html" title="cpp/language/default constructor">默认构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="copy_assignment.html" title="cpp/language/copy assignment">复制赋值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_assignment.html" title="cpp/language/move assignment">移动赋值</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="destructor.html" title="cpp/language/destructor">析构函数</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates">模板</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class_template.html" title="cpp/language/class template">类模板</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function_template.html" title="cpp/language/function template">函数模板</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="template_specialization.html" title="cpp/language/template specialization">模板特化</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="pack.html" title="cpp/language/pack">形参包</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">杂项</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="asm.html" title="cpp/language/asm">内联汇编</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="history.html" title="cpp/language/history">C++ 的历史</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="expressions.html" title="cpp/language/expressions"> 表达式</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">概述</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_expression.html" title="cpp/language/constant expression">常量表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="expressions.html#.E5.88.9D.E7.AD.89.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">初等表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 表达式</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="requires.html" title="cpp/language/requires">requires 表达式</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="pack_indexing.html#.E5.8C.85.E7.B4.A2.E5.BC.95.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/pack indexing">包索引表达式</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="expressions.html#.E6.BD.9C.E5.9C.A8.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">潜在求值表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">字面量</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="integer_literal.html" title="cpp/language/integer literal">整数字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="floating_literal.html" title="cpp/language/floating literal">浮点字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符字面量</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string_literal.html" title="cpp/language/string literal">字符串字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="nullptr.html" title="cpp/language/nullptr">空指针字面量</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义字面量</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">运算符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="operator_assignment.html" title="cpp/language/operator assignment">赋值运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_incdec.html" title="cpp/language/operator incdec">自增与自减</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_arithmetic.html" title="cpp/language/operator arithmetic">算术运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_logical.html" title="cpp/language/operator logical">逻辑运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_comparison.html" title="cpp/language/operator comparison">比较运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_member_access.html" title="cpp/language/operator member access">成员访问运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_other.html" title="cpp/language/operator other">其他运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><code>throw</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="alignof.html" title="cpp/language/alignof"><code>alignof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="sizeof.html" title="cpp/language/sizeof"><code>sizeof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="sizeof....html" title="cpp/language/sizeof..."><code>sizeof...</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typeid.html" title="cpp/language/typeid"><code>typeid</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept.html" title="cpp/language/noexcept"><code>noexcept</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="fold.html" title="cpp/language/fold">折叠表达式</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">运算符的代用表示</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">优先级和结合性</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">运算符重载</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="default_comparisons.html" title="cpp/language/default comparisons">预置比较</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="usual_arithmetic_conversions.html" title="cpp/language/usual arithmetic conversions">一般算术转换</a>    </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="cast_operator.html" title="cpp/language/cast operator">用户定义转换</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><code>const_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><code>static_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><code>dynamic_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><code>reinterpret_cast</code></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>为用户定义类型的操作数定制 C++ 运算符。
+</p>
+<h3><span class="mw-headline" id=".E8.AF.AD.E6.B3.95">语法</span></h3>
+<p><i>运算符函数</i> ﻿是具有特殊的函数名的<a href="function.html" title="cpp/language/function">函数</a>：
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>operator</b></code> <span class="t-spar">运算符</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>operator</b></code> <code><b>new</b></code><br><code><b>operator</b></code> <code><b>new []</b></code>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+ 
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>operator</b></code> <code><b>delete</b></code><br><code><b>operator</b></code> <code><b>delete []</b></code>
+</td>
+<td> (3)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>operator</b></code> <code><b>co_await</b></code>
+</td>
+<td> (4)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> <span class="t-spar">运算符</span>
+</td>
+<td> -
+</td>
+<td> 下列运算符之一：<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">+</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">-</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">/</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">^</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">|</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp">~</span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&gt;</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">+</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">-</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">/</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">^</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">|</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;&lt;</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&gt;&gt;</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&gt;&gt;=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;&lt;=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">==</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span><span class="sy1">=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;=</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&gt;=</span></span></span> <span class="t-rev-inl t-since-cxx20"><span><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;=&gt;</span></span></span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;&amp;</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">||</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">++</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">--</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp">,</span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">-</span><span class="sy1">&gt;</span><span class="sy2">*</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">-</span><span class="sy1">&gt;</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="br0">)</span></span></span> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">[</span><span class="br0">]</span></span></span>
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> 重载的标点符号运算符。</div>
+<div class="t-li1"><span class="t-li">2)</span> <a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">分配函数</a>。</div>
+<div class="t-li1"><span class="t-li">3)</span> <a href="../memory/new/operator_delete.html" title="cpp/memory/new/operator delete">解分配函数</a>。</div>
+<div class="t-li1"><span class="t-li">4)</span> 用于 <a href="coroutines.html#co_await" title="cpp/language/coroutines"><span class="mw-geshi cpp source-cpp">co_await</span> 表达式</a>的重载的 <span class="mw-geshi cpp source-cpp">co_await</span> 运算符。</div>
+<p>非标点符号运算符的行为已在各自对应的页面描述。除非另有说明，本页余下描述不适用于这些函数。
+</p>
+<h3><span class="mw-headline" id=".E8.A7.A3.E9.87.8A">解释</span></h3>
+<p>当<a href="expressions.html" title="cpp/language/expressions">表达式</a>中出现某个运算符，且它至少有一个操作数拥有<a href="class.html" title="cpp/language/class">类类型</a>或<a href="enum.html" title="cpp/language/enum">枚举类型</a>时，使用<a href="overload_resolution.html" title="cpp/language/overload resolution">重载决议</a>在具有与以下各项匹配的签名的函数中，确定所要调用的用户定义函数：
+</p>
+<table class="wikitable" style="font-size: 85%; text-align: left;">
+
+<tr>
+<th>表达式
+</th>
+<th>作为成员函数
+</th>
+<th>作为非成员函数
+</th>
+<th>示例
+</th></tr>
+<tr>
+<td>@a
+</td>
+<td>(a).operator@ ( )
+</td>
+<td>operator@ (a)
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span><a href="../io/cin.html"><span class="kw1760">std::<span class="me2">cin</span></span></a></span></span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../io/cin.html"><span class="kw1760">std::<span class="me2">cin</span></span></a>.<span class="me1">operator</span><span class="sy3">!</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td>a@b
+</td>
+<td>(a).operator@ (b)
+</td>
+<td>operator@ (a, b)
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="nu0">42</span></span></span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>.<span class="me1">operator</span><span class="sy1">&lt;&lt;</span><span class="br0">(</span><span class="nu0">42</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td>a=b
+</td>
+<td>(a).operator= (b)
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> 不能是非成员
+</td>
+<td>给定 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s<span class="sy4">;</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">s <span class="sy1">=</span> <span class="st0">"abc"</span><span class="sy4">;</span></span></span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">s.<span class="me1">operator</span><span class="sy1">=</span><span class="br0">(</span><span class="st0">"abc"</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td>a(b...)
+</td>
+<td>(a).operator()(b...)
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> 不能是非成员
+</td>
+<td>给定 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../numeric/random/random_device.html"><span class="kw1489">std::<span class="me2">random_device</span></span></a> r<span class="sy4">;</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span> n <span class="sy1">=</span> r<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">r.<span class="me1">operator</span><span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td>a[b]
+</td>
+<td>(a).operator[](b)
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> 不能是非成员
+</td>
+<td>给定 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../container/map.html"><span class="kw1284">std::<span class="me2">map</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="kw4">int</span><span class="sy1">&gt;</span> m<span class="sy4">;</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">m<span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span></span></span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">m.<span class="me1">operator</span><span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td>a-&gt;
+</td>
+<td>(a).operator-&gt;( )
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> 不能是非成员
+</td>
+<td>给定 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/unique_ptr.html"><span class="kw735">std::<span class="me2">unique_ptr</span></span></a><span class="sy1">&lt;</span>S<span class="sy1">&gt;</span> p<span class="sy4">;</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">p<span class="sy2">-</span><span class="sy1">&gt;</span>bar<span class="br0">(</span><span class="br0">)</span></span></span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">p.<span class="me1">operator</span><span class="sy2">-</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td>a@
+</td>
+<td>(a).operator@ (0)
+</td>
+<td>operator@ (a, 0)
+</td>
+<td>给定 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">iterator</span> i<span class="sy4">;</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">i<span class="sy2">++</span></span></span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">i.<span class="me1">operator</span><span class="sy2">++</span><span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td colspan="4">
+<p>在这张表中，<code><b>@</b></code> 是表示所有匹配运算符的占位符：@a 是所有前缀运算符，a@ 是除 -&gt; 以外的所有后缀运算符，a@b 是除 = 以外的所有其他运算符。
+</p>
+</td></tr></table>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>另外，对于比较运算符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">==</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span><span class="sy1">=</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&gt;</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;=</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&gt;=</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;=&gt;</span></span></span>，重载决议也会考虑<a href="overload_resolution.html#.E8.B0.83.E7.94.A8.E9.87.8D.E8.BD.BD.E8.BF.90.E7.AE.97.E7.AC.A6" title="cpp/language/overload resolution">重写候选</a> <span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span> 或 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>注意：对于重载的<span class="t-rev-inl t-since-cxx20"><span> <a href="coroutines.html#co_await" title="cpp/language/coroutines"><code>co_await</code></a>、</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span><a href="cast_operator.html" title="cpp/language/cast operator">用户定义转换函数</a>、<a href="user_literal.html" title="cpp/language/user literal">用户定义字面量</a>、<a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">分配</a>与<a href="../memory/new/operator_delete.html" title="cpp/memory/new/operator delete">解分配</a>，可分别见对应专题。
+</p><p>重载的运算符（但非内建运算符）可用函数记法进行调用：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> str <span class="sy1">=</span> <span class="st0">"Hello, "</span><span class="sy4">;</span>
+str.<span class="me1">operator</span><span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span><span class="st0">"world"</span><span class="br0">)</span><span class="sy4">;</span>                       <span class="co1">// 同 str += "world";</span>
+operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span>operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span><a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>, str<span class="br0">)</span> , <span class="st0">'<span class="es1">\n</span>'</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 同 std::cout &lt;&lt; str &lt;&lt; '\n';</span>
+                                               <span class="co1">// (C++17 起) 但定序不同</span></pre></div></div>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx23"><td>
+<h4> <span class="mw-headline" id=".E9.9D.99.E6.80.81.E9.87.8D.E8.BD.BD.E8.BF.90.E7.AE.97.E7.AC.A6">静态重载运算符</span></h4>
+<p>可以把作为成员函数的重载运算符声明为<a href="static.html#.E9.9D.99.E6.80.81.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0" title="cpp/language/static">静态的</a>。不过只允许对 <span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span> 和 <span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span> 这样做。
+</p><p>可以使用函数写法来调用这样的运算符。但是，当表达式中出现这些运算符时，仍然需要类类型的对象。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> SwapThem
+<span class="br0">{</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+    <span class="kw4">static</span> <span class="kw4">void</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>T<span class="sy3">&amp;</span> lhs, T<span class="sy3">&amp;</span> rhs<span class="br0">)</span> 
+    <span class="br0">{</span>
+        std<span class="sy4">::</span><a href="../utility/ranges/swap.html"><span class="kw2856">ranges::<span class="me2">swap</span></span></a><span class="br0">(</span>lhs, rhs<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+    <span class="kw4">static</span> <span class="kw4">void</span> operator<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>T<span class="sy3">&amp;</span> lhs, T<span class="sy3">&amp;</span> rhs<span class="br0">)</span>
+    <span class="br0">{</span>
+        std<span class="sy4">::</span><a href="../utility/ranges/swap.html"><span class="kw2856">ranges::<span class="me2">swap</span></span></a><span class="br0">(</span>lhs, rhs<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span> 
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">inline</span> <span class="kw4">constexpr</span> SwapThem swap_them<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> foo<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> a <span class="sy1">=</span> <span class="nu0">1</span>, b <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span>
+ 
+    swap_them<span class="br0">(</span>a, b<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+    swap_them<span class="br0">[</span>a, b<span class="br0">]</span><span class="sy4">;</span> <span class="co1">// OK</span>
+ 
+    SwapThem<span class="br0">{</span><span class="br0">}</span><span class="br0">(</span>a, b<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+    SwapThem<span class="br0">{</span><span class="br0">}</span><span class="br0">[</span>a, b<span class="br0">]</span><span class="sy4">;</span> <span class="co1">// OK</span>
+ 
+    SwapThem<span class="sy4">::</span><span class="me2">operator</span><span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>a, b<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+    SwapThem<span class="sy4">::</span><span class="me2">operator</span><span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>a, b<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+ 
+    SwapThem<span class="br0">(</span>a, b<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误，无效的构造</span>
+    SwapThem<span class="br0">[</span>a, b<span class="br0">]</span><span class="sy4">;</span> <span class="co1">// 错误</span>
+<span class="br0">}</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E9.99.90.E5.88.B6">限制</span></h3>
+<ul><li> 运算符函数必须有一个具有类类型，到类类型的引用类型，枚举类型或到枚举类型的引用类型的函数形参或隐式对象形参。
+</li><li> 不能重载 <code><b>::</b></code>（作用域解析）、<code><b>.</b></code>（成员访问）、<code><b>.*</b></code>（通过成员指针的成员访问）及 <code><b>?:</b></code>（三元条件）运算符。
+</li><li> 不能创建新运算符，例如 <code><b>**</b></code>、<code><b>&lt;&gt;</b></code> 或 <code><b>&amp;|</b></code>。
+</li><li> 无法改变运算符的优先级、结合方向或操作数的数量。
+</li><li> 重载的运算符 <code><b>-&gt;</b></code> 必须要么返回裸指针，要么（按引用或值）返回同样重载了运算符 <code><b>-&gt;</b></code> 的对象。
+</li><li> 运算符 <code><b>&amp;&amp;</b></code> 与 <code><b>||</b></code> 的重载会失去短路求值。
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx17"><td>
+<ul><li> <code><b>&amp;&amp;</b></code>、<code><b>||</b></code> 和 <code><b>,</b></code> 在被重载时失去它们特殊的<a href="eval_order.html" title="cpp/language/eval order">定序性质</a>，并且即使不使用函数调用记法，也表现为与常规的函数调用相似。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E8.A7.84.E8.8C.83.E5.AE.9E.E7.8E.B0">规范实现</span></h3>
+<p>除了上述限制外，语言对重载运算符的所作所为或返回类型（它不参与重载决议）上没有其他任何制约，但通常期待重载的运算符表现尽可能与内建运算符相似：期待 <span class="mw-geshi cpp source-cpp">operator<span class="sy2">+</span></span> 对它的实参进行相加而非相乘，期待 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">=</span></span> 进行赋值，如此等等。期待相关的运算符之间的表现也相似（<span class="mw-geshi cpp source-cpp">operator<span class="sy2">+</span></span> 与 <span class="mw-geshi cpp source-cpp">operator<span class="sy2">+</span><span class="sy1">=</span></span> 做同一类加法运算）。返回类型被期待使用该运算符的表达式限制：例如，令赋值运算符按引用返回，以使写出 <span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">=</span> b <span class="sy1">=</span> c <span class="sy1">=</span> d</span></span> 可行，因为内建运算符允许这样做。
+</p><p>常见的重载运算符拥有下列典型、规范形式：<sup id="cite_ref-1" class="reference"><a href="operators.html#cite_note-1">[1]</a></sup>
+</p>
+<h4><span class="mw-headline" id=".E8.B5.8B.E5.80.BC.E8.BF.90.E7.AE.97.E7.AC.A6">赋值运算符</span></h4>
+<p>赋值运算符 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">=</span></span> 有特殊性质：细节见<a href="copy_assignment.html" title="cpp/language/copy assignment">复制赋值</a>与<a href="move_assignment.html" title="cpp/language/move assignment">移动赋值</a>。
+</p><p>对规范的复制赋值运算符，期待它<a rel="nofollow" class="external text" href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#c62-make-copy-assignment-safe-for-self-assignment">能安全的处理自赋值</a>，并按引用返回左操作数：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 复制赋值</span>
+T<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> T<span class="sy3">&amp;</span> other<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 防止自赋值</span>
+    <span class="kw1">if</span> <span class="br0">(</span>this <span class="sy1">==</span> <span class="sy3">&amp;</span>other<span class="br0">)</span>
+        <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span>
+ 
+    <span class="co1">// 假设 *this 保有可重用资源，例如一个在堆的缓冲区分配的 mArray</span>
+    <span class="kw1">if</span> <span class="br0">(</span>size <span class="sy3">!</span><span class="sy1">=</span> other.<span class="me1">size</span><span class="br0">)</span>           <span class="co1">// *this 中的存储不可复用</span>
+    <span class="br0">{</span>
+        temp <span class="sy1">=</span> new <span class="kw4">int</span><span class="br0">[</span>other.<span class="me1">size</span><span class="br0">]</span><span class="sy4">;</span>   <span class="co1">// 分配存储，如果抛出异常则等同于什么也不做</span>
+        delete<span class="br0">[</span><span class="br0">]</span> mArray<span class="sy4">;</span>              <span class="co1">// 销毁 *this 中的存储</span>
+        mArray <span class="sy1">=</span> temp<span class="sy4">;</span>
+        size <span class="sy1">=</span> other.<span class="me1">size</span><span class="sy4">;</span>
+    <span class="br0">}</span> 
+ 
+    <a href="../algorithm/copy.html"><span class="kw1586">std::<span class="me2">copy</span></span></a><span class="br0">(</span>other.<span class="me1">mArray</span>, other.<span class="me1">mArray</span> <span class="sy2">+</span> other.<span class="me1">size</span>, mArray<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>对规范的移动赋值，期待它<a rel="nofollow" class="external text" href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#c64-a-move-operation-should-move-and-leave-its-source-in-a-valid-state">令被移动对象遗留于合法状态</a>（即有完好类不变式的状态），且在自赋值时要么<a rel="nofollow" class="external text" href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#c65-make-move-assignment-safe-for-self-assignment">不做任何事</a>，要么至少遗留对象于合法状态，并以非 const 引用返回左操作数，而且是 noexcept 的：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">T<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>T<span class="sy3">&amp;&amp;</span> other<span class="br0">)</span> <span class="kw1">noexcept</span> <span class="co1">// 移动赋值</span>
+<span class="br0">{</span>
+    <span class="co1">// 防止自赋值</span>
+    <span class="kw1">if</span> <span class="br0">(</span>this <span class="sy1">==</span> <span class="sy3">&amp;</span>other<span class="br0">)</span>
+        <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span> <span class="co1">// delete[]/size=0 也可以</span>
+ 
+    delete<span class="br0">[</span><span class="br0">]</span> mArray<span class="sy4">;</span>                               <span class="co1">// 释放 *this 中的资源</span>
+    mArray <span class="sy1">=</span> <a href="../utility/exchange.html"><span class="kw1121">std::<span class="me2">exchange</span></span></a><span class="br0">(</span>other.<span class="me1">mArray</span>, nullptr<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 令 other 遗留在合法状态</span>
+    size <span class="sy1">=</span> <a href="../utility/exchange.html"><span class="kw1121">std::<span class="me2">exchange</span></span></a><span class="br0">(</span>other.<span class="me1">size</span>, <span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<p>在复制赋值不能从资源复用中受益的情形下（它不管理堆分配数组，且不含这么做的（可能传递的）成员，例如 <span class="t-lc"><a href="../container/vector.html" title="cpp/container/vector">std::vector</a></span> 或 <span class="t-lc"><a href="../string/basic_string.html" title="cpp/string/basic string">std::string</a></span> 成员），有一种流行的便捷方式：复制并交换赋值运算符，它按值接收形参（从而根据实参的值类别而同时支持复制和移动赋值），交换形参，并令析构函数进行清理。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 复制赋值（复制并交换）</span>
+T<span class="sy3">&amp;</span> T<span class="sy4">::</span><span class="me2">operator</span><span class="sy1">=</span><span class="br0">(</span>T other<span class="br0">)</span> <span class="kw1">noexcept</span> <span class="co1">// 调用复制/移动构造函数以构造 other</span>
+<span class="br0">{</span>
+    <a href="../algorithm/swap.html"><span class="kw1603">std::<span class="me2">swap</span></span></a><span class="br0">(</span>size, other.<span class="me1">size</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 在 *this 与 other 间交换资源</span>
+    <a href="../algorithm/swap.html"><span class="kw1603">std::<span class="me2">swap</span></span></a><span class="br0">(</span>mArray, other.<span class="me1">mArray</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span>
+<span class="br0">}</span> <span class="co1">// 调用 other 的析构函数以释放先前 *this 所保有的资源</span></pre></div></div>
+<p>这种形式自动提供<a href="exceptions.html#.E5.BC.82.E5.B8.B8.E5.AE.89.E5.85.A8" title="cpp/language/exceptions">强异常保证</a>，但禁止资源复用。
+</p>
+<h4><span class="mw-headline" id=".E6.B5.81.E7.9A.84.E6.8F.90.E5.8F.96.E4.B8.8E.E6.8F.92.E5.85.A5">流的提取与插入</span></h4>
+<p>接受 <span class="mw-geshi cpp source-cpp"><a href="../io/basic_istream.html"><span class="kw1731">std::<span class="me2">istream</span></span></a><span class="sy3">&amp;</span></span> 或 <span class="mw-geshi cpp source-cpp"><a href="../io/basic_ostream.html"><span class="kw1733">std::<span class="me2">ostream</span></span></a><span class="sy3">&amp;</span></span> 作为左侧实参的 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&gt;&gt;</span></span> 与 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;&lt;</span></span> 的重载，被称为插入与提取运算符。因为它们接收用户定义类型为右实参（<span class="t-spar">a@b</span> 中的 <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span>），所以它们必须以非成员实现。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><a href="../io/basic_ostream.html"><span class="kw1733">std::<span class="me2">ostream</span></span></a><span class="sy3">&amp;</span> operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span><a href="../io/basic_ostream.html"><span class="kw1733">std::<span class="me2">ostream</span></span></a><span class="sy3">&amp;</span> os, <span class="kw4">const</span> T<span class="sy3">&amp;</span> obj<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 向流写入 obj</span>
+    <span class="kw1">return</span> os<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<a href="../io/basic_istream.html"><span class="kw1731">std::<span class="me2">istream</span></span></a><span class="sy3">&amp;</span> operator<span class="sy1">&gt;&gt;</span><span class="br0">(</span><a href="../io/basic_istream.html"><span class="kw1731">std::<span class="me2">istream</span></span></a><span class="sy3">&amp;</span> is, T<span class="sy3">&amp;</span> obj<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 从流读取 obj</span>
+    <span class="kw1">if</span><span class="br0">(</span> <span class="coMULTI">/* 不能构造 T */</span> <span class="br0">)</span>
+        is.<span class="me1">setstate</span><span class="br0">(</span>std<span class="sy4">::</span><span class="me2">ios</span><span class="sy4">::</span><span class="me2">failbit</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> is<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>这些运算符有时实现为<a href="friend.html" title="cpp/language/friend">友元函数</a>。
+</p>
+<h4><span class="mw-headline" id=".E5.87.BD.E6.95.B0.E8.B0.83.E7.94.A8.E8.BF.90.E7.AE.97.E7.AC.A6">函数调用运算符</span></h4>
+<p>当用户定义的类重载了函数调用运算符 <span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span> 时，它就成为<a href="../named_req/FunctionObject.html" title="cpp/named req/FunctionObject"><span style="font-style:italic">函数对象</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(FunctionObject)</span> </a>类型。
+</p><p>这种类型的对象能用于函数调用式的表达式：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 此类型的对象表示一个变量的线性函数 a * x + b。</span>
+<span class="kw1">struct</span> Linear
+<span class="br0">{</span>
+    <span class="kw4">double</span> a, b<span class="sy4">;</span>
+ 
+    <span class="kw4">double</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">double</span> x<span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> a <span class="sy2">*</span> x <span class="sy2">+</span> b<span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Linear f<span class="br0">{</span><span class="nu0">2</span>, <span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// 表示函数 2x + 1。</span>
+    Linear g<span class="br0">{</span><span class="sy2">-</span><span class="nu0">1</span>, <span class="nu0">0</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 表示函数 -x。</span>
+    <span class="co1">// f 和 g 是能像函数一样使用的对象。</span>
+ 
+    <span class="kw4">double</span> f_0 <span class="sy1">=</span> f<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">double</span> f_1 <span class="sy1">=</span> f<span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw4">double</span> g_0 <span class="sy1">=</span> g<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>许多标准库<a href="../algorithm.html" title="cpp/algorithm">算法</a>都接受<a href="../named_req/FunctionObject.html" title="cpp/named req/FunctionObject"><span style="font-style:italic">函数对象</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(FunctionObject)</span> </a>以定制它们的行为。<span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span> 没有特别值得注意的规范形式，此处演示它的用法：
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;algorithm&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;vector&gt;</span>
+ 
+<span class="kw1">struct</span> Sum
+<span class="br0">{</span>
+    <span class="kw4">int</span> sum <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+    <span class="kw4">void</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span> <span class="br0">{</span> sum <span class="sy2">+</span><span class="sy1">=</span> n<span class="sy4">;</span> <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> v <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span>, <span class="nu0">4</span>, <span class="nu0">5</span><span class="br0">}</span><span class="sy4">;</span>
+    Sum s <span class="sy1">=</span> <a href="../algorithm/for_each.html"><span class="kw1572">std::<span class="me2">for_each</span></span></a><span class="br0">(</span>v.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, v.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, Sum<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"和为 "</span> <span class="sy1">&lt;&lt;</span> s.<span class="me1">sum</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">和为 15</pre></div></div> 
+</div>
+<p>参阅 <a href="lambda.html" title="cpp/language/lambda">lambda 表达式</a>。
+</p>
+<h4><span class="mw-headline" id=".E8.87.AA.E5.A2.9E.E4.B8.8E.E8.87.AA.E5.87.8F">自增与自减</span></h4>
+<p>当表达式中出现后缀自增与自减时，以一个整数实参 <span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span> 调用用户定义函数（<span class="mw-geshi cpp source-cpp">operator<span class="sy2">++</span></span> 或 <span class="mw-geshi cpp source-cpp">operator<span class="sy2">--</span></span>）。它典型地声明为 <span class="t-c"><span class="mw-geshi cpp source-cpp">T operator<span class="sy2">++</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span></span></span> 或 <span class="t-c"><span class="mw-geshi cpp source-cpp">T operator<span class="sy2">--</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span></span></span>，其中参数被忽略。后缀自增与自减运算符通常以前缀版本实现：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="co1">// 前缀自增</span>
+    X<span class="sy3">&amp;</span> operator<span class="sy2">++</span><span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="co1">// 实际上的自增在此进行</span>
+        <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span> <span class="co1">// 以引用返回新值</span>
+    <span class="br0">}</span>
+ 
+    <span class="co1">// 后缀自增</span>
+    X operator<span class="sy2">++</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        X old <span class="sy1">=</span> <span class="sy2">*</span>this<span class="sy4">;</span> <span class="co1">// 复制旧值</span>
+        operator<span class="sy2">++</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// 前缀自增</span>
+        <span class="kw1">return</span> old<span class="sy4">;</span>    <span class="co1">// 返回旧值</span>
+    <span class="br0">}</span>
+ 
+    <span class="co1">// 前缀自减</span>
+    X<span class="sy3">&amp;</span> operator<span class="sy2">--</span><span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="co1">// 实际上的自减在此进行</span>
+        <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span> <span class="co1">// 以引用返回新值</span>
+    <span class="br0">}</span>
+ 
+    <span class="co1">// 后缀自减</span>
+    X operator<span class="sy2">--</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        X old <span class="sy1">=</span> <span class="sy2">*</span>this<span class="sy4">;</span> <span class="co1">// 复制旧值</span>
+        operator<span class="sy2">--</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// 前缀自减</span>
+        <span class="kw1">return</span> old<span class="sy4">;</span>    <span class="co1">// 返回旧值</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>尽管前自增/前自减的规范形式是返回引用的，但同任何运算符重载一样，它的返回类型是用户定义的；例如这些运算符对 <span class="t-lc"><a href="../atomic/atomic.html" title="cpp/atomic/atomic">std::atomic</a></span> 的重载返回值。
+</p>
+<h4><span class="mw-headline" id=".E4.BA.8C.E5.85.83.E8.BF.90.E7.AE.97.E7.AC.A6">二元运算符</span></h4>
+<p>典型情况下，二元运算符都被实现为两个类型对称的非成员以维持对称性（例如，将复数与整数相加时，如果 <span class="mw-geshi cpp source-cpp">operator<span class="sy2">+</span></span> 是复数类型的成员函数，那么只有<span class="t-c"><span class="mw-geshi cpp source-cpp">复数 <span class="sy2">+</span> 整数</span></span>能编译，而<span class="t-c"><span class="mw-geshi cpp source-cpp">整数 <span class="sy2">+</span> 复数</span></span>不能）。因为每个二元算术运算符都存在对应的复合赋值运算符，所以二元算数运算符的规范形式是基于它对应的复合赋值实现的：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> X
+<span class="br0">{</span>
+<span class="kw1">public</span><span class="sy4">:</span>
+    X<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="co1">// 复合赋值（不必，但通常是成员函数，以修改私有成员）</span>
+    <span class="br0">{</span>
+        <span class="coMULTI">/* 将 rhs 加到 *this 发生于此 */</span>
+        <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span> <span class="co1">// 以引用返回结果</span>
+    <span class="br0">}</span>
+ 
+    <span class="co1">// 在类体内定义的友元是 inline 的，且在非 ADL 查找中被隐藏</span>
+    <span class="kw1">friend</span> X operator<span class="sy2">+</span><span class="br0">(</span>X lhs,        <span class="co1">// 按值传递 lhs 有助于优化链状的 a + b + c</span>
+                       <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="co1">// 否则，两个形参都是 const 引用</span>
+    <span class="br0">{</span>
+        lhs <span class="sy2">+</span><span class="sy1">=</span> rhs<span class="sy4">;</span> <span class="co1">// 复用复合赋值</span>
+        <span class="kw1">return</span> lhs<span class="sy4">;</span> <span class="co1">// 以值返回结果（使用移动构造函数）</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<h4><span class="mw-headline" id=".E6.AF.94.E8.BE.83.E8.BF.90.E7.AE.97.E7.AC.A6">比较运算符</span></h4>
+<p>标准库的算法（如 <span class="t-lc"><a href="../algorithm/sort.html" title="cpp/algorithm/sort">std::sort</a></span>）和容器（如 <span class="t-lc"><a href="../container/set.html" title="cpp/container/set">std::set</a></span>）在默认情况下期待 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;</span></span> 对于用户提供的类型有定义，并期待它实现严格弱序（从而满足<a href="../named_req/Compare.html" title="cpp/named req/Compare">比较</a>要求）。一种为结构体实现严格弱序的惯用方式是使用 <span class="t-lc"><a href="../utility/tuple/tie.html" title="cpp/utility/tuple/tie">std::tie</a></span> 提供的字典序比较：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> Record
+<span class="br0">{</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> name<span class="sy4">;</span>
+    <span class="kw4">unsigned</span> <span class="kw4">int</span> floor<span class="sy4">;</span>
+    <span class="kw4">double</span> weight<span class="sy4">;</span>
+ 
+    <span class="kw1">friend</span> <span class="kw4">bool</span> operator<span class="sy1">&lt;</span><span class="br0">(</span><span class="kw4">const</span> Record<span class="sy3">&amp;</span> l, <span class="kw4">const</span> Record<span class="sy3">&amp;</span> r<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <a href="../utility/tuple/tie.html"><span class="kw1116">std::<span class="me2">tie</span></span></a><span class="br0">(</span>l.<span class="me1">name</span>, l.<span class="me1">floor</span>, l.<span class="me1">weight</span><span class="br0">)</span>
+             <span class="sy1">&lt;</span> <a href="../utility/tuple/tie.html"><span class="kw1116">std::<span class="me2">tie</span></span></a><span class="br0">(</span>r.<span class="me1">name</span>, r.<span class="me1">floor</span>, r.<span class="me1">weight</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 保持相同顺序</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>典型地，一旦提供了 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;</span></span>，其他关系运算符就都能通过 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;</span></span> 来实现。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&lt;</span> <span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/* 做实际比较 */</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&gt;</span> <span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> rhs <span class="sy1">&lt;</span> lhs<span class="sy4">;</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&lt;=</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="sy3">!</span><span class="br0">(</span>lhs <span class="sy1">&gt;</span> rhs<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&gt;=</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="sy3">!</span><span class="br0">(</span>lhs <span class="sy1">&lt;</span> rhs<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span></pre></div></div>
+<p>类似地，不相等运算符典型地通过 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span> 来实现：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/* 做实际比较 */</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy3">!</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="sy3">!</span><span class="br0">(</span>lhs <span class="sy1">==</span> rhs<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span></pre></div></div>
+<p>当提供了三路比较（如 <span class="t-lc"><a href="../string/byte/memcmp.html" title="cpp/string/byte/memcmp">std::memcmp</a></span> 或 <span class="t-lc"><a href="../string/basic_string/compare.html" title="cpp/string/basic string/compare">std::string::compare</a></span>）时，所有六个双路比较运算符都能通过它表达：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> cmp<span class="br0">(</span>lhs,rhs<span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy3">!</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> cmp<span class="br0">(</span>lhs,rhs<span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&lt;</span> <span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> cmp<span class="br0">(</span>lhs,rhs<span class="br0">)</span> <span class="sy1">&lt;</span>  <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&gt;</span> <span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> cmp<span class="br0">(</span>lhs,rhs<span class="br0">)</span> <span class="sy1">&gt;</span>  <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&lt;=</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> cmp<span class="br0">(</span>lhs,rhs<span class="br0">)</span> <span class="sy1">&lt;=</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="kw1">inline</span> <span class="kw4">bool</span> operator<span class="sy1">&gt;=</span><span class="br0">(</span><span class="kw4">const</span> X<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> X<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> cmp<span class="br0">(</span>lhs,rhs<span class="br0">)</span> <span class="sy1">&gt;=</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id=".E6.95.B0.E7.BB.84.E4.B8.8B.E6.A0.87.E8.BF.90.E7.AE.97.E7.AC.A6">数组下标运算符</span></h4>
+<p>提供数组式访问并同时允许读写的用户定义类，典型地为 <span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span> 定义两个重载：const 和非 const 变体：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> T
+<span class="br0">{</span>
+          value_t<span class="sy3">&amp;</span> operator<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> idx<span class="br0">)</span>       <span class="br0">{</span> <span class="kw1">return</span> mVector<span class="br0">[</span>idx<span class="br0">]</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">const</span> value_t<span class="sy3">&amp;</span> operator<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> idx<span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <span class="kw1">return</span> mVector<span class="br0">[</span>idx<span class="br0">]</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx23"><td>
+<p>此外，还可以利用<a href="member_functions.html#.E6.98.BE.E5.BC.8F.E5.AF.B9.E8.B1.A1.E5.BD.A2.E5.8F.82" title="cpp/language/member functions">显式对象形参</a>将它们表示为单个成员函数模板：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> T
+<span class="br0">{</span>
+    decltype<span class="br0">(</span><span class="kw4">auto</span><span class="br0">)</span> operator<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>this <span class="kw4">auto</span><span class="sy3">&amp;</span> self, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> idx<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> self.<span class="me1">mVector</span><span class="br0">[</span>idx<span class="br0">]</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<p>如果已知值类型是标量类型，那么 const 变体应按值返回。
+</p><p>当不希望或不可能直接访问容器元素，或者要区别左值（<span class="t-c"><span class="mw-geshi cpp source-cpp">c<span class="br0">[</span>i<span class="br0">]</span> <span class="sy1">=</span> v<span class="sy4">;</span></span></span>）和右值（<span class="t-c"><span class="mw-geshi cpp source-cpp">v <span class="sy1">=</span> c<span class="br0">[</span>i<span class="br0">]</span><span class="sy4">;</span></span></span>）的不同用法时，<span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span> 可以返回代理。示例见 <span class="t-lc"><a href="../utility/bitset/operator_at.html" title="cpp/utility/bitset/operator at">std::bitset::operator[]</a></span>。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx23"><td>
+<p><span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span> 运算符只能接收一个下标。为提供多维数组访问语义，例如实现三维数组访问 <span class="t-c"><span class="mw-geshi cpp source-cpp">a<span class="br0">[</span>i<span class="br0">]</span><span class="br0">[</span>j<span class="br0">]</span><span class="br0">[</span>k<span class="br0">]</span> <span class="sy1">=</span> x<span class="sy4">;</span></span></span>，<span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span> 必须返回到二维平面的引用，它必须拥有自己的 <span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span> 并返回到一维行的引用，而行必须拥有返回到元素的引用的 <span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span>。为避免这种复杂性，一些库选择代之以重载 <span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span>，使得 3D 访问表达式拥有 Fortran 式的语法 <span class="t-c"><span class="mw-geshi cpp source-cpp">a<span class="br0">(</span>i, j, k<span class="br0">)</span> <span class="sy1">=</span> x<span class="sy4">;</span></span></span>。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p>下标运算符能接收多于一个下标。例如 3D 数组类的一个声明为 <span class="t-c"><span class="mw-geshi cpp source-cpp">T<span class="sy3">&amp;</span> operator<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> x, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> y, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> z<span class="br0">)</span><span class="sy4">;</span></span></span> 的 <span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span> 能直接访问元素。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;array&gt;</span>
+<span class="co2">#include &lt;cassert&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> Z, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> Y, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> X<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> Array3d
+<span class="br0">{</span>
+    <a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a><span class="sy1">&lt;</span>T, X <span class="sy2">*</span> Y <span class="sy2">*</span> Z<span class="sy1">&gt;</span> m<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw4">constexpr</span> T<span class="sy3">&amp;</span> operator<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> z, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> y, <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> x<span class="br0">)</span> <span class="co1">// C++23</span>
+    <span class="br0">{</span>
+        <a href="../error/assert.html"><span class="kw776">assert</span></a><span class="br0">(</span>x <span class="sy1">&lt;</span> X and y <span class="sy1">&lt;</span> Y and z <span class="sy1">&lt;</span> Z<span class="br0">)</span><span class="sy4">;</span>
+        <span class="kw1">return</span> m<span class="br0">[</span>z <span class="sy2">*</span> Y <span class="sy2">*</span> X <span class="sy2">+</span> y <span class="sy2">*</span> X <span class="sy2">+</span> x<span class="br0">]</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Array3d<span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="nu0">4</span>, <span class="nu0">3</span>, <span class="nu0">2</span><span class="sy1">&gt;</span> v<span class="sy4">;</span>
+    v<span class="br0">[</span><span class="nu0">3</span>, <span class="nu0">2</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="sy1">=</span> <span class="nu0">42</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"v[3, 2, 1] = "</span> <span class="sy1">&lt;&lt;</span> v<span class="br0">[</span><span class="nu0">3</span>, <span class="nu0">2</span>, <span class="nu0">1</span><span class="br0">]</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">v[3, 2, 1] = 42</pre></div></div> 
+</div>
+<p>}}
+</p>
+<h4><span class="mw-headline" id=".E9.80.90.E4.BD.8D.E7.AE.97.E6.9C.AF.E8.BF.90.E7.AE.97.E7.AC.A6">逐位算术运算符</span></h4>
+<p>实现<a href="../named_req/BitmaskType.html" title="cpp/named req/BitmaskType">位掩码类型</a>的规定的用户定义类和枚举，要求重载逐位算术运算符 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;</span></span>、<span class="mw-geshi cpp source-cpp">operator<span class="sy3">|</span></span>、<span class="mw-geshi cpp source-cpp">operator<span class="sy3">^</span></span>、<span class="mw-geshi cpp source-cpp">operator~</span>、<span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;</span><span class="sy1">=</span></span>、<span class="mw-geshi cpp source-cpp">operator<span class="sy3">|</span><span class="sy1">=</span></span> 及 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">^</span><span class="sy1">=</span></span>，而且可重载位移运算符 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;&lt;</span></span>、<span class="mw-geshi cpp source-cpp">operator<span class="sy1">&gt;&gt;</span></span>、<span class="mw-geshi cpp source-cpp">operator<span class="sy1">&gt;&gt;=</span></span> 及 <span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;&lt;=</span></span>。规范实现通常遵循上述的二元算术运算符。
+</p>
+<h4><span class="mw-headline" id=".E5.B8.83.E5.B0.94.E5.8F.96.E5.8F.8D.E8.BF.90.E7.AE.97.E7.AC.A6">布尔取反运算符</span></h4>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx11"><td>
+<p>有意用于布尔语境的用户定义类常重载运算符 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">!</span></span>。这种类也会提供到布尔类型的用户定义转换函数（标准库样例见 <span class="t-lc"><a href="../io/basic_ios.html" title="cpp/io/basic ios">std::basic_ios</a></span>），而 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">!</span></span> 的受期待行为是返回 <span class="mw-geshi cpp source-cpp">operator <span class="kw4">bool</span></span> 的取反。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span></td></tr>
+<tr class="t-rev t-since-cxx11"><td>
+<p>由于内建运算符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span></span></span> 进行<a href="implicit_conversion.html#.E6.8C.89.E8.AF.AD.E5.A2.83.E8.BD.AC.E6.8D.A2" title="cpp/language/implicit conversion">按语境到 <code>bool</code> 的转换</a>，有意用于布尔语境的用户定义类可以只提供 <span class="mw-geshi cpp source-cpp">operator <span class="kw4">bool</span></span> 而无需重载 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">!</span></span> 。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id=".E7.BD.95.E6.9C.89.E9.87.8D.E8.BD.BD.E7.9A.84.E8.BF.90.E7.AE.97.E7.AC.A6">罕有重载的运算符</span></h4>
+<p>下列运算符罕有重载：
+</p>
+<ul><li> 取址运算符 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;</span></span>。如果对不完整类型的左值应用一元 &amp;，而完整类型声明了重载的 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;</span></span>，那么未指明运算符拥有内建含义还是调用运算符函数。因为此运算符可能被重载，所以泛型库都用 <span class="t-lc"><a href="../memory/addressof.html" title="cpp/memory/addressof">std::addressof</a></span> 取得用户定义类型的对象的地址。最为人熟知的规范重载的 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;</span></span> 是 Microsoft 类 <a rel="nofollow" class="external text" href="https://docs.microsoft.com/en-us/cpp/atl/reference/ccomptrbase-class?view=msvc-160#operator_amp">CComPtrBase</a>。在 <a rel="nofollow" class="external text" href="http://www.boost.org/doc/libs/release/libs/spirit/doc/html/spirit/qi/reference/operator/and_predicate.html">boost.spirit</a> 中可以找到该运算符在 EDSL 的使用案例。
+</li><li> 布尔逻辑运算符 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;&amp;</span></span> 与 <span class="mw-geshi cpp source-cpp">operator<span class="sy3">||</span></span>。不同于内建版本，重载版本无法实现短路求值。<span class="t-rev-inl t-until-cxx17"><span>而且不同于内建版本，它们也不会令左操作数的求值按顺序早于右操作数。</span><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span></span>标准库中，这些运算符仅由 <span class="t-lc"><a href="../numeric/valarray.html" title="cpp/numeric/valarray">std::valarray</a></span> 重载。
+</li><li> 逗号运算符 <span class="mw-geshi cpp source-cpp">operator,</span>。<span class="t-rev-inl t-until-cxx17"><span>与内建版本不同，重载版本不会令左操作数的求值按顺序早于右操作数。</span><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span></span>因为此运算符可能被重载，所以泛型库都用 <span class="t-c"><span class="mw-geshi cpp source-cpp">a, <span class="kw4">void</span><span class="br0">(</span><span class="br0">)</span>, b</span></span> 这种表达式取代 <span class="t-c"><span class="mw-geshi cpp source-cpp">a, b</span></span>，以对用户定义类型的表达式按顺序求值。boost 库在 <a rel="nofollow" class="external text" href="http://www.boost.org/doc/libs/release/libs/assign/doc/index.html#intro">boost.assign</a>、<a rel="nofollow" class="external text" href="https://github.com/boostorg/spirit/blob/develop/include/boost/spirit/home/qi/string/symbols.hpp#L317">boost.spirit</a> 及几个其他库中使用 <code>operator,</code>。数据库访问库 <a rel="nofollow" class="external text" href="http://soci.sourceforge.net/doc.html">SOCI</a> 也重载了 <code>operator,</code>。
+</li><li> 通过成员指针的成员访问 <span class="mw-geshi cpp source-cpp">operator<span class="sy2">-</span><span class="sy1">&gt;</span><span class="sy2">*</span></span>。重载此运算符并没有特别缺点，但实践中少有使用。有人推荐这能作为<a rel="nofollow" class="external text" href="http://www.aristeia.com/Papers/DDJ_Oct_1999.pdf">智能指针接口</a>的一部分，且实际上在 <a rel="nofollow" class="external text" href="http://www.boost.org/doc/libs/release/libs/phoenix/doc/html/phoenix/modules/operator.html#phoenix.modules.operator.member_pointer_operator">boost.phoenix</a> 中的 actor 有实际用途。它在像 <a rel="nofollow" class="external text" href="https://github.com/schlangster/cpp.react/blob/master/include/react/Signal.h#L557">cpp.react</a> 这样的 EDSL 中更常见。
+</li></ul>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<table class="wikitable">
+
+<tr>
+<th><a href="../utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_static_call_operator" title="cpp/feature test"><code>__cpp_static_call_operator</code></a></td>
+<td><a href="../compiler_support/23.html#cpp_static_call_operator_202207L" title="cpp/compiler support/23"><code>202207L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++23)</span></td>
+<td>静态的 <span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_multidimensional_subscript" title="cpp/feature test"><code>__cpp_multidimensional_subscript</code></a></td>
+<td><a href="../compiler_support/23.html#cpp_multidimensional_subscript_202211L" title="cpp/compiler support/23"><code>202211L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++23)</span></td>
+<td>静态的 <span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.85.B3.E9.94.AE.E8.AF.8D">关键词</span></h3>
+<p><a href="../keyword/operator.html" title="cpp/keyword/operator"><tt>operator</tt></a>
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">class</span> Fraction
+<span class="br0">{</span>
+    <span class="co1">// 或 C++17 的 std::gcd</span>
+    <span class="kw4">int</span> gcd<span class="br0">(</span><span class="kw4">int</span> a, <span class="kw4">int</span> b<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> b <span class="sy1">==</span> <span class="nu0">0</span> <span class="sy4">?</span> a <span class="sy4">:</span> gcd<span class="br0">(</span>b, a <span class="sy2">%</span> b<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+    <span class="kw4">int</span> n, d<span class="sy4">;</span>
+<span class="kw1">public</span><span class="sy4">:</span>
+    Fraction<span class="br0">(</span><span class="kw4">int</span> n, <span class="kw4">int</span> d <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">)</span> <span class="sy4">:</span> n<span class="br0">(</span>n <span class="sy2">/</span> gcd<span class="br0">(</span>n, d<span class="br0">)</span><span class="br0">)</span>, d<span class="br0">(</span>d <span class="sy2">/</span> gcd<span class="br0">(</span>n, d<span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+ 
+    <span class="kw4">int</span> num<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <span class="kw1">return</span> n<span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">int</span> den<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <span class="kw1">return</span> d<span class="sy4">;</span> <span class="br0">}</span>
+ 
+    Fraction<span class="sy3">&amp;</span> operator<span class="sy2">*</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> Fraction<span class="sy3">&amp;</span> rhs<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> new_n <span class="sy1">=</span> n <span class="sy2">*</span> rhs.<span class="me1">n</span> <span class="sy2">/</span> gcd<span class="br0">(</span>n <span class="sy2">*</span> rhs.<span class="me1">n</span>, d <span class="sy2">*</span> rhs.<span class="me1">d</span><span class="br0">)</span><span class="sy4">;</span>
+        d <span class="sy1">=</span> d <span class="sy2">*</span> rhs.<span class="me1">d</span> <span class="sy2">/</span> gcd<span class="br0">(</span>n <span class="sy2">*</span> rhs.<span class="me1">n</span>, d <span class="sy2">*</span> rhs.<span class="me1">d</span><span class="br0">)</span><span class="sy4">;</span>
+        n <span class="sy1">=</span> new_n<span class="sy4">;</span>
+        <span class="kw1">return</span> <span class="sy2">*</span>this<span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<a href="../io/basic_ostream.html"><span class="kw1733">std::<span class="me2">ostream</span></span></a><span class="sy3">&amp;</span> operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span><a href="../io/basic_ostream.html"><span class="kw1733">std::<span class="me2">ostream</span></span></a><span class="sy3">&amp;</span> out, <span class="kw4">const</span> Fraction<span class="sy3">&amp;</span> f<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> out <span class="sy1">&lt;&lt;</span> f.<span class="me1">num</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'/'</span> <span class="sy1">&lt;&lt;</span> f.<span class="me1">den</span><span class="br0">(</span><span class="br0">)</span> <span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">constexpr</span> <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> Fraction<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> Fraction<span class="sy3">&amp;</span> rhs<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> lhs.<span class="me1">num</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> rhs.<span class="me1">num</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;&amp;</span> lhs.<span class="me1">den</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> rhs.<span class="me1">den</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">constexpr</span> <span class="kw4">bool</span> operator<span class="sy3">!</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> Fraction<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> Fraction<span class="sy3">&amp;</span> rhs<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> <span class="sy3">!</span><span class="br0">(</span>lhs <span class="sy1">==</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">constexpr</span> Fraction operator<span class="sy2">*</span><span class="br0">(</span>Fraction lhs, <span class="kw4">const</span> Fraction<span class="sy3">&amp;</span> rhs<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> lhs <span class="sy2">*</span><span class="sy1">=</span> rhs<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Fraction f1<span class="br0">(</span><span class="nu0">3</span>, <span class="nu0">8</span><span class="br0">)</span>, f2<span class="br0">(</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="br0">)</span>, f3<span class="br0">(</span><span class="nu0">10</span>, <span class="nu0">2</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> f1 <span class="sy1">&lt;&lt;</span> <span class="st0">" * "</span> <span class="sy1">&lt;&lt;</span> f2 <span class="sy1">&lt;&lt;</span> <span class="st0">" = "</span> <span class="sy1">&lt;&lt;</span> f1 <span class="sy2">*</span> f2 <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span>
+              <span class="sy1">&lt;&lt;</span> f2 <span class="sy1">&lt;&lt;</span> <span class="st0">" * "</span> <span class="sy1">&lt;&lt;</span> f3 <span class="sy1">&lt;&lt;</span> <span class="st0">" = "</span> <span class="sy1">&lt;&lt;</span> f2 <span class="sy2">*</span> f3 <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span>
+              <span class="sy1">&lt;&lt;</span>  <span class="nu0">2</span> <span class="sy1">&lt;&lt;</span> <span class="st0">" * "</span> <span class="sy1">&lt;&lt;</span> f1 <span class="sy1">&lt;&lt;</span> <span class="st0">" = "</span> <span class="sy1">&lt;&lt;</span>  <span class="nu0">2</span> <span class="sy2">*</span> f1 <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">3/8 * 1/2 = 3/16
+1/2 * 5/1 = 5/2
+2 * 3/8 = 3/4</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1481.html">CWG 1481</a>
+</td>
+<td> C++98
+</td>
+<td> 非成员前缀自增运算符的形参只能具有类类型，枚举类型，或到这些类型的引用类型
+</td>
+<td> 类型没有限制
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2931.html">CWG 2931</a>
+</td>
+<td> C++23
+</td>
+<td> 显式对象成员运算符函数可以没有具有类类型，枚举类型，或到这些类型的引用类型的形参
+</td>
+<td> 已禁止
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<ul><li> <a href="operator_precedence.html" title="cpp/language/operator precedence">运算符优先级</a>
+</li><li> <a href="operator_alternative.html" title="cpp/language/operator alternative">代用运算符语法</a>
+</li><li> <a href="adl.html" title="cpp/language/adl">实参依赖查找</a>
+</li></ul>
+<table class="wikitable">
+
+<tr style="text-align:center">
+<th colspan="7">常见运算符
+</th></tr>
+<tr style="text-align:center">
+<td><a href="operator_assignment.html" title="cpp/language/operator assignment">赋值</a>
+</td>
+<td><a href="operator_incdec.html" title="cpp/language/operator incdec">自增/自减</a>
+</td>
+<td><a href="operator_arithmetic.html" title="cpp/language/operator arithmetic">算术</a>
+</td>
+<td><a href="operator_logical.html" title="cpp/language/operator logical">逻辑</a>
+</td>
+<td><a href="operator_comparison.html" title="cpp/language/operator comparison">比较</a>
+</td>
+<td><a href="operator_member_access.html" title="cpp/language/operator member access">成员访问</a>
+</td>
+<td><a href="operator_other.html" title="cpp/language/operator other">其他</a>
+</td></tr>
+<tr style="text-align:center">
+<td rowspan="3">
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">=</span> b<br>
+a <span class="sy2">+</span><span class="sy1">=</span> b<br>
+a <span class="sy2">-</span><span class="sy1">=</span> b<br>
+a <span class="sy2">*</span><span class="sy1">=</span> b<br>
+a <span class="sy2">/</span><span class="sy1">=</span> b<br>
+a <span class="sy2">%</span><span class="sy1">=</span> b<br>
+a <span class="sy3">&amp;</span><span class="sy1">=</span> b<br>
+a <span class="sy3">|</span><span class="sy1">=</span> b<br>
+a <span class="sy3">^</span><span class="sy1">=</span> b<br>
+a <span class="sy1">&lt;&lt;=</span> b<br>
+a <span class="sy1">&gt;&gt;=</span> b</span></span>
+</p>
+</td>
+<td rowspan="3">
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">++</span>a<br>
+<span class="sy2">--</span>a<br>
+a<span class="sy2">++</span><br>
+a<span class="sy2">--</span></span></span>
+</p>
+</td>
+<td rowspan="3">
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">+</span>a<br>
+<span class="sy2">-</span>a<br>
+a <span class="sy2">+</span> b<br>
+a <span class="sy2">-</span> b<br>
+a <span class="sy2">*</span> b<br>
+a <span class="sy2">/</span> b<br>
+a <span class="sy2">%</span> b<br>
+~a<br>
+a <span class="sy3">&amp;</span> b<br>
+a <span class="sy3">|</span> b<br>
+a <span class="sy3">^</span> b<br>
+a <span class="sy1">&lt;&lt;</span> b<br>
+a <span class="sy1">&gt;&gt;</span> b</span></span>
+</p>
+</td>
+<td rowspan="3">
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span>a<br>
+a <span class="sy3">&amp;&amp;</span> b<br>
+a <span class="sy3">||</span> b</span></span>
+</p>
+</td>
+<td rowspan="3">
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">==</span> b<br>
+a <span class="sy3">!</span><span class="sy1">=</span> b<br>
+a <span class="sy1">&lt;</span> b<br>
+a <span class="sy1">&gt;</span> b<br>
+a <span class="sy1">&lt;=</span> b<br>
+a <span class="sy1">&gt;=</span> b<br>
+a <span class="sy1">&lt;=&gt;</span> b</span></span>
+</p>
+</td>
+<td rowspan="3">
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">a<span class="br0">[</span>...<span class="br0">]</span><br>
+<span class="sy2">*</span>a<br>
+<span class="sy3">&amp;</span>a<br>
+a<span class="sy2">-</span><span class="sy1">&gt;</span>b<br>
+a.<span class="me1">b</span><br>
+a<span class="sy2">-</span><span class="sy1">&gt;</span><span class="sy2">*</span>b<br>
+a.<span class="sy2">*</span>b</span></span>
+</p>
+</td>
+<td>函数调用<br><br><span class="t-c"><span class="mw-geshi cpp source-cpp">a<span class="br0">(</span>...<span class="br0">)</span></span></span>
+</td></tr>
+<tr style="text-align:center">
+<td>逗号<br><br><span class="t-c"><span class="mw-geshi cpp source-cpp">a, b</span></span>
+</td></tr>
+<tr style="text-align:center">
+<td>条件<br><br><span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy4">?</span> b <span class="sy4">:</span> c</span></span>
+</td></tr>
+<tr>
+<th colspan="7">特殊运算符
+</th></tr>
+<tr>
+<td colspan="7">
+<p><a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> 转换一个类型为另一相关类型<br>
+<a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a> 在继承层级中转换<br>
+<a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> 添加或移除 <a href="cv.html" title="cpp/language/cv">cv</a> 限定符<br>
+<a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a> 转换类型到无关类型<br>
+<a href="explicit_cast.html" title="cpp/language/explicit cast">C 风格转换</a> 以 <span class="mw-geshi cpp source-cpp"><span class="kw1">static_cast</span></span>、<span class="mw-geshi cpp source-cpp"><span class="kw1">const_cast</span></span> 及 <span class="mw-geshi cpp source-cpp"><span class="kw1">reinterpret_cast</span></span> 的混合转换一个类型到另一类型<br>
+<a href="new.html" title="cpp/language/new"><tt>new</tt></a> 创建有动态存储期的对象<br>
+<a href="delete.html" title="cpp/language/delete"><tt>delete</tt></a> 销毁先前由 new 表达式创建的对象，并释放其所拥有的内存区域<br>
+<a href="sizeof.html" title="cpp/language/sizeof"><tt>sizeof</tt></a> 查询类型的大小<br>
+<a href="sizeof....html" title="cpp/language/sizeof..."><tt>sizeof...</tt></a> 查询<a href="pack.html" title="cpp/language/pack">包</a>的大小<span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span><br>
+<a href="typeid.html" title="cpp/language/typeid"><tt>typeid</tt></a> 查询类型的类型信息<br>
+<a href="noexcept.html" title="cpp/language/noexcept"><tt>noexcept</tt></a> 查询表达式是否能抛出异常<span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span><br>
+<a href="alignof.html" title="cpp/language/alignof"><tt>alignof</tt></a> 查询类型的对齐要求<span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</p>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.A4.96.E9.83.A8.E9.93.BE.E6.8E.A5">外部链接</span></h3>
+<table style="border-top:solid 1px;border-bottom:none;border-left:none;border-right:none;">
+
+<tr>
+<td><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="operators.html#cite_ref-1">↑</a></span> <span class="reference-text">StackOverflow C++ FAQ 上的<a rel="nofollow" class="external text" href="http://stackoverflow.com/questions/4421706/operator-overloading/4421708#4421708">运算符重载</a></span>
+</li>
+</ol>
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 8472/1000000
+Preprocessor generated node count: 15155/1000000
+Post‐expand include size: 210011/4194304 bytes
+Template argument size: 43995/4194304 bytes
+Highest expansion depth: 16/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:2742-0!*!0!!zh!*!zh!* and timestamp 20250323115703 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/language/operators&amp;oldid=98294">https://zh.cppreference.com/mwiki/index.php?title=cpp/language/operators&amp;oldid=98294</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/language/operators">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月5日 (星期三) 23:36。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 15.013 secs. -->
+	</body>
+<!-- Cached 20250323115703 -->
+</html>

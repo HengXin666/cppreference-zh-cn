@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>定宽整数类型 (C99 起)</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/types/integer","wgTitle":"c/types/integer","wgCurRevisionId":81077,"wgArticleId":1392,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/types/integer","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_types_integer skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">定宽整数类型 <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99 起)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../types.html" title="c/types">types</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../types.html" title="c/types">类型支持</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="size_t.html" title="c/types/size t"><span class="t-lines"><span>size_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ptrdiff_t.html" title="c/types/ptrdiff t"><span class="t-lines"><span>ptrdiff_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="nullptr_t.html" title="c/types/nullptr t"><span class="t-lines"><span>nullptr_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="NULL.html" title="c/types/NULL"><span class="t-lines"><span>NULL</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="max_align_t.html" title="c/types/max align t"><span class="t-lines"><span>max_align_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="offsetof.html" title="c/types/offsetof"><span class="t-lines"><span>offsetof</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="limits.html" title="c/types/limits">数值极限</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">定宽整数类型</strong> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<h3><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B">类型</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/stdint.html" title="c/header/stdint"><tt>&lt;stdint.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <code><b>int8_t</b></code><br><code><b>int16_t</b></code><br><code><b>int32_t</b></code><br><code><b>int64_t</b></code>
+</td>
+<td> 分别是宽度正好是 8、16、32 和 64 位的有符号整数类型<br>无填充位并对负值使用补码<br>（只有在实现直接支持该类型时才会提供）
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>int_fast8_t</b></code><br><code><b>int_fast16_t</b></code><br><code><b>int_fast32_t</b></code><br><code><b>int_fast64_t</b></code>
+</td>
+<td> 分别是宽度至少有 8、16、32 和 64 位的最快的有符号整数类型
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>int_least8_t</b></code><br><code><b>int_least16_t</b></code><br><code><b>int_least32_t</b></code><br><code><b>int_least64_t</b></code>
+</td>
+<td> 分别是宽度至少有 8、16、32 和 64 位的最小的有符号整数类型
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>intmax_t</b></code>
+</td>
+<td> 最大宽度的有符号整数类型
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>intptr_t</b></code>
+</td>
+<td> 足以保有指针的整数类型
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>uint8_t</b></code><br><code><b>uint16_t</b></code><br><code><b>uint32_t</b></code><br><code><b>uint64_t</b></code>
+</td>
+<td>  分别是宽度正好是 8、16、32 和 64 位的无符号整数类型<br>（只有在实现直接支持该类型时才会提供）
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>uint_fast8_t</b></code><br><code><b>uint_fast16_t</b></code><br><code><b>uint_fast32_t</b></code><br><code><b>uint_fast64_t</b></code>
+</td>
+<td> 分别是宽度至少有 8、16、32 和 64 位的最快的无符号整数类型
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>uint_least8_t</b></code><br><code><b>uint_least16_t</b></code><br><code><b>uint_least32_t</b></code><br><code><b>uint_least64_t</b></code>
+</td>
+<td> 分别是宽度至少有 8、16、32 和 64 位的最小的无符号整数类型
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>uintmax_t</b></code>
+</td>
+<td> 最大宽度的无符号整数类型
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code><b>uintptr_t</b></code>
+</td>
+<td> 足以保有指针的无符号整数类型
+</td></tr>
+
+</table>
+<p>实现可在 <i>N</i> 不是 8、 16、 32 或 64 时定义 typedef 名 <code>int<i>N</i>_t</code>、<code>int_fast<i>N</i>_t</code>、<code>int_least<i>N</i>_t</code>、<code>uint<i>N</i>_t</code>、<code>uint_fast<i>N</i>_t</code> 及 <code>uint_least<i>N</i>_t</code>。形为 <code>int<i>N</i>_t</code> 的 typedef 名，可能仅当实现支持有该宽度而无填充的整数类型才得以定义。因此，<span class="t-c"><span class="mw-geshi c source-c">uint24_t</span></span> 代表宽度严格为 24 位的无符号整数类型。
+</p><p>下面列出的每个宏当且仅当实现定义对应的 typedef 名时才得以定义。宏 <code>INT<i>N</i>_C</code> 与 <code>UINT<i>N</i>_C</code> 分别对应 typedef 名 <code>int_least<i>N</i>_t</code> 与 <code>uint_least<i>N</i>_t</code>。
+</p>
+<h3><span class="mw-headline" id=".E5.AE.8F.E5.B8.B8.E9.87.8F">宏常量</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/stdint.html" title="c/header/stdint"><tt>&lt;stdint.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.9C.89.E7.AC.A6.E5.8F.B7.E6.95.B4.E6.95.B0.EF.BC.9A.E5.AE.BD.E5.BA.A6">  有符号整数：宽度 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT8_WIDTH</span><span>INT16_WIDTH</span><span>INT32_WIDTH</span><span>INT64_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span><span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div></div>
+</td>
+<td>   <span class="mw-geshi c source-c">int8_t</span>、<span class="mw-geshi c source-c">int16_t</span>、<span class="mw-geshi c source-c">int32_t</span>、<span class="mw-geshi c source-c">int64_t</span> 类型对象的位宽（恰好为 8、16、32、64） <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT_FAST8_WIDTH</span><span>INT_FAST16_WIDTH</span><span>INT_FAST32_WIDTH</span><span>INT_FAST64_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>    <span class="mw-geshi c source-c">int_fast8_t</span>、<span class="mw-geshi c source-c">int_fast16_t</span>、<span class="mw-geshi c source-c">int_fast32_t</span>、<span class="mw-geshi c source-c">int_fast64_t</span> 类型对象的位宽  <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT_LEAST8_WIDTH</span><span>INT_LEAST16_WIDTH</span><span>INT_LEAST32_WIDTH</span><span>INT_LEAST64_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">int_least8_t</span>、<span class="mw-geshi c source-c">int_least16_t</span>、<span class="mw-geshi c source-c">int_least32_t</span>、<span class="mw-geshi c source-c">int_least64_t</span> 类型对象的位宽  <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTPTR_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span><span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div></div>
+</td>
+<td>    <span class="mw-geshi c source-c">intptr_t</span> 类型对象的位宽 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTMAX_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>   <span class="mw-geshi c source-c">intmax_t</span> 类型对象的位宽 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.9C.89.E7.AC.A6.E5.8F.B7.E6.95.B4.E6.95.B0.EF.BC.9A.E6.9C.80.E5.B0.8F.E5.80.BC">  有符号整数：最小值 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT8_MIN</span><span>INT16_MIN</span><span>INT32_MIN</span><span>INT64_MIN</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">int8_t</span>、<span class="mw-geshi c source-c">int16_t</span>、<span class="mw-geshi c source-c">int32_t</span>、<span class="mw-geshi c source-c">int64_t</span> 类型对象的最小值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT_FAST8_MIN</span><span>INT_FAST16_MIN</span><span>INT_FAST32_MIN</span><span>INT_FAST64_MIN</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">int_fast8_t</span>、<span class="mw-geshi c source-c">int_fast16_t</span>、<span class="mw-geshi c source-c">int_fast32_t</span>、<span class="mw-geshi c source-c">int_fast64_t</span> 类型对象的最小值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT_LEAST8_MIN</span><span>INT_LEAST16_MIN</span><span>INT_LEAST32_MIN</span><span>INT_LEAST64_MIN</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">int_least8_t</span>、<span class="mw-geshi c source-c">int_least16_t</span>、<span class="mw-geshi c source-c">int_least32_t</span>、<span class="mw-geshi c source-c">int_least64_t</span> 类型对象的最小值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTPTR_MIN</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">intptr_t</span> 类型对象的最小值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTMAX_MIN</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">intmax_t</span> 类型对象的最小值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.9C.89.E7.AC.A6.E5.8F.B7.E6.95.B4.E6.95.B0.EF.BC.9A.E6.9C.80.E5.A4.A7.E5.80.BC">  有符号整数：最大值 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT8_MAX</span><span>INT16_MAX</span><span>INT32_MAX</span><span>INT64_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">int8_t</span>、<span class="mw-geshi c source-c">int16_t</span>、<span class="mw-geshi c source-c">int32_t</span>、<span class="mw-geshi c source-c">int64_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT_FAST8_MAX</span><span>INT_FAST16_MAX</span><span>INT_FAST32_MAX</span><span>INT_FAST64_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">int_fast8_t</span>、<span class="mw-geshi c source-c">int_fast16_t</span>、<span class="mw-geshi c source-c">int_fast32_t</span>、<span class="mw-geshi c source-c">int_fast64_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT_LEAST8_MAX</span><span>INT_LEAST16_MAX</span><span>INT_LEAST32_MAX</span><span>INT_LEAST64_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">int_least8_t</span>、<span class="mw-geshi c source-c">int_least16_t</span>、<span class="mw-geshi c source-c">int_least32_t</span>、<span class="mw-geshi c source-c">int_least64_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTPTR_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">intptr_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTMAX_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">intmax_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.97.A0.E7.AC.A6.E5.8F.B7.E6.95.B4.E6.95.B0.EF.BC.9A.E5.AE.BD.E5.BA.A6">  无符号整数：宽度 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINT8_WIDTH</span><span>UINT16_WIDTH</span><span>UINT32_WIDTH</span><span>UINT64_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span><span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div></div>
+</td>
+<td>   <span class="mw-geshi c source-c">uint8_t</span>、<span class="mw-geshi c source-c">uint16_t</span>、<span class="mw-geshi c source-c">uint32_t</span>、<span class="mw-geshi c source-c">uint64_t</span> 类型对象的位宽（恰好为 8、16、32、64） <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINT_FAST8_WIDTH</span><span>UINT_FAST16_WIDTH</span><span>UINT_FAST32_WIDTH</span><span>UINT_FAST64_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>    <span class="mw-geshi c source-c">uint_fast8_t</span>、<span class="mw-geshi c source-c">uint_fast16_t</span>、<span class="mw-geshi c source-c">uint_fast32_t</span>、<span class="mw-geshi c source-c">uint_fast64_t</span> 类型对象的位宽  <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINT_LEAST8_WIDTH</span><span>UINT_LEAST16_WIDTH</span><span>UINT_LEAST32_WIDTH</span><span>UINT_LEAST64_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">uint_least8_t</span>、<span class="mw-geshi c source-c">uint_least16_t</span>、<span class="mw-geshi c source-c">uint_least32_t</span>、<span class="mw-geshi c source-c">uint_least64_t</span> 类型对象的位宽  <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINTPTR_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span><span class="t-mark" style="white-space: nowrap;">(可选)</span></span></span></div></div>
+</td>
+<td>    <span class="mw-geshi c source-c">uintptr_t</span> 类型对象的位宽 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINTMAX_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>   <span class="mw-geshi c source-c">uintmax_t</span> 类型对象的位宽 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.97.A0.E7.AC.A6.E5.8F.B7.E6.95.B4.E6.95.B0.EF.BC.9A.E6.9C.80.E5.A4.A7.E5.80.BC">  无符号整数：最大值 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINT8_MAX</span><span>UINT16_MAX</span><span>UINT32_MAX</span><span>UINT64_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">uint8_t</span>、<span class="mw-geshi c source-c">uint16_t</span>、<span class="mw-geshi c source-c">uint32_t</span>、<span class="mw-geshi c source-c">uint64_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINT_FAST8_MAX</span><span>UINT_FAST16_MAX</span><span>UINT_FAST32_MAX</span><span>UINT_FAST64_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">uint_fast8_t</span>、<span class="mw-geshi c source-c">uint_fast16_t</span>、<span class="mw-geshi c source-c">uint_fast32_t</span>、<span class="mw-geshi c source-c">uint_fast64_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINT_LEAST8_MAX</span><span>UINT_LEAST16_MAX</span><span>UINT_LEAST32_MAX</span><span>UINT_LEAST64_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">uint_least8_t</span>、<span class="mw-geshi c source-c">uint_least16_t</span>、<span class="mw-geshi c source-c">uint_least32_t</span>、<span class="mw-geshi c source-c">uint_least64_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINTPTR_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">uintptr_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINTMAX_MAX</span></span></div></div>
+</td>
+<td>  <span class="mw-geshi c source-c">uintmax_t</span> 类型对象的最大值 <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id=".E6.9C.80.E5.B0.8F.E5.AE.BD.E5.BA.A6.E6.95.B4.E6.95.B0.E5.B8.B8.E9.87.8F.E7.9A.84.E5.87.BD.E6.95.B0.E5.AE.8F">最小宽度整数常量的函数宏</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INT8_C</span><span>INT16_C</span><span>INT32_C</span><span>INT64_C</span></span></div></div>
+</td>
+<td>  展开成拥有以其实参指定的值的整数常量表达式，其类型分别为 <span class="t-c"><span class="mw-geshi c source-c">int_least8_t</span></span>、<span class="t-c"><span class="mw-geshi c source-c">int_least16_t</span></span>、<span class="t-c"><span class="mw-geshi c source-c">int_least32_t</span></span>、<span class="t-c"><span class="mw-geshi c source-c">int_least64_t</span></span> <br> <span class="t-mark" style="white-space: nowrap;">(宏函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTMAX_C</span></span></div></div>
+</td>
+<td>  展开成拥有以其实参指定的值的整数常量表达式，其类型为 <span class="t-c"><span class="mw-geshi c source-c">intmax_t</span></span> <br> <span class="t-mark" style="white-space: nowrap;">(宏函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINT8_C</span><span>UINT16_C</span><span>UINT32_C</span><span>UINT64_C</span></span></div></div>
+</td>
+<td>  展开成拥有以其实参指定的值的整数常量表达式，其类型分别为 <span class="t-c"><span class="mw-geshi c source-c">uint_least8_t</span></span>、<span class="t-c"><span class="mw-geshi c source-c">uint_least16_t</span></span>、<span class="t-c"><span class="mw-geshi c source-c">uint_least32_t</span></span>、<span class="t-c"><span class="mw-geshi c source-c">uint_least64_t</span></span> <br> <span class="t-mark" style="white-space: nowrap;">(宏函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>UINTMAX_C</span></span></div></div>
+</td>
+<td>  展开成拥有以其实参指定的值的整数常量表达式，其类型为 <span class="t-c"><span class="mw-geshi c source-c">uintmax_t</span></span> <br> <span class="t-mark" style="white-space: nowrap;">(宏函数)</span>
+</td></tr>
+
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdint.h&gt;</span>
+UINT64_C<span class="br0">(</span><span class="nu12">0x123</span><span class="br0">)</span> <span class="co1">// 可能展开成 0x123ULL 或 0x123UL</span></pre></div></div>
+<h3><span class="mw-headline" id=".E6.A0.BC.E5.BC.8F.E5.AE.8F.E5.B8.B8.E9.87.8F">格式宏常量</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/inttypes.html" title="c/header/inttypes"><tt>&lt;inttypes.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+</table>
+<h4><span class="mw-headline" id="fprintf_.E7.B3.BB.E5.88.97.E5.87.BD.E6.95.B0.E7.9A.84.E6.A0.BC.E5.BC.8F.E5.B8.B8.E9.87.8F"><span class="t-lc"><a href="../io/fprintf.html" title="c/io/fprintf">fprintf</a></span> 系列函数的格式常量</span></h4>
+<p>此处列出的每个 <code>PRI</code> 宏当且仅当实现定义对应的 typedef 名才得以定义。
+</p>
+<table class="wikitable" style="text-align:center; font-size:85%; max-width:90em;">
+
+<tr>
+<th rowspan="2"> <span class="mw-geshi c source-c"><span class="kw4">int</span></span> 或<br><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span><br>的等价物
+</th>
+<th rowspan="2"> 描述
+</th>
+<th colspan="5"> 数据类型的宏
+</th></tr>
+<tr>
+<td> <br><br><br><br><div class="t-vertical"><div><code>[u]int<b>x</b>_t</code></div></div><br><br><br><br>
+</td>
+<td> <div class="t-vertical"><div><code>[u]int_least<b>x</b>_t</code></div></div>
+</td>
+<td> <div class="t-vertical"><div><code>[u]int_fast<b>x</b>_t</code></div></div>
+</td>
+<td> <div class="t-vertical"><div><code>[u]intmax_t</code></div></div>
+</td>
+<td> <div class="t-vertical"><div><code>[u]intptr_t</code></div></div>
+</td></tr>
+<tr>
+<th> <code>d</code>
+</th>
+<td rowspan="2" style="text-align:left;"> 输出有符号十进制整数值
+</td>
+<td> PRId<b>x</b>
+</td>
+<td> PRIdLEAST<b>x</b>
+</td>
+<td> PRIdFAST<b>x</b>
+</td>
+<td> PRIdMAX
+</td>
+<td> PRIdPTR
+</td></tr>
+<tr>
+<th> <code>i</code>
+</th>
+<td> PRIi<b>x</b>
+</td>
+<td> PRIiLEAST<b>x</b>
+</td>
+<td> PRIiFAST<b>x</b>
+</td>
+<td> PRIiMAX
+</td>
+<td> PRIiPTR
+</td></tr>
+<tr>
+<th> <code>u</code>
+</th>
+<td style="text-align:left;"> 输出无符号十进制整数值
+</td>
+<td> PRIu<b>x</b>
+</td>
+<td> PRIuLEAST<b>x</b>
+</td>
+<td> PRIuFAST<b>x</b>
+</td>
+<td> PRIuMAX
+</td>
+<td> PRIuPTR
+</td></tr>
+<tr>
+<th> <code>o</code>
+</th>
+<td style="text-align:left;"> 输出无符号八进制整数值
+</td>
+<td> PRIo<b>x</b>
+</td>
+<td> PRIoLEAST<b>x</b>
+</td>
+<td> PRIoFAST<b>x</b>
+</td>
+<td> PRIoMAX
+</td>
+<td> PRIoPTR
+</td></tr>
+<tr>
+<th> <code>x</code>
+</th>
+<td style="text-align:left;"> 输出无符号小写十六进制整数值
+</td>
+<td> PRIx<b>x</b>
+</td>
+<td> PRIxLEAST<b>x</b>
+</td>
+<td> PRIxFAST<b>x</b>
+</td>
+<td> PRIxMAX
+</td>
+<td> PRIxPTR
+</td></tr>
+<tr>
+<th> <code>X</code>
+</th>
+<td style="text-align:left;"> 输出无符号大写十六进制整数值
+</td>
+<td> PRIX<b>x</b>
+</td>
+<td> PRIXLEAST<b>x</b>
+</td>
+<td> PRIXFAST<b>x</b>
+</td>
+<td> PRIXMAX
+</td>
+<td> PRIXPTR
+</td></tr></table>
+<h4><span class="mw-headline" id="fscanf_.E7.B3.BB.E5.88.97.E5.87.BD.E6.95.B0.E7.9A.84.E6.A0.BC.E5.BC.8F.E5.B8.B8.E9.87.8F"><span class="t-lc"><a href="../io/fscanf.html" title="c/io/fscanf">fscanf</a></span> 系列函数的格式常量</span></h4>
+<p>此处列出的每个 <code>SCN</code> 宏当且仅当实现定义对应的 typedef 名且拥有适合该类型的 <span class="t-lc"><a href="../io/fscanf.html" title="c/io/fscanf">fscanf</a></span> 长度修饰符才得以定义。
+</p>
+<table class="wikitable" style="text-align:center; font-size:85%; max-width:90em;">
+
+<tr>
+<th rowspan="2"> <span class="mw-geshi c source-c"><span class="kw4">int</span></span> 或<br><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span><br>的等价物
+</th>
+<th rowspan="2"> 描述
+</th>
+<th colspan="5"> 数据类型的宏
+</th></tr>
+<tr>
+<td> <br><br><br><br><div class="t-vertical"><div><code>[u]int<b>x</b>_t</code></div></div><br><br><br><br>
+</td>
+<td> <div class="t-vertical"><div><code>[u]int_least<b>x</b>_t</code></div></div>
+</td>
+<td> <div class="t-vertical"><div><code>[u]int_fast<b>x</b>_t</code></div></div>
+</td>
+<td> <div class="t-vertical"><div><code>[u]intmax_t</code></div></div>
+</td>
+<td> <div class="t-vertical"><div><code>[u]intptr_t</code></div></div>
+</td></tr>
+<tr>
+<th> <code>d</code>
+</th>
+<td style="text-align:left;"> 输入有符号十进制整数值
+</td>
+<td> SCNd<b>x</b>
+</td>
+<td> SCNdLEAST<b>x</b>
+</td>
+<td> SCNdFAST<b>x</b>
+</td>
+<td> SCNdMAX
+</td>
+<td> SCNdPTR
+</td></tr>
+<tr>
+<th> <code>i</code>
+</th>
+<td style="text-align:left;"> 输入有符号整数值（以剖析的首个字符确定基数）
+</td>
+<td> SCNi<b>x</b>
+</td>
+<td> SCNiLEAST<b>x</b>
+</td>
+<td> SCNiFAST<b>x</b>
+</td>
+<td> SCNiMAX
+</td>
+<td> SCNiPTR
+</td></tr>
+<tr>
+<th> <code>u</code>
+</th>
+<td style="text-align:left;"> 输入无符号十进制整数值
+</td>
+<td> SCNu<b>x</b>
+</td>
+<td> SCNuLEAST<b>x</b>
+</td>
+<td> SCNuFAST<b>x</b>
+</td>
+<td> SCNuMAX
+</td>
+<td> SCNuPTR
+</td></tr>
+<tr>
+<th> <code>o</code>
+</th>
+<td style="text-align:left;"> 输入无符号八进制整数值
+</td>
+<td> SCNo<b>x</b>
+</td>
+<td> SCNoLEAST<b>x</b>
+</td>
+<td> SCNoFAST<b>x</b>
+</td>
+<td> SCNoMAX
+</td>
+<td> SCNoPTR
+</td></tr>
+<tr>
+<th> <code>x</code>
+</th>
+<td style="text-align:left;"> 输入无符号十六进制整数值
+</td>
+<td> SCNx<b>x</b>
+</td>
+<td> SCNxLEAST<b>x</b>
+</td>
+<td> SCNxFAST<b>x</b>
+</td>
+<td> SCNxMAX
+</td>
+<td> SCNxPTR
+</td></tr></table>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><p>有关本示例中使用的<a href="integer.html#.E6.A0.BC.E5.BC.8F.E5.AE.8F.E5.B8.B8.E9.87.8F">格式宏</a>，另请参见 <a href="../../cpp/language/user_literal.html#.E6.B3.A8.E8.A7.A3" title="cpp/language/user literal">C++ 兼容性注解</a></p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;inttypes.h&gt;</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/fprintf.html"><span class="kw613">printf</span></a><span class="br0">(</span><span class="st0">"%zu<span class="es1">\n</span>"</span>, <span class="kw4">sizeof</span><span class="br0">(</span>int64_t<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw613">printf</span></a><span class="br0">(</span><span class="st0">"%s<span class="es1">\n</span>"</span>, PRId64<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw613">printf</span></a><span class="br0">(</span><span class="st0">"%+"</span> PRId64 <span class="st0">"<span class="es1">\n</span>"</span>, INT64_MIN<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw613">printf</span></a><span class="br0">(</span><span class="st0">"%+"</span> PRId64 <span class="st0">"<span class="es1">\n</span>"</span>, INT64_MAX<span class="br0">)</span><span class="sy4">;</span>
+ 
+    int64_t n <span class="sy1">=</span> <span class="nu0">7</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw613">printf</span></a><span class="br0">(</span><span class="st0">"%+"</span> PRId64 <span class="st0">"<span class="es1">\n</span>"</span>, n<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">8
+lld
+-9223372036854775808
++9223372036854775807
++7</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-23">
+<ul><li> C23 标准（ISO/IEC 9899:2024）：
+</li></ul>
+<dl><dd><ul><li> 7.8.1 Macros for format specifiers （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.18 Integer types &lt;stdint.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-17">
+<ul><li> C17 标准（ISO/IEC 9899:2018）：
+</li></ul>
+<dl><dd><ul><li> 7.8.1 Macros for format specifiers （第 158-159 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.18 Integer types &lt;stdint.h&gt; （第 212-216 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 标准（ISO/IEC 9899:2011）：
+</li></ul>
+<dl><dd><ul><li> 7.8.1 Macros for format specifiers （第 217-218 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.18 Integer types &lt;stdint.h&gt; （第 289-295 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 标准（ISO/IEC 9899:1999）：
+</li></ul>
+<dl><dd><ul><li> 7.8.1 Macros for format specifiers （第 198-199 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.18 Integer types &lt;stdint.h&gt; （第 255-261 页）
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<ul><li> <a href="../language/arithmetic_types.html" title="c/language/arithmetic types"> 算术类型</a>
+</li></ul>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>定宽整数类型</span></span>的 <span><span><a href="../../cpp/types/integer.html" title="cpp/types/integer">C++ 文档</a></span></span></div>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>用户定义字面量 (<a href="../../cpp/language/user_literal.html#.E6.B3.A8.E8.A7.A3" title="cpp/language/user literal">格式化宏注解</a>)</span></span>的 <span><span><a href="../../cpp/language/user_literal.html" title="cpp/language/user literal">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 5635/1000000
+Preprocessor generated node count: 10527/1000000
+Post‐expand include size: 119570/4194304 bytes
+Template argument size: 45016/4194304 bytes
+Highest expansion depth: 16/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:1392-0!*!0!!zh!*!zh!* and timestamp 20250318223602 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/types/integer&amp;oldid=81077">https://zh.cppreference.com/mwiki/index.php?title=c/types/integer&amp;oldid=81077</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/types/integer">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2023年11月11日 (星期六) 22:59。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 1.629 secs. -->
+	</body>
+<!-- Cached 20250318223602 -->
+</html>

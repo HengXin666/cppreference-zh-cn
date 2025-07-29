@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>std::ranges::copy, std::ranges::copy_if, std::ranges::copy_result, std::ranges::copy_if_result</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/algorithm/ranges/copy","wgTitle":"cpp/algorithm/ranges/copy","wgCurRevisionId":98838,"wgArticleId":12961,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/algorithm/ranges/copy","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_algorithm_ranges_copy skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::ranges::</span>copy, <span style="font-size:0.8em; line-height:125%">std::ranges::</span>copy_if, <span style="font-size:0.8em; line-height:125%">std::ranges::</span>copy_result, <span style="font-size:0.8em; line-height:125%">std::ranges::</span>copy_if_result</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../algorithm.html" title="cpp/algorithm">algorithm</a>‎ | <a href="../ranges.html" title="cpp/algorithm/ranges">ranges</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../algorithm.html" title="cpp/algorithm">算法库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../ranges.html" title="cpp/algorithm/ranges">受约束算法及范围上的算法</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5">包含算法例如 <strong class="selflink"><tt>ranges::copy</tt></strong>, <a href="sort.html" title="cpp/algorithm/ranges/sort"><tt>ranges::sort</tt></a>, ...</td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../algorithm.html#.E6.89.A7.E8.A1.8C.E7.AD.96.E7.95.A5" title="cpp/algorithm">执行策略 <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_execution_policy.html" title="cpp/algorithm/is execution policy"><span class="t-lines"><span>is_execution_policy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>  </span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../execution_policy_tag.html" title="cpp/algorithm/execution policy tag"><span class="t-lines"><span>execution::seq</span><span>execution::par</span><span>execution::par_unseq</span><span>execution::unseq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>    </span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../execution_policy_tag_t.html" title="cpp/algorithm/execution policy tag t"><span class="t-lines"><span>execution::sequenced_policy</span><span>execution::parallel_policy</span><span>execution::parallel_unsequenced_policy</span><span>execution::parallel_unsequenced</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../../algorithm.html#.E4.B8.8D.E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm">不修改序列的操作</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E6.89.B9.E9.87.8F.E6.93.8D.E4.BD.9C" title="cpp/algorithm">批量操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../for_each.html" title="cpp/algorithm/for each"><span class="t-lines"><span>for_each</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../for_each_n.html" title="cpp/algorithm/for each n"><span class="t-lines"><span>for_each_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E6.90.9C.E7.B4.A2.E6.93.8D.E4.BD.9C" title="cpp/algorithm">搜索操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../all_any_none_of.html" title="cpp/algorithm/all any none of"><span class="t-lines"><span>all_of</span><span>any_of</span><span>none_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>                   </span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../count.html" title="cpp/algorithm/count"><span class="t-lines"><span>count</span><span>count_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../mismatch.html" title="cpp/algorithm/mismatch"><span class="t-lines"><span>mismatch</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../equal.html" title="cpp/algorithm/equal"><span class="t-lines"><span>equal</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../find.html" title="cpp/algorithm/find"><span class="t-lines"><span>find</span><span>find_if</span><span>find_if_not</span></span></a></div><div><span class="t-lines"><span></span><span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../find_end.html" title="cpp/algorithm/find end"><span class="t-lines"><span>find_end</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../find_first_of.html" title="cpp/algorithm/find first of"><span class="t-lines"><span>find_first_of</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../adjacent_find.html" title="cpp/algorithm/adjacent find"><span class="t-lines"><span>adjacent_find</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../search.html" title="cpp/algorithm/search"><span class="t-lines"><span>search</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../search_n.html" title="cpp/algorithm/search n"><span class="t-lines"><span>search_n</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../algorithm.html#.E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm">修改序列的操作</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E5.A4.8D.E5.88.B6.E6.93.8D.E4.BD.9C" title="cpp/algorithm">复制操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../copy.html" title="cpp/algorithm/copy"><span class="t-lines"><span>copy</span><span>copy_if</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../copy_backward.html" title="cpp/algorithm/copy backward"><span class="t-lines"><span>copy_backward</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../copy_n.html" title="cpp/algorithm/copy n"><span class="t-lines"><span>copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../move.html" title="cpp/algorithm/move"><span class="t-lines"><span>move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../move_backward.html" title="cpp/algorithm/move backward"><span class="t-lines"><span>move_backward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E4.BA.A4.E6.8D.A2.E6.93.8D.E4.BD.9C" title="cpp/algorithm">交换操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../swap.html" title="cpp/algorithm/swap"><span class="t-lines"><span>swap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../iter_swap.html" title="cpp/algorithm/iter swap"><span class="t-lines"><span>iter_swap</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../swap_ranges.html" title="cpp/algorithm/swap ranges"><span class="t-lines"><span>swap_ranges</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E5.8F.98.E6.8D.A2.E6.93.8D.E4.BD.9C" title="cpp/algorithm">变换操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../replace.html" title="cpp/algorithm/replace"><span class="t-lines"><span>replace</span><span>replace_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../transform.html" title="cpp/algorithm/transform"><span class="t-lines"><span>transform</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../replace_copy.html" title="cpp/algorithm/replace copy"><span class="t-lines"><span>replace_copy</span><span>replace_copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E7.94.9F.E6.88.90.E6.93.8D.E4.BD.9C" title="cpp/algorithm">生成操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../fill.html" title="cpp/algorithm/fill"><span class="t-lines"><span>fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../fill_n.html" title="cpp/algorithm/fill n"><span class="t-lines"><span>fill_n</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../generate.html" title="cpp/algorithm/generate"><span class="t-lines"><span>generate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../generate_n.html" title="cpp/algorithm/generate n"><span class="t-lines"><span>generate_n</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E7.A7.BB.E9.99.A4.E6.93.8D.E4.BD.9C" title="cpp/algorithm">移除操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../remove.html" title="cpp/algorithm/remove"><span class="t-lines"><span>remove</span><span>remove_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../unique.html" title="cpp/algorithm/unique"><span class="t-lines"><span>unique</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../remove_copy.html" title="cpp/algorithm/remove copy"><span class="t-lines"><span>remove_copy</span><span>remove_copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../unique_copy.html" title="cpp/algorithm/unique copy"><span class="t-lines"><span>unique_copy</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E9.A1.BA.E5.BA.8F.E5.8F.98.E6.9B.B4.E6.93.8D.E4.BD.9C" title="cpp/algorithm">顺序变更操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../reverse.html" title="cpp/algorithm/reverse"><span class="t-lines"><span>reverse</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../reverse_copy.html" title="cpp/algorithm/reverse copy"><span class="t-lines"><span>reverse_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../rotate.html" title="cpp/algorithm/rotate"><span class="t-lines"><span>rotate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../rotate_copy.html" title="cpp/algorithm/rotate copy"><span class="t-lines"><span>rotate_copy</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../random_shuffle.html" title="cpp/algorithm/random shuffle"><span class="t-lines"><span>random_shuffle</span><span>shuffle</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../shift.html" title="cpp/algorithm/shift"><span class="t-lines"><span>shift_left</span><span>shift_right</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E9.87.87.E6.A0.B7.E6.93.8D.E4.BD.9C" title="cpp/algorithm">采样操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../sample.html" title="cpp/algorithm/sample"><span class="t-lines"><span>sample</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../../algorithm.html#.E6.8E.92.E5.BA.8F.E5.92.8C.E7.9B.B8.E5.85.B3.E6.93.8D.E4.BD.9C" title="cpp/algorithm">排序和相关操作</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E5.88.92.E5.88.86.E6.93.8D.E4.BD.9C" title="cpp/algorithm">划分操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../partition.html" title="cpp/algorithm/partition"><span class="t-lines"><span>partition</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../partition_copy.html" title="cpp/algorithm/partition copy"><span class="t-lines"><span>partition_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../stable_partition.html" title="cpp/algorithm/stable partition"><span class="t-lines"><span>stable_partition</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_partitioned.html" title="cpp/algorithm/is partitioned"><span class="t-lines"><span>is_partitioned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../partition_point.html" title="cpp/algorithm/partition point"><span class="t-lines"><span>partition_point</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E6.8E.92.E5.BA.8F.E6.93.8D.E4.BD.9C" title="cpp/algorithm">排序操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../sort.html" title="cpp/algorithm/sort"><span class="t-lines"><span>sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../stable_sort.html" title="cpp/algorithm/stable sort"><span class="t-lines"><span>stable_sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../partial_sort.html" title="cpp/algorithm/partial sort"><span class="t-lines"><span>partial_sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../partial_sort_copy.html" title="cpp/algorithm/partial sort copy"><span class="t-lines"><span>partial_sort_copy</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_sorted.html" title="cpp/algorithm/is sorted"><span class="t-lines"><span>is_sorted</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_sorted_until.html" title="cpp/algorithm/is sorted until"><span class="t-lines"><span>is_sorted_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../nth_element.html" title="cpp/algorithm/nth element"><span class="t-lines"><span>nth_element</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E4.BA.8C.E5.88.86.E6.90.9C.E7.B4.A2.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E5.B7.B2.E5.88.92.E5.88.86.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm">二分搜索操作（在已划分范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../lower_bound.html" title="cpp/algorithm/lower bound"><span class="t-lines"><span>lower_bound</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../upper_bound.html" title="cpp/algorithm/upper bound"><span class="t-lines"><span>upper_bound</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../equal_range.html" title="cpp/algorithm/equal range"><span class="t-lines"><span>equal_range</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../binary_search.html" title="cpp/algorithm/binary search"><span class="t-lines"><span>binary_search</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E9.9B.86.E5.90.88.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E6.9C.89.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm">集合操作（在有序范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../includes.html" title="cpp/algorithm/includes"><span class="t-lines"><span>includes</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../set_union.html" title="cpp/algorithm/set union"><span class="t-lines"><span>set_union</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../set_intersection.html" title="cpp/algorithm/set intersection"><span class="t-lines"><span>set_intersection</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../set_difference.html" title="cpp/algorithm/set difference"><span class="t-lines"><span>set_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../set_symmetric_difference.html" title="cpp/algorithm/set symmetric difference"><span class="t-lines"><span>set_symmetric_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E5.BD.92.E5.B9.B6.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E6.9C.89.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm">归并操作（在有序范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../merge.html" title="cpp/algorithm/merge"><span class="t-lines"><span>merge</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../inplace_merge.html" title="cpp/algorithm/inplace merge"><span class="t-lines"><span>inplace_merge</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E5.A0.86.E6.93.8D.E4.BD.9C" title="cpp/algorithm">堆操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../push_heap.html" title="cpp/algorithm/push heap"><span class="t-lines"><span>push_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../pop_heap.html" title="cpp/algorithm/pop heap"><span class="t-lines"><span>pop_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../make_heap.html" title="cpp/algorithm/make heap"><span class="t-lines"><span>make_heap</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../sort_heap.html" title="cpp/algorithm/sort heap"><span class="t-lines"><span>sort_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_heap.html" title="cpp/algorithm/is heap"><span class="t-lines"><span>is_heap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_heap_until.html" title="cpp/algorithm/is heap until"><span class="t-lines"><span>is_heap_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E6.9C.80.E5.B0.8F.2F.E6.9C.80.E5.A4.A7.E6.93.8D.E4.BD.9C" title="cpp/algorithm">最小/最大操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../max.html" title="cpp/algorithm/max"><span class="t-lines"><span>max</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../min.html" title="cpp/algorithm/min"><span class="t-lines"><span>min</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../minmax.html" title="cpp/algorithm/minmax"><span class="t-lines"><span>minmax</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../clamp.html" title="cpp/algorithm/clamp"><span class="t-lines"><span>clamp</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../max_element.html" title="cpp/algorithm/max element"><span class="t-lines"><span>max_element</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../min_element.html" title="cpp/algorithm/min element"><span class="t-lines"><span>min_element</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../minmax_element.html" title="cpp/algorithm/minmax element"><span class="t-lines"><span>minmax_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E5.AD.97.E5.85.B8.E5.BA.8F.E6.AF.94.E8.BE.83.E6.93.8D.E4.BD.9C" title="cpp/algorithm">字典序比较操作</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../lexicographical_compare.html" title="cpp/algorithm/lexicographical compare"><span class="t-lines"><span>lexicographical_compare</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../lexicographical_compare_three_way.html" title="cpp/algorithm/lexicographical compare three way"><span class="t-lines"><span>lexicographical_compare_three_way</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../algorithm.html#.E6.8E.92.E5.88.97.E6.93.8D.E4.BD.9C" title="cpp/algorithm">排列操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../next_permutation.html" title="cpp/algorithm/next permutation"><span class="t-lines"><span>next_permutation</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../prev_permutation.html" title="cpp/algorithm/prev permutation"><span class="t-lines"><span>prev_permutation</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_permutation.html" title="cpp/algorithm/is permutation"><span class="t-lines"><span>is_permutation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../algorithm.html#C_.E5.BA.93" title="cpp/algorithm">C 库</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../qsort.html" title="cpp/algorithm/qsort"><span class="t-lines"><span>qsort</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../bsearch.html" title="cpp/algorithm/bsearch"><span class="t-lines"><span>bsearch</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../algorithm.html#.E6.95.B0.E5.80.BC.E8.BF.90.E7.AE.97" title="cpp/algorithm">数值运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../iota.html" title="cpp/algorithm/iota"><span class="t-lines"><span>iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>                       </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../inner_product.html" title="cpp/algorithm/inner product"><span class="t-lines"><span>inner_product</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../adjacent_difference.html" title="cpp/algorithm/adjacent difference"><span class="t-lines"><span>adjacent_difference</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../accumulate.html" title="cpp/algorithm/accumulate"><span class="t-lines"><span>accumulate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../reduce.html" title="cpp/algorithm/reduce"><span class="t-lines"><span>reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../transform_reduce.html" title="cpp/algorithm/transform reduce"><span class="t-lines"><span>transform_reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../partial_sum.html" title="cpp/algorithm/partial sum"><span class="t-lines"><span>partial_sum</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../inclusive_scan.html" title="cpp/algorithm/inclusive scan"><span class="t-lines"><span>inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>  </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../exclusive_scan.html" title="cpp/algorithm/exclusive scan"><span class="t-lines"><span>exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../transform_inclusive_scan.html" title="cpp/algorithm/transform inclusive scan"><span class="t-lines"><span>transform_inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../transform_exclusive_scan.html" title="cpp/algorithm/transform exclusive scan"><span class="t-lines"><span>transform_exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../algorithm.html#.E5.9C.A8.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.86.85.E5.AD.98.E4.B8.8A.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm">在未初始化内存上的操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_copy.html" title="cpp/memory/uninitialized copy"><span class="t-lines"><span>uninitialized_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_move.html" title="cpp/memory/uninitialized move"><span class="t-lines"><span>uninitialized_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>   </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_fill.html" title="cpp/memory/uninitialized fill"><span class="t-lines"><span>uninitialized_fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_copy_n.html" title="cpp/memory/uninitialized copy n"><span class="t-lines"><span>uninitialized_copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_move_n.html" title="cpp/memory/uninitialized move n"><span class="t-lines"><span>uninitialized_move_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_fill_n.html" title="cpp/memory/uninitialized fill n"><span class="t-lines"><span>uninitialized_fill_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/destroy.html" title="cpp/memory/destroy"><span class="t-lines"><span>destroy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/destroy_n.html" title="cpp/memory/destroy n"><span class="t-lines"><span>destroy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/destroy_at.html" title="cpp/memory/destroy at"><span class="t-lines"><span>destroy_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/construct_at.html" title="cpp/memory/construct at"><span class="t-lines"><span>construct_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>     </span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_default_construct.html" title="cpp/memory/uninitialized default construct"><span class="t-lines"><span>uninitialized_default_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_value_construct.html" title="cpp/memory/uninitialized value construct"><span class="t-lines"><span>uninitialized_value_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_default_construct_n.html" title="cpp/memory/uninitialized default construct n"><span class="t-lines"><span>uninitialized_default_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/uninitialized_value_construct_n.html" title="cpp/memory/uninitialized value construct n"><span class="t-lines"><span>uninitialized_value_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../ranges.html" title="cpp/algorithm/ranges">受约束算法</a><div class="t-navbar-menu"><div>本菜单中的所有名字均属于命名空间 <code>std::ranges</code>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E4.B8.8D.E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">不修改序列的操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="all_any_none_of.html" title="cpp/algorithm/ranges/all any none of"><span class="t-lines"><span>all_of</span><span>any_of</span><span>none_of</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="for_each.html" title="cpp/algorithm/ranges/for each"><span class="t-lines"><span>for_each</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="for_each_n.html" title="cpp/algorithm/ranges/for each n"><span class="t-lines"><span>for_each_n</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="count.html" title="cpp/algorithm/ranges/count"><span class="t-lines"><span>count</span><span>count_if</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="adjacent_find.html" title="cpp/algorithm/ranges/adjacent find"><span class="t-lines"><span>adjacent_find</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="mismatch.html" title="cpp/algorithm/ranges/mismatch"><span class="t-lines"><span>mismatch</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="equal.html" title="cpp/algorithm/ranges/equal"><span class="t-lines"><span>equal</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lexicographical_compare.html" title="cpp/algorithm/ranges/lexicographical compare"><span class="t-lines"><span>lexicographical_compare</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="contains.html" title="cpp/algorithm/ranges/contains"><span class="t-lines"><span>contains</span><span>contains_subrange</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="find.html" title="cpp/algorithm/ranges/find"><span class="t-lines"><span>find</span><span>find_if</span><span>find_if_not</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="find_last.html" title="cpp/algorithm/ranges/find last"><span class="t-lines"><span>find_last</span><span>find_last_if</span><span>find_last_if_not</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="find_end.html" title="cpp/algorithm/ranges/find end"><span class="t-lines"><span>find_end</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="find_first_of.html" title="cpp/algorithm/ranges/find first of"><span class="t-lines"><span>find_first_of</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="search.html" title="cpp/algorithm/ranges/search"><span class="t-lines"><span>search</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="search_n.html" title="cpp/algorithm/ranges/search n"><span class="t-lines"><span>search_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="starts_with.html" title="cpp/algorithm/ranges/starts with"><span class="t-lines"><span>starts_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ends_with.html" title="cpp/algorithm/ranges/ends with"><span class="t-lines"><span>ends_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">修改序列的操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>copy</span><span>copy_if</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="copy_n.html" title="cpp/algorithm/ranges/copy n"><span class="t-lines"><span>copy_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="copy_backward.html" title="cpp/algorithm/ranges/copy backward"><span class="t-lines"><span>copy_backward</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="move.html" title="cpp/algorithm/ranges/move"><span class="t-lines"><span>move</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="move_backward.html" title="cpp/algorithm/ranges/move backward"><span class="t-lines"><span>move_backward</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="shift.html" title="cpp/algorithm/ranges/shift"><span class="t-lines"><span>shift_left</span><span>shift_right</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fill.html" title="cpp/algorithm/ranges/fill"><span class="t-lines"><span>fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fill_n.html" title="cpp/algorithm/ranges/fill n"><span class="t-lines"><span>fill_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="generate.html" title="cpp/algorithm/ranges/generate"><span class="t-lines"><span>generate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="generate_n.html" title="cpp/algorithm/ranges/generate n"><span class="t-lines"><span>generate_n</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="transform.html" title="cpp/algorithm/ranges/transform"><span class="t-lines"><span>transform</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="swap_ranges.html" title="cpp/algorithm/ranges/swap ranges"><span class="t-lines"><span>swap_ranges</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="shuffle.html" title="cpp/algorithm/ranges/shuffle"><span class="t-lines"><span>shuffle</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sample.html" title="cpp/algorithm/ranges/sample"><span class="t-lines"><span>sample</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="remove.html" title="cpp/algorithm/ranges/remove"><span class="t-lines"><span>remove</span><span>remove_if</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="replace.html" title="cpp/algorithm/ranges/replace"><span class="t-lines"><span>replace</span><span>replace_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="reverse.html" title="cpp/algorithm/ranges/reverse"><span class="t-lines"><span>reverse</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rotate.html" title="cpp/algorithm/ranges/rotate"><span class="t-lines"><span>rotate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="remove_copy.html" title="cpp/algorithm/ranges/remove copy"><span class="t-lines"><span>remove_copy</span><span>remove_copy_if</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unique.html" title="cpp/algorithm/ranges/unique"><span class="t-lines"><span>unique</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="replace_copy.html" title="cpp/algorithm/ranges/replace copy"><span class="t-lines"><span>replace_copy</span><span>replace_copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="reverse_copy.html" title="cpp/algorithm/ranges/reverse copy"><span class="t-lines"><span>reverse_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rotate_copy.html" title="cpp/algorithm/ranges/rotate copy"><span class="t-lines"><span>rotate_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unique_copy.html" title="cpp/algorithm/ranges/unique copy"><span class="t-lines"><span>unique_copy</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E5.88.92.E5.88.86.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">划分操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_partitioned.html" title="cpp/algorithm/ranges/is partitioned"><span class="t-lines"><span>is_partitioned</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="partition_point.html" title="cpp/algorithm/ranges/partition point"><span class="t-lines"><span>partition_point</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="partition.html" title="cpp/algorithm/ranges/partition"><span class="t-lines"><span>partition</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="partition_copy.html" title="cpp/algorithm/ranges/partition copy"><span class="t-lines"><span>partition_copy</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stable_partition.html" title="cpp/algorithm/ranges/stable partition"><span class="t-lines"><span>stable_partition</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E6.8E.92.E5.BA.8F.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">排序操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_sorted.html" title="cpp/algorithm/ranges/is sorted"><span class="t-lines"><span>is_sorted</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_sorted_until.html" title="cpp/algorithm/ranges/is sorted until"><span class="t-lines"><span>is_sorted_until</span></span></a></div><div><span class="t-lines"><span><code>   </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sort.html" title="cpp/algorithm/ranges/sort"><span class="t-lines"><span>sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stable_sort.html" title="cpp/algorithm/ranges/stable sort"><span class="t-lines"><span>stable_sort</span></span></a></div><div><span class="t-lines"><span><code>       </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="partial_sort.html" title="cpp/algorithm/ranges/partial sort"><span class="t-lines"><span>partial_sort</span></span></a></div><div><span class="t-lines"><span><code>     </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="nth_element.html" title="cpp/algorithm/ranges/nth element"><span class="t-lines"><span>nth_element</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="partial_sort_copy.html" title="cpp/algorithm/ranges/partial sort copy"><span class="t-lines"><span>partial_sort_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E4.BA.8C.E5.88.86.E6.90.9C.E7.B4.A2.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E6.9C.89.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm/ranges">二分搜索操作（在有序范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lower_bound.html" title="cpp/algorithm/ranges/lower bound"><span class="t-lines"><span>lower_bound</span></span></a></div><div><span class="t-lines"><span><code>       </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="upper_bound.html" title="cpp/algorithm/ranges/upper bound"><span class="t-lines"><span>upper_bound</span></span></a></div><div><span class="t-lines"><span><code>       </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="binary_search.html" title="cpp/algorithm/ranges/binary search"><span class="t-lines"><span>binary_search</span></span></a></div><div><span class="t-lines"><span><code>    </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="equal_range.html" title="cpp/algorithm/ranges/equal range"><span class="t-lines"><span>equal_range</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E9.9B.86.E5.90.88.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E6.9C.89.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm/ranges">集合操作（在有序范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="merge.html" title="cpp/algorithm/ranges/merge"><span class="t-lines"><span>merge</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="inplace_merge.html" title="cpp/algorithm/ranges/inplace merge"><span class="t-lines"><span>inplace_merge</span></span></a></div><div><span class="t-lines"><span><code>     </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="set_difference.html" title="cpp/algorithm/ranges/set difference"><span class="t-lines"><span>set_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="set_intersection.html" title="cpp/algorithm/ranges/set intersection"><span class="t-lines"><span>set_intersection</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="set_union.html" title="cpp/algorithm/ranges/set union"><span class="t-lines"><span>set_union</span></span></a></div><div><span class="t-lines"><span><code>        </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="includes.html" title="cpp/algorithm/ranges/includes"><span class="t-lines"><span>includes</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="set_symmetric_difference.html" title="cpp/algorithm/ranges/set symmetric difference"><span class="t-lines"><span>set_symmetric_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E5.A0.86.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">堆操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_heap.html" title="cpp/algorithm/ranges/is heap"><span class="t-lines"><span>is_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_heap_until.html" title="cpp/algorithm/ranges/is heap until"><span class="t-lines"><span>is_heap_until</span></span></a></div><div><span class="t-lines"><span><code>     </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="make_heap.html" title="cpp/algorithm/ranges/make heap"><span class="t-lines"><span>make_heap</span></span></a></div><div><span class="t-lines"><span><code>         </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sort_heap.html" title="cpp/algorithm/ranges/sort heap"><span class="t-lines"><span>sort_heap</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="push_heap.html" title="cpp/algorithm/ranges/push heap"><span class="t-lines"><span>push_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="pop_heap.html" title="cpp/algorithm/ranges/pop heap"><span class="t-lines"><span>pop_heap</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E6.9C.80.E5.B0.8F.2F.E6.9C.80.E5.A4.A7.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">最小/最大操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="max.html" title="cpp/algorithm/ranges/max"><span class="t-lines"><span>max</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="max_element.html" title="cpp/algorithm/ranges/max element"><span class="t-lines"><span>max_element</span></span></a></div><div><span class="t-lines"><span><code>       </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="min.html" title="cpp/algorithm/ranges/min"><span class="t-lines"><span>min</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="min_element.html" title="cpp/algorithm/ranges/min element"><span class="t-lines"><span>min_element</span></span></a></div><div><span class="t-lines"><span><code>       </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="minmax.html" title="cpp/algorithm/ranges/minmax"><span class="t-lines"><span>minmax</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="minmax_element.html" title="cpp/algorithm/ranges/minmax element"><span class="t-lines"><span>minmax_element</span></span></a></div><div><span class="t-lines"><span><code>   </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clamp.html" title="cpp/algorithm/ranges/clamp"><span class="t-lines"><span>clamp</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E6.8E.92.E5.88.97.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">排列操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_permutation.html" title="cpp/algorithm/ranges/is permutation"><span class="t-lines"><span>is_permutation</span></span></a></div><div><span class="t-lines"><span><code>    </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="next_permutation.html" title="cpp/algorithm/ranges/next permutation"><span class="t-lines"><span>next_permutation</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="prev_permutation.html" title="cpp/algorithm/ranges/prev permutation"><span class="t-lines"><span>prev_permutation</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E5.8F.97.E7.BA.A6.E6.9D.9F.E7.9A.84.E6.8A.98.E5.8F.A0.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">折叠操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fold_left.html" title="cpp/algorithm/ranges/fold left"><span class="t-lines"><span>fold_left</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fold_left_first.html" title="cpp/algorithm/ranges/fold left first"><span class="t-lines"><span>fold_left_first</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fold_right.html" title="cpp/algorithm/ranges/fold right"><span class="t-lines"><span>fold_right</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fold_right_last.html" title="cpp/algorithm/ranges/fold right last"><span class="t-lines"><span>fold_right_last</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fold_left_with_iter.html" title="cpp/algorithm/ranges/fold left with iter"><span class="t-lines"><span>fold_left_with_iter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fold_left_first_with_iter.html" title="cpp/algorithm/ranges/fold left first with iter"><span class="t-lines"><span>fold_left_first_with_iter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E5.8F.97.E7.BA.A6.E6.9D.9F.E7.9A.84.E6.95.B0.E5.80.BC.E6.93.8D.E4.BD.9C" title="cpp/algorithm/ranges">数值操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iota.html" title="cpp/algorithm/ranges/iota"><span class="t-lines"><span>iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code>            </code></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E5.8F.97.E7.BA.A6.E6.9D.9F.E7.9A.84.E9.9A.8F.E6.9C.BA.E6.95.B0.E7.AE.97.E6.B3.95" title="cpp/algorithm/ranges">随机数生成</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="generate_random.html" title="cpp/algorithm/ranges/generate random"><span class="t-lines"><span>generate_random</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E5.8F.97.E7.BA.A6.E6.9D.9F.E7.9A.84.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.86.85.E5.AD.98.E7.AE.97.E6.B3.95" title="cpp/algorithm/ranges">未初始化存储上的操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/construct_at.html" title="cpp/memory/ranges/construct at"><span class="t-lines"><span>construct_at</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/destroy.html" title="cpp/memory/ranges/destroy"><span class="t-lines"><span>destroy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/destroy_n.html" title="cpp/memory/ranges/destroy n"><span class="t-lines"><span>destroy_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/destroy_at.html" title="cpp/memory/ranges/destroy at"><span class="t-lines"><span>destroy_at</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_copy.html" title="cpp/memory/ranges/uninitialized copy"><span class="t-lines"><span>uninitialized_copy</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_move.html" title="cpp/memory/ranges/uninitialized move"><span class="t-lines"><span>uninitialized_move</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_fill.html" title="cpp/memory/ranges/uninitialized fill"><span class="t-lines"><span>uninitialized_fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_copy_n.html" title="cpp/memory/ranges/uninitialized copy n"><span class="t-lines"><span>uninitialized_copy_n</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_move_n.html" title="cpp/memory/ranges/uninitialized move n"><span class="t-lines"><span>uninitialized_move_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_fill_n.html" title="cpp/memory/ranges/uninitialized fill n"><span class="t-lines"><span>uninitialized_fill_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_default_construct.html" title="cpp/memory/ranges/uninitialized default construct"><span class="t-lines"><span>uninitialized_default_construct</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_default_construct_n.html" title="cpp/memory/ranges/uninitialized default construct n"><span class="t-lines"><span>uninitialized_default_construct_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_value_construct.html" title="cpp/memory/ranges/uninitialized value construct"><span class="t-lines"><span>uninitialized_value_construct</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../memory/ranges/uninitialized_value_construct_n.html" title="cpp/memory/ranges/uninitialized value construct n"><span class="t-lines"><span>uninitialized_value_construct_n</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#.E8.BF.94.E5.9B.9E.E7.B1.BB.E5.9E.8B" title="cpp/algorithm/ranges">返回类型</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/in_fun_result.html" title="cpp/algorithm/ranges/return types/in fun result"><span class="t-lines"><span>in_fun_result</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/in_in_result.html" title="cpp/algorithm/ranges/return types/in in result"><span class="t-lines"><span>in_in_result</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/in_found_result.html" title="cpp/algorithm/ranges/return types/in found result"><span class="t-lines"><span>in_found_result</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/in_out_result.html" title="cpp/algorithm/ranges/return types/in out result"><span class="t-lines"><span>in_out_result</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/in_in_out_result.html" title="cpp/algorithm/ranges/return types/in in out result"><span class="t-lines"><span>in_in_out_result</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/in_out_out_result.html" title="cpp/algorithm/ranges/return types/in out out result"><span class="t-lines"><span>in_out_out_result</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/min_max_result.html" title="cpp/algorithm/ranges/return types/min max result"><span class="t-lines"><span>min_max_result</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/out_value_result.html" title="cpp/algorithm/ranges/return types/out value result"><span class="t-lines"><span>out_value_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="return_types/in_value_result.html" title="cpp/algorithm/ranges/return types/in value result"><span class="t-lines"><span>in_value_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../../header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>调用签名</div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td><div><span id=".E7.89.88.E6.9C.AC_1"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <a href="../../iterator/input_iterator.html"><span class="kw2864">std::<span class="me2">input_iterator</span></span></a> I, <a href="../../iterator/sentinel_for.html"><span class="kw2862">std::<span class="me2">sentinel_for</span></span></a><span class="sy1">&lt;</span>I<span class="sy1">&gt;</span> S, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O <span class="sy1">&gt;</span><br>
+<p>requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span><br>
+<span class="kw4">constexpr</span> copy_result<span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span><br>
+</p>
+    copy<span class="br0">(</span> I first, S last, O result <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <a href="../../ranges/input_range.html"><span class="kw2902">ranges::<span class="me2">input_range</span></span></a> R, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O <span class="sy1">&gt;</span><br>
+<p>requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span><a href="../../ranges/iterator_t.html"><span class="kw2890">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span><br>
+<span class="kw4">constexpr</span> copy_result<span class="sy1">&lt;</span><a href="../../ranges/borrowed_iterator_t.html"><span class="kw2855">ranges::<span class="me2">borrowed_iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span><br>
+</p>
+    copy<span class="br0">(</span> R<span class="sy3">&amp;&amp;</span> r, O result <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td><div><span id=".E7.89.88.E6.9C.AC_3"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <a href="../../iterator/input_iterator.html"><span class="kw2864">std::<span class="me2">input_iterator</span></span></a> I, <a href="../../iterator/sentinel_for.html"><span class="kw2862">std::<span class="me2">sentinel_for</span></span></a><span class="sy1">&lt;</span>I<span class="sy1">&gt;</span> S, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O,<br>
+<p>          <span class="kw1">class</span> Proj <span class="sy1">=</span> <a href="../../utility/functional/identity.html"><span class="kw2723">std::<span class="me2">identity</span></span></a>,<br>
+          <a href="../../iterator/indirect_unary_predicate.html"><span class="kw3132">std::<span class="me2">indirect_unary_predicate</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><a href="../../iterator/projected.html"><span class="kw2678">projected</span></a><span class="sy1">&lt;</span>I, Proj<span class="sy1">&gt;&gt;</span> Pred <span class="sy1">&gt;</span><br>
+requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span><br>
+<span class="kw4">constexpr</span> copy_if_result<span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span><br>
+</p>
+    copy_if<span class="br0">(</span> I first, S last, O result, Pred pred, Proj proj <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span> <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (3) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <a href="../../ranges/input_range.html"><span class="kw2902">ranges::<span class="me2">input_range</span></span></a> R, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O,<br>
+<p>          <span class="kw1">class</span> Proj <span class="sy1">=</span> <a href="../../utility/functional/identity.html"><span class="kw2723">std::<span class="me2">identity</span></span></a>,<br>
+          <a href="../../iterator/indirect_unary_predicate.html"><span class="kw3132">std::<span class="me2">indirect_unary_predicate</span></span></a><span class="sy1">&lt;</span><br>
+              std<span class="sy4">::</span><a href="../../iterator/projected.html"><span class="kw2678">projected</span></a><span class="sy1">&lt;</span><a href="../../ranges/iterator_t.html"><span class="kw2890">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, Proj<span class="sy1">&gt;&gt;</span> Pred <span class="sy1">&gt;</span><br>
+requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span><a href="../../ranges/iterator_t.html"><span class="kw2890">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span><br>
+<span class="kw4">constexpr</span> copy_if_result<span class="sy1">&lt;</span><a href="../../ranges/borrowed_iterator_t.html"><span class="kw2855">ranges::<span class="me2">borrowed_iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span><br>
+</p>
+    copy_if<span class="br0">(</span> R<span class="sy3">&amp;&amp;</span> r, O result, Pred pred, Proj proj <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span> <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (4) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>辅助类型</div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> I, <span class="kw1">class</span> O <span class="sy1">&gt;</span><br>
+<span class="kw1">using</span> copy_result <span class="sy1">=</span> <a href="return_types/in_out_result.html"><span class="kw3094">ranges::<span class="me2">in_out_result</span></span></a><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span><span class="sy4">;</span></span></div></td>
+<td> (5) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> I, <span class="kw1">class</span> O <span class="sy1">&gt;</span><br>
+<span class="kw1">using</span> copy_if_result <span class="sy1">=</span> <a href="return_types/in_out_result.html"><span class="kw3094">ranges::<span class="me2">in_out_result</span></span></a><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span><span class="sy4">;</span></span></div></td>
+<td> (6) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>复制 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span><code>)</code> 所定义的范围中的元素到始于 <span class="t-c"><span class="mw-geshi cpp source-cpp">result</span></span> 的另一范围。
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 复制范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span><code>)</code> 中的所有元素，从 <span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span> 开始并持续到 <span class="t-c"><span class="mw-geshi cpp source-cpp">last <span class="sy2">-</span> <span class="nu0">1</span></span></span>。若 <span class="t-c"><span class="mw-geshi cpp source-cpp">result</span></span> 在范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span><code>)</code> 内则行为未定义。此情况下，可用 <span class="t-lc">ranges::copy_backward</span> 代替。</div>
+<div class="t-li1"><span class="t-li">3)</span> 仅复制谓词 <span class="t-c"><span class="mw-geshi cpp source-cpp">pred</span></span> 对其返回 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> 的元素。保持复制的元素顺序。若源与目标范围重叠则行为未定义。</div>
+<div class="t-li1"><span class="t-li">2,4)</span> 同 <span class="t-v">(1,3)</span>，但以 <span class="t-c"><span class="mw-geshi cpp source-cpp">r</span></span> 为源范围，如同以 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>r<span class="br0">)</span></span></span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span> 并以 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/end"><span class="kw2884">ranges::<span class="me2">end</span></span></a><span class="br0">(</span>r<span class="br0">)</span></span></span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span>。</div>
+<p>此页面上描述的函数式实体是<i><a href="../ranges.html#.E7.AE.97.E6.B3.95.E5.87.BD.E6.95.B0.E5.AF.B9.E8.B1.A1" title="cpp/algorithm/ranges">算法函数对象</a></i>（非正式地称为 <i>niebloid</i>），即：
+</p>
+<ul><li> 调用它们中的任何一个时不能显式指定模板实参。
+</li><li> 它们都不对<a href="../../language/adl.html" title="cpp/language/adl">实参依赖查找</a>可见。
+</li><li> 在通过函数调用运算符左侧的名字进行<a href="../../language/unqualified_lookup.html" title="cpp/language/unqualified lookup">无限定查找</a>，找到它们之一时，禁止<a href="../../language/adl.html" title="cpp/language/adl">实参依赖查找</a>。
+</li></ul>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> first, last
+</td>
+<td> -
+</td>
+<td> 要复制的元素<a href="../../iterator.html#.E8.8C.83.E5.9B.B4" title="cpp/iterator">范围</a>的迭代器-哨位对
+</td></tr>
+<tr class="t-par">
+<td> r
+</td>
+<td> -
+</td>
+<td> 要复制的元素范围
+</td></tr>
+<tr class="t-par">
+<td> result
+</td>
+<td> -
+</td>
+<td> 目标范围的起始
+</td></tr>
+<tr class="t-par">
+<td> pred
+</td>
+<td> -
+</td>
+<td> 应用到投影后元素的谓词
+</td></tr>
+<tr class="t-par">
+<td> proj
+</td>
+<td> -
+</td>
+<td> 应用到元素的投影
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<p>含有等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span> 的输入迭代器和指向最后复制元素后一位置的输出迭代器的 <span class="t-lc">ranges::in_out_result</span>。
+</p>
+<h3><span class="mw-headline" id=".E5.A4.8D.E6.9D.82.E5.BA.A6">复杂度</span></h3>
+<div class="t-li1"><span class="t-li">1,2)</span> 准确 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>last <span class="sy2">-</span> first<span class="br0">)</span></span></span> 次赋值。</div>
+<div class="t-li1"><span class="t-li">3,4)</span> 准确 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>last <span class="sy2">-</span> first<span class="br0">)</span></span></span> 次应用谓词与投影，而赋值次数从 <span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span> 到 <span class="t-c"><span class="mw-geshi cpp source-cpp">last <span class="sy2">-</span> first</span></span> 之间（对每个谓词返回 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> 的元素赋值，取决于谓词与输入数据）。</div>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>实践中，<code>ranges::copy</code> 的实现若值类型为<a href="../../named_req/TriviallyCopyable.html" title="cpp/named req/TriviallyCopyable"><span style="font-style:italic">可平凡复制</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(TriviallyCopyable)</span> </a>且迭代器类型满足 <a href="../../iterator/contiguous_iterator.html" title="cpp/iterator/contiguous iterator"><code>contiguous_iterator</code></a>，则避免多次赋值并使用如 <span class="t-lc"><a href="../../string/byte/memmove.html" title="cpp/string/byte/memmove">std::memmove</a></span> 的大块复制函数。
+</p><p>复制重叠的范围时，<code>std::ranges::copy</code> 在向左复制（目标范围的起始在源范围外）时适合，而 <a href="copy_backward.html" title="cpp/algorithm/ranges/copy backward"><code>ranges::copy_backward</code></a> 在向右复制（目标范围的末尾在源范围外）时适合。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.AF.E8.83.BD.E7.9A.84.E5.AE.9E.E7.8E.B0">可能的实现 </span></h3>
+<table class="eq-fun-cpp-table">
+
+<tr>
+<th><a href="copy.html#.E7.89.88.E6.9C.AC_1">copy (1)(2)</a>
+</th></tr>
+<tr>
+<td>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> copy_fn
+<span class="br0">{</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><a href="../../iterator/input_iterator.html"><span class="kw2864">std::<span class="me2">input_iterator</span></span></a> I, <a href="../../iterator/sentinel_for.html"><span class="kw2862">std::<span class="me2">sentinel_for</span></span></a><span class="sy1">&lt;</span>I<span class="sy1">&gt;</span> S, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O<span class="sy1">&gt;</span>
+    requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span>
+    <span class="kw4">constexpr</span> ranges<span class="sy4">::</span><span class="me2">copy_result</span><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>I first, S last, O result<span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">for</span> <span class="br0">(</span><span class="sy4">;</span> first <span class="sy3">!</span><span class="sy1">=</span> last<span class="sy4">;</span> <span class="sy2">++</span>first, <span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span><span class="sy2">++</span>result<span class="br0">)</span>
+            <span class="sy2">*</span>result <span class="sy1">=</span> <span class="sy2">*</span>first<span class="sy4">;</span>
+        <span class="kw1">return</span> <span class="br0">{</span>std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>first<span class="br0">)</span>, std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>result<span class="br0">)</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><a href="../../ranges/input_range.html"><span class="kw2902">ranges::<span class="me2">input_range</span></span></a> R, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O<span class="sy1">&gt;</span>
+    requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span><a href="../../ranges/iterator_t.html"><span class="kw2890">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span>
+    <span class="kw4">constexpr</span> ranges<span class="sy4">::</span><span class="me2">copy_result</span><span class="sy1">&lt;</span><a href="../../ranges/borrowed_iterator_t.html"><span class="kw2855">ranges::<span class="me2">borrowed_iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span>
+        operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>R<span class="sy3">&amp;&amp;</span> r, O result<span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="br0">(</span><a href="../../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>r<span class="br0">)</span>, <a href="../../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/end"><span class="kw2884">ranges::<span class="me2">end</span></span></a><span class="br0">(</span>r<span class="br0">)</span>, std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>result<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">inline</span> <span class="kw4">constexpr</span> copy_fn copy<span class="sy4">;</span></pre></div></div>
+</td></tr>
+<tr>
+<th><a href="copy.html#.E7.89.88.E6.9C.AC_3">copy_if (3)(4)</a>
+</th></tr>
+<tr>
+<td>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> copy_if_fn
+<span class="br0">{</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><a href="../../iterator/input_iterator.html"><span class="kw2864">std::<span class="me2">input_iterator</span></span></a> I, <a href="../../iterator/sentinel_for.html"><span class="kw2862">std::<span class="me2">sentinel_for</span></span></a><span class="sy1">&lt;</span>I<span class="sy1">&gt;</span> S, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O,
+             <span class="kw1">class</span> Proj <span class="sy1">=</span> <a href="../../utility/functional/identity.html"><span class="kw2723">std::<span class="me2">identity</span></span></a>,
+             <a href="../../iterator/indirect_unary_predicate.html"><span class="kw3132">std::<span class="me2">indirect_unary_predicate</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><a href="../../iterator/projected.html"><span class="kw2678">projected</span></a><span class="sy1">&lt;</span>I, Proj<span class="sy1">&gt;&gt;</span> Pred<span class="sy1">&gt;</span>
+    requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span>
+    <span class="kw4">constexpr</span> ranges<span class="sy4">::</span><span class="me2">copy_if_result</span><span class="sy1">&lt;</span>I, O<span class="sy1">&gt;</span>
+        operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>I first, S last, O result, Pred pred, Proj proj <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">for</span> <span class="br0">(</span><span class="sy4">;</span> first <span class="sy3">!</span><span class="sy1">=</span> last<span class="sy4">;</span> <span class="sy2">++</span>first<span class="br0">)</span>
+            <span class="kw1">if</span> <span class="br0">(</span><a href="../../utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>pred, <a href="../../utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>proj, <span class="sy2">*</span>first<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span>
+            <span class="br0">{</span>
+                <span class="sy2">*</span>result <span class="sy1">=</span> <span class="sy2">*</span>first<span class="sy4">;</span>
+                <span class="sy2">++</span>result<span class="sy4">;</span>
+            <span class="br0">}</span>
+        <span class="kw1">return</span> <span class="br0">{</span>std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>first<span class="br0">)</span>, std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>result<span class="br0">)</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><a href="../../ranges/input_range.html"><span class="kw2902">ranges::<span class="me2">input_range</span></span></a> R, <a href="../../iterator/weakly_incrementable.html"><span class="kw2859">std::<span class="me2">weakly_incrementable</span></span></a> O,
+             <span class="kw1">class</span> Proj <span class="sy1">=</span> <a href="../../utility/functional/identity.html"><span class="kw2723">std::<span class="me2">identity</span></span></a>,
+             <a href="../../iterator/indirect_unary_predicate.html"><span class="kw3132">std::<span class="me2">indirect_unary_predicate</span></span></a><span class="sy1">&lt;</span>
+                 std<span class="sy4">::</span><a href="../../iterator/projected.html"><span class="kw2678">projected</span></a><span class="sy1">&lt;</span><a href="../../ranges/iterator_t.html"><span class="kw2890">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, Proj<span class="sy1">&gt;&gt;</span> Pred<span class="sy1">&gt;</span>
+    requires <a href="../../iterator/indirectly_copyable.html"><span class="kw3123">std::<span class="me2">indirectly_copyable</span></span></a><span class="sy1">&lt;</span><a href="../../ranges/iterator_t.html"><span class="kw2890">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span>
+    <span class="kw4">constexpr</span> ranges<span class="sy4">::</span><span class="me2">copy_if_result</span><span class="sy1">&lt;</span><a href="../../ranges/borrowed_iterator_t.html"><span class="kw2855">ranges::<span class="me2">borrowed_iterator_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, O<span class="sy1">&gt;</span>
+        operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>R<span class="sy3">&amp;&amp;</span> r, O result, Pred pred, Proj proj <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="br0">(</span><a href="../../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>r<span class="br0">)</span>, <a href="../../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/end"><span class="kw2884">ranges::<span class="me2">end</span></span></a><span class="br0">(</span>r<span class="br0">)</span>, std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>result<span class="br0">)</span>,
+                       <a href="../../utility/functional/ref.html"><span class="kw1071">std::<span class="me2">ref</span></span></a><span class="br0">(</span>pred<span class="br0">)</span>, <a href="../../utility/functional/ref.html"><span class="kw1071">std::<span class="me2">ref</span></span></a><span class="br0">(</span>proj<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">inline</span> <span class="kw4">constexpr</span> copy_if_fn copy_if<span class="sy4">;</span></pre></div></div>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><p>下列代码用 <code>ranges::copy</code> 复制 <span class="t-lc"><a href="../../container/vector.html" title="cpp/container/vector">std::vector</a></span> 的内容到另一 <code>std::vector</code> 并显示结果 <code>vector</code>。</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;algorithm&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;iterator&gt;</span>
+<span class="co2">#include &lt;numeric&gt;</span>
+<span class="co2">#include &lt;vector&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> source<span class="br0">(</span><span class="nu0">10</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../iota.html"><span class="kw1659">std::<span class="me2">iota</span></span></a><span class="br0">(</span>source.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, source.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, <span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> destination<span class="sy4">;</span>
+    std<span class="sy4">::</span><a href="copy.html"><span class="kw2850">ranges::<span class="me2">copy</span></span></a><span class="br0">(</span>source.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, source.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, <a href="../../iterator/back_inserter.html"><span class="kw668">std::<span class="me2">back_inserter</span></span></a><span class="br0">(</span>destination<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="co1">// 或者另外使用</span>
+<span class="co1">//  std::vector&lt;int&gt; destination(source.size());</span>
+<span class="co1">//  std::ranges::copy(source.begin(), source.end(), destination.begin());</span>
+<span class="co1">// 都等价于</span>
+<span class="co1">//  std::vector&lt;int&gt; to_vector = from_vector;</span>
+ 
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"目标包含: "</span><span class="sy4">;</span>
+    std<span class="sy4">::</span><a href="copy.html"><span class="kw2850">ranges::<span class="me2">copy</span></span></a><span class="br0">(</span>destination, <a href="../../iterator/ostream_iterator.html"><span class="kw673">std::<span class="me2">ostream_iterator</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="br0">(</span><a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>, <span class="st0">" "</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"目标中的奇数有: "</span><span class="sy4">;</span>
+    std<span class="sy4">::</span><a href="copy.html"><span class="kw2851">ranges::<span class="me2">copy_if</span></span></a><span class="br0">(</span>destination, <a href="../../iterator/ostream_iterator.html"><span class="kw673">std::<span class="me2">ostream_iterator</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="br0">(</span><a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>, <span class="st0">" "</span><span class="br0">)</span>,
+                         <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">(</span>x <span class="sy2">%</span> <span class="nu0">2</span><span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">1</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">目标包含: 0 1 2 3 4 5 6 7 8 9
+目标中的奇数有: 1 3 5 7 9</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="copy_backward.html" title="cpp/algorithm/ranges/copy backward"> <span class="t-lines"><span>ranges::copy_backward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  从后往前复制范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="reverse_copy.html" title="cpp/algorithm/ranges/reverse copy"> <span class="t-lines"><span>ranges::reverse_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  创建范围的逆向副本  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="copy_n.html" title="cpp/algorithm/ranges/copy n"> <span class="t-lines"><span>ranges::copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制若干元素到新位置  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="fill.html" title="cpp/algorithm/ranges/fill"> <span class="t-lines"><span>ranges::fill</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  赋给定值到范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="remove_copy.html" title="cpp/algorithm/ranges/remove copy"> <span class="t-lines"><span>ranges::remove_copy</span><span>ranges::remove_copy_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制范围并忽略满足特定条件的元素  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../copy.html" title="cpp/algorithm/copy"> <span class="t-lines"><span>copy</span><span>copy_if</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   复制范围中元素到新位置 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 20469/1000000
+Preprocessor generated node count: 20176/1000000
+Post‐expand include size: 627482/4194304 bytes
+Template argument size: 120465/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:12961-0!*!0!!zh!*!zh!* and timestamp 20250322200644 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/algorithm/ranges/copy&amp;oldid=98838">https://zh.cppreference.com/mwiki/index.php?title=cpp/algorithm/ranges/copy&amp;oldid=98838</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/algorithm/ranges/copy">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月14日 (星期五) 18:55。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<!-- Served in 4.301 secs. -->
+	</body>
+<!-- Cached 20250322200644 -->
+</html>

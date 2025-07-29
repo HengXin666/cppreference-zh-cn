@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>wcsftime</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/chrono/wcsftime","wgTitle":"c/chrono/wcsftime","wgCurRevisionId":91633,"wgArticleId":954,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/chrono/wcsftime","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_chrono_wcsftime skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">wcsftime</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../chrono.html" title="c/chrono">chrono</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../chrono.html" title="c/chrono">日期和时间工具</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> 函数</td></tr>
+<tr class="t-nv-h2"><td colspan="5"> 时间操作</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="difftime.html" title="c/chrono/difftime"><span class="t-lines"><span>difftime</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="time.html" title="c/chrono/time"><span class="t-lines"><span>time</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clock.html" title="c/chrono/clock"><span class="t-lines"><span>clock</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec_get.html" title="c/chrono/timespec get"><span class="t-lines"><span>timespec_get</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec_getres.html" title="c/chrono/timespec getres"><span class="t-lines"><span>timespec_getres</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> 格式转换</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="asctime.html" title="c/chrono/asctime"><span class="t-lines"><span>asctime</span><span>asctime_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-c23" style="white-space: nowrap;">(C23 弃用)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ctime.html" title="c/chrono/ctime"><span class="t-lines"><span>ctime</span><span>ctime_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-c23" style="white-space: nowrap;">(C23 弃用)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="strftime.html" title="c/chrono/strftime"><span class="t-lines"><span>strftime</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>wcsftime</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gmtime.html" title="c/chrono/gmtime"><span class="t-lines"><span>gmtime</span><span>gmtime_r</span><span>gmtime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="localtime.html" title="c/chrono/localtime"><span class="t-lines"><span>localtime</span><span>localtime_r</span><span>localtime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="mktime.html" title="c/chrono/mktime"><span class="t-lines"><span>mktime</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 常量</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="CLOCKS_PER_SEC.html" title="c/chrono/CLOCKS PER SEC"><span class="t-lines"><span>CLOCKS_PER_SEC</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 类型</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tm.html" title="c/chrono/tm"><span class="t-lines"><span>tm</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="time_t.html" title="c/chrono/time t"><span class="t-lines"><span>time_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clock_t.html" title="c/chrono/clock t"><span class="t-lines"><span>clock_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec.html" title="c/chrono/timespec"><span class="t-lines"><span>timespec</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/wchar.html" title="c/header/wchar"><tt>&lt;wchar.h&gt;</tt></a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi c source-c"><a href="../types/size_t.html"><span class="kw100">size_t</span></a> wcsftime<span class="br0">(</span> <span class="kw4">wchar_t</span><span class="sy2">*</span> str, <a href="../types/size_t.html"><span class="kw100">size_t</span></a> count, <span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span> format, <span class="kw4">const</span> <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a><span class="sy2">*</span> <a href="time.html"><span class="kw513">time</span></a> <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>将来自给定的日历时间 <span class="t-c"><span class="mw-geshi c source-c"><a href="time.html"><span class="kw513">time</span></a></span></span> 的日期和时间信息，按照<a href="wcsftime.html#.E6.A0.BC.E5.BC.8F.E5.AD.97.E7.AC.A6.E4.B8.B2">格式字符串</a> <span class="t-c"><span class="mw-geshi c source-c">format</span></span>，转换成空终止宽字符串 <span class="t-c"><span class="mw-geshi c source-c">str</span></span>。最多写入 <span class="t-c"><span class="mw-geshi c source-c">count</span></span> 个宽字符。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> str
+</td>
+<td> -
+</td>
+<td> 指向待输出的 <code>wchar_t</code> 数组首元素的指针
+</td></tr>
+<tr class="t-par">
+<td> count
+</td>
+<td> -
+</td>
+<td> 最大写入宽字符数
+</td></tr>
+<tr class="t-par">
+<td> format
+</td>
+<td> -
+</td>
+<td> 指向指定<a href="wcsftime.html#.E6.A0.BC.E5.BC.8F.E5.AD.97.E7.AC.A6.E4.B8.B2">转换格式</a>的空终止宽字符串指针。
+</td></tr></table>
+<h3><span class="mw-headline" id=".E6.A0.BC.E5.BC.8F.E5.AD.97.E7.AC.A6.E4.B8.B2">格式字符串</span></h3>
+<p>格式字符串由零或更多个说明符和（除 <code>%</code> 外的）普通字符构成。所有普通字符，包括空终止字符，都会被复制到输出字符串而不加修改。每个转换说明符都始于 <code>%</code> 字符，可选地跟随 <code>E</code> 或 <code>O</code> 修饰符（若本地环境不支持则忽略之），后随决定说明符行为的字符。下列格式说明符可用：
+</p>
+<table class="wikitable" style="font-size:85%; max-width:90em;">
+
+<tr>
+<th> 转换<br>说明符
+</th>
+<th> 解释
+</th>
+<th> 使用的域
+</th></tr>
+<tr>
+<th> <code>%</code>
+</th>
+<td> 写字面的 <code>%</code>。完整转换说明必须是 <code>%%</code>。
+</td>
+<td>
+</td></tr>
+<tr>
+<th> <code>n</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写换行符
+</td>
+<td>
+</td></tr>
+<tr>
+<th> <code>t</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写水平制表符
+</td>
+<td>
+</td></tr>
+<tr>
+<th colspan="3"> 年
+</th></tr>
+<tr>
+<th> <code>Y</code>
+</th>
+<td> 以十进制数写<b>年</b>，如 2017
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>EY</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用方式写<b>年</b>。例如在 ja_JP 本地环境中，以“平成23年”取代“2011年”
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>y</code>
+</th>
+<td> 写<b>年</b>的末 2 位十进制数（范围 <code>[00,99]</code>）
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>Oy</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写<b>年</b>的末 2 位数字。例如在 ja_JP 本地环境中以“十一”取代“11”
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>Ey</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 将<b>年</b>写作从本地环境的替用日历时代 <code>%EC</code> 的偏移（依赖本地环境）
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>C</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写<b>年</b>的首 2 位十进制数（范围 <code>[00,99]</code>）
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>EC</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以本地环境的替用表示写<b>年号（时代）</b>，例如 ja_JP 中的“平成”
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>G</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写<b>ISO 8601 基于星期的年</b>，即是包含指定星期的年份。
+<p>IS0 8601 中星期以星期一开始，而且一年的首星期必须满足下列要求：
+</p>
+<ul><li> 包含 1 月 4 日
+</li><li> 包含一年的首个星期四
+</li></ul>
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>g</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写<b>ISO 8601 基于星期的年</b>，即是包含指定星期年份，的后 2 位数（范围 <code>[00,99]</code>）
+<p>IS0 8601 中星期以星期一开始，而且一年的首星期必须满足下列要求：
+</p>
+<ul><li> 包含 1 月 4 日
+</li><li> 包含一年的首个星期四
+</li></ul>
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> 月
+</th></tr>
+<tr>
+<th> <code>b</code>
+</th>
+<td> 写<b>缩写月</b>名，例如 <code>Oct</code> （依赖本地环境）
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>Ob</code><br><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span>
+</th>
+<td> 以本地环境的替用表示写<b>缩写月</b>名
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>h</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 与 <code>b</code> 同义
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>B</code>
+</th>
+<td> 写<b>完整月</b>名，例如 <code>October</code> （依赖本地环境）
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>OB</code><br><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span>
+</th>
+<td> 以本地环境的替用表示写适合的<b>完整月</b>名
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>m</code>
+</th>
+<td> 将<b>月</b>写作十进制数（范围 <code>[01,12]</code>）
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>Om</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写<b>月</b>。例如 ja_JP 本地环境中“十二”取代“12”
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> 星期
+</th></tr>
+<tr>
+<th> <code>U</code>
+</th>
+<td> 以十进制数写<b>年的星期</b>（星期日是星期的首日）（范围 <code>[00,53]</code>）
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>OU</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数值系统写如同用 <code>%U</code> 的<b>年的星期</b>。例如在 ja_JP 本地环境中以“五十二”取代“52”
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>W</code>
+</th>
+<td> 以十进制数写<b>年的星期</b>（星期一是星期的首日）（范围 <code>[00,53]</code>）
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>OW</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数值系统写如同用 <code>%W</code> 的<b>年的星期</b>。例如在 ja_JP 本地环境中以“五十二”取代“52”
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>V</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写 <b>ISO 8601 的年的星期</b>（范围<code>[00,53]</code>）
+<p>IS0 8601 中星期以星期一开始，而且一年的首星期必须满足下列要求：
+</p>
+<ul><li> 包含 1 月 4 日
+</li><li> 包含一年的首个星期四
+</li></ul>
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>OV</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数值系统写如同用 <code>%V</code> 的<b>年的星期</b>。例如在 ja_JP 本地环境中以“五十二”取代“52”
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> 年/月之日
+</th></tr>
+<tr>
+<th> <code>j</code>
+</th>
+<td> 以十进制数写<b>年的第几日</b>（范围 <code>[001,366]</code>）
+</td>
+<td> <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>d</code>
+</th>
+<td> 以十进制数写<b>月的第几日</b>（范围 <code>[01,31]</code>）
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th> <code>Od</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写基于零的<b>月的第几日</b>。例如 ja_JP 本地环境中“二十七”取代“27”
+<p>单字符前加空格。
+</p>
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th> <code>e</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以十进制数写<b>月的第几日</b>（范围<code>[01,31]</code>）
+<p>单数字前加空格。
+</p>
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th> <code>Oe</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写基于一的的<b>月的第几日</b>。例如 ja_JP 本地环境中“二十七”取代“27”
+<p>单字符前加空格。
+</p>
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> 星期之日
+</th></tr>
+<tr>
+<th> <code>a</code>
+</th>
+<td> 写<b>缩略的星期日期</b>名，例如 <code>Fri</code>（依赖本地环境）
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>A</code>
+</th>
+<td> 写<b>完整的星期日期</b>名，例如 <code>Friday</code>（依赖本地环境）
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>w</code>
+</th>
+<td> 以十进制数写<b>星期日期</b>，其中星期日是 <code>0</code> （范围 <code>[0-6]</code> ）
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>Ow</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 用替用数字系统写<b>星期日期</b>，其中星期日是 <code>0</code>。例如 ja_JP 本地环境中“二”取代“2”
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>u</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 十进制数写<b>星期日期</b>，其中星期一是 <code>1</code> （ISO 8601 格式）（范围 <code>[1-7]</code>）
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>Ou</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 用替用数字系统写<b>星期日期</b>，其中星期一是 <code>1</code>。例如 ja_JP 本地环境中“二”取代“2”
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> 时、分、秒
+</th></tr>
+<tr>
+<th> <code>H</code>
+</th>
+<td> 以十进制数写<b>时</b>，24 小时制（范围 <code>[00-23]</code>）
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>OH</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写 24 小时制的<b>时</b>。例如 ja_JP 本地环境中“十八”取代“18”。
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>I</code>
+</th>
+<td> 以十进制数写<b>时</b>，12 小时制（范围 <code>[01,12]</code>）
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>OI</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写 12 小时制的<b>时</b>。例如 ja_JP 本地环境中“六”取代“6”
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>M</code>
+</th>
+<td> 以十进制数写<b>分</b>（范围 <code>[00,59]</code>）
+</td>
+<td> <code><b>tm_min</b></code>
+</td></tr>
+<tr>
+<th> <code>OM</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写<b>分</b>。例如 ja_JP 本地环境中“二十五”取代“25”
+</td>
+<td> <code><b>tm_min</b></code>
+</td></tr>
+<tr>
+<th> <code>S</code>
+</th>
+<td> 以十进制数写<b>秒</b>（范围 <code>[00,60]</code>）
+</td>
+<td> <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th> <code>OS</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以替用数字系统写<b>秒</b>。例如 ja_JP 本地环境中“二十四”取代“24”
+</td>
+<td> <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> 其他
+</th></tr>
+<tr>
+<th> <code>c</code>
+</th>
+<td> 写<b>标准日期时间字符串</b>。例如 <code>Sun Oct 17 04:41:13 2010</code> （依赖本地环境）
+</td>
+<td> 全部
+</td></tr>
+<tr>
+<th> <code>Ec</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写<b>替用日期时间字符串</b>。例如 ja_JP 本地环境中“平成23年”取代“2011年”
+</td>
+<td> 全部
+</td></tr>
+<tr>
+<th> <code>x</code>
+</th>
+<td> 写本地化的<b>日期表示</b>（依赖本地环境）
+</td>
+<td> 全部
+</td></tr>
+<tr>
+<th> <code>Ex</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写<b>替用日期表示</b>。例如 ja_JP 本地环境中“平成23年”取代“2011年”
+</td>
+<td> 全部
+</td></tr>
+<tr>
+<th> <code>X</code>
+</th>
+<td> 写本地化的<b>时间表示</b>，例如 18:40:20 或 6:40:20 PM（依赖本地环境）
+</td>
+<td> 全部
+</td></tr>
+<tr>
+<th> <code>EX</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写<b>替用时间表示</b>（依赖本地环境）
+</td>
+<td> 全部
+</td></tr>
+<tr>
+<th> <code>D</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 等价于<b>"%m/%d/%y"</b>
+</td>
+<td> <code><b>tm_mon</b></code>, <code><b>tm_mday</b></code>, <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>F</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 等价于<b>"%Y-%m-%d"</b>（ISO 8601 日期格式）
+</td>
+<td> <code><b>tm_mon</b></code>, <code><b>tm_mday</b></code>, <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>r</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 写本地化的 <b>12 小时制</b>时间（依赖本地环境）
+</td>
+<td> <code><b>tm_hour</b></code>, <code><b>tm_min</b></code>, <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th> <code>R</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 等价于<b>"%H:%M"</b>
+</td>
+<td> <code><b>tm_hour</b></code>, <code><b>tm_min</b></code>
+</td></tr>
+<tr>
+<th> <code>T</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 等价于<b>"%H:%M:%S"</b>（ISO 8601 时间格式）
+</td>
+<td> <code><b>tm_hour</b></code>, <code><b>tm_min</b></code>, <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th> <code>p</code>
+</th>
+<td> 写本地化的 <b>a.m.</b> 或 <b>p.m.</b>（依赖本地环境）
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>z</code><br><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span>
+</th>
+<td> 以 ISO 8601 格式（例如 <code>-0430</code>）写<b>距 UTC 的偏移</b>，或者倘若时区信息不可用则不写字符
+</td>
+<td> <code><b>tm_isdst</b></code>
+</td></tr>
+<tr>
+<th> <code>Z</code>
+</th>
+<td> 写依赖本地环境的<b>时区名或缩写</b>，或者若时区信息不可用则不写字符
+</td>
+<td> <code><b>tm_isdst</b></code>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<p>成功时，返回写入 <span class="t-c"><span class="mw-geshi c source-c">str</span></span> 所指向的宽字符数组的字符数，不包含终止 <span class="t-c"><span class="mw-geshi c source-c">L<span class="st0">'<span class="es5">\0</span>'</span></span></span>。若在能存储整个字符串前抵达 <span class="t-c"><span class="mw-geshi c source-c">count</span></span>，则返回 <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>，写入内容是未定义的。
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;locale.h&gt;</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;time.h&gt;</span>
+<span class="co2">#include &lt;wchar.h&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">wchar_t</span> buff<span class="br0">[</span><span class="nu0">40</span><span class="br0">]</span><span class="sy4">;</span>
+    <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a> my_time <span class="sy1">=</span>
+    <span class="br0">{</span>
+        .<span class="me1">tm_year</span><span class="sy1">=</span><span class="nu0">112</span>, <span class="co1">// = 2012 年</span>
+        .<span class="me1">tm_mon</span><span class="sy1">=</span><span class="nu0">9</span>,    <span class="co1">// = 10 月</span>
+        .<span class="me1">tm_mday</span><span class="sy1">=</span><span class="nu0">9</span>,   <span class="co1">// = 9 日</span>
+        .<span class="me1">tm_hour</span><span class="sy1">=</span><span class="nu0">8</span>,   <span class="co1">// = 8 时</span>
+        .<span class="me1">tm_min</span><span class="sy1">=</span><span class="nu0">10</span>,   <span class="co1">// = 10 分</span>
+        .<span class="me1">tm_sec</span><span class="sy1">=</span><span class="nu0">20</span>    <span class="co1">// = 20 秒</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span>wcsftime<span class="br0">(</span>buff, <span class="kw4">sizeof</span> buff, L<span class="st0">"%A %c"</span>, <span class="sy3">&amp;</span>my_time<span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span>
+        <a href="../io/fprintf.html"><span class="kw850">printf</span></a><span class="br0">(</span><span class="st0">"%ls<span class="es1">\n</span>"</span>, buff<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span>
+        <a href="../io/puts.html"><span class="kw835">puts</span></a><span class="br0">(</span><span class="st0">"wcsftime failed"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <a href="../locale/setlocale.html"><span class="kw900">setlocale</span></a><span class="br0">(</span><a href="../locale/LC_categories.html"><span class="kw903">LC_ALL</span></a>, <span class="st0">"ja_JP.utf8"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span>wcsftime<span class="br0">(</span>buff, <span class="kw4">sizeof</span> buff, L<span class="st0">"%A %c"</span>, <span class="sy3">&amp;</span>my_time<span class="br0">)</span><span class="br0">)</span>
+        <a href="../io/fprintf.html"><span class="kw850">printf</span></a><span class="br0">(</span><span class="st0">"%ls<span class="es1">\n</span>"</span>, buff<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">else</span>
+        <a href="../io/puts.html"><span class="kw835">puts</span></a><span class="br0">(</span><span class="st0">"wcsftime failed"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Sunday Sun Oct  9 08:10:20 2012
+日曜日 2012年10月09日 08時10分20秒</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-23">
+<ul><li> C23 标准（ISO/IEC 9899:2024）：
+</li></ul>
+<dl><dd><ul><li> 7.29.5.1 The wcsftime function （第 TBD 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-17">
+<ul><li> C17 标准（ISO/IEC 9899:2018）：
+</li></ul>
+<dl><dd><ul><li> 7.29.5.1 The wcsftime function （第 230-231 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 标准（ISO/IEC 9899:2011）：
+</li></ul>
+<dl><dd><ul><li> 7.29.5.1 The wcsftime function （第 439-440 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 标准（ISO/IEC 9899:1999）：
+</li></ul>
+<dl><dd><ul><li> 7.24.5.1 The wcsftime function （第 385-386 页）
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="strftime.html" title="c/chrono/strftime"> <span class="t-lines"><span>strftime</span></span></a></div></div>
+</td>
+<td>  将 <code>struct tm</code> 对象转换成自定义文本表示 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class="t-dsc-see-tt"><span>wcsftime</span></span> 的 <span><span><a href="../../cpp/chrono/c/wcsftime.html" title="cpp/chrono/c/wcsftime">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 3453/1000000
+Preprocessor generated node count: 10994/1000000
+Post‐expand include size: 85123/4194304 bytes
+Template argument size: 14037/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:954-0!*!0!!zh!*!zh!* and timestamp 20250318223739 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/chrono/wcsftime&amp;oldid=91633">https://zh.cppreference.com/mwiki/index.php?title=c/chrono/wcsftime&amp;oldid=91633</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/chrono/wcsftime">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年6月6日 (星期四) 20:57。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 0.620 secs. -->
+	</body>
+<!-- Cached 20250318223739 -->
+</html>

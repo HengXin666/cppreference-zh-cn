@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>复制消除</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/copy_elision","wgTitle":"cpp/language/copy elision","wgCurRevisionId":98240,"wgArticleId":2696,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/language/copy_elision","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_copy_elision skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">复制消除</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language">C++ 语言</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">一般主题</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../preprocessor.html" title="cpp/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../comment.html" title="cpp/comment">注释</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../keyword.html" title="cpp/keyword">关键词</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="statements.html" title="cpp/language/statements">流程控制</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">条件执行语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重复语句（循环）</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="range-for.html" title="cpp/language/range-for">范围 <span class="mw-geshi cpp source-cpp"><span class="kw1">for</span></span></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="do.html" title="cpp/language/do"><code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">跳转语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="functions.html" title="cpp/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 函数表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><span class="mw-geshi cpp source-cpp"><span class="kw1">inline</span></span> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="except_spec.html" title="cpp/language/except spec">动态异常说明</a> <span class="t-mark" style="white-space: nowrap;">(<span title="C++11 中弃用">C++17 前*</span>)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept_spec.html" title="cpp/language/noexcept spec"><span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">异常</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><span class="mw-geshi cpp source-cpp"><span class="kw1">throw</span></span> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="try.html" title="cpp/language/try"><span class="mw-geshi cpp source-cpp"><span class="kw1">try</span></span> 块</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="catch.html" title="cpp/language/catch"><code>catch</code> 处理块</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">命名空间</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace.html" title="cpp/language/namespace">命名空间声明</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace_alias.html" title="cpp/language/namespace alias">命名空间别名</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="types.html" title="cpp/language/types">基础类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="enum.html" title="cpp/language/enum">枚举类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数类型</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类/结构体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="union.html" title="cpp/language/union">联合体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">说明符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="cv.html" title="cpp/language/cv"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>/<span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="consteval.html" title="cpp/language/consteval"><tt>consteval</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constinit.html" title="cpp/language/constinit"><tt>constinit</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="storage_duration.html" title="cpp/language/storage duration">存储期说明符</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html" title="cpp/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_initialization.html" title="cpp/language/default initialization">默认初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_initialization.html" title="cpp/language/value initialization">值初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="zero_initialization.html" title="cpp/language/zero initialization">零初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="list_initialization.html" title="cpp/language/list initialization">列表初始化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="expressions.html" title="cpp/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">运算符优先级</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">替代表示</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#.E5.AD.97.E9.9D.A2.E9.87.8F" title="cpp/language/expressions">字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔</a> - <a href="integer_literal.html" title="cpp/language/integer literal">整数</a> - <a href="floating_literal.html" title="cpp/language/floating literal">浮点</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符</a> - <a href="string_literal.html" title="cpp/language/string literal">字符串</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">工具</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="attributes.html" title="cpp/language/attributes">属性</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typedef.html" title="cpp/language/typedef"><code>typedef</code> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="type_alias.html" title="cpp/language/type alias">类型别名声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">内存分配</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="classes.html" title="cpp/language/classes">类</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constructor.html" title="cpp/language/constructor">构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="this.html" title="cpp/language/this"><code>this</code> 指针</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="access.html" title="cpp/language/access">访问说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="friend.html" title="cpp/language/friend"><code>friend</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类特有的函数性质</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="virtual.html" title="cpp/language/virtual">虚函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="override.html" title="cpp/language/override"><code>override</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="final.html" title="cpp/language/final"><code>final</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static.html" title="cpp/language/static"><tt>static</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">特殊成员函数</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_constructor.html" title="cpp/language/default constructor">默认构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="copy_assignment.html" title="cpp/language/copy assignment">复制赋值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_assignment.html" title="cpp/language/move assignment">移动赋值</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="destructor.html" title="cpp/language/destructor">析构函数</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates">模板</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class_template.html" title="cpp/language/class template">类模板</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function_template.html" title="cpp/language/function template">函数模板</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="template_specialization.html" title="cpp/language/template specialization">模板特化</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="pack.html" title="cpp/language/pack">形参包</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">杂项</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="asm.html" title="cpp/language/asm">内联汇编</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="history.html" title="cpp/language/history">C++ 的历史</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="initialization.html" title="cpp/language/initialization">初始化</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html" title="cpp/language/initialization">初始化式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="default_initialization.html" title="cpp/language/default initialization">默认初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_initialization.html" title="cpp/language/value initialization">值初始化</a> <span class="t-mark-rev t-since-cxx03" style="white-space: nowrap;">(C++03)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="list_initialization.html" title="cpp/language/list initialization">列表初始化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">复制消除</strong></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html#.E9.9D.9E.E5.B1.80.E9.83.A8.E5.8F.98.E9.87.8F" title="cpp/language/initialization">非局部变量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="zero_initialization.html" title="cpp/language/zero initialization">零初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html#.E5.8A.A8.E6.80.81.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/language/initialization">动态非局部初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="initialization.html#.E5.8A.A8.E6.80.81.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/language/initialization">有序动态初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="initialization.html#.E5.8A.A8.E6.80.81.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/language/initialization">无序动态初始化</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html#.E7.B1.BB.E6.88.90.E5.91.98.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/language/initialization">类成员初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constructor.html" title="cpp/language/initializer list" class="mw-redirect">成员初始化式列表</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="data_members.html#.E6.88.90.E5.91.98.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/language/data members">默认成员初始化式</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>当满足特定条件时，可以省略从某个源对象创建具有相同类类型（忽略 cv 限定）的对象的操作，即使选择的构造函数和/或析构函数具有副作用。这种对象创建操作的消除被称为<i>复制消除</i> ﻿。
+</p>
+<h3><span class="mw-headline" id=".E8.A7.A3.E9.87.8A">解释</span></h3>
+<p>在下列情形下允许进行复制消除（可以合并多次消除）：
+</p>
+<ul><li> 在返回类型是类类型的函数中 <a href="return.html" title="cpp/language/return"><span class="mw-geshi cpp source-cpp"><span class="kw1">return</span></span> 语句</a>中，当操作数是（函数形参和<a href="catch.html" title="cpp/language/catch">处理块</a>形参以外的）具有<a href="storage_duration.html#.E8.87.AA.E5.8A.A8.E5.AD.98.E5.82.A8.E6.9C.9F" title="cpp/language/storage duration">自动存储期</a>的非 volatile 对象 <span class="t-c"><span class="mw-geshi cpp source-cpp">obj</span></span> 的名字时，可以省略结果对象的<a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a>，改为将 <span class="t-c"><span class="mw-geshi cpp source-cpp">obj</span></span> 直接构造到函数调用的结果对象中。这种复制消除的变体被称为<i>具名返回值优化</i>（NRVO）。
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx17"><td>
+<ul><li> 当以尚未绑定到引用的临时类对象 <span class="t-c"><span class="mw-geshi cpp source-cpp">obj</span></span> 复制初始化类对象 <span class="t-c"><span class="mw-geshi cpp source-cpp">target</span></span> 时，可以省略该复制初始化，改为将 <span class="t-c"><span class="mw-geshi cpp source-cpp">obj</span></span> 直接构造到 <span class="t-c"><span class="mw-geshi cpp source-cpp">target</span></span> 中。这种复制消除的变体被称为<i>无名返回值优化</i>（URVO）。从 C++17 开始，无名返回值优化是强制要求的，而不再被当做复制消除；见下文。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></td></tr>
+<tr class="t-rev t-since-cxx11"><td>
+<ul><li> 在 <a href="throw.html" title="cpp/language/throw"><span class="mw-geshi cpp source-cpp"><span class="kw1">throw</span></span> 表达式</a>中，当操作数是（函数形参和处理块形参以外的）具有自动存储期的非 volatile 对象 <span class="t-c"><span class="mw-geshi cpp source-cpp">obj</span></span> 的名字，并且 <span class="t-c"><span class="mw-geshi cpp source-cpp">obj</span></span> 属于某个不包含最内层外围 <a href="try.html" title="cpp/language/try"><span class="mw-geshi cpp source-cpp"><span class="kw1">try</span></span> 块</a>（如果存在）的<a href="scope.html" title="cpp/language/scope">作用域</a>时，可以省略异常对象的复制初始化，改为将 <span class="t-c"><span class="mw-geshi cpp source-cpp">obj</span></span> 直接构造到异常对象中。
+</li><li> 在<a href="catch.html" title="cpp/language/catch">处理块</a>中，可以省略处理块实参的复制初始化，改为将处理块形参视为异常对象的别名。只要此类复制消除不会影响程序原本的含义（除了处理块实参的构造函数和析构函数的执行以外）。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<ul><li> 在<a href="coroutines.html" title="cpp/language/coroutines">协程</a>中，可以消除协程形参的复制，改为将到该副本的引用全部替换成到对应形参的引用。只要此类复制消除不会影响程序原本的含义（除了处理块实参的构造函数和析构函数的执行以外）。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>进行复制消除时，实现将被省略的初始化操作的源和目标单纯地当做指代同一对象的两种不同方式。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx11"><td>
+<p>该对象会在假如不进行优化时两个对象中后被销毁的对象销毁时销毁。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span></td></tr>
+<tr class="t-rev t-since-cxx11"><td>
+<p>如果被选择的构造函数的首个形参类型是到该对象的类型的右值引用，该对象会在目标对象本应被销毁时销毁。否则该对象会在假如不进行优化时两个对象中后被销毁的对象销毁时销毁。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<h4> <span class="mw-headline" id=".E7.BA.AF.E5.8F.B3.E5.80.BC.E8.AF.AD.E4.B9.89.EF.BC.88.E2.80.9C.E6.9C.89.E4.BF.9D.E8.AF.81.E7.9A.84.E5.A4.8D.E5.88.B6.E6.B6.88.E9.99.A4.E2.80.9D.EF.BC.89">纯右值语义（“有保证的复制消除”）</span></h4>
+<p>从 C++17 起，非必须不会将纯右值实质化，并且它会被直接构造到其最终目标的存储中。这有时候意味着，即便语言的语法看起来进行了复制/移动（例如<a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a>），也并不进行复制/移动——这表示该类型完全不需要具有可访问的复制/移动构造函数。其例子包括：
+</p>
+<ul><li> 在 <a href="return.html" title="cpp/language/return">return 语句</a>中，当操作数是一个与函数返回类型相同（忽略 <a href="cv.html" title="cpp/language/cv">cv 限定</a>）的类类型的<a href="value_category.html" title="cpp/language/value category">纯右值</a>时：
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">T f<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> U<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 构造一个 U 类型的临时量，然后从临时量初始化返回的 T</span>
+<span class="br0">}</span>
+T g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> T<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 直接构造返回的 T；没有移动</span>
+<span class="br0">}</span></pre></div></div>
+<dl><dd>  返回类型的析构函数必须在 return 语句位置可访问且未被弃置，即使没有 T 对象要被销毁也是如此。
+</dd></dl>
+<ul><li> 在对象的初始化中，当初始化器表达式是一个与变量类型相同（忽略 <a href="cv.html" title="cpp/language/cv">cv 限定</a>）的类类型的<a href="value_category.html" title="cpp/language/value category">纯右值</a>时：
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">T x <span class="sy1">=</span> T<span class="br0">(</span>T<span class="br0">(</span>f<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 直接以 f() 的结果初始化 x；没有移动</span></pre></div></div>
+<dl><dd> 只能在已知要初始化的对象不是潜在重叠的子对象时应用此规则：
+</dd></dl>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> C <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+C f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> D<span class="sy4">;</span>
+D g<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> D <span class="sy4">:</span> C
+<span class="br0">{</span>
+    D<span class="br0">(</span><span class="br0">)</span> <span class="sy4">:</span> C<span class="br0">(</span>f<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>    <span class="co1">// 初始化基类子对象时无消除</span>
+    D<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span> <span class="sy4">:</span> D<span class="br0">(</span>g<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// 无消除，因为正在初始化的 D 对象可能是某个其他类的基类子对象</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>注意：上述规则指定的不是优化，并且标准并未正式将其描述为“复制消除”（因为并无被消除的东西）。针对<a href="value_category.html" title="cpp/language/value category">纯右值</a>和<a href="implicit_conversion.html#.E4.B8.B4.E6.97.B6.E9.87.8F.E5.AE.9E.E8.B4.A8.E5.8C.96" title="cpp/language/implicit conversion">临时量</a>的 C++17 核心语言规定在本质上不同于之前的 C++ 版本：不再有用于复制/移动的临时量。描述 C++17 机制的另一种方式是“未实质化的值传递”或“延迟临时量实质化”：返回并使用纯右值时不实质化临时量。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>复制消除是允许改变可观察副作用的<span class="t-rev-inl t-until-cxx14"><span>唯一得到允许的优化形式</span><span><span class="t-mark-rev t-until-cxx14" style="white-space: nowrap;">(C++14 前)</span></span></span><span class="t-rev-inl t-since-cxx14"><span>两种允许的优化形式之一，另一种是<a href="new.html#.E5.88.86.E9.85.8D" title="cpp/language/new">分配消除与扩展</a></span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></span></span>。因为一些编译器并不在所有允许的场合中进行复制消除（例如调试模式下），依赖于复制/移动构造函数和析构函数的副作用的程序是不可移植的。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>在 <span class="mw-geshi cpp source-cpp"><span class="kw1">return</span></span> 语句或 <span class="mw-geshi cpp source-cpp"><span class="kw1">throw</span></span> 表达式中，如果编译器不能进行复制消除，但满足或者（若非源是函数形参）本应满足复制消除的条件，那么<span class="t-rev-inl t-until-cxx23"><span>即使源操作数由左值代表，编译器也将尝试使用移动构造函数</span><span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></span></span><span class="t-rev-inl t-since-cxx23"><span>就会将源操作数当做右值</span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></span>；细节见 <a href="return.html#.E6.B3.A8.E8.A7.A3" title="cpp/language/return"><span class="mw-geshi cpp source-cpp"><span class="kw1">return</span></span> 语句</a>。
+</p><p>在<a href="constant_expression.html" title="cpp/language/constant expression">常量表达式</a>和<a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a>中，保证进行返回值优化，但禁止具名返回值优化：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw4">void</span><span class="sy2">*</span> p<span class="sy4">;</span>
+    <span class="kw4">constexpr</span> A<span class="br0">(</span><span class="br0">)</span> <span class="sy4">:</span> p<span class="br0">(</span>this<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    A<span class="br0">(</span><span class="kw4">const</span> A<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 禁用可平凡复制性</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">constexpr</span> A a<span class="sy4">;</span>  <span class="co1">// OK: a.p 指向 a</span>
+ 
+<span class="kw4">constexpr</span> A f<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    A x<span class="sy4">;</span>
+    <span class="kw1">return</span> x<span class="sy4">;</span>
+<span class="br0">}</span>
+<span class="kw4">constexpr</span> A b <span class="sy1">=</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误：b.p 会悬垂，并会指向 f 中的 x</span>
+ 
+<span class="kw4">constexpr</span> A c <span class="sy1">=</span> A<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// (C++17 前) error: c.p 将悬垂并指向临时量</span>
+                     <span class="co1">// (C++17 起) OK: c.p 指向 c; 不涉及临时量</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<table class="wikitable ftm-begin">
+
+<tr>
+<th>功能特性测试宏</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr></th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr></th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_guaranteed_copy_elision" title="cpp/feature test"><code>__cpp_guaranteed_copy_elision</code></a></td>
+<td><a href="../compiler_support/17.html#cpp_guaranteed_copy_elision_201606L" title="cpp/compiler support/17"><code>201606L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td>通过简化的<a href="value_category.html" title="cpp/language/value category">值类别</a>提供有保证的复制消除
+</td></tr></table>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">struct</span> Noisy
+<span class="br0">{</span>
+    Noisy<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"在 "</span> <span class="sy1">&lt;&lt;</span> this <span class="sy1">&lt;&lt;</span> <span class="st0">" 构造"</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="br0">}</span>
+    Noisy<span class="br0">(</span><span class="kw4">const</span> Noisy<span class="sy3">&amp;</span><span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"复制构造<span class="es1">\n</span>"</span><span class="sy4">;</span> <span class="br0">}</span>
+    Noisy<span class="br0">(</span>Noisy<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"移动构造<span class="es1">\n</span>"</span><span class="sy4">;</span> <span class="br0">}</span>
+    ~Noisy<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"在 "</span> <span class="sy1">&lt;&lt;</span> this <span class="sy1">&lt;&lt;</span> <span class="st0">" 析构"</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+Noisy f<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Noisy v <span class="sy1">=</span> Noisy<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// (C++17 前) 从临时量初始化 v 时发生复制消除，可能调用移动构造函数</span>
+                       <span class="co1">// (C++17 起) "有保证的复制消除"</span>
+    <span class="kw1">return</span> v<span class="sy4">;</span> <span class="co1">// 从 v 到结果对象的复制消除，可能调用移动构造函数</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span>Noisy arg<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"&amp;arg = "</span> <span class="sy1">&lt;&lt;</span> <span class="sy3">&amp;</span>arg <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Noisy v <span class="sy1">=</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// (C++17 前) 从 f() 的结果初始化 v 时发生复制消除</span>
+                   <span class="co1">// (C++17 起) "有保证的复制消除"</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"&amp;v = "</span> <span class="sy1">&lt;&lt;</span> <span class="sy3">&amp;</span>v <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    g<span class="br0">(</span>f<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// (C++17 前) 从 f() 的结果初始化实参时发生复制消除</span>
+            <span class="co1">// (C++17 起) "有保证的复制消除"</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">在 0x7fffd635fd4e 构造
+&amp;v = 0x7fffd635fd4e
+在 0x7fffd635fd4f 构造
+&amp;arg = 0x7fffd635fd4f
+在 0x7fffd635fd4f 析构
+在 0x7fffd635fd4e 析构</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1967.html">CWG 1967</a>
+</td>
+<td> C++11
+</td>
+<td> 在通过移动构造函数完成复制消除时依然会考虑被移动的对象的生存期
+</td>
+<td> 不考虑
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2426.html">CWG 2426</a>
+</td>
+<td> C++17
+</td>
+<td> 返回纯右值时不要求析构函数
+</td>
+<td> 潜在调用析构函数
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2930.html">CWG 2930</a>
+</td>
+<td> C++98
+</td>
+<td> 只有复制（或移动）操作可以被消除，但<br>复制初始化可以选择复制（或移动）构造函数
+</td>
+<td> 会消除有关的复制初始化<br>造成的所有对象构造
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<ul><li> <a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a>
+</li><li> <a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a>
+</li><li> <a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 3828/1000000
+Preprocessor generated node count: 8548/1000000
+Post‐expand include size: 153358/4194304 bytes
+Template argument size: 27402/4194304 bytes
+Highest expansion depth: 16/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:2696-0!*!0!!zh!*!zh!* and timestamp 20250323193644 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/language/copy_elision&amp;oldid=98240">https://zh.cppreference.com/mwiki/index.php?title=cpp/language/copy_elision&amp;oldid=98240</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/language/copy_elision">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月5日 (星期三) 02:14。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 2.596 secs. -->
+	</body>
+<!-- Cached 20250323193644 -->
+</html>

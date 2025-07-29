@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>std::byteswap</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/numeric/byteswap","wgTitle":"cpp/numeric/byteswap","wgCurRevisionId":97199,"wgArticleId":13839,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/numeric/byteswap","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_numeric_byteswap skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::</span>byteswap</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../numeric.html" title="cpp/numeric">numeric</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../utility.html" title="cpp/utility">工具库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility/feature_test.html" title="cpp/utility/feature test">库功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="cpp/types">类型支持</a>（基本类型、RTTI）</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility/program.html" title="cpp/utility/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility/variadic.html" title="cpp/utility/variadic">可变参数函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../types/is_constant_evaluated.html" title="cpp/types/is constant evaluated"><span class="t-lines"><span>is_constant_evaluated</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../types/is_within_lifetime.html" title="cpp/types/is within lifetime"><span class="t-lines"><span>is_within_lifetime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/initializer_list.html" title="cpp/utility/initializer list"><span class="t-lines"><span>initializer_list</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/source_location.html" title="cpp/utility/source location"><span class="t-lines"><span>source_location</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../coroutine.html" title="cpp/coroutine">协程支持</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../contract.html" title="cpp/contract">契约支持</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E4.B8.89.E8.B7.AF.E6.AF.94.E8.BE.83" title="cpp/utility">三路比较</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/three_way_comparable.html" title="cpp/utility/compare/three way comparable"><span class="t-lines"><span>three_way_comparable</span><span>three_way_comparable_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/strong_ordering.html" title="cpp/utility/compare/strong ordering"><span class="t-lines"><span>strong_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/weak_ordering.html" title="cpp/utility/compare/weak ordering"><span class="t-lines"><span>weak_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/partial_ordering.html" title="cpp/utility/compare/partial ordering"><span class="t-lines"><span>partial_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/common_comparison_category.html" title="cpp/utility/compare/common comparison category"><span class="t-lines"><span>common_comparison_category</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/compare_three_way_result.html" title="cpp/utility/compare/compare three way result"><span class="t-lines"><span>compare_three_way_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/compare_three_way.html" title="cpp/utility/compare/compare three way"><span class="t-lines"><span>compare_three_way</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/strong_order.html" title="cpp/utility/compare/strong order"><span class="t-lines"><span>strong_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/weak_order.html" title="cpp/utility/compare/weak order"><span class="t-lines"><span>weak_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/partial_order.html" title="cpp/utility/compare/partial order"><span class="t-lines"><span>partial_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/compare_strong_order_fallback.html" title="cpp/utility/compare/compare strong order fallback"><span class="t-lines"><span>compare_strong_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/compare_weak_order_fallback.html" title="cpp/utility/compare/compare weak order fallback"><span class="t-lines"><span>compare_weak_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/compare_partial_order_fallback.html" title="cpp/utility/compare/compare partial order fallback"><span class="t-lines"><span>compare_partial_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/named_comparison_functions.html" title="cpp/utility/compare/named comparison functions"><span class="t-lines"><span>is_eq</span><span>is_lt</span><span>is_lteq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/compare/named_comparison_functions.html" title="cpp/utility/compare/named comparison functions"><span class="t-lines"><span>is_neq</span><span>is_gt</span><span>is_gteq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">通用工具</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../utility/functional.html" title="cpp/utility/functional">函数对象</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility/bit.html" title="cpp/utility/bit">位操纵</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/bitset.html" title="cpp/utility/bitset"><span class="t-lines"><span>bitset</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/hash.html" title="cpp/utility/hash"><span class="t-lines"><span>hash</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E5.85.B3.E7.B3.BB.E8.BF.90.E7.AE.97.E7.AC.A6" title="cpp/utility">关系运算符</a> <span class="t-mark-rev t-deprecated-cxx20" style="white-space: nowrap;">(C++20 弃用)</span></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/rel_ops/operator_cmp.html" title="cpp/utility/rel ops/operator cmp"><span class="t-lines"><span>rel_ops::operator!=</span><span>rel_ops::operator&gt;</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/rel_ops/operator_cmp.html" title="cpp/utility/rel ops/operator cmp"><span class="t-lines"><span>rel_ops::operator&lt;=</span><span>rel_ops::operator&gt;=</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E6.95.B4.E6.95.B0.E6.AF.94.E8.BE.83.E5.87.BD.E6.95.B0" title="cpp/utility">整数比较函数</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/intcmp.html" title="cpp/utility/intcmp"><span class="t-lines"><span>cmp_equal</span><span>cmp_less</span><span>cmp_less_than</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/intcmp.html" title="cpp/utility/intcmp"><span class="t-lines"><span>cmp_not_equal</span><span>cmp_greater</span><span>cmp_greater_than</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/in_range.html" title="cpp/utility/in range"><span class="t-lines"><span>in_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E4.BA.A4.E6.8D.A2" title="cpp/utility">交换</a>与<a href="../utility.html#.E7.B1.BB.E5.9E.8B.E8.BF.90.E7.AE.97" title="cpp/utility">类型运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/swap.html" title="cpp/algorithm/swap"><span class="t-lines"><span>swap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/ranges/swap.html" title="cpp/utility/ranges/swap"><span class="t-lines"><span>ranges::swap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/exchange.html" title="cpp/utility/exchange"><span class="t-lines"><span>exchange</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/declval.html" title="cpp/utility/declval"><span class="t-lines"><span>declval</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/to_underlying.html" title="cpp/utility/to underlying"><span class="t-lines"><span>to_underlying</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/forward.html" title="cpp/utility/forward"><span class="t-lines"><span>forward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/forward_like.html" title="cpp/utility/forward like"><span class="t-lines"><span>forward_like</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/move.html" title="cpp/utility/move"><span class="t-lines"><span>move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/move_if_noexcept.html" title="cpp/utility/move if noexcept"><span class="t-lines"><span>move_if_noexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/as_const.html" title="cpp/utility/as const"><span class="t-lines"><span>as_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">常用词汇类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/pair.html" title="cpp/utility/pair"><span class="t-lines"><span>pair</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/tuple.html" title="cpp/utility/tuple"><span class="t-lines"><span>tuple</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/optional.html" title="cpp/utility/optional"><span class="t-lines"><span>optional</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/any.html" title="cpp/utility/any"><span class="t-lines"><span>any</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/variant.html" title="cpp/utility/variant"><span class="t-lines"><span>variant</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/tuple_size.html" title="cpp/utility/tuple size"><span class="t-lines"><span>tuple_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/tuple_element.html" title="cpp/utility/tuple element"><span class="t-lines"><span>tuple_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/apply.html" title="cpp/utility/apply"><span class="t-lines"><span>apply</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/make_from_tuple.html" title="cpp/utility/make from tuple"><span class="t-lines"><span>make_from_tuple</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/expected.html" title="cpp/utility/expected"><span class="t-lines"><span>expected</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../utility/bit.html" title="cpp/utility/bit">位操纵</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bit_cast.html" title="cpp/numeric/bit cast"><span class="t-lines"><span>bit_cast</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>byteswap</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility/bit.html#.E4.BA.8C.E7.9A.84.E6.95.B4.E6.95.B0.E6.AC.A1.E5.B9.82" title="cpp/utility/bit">二的整数次幂</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="has_single_bit.html" title="cpp/numeric/has single bit"><span class="t-lines"><span>has_single_bit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bit_ceil.html" title="cpp/numeric/bit ceil"><span class="t-lines"><span>bit_ceil</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bit_floor.html" title="cpp/numeric/bit floor"><span class="t-lines"><span>bit_floor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bit_width.html" title="cpp/numeric/bit width"><span class="t-lines"><span>bit_width</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility/bit.html#.E6.97.8B.E8.BD.AC" title="cpp/utility/bit">旋转</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rotl.html" title="cpp/numeric/rotl"><span class="t-lines"><span>rotl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rotr.html" title="cpp/numeric/rotr"><span class="t-lines"><span>rotr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility/bit.html#.E8.AE.A1.E6.95.B0" title="cpp/utility/bit">计数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="countl_zero.html" title="cpp/numeric/countl zero"><span class="t-lines"><span>countl_zero</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="countl_one.html" title="cpp/numeric/countl one"><span class="t-lines"><span>countl_one</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="countr_zero.html" title="cpp/numeric/countr zero"><span class="t-lines"><span>countr_zero</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="countr_one.html" title="cpp/numeric/countr one"><span class="t-lines"><span>countr_one</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="popcount.html" title="cpp/numeric/popcount"><span class="t-lines"><span>popcount</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility/bit.html#.E7.AB.AF.E5.BA.8F" title="cpp/utility/bit">端序</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../types/endian.html" title="cpp/types/endian"><span class="t-lines"><span>endian</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/bit.html" title="cpp/header/bit">&lt;bit&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx23">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<span class="kw4">constexpr</span> T byteswap<span class="br0">(</span> T n <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>逆转给定整数 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 中的字节。
+</p><p><code>std::byteswap</code> 仅若 <code>T</code> 满足 <a href="../concepts/integral.html" title="cpp/concepts/integral"><code>integral</code></a>（即 <code>T</code> 为整数类型）才参与重载决议。若 <code>T</code> 拥有填充位则程序非良构。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> n
+</td>
+<td> -
+</td>
+<td> 整数
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<p><code>T</code> 类型的整数，其对象表示由 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 的对象表示的字节按逆序组成。
+</p>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>此函数对处理有不同端序的数据有用。
+</p>
+<table class="wikitable ftm-begin">
+
+<tr>
+<th><a href="../utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr></th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr></th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_byteswap" title="cpp/feature test"><code>__cpp_lib_byteswap</code></a></td>
+<td><a href="../compiler_support/23.html#cpp_lib_byteswap_202110L" title="cpp/compiler support/23"><code>202110L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++23)</span></td>
+<td><code>std::byteswap</code>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.AF.E8.83.BD.E7.9A.84.E5.AE.9E.E7.8E.B0">可能的实现</span></h3>
+<table class="eq-fun-cpp-table">
+
+
+<tr>
+<td>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><a href="../concepts/integral.html"><span class="kw2938">std::<span class="me2">integral</span></span></a> T<span class="sy1">&gt;</span>
+<span class="kw4">constexpr</span> T byteswap<span class="br0">(</span>T value<span class="br0">)</span> <span class="kw1">noexcept</span>
+<span class="br0">{</span>
+    static_assert<span class="br0">(</span><a href="../types/has_unique_object_representations.html"><span class="kw522">std::<span class="me2">has_unique_object_representations_v</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>, 
+                  <span class="st0">"T 不能有填充位"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> value_representation <span class="sy1">=</span> <a href="bit_cast.html"><span class="kw2687">std::<span class="me2">bit_cast</span></span></a><span class="sy1">&lt;</span><a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a><span class="sy1">&lt;</span><a href="../types/byte.html"><span class="kw2642">std::<span class="me2">byte</span></span></a>, sizeof<span class="br0">(</span>T<span class="br0">)</span><span class="sy1">&gt;&gt;</span><span class="br0">(</span>value<span class="br0">)</span><span class="sy4">;</span>
+    std<span class="sy4">::</span><a href="../algorithm/ranges/reverse.html"><span class="kw3050">ranges::<span class="me2">reverse</span></span></a><span class="br0">(</span>value_representation<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <a href="bit_cast.html"><span class="kw2687">std::<span class="me2">bit_cast</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">(</span>value_representation<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;bit&gt;</span>
+<span class="co2">#include &lt;concepts&gt;</span>
+<span class="co2">#include &lt;cstdint&gt;</span>
+<span class="co2">#include &lt;iomanip&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span><a href="../concepts/integral.html"><span class="kw2938">std::<span class="me2">integral</span></span></a> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> dump<span class="br0">(</span>T v, <span class="kw4">char</span> term <span class="sy1">=</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/hex.html"><span class="kw1786">std::<span class="me2">hex</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/uppercase.html"><span class="kw1778">std::<span class="me2">uppercase</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/setfill.html"><span class="kw1799">std::<span class="me2">setfill</span></span></a><span class="br0">(</span><span class="st0">'0'</span><span class="br0">)</span>
+              <span class="sy1">&lt;&lt;</span> <a href="../io/manip/setw.html"><span class="kw1801">std::<span class="me2">setw</span></span></a><span class="br0">(</span>sizeof<span class="br0">(</span>T<span class="br0">)</span> <span class="sy2">*</span> <span class="nu0">2</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> v <span class="sy1">&lt;&lt;</span> <span class="st0">" : "</span><span class="sy4">;</span>
+    <span class="kw1">for</span> <span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> i<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy3">!</span><span class="sy1">=</span> sizeof<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="sy2">++</span>i, v <span class="sy1">&gt;&gt;=</span> <span class="nu0">8</span><span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/setw.html"><span class="kw1801">std::<span class="me2">setw</span></span></a><span class="br0">(</span><span class="nu0">2</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">unsigned</span><span class="sy1">&gt;</span><span class="br0">(</span>T<span class="br0">(</span><span class="nu12">0xFF</span><span class="br0">)</span> <span class="sy3">&amp;</span> v<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/hex.html"><span class="kw1785">std::<span class="me2">dec</span></span></a> <span class="sy1">&lt;&lt;</span> term<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    static_assert<span class="br0">(</span>std<span class="sy4">::</span><span class="me2">byteswap</span><span class="br0">(</span><span class="st0">'a'</span><span class="br0">)</span> <span class="sy1">==</span> <span class="st0">'a'</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"U16 的 byteswap:<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw4">constexpr</span> <span class="kw4">auto</span> x <span class="sy1">=</span> <a href="../types/integer.html"><span class="kw128">std::<span class="me2">uint16_t</span></span></a><span class="br0">(</span><span class="nu12">0xCAFE</span><span class="br0">)</span><span class="sy4">;</span>
+    dump<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span>
+    dump<span class="br0">(</span>std<span class="sy4">::</span><span class="me2">byteswap</span><span class="br0">(</span>x<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>U32 的 byteswap:<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw4">constexpr</span> <span class="kw4">auto</span> y <span class="sy1">=</span> <a href="../types/integer.html"><span class="kw129">std::<span class="me2">uint32_t</span></span></a><span class="br0">(</span>0xDEADBEEFu<span class="br0">)</span><span class="sy4">;</span>
+    dump<span class="br0">(</span>y<span class="br0">)</span><span class="sy4">;</span>
+    dump<span class="br0">(</span>std<span class="sy4">::</span><span class="me2">byteswap</span><span class="br0">(</span>y<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>U64 的 byteswap:<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw4">constexpr</span> <span class="kw4">auto</span> z <span class="sy1">=</span> <a href="../types/integer.html"><span class="kw130">std::<span class="me2">uint64_t</span></span></a><span class="br0">{</span>0x0123456789ABCDEFull<span class="br0">}</span><span class="sy4">;</span>
+    dump<span class="br0">(</span>z<span class="br0">)</span><span class="sy4">;</span>
+    dump<span class="br0">(</span>std<span class="sy4">::</span><span class="me2">byteswap</span><span class="br0">(</span>z<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">U16 的 byteswap:
+CAFE : FE CA
+FECA : CA FE
+ 
+U32 的 byteswap:
+DEADBEEF : EF BE AD DE
+EFBEADDE : DE AD BE EF
+ 
+U64 的 byteswap:
+0123456789ABCDEF : EF CD AB 89 67 45 23 01
+EFCDAB8967452301 : 01 23 45 67 89 AB CD EF</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/endian.html" title="cpp/types/endian"> <span class="t-lines"><span>endian</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指示标量类型的端序 <br> <span class="t-mark" style="white-space: nowrap;">(枚举)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="rotl.html" title="cpp/numeric/rotl"> <span class="t-lines"><span>rotl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   计算逐位左旋转的结果  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="rotr.html" title="cpp/numeric/rotr"> <span class="t-lines"><span>rotr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   计算逐位右旋转的结果  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 6803/1000000
+Preprocessor generated node count: 12049/1000000
+Post‐expand include size: 244909/4194304 bytes
+Template argument size: 50409/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:13839-0!*!0!!zh!*!zh!* and timestamp 20250323194112 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/byteswap&amp;oldid=97199">https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/byteswap&amp;oldid=97199</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/numeric/byteswap">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年1月3日 (星期五) 01:15。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 1.198 secs. -->
+	</body>
+<!-- Cached 20250323194112 -->
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>空终止多字节字符串</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/string/multibyte","wgTitle":"c/string/multibyte","wgCurRevisionId":98970,"wgArticleId":1295,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/string/multibyte","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_string_multibyte skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">空终止多字节字符串</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../string.html" title="c/string">string</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../string.html" title="c/string">字符串库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="byte.html" title="c/string/byte">空终止字节字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">空终止多字节字符串</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="wide.html" title="c/string/wide">空终止宽字符串</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink">空终止多字节字符串</strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="multibyte.html#.E5.87.BD.E6.95.B0" title="c/string/multibyte">函数</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="multibyte.html#.E5.A4.9A.E5.AD.97.E8.8A.82.2F.E5.AE.BD.E5.AD.97.E7.AC.A6.E4.B8.B2.E8.BD.AC.E6.8D.A2" title="c/string/multibyte">宽/多字节转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbsinit.html" title="c/string/multibyte/mbsinit"><span class="t-lines"><span>mbsinit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbstowcs.html" title="c/string/multibyte/mbstowcs"><span class="t-lines"><span>mbstowcs</span><span>mbstowcs_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/btowc.html" title="c/string/multibyte/btowc"><span class="t-lines"><span>btowc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbrtowc.html" title="c/string/multibyte/mbrtowc"><span class="t-lines"><span>mbrtowc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbsrtowcs.html" title="c/string/multibyte/mbsrtowcs"><span class="t-lines"><span>mbsrtowcs</span><span>mbsrtowcs_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbrtoc8.html" title="c/string/multibyte/mbrtoc8"><span class="t-lines"><span>mbrtoc8</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/c8rtomb.html" title="c/string/multibyte/c8rtomb"><span class="t-lines"><span>c8rtomb</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbrtoc16.html" title="c/string/multibyte/mbrtoc16"><span class="t-lines"><span>mbrtoc16</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/c16rtomb.html" title="c/string/multibyte/c16rtomb"><span class="t-lines"><span>c16rtomb</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/c32rtomb.html" title="c/string/multibyte/c32rtomb"><span class="t-lines"><span>c32rtomb</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbrtoc32.html" title="c/string/multibyte/mbrtoc32"><span class="t-lines"><span>mbrtoc32</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mblen.html" title="c/string/multibyte/mblen"><span class="t-lines"><span>mblen</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbtowc.html" title="c/string/multibyte/mbtowc"><span class="t-lines"><span>mbtowc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/wctomb.html" title="c/string/multibyte/wctomb"><span class="t-lines"><span>wctomb</span><span>wctomb_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/wcstombs.html" title="c/string/multibyte/wcstombs"><span class="t-lines"><span>wcstombs</span><span>wcstombs_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/wctob.html" title="c/string/multibyte/wctob"><span class="t-lines"><span>wctob</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/wcrtomb.html" title="c/string/multibyte/wcrtomb"><span class="t-lines"><span>wcrtomb</span><span>wcrtomb_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/wcsrtombs.html" title="c/string/multibyte/wcsrtombs"><span class="t-lines"><span>wcsrtombs</span><span>wcsrtombs_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbrlen.html" title="c/string/multibyte/mbrlen"><span class="t-lines"><span>mbrlen</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="multibyte.html#.E7.B1.BB.E5.9E.8B" title="c/string/multibyte">类型</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/mbstate_t.html" title="c/string/multibyte/mbstate t"><span class="t-lines"><span>mbstate_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/char8_t.html" title="c/string/multibyte/char8 t"><span class="t-lines"><span>char8_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/char16_t.html" title="c/string/multibyte/char16 t"><span class="t-lines"><span>char16_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte/char32_t.html" title="c/string/multibyte/char32 t"><span class="t-lines"><span>char32_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="multibyte.html#.E5.AE.8F" title="c/string/multibyte">宏</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte.html#.E5.AE.8F" title="c/string/multibyte"><span class="t-lines"><span>MB_LEN_MAX</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multibyte.html#.E5.AE.8F" title="c/string/multibyte"><span class="t-lines"><span>MB_CUR_MAX</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>空终止多字节字符串（NTMBS），或称“多字节字符串”，是后面跟随一个零值字节（空终止字符'\0'）的一串非零字节。
+</p><p>字符串中存储的每个字符可能占用多于一个字节。在多字节字符串中，用于表示字符的编码是本地环境限定的：它可以是 UTF-8、GB18030、EUC-JP、Shift-JIS 等等。例如，字符数组 <span class="t-c"><span class="mw-geshi c source-c"><span class="br0">{</span><span class="st0">'<span class="es2">\xe4</span>'</span>,<span class="st0">'<span class="es2">\xbd</span>'</span>,<span class="st0">'<span class="es2">\xa0</span>'</span>,<span class="st0">'<span class="es2">\xe5</span>'</span>,<span class="st0">'<span class="es2">\xa5</span>'</span>,<span class="st0">'<span class="es2">\xbd</span>'</span>,<span class="st0">'<span class="es5">\0</span>'</span><span class="br0">}</span></span></span> 是一个以 UTF-8 多字节编码表示字符串 <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">"你好"</span></span></span> 的 NTMBS：前三字节编码字符 "你"，后三字节编码字符 "好"。用 GB18030 编码的相同字符串是字符数组 <span class="t-c"><span class="mw-geshi c source-c"><span class="br0">{</span><span class="st0">'<span class="es2">\xc4</span>'</span>, <span class="st0">'<span class="es2">\xe3</span>'</span>, <span class="st0">'<span class="es2">\xba</span>'</span>, <span class="st0">'<span class="es2">\xc3</span>'</span>, <span class="st0">'<span class="es5">\0</span>'</span><span class="br0">}</span></span></span>，其中两个字符都编码成双字节序列。
+</p><p>一些多字节字符串中，任何给定的多字节字符序列可能会根据前置的字节序列表示不同的字符，这个前置序列称为“迁移序列”。此类编码是依赖状态的：需要当前迁移状态来转译每一个字符。只有起始和终止均为初始迁移状态，NTMBS 才是合法的：即若多字节编码使用迁移序列，则字符串结束前的整个序列必须为未迁移序列。这类编码的例子是 BOCU-1 和 <a rel="nofollow" class="external text" href="https://www.unicode.org/reports/tr6">SCSU</a>。
+</p><p>多字节字符串与<a href="byte.html" title="c/string/byte">空终止字节字符串</a>（NTBS）布局兼容，即是说，可以使用同样的工具存储、复制和检验，除了计算字符数的情况。若正确的本地环境正在发挥作用，则输入/输出函数亦可控制多字节字符串。运用下列依赖本地环境的函数，多字节字符串可以与宽字符串相互转换：
+</p>
+<h3><span class="mw-headline" id=".E5.87.BD.E6.95.B0">函数</span></h3>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.A4.9A.E5.AD.97.E8.8A.82.2F.E5.AE.BD.E5.AD.97.E7.AC.A6.E8.BD.AC.E6.8D.A2"> 多字节/宽字符转换 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/stdlib.html" title="c/header/stdlib"><tt>&lt;stdlib.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mblen.html" title="c/string/multibyte/mblen"> <span class="t-lines"><span>mblen</span></span></a></div></div>
+</td>
+<td>   返回下一个多字节字符的字节数 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbtowc.html" title="c/string/multibyte/mbtowc"> <span class="t-lines"><span>mbtowc</span></span></a></div></div>
+</td>
+<td>   转换下一个多字节字符为宽字符 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/wctomb.html" title="c/string/multibyte/wctomb"> <span class="t-lines"><span>wctomb</span><span>wctomb_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   转换宽字符为多字节表示 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbstowcs.html" title="c/string/multibyte/mbstowcs"> <span class="t-lines"><span>mbstowcs</span><span>mbstowcs_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   转换窄多字节字符串为宽字符串 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/wcstombs.html" title="c/string/multibyte/wcstombs"> <span class="t-lines"><span>wcstombs</span><span>wcstombs_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   转换宽字符串为窄多字节字符串 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/wchar.html" title="c/header/wchar"><tt>&lt;wchar.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbsinit.html" title="c/string/multibyte/mbsinit"> <span class="t-lines"><span>mbsinit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div>
+</td>
+<td>   检查 mbstate_t 对象是否表示初始迁移状态 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/btowc.html" title="c/string/multibyte/btowc"> <span class="t-lines"><span>btowc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div>
+</td>
+<td>  若可能，加宽单字节窄字符为宽字符 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/wctob.html" title="c/string/multibyte/wctob"> <span class="t-lines"><span>wctob</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div>
+</td>
+<td>   若可能，收窄宽字符为单字节窄字符 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbrlen.html" title="c/string/multibyte/mbrlen"> <span class="t-lines"><span>mbrlen</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div>
+</td>
+<td>   给定状态，返回下一个多字节字符的字节数 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbrtowc.html" title="c/string/multibyte/mbrtowc"> <span class="t-lines"><span>mbrtowc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div>
+</td>
+<td>   给定状态，转换下一个多字节字符为宽字符 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/wcrtomb.html" title="c/string/multibyte/wcrtomb"> <span class="t-lines"><span>wcrtomb</span><span>wcrtomb_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   给定状态，转换宽字符成其多字节表示 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbsrtowcs.html" title="c/string/multibyte/mbsrtowcs"> <span class="t-lines"><span>mbsrtowcs</span><span>mbsrtowcs_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   给定状态，转换窄多字节字符串为宽字符串 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/wcsrtombs.html" title="c/string/multibyte/wcsrtombs"> <span class="t-lines"><span>wcsrtombs</span><span>wcsrtombs_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   给定状态，转换宽字符串为窄多字节字符串 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/uchar.html" title="c/header/uchar"><tt>&lt;uchar.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbrtoc8.html" title="c/string/multibyte/mbrtoc8"> <span class="t-lines"><span>mbrtoc8</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>   转换窄多字节字符为 UTF-8 编码  <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/c8rtomb.html" title="c/string/multibyte/c8rtomb"> <span class="t-lines"><span>c8rtomb</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>   转换 UTF-8 字符串为窄多字节编码  <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbrtoc16.html" title="c/string/multibyte/mbrtoc16"> <span class="t-lines"><span>mbrtoc16</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   转换窄多字节字符为 UTF-16 编码  <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/c16rtomb.html" title="c/string/multibyte/c16rtomb"> <span class="t-lines"><span>c16rtomb</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   转换 UTF-16 字符为窄多字节编码 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbrtoc32.html" title="c/string/multibyte/mbrtoc32"> <span class="t-lines"><span>mbrtoc32</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   转换窄多字节字符为 UTF-32 编码 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/c32rtomb.html" title="c/string/multibyte/c32rtomb"> <span class="t-lines"><span>c32rtomb</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>  转换 UTF-32 字符为窄多字节编码 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B">类型</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/uchar.html" title="c/header/uchar"><tt>&lt;uchar.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/wchar.html" title="c/header/wchar"><tt>&lt;wchar.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/mbstate_t.html" title="c/string/multibyte/mbstate t"> <span class="t-lines"><span>mbstate_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div>
+</td>
+<td>   迭代多字节字符串所需的转换信息 <br> <span class="t-mark" style="white-space: nowrap;">(结构体)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/uchar.html" title="c/header/uchar"><tt>&lt;uchar.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/char8_t.html" title="c/string/multibyte/char8 t"> <span class="t-lines"><span>char8_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div>
+</td>
+<td>   8 位字符类型 <br> <span class="t-mark" style="white-space: nowrap;">(typedef)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/char16_t.html" title="c/string/multibyte/char16 t"> <span class="t-lines"><span>char16_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>  16 位字符类型 <br> <span class="t-mark" style="white-space: nowrap;">(typedef)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="multibyte/char32_t.html" title="c/string/multibyte/char32 t"> <span class="t-lines"><span>char32_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>  32 位字符类型 <br> <span class="t-mark" style="white-space: nowrap;">(typedef)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E5.AE.8F">宏</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/limits.html" title="c/header/limits"><tt>&lt;limits.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>MB_LEN_MAX</span></span></div></div>
+</td>
+<td>   所支持的任何本地环境中多字节字符的最大字节数  <br> <span class="t-mark" style="white-space: nowrap;">(宏常量)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/stdlib.html" title="c/header/stdlib"><tt>&lt;stdlib.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>MB_CUR_MAX</span></span></div></div>
+</td>
+<td>  当前本地环境中的多字节字符最大字节数<br><span class="t-mark" style="white-space: nowrap;">(宏变量)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-23">
+<ul><li> C23 标准（ISO/IEC 9899:2024）：
+</li></ul>
+<dl><dd><ul><li> 7.10 Sizes of integer types &lt;limits.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.22 General utilities &lt;stdlib.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.28 Unicode utilities &lt;uchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.29 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.31.12 General utilities &lt;stdlib.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.31.16 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.6 General utilities &lt;stdlib.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.9 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-17">
+<ul><li> C17 标准（ISO/IEC 9899:2018）：
+</li></ul>
+<dl><dd><ul><li> 7.10 Sizes of integer types &lt;limits.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.22 General utilities &lt;stdlib.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.28 Unicode utilities &lt;uchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.29 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.31.12 General utilities &lt;stdlib.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.31.16 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.6 General utilities &lt;stdlib.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.9 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 TBD 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 标准（ISO/IEC 9899:2011）：
+</li></ul>
+<dl><dd><ul><li> 7.10 Sizes of integer types &lt;limits.h&gt; （第 222 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.22 General utilities &lt;stdlib.h&gt; （第 340-360 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.28 Unicode utilities &lt;uchar.h&gt; （第 398-401 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.29 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 402-446 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.31.12 General utilities &lt;stdlib.h&gt; （第 456 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.31.16 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 456 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.6 General utilities &lt;stdlib.h&gt; （第 604-614 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.9 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 627-651 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 标准（ISO/IEC 9899:1999）：
+</li></ul>
+<dl><dd><ul><li> 7.10 Sizes of integer types &lt;limits.h&gt; （第 203 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.20 General utilities &lt;stdlib.h&gt; （第 306-324 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.24 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 348-392 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.26.10 General utilities &lt;stdlib.h&gt; （第 402 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.26.12 Extended multibyte and wide character utilities &lt;wchar.h&gt; （第 402 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 标准（ISO/IEC 9899:1990）： 
+</li></ul>
+<dl><dd><ul><li> 4.1.4 Limits &lt;float.h&gt; and &lt;limits.h&gt; 
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4.10 GENERAL UTILITIES &lt;stdlib.h&gt; 
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4.13.7 General utilities &lt;stdlib.h&gt; 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>空终止多字节字符串</span></span>的 <span><span><a href="../../cpp/string/multibyte.html" title="cpp/string/multibyte">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 6729/1000000
+Preprocessor generated node count: 9288/1000000
+Post‐expand include size: 237304/4194304 bytes
+Template argument size: 46783/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:1295-0!*!0!!zh!*!zh!* and timestamp 20250318194300 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/string/multibyte&amp;oldid=98970">https://zh.cppreference.com/mwiki/index.php?title=c/string/multibyte&amp;oldid=98970</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/string/multibyte">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月15日 (星期六) 02:38。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 0.750 secs. -->
+	</body>
+<!-- Cached 20250318194301 -->
+</html>

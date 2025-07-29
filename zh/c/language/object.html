@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>对象与对齐</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/language/object","wgTitle":"c/language/object","wgCurRevisionId":98135,"wgArticleId":7930,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/language/object","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_language_object skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">对象与对齐</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../language.html" title="c/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="c/language">C 语言</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> <a href="basic_concepts.html" title="c/language/basic concepts">基本概念</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="../keyword.html" title="c/keyword">关键词</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="../preprocessor.html" title="c/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="statements.html" title="c/language/statements">语句</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html" title="c/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="c/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="declarations.html" title="c/language/declarations">声明</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="functions.html" title="c/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"> 杂项</td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="history.html" title="c/language/history">C 的历史</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="../experimental.html" title="c/experimental">技术规范</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="basic_concepts.html" title="c/language/basic concepts">基本概念</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../comment.html" title="c/comment">注释</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ascii.html" title="c/language/ascii">ASCII</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="charset.html" title="c/language/charset">字符集</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="translation_phases.html" title="c/language/translation phases">翻译阶段</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="punctuators.html" title="c/language/punctuators">标点</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="identifier.html" title="c/language/identifier">标识符</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scope.html" title="c/language/scope">作用域</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lifetime.html" title="c/language/lifetime">生存期</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="name_space.html" title="c/language/name space">查找与命名空间</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type.html" title="c/language/types" class="mw-redirect">类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="arithmetic_types.html" title="c/language/arithmetic types">算术类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">对象与对齐</strong></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="main_function.html" title="c/language/main function"><code>main()</code> 函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="as_if.html" title="c/language/as if">如同规则</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="behavior.html" title="c/language/behavior">未定义行为</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_model.html" title="c/language/memory model">内存模型与数据竞争</a></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>C 程序创建、销毁、访问并操作对象。
+</p><p>C 中，一个对象是执行环境中<a href="memory_model.html" title="c/language/memory model">数据存储</a>的一个区域，其内容可以表示<i>值</i>（值是对象的内容转译为特定<a href="type.html" title="c/language/types" class="mw-redirect">类型</a>时的含义）。
+</p><p>每个对象拥有
+</p>
+<ul><li> 大小（可由 <a href="sizeof.html" title="c/language/sizeof"><code>sizeof</code></a> 确定）
+</li><li> 对齐要求<span class="t-rev-inl t-since-c11"><span>（可由 <span class="t-rev-inl t-until-c23"><span><a href="_Alignof.html" title="c/language/ Alignof"><code>_Alignof</code></a></span><span><span class="t-mark-rev t-until-c23" style="white-space: nowrap;">(C23 前)</span></span></span><span class="t-rev-inl t-since-c23"><span><a href="_Alignof.html" title="c/language/alignof" class="mw-redirect"><code>alignof</code></a></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23 起)</span></span></span> 确定）</span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span></span></span>
+</li><li> <a href="storage_duration.html" title="c/language/storage duration">存储期</a>（自动、静态、分配、线程局域）
+</li><li> <a href="lifetime.html" title="c/language/lifetime">生存期</a>（等于存储期或临时）
+</li><li> 有效类型（见下）
+</li><li> 值（可以是不确定的）
+</li><li> 可选项，表示该对象的<a href="identifier.html" title="c/language/identifier">标识符</a>
+</li></ul>
+<p>对象由<a href="declarations.html" title="c/language/declarations">声明</a>、<a href="../memory.html" title="c/memory">分配函数</a>、<a href="string_literal.html" title="c/language/string literal">字符串字面量</a>、<a href="compound_literal.html" title="c/language/compound literal">复合字面量</a>，及返回<a href="lifetime.html" title="c/language/lifetime">拥有数组类型的结构体或联合体</a>的非左值表达式创建。
+</p>
+<h3><span class="mw-headline" id=".E5.AF.B9.E8.B1.A1.E8.A1.A8.E7.A4.BA">对象表示</span></h3>
+<p>除了<a href="bit_field.html" title="c/language/bit field">位域</a>，每个对象都是由一个或更多字节组成的，每个字节由 <span class="t-lc"><a href="../types/limits.html" title="c/types/limits">CHAR_BIT</a></span> 位组成，而且每个对象可以用 <span class="t-lc"><a href="../string/byte/memcpy.html" title="c/string/byte/memcpy">memcpy</a></span> 复制到 <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span><span class="br0">[</span>n<span class="br0">]</span></span></span> 类型的对象中，这里 <code>n</code> 是对象的大小。生成的数组内容被称为<i>对象表示</i>。
+</p><p>若两对象拥有相同的对象表示，则它们比较相等（除了它们是浮点数 NaN 的情况）。逆命题非真：两个比较相等的对象可以拥有不同的对象表示，因为并非对象表示的每一位都需要参与其值。这些位可以用于填充以满足对齐要求，等同性检测，指示陷阱表示等。
+</p><p>若一个对象表示不表示该对象类型的任何值，则它被称为<i>陷阱表示</i>。以异于字符类型左值表达式读取的方式访问陷阱表示是未定义行为。结构体或联合体的值始终不是陷阱表示，即使任何一个成员的值是陷阱表示。
+</p><p>对于 <span class="mw-geshi c source-c"><span class="kw4">char</span></span>、<span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span>、<span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span></span> 类型的对象，对象表示的每一位都要求参与其值表示，而且每种可能的位模式都表示不同的值（不允许填充位、陷阱位或多重表示）。
+</p><p><a href="arithmetic_types.html#.E6.95.B4.E6.95.B0.E7.B1.BB.E5.9E.8B" title="c/language/arithmetic types">整数类型</a>（<span class="mw-geshi c source-c"><span class="kw4">short</span></span>、<span class="mw-geshi c source-c"><span class="kw4">int</span></span>、<span class="mw-geshi c source-c"><span class="kw4">long</span></span>、<span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span></span>）对象占用多个字节时，这些字节的用法是实现定义的，不过二种有主导地位的实现是<i>大端 (big-endian)</i>（POWER、Sparc、Itanium）和<i>小端 (little-endian)</i>（x86、x86-64）：大端平台将最高位字节存储于整数所占据的存储区域的最低地址，小端平台将最低位字节存储于最低地址。细节见<a href="https://en.wikipedia.org/wiki/Endianness" class="extiw" title="enwiki:Endianness">端序</a>。参阅下方示例。
+</p><p>尽管大多数实现都不允许整数的陷阱表示、填充位或多重表示，也还存在例外；例如 Itanium 上的整数类型值<a rel="nofollow" class="external text" href="https://web.archive.org/web/20170830125905/https://blogs.msdn.microsoft.com/oldnewthing/20040119-00/?p=41003">就可以是陷阱表示</a>。
+</p>
+<h3><span class="mw-headline" id=".E6.9C.89.E6.95.88.E7.B1.BB.E5.9E.8B">有效类型</span></h3>
+<p>每个对象都拥有<i>有效类型</i>，它决定何种<a href="value_category.html" title="c/language/value category">左值</a>访问合法，何种违反严格别名使用规则。
+</p><p>若对象是由<a href="declarations.html" title="c/language/declarations">声明</a>创建的，则该对象的声明类型即是对象的<i>有效类型</i>。
+</p><p>若对象由<a href="../memory.html" title="c/memory">分配函数</a>（包含 <span class="t-lc"><a href="../memory/realloc.html" title="c/memory/realloc">realloc</a></span>）创建，则它没有声明类型。这种对象以下列方式获得有效类型：
+</p>
+<ul><li> 首次通过拥有异于字符类型的类型的左值写入该对象，无论何时该左值的类型都会成为该对象该次写入和所有后继读取的<i>有效类型</i>。
+</li><li> <span class="t-lc"><a href="../string/byte/memcpy.html" title="c/string/byte/memcpy">memcpy</a></span> 或 <span class="t-lc"><a href="../string/byte/memmove.html" title="c/string/byte/memmove">memmove</a></span> 复制另一个对象到该对象，无论何时源对象的有效类型（若它有）都会成为该对象该次写入和所有后继读取的<i>有效类型</i>。
+</li><li> 任何其他对无声明类型的对象的访问，有效类型是访问所用的左值类型。
+</li></ul>
+<h3><span class="mw-headline" id=".E4.B8.A5.E6.A0.BC.E5.88.AB.E5.90.8D.E4.BD.BF.E7.94.A8">严格别名使用</span></h3>
+<p>给定一个拥有<i>有效类型</i> <code>T1</code> 的对象，使用相异类型的 <code>T2</code> 左值表达式（典型的是解引用指针）访问它是未定义行为，除非：
+</p>
+<ul><li> <code>T2</code> 和 <code>T1</code> 是<a href="type.html#.E5.85.BC.E5.AE.B9.E7.B1.BB.E5.9E.8B" title="c/language/types" class="mw-redirect">兼容类型</a>。
+</li><li> <code>T2</code> 是与 <code>T1</code> <a href="type.html#.E5.85.BC.E5.AE.B9.E7.B1.BB.E5.9E.8B" title="c/language/types" class="mw-redirect">兼容</a>的类型的 cvr 限定版本。
+</li><li> <code>T2</code> 是与 <code>T1</code> <a href="type.html#.E5.85.BC.E5.AE.B9.E7.B1.BB.E5.9E.8B" title="c/language/types" class="mw-redirect">兼容</a>的类型的有符号或无符号版本。
+</li><li> <code>T2</code> 是聚合体或联合体类型，其成员中包含一个前述类型（递归地包括子聚合体或被包含联合体的成员）。
+</li><li> <code>T2</code> 是字符类型（<code>char</code>、<code>signed char</code> 或 <code>unsigned char</code>）。
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">7</span><span class="sy4">;</span>
+<span class="kw4">char</span><span class="sy2">*</span> pc <span class="sy1">=</span> <span class="br0">(</span><span class="kw4">char</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="sy3">&amp;</span>i<span class="br0">)</span><span class="sy4">;</span>
+<span class="kw1">if</span><span class="br0">(</span>pc<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy1">==</span> <span class="st0">'\x7'</span><span class="br0">)</span> <span class="br0">{</span> <span class="co1">// 通过 char 别名使用是 OK 的</span>
+    <a href="../io/puts.html"><span class="kw836">puts</span></a><span class="br0">(</span><span class="st0">"This system is little-endian"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span>
+    <a href="../io/puts.html"><span class="kw836">puts</span></a><span class="br0">(</span><span class="st0">"This system is big-endian"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">float</span><span class="sy2">*</span> pf <span class="sy1">=</span> <span class="br0">(</span><span class="kw4">float</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="sy3">&amp;</span>i<span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">float</span> d <span class="sy1">=</span> <span class="sy2">*</span>pf<span class="sy4">;</span> <span class="co1">// UB：float 左值 *p 不能用来访问 int</span></pre></div></div>
+<p>这些规则控制接受二个指针的函数，在通过一个指针写入后，是否必须重读取另一个：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co1">// int* 与 double* 不能别名使用</span>
+<span class="kw4">void</span> f1<span class="br0">(</span><span class="kw4">int</span> <span class="sy2">*</span>pi, <span class="kw4">double</span> <span class="sy2">*</span>pd, <span class="kw4">double</span> d<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 从 *pi 的读取可以只做一次，在循环前</span>
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> i <span class="sy1">&lt;</span> <span class="sy2">*</span>pi<span class="sy4">;</span> i<span class="sy2">++</span><span class="br0">)</span> <span class="sy2">*</span>pd<span class="sy2">++</span> <span class="sy1">=</span> d<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> S <span class="br0">{</span> <span class="kw4">int</span> a, b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// int* 和 struct S* 可以别名使用，因为 S 拥有 int 类型的成员</span>
+<span class="kw4">void</span> f2<span class="br0">(</span><span class="kw4">int</span> <span class="sy2">*</span>pi, <span class="kw1">struct</span> S <span class="sy2">*</span>ps, <span class="kw1">struct</span> S s<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 从 *pi 的读取必须在每次通过 *ps 写入后进行</span>
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> i <span class="sy1">&lt;</span> <span class="sy2">*</span>pi<span class="sy4">;</span> i<span class="sy2">++</span><span class="br0">)</span>
+        <span class="sy2">*</span>ps<span class="sy2">++</span> <span class="sy1">=</span> s<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>注意 <a href="restrict.html" title="c/language/restrict">restrict 限定符</a>可用于指示二个指针不用作别名使用，即使规则允许它们如此。
+</p><p>注意类型双关也可以通过<a href="union.html" title="c/language/union">联合体</a>的非活跃成员进行。
+</p>
+<h3><span class="mw-headline" id=".E5.AF.B9.E9.BD.90">对齐</span></h3>
+<p>每个完整<a href="type.html#.E7.B1.BB.E5.9E.8B.E7.BB.84.E5.88.AB" title="c/language/types" class="mw-redirect">对象类型</a>拥有一个称作<i>对齐要求</i>的属性，它是一个 <span class="t-lc"><a href="../types/size_t.html" title="c/types/size t">size_t</a></span> 类型的整数值，表示此类型对象可以分配的相继地址之间的字节数。合法的对齐值是二的非负数次幂。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-c11"><td>
+<p>类型的对齐要求可以通过 <span class="t-rev-inl t-until-c23"><span><a href="_Alignof.html" title="c/language/ Alignof"><code>_Alignof</code></a></span><span><span class="t-mark-rev t-until-c23" style="white-space: nowrap;">(C23 前)</span></span></span><span class="t-rev-inl t-since-c23"><span><a href="_Alignof.html" title="c/language/alignof" class="mw-redirect"><code>alignof</code></a></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23 起)</span></span></span> 获得。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span></td></tr>
+</table>
+<p>为了满足结构体所有对象的对齐要求，一些成员后面可能会插入填充位。
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdalign.h&gt;</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+ 
+<span class="co1">// struct S 的对象可以分配于任何地址</span>
+<span class="co1">// 因为 S.a 和 S.b 可以分配于任何地址</span>
+<span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">char</span> a<span class="sy4">;</span> <span class="co1">// 成员对象大小：1，对齐：1</span>
+    <span class="kw4">char</span> b<span class="sy4">;</span> <span class="co1">// 成员对象大小：1，对齐：1</span>
+<span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 结构体对象大小：2，对齐：1</span>
+ 
+<span class="co1">// struct X 的对象必须分配于 4字节边界</span>
+<span class="co1">// 因为 X.n 必须分配于 4 字节边界</span>
+<span class="co1">// 因为 int 的对齐要求（通常）是 4</span>
+<span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="kw4">int</span> n<span class="sy4">;</span>  <span class="co1">// 成员对象大小：4，对齐：4</span>
+    <span class="kw4">char</span> c<span class="sy4">;</span> <span class="co1">// 成员对象大小：1，对齐：1</span>
+    <span class="co1">// 剩余的三个字节进行空位填充</span>
+<span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 结构体对象大小：8，对齐：4</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"sizeof(struct S) = %zu<span class="es1">\n</span>"</span>, <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw1">struct</span> S<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"alignof(struct S) = %zu<span class="es1">\n</span>"</span>, alignof<span class="br0">(</span><span class="kw1">struct</span> S<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"sizeof(struct X) = %zu<span class="es1">\n</span>"</span>, <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw1">struct</span> X<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"alignof(struct X) = %zu<span class="es1">\n</span>"</span>, alignof<span class="br0">(</span><span class="kw1">struct</span> X<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">sizeof(struct S) = 2
+alignof(struct S) = 1
+sizeof(struct X) = 8
+alignof(struct X) = 4</pre></div></div> 
+</div>
+<p>每个对象类型将其对齐要求强加于该类型的每个对象。所有类型中，最严格（最大）的基础对齐是 <span class="t-lc"><a href="../types/max_align_t.html" title="c/types/max align t">max_align_t</a></span> 的对齐。最弱（最小）的对齐是字符类型（<span class="mw-geshi c source-c"><span class="kw4">char</span></span>、<span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span> 及 <span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span></span>）的对齐，且等于 <span class="mw-geshi c source-c"><span class="nu0">1</span></span>。最严格（最大）的<i>基础对齐</i>是实现定义的<span class="t-rev-inl t-since-c11"><span>，并等于 <span class="t-lc"><a href="../types/max_align_t.html" title="c/types/max align t">max_align_t</a></span> 的对齐</span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span></span></span>。
+</p><p>基础对齐对于所有类型的存储期的对象都得到支持。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-c11"><td>
+<p>若用 <span class="t-rev-inl t-until-c23"><span><a href="_Alignof.html" title="c/language/ Alignof"><code>_Alignof</code></a></span><span><span class="t-mark-rev t-until-c23" style="white-space: nowrap;">(C23 前)</span></span></span><span class="t-rev-inl t-since-c23"><span><a href="_Alignof.html" title="c/language/alignof" class="mw-redirect"><code>alignof</code></a></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23 起)</span></span></span> 令一个对象的对齐严格于（大于）<span class="t-lc"><a href="../types/max_align_t.html" title="c/types/max align t">max_align_t</a></span>，则它拥有<i>扩展对齐要求</i>。成员拥有扩展对齐的结构体或联合体是<i>过对齐类型</i>。是否支持过对齐类型是实现定义的，而且对于每种<a href="storage_duration.html" title="c/language/storage duration">存储期</a>的支持可以不同。
+</p><p>若结构体或联合体 <code>S</code> 无任何过拥有对齐类型，或用指定扩展对齐的对齐说明符声明的成员，则 <code>S</code> 拥有基础对齐。
+</p><p>每个<a href="arithmetic_types.html" title="c/language/arithmetic types">算术</a>或<a href="pointer.html" title="c/language/pointer">指针</a>类型的<a href="atomic.html" title="c/language/atomic">原子</a>版本均拥有基础对齐。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2396.htm#dr_445">DR 445</a>
+</td>
+<td> C11
+</td>
+<td> 一个类型可能在不涉及 <span class="mw-geshi c source-c">_Alignas</span> 的情况下有扩展对齐
+</td>
+<td> 它必须有基础对齐
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-17">
+<ul><li> C17 标准（ISO/IEC 9899:2018）：
+</li></ul>
+<dl><dd><ul><li> 3.15 object （第 5 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.2.6 Representations of types （第 33-35 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.2.8 Alignment of objects （第 36-37 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.5/6-7 Expressions （第 55-56 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 标准（ISO/IEC 9899:2011）：
+</li></ul>
+<dl><dd><ul><li> 3.15 object （第 6 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.2.6 Representations of types （第 44-46 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.2.8 Alignment of objects （第 48-49 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.5/6-7 Expressions （第 77 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 标准（ISO/IEC 9899:1999）：
+</li></ul>
+<dl><dd><ul><li> 3.2 alignment （第 3 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 3.14 object （第 5 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.2.6 Representations of types （第 37-39 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.5/6-7 Expressions （第 67-68 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 标准（ISO/IEC 9899:1990）： 
+</li></ul>
+<dl><dd><ul><li> 1.6 Definitions of terms 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>对象</span></span>的 <span><span><a href="../../cpp/language/object.html" title="cpp/language/object">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 2415/1000000
+Preprocessor generated node count: 6803/1000000
+Post‐expand include size: 45443/4194304 bytes
+Template argument size: 12024/4194304 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:7930-0!*!0!!zh!*!zh!* and timestamp 20250318223748 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/language/object&amp;oldid=98135">https://zh.cppreference.com/mwiki/index.php?title=c/language/object&amp;oldid=98135</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/language/object">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年1月31日 (星期五) 07:53。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 0.655 secs. -->
+	</body>
+<!-- Cached 20250318223748 -->
+</html>

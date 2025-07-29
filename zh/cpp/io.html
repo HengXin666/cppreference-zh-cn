@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>输入/输出库</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../common/favicon.ico">
+<link rel="stylesheet" href="../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/io","wgTitle":"cpp/io","wgCurRevisionId":98047,"wgArticleId":745,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/io","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_io skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">输入/输出库</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../cpp.html" title="cpp">cpp</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">输入/输出库</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink">输入/输出库</strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="io/manip.html" title="cpp/io/manip">I/O 操纵符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="io.html#.E6.89.93.E5.8D.B0.E5.87.BD.E6.95.B0_.28C.2B.2B23_.E8.B5.B7.29" title="cpp/io">打印函数</a> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="io/c.html" title="cpp/io/c">C 风格 I/O</a></td></tr>
+<tr class="t-nv-h1"><td colspan="5">缓冲区</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf"><span class="t-lines"><span>basic_streambuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_filebuf.html" title="cpp/io/basic filebuf"><span class="t-lines"><span>basic_filebuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_stringbuf.html" title="cpp/io/basic stringbuf"><span class="t-lines"><span>basic_stringbuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_spanbuf.html" title="cpp/io/basic spanbuf"><span class="t-lines"><span>basic_spanbuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/strstreambuf.html" title="cpp/io/strstreambuf"><span class="t-lines"><span>strstreambuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="C++98 中弃用，C++26 中移除">C++98/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_syncbuf.html" title="cpp/io/basic syncbuf"><span class="t-lines"><span>basic_syncbuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">流</td></tr>
+<tr class="t-nv-h2"><td colspan="5">抽象</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/ios_base.html" title="cpp/io/ios base"><span class="t-lines"><span>ios_base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_ios.html" title="cpp/io/basic ios"><span class="t-lines"><span>basic_ios</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_istream.html" title="cpp/io/basic istream"><span class="t-lines"><span>basic_istream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_ostream.html" title="cpp/io/basic ostream"><span class="t-lines"><span>basic_ostream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_iostream.html" title="cpp/io/basic iostream"><span class="t-lines"><span>basic_iostream</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">文件 I/O</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_ifstream.html" title="cpp/io/basic ifstream"><span class="t-lines"><span>basic_ifstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_ofstream.html" title="cpp/io/basic ofstream"><span class="t-lines"><span>basic_ofstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_fstream.html" title="cpp/io/basic fstream"><span class="t-lines"><span>basic_fstream</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">字符串 I/O</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_istringstream.html" title="cpp/io/basic istringstream"><span class="t-lines"><span>basic_istringstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_ostringstream.html" title="cpp/io/basic ostringstream"><span class="t-lines"><span>basic_ostringstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_stringstream.html" title="cpp/io/basic stringstream"><span class="t-lines"><span>basic_stringstream</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">数组 I/O</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_ispanstream.html" title="cpp/io/basic ispanstream"><span class="t-lines"><span>basic_ispanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_ospanstream.html" title="cpp/io/basic ospanstream"><span class="t-lines"><span>basic_ospanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_spanstream.html" title="cpp/io/basic spanstream"><span class="t-lines"><span>basic_spanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/istrstream.html" title="cpp/io/istrstream"><span class="t-lines"><span>istrstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="C++98 中弃用，C++26 中移除">C++98/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/ostrstream.html" title="cpp/io/ostrstream"><span class="t-lines"><span>ostrstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="C++98 中弃用，C++26 中移除">C++98/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/strstream.html" title="cpp/io/strstream"><span class="t-lines"><span>strstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="C++98 中弃用，C++26 中移除">C++98/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">同步的输出</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/basic_osyncstream.html" title="cpp/io/basic osyncstream"><span class="t-lines"><span>basic_osyncstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">类型</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/streamoff.html" title="cpp/io/streamoff"><span class="t-lines"><span>streamoff</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/streamsize.html" title="cpp/io/streamsize"><span class="t-lines"><span>streamsize</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/fpos.html" title="cpp/io/fpos"><span class="t-lines"><span>fpos</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">错误类别接口</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/iostream_category.html" title="cpp/io/iostream category"><span class="t-lines"><span>iostream_category</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="io/io_errc.html" title="cpp/io/io errc"><span class="t-lines"><span>io_errc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>C++ 包含如下的输入/输出库：<a href="https://en.wikipedia.org/wiki/Object-oriented_programming" class="extiw" title="enwiki:Object-oriented programming">OOP-风格的</a>，<a href="io.html#.E5.9F.BA.E4.BA.8E.E6.B5.81.E7.9A.84.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA">基于流的输入/输出</a>库<span class="t-rev-inl t-since-cxx23"><span>，<a href="io.html#.E6.89.93.E5.8D.B0.E5.87.BD.E6.95.B0_.28C.2B.2B23_.E8.B5.B7.29">基于打印的函数族</a></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></span>，以及<a href="io.html#C_.E9.A3.8E.E6.A0.BC.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA">C 风格输入/输出</a>函数的标准集合。
+</p>
+<h3><span class="mw-headline" id=".E5.9F.BA.E4.BA.8E.E6.B5.81.E7.9A.84.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA">基于流的输入/输出</span></h3>
+<p>基于流的输入/输出库围绕抽象的输入/输出设备组织。这些抽象设备允许相同代码处理对文件、内存流或随即进行任意操作（例如压缩）的自定义适配器设备的输入/输出。
+</p><p>大多数这些类均被模板化，故它们能被适配到任何标准字符类型。已为最常用的基本字符类型（<span class="mw-geshi cpp source-cpp"><span class="kw4">char</span></span> 和 <span class="mw-geshi cpp source-cpp"><span class="kw4">wchar_t</span></span>）提供了分离的 typedef。这些类以下列层次组织：
+</p>
+<div class="t-inheritance-diagram">
+<div class="center"><div class="noresize" style="height: 377px; width: 549px; "><map name="ImageMap_1_1799401338"><area href="io/ios_base.html" shape="rect" coords="225,4,328,36" alt="cpp/io/ios base" title="cpp/io/ios base"><area href="io/basic_ios.html" shape="rect" coords="218,62,335,100" alt="cpp/io/basic ios" title="cpp/io/basic ios"><area href="io/basic_istream.html" shape="rect" coords="305,126,422,164" alt="cpp/io/basic istream" title="cpp/io/basic istream"><area href="io/basic_ifstream.html" shape="rect" coords="419,319,536,357" alt="cpp/io/basic ifstream" title="cpp/io/basic ifstream"><area href="io/basic_istringstream.html" shape="rect" coords="410,255,545,292" alt="cpp/io/basic istringstream" title="cpp/io/basic istringstream"><area href="io/basic_ostream.html" shape="rect" coords="130,126,247,164" alt="cpp/io/basic ostream" title="cpp/io/basic ostream"><area href="io/basic_ofstream.html" shape="rect" coords="14,319,132,357" alt="cpp/io/basic ofstream" title="cpp/io/basic ofstream"><area href="io/basic_ostringstream.html" shape="rect" coords="4,255,143,292" alt="cpp/io/basic ostringstream" title="cpp/io/basic ostringstream"><area href="io/basic_fstream.html" shape="rect" coords="200,319,318,357" alt="cpp/io/basic fstream" title="cpp/io/basic fstream"><area href="io/basic_stringstream.html" shape="rect" coords="193,255,325,292" alt="cpp/io/basic stringstream" title="cpp/io/basic stringstream"><area href="io/basic_iostream.html" shape="rect" coords="221,190,339,228" alt="cpp/io/basic iostream" title="cpp/io/basic iostream"></map><img alt="std-io-complete-inheritance.svg" src="../../common/images/0/06/std-io-complete-inheritance.svg" width="549" height="377" usemap="#ImageMap_1_1799401338"></div></div>
+<div style="text-align:center;">
+<p><span style="font-size:0.8em; line-height:125%">继承图</span>
+</p>
+</div>
+</div>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.8A.BD.E8.B1.A1"> 抽象 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/ios.html" title="cpp/header/ios">&lt;ios&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/ios_base.html" title="cpp/io/ios base"> <span class="t-lines"><span>ios_base</span></span></a></div></div>
+</td>
+<td>  管理格式化标志和输入/输出异常 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ios.html" title="cpp/io/basic ios"> <span class="t-lines"><span>basic_ios</span></span></a></div></div>
+</td>
+<td>  管理任意流缓冲 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/streambuf.html" title="cpp/header/streambuf">&lt;streambuf&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf"> <span class="t-lines"><span>basic_streambuf</span></span></a></div></div>
+</td>
+<td>  抽象原生设备 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/ostream.html" title="cpp/header/ostream">&lt;ostream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ostream.html" title="cpp/io/basic ostream"> <span class="t-lines"><span>basic_ostream</span></span></a></div></div>
+</td>
+<td>  包装给定的抽象设备（<span class="t-lc"><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf">std::basic_streambuf</a></span>）<br>并提供高层输出接口 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/istream.html" title="cpp/header/istream">&lt;istream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_istream.html" title="cpp/io/basic istream"> <span class="t-lines"><span>basic_istream</span></span></a></div></div>
+</td>
+<td>  包装给定的抽象设备（<span class="t-lc"><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf">std::basic_streambuf</a></span>）<br>并提供高层输入接口 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_iostream.html" title="cpp/io/basic iostream"> <span class="t-lines"><span>basic_iostream</span></span></a></div></div>
+</td>
+<td>  包装给定的抽象设备（<span class="t-lc"><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf">std::basic_streambuf</a></span>）<br>并提供高层输入/输出接口 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.96.87.E4.BB.B6.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA.E5.AE.9E.E7.8E.B0"> 文件输入/输出实现 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/fstream.html" title="cpp/header/fstream">&lt;fstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_filebuf.html" title="cpp/io/basic filebuf"> <span class="t-lines"><span>basic_filebuf</span></span></a></div></div>
+</td>
+<td>  实现原生文件设备 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ifstream.html" title="cpp/io/basic ifstream"> <span class="t-lines"><span>basic_ifstream</span></span></a></div></div>
+</td>
+<td>  实现高层文件流输入操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ofstream.html" title="cpp/io/basic ofstream"> <span class="t-lines"><span>basic_ofstream</span></span></a></div></div>
+</td>
+<td>  实现高层文件流输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_fstream.html" title="cpp/io/basic fstream"> <span class="t-lines"><span>basic_fstream</span></span></a></div></div>
+</td>
+<td>  实现高层文件流输入/输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.AD.97.E7.AC.A6.E4.B8.B2.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA.E5.AE.9E.E7.8E.B0"> 字符串输入/输出实现 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/sstream.html" title="cpp/header/sstream">&lt;sstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_stringbuf.html" title="cpp/io/basic stringbuf"> <span class="t-lines"><span>basic_stringbuf</span></span></a></div></div>
+</td>
+<td>  实现原生字符串设备 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_istringstream.html" title="cpp/io/basic istringstream"> <span class="t-lines"><span>basic_istringstream</span></span></a></div></div>
+</td>
+<td>  实现高层字符串流输入操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ostringstream.html" title="cpp/io/basic ostringstream"> <span class="t-lines"><span>basic_ostringstream</span></span></a></div></div>
+</td>
+<td>  实现高层字符串流输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_stringstream.html" title="cpp/io/basic stringstream"> <span class="t-lines"><span>basic_stringstream</span></span></a></div></div>
+</td>
+<td>  实现高层字符串流输入/输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.95.B0.E7.BB.84.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA.E5.AE.9E.E7.8E.B0"> 数组输入/输出实现 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/spanstream.html" title="cpp/header/spanstream">&lt;spanstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_spanbuf.html" title="cpp/io/basic spanbuf"> <span class="t-lines"><span>basic_spanbuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   实现原始固定字符缓冲区设备 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ispanstream.html" title="cpp/io/basic ispanstream"> <span class="t-lines"><span>basic_ispanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   实现固定字符缓冲区输入操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ospanstream.html" title="cpp/io/basic ospanstream"> <span class="t-lines"><span>basic_ospanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   实现固定字符缓冲区输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_spanstream.html" title="cpp/io/basic spanstream"> <span class="t-lines"><span>basic_spanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   实现固定字符缓冲区输入/输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/strstream.html" title="cpp/header/strstream">&lt;strstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/strstreambuf.html" title="cpp/io/strstreambuf"> <span class="t-lines"><span>strstreambuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98" style="white-space: nowrap;">(C++98 弃用)</span></span><span><span class="t-mark-rev t-until-cxx26" style="white-space: nowrap;">(C++26 移除)</span></span></span></div></div>
+</td>
+<td>  实现原生字符数组设备 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/istrstream.html" title="cpp/io/istrstream"> <span class="t-lines"><span>istrstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98" style="white-space: nowrap;">(C++98 弃用)</span></span><span><span class="t-mark-rev t-until-cxx26" style="white-space: nowrap;">(C++26 移除)</span></span></span></div></div>
+</td>
+<td>  实现字符数组输入操作 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/ostrstream.html" title="cpp/io/ostrstream"> <span class="t-lines"><span>ostrstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98" style="white-space: nowrap;">(C++98 弃用)</span></span><span><span class="t-mark-rev t-until-cxx26" style="white-space: nowrap;">(C++26 移除)</span></span></span></div></div>
+</td>
+<td>  实现字符数组输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/strstream.html" title="cpp/io/strstream"> <span class="t-lines"><span>strstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98" style="white-space: nowrap;">(C++98 弃用)</span></span><span><span class="t-mark-rev t-until-cxx26" style="white-space: nowrap;">(C++26 移除)</span></span></span></div></div>
+</td>
+<td>  实现字符数组输入/输出操作 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.90.8C.E6.AD.A5.E7.9A.84.E8.BE.93.E5.87.BA_.28C.2B.2B20_.E8.B5.B7.29"> 同步的输出 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/syncstream.html" title="cpp/header/syncstream">&lt;syncstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_syncbuf.html" title="cpp/io/basic syncbuf"> <span class="t-lines"><span>basic_syncbuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  同步输出设备的包装器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_osyncstream.html" title="cpp/io/basic osyncstream"> <span class="t-lines"><span>basic_osyncstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  同步输出流的包装器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id="typedef">typedef</span></h4>
+<p>在 <code>std</code> 命名空间为常用字符类型提供了下列 typedef：
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-hitem">
+<td> 类型
+</td>
+<td> 定义
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/ios.html" title="cpp/header/ios">&lt;ios&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::ios</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ios.html"><span class="kw1716">std::<span class="me2">basic_ios</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::wios</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ios.html"><span class="kw1716">std::<span class="me2">basic_ios</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/streambuf.html" title="cpp/header/streambuf">&lt;streambuf&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf">std::streambuf</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_streambuf.html"><span class="kw1670">std::<span class="me2">basic_streambuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf">std::wstreambuf</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_streambuf.html"><span class="kw1670">std::<span class="me2">basic_streambuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/istream.html" title="cpp/header/istream">&lt;istream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_istream.html" title="cpp/io/basic istream">std::istream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_istream.html"><span class="kw1717">std::<span class="me2">basic_istream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_istream.html" title="cpp/io/basic istream">std::wistream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_istream.html"><span class="kw1717">std::<span class="me2">basic_istream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_iostream.html" title="cpp/io/basic iostream">std::iostream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_iostream.html"><span class="kw1721">std::<span class="me2">basic_iostream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_iostream.html" title="cpp/io/basic iostream">std::wiostream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_iostream.html"><span class="kw1721">std::<span class="me2">basic_iostream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/ostream.html" title="cpp/header/ostream">&lt;ostream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ostream.html" title="cpp/io/basic ostream">std::ostream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ostream.html"><span class="kw1719">std::<span class="me2">basic_ostream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ostream.html" title="cpp/io/basic ostream">std::wostream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ostream.html"><span class="kw1719">std::<span class="me2">basic_ostream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/fstream.html" title="cpp/header/fstream">&lt;fstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_filebuf.html" title="cpp/io/basic filebuf">std::filebuf</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_filebuf.html"><span class="kw1671">std::<span class="me2">basic_filebuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_filebuf.html" title="cpp/io/basic filebuf">std::wfilebuf</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_filebuf.html"><span class="kw1671">std::<span class="me2">basic_filebuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ifstream.html" title="cpp/io/basic ifstream">std::ifstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ifstream.html"><span class="kw1722">std::<span class="me2">basic_ifstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ifstream.html" title="cpp/io/basic ifstream">std::wifstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ifstream.html"><span class="kw1722">std::<span class="me2">basic_ifstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ofstream.html" title="cpp/io/basic ofstream">std::ofstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ofstream.html"><span class="kw1723">std::<span class="me2">basic_ofstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ofstream.html" title="cpp/io/basic ofstream">std::wofstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ofstream.html"><span class="kw1723">std::<span class="me2">basic_ofstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_fstream.html" title="cpp/io/basic fstream">std::fstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_fstream.html"><span class="kw1724">std::<span class="me2">basic_fstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_fstream.html" title="cpp/io/basic fstream">std::wfstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_fstream.html"><span class="kw1724">std::<span class="me2">basic_fstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/sstream.html" title="cpp/header/sstream">&lt;sstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_stringbuf.html" title="cpp/io/basic stringbuf">std::stringbuf</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_stringbuf.html"><span class="kw1672">std::<span class="me2">basic_stringbuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_stringbuf.html" title="cpp/io/basic stringbuf">std::wstringbuf</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_stringbuf.html"><span class="kw1672">std::<span class="me2">basic_stringbuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_istringstream.html" title="cpp/io/basic istringstream">std::istringstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_istringstream.html"><span class="kw1725">std::<span class="me2">basic_istringstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_istringstream.html" title="cpp/io/basic istringstream">std::wistringstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_istringstream.html"><span class="kw1725">std::<span class="me2">basic_istringstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ostringstream.html" title="cpp/io/basic ostringstream">std::ostringstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ostringstream.html"><span class="kw1726">std::<span class="me2">basic_ostringstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_ostringstream.html" title="cpp/io/basic ostringstream">std::wostringstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ostringstream.html"><span class="kw1726">std::<span class="me2">basic_ostringstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_stringstream.html" title="cpp/io/basic stringstream">std::stringstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_stringstream.html"><span class="kw1727">std::<span class="me2">basic_stringstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc"><a href="io/basic_stringstream.html" title="cpp/io/basic stringstream">std::wstringstream</a></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_stringstream.html"><span class="kw1727">std::<span class="me2">basic_stringstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/spanstream.html" title="cpp/header/spanstream">&lt;spanstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::spanbuf</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_spanbuf.html"><span class="kw3355">std::<span class="me2">basic_spanbuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::wspanbuf</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_spanbuf.html"><span class="kw3355">std::<span class="me2">basic_spanbuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::ispanstream</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ispanstream.html"><span class="kw3349">std::<span class="me2">basic_ispanstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::wispanstream</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ispanstream.html"><span class="kw3349">std::<span class="me2">basic_ispanstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::ospanstream</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ospanstream.html"><span class="kw3352">std::<span class="me2">basic_ospanstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::wospanstream</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_ospanstream.html"><span class="kw3352">std::<span class="me2">basic_ospanstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::spanstream</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_spanstream.html"><span class="kw3358">std::<span class="me2">basic_spanstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::wspanstream</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_spanstream.html"><span class="kw3358">std::<span class="me2">basic_spanstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/syncstream.html" title="cpp/header/syncstream">&lt;syncstream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::syncbuf</span> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_syncbuf.html"><span class="kw2649">std::<span class="me2">basic_syncbuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::wsyncbuf</span> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_syncbuf.html"><span class="kw2649">std::<span class="me2">basic_syncbuf</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::osyncstream</span> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_osyncstream.html"><span class="kw2648">std::<span class="me2">basic_osyncstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-lc">std::wosyncstream</span> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/basic_osyncstream.html"><span class="kw2648">std::<span class="me2">basic_osyncstream</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+</table>
+<h4><span class="mw-headline" id=".E9.A2.84.E5.AE.9A.E4.B9.89.E6.A0.87.E5.87.86.E6.B5.81.E5.AF.B9.E8.B1.A1">预定义标准流对象</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/iostream.html" title="cpp/header/iostream">&lt;iostream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/cin.html" title="cpp/io/cin"> <span class="t-lines"><span>cin</span><span>wcin</span></span></a></div></div>
+</td>
+<td>  从标准 C 输入流 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stdin</a></span> 读取<br><span class="t-mark" style="white-space: nowrap;">(全局对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/cout.html" title="cpp/io/cout"> <span class="t-lines"><span>cout</span><span>wcout</span></span></a></div></div>
+</td>
+<td>  写入到标准 C 输出流 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stdout</a></span><br><span class="t-mark" style="white-space: nowrap;">(全局对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td> <div class="t-dsc-member-div"><div><a href="io/cerr.html" title="cpp/io/cerr"> <span class="t-lines"><span>cerr</span><span>wcerr</span></span></a></div></div>
+</td>
+<td> 写入到标准 C 错误流 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stderr</a></span>，无缓冲<br><span class="t-mark" style="white-space: nowrap;">(全局对象)</span></td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/clog.html" title="cpp/io/clog"> <span class="t-lines"><span>clog</span><span>wclog</span></span></a></div></div>
+</td>
+<td>  写入到标准 C 错误流 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stderr</a></span><br><span class="t-mark" style="white-space: nowrap;">(全局对象)</span> </td></tr>
+</table>
+<p><span id=".E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA.E6.93.8D.E7.BA.B5.E7.AC.A6"></span>
+</p>
+<h4><span class="mw-headline" id=".E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA.E6.93.8D.E7.BA.B5.E7.AC.A6"><a href="io/manip.html" title="cpp/io/manip">输入/输出操纵符</a></span></h4>
+<p>基于流的输入/输出库用<a href="io/manip.html" title="cpp/io/manip">输入/输出操纵符</a>（例如 <span class="t-lc"><a href="io/manip/boolalpha.html" title="cpp/io/manip/boolalpha">std::boolalpha</a></span>、<span class="t-lc"><a href="io/manip/hex.html" title="cpp/io/manip/hex">std::hex</a></span> 等）控制流的行为。
+</p>
+<h4><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B">类型</span></h4>
+<p>定义下列辅助类型：
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/ios.html" title="cpp/header/ios">&lt;ios&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/streamoff.html" title="cpp/io/streamoff"> <span class="t-lines"><span>streamoff</span></span></a></div></div>
+</td>
+<td>  表示相对的文件/流位置（距 fpos 的偏移），足以表示任何文件大小 <br> <span class="t-mark" style="white-space: nowrap;">(typedef)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/streamsize.html" title="cpp/io/streamsize"> <span class="t-lines"><span>streamsize</span></span></a></div></div>
+</td>
+<td>  表示一次输入/输出操作中转移的字符数或输入/输出缓冲区的大小 <br> <span class="t-mark" style="white-space: nowrap;">(typedef)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/fpos.html" title="cpp/io/fpos"> <span class="t-lines"><span>fpos</span></span></a></div></div>
+</td>
+<td>  表示流或文件中的绝对位置 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<p>提供下列 <span class="mw-geshi cpp source-cpp"><a href="io/fpos.html"><span class="kw1809">std::<span class="me2">fpos</span></span></a><span class="sy1">&lt;</span><a href="string/multibyte/mbstate_t.html"><span class="kw1182">std::<span class="me2">mbstate_t</span></span></a><span class="sy1">&gt;</span></span> 的 typedef 名：
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/iosfwd.html" title="cpp/header/iosfwd">&lt;iosfwd&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td> 类型
+</td>
+<td> 定义
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>std::streampos</code>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/fpos.html"><span class="kw1809">std::<span class="me2">fpos</span></span></a><span class="sy1">&lt;</span><a href="string/char_traits.html"><span class="kw1270">std::<span class="me2">char_traits</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">state_type</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>std::wstreampos</code>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/fpos.html"><span class="kw1809">std::<span class="me2">fpos</span></span></a><span class="sy1">&lt;</span><a href="string/char_traits.html"><span class="kw1270">std::<span class="me2">char_traits</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">state_type</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>std::u8streampos</code> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/fpos.html"><span class="kw1809">std::<span class="me2">fpos</span></span></a><span class="sy1">&lt;</span><a href="string/char_traits.html"><span class="kw1270">std::<span class="me2">char_traits</span></span></a><span class="sy1">&lt;</span>char8_t<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">state_type</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>std::u16streampos</code> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/fpos.html"><span class="kw1809">std::<span class="me2">fpos</span></span></a><span class="sy1">&lt;</span><a href="string/char_traits.html"><span class="kw1270">std::<span class="me2">char_traits</span></span></a><span class="sy1">&lt;</span><span class="kw4">char16_t</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">state_type</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>std::u32streampos</code> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="io/fpos.html"><span class="kw1809">std::<span class="me2">fpos</span></span></a><span class="sy1">&lt;</span><a href="string/char_traits.html"><span class="kw1270">std::<span class="me2">char_traits</span></span></a><span class="sy1">&lt;</span><span class="kw4">char32_t</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">state_type</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+</table>
+<p><span id=".E9.94.99.E8.AF.AF.E7.B1.BB.E5.88.AB.E6.8E.A5.E5.8F.A3"></span>
+</p>
+<h4><span class="mw-headline" id=".E9.94.99.E8.AF.AF.E7.B1.BB.E5.88.AB.E6.8E.A5.E5.8F.A3_.28C.2B.2B11_.E8.B5.B7.29">错误类别接口 <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/ios.html" title="cpp/header/ios">&lt;ios&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/io_errc.html" title="cpp/io/io errc"> <span class="t-lines"><span>io_errc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  输入/输出流的错误码 <br> <span class="t-mark" style="white-space: nowrap;">(枚举)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/iostream_category.html" title="cpp/io/iostream category"> <span class="t-lines"><span>iostream_category</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   鉴别 iostream 错误类别 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+</table>
+<p><span id=".E6.89.93.E5.8D.B0.E5.87.BD.E6.95.B0"></span>
+</p>
+<h3><span class="mw-headline" id=".E6.89.93.E5.8D.B0.E5.87.BD.E6.95.B0_.28C.2B.2B23_.E8.B5.B7.29">打印函数 <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></h3>
+<p>对 Unicode 编码的格式化文本提供输入输出支持的 print 族函数。这些函数拥有 <span class="t-lc">std::format</span> 带来的性能优势，默认情况下与本地环境无关；减少使用全局状态，同时避免 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;&lt;</span></span></span> 调用和申请临时的 <span class="t-lc"><a href="string/basic_string.html" title="cpp/string/basic string">std::string</a></span> 对象，一般情况下比 <a href="io.html#.E5.9F.BA.E4.BA.8E.E6.B5.81.E7.9A.84.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA">iostreams</a> 和 <a href="io.html#C_.E9.A3.8E.E6.A0.BC.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA">stdio</a> 更高效。
+</p><p>标准库提供了如下 print 族函数：
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/print.html" title="cpp/header/print">&lt;print&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/print.html" title="cpp/io/print"> <span class="t-lines"><span>print</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  将参数的<a href="utility/format.html" title="cpp/utility/format">格式化</a>表达输出到 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stdout</a></span> 或文件缓冲区 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/println.html" title="cpp/io/println"> <span class="t-lines"><span>println</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  将参数的<a href="utility/format.html" title="cpp/utility/format">格式化</a>表达输出到 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stdout</a></span> 或文件缓冲区，输出完成后换行 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/vprint_unicode.html" title="cpp/io/vprint unicode"> <span class="t-lines"><span>vprint_unicode</span><span>vprint_unicode_buffered</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  使用<a href="utility/format/basic_format_args.html" title="cpp/utility/format/basic format args">类型擦除</a>的参数表示，打印到支持 Unicode 的 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stdout</a></span> 或文件流 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/vprint_nonunicode.html" title="cpp/io/vprint nonunicode"> <span class="t-lines"><span>vprint_nonunicode</span><span>vprint_nonunicode_buffere</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  使用<a href="utility/format/basic_format_args.html" title="cpp/utility/format/basic format args">类型擦除</a>的参数表示，打印到 <span class="t-lc"><a href="io/c.html" title="cpp/io/c">stdout</a></span> 或文件流 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc-sep">
+<td colspan="2">  
+</td></tr>
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/ostream.html" title="cpp/header/ostream">&lt;ostream&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ostream/print.html" title="cpp/io/basic ostream/print"> <span class="t-lines"><span>print<span class="t-dsc-small">(std::ostream)</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  输出各实参的<a href="utility/format.html" title="cpp/utility/format">格式化</a>表示 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="io/basic_ostream/println.html" title="cpp/io/basic ostream/println"> <span class="t-lines"><span>println<span class="t-dsc-small">(std::ostream)</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  输出各实参的<a href="utility/format.html" title="cpp/utility/format">格式化</a>表示并追加 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">'<span class="es1">\n</span>'</span></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="C_.E9.A3.8E.E6.A0.BC.E8.BE.93.E5.85.A5.2F.E8.BE.93.E5.87.BA"><a href="io/c.html" title="cpp/io/c">C 风格输入/输出</a></span></h3>
+<p>C++ 也包含了 <a href="io/c.html" title="cpp/io/c">C 所定义的输入/输出函数</a>，如 <span class="t-lc"><a href="io/c/fopen.html" title="cpp/io/c/fopen">std::fopen</a></span>、<span class="t-lc"><a href="io/c/fgetc.html" title="cpp/io/c/fgetc">std::getc</a></span> 等。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <a href="filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 11085/1000000
+Preprocessor generated node count: 13474/1000000
+Post‐expand include size: 315633/4194304 bytes
+Template argument size: 65409/4194304 bytes
+Highest expansion depth: 22/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:745-0!*!0!!zh!2!zh!* and timestamp 20250402133420 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/io&amp;oldid=98047">https://zh.cppreference.com/mwiki/index.php?title=cpp/io&amp;oldid=98047</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/io">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年1月28日 (星期二) 12:47。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../common/site_scripts.js"></script>
+<!-- Served in 5.010 secs. -->
+	</body>
+<!-- Cached 20250402133421 -->
+</html>

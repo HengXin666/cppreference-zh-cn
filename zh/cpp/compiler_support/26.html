@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>C++26 编译器支持</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/compiler_support/26","wgTitle":"cpp/compiler support/26","wgCurRevisionId":87811,"wgArticleId":14379,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/compiler_support/26","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_compiler_support_26 skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">C++26 编译器支持</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../compiler_support.html" title="cpp/compiler support">compiler support</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="11.html" title="cpp/compiler support/11"> C++11</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="14.html" title="cpp/compiler support/14"> C++14</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="17.html" title="cpp/compiler support/17"> C++17</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="20.html" title="cpp/compiler support/20"> C++20</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="23.html" title="cpp/compiler support/23"> C++23</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> C++26</strong> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p><span title="弹出提示的示例：基于 Circle 3.14 及以上版本">*</span> - 在版本号上停留可以查看注记 <span title="另一个提示的示例">*</span> 查看其他注记<br>
+DR<i>nn</i> - 在 "DR" 后的数字 <i>nn</i> 表示应用该缺陷报告的目标 C++ 修订版本，例如 DR20 → C++20。
+</p>
+<h3><span class="mw-headline" id="C.2B.2B26_.E6.A0.B8.E5.BF.83.E8.AF.AD.E8.A8.80.E5.8A.9F.E8.83.BD.E7.89.B9.E6.80.A7"> C++26 核心语言功能特性 </span></h3>
+<table class="wikitable tbody-scroll mw-collapsible t-compiler-support-top" style="font-size:0.8em; width:100%">
+
+<tr style="height:15em">
+<th style="vertical-align:bottom;">C++26 功能特性<br><br> 
+</th>
+<th style="vertical-align:bottom;">提案<br><br> 
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>GCC</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Clang</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>MSVC</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Apple Clang</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>EDG eccp</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Intel C++</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div><span title="ex Portland Group/PGI">Nvidia HPC C++ (ex PGI)*</span></div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Nvidia nvcc</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Cray</div></div>
+</th>
+<th>
+</th></tr>
+<tr>
+<td>DR98: 从词法分析中删除未定义行为
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2621R3">P2621R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">3.3
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR98: 使不可编码的字符串文本格式非良构
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1854R4">P1854R4</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><a href="../language/string_literal.html#.E4.B8.8D.E6.B1.82.E5.80.BC.E5.AD.97.E7.AC.A6.E4.B8.B2" title="cpp/language/string literal">不求值字符串</a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2361R6">P2361R6</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="属性参数尚未解析为不求值字符串。">17 (部分)*</span><br>18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>将 <code><b>@</b></code>，<code><b>$</b></code>，和 <code><b>`</b></code> 添加至<a href="../language/charset.html#.E5.9F.BA.E6.9C.AC.E5.AD.97.E7.AC.A6.E9.9B.86" title="cpp/language/charset">基本字符集</a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2558R2">P2558R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_constexpr_202306L"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 的从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="sy2">*</span></span></span> 转换  (<a href="../feature_test.html#cpp_constexpr" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_constexpr = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2738R1">P2738R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">17
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR20: 使标准属性可忽略
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2552R3">P2552R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR11: 花括号初始化的静态存储
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2752R3">P2752R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_static_assert_202306L"></span>用户生成的 <a href="../language/static_assert.html" title="cpp/language/static assert"><tt>static_assert</tt></a> 消息  (<a href="../feature_test.html#cpp_static_assert" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_static_assert = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2741R3">P2741R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">17
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_placeholder_variables_202306L"></span><a href="../language/conflicting_declarations.html#.E6.9C.89.E6.BD.9C.E5.9C.A8.E5.86.B2.E7.AA.81.E7.9A.84.E5.A3.B0.E6.98.8E" title="cpp/language/conflicting declarations">没有名字的占位符变量</a>  (<a href="../feature_test.html#cpp_placeholder_variables" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_placeholder_variables = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2169R4">P2169R4</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_pack_indexing_202311L"></span><a href="../language/pack_indexing.html" title="cpp/language/pack indexing">包索引</a>  (<a href="../feature_test.html#cpp_pack_indexing" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_pack_indexing = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2662R3">P2662R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>删除枚举被弃用的算术转换
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2864R2">P2864R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR11/20：模板形参初始化
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2308R1">P2308R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">9
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>不允许绑定返回的引用到<a href="../language/reference_initialization.html#.E4.B8.B4.E6.97.B6.E9.87.8F.E7.9A.84.E7.94.9F.E5.AD.98.E6.9C.9F" title="cpp/language/reference initialization">临时量</a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2748R5">P2748R5</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_structured_bindings_202403L"></span><a href="../language/structured_binding.html" title="cpp/language/structured binding">结构化绑定</a>的属性  (<a href="../feature_test.html#cpp_structured_bindings" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_structured_bindings = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0609R3">P0609R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="indeterminate"></span><a href="../language/default_initialization.html#.E4.BB.8E.E4.B8.8D.E7.A1.AE.E5.AE.9A.E5.AD.97.E8.8A.82.E8.AF.BB.E5.8F.96" title="cpp/language/default initialization">未初始化读取</a>的错误行为，<code>[[<a href="../language/attributes/indeterminate.html" title="cpp/language/attributes/indeterminate">indeterminate</a>]]</code> 属性
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2795R5">P2795R5</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_deleted_function_202403L"></span><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">=</span> delete<span class="br0">(</span><span class="st0">"reason"</span><span class="br0">)</span><span class="sy4">;</span></span></span>  (<a href="../feature_test.html#cpp_deleted_function" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_deleted_function = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2573R2">P2573R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_variadic_friend_202403L"></span><a href="../language/pack.html" title="cpp/language/parameter pack" class="mw-redirect">可变参数</a><a href="../language/friend.html" title="cpp/language/friend">友元</a>  (<a href="../feature_test.html#cpp_variadic_friend" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_variadic_friend = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2893R3">P2893R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">20
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR98：澄清<a href="../language/aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a>中的括号消除规则
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3106R1">P3106R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">17
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR20：不允许模块声明为宏
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3034R1">P3034R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR11：平凡的无限循环不是未定义行为
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2809R3">P2809R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_constexpr_202406L"></span><span id="cpp_lib_constexpr_new_202406L"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 布置 new  (<a href="../feature_test.html#cpp_constexpr" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_constexpr = 202406L">*</span>  (<a href="../feature_test.html#cpp_lib_constexpr_new" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_new = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2747R2">P2747R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">20
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_structured_bindings_202406L"></span>用<a href="../language/structured_binding.html" title="cpp/language/structured binding">结构化绑定声明</a>作为条件  (<a href="../feature_test.html#cpp_structured_bindings" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_structured_bindings = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0963R3">P0963R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">6 <span title="作为扩展支持，不完全遵从标准化的版本。">(部分)*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_fold_expressions_202406L"></span>涉及<a href="../language/fold.html" title="cpp/language/fold">折叠表达式</a>的<a href="../language/constraints.html" title="cpp/language/constraints">约束</a>定序  (<a href="../feature_test.html#cpp_fold_expressions" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_fold_expressions = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2963R3">P2963R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><a href="../language/delete.html" title="cpp/language/delete">删除</a>指向不完整类型的指针应当非良构
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3144R2">P3144R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">6.7
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_structured_bindings_202411L"></span><a href="../language/structured_binding.html" title="cpp/language/structured binding">结构化绑定</a>可以引入<a href="../language/pack.html" title="cpp/language/pack">包</a>  (<a href="../feature_test.html#cpp_structured_bindings" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_structured_bindings = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1061R10">P1061R10</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">21
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> <a href="../language/structured_binding.html" title="cpp/language/structured binding">结构化绑定</a>与 <span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 变量的引用
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2686R5">P2686R5</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">6.7
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_constexpr_exceptions_202411L"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> <a href="../language/exceptions.html" title="cpp/language/exceptions">异常</a>  (<a href="../feature_test.html#cpp_constexpr_exceptions" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_constexpr_exceptions = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3068R6">P3068R6</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>牛津可变逗号
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3176R1">P3176R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">20
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>移除已弃用的数组比较
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2865R6">P2865R6</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">20
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_pp_embed_202502L"></span><a href="../preprocessor/embed.html" title="cpp/preprocessor/embed"><code>#embed</code></a>  (<a href="../feature_test.html#cpp_pp_embed" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_pp_embed = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1967R14">P1967R14</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">19<span title="发出“#embed 是 Clang 扩展 [-Wc23-extensions]”的警告。">*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_template_parameters_202502L"></span>概念和可变模板模板参数  (<a href="../feature_test.html#cpp_template_parameters" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_template_parameters = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2841R7">P2841R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_trivial_relocatability_202502L"></span><a href="../language/class_property_specifiers.html#.E5.8F.AF.E5.B9.B3.E5.87.A1.E9.87.8D.E5.AE.9A.E4.BD.8D.E6.80.A7" title="cpp/language/class property specifiers">可平凡重定位性</a>  (<a href="../feature_test.html#cpp_trivial_relocatability" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_trivial_relocatability = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2786R13">P2786R13</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_trivial_union_202502L"></span>平凡联合体  (<a href="../feature_test.html#cpp_trivial_union" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_trivial_union = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3074R7">P3074R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>可观测检查点
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1494R5">P1494R5</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_contracts_202502L"></span><a href="../language/contracts.html" title="cpp/language/contracts">契约</a>  (<a href="../feature_test.html#cpp_contracts" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_contracts = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2900R14">P2900R14</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr style="height:15em">
+<th style="vertical-align:top;"> <br><br>C++26 功能特性
+</th>
+<th style="vertical-align:top;"> <br><br>提案
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>GCC</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Clang</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>MSVC</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Apple Clang</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>EDG eccp</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Intel C++</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div><span title="ex Portland Group/PGI">Nvidia HPC C++ (ex PGI)*</span></div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Nvidia nvcc</div></div>
+</th>
+<th style="width:40pt;"><div class="t-vertical"><div>Cray</div></div>
+</th></tr></table>
+<h3><span class="mw-headline" id="C.2B.2B26_.E5.BA.93.E5.8A.9F.E8.83.BD.E7.89.B9.E6.80.A7"> C++26 库功能特性 </span></h3>
+<table class="wikitable tbody-scroll mw-collapsible t-standard-library-support-top" style="font-size:0.8em; width:100%">
+
+<tr style="height:15em">
+<th style="vertical-align:bottom;">C++26 功能特性<br><br> 
+</th>
+<th style="vertical-align:bottom;">提案<br><br> 
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div>GCC libstdc++</div></div>
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div>Clang libc++</div></div>
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div>MSVC STL</div></div>
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div><span title="C++ 标准库">Apple Clang*</span></div></div>
+</th>
+<th>
+</th></tr>
+<tr>
+<td><span id="cpp_lib_to_chars_202306L"></span>测试 <a href="../header/charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a> 函数的成功或失败  (<a href="../feature_test.html#cpp_lib_to_chars" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_to_chars = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2497R0">P2497R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_text_encoding_202306L"></span><span class="t-lc">std::text_encoding</span>：文本编码识别  (<a href="../feature_test.html#cpp_lib_text_encoding" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_text_encoding = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1885R12">P1885R12</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P2862R1">P2862R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_to_string_202306L"></span>使用 <a href="../utility/format/format.html" title="cpp/utility/format/format"><tt>std::format</tt></a> 实现 <a href="../string/basic_string/to_string.html" title="cpp/string/basic string/to string"><tt>std::to_string</tt></a> 和 <a href="../string/basic_string/to_wstring.html" title="cpp/string/basic string/to wstring"><tt>std::to_wstring</tt></a> 的算术类型重载  (<a href="../feature_test.html#cpp_lib_to_string" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_to_string = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2587R3">P2587R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_format_202305L"></span>类型检查格式参数  (<a href="../feature_test.html#cpp_lib_format" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_format = 202305L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2757R3">P2757R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_format_202304L"></span>格式化指针  (<a href="../feature_test.html#cpp_lib_format" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_format = 202304L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2510R3">P2510R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14<span title="被当做针对 C++20 的缺陷报告。">*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">17<span title="被当做针对 C++20 的缺陷报告。">*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.10">19.40*</span><span title="被当做针对 C++20 的缺陷报告。">*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_chrono_202306L"></span><a href="../chrono.html" title="cpp/chrono"><tt>std::chrono</tt></a> 各值类型的<a href="../utility/hash.html" title="cpp/utility/hash">散列</a>支持  (<a href="../feature_test.html#cpp_lib_chrono" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_chrono = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2592R3">P2592R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_rcu_202306L"></span><a href="../header/rcu.html" title="cpp/header/rcu"><tt>&lt;rcu&gt;</tt></a>：<a href="../thread.html#.E8.AF.BB-.E5.A4.8D.E5.88.B6-.E6.9B.B4.E6.96.B0.E6.9C.BA.E5.88.B6" title="cpp/thread">读-复制-更新（RCU）</a>  (<a href="../feature_test.html#cpp_lib_rcu" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_rcu = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2545R4">P2545R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_hazard_pointer_202306L"></span><a href="../header/hazard_pointer.html" title="cpp/header/hazard pointer"><tt>&lt;hazard_pointer&gt;</tt></a>：<a href="../thread.html#.E9.A3.8E.E9.99.A9.E6.8C.87.E9.92.88" title="cpp/thread">风险指针</a>  (<a href="../feature_test.html#cpp_lib_hazard_pointer" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_hazard_pointer = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2530R3">P2530R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>免遭 ADL 的 <a href="../iterator/projected.html" title="cpp/iterator/projected"><tt>std::projected</tt></a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2538R1">P2538R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14<span title="被当做针对 C++20 的缺陷报告。">*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18<span title="被当做针对 C++20 的缺陷报告。">*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.8">19.38*</span><span title="被当做针对 C++20 的缺陷报告。">*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constexpr_algorithms_202306L"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 的稳定排序  (<a href="../feature_test.html#cpp_lib_constexpr_algorithms" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_algorithms = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2562R1">P2562R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">21
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_format_202306L"></span>成员 <a href="../utility/format/basic_format_arg.html#visit" title="cpp/utility/format/basic format arg"><tt>std::basic_format_arg::visit()</tt></a>  (<a href="../feature_test.html#cpp_lib_format" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_format = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2637R3">P2637R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_variant_202306L"></span>成员 <a href="../utility/variant/visit.html" title="cpp/utility/variant/visit"><tt>std::variant::visit()</tt></a>  (<a href="../feature_test.html#cpp_lib_variant" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_variant = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2637R3">P2637R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_is_within_lifetime_202306L"></span><span class="t-lc">std::is_within_lifetime</span>  (<a href="../feature_test.html#cpp_lib_is_within_lifetime" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_is_within_lifetime = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2641R4">P2641R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_associative_heterogeneous_insertion_202306L"></span>使用既存的异构重载扩展关联容器  (<a href="../feature_test.html#cpp_lib_associative_heterogeneous_insertion" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_associative_heterogeneous_insertion = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2363R5">P2363R5</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_smart_ptr_owner_equality_202306L"></span>允许在无序关联容器中使用 <a href="../memory/weak_ptr.html" title="cpp/memory/weak ptr"><tt>std::weak_ptr</tt></a> 作为 key  (<a href="../feature_test.html#cpp_lib_smart_ptr_owner_equality" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_smart_ptr_owner_equality = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1901R2">P1901R2</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_fstream_native_handle_202306L"></span>从文件流获得本机句柄  (<a href="../feature_test.html#cpp_lib_fstream_native_handle" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_fstream_native_handle = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1759R6">P1759R6</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_sstream_from_string_view_202306L"></span>字符串流的 <a href="../string/basic_string_view.html" title="cpp/string/basic string view"><tt>std::string_view</tt></a> 接口  (<a href="../feature_test.html#cpp_lib_sstream_from_string_view" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_sstream_from_string_view = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2495R3">P2495R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_bitset_202306L"></span><a href="../utility/bitset.html" title="cpp/utility/bitset"><tt>std::bitset</tt></a> 的 <a href="../string/basic_string_view.html" title="cpp/string/basic string view"><tt>std::string_view</tt></a> 接口  (<a href="../feature_test.html#cpp_lib_bitset" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_bitset = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2697R1">P2697R1</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constexpr_cmath_202306L"></span><span id="cpp_lib_constexpr_complex_202306L"></span>使 <a href="../header/cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a> 和 <a href="../header/complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a> 更 <span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span>  (<a href="../feature_test.html#cpp_lib_constexpr_cmath" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_cmath = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_constexpr_complex" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_complex = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1383R2">P1383R2</a>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe"><span title="在 C++11 模式下实现了， 中除三元 std::hypot 以外的各函数">4.6 (部分)*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ratio_202306L"></span>为 &lt;ratio&gt; 添加新的 2022 国际单位制（SI）前缀：<span class="t-lc">std::quecto</span>、<span class="t-lc">std::ronto</span>、<span class="t-lc">std::ronna</span> 和 <span class="t-lc">std::quetta</span>  (<a href="../feature_test.html#cpp_lib_ratio" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ratio = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2734R0">P2734R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">17
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_function_ref_202306L"></span><span class="t-lc">std::function_ref</span>：类型擦除的可调用引用  (<a href="../feature_test.html#cpp_lib_function_ref" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_function_ref = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0792R14">P0792R14</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_copyable_function_202306L"></span><span class="t-lc">std::copyable_function</span>  (<a href="../feature_test.html#cpp_lib_copyable_function" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_copyable_function = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2548R6">P2548R6</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_bind_front_202306L"></span><span id="cpp_lib_bind_back_202306L"></span><span id="cpp_lib_not_fn_202306L"></span>使用 NTTP 可调用对象的 <a href="../utility/functional/bind_front.html" title="cpp/utility/functional/bind front"><tt>std::bind_front</tt></a>、<a href="../utility/functional/bind_front.html" title="cpp/utility/functional/bind front"><tt>std::bind_back</tt></a> 和 <a href="../utility/functional/not_fn.html" title="cpp/utility/functional/not fn"><tt>std::not_fn</tt></a>  (<a href="../feature_test.html#cpp_lib_bind_front" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_bind_front = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_bind_back" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_bind_back = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_not_fn" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_not_fn = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2714R1">P2714R1</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_submdspan_202306L"></span><span class="t-lc">std::submdspan()</span>  (<a href="../feature_test.html#cpp_lib_submdspan" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_submdspan = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2630R4">P2630R4</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3355R1">P3355R1</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>独立式语言：可选 <a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new"><tt>
+::operator new</tt></a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2013R5">P2013R5</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_freestanding_char_traits_202306L"></span><span id="cpp_lib_freestanding_charconv_202306L"></span><span id="cpp_lib_freestanding_cstdlib_202306L"></span><span id="cpp_lib_freestanding_cstring_202306L"></span><span id="cpp_lib_freestanding_cwchar_202306L"></span><span id="cpp_lib_freestanding_errc_202306L"></span>独立的 <span class="t-lc"><a href="../string/char_traits.html" title="cpp/string/char traits">std::char_traits</a></span>，<span class="t-lc"><a href="../error/errc.html" title="cpp/error/errc">std::errc</a></span> 和 <a href="../header/charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a>、<a href="../header/cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a>、<a href="../header/cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a>、<a href="../header/cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a> 中的设施  (<a href="../feature_test.html#cpp_lib_freestanding_char_traits" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_char_traits = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_charconv" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_charconv = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_cstdlib" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_cstdlib = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_cstring" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_cstring = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_cwchar" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_cwchar = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_errc" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_errc = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2338R4">P2338R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_freestanding_feature_test_macros_202306L"></span><span id="cpp_lib_freestanding_functional_202306L"></span><span id="cpp_lib_freestanding_iterator_202306L"></span><span id="cpp_lib_freestanding_memory_202306L"></span><span id="cpp_lib_freestanding_ranges_202306L"></span><span id="cpp_lib_freestanding_ratio_202306L"></span><span id="cpp_lib_freestanding_tuple_202306L"></span><span id="cpp_lib_freestanding_utility_202306L"></span>更多独立设施  (<a href="../feature_test.html#cpp_lib_freestanding_feature_test_macros" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_feature_test_macros = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_functional" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_functional = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_iterator" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_iterator = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_memory" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_memory = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_ranges" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_ranges = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_ratio" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_ratio = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_tuple" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_tuple = 202306L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_utility" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_utility = 202306L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2198R7">P2198R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>不适用</small>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_saturation_arithmetic_202311L"></span><a href="../numeric.html#.E9.A5.B1.E5.92.8C.E7.AE.97.E6.9C.AF_.28C.2B.2B26_.E8.B5.B7.29" title="cpp/numeric">饱和算术</a>  (<a href="../feature_test.html#cpp_lib_saturation_arithmetic" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_saturation_arithmetic = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0543R3">P0543R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_debugging_202311L"></span><span id="cpp_lib_debugging_202403L"></span><a href="../header/debugging.html" title="cpp/header/debugging"><tt>&lt;debugging&gt;</tt></a>：<a href="../utility.html#.E8.B0.83.E8.AF.95.E6.94.AF.E6.8C.81" title="cpp/utility">调试支持</a>  (<a href="../feature_test.html#cpp_lib_debugging" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_debugging = 202311L__cpp_lib_debugging = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2546R5">P2546R5</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P2810R4">P2810R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_linalg_202311L"></span><a href="../header/linalg.html" title="cpp/header/linalg"><tt>&lt;linalg&gt;</tt></a>：基于 BLAS 的自由函数线性代数接口  (<a href="../feature_test.html#cpp_lib_linalg" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_linalg = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1673R13">P1673R13</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3050R2">P3050R2</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3222R0">P3222R0</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>使 <span class="t-lc"><a href="../error/assert.html" title="cpp/error/assert">assert()</a></span> 宏用户友好
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2264R7">P2264R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_format_202311L"></span>运行时格式化字符串  (<a href="../feature_test.html#cpp_lib_format" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_format = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2918R2">P2918R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_span_initializer_list_202311L"></span>通过初始化式列表构造 <span class="t-lc">std::span</span>  (<a href="../feature_test.html#cpp_lib_span_initializer_list" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_span_initializer_list = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2447R6">P2447R6</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_span_202311L"></span><span class="t-lc">std::span::at()</span>  (<a href="../feature_test.html#cpp_lib_span" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_span = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2821R5">P2821R5</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_tuple_like_202311L"></span>向 <span class="t-lc"><a href="../numeric/complex.html" title="cpp/numeric/complex">std::complex</a></span> 添加元组协议  (<a href="../feature_test.html#cpp_lib_tuple_like" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_tuple_like = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2819R2">P2819R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span class="t-lc"><a href="../numeric/random/generate_canonical.html" title="cpp/numeric/random/generate canonical">std::generate_canonical</a></span> 的新规范
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0952R2">P0952R2</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.12">19.42*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>删除被弃用的类型别名 <span class="t-lc">std::allocator::is_always_equal</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2868R3">P2868R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td>删除 <span class="t-lc"><a href="../string/basic_string/reserve.html" title="cpp/string/basic string/reserve">std::basic_string::reserve()</a></span> 的无参重载
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2870R3">P2870R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td>删除被弃用的 Unicode 转换设施 (<a href="../header/codecvt.html" title="cpp/header/codecvt"><tt>&lt;codecvt&gt;</tt></a>)
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2871R3">P2871R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_freestanding_cstring_202311L"></span>独立式：删除 <span class="t-lc"><a href="../string/byte/strtok.html" title="cpp/string/byte/strtok">std::strtok</a></span>  (<a href="../feature_test.html#cpp_lib_freestanding_cstring" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_cstring = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2937R0">P2937R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.10">19.40*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_freestanding_algorithm_202311L"></span><span id="cpp_lib_freestanding_array_202311L"></span><span id="cpp_lib_freestanding_optional_202311L"></span><span id="cpp_lib_freestanding_string_view_202311L"></span><span id="cpp_lib_freestanding_variant_202311L"></span>独立式库：使得部分类独立  (<a href="../feature_test.html#cpp_lib_freestanding_algorithm" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_algorithm = 202311L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_array" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_array = 202311L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_optional" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_optional = 202311L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_string_view" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_string_view = 202311L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_variant" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_variant = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2407R5">P2407R5</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.12">19.42*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_freestanding_expected_202311L"></span><span id="cpp_lib_freestanding_mdspan_202311L"></span><span id="cpp_lib_out_ptr_202311L"></span><span id="cpp_lib_span_202311L"></span>独立式库：<span class="t-lc">std::inout</span>、<span class="t-lc">std::expected</span>、<span class="t-lc">std::span</span>  (<a href="../feature_test.html#cpp_lib_freestanding_expected" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_expected = 202311L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_mdspan" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_mdspan = 202311L">*</span>  (<a href="../feature_test.html#cpp_lib_out_ptr" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_out_ptr = 202311L">*</span>  (<a href="../feature_test.html#cpp_lib_span" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_span = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2833R2">P2833R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.12">19.42*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ranges_as_const_202311L"></span>DR23：<span class="t-lc">std::basic_const_iterator</span> 应该遵从其底层类型的可转换性  (<a href="../feature_test.html#cpp_lib_ranges_as_const" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ranges_as_const = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2836R1">P2836R1</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P2950R0">P2950R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.10">19.40*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR20：<span class="t-lc">std::make_format_args</span> 只接受左值引用而不是转发引用
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2905R2">P2905R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.10">19.40*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_format_uchar_202311L"></span>DR20：修复格式化代码单元为整数  (<a href="../feature_test.html#cpp_lib_format_uchar" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_format_uchar = 202311L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2909R4">P2909R4</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">13.3
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">18
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.10">19.40*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="Xcode 16.0 (16A242d), 16.1 (16B40), 16.2 (16C5032a)">16.0.0*</span>
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ranges_concat_202403L"></span><span class="t-lc">views::concat</span>  (<a href="../feature_test.html#cpp_lib_ranges_concat" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ranges_concat = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2542R8">P2542R8</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_string_view_202403L"></span>连接<a href="../string/basic_string.html" title="cpp/string/basic string">字符串</a>和<a href="../string/basic_string_view.html" title="cpp/string/basic string view">字符串视图</a>  (<a href="../feature_test.html#cpp_lib_string_view" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_string_view = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2591R5">P2591R5</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_algorithm_default_value_type_202403L"></span>为<a href="../algorithm.html" title="cpp/algorithm">算法</a>启用列表初始化  (<a href="../feature_test.html#cpp_lib_algorithm_default_value_type" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_algorithm_default_value_type = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2248R8">P2248R8</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3217R0">P3217R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ranges_generate_random_202403L"></span><span class="t-lc">std::ranges::generate_random</span>  (<a href="../feature_test.html#cpp_lib_ranges_generate_random" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ranges_generate_random = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1068R11">P1068R11</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constrained_equality_202403L"></span><span id="cpp_lib_reference_wrapper_202403L"></span><span class="t-lc"><a href="../utility/functional/reference_wrapper.html" title="cpp/utility/functional/reference wrapper">std::reference_wrapper</a></span> 的<a href="../utility/functional/reference_wrapper/operator_cmp.html" title="cpp/utility/functional/reference wrapper/operator cmp">比较</a>，以及对 <a href="../utility/pair/operator_cmp.html" title="cpp/utility/pair/operator cmp"><tt>std::pair</tt></a>、<a href="../utility/tuple/operator_cmp.html" title="cpp/utility/tuple/operator cmp"><tt>std::tuple</tt></a>、<a href="../utility/optional/operator_cmp.html" title="cpp/utility/optional/operator cmp"><tt>std::optional</tt></a> 和 <a href="../utility/variant/operator_cmp.html" title="cpp/utility/variant/operator cmp"><tt>std::variant</tt></a> 的比较的约束  (<a href="../feature_test.html#cpp_lib_constrained_equality" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constrained_equality = 202403L">*</span>  (<a href="../feature_test.html#cpp_lib_reference_wrapper" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_reference_wrapper = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2944R3">P2944R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">19 (部分)<span title="未实现受约束的相等比较">*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_submdspan_202403L"></span>有填充 <code>mdspan</code> 布局  (<a href="../feature_test.html#cpp_lib_submdspan" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_submdspan = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2642R6">P2642R6</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>新的 <span class="t-lc">std::span</span> 和 <span class="t-lc">std::mdspan</span> 以整数常量进行的 CTAD
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3029R1">P3029R1</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_atomic_min_max_202403L"></span>原子的最大值与最小值  (<a href="../feature_test.html#cpp_lib_atomic_min_max" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_atomic_min_max = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0493R5">P0493R5</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_format_path_202403L"></span><span class="t-lc">std::formatter&lt;std::filesystem::path&gt;</span>  (<a href="../feature_test.html#cpp_lib_format_path" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_format_path = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2845R8">P2845R8</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_print_202403L"></span>用 <span class="t-lc">std::println()</span> 打印空行  (<a href="../feature_test.html#cpp_lib_print" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_print = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3142R0">P3142R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">14<span title="被当做针对 C++23 的缺陷报告。">*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19<span title="被当做针对 C++23 的缺陷报告。">*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.11">19.41*</span><span title="被当做针对 C++23 的缺陷报告。">*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>取消弃用 <span class="t-lc">std::polymorphic_allocator::destroy</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2875R4">P2875R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.11">19.41*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>移除已弃用的 <code>strstream</code>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2867R2">P2867R2</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>移除已弃用的 <span class="t-lc"><a href="../memory/shared_ptr.html" title="cpp/memory/shared ptr">std::shared_ptr</a></span> 原子访问 API
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2869R4">P2869R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>移除 <span class="t-lc"><a href="../locale/wstring_convert.html" title="cpp/locale/wstring convert">std::wstring_convert</a></span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2872R3">P2872R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_print_202403L"></span>DR23：允许 <span class="t-lc">std::print</span> 的一种高效实现  (<a href="../feature_test.html#cpp_lib_print" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_print = 202403L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3107R5">P3107R5</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3235R3">P3235R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.13">19.43*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_senders_202406L"></span><a href="../execution.html" title="cpp/execution">执行控制库</a>  (<a href="../feature_test.html#cpp_lib_senders" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_senders = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2300R10">P2300R10</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3396R0">P3396R0</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_inplace_vector_202406L"></span><span class="t-lc">std::inplace_vector</span>：具有固定容量的可动态调整大小向量  (<a href="../feature_test.html#cpp_lib_inplace_vector" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_inplace_vector = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0843R14">P0843R14</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_philox_engine_202406L"></span><span class="t-lc">std::philox_engine</span>：基于计数器的随机数引擎  (<a href="../feature_test.html#cpp_lib_philox_engine" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_philox_engine = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2075R6">P2075R6</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_optional_range_support_202406L"></span><span class="t-lc"><a href="../utility/optional.html" title="cpp/utility/optional">std::optional</a></span> 的范围支持  (<a href="../feature_test.html#cpp_lib_optional_range_support" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_optional_range_support = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3168R2">P3168R2</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_is_virtual_base_of_202406L"></span><span class="t-lc">std::is_virtual_base_of</span>：用于检测虚基类的类型特征  (<a href="../feature_test.html#cpp_lib_is_virtual_base_of" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_is_virtual_base_of = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2985R0">P2985R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">20
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_mdspan_202406L"></span>用于 <span class="t-lc">std::mdspan</span> 的 <span class="t-lc">std::dims</span>  (<a href="../feature_test.html#cpp_lib_mdspan" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_mdspan = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2389R2">P2389R2</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR11：<span class="t-lc"><a href="../utility/tuple/ignore.html" title="cpp/utility/tuple/ignore">std::ignore</a></span> 的类型的正式规范
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2968R2">P2968R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.12">19.42*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ranges_202406L"></span>DR20：移除可间接调用概念中对公共引用的要求  (<a href="../feature_test.html#cpp_lib_ranges" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ranges = 202406L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2997R1">P2997R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">19
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.12">19.42*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>弃用 <span class="t-lc"><a href="../types/is_trivial.html" title="cpp/types/is trivial">std::is_trivial</a></span> 和 <span class="t-lc"><a href="../types/is_trivial.html" title="cpp/types/is trivial">std::is_trivial_v</a></span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3247R2">P3247R2</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR20：算法函数对象
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3136R1">P3136R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.9">19.39*</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ranges_cache_latest_202411L"></span><a href="../ranges/cache_latest_view.html" title="cpp/ranges/cache latest view"><tt>std::ranges::cache_latest_view</tt></a>  (<a href="../feature_test.html#cpp_lib_ranges_cache_latest" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ranges_cache_latest = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3138R5">P3138R5</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constrained_equality_202411L"></span>约束 <span class="t-lc">std::expected</span> 的<a href="../utility/expected/operator_cmp.html" title="cpp/utility/expected/operator cmp">相等运算符</a>  (<a href="../feature_test.html#cpp_lib_constrained_equality" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constrained_equality = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3379R0">P3379R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_aligned_accessor_202411L"></span><span class="t-lc">std::aligned_accessor</span>：使用过量对齐指针的 <span class="t-lc">std::mdspan</span> 访问器  (<a href="../feature_test.html#cpp_lib_aligned_accessor" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_aligned_accessor = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2897R7">P2897R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_is_sufficiently_aligned_202411L"></span><span class="t-lc">std::is_sufficiently_aligned</span>：检查指针的对齐前条件  (<a href="../feature_test.html#cpp_lib_is_sufficiently_aligned" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_is_sufficiently_aligned = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2897R7">P2897R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_atomic_ref_202411L"></span><span class="t-lc">std::atomic_ref::address()</span>  (<a href="../feature_test.html#cpp_lib_atomic_ref" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_atomic_ref = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2835R7">P2835R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR11/20：<span class="t-lc"><a href="../atomic/atomic.html" title="cpp/atomic/atomic">std::atomic</a></span> 与 <span class="t-lc">std::atomic_ref</span> 中的 cv 限定类型
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3323R1">P3323R1</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span title="VS 2022 17.14">19.44*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constexpr_atomic_202411L"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 的 <span class="t-lc"><a href="../atomic/atomic.html" title="cpp/atomic/atomic">std::atomic</a></span> 与 <span class="t-lc">std::atomic_ref</span>  (<a href="../feature_test.html#cpp_lib_constexpr_atomic" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_atomic = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3309R3">P3309R3</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_raw_memory_algorithms_202411L"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 的<a href="../memory.html#.E5.8F.97.E7.BA.A6.E6.9D.9F.E7.9A.84.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.86.85.E5.AD.98.E7.AE.97.E6.B3.95" title="cpp/memory">特化内存算法</a>  (<a href="../feature_test.html#cpp_lib_raw_memory_algorithms" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_raw_memory_algorithms = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3508R0">P3508R0</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3369R0">P3369R0</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/header/stdbit.h&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/stdbit.h（页面不存在）"><tt>&lt;stdbit.h&gt;</tt></a> 与 <a href="../header/stdckdint.h.html" title="cpp/header/stdckdint.h"><tt>&lt;stdckdint.h&gt;</tt></a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3370R1">P3370R1</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_simd_202411L"></span><a href="../header/simd.html" title="cpp/header/simd"><tt>&lt;simd&gt;</tt></a>：<a href="../numeric/simd.html" title="cpp/numeric/simd">数据并行类型</a>  (<a href="../feature_test.html#cpp_lib_simd" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_simd = 202411L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P1928R15">P1928R15</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3430R3">P3430R3</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3441R2">P3441R2</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3287R3">P3287R3</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P2663R7">P2663R7</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P2933R4">P2933R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>用于创建<a href="../execution.html#.E7.8E.AF.E5.A2.83" title="cpp/execution">执行环境</a>的工具
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3325R5">P3325R5</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constexpr_exceptions_202411L"></span><span id="cpp_lib_constexpr_exceptions_202502L"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 的异常类型，例如 <span class="t-lc"><a href="../memory/new/bad_alloc.html" title="cpp/memory/new/bad alloc">std::bad_alloc</a></span>、<span class="t-lc"><a href="../types/bad_cast.html" title="cpp/types/bad cast">std::bad_cast</a></span> 等  (<a href="../feature_test.html#cpp_lib_constexpr_exceptions" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_exceptions = 202411L__cpp_lib_constexpr_exceptions = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3068R6">P3068R6</a><br><a rel="nofollow" class="external text" href="https://wg21.link/P3378R2">P3378R2</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_trivially_relocatable_202502L"></span>可平凡重定位特征和操作  (<a href="../feature_test.html#cpp_lib_trivially_relocatable" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_trivially_relocatable = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2786R13">P2786R13</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>无害化和弃用 <a href="../atomic/memory_order.html" title="cpp/atomic/memory order"><code>std::memory_order::consume</code></a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3475R1">P3475R1</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>将 <span class="t-lc"><a href="../utility/variant/monostate.html" title="cpp/utility/variant/monostate">std::monostate</a></span> 放入 <a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0472R3">P0472R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">21
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_indirect_202502L"></span><span class="t-lc">std::indirect</span>  (<a href="../feature_test.html#cpp_lib_indirect" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_indirect = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3019R14">P3019R14</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_polymorphic_202502L"></span><span class="t-lc">std::polymorphic</span>  (<a href="../feature_test.html#cpp_lib_polymorphic" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_polymorphic = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3019R14">P3019R14</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constexpr_containers_202502L"></span>更多 <span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 容器和适配器  (<a href="../feature_test.html#cpp_lib_constexpr_containers" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_containers = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3372R2">P3372R2</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_constexpr_inplace_vector_202502L"></span>非平凡类型 <span class="t-lc">std::inplace_vector</span> 的 <span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span>  (<a href="../feature_test.html#cpp_lib_constexpr_inplace_vector" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_constexpr_inplace_vector = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3074R7">P3074R7</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ranges_to_input_202502L"></span><a href="../ranges/to_input_view.html" title="cpp/ranges/to input view"><tt>std::ranges::to_input_view</tt></a>  (<a href="../feature_test.html#cpp_lib_ranges_to_input" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ranges_to_input = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3137R3">P3137R3</a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">15
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_ranges_reserve_hint_202502L"></span><a href="../ranges/approximately_sized_range.html" title="cpp/ranges/approximately sized range"><tt>std::ranges::approximately_sized_range</tt></a> 和 <a href="../ranges/reserve_hint.html" title="cpp/ranges/reserve hint"><tt>std::ranges::reserve_hint</tt></a>  (<a href="../feature_test.html#cpp_lib_ranges_reserve_hint" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_ranges_reserve_hint = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2846R6">P2846R6</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_hive_202502L"></span><a href="../header/hive.html" title="cpp/header/hive"><tt>&lt;hive&gt;</tt></a>：一种基于桶的重用已擦除元素内存位置的容器  (<a href="../feature_test.html#cpp_lib_hive" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_hive = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P0447R28">P0447R28</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_contracts_202502L"></span><a href="../header/contracts.html" title="cpp/header/contracts"><tt>&lt;contracts&gt;</tt></a>：契约违背处理支持  (<a href="../feature_test.html#cpp_lib_contracts" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_contracts = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2900R14">P2900R14</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>标准库加固
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3471R4">P3471R4</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe"><span title="VS 2022 17.14">19.44*</span> <span title="因为 C++26 契约尚未实现，所以违反加固前条件时默认调用 __fastfail()。">(部分)*</span>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td><span id="cpp_lib_freestanding_algorithm_202502L"></span><span id="cpp_lib_freestanding_execution_202502L"></span><span id="cpp_lib_freestanding_memory_202502L"></span><span id="cpp_lib_freestanding_numeric_202502L"></span><span id="cpp_lib_freestanding_random_202502L"></span>独立式库：<a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>、<a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a> 和 <a href="../header/random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a>  (<a href="../feature_test.html#cpp_lib_freestanding_algorithm" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_algorithm = 202502L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_execution" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_execution = 202502L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_memory" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_memory = 202502L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_numeric" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_numeric = 202502L">*</span>  (<a href="../feature_test.html#cpp_lib_freestanding_random" title="cpp/feature test">FTM</a>)<span title="功能特性测试宏：__cpp_lib_freestanding_random = 202502L">*</span>
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P2976R1">P2976R1</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr>
+<td>DR20：将连续迭代器转换为指针
+</td>
+<td><a rel="nofollow" class="external text" href="https://wg21.link/P3349R0">P3349R0</a>
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td>
+<td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no">
+</td></tr>
+<tr style="height:15em">
+<th style="vertical-align:top;"> <br><br> C++26 功能特性
+</th>
+<th style="vertical-align:top;"> <br><br> 提案
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div>GCC libstdc++</div></div>
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div>Clang libc++</div></div>
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div>MSVC STL</div></div>
+</th>
+<th style="width: 40pt;"><div class="t-vertical"><div><span title="C++ 标准库">Apple Clang*</span></div></div>
+</th></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 52177/1000000
+Preprocessor generated node count: 18040/1000000
+Post‐expand include size: 635360/4194304 bytes
+Template argument size: 234085/4194304 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:14379-0!*!0!!*!*!zh!* and timestamp 20250402193037 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/compiler_support/26&amp;oldid=87811">https://zh.cppreference.com/mwiki/index.php?title=cpp/compiler_support/26&amp;oldid=87811</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/compiler_support/26">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年2月27日 (星期二) 08:50。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 4.258 secs. -->
+	</body>
+<!-- Cached 20250402193037 -->
+</html>

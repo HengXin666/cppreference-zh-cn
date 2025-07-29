@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>求值顺序</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/language/eval_order","wgTitle":"c/language/eval order","wgCurRevisionId":100030,"wgArticleId":1067,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/language/eval_order","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_language_eval_order skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">求值顺序</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../language.html" title="c/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="c/language">C 语言</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> <a href="basic_concepts.html" title="c/language/basic concepts">基本概念</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="../keyword.html" title="c/keyword">关键词</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="../preprocessor.html" title="c/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="statements.html" title="c/language/statements">语句</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html" title="c/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="c/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="declarations.html" title="c/language/declarations">声明</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="functions.html" title="c/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"> 杂项</td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="history.html" title="c/language/history">C 的历史</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="../experimental.html" title="c/experimental">技术规范</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="expressions.html" title="c/language/expressions"> 表达式</a><div class="t-navbar-menu"><div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">通用</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="c/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">求值顺序与定序点</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_expression.html" title="c/language/constant expression">常量表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="conversion.html" title="c/language/conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="generic.html" title="c/language/generic">泛型选择</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#.E5.B8.B8.E9.87.8F.E5.8F.8A.E5.AD.97.E9.9D.A2.E9.87.8F" title="c/language/expressions">常量及字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="integer_constant.html" title="c/language/integer constant">整数常量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="floating_constant.html" title="c/language/floating constant">浮点常量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="character_constant.html" title="c/language/character constant">字符常量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bool_constant.html" title="c/language/bool constant"><span class="t-lines"><span><code>true</code>/<code>false</code></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="nullptr.html" title="c/language/nullptr"><span class="t-lines"><span><code>nullptr</code></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string_literal.html" title="c/language/string literal">字符串字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="compound_literal.html" title="c/language/compound literal">复合字面量</a> <span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#.E8.BF.90.E7.AE.97.E7.AC.A6" title="c/language/expressions">运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="c/language/operator precedence">运算符优先级</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_member_access.html" title="c/language/operator member access">成员访问与间接</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_logical.html" title="c/language/operator logical">逻辑运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_comparison.html" title="c/language/operator comparison">比较运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_arithmetic.html" title="c/language/operator arithmetic">算术运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_assignment.html" title="c/language/operator assignment">赋值运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_incdec.html" title="c/language/operator incdec">自增减</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_other.html" title="c/language/operator other">函数调用、逗号、条件运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sizeof.html" title="c/language/sizeof"><span class="t-lines"><span>sizeof</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="_Alignof.html" title="c/language/ Alignof"><span class="t-lines"><span><code>_Alignof</code></span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="C23 弃用">C11*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="cast.html" title="c/language/cast">转换运算符</a></td></tr>
+</table></div>
+<div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>除下列标出者，任意 C 运算符的运算数求值顺序，包括函数调用表达式的函数参数求值顺序，及任何表达式的子表达式求值顺序都是未指定的。编译器会以任意顺序对其求值，而且在同一表达式被再度求值时可选用另一种顺序。
+</p><p>C 中没有从左到右或从右到左求值的概念，不要将其与运算符的从左到右或从右到左结合性混淆：表达式 <span class="t-c"><span class="mw-geshi c source-c">f1<span class="br0">(</span><span class="br0">)</span> <span class="sy2">+</span> f2<span class="br0">(</span><span class="br0">)</span> <span class="sy2">+</span> f3<span class="br0">(</span><span class="br0">)</span></span></span> 因为 <span class="mw-geshi c source-c">operator<span class="sy2">+</span></span> 的从左到右结合性而被分析成 <span class="t-c"><span class="mw-geshi c source-c"><span class="br0">(</span>f1<span class="br0">(</span><span class="br0">)</span> <span class="sy2">+</span> f2<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy2">+</span> f3<span class="br0">(</span><span class="br0">)</span></span></span>，但运行时对 <span class="t-c"><span class="mw-geshi c source-c">f3<span class="br0">(</span><span class="br0">)</span></span></span> 的函数调用可以最先、最后，或在 <span class="t-c"><span class="mw-geshi c source-c">f1<span class="br0">(</span><span class="br0">)</span></span></span> 与 <span class="t-c"><span class="mw-geshi c source-c">f2<span class="br0">(</span><span class="br0">)</span></span></span> 之间求值。
+</p>
+<h3><span class="mw-headline" id=".E5.AE.9A.E4.B9.89">定义</span></h3>
+<h4><span class="mw-headline" id=".E6.B1.82.E5.80.BC">求值</span></h4>
+<p>对于每个表达式或子表达式，编译器会进行两种求值（两者都是可选的）：
+</p>
+<ul><li> <i>值计算 ﻿</i>（value computation）：计算表达式所返回的值。这可以涉及到确定对象身份（<a href="value_category.html" title="c/language/value category">左值求值</a>）或读取之前赋给对象的值（右值求值） 
+</li><li> <i>副效应 ﻿</i>（side effect）：访问（读或写）以 <a href="volatile.html" title="c/language/volatile"><code>volatile</code></a> 左值指代的对象、修改（写）对象<span class="t-rev-inl t-since-c11"><span>、原子同步</span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span></span></span>、修改文件、修改浮点环境（若支持）或调用进行上述操作的函数。
+</li></ul>
+<p>若表达式不产生副效应，且编译器能确定其值不被使用，则表达式<a href="as_if.html" title="c/language/as if">可以不求值</a>。
+</p>
+<h4><span class="mw-headline" id=".E5.AE.9A.E5.BA.8F">定序</span></h4>
+<p><i>先序于</i>（sequenced before）是一种同一线程内求值的非对称、传递性、对偶关系（若引入原子类型和内存屏障，则它可以扩展到线程间）。
+</p>
+<ul><li> 若在子表达式 <span class="t-c"><span class="mw-geshi c source-c">E1</span></span> 和 <span class="t-c"><span class="mw-geshi c source-c">E2</span></span> 间存在<i>序列点（<a href="https://en.wikipedia.org/wiki/Sequence_point" class="extiw" title="enwiki:Sequence point">sequence point</a>）</i>，则 <span class="t-c"><span class="mw-geshi c source-c">E1</span></span> 的值计算和副效应都<i>先序于</i> <span class="t-c"><span class="mw-geshi c source-c">E2</span></span> 的所有值计算和副效应
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-c11"><td>
+<ul><li> 若求值 A 先序于求值 B，则求值 A 将在求值 B 开始前完成。
+</li><li> 若求值 A 不先序于求值 B，且求值 B 先序于求值 A，则求值 B 将在求值 A 开始前完成。
+</li><li> 若求值 A 不先序于求值 B，且求值 B 不先序于求值 A，则存在二种可能：
+<ul><li> 求值 A 与 B 是无顺序（unsequenced）的：它们可以以任意顺序进行，并且可以重叠（在执行的单一线程中，编译器可以交错地写入构成 A 与 B 的 CPU 指令）
+</li><li> 求值 A 与 B 是非确定顺序（indeterminably-sequenced）的：它们可以以任意顺序进行，但不可重叠：要么是 A 将在 B 之前完成，要么是 B 在 A 之前完成。顺序可以在相同表达式的下次求值前相反。
+</li></ul>
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E8.A7.84.E5.88.99">规则</span></h3>
+<div class="t-li1"><span class="t-li">1)</span> 在所有函数参数和函数指代器的求值后，实际调用函数前，有一个序列点。</div>
+<div class="t-li1"><span class="t-li">2)</span> 在下例二元运算符的第一（左）运算数求值后，第二（右）运算数求值前，有一个序列点：<code>&amp;&amp;</code>（逻辑与）、<code>||</code>（逻辑或），及 <code>,</code>（逗号）。</div>
+<div class="t-li1"><span class="t-li">3)</span> 在条件运算符 <code>?:</code> 的第一（左）运算数求值后，第二或第三运算数（无论何者被求值）前，有一个序列点。</div>
+<div class="t-li1"><span class="t-li">4)</span> 在完整表达式（非子表达式的表达式：典型的是以分号为结尾者或 <span class="mw-geshi c source-c"><span class="kw1">if</span></span>/<span class="mw-geshi c source-c"><span class="kw1">switch</span></span>/<span class="mw-geshi c source-c"><span class="kw1">while</span></span>/<span class="mw-geshi c source-c"><span class="kw1">do</span></span> 的<a href="statements.html" title="c/language/statements">控制语句</a>）的求值后，下个完整表达式前，有一个序列点。</div>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<div class="t-li1"><span class="t-li">5)</span> 在完整声明器的结尾，有一个序列点。</div>
+<div class="t-li1"><span class="t-li">6)</span> 在紧接库函数返回前，有一个序列点。</div>
+<div class="t-li1"><span class="t-li">7)</span> 在格式化 I/O 中，关联到每个转换指定符的动作后，有一个序列点（特别是 <span class="t-lc"><a href="../io/fscanf.html" title="c/io/fscanf">scanf</a></span> 写入同一变量的不同域， <span class="t-lc"><a href="../io/fprintf.html" title="c/io/fprintf">printf</a></span> 读取并以多于一次使用 <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>n</span></span> 修改同一变量是良构的）。</div>
+<div class="t-li1"><span class="t-li">8)</span> 在每次通过库函数 <span class="t-lc"><a href="../algorithm/qsort.html" title="c/algorithm/qsort">qsort</a></span> 和 <span class="t-lc"><a href="../algorithm/bsearch.html" title="c/algorithm/bsearch">bsearch</a></span> 调用比较函数前和紧随其后有序列点，在 <span class="t-lc"><a href="../algorithm/qsort.html" title="c/algorithm/qsort">qsort</a></span> 调用比较函数和移动对象之间也有序列点。
+</div></td>
+<td><span class="t-mark-rev t-since-c99" style="white-space: nowrap;">(C99 起)</span></td></tr>
+<tr class="t-rev t-since-c11"><td>
+<div class="t-li1"><span class="t-li">9)</span> 属于运算符的运算数的值计算（但非副效应）先序于运算符的值计算（但非其副效应）。</div>
+<div class="t-li1"><span class="t-li">10)</span> 直接赋值运算符与所有复合赋值运算符的副效应（修改左参数）后序于左右参数的值计算（但非其副效应）。</div>
+<div class="t-li1"><span class="t-li">11)</span> 后自增和后自减运算符的值计算先序于其副效应。</div>
+<div class="t-li1"><span class="t-li">12)</span> 既非先序于亦非后序于另一函数调用的函数调用是非确定顺序的（构成不同函数调用的 CPU 指令不可能交错，即使函数被内联）。</div>
+<div class="t-li1"><span class="t-li">13)</span> 在<a href="initialization.html" title="c/language/initialization">初始化器</a>列表表达式中，所有求值都是非确定顺序的</div>
+<div class="t-li1"><span class="t-li">14)</span> 考虑到非确定顺序的函数调用，复合赋值运算符，及自增减运算符的前后缀形式都是单独求值。
+</div></td>
+<td><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.9C.AA.E5.AE.9A.E4.B9.89.E8.A1.8C.E4.B8.BA">未定义行为</span></h3>
+<div class="t-li1"><span class="t-li">1)</span> 若对一个标量对象的副效应与另一个对同一标量对象的副效应相对无顺序，则<a href="behavior.html#UB_.E4.B8.8E.E4.BC.98.E5.8C.96" title="c/language/behavior">行为未定义</a>。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">i <span class="sy1">=</span> <span class="sy2">++</span>i <span class="sy2">+</span> i<span class="sy2">++</span><span class="sy4">;</span> <span class="co1">// 未定义行为</span>
+i <span class="sy1">=</span> i<span class="sy2">++</span> <span class="sy2">+</span> <span class="nu0">1</span><span class="sy4">;</span> <span class="co1">// 未定义行为</span>
+f<span class="br0">(</span><span class="sy2">++</span>i, <span class="sy2">++</span>i<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 未定义行为</span>
+f<span class="br0">(</span>i <span class="sy1">=</span> <span class="sy2">-</span><span class="nu0">1</span>, i <span class="sy1">=</span> <span class="sy2">-</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 未定义行为</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">2)</span> 若一个标量对象上的副效应与另一个使用同一标量对象之值的值计算相对无顺序，则行为未定义。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">f<span class="br0">(</span>i, i<span class="sy2">++</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 未定义行为</span>
+a<span class="br0">[</span>i<span class="br0">]</span> <span class="sy1">=</span> i<span class="sy2">++</span><span class="sy4">;</span> <span class="co1">// 未定义行为</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">3)</span> 只要至少一个子表达式的排序容许这种无顺序副效应，就应用上述规则。</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<p><a href="operator_precedence.html" title="c/language/operator precedence">运算符优先级</a>，定义自源代码表示构建表达式的方式。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>求值顺序</span></span>的 <span><span><a href="../../cpp/language/eval_order.html" title="cpp/language/eval order">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 1776/1000000
+Preprocessor generated node count: 5732/1000000
+Post‐expand include size: 52650/4194304 bytes
+Template argument size: 8433/4194304 bytes
+Highest expansion depth: 19/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:1067-0!*!0!!zh!*!zh!* and timestamp 20250318202634 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/language/eval_order&amp;oldid=100030">https://zh.cppreference.com/mwiki/index.php?title=c/language/eval_order&amp;oldid=100030</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/language/eval_order">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年3月18日 (星期二) 08:06。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 0.558 secs. -->
+	</body>
+<!-- Cached 20250318202634 -->
+</html>

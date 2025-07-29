@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>localtime, localtime_r, localtime_s</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/chrono/localtime","wgTitle":"c/chrono/localtime","wgCurRevisionId":91659,"wgArticleId":948,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/chrono/localtime","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_chrono_localtime skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">localtime, localtime_r, localtime_s</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../chrono.html" title="c/chrono">chrono</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../chrono.html" title="c/chrono">日期和时间工具</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> 函数</td></tr>
+<tr class="t-nv-h2"><td colspan="5"> 时间操作</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="difftime.html" title="c/chrono/difftime"><span class="t-lines"><span>difftime</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="time.html" title="c/chrono/time"><span class="t-lines"><span>time</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clock.html" title="c/chrono/clock"><span class="t-lines"><span>clock</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec_get.html" title="c/chrono/timespec get"><span class="t-lines"><span>timespec_get</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec_getres.html" title="c/chrono/timespec getres"><span class="t-lines"><span>timespec_getres</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> 格式转换</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="asctime.html" title="c/chrono/asctime"><span class="t-lines"><span>asctime</span><span>asctime_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-c23" style="white-space: nowrap;">(C23 弃用)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ctime.html" title="c/chrono/ctime"><span class="t-lines"><span>ctime</span><span>ctime_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-c23" style="white-space: nowrap;">(C23 弃用)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="strftime.html" title="c/chrono/strftime"><span class="t-lines"><span>strftime</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="wcsftime.html" title="c/chrono/wcsftime"><span class="t-lines"><span>wcsftime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95" style="white-space: nowrap;">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gmtime.html" title="c/chrono/gmtime"><span class="t-lines"><span>gmtime</span><span>gmtime_r</span><span>gmtime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>localtime</span><span>localtime_r</span><span>localtime_s</span></span></strong></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="mktime.html" title="c/chrono/mktime"><span class="t-lines"><span>mktime</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 常量</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="CLOCKS_PER_SEC.html" title="c/chrono/CLOCKS PER SEC"><span class="t-lines"><span>CLOCKS_PER_SEC</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 类型</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tm.html" title="c/chrono/tm"><span class="t-lines"><span>tm</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="time_t.html" title="c/chrono/time t"><span class="t-lines"><span>time_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clock_t.html" title="c/chrono/clock t"><span class="t-lines"><span>clock_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec.html" title="c/chrono/timespec"><span class="t-lines"><span>timespec</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/time.html" title="c/header/time"><tt>&lt;time.h&gt;</tt></a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi c source-c"><span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a><span class="sy2">*</span> localtime  <span class="br0">(</span> <span class="kw4">const</span> <a href="time_t.html"><span class="kw523">time_t</span></a><span class="sy2">*</span> timer <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl t-since-c23">
+<td> <div><span class="mw-geshi c source-c"><span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a><span class="sy2">*</span> localtime_r<span class="br0">(</span> <span class="kw4">const</span> <a href="time_t.html"><span class="kw523">time_t</span></a><span class="sy2">*</span> timer, <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a><span class="sy2">*</span> buf <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a><span class="sy2">*</span> localtime_s<span class="br0">(</span> <span class="kw4">const</span> <a href="time_t.html"><span class="kw523">time_t</span></a><span class="sy2">*</span> <span class="kw4">restrict</span> timer, <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a><span class="sy2">*</span> <span class="kw4">restrict</span> buf <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (3) </td>
+<td> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 转换给定的纪元起的时间（<span class="t-c"><span class="mw-geshi c source-c">timer</span></span> 所指向的 <span class="t-lc"><a href="time_t.html" title="c/chrono/time t">time_t</a></span> 值）为以 <a href="tm.html" title="c/chrono/tm"><code>struct tm</code></a> 格式表达为本地时间的日历时间。存储结果于静态存储中并返回指向该静态存储的指针。</div>
+<div class="t-li1"><span class="t-li">2)</span> 同 <span class="t-v">(1)</span>，除了函数对结果使用用户提供的存储 <span class="t-c"><span class="mw-geshi c source-c">buf</span></span>。</div>
+<div class="t-li1"><span class="t-li">3)</span> 同 <span class="t-v">(1)</span>，除了函数对结果使用用户提供的存储 <span class="t-c"><span class="mw-geshi c source-c">buf</span></span>。并且在运行时检测下列错误并调用当前安装的<a href="../error/set_constraint_handler_s.html" title="c/error/set constraint handler s">制约处理</a>函数：
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi c source-c">timer</span></span> 或 <span class="t-c"><span class="mw-geshi c source-c">buf</span></span> 为空指针
+</li></ul>
+</dd><dd>同所有边界检查函数，<code>localtime_s</code>，仅若实现定义 <span class="t-c"><span class="mw-geshi c source-c">__STDC_LIB_EXT1__</span></span> 且用户在包含 <a href="../header/time.html" title="c/header/time"><tt>&lt;time.h&gt;</tt></a> 前定义 <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_LIB_EXT1__</span></span> 为整数常量 1 才保证可用。</dd></dl></div>
+
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> timer
+</td>
+<td> -
+</td>
+<td> 指向待转换的 <span class="t-lc"><a href="time_t.html" title="c/chrono/time t">time_t</a></span> 对象的指针
+</td></tr>
+<tr class="t-par">
+<td> buf
+</td>
+<td> -
+</td>
+<td> 指向待存储结果的 <span class="t-c"><span class="mw-geshi c source-c"><span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a></span></span> 对象的的指针
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<div class="t-li1"><span class="t-li">1)</span> 成功时为指向静态内部 <span class="t-lc"><a href="tm.html" title="c/chrono/tm">tm</a></span> 对象的指针，否则为空指针。该结构体可能在 <span class="t-lc"><a href="gmtime.html" title="c/chrono/gmtime">gmtime</a></span>、<code>localtime</code> 及 <span class="t-lc"><a href="ctime.html" title="c/chrono/ctime">ctime</a></span> 间共享并可能在每次调用时被重写。</div>
+<div class="t-li1"><span class="t-li">2,3)</span> <span class="t-c"><span class="mw-geshi c source-c">buf</span></span> 指针的副本，或在错误（可能为运行时制约违规或转换指定时间为日历时间失败）时为空指针</div>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>函数 <code>localtime</code> 可以不是线程安全的。
+</p><p>POSIX 要求 <code>localtime</code> 与 <code>localtime_r</code> 若因为参数过大而失败则设置 <span class="t-lc"><a href="../error/errno.html" title="c/error/errno">errno</a></span> 为 <span class="t-lc"><a href="../error/errno_macros.html" title="c/error/errno macros">EOVERFLOW</a></span> 。
+</p><p><a rel="nofollow" class="external text" href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/localtime.html">POSIX 指定</a> <code>localtime</code> 与 <code>localtime_r</code> 如同通过调用 <a rel="nofollow" class="external text" href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/tzset.html"><code>tzset</code></a> 确定时区信息，该函数读取环境变量 <span class="t-c"><span class="mw-geshi c source-c">TZ</span></span>。
+</p><p><a rel="nofollow" class="external text" href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/localtime-s-localtime32-s-localtime64-s?view=vs-2019">Microsoft CRT</a> 中的 <code>localtime_s</code> 实现与 C 标准不兼容，因为它有相反的参数顺序且返回的是 <span class="t-lc">errno_t</span>。
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#define __STDC_WANT_LIB_EXT1__ 1</span>
+<span class="co2">#define _XOPEN_SOURCE // 为 putenv</span>
+<span class="co2">#include &lt;time.h&gt;</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;stdlib.h&gt;   // 为 putenv</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="time_t.html"><span class="kw523">time_t</span></a> t <span class="sy1">=</span> <a href="time.html"><span class="kw513">time</span></a><span class="br0">(</span><a href="../types/NULL.html"><span class="kw103">NULL</span></a><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw850">printf</span></a><span class="br0">(</span><span class="st0">"UTC:       %s"</span>, <a href="asctime.html"><span class="kw515">asctime</span></a><span class="br0">(</span><a href="gmtime.html"><span class="kw519">gmtime</span></a><span class="br0">(</span><span class="sy3">&amp;</span>t<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw850">printf</span></a><span class="br0">(</span><span class="st0">"local:     %s"</span>, <a href="asctime.html"><span class="kw515">asctime</span></a><span class="br0">(</span>localtime<span class="br0">(</span><span class="sy3">&amp;</span>t<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// POSIX 专有</span>
+    putenv<span class="br0">(</span><span class="st0">"TZ=Asia/Singapore"</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw850">printf</span></a><span class="br0">(</span><span class="st0">"Singapore: %s"</span>, <a href="asctime.html"><span class="kw515">asctime</span></a><span class="br0">(</span>localtime<span class="br0">(</span><span class="sy3">&amp;</span>t<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="co2">#ifdef __STDC_LIB_EXT1__</span>
+    <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a> buf<span class="sy4">;</span>
+    <span class="kw4">char</span> str<span class="br0">[</span><span class="nu0">26</span><span class="br0">]</span><span class="sy4">;</span>
+    asctime_s<span class="br0">(</span>str, <span class="kw4">sizeof</span> str, gmtime_s<span class="br0">(</span><span class="sy3">&amp;</span>t, <span class="sy3">&amp;</span>buf<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw850">printf</span></a><span class="br0">(</span><span class="st0">"UTC:       %s"</span>, str<span class="br0">)</span><span class="sy4">;</span>
+    asctime_s<span class="br0">(</span>str, <span class="kw4">sizeof</span> str, localtime_s<span class="br0">(</span><span class="sy3">&amp;</span>t, <span class="sy3">&amp;</span>buf<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw850">printf</span></a><span class="br0">(</span><span class="st0">"local:     %s"</span>, str<span class="br0">)</span><span class="sy4">;</span>
+<span class="co2">#endif</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">UTC:       Fri Sep 15 14:22:05 2017
+local:     Fri Sep 15 14:22:05 2017
+Singapore: Fri Sep 15 22:22:05 2017
+UTC:       Fri Sep 15 14:22:05 2017
+local:     Fri Sep 15 14:22:05 2017</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-23">
+<ul><li> C23 标准（ISO/IEC 9899:2024）：
+</li></ul>
+<dl><dd><ul><li> 7.27.3.4 The localtime function （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.8.2.4 The localtime_s function （第 TBD 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-17">
+<ul><li> C17 标准（ISO/IEC 9899:2018）：
+</li></ul>
+<dl><dd><ul><li> 7.27.3.4 The localtime function （第 288 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.8.2.4 The localtime_s function （第 455 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 标准（ISO/IEC 9899:2011）：
+</li></ul>
+<dl><dd><ul><li> 7.27.3.4 The localtime function （第 394 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.8.2.4 The localtime_s function （第 627 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 标准（ISO/IEC 9899:1999）：
+</li></ul>
+<dl><dd><ul><li> 7.23.3.4 The localtime function （第 343 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 标准（ISO/IEC 9899:1990）： 
+</li></ul>
+<dl><dd><ul><li> 4.12.3.4 The localtime function 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="gmtime.html" title="c/chrono/gmtime"> <span class="t-lines"><span>gmtime</span><span>gmtime_r</span><span>gmtime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23" style="white-space: nowrap;">(C23)</span></span><span><span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></span></span></div></div>
+</td>
+<td>   将从纪元开始的时间转换成以协调世界时（UTC）表示的日历时间 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class="t-dsc-see-tt"><span>localtime</span></span> 的 <span><span><a href="../../cpp/chrono/c/localtime.html" title="cpp/chrono/c/localtime">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 3173/1000000
+Preprocessor generated node count: 9131/1000000
+Post‐expand include size: 69717/4194304 bytes
+Template argument size: 15025/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:948-0!*!0!!zh!*!zh!* and timestamp 20250318203230 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/chrono/localtime&amp;oldid=91659">https://zh.cppreference.com/mwiki/index.php?title=c/chrono/localtime&amp;oldid=91659</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/chrono/localtime">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年6月10日 (星期一) 04:14。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 0.620 secs. -->
+	</body>
+<!-- Cached 20250318203230 -->
+</html>

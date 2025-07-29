@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>库特性测试宏 (C++20 起)</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/utility/feature_test","wgTitle":"cpp/utility/feature test","wgCurRevisionId":99226,"wgArticleId":11640,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/utility/feature_test","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_utility_feature_test skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">库特性测试宏 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../utility.html" title="cpp/utility">utility</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../utility.html" title="cpp/utility">工具库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">库功能特性测试宏</strong> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="cpp/types">类型支持</a>（基本类型、RTTI）</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="program.html" title="cpp/utility/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="variadic.html" title="cpp/utility/variadic">可变参数函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../types/is_constant_evaluated.html" title="cpp/types/is constant evaluated"><span class="t-lines"><span>is_constant_evaluated</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../types/is_within_lifetime.html" title="cpp/types/is within lifetime"><span class="t-lines"><span>is_within_lifetime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="initializer_list.html" title="cpp/utility/initializer list"><span class="t-lines"><span>initializer_list</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="source_location.html" title="cpp/utility/source location"><span class="t-lines"><span>source_location</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../coroutine.html" title="cpp/coroutine">协程支持</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../contract.html" title="cpp/contract">契约支持</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E4.B8.89.E8.B7.AF.E6.AF.94.E8.BE.83" title="cpp/utility">三路比较</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/three_way_comparable.html" title="cpp/utility/compare/three way comparable"><span class="t-lines"><span>three_way_comparable</span><span>three_way_comparable_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/strong_ordering.html" title="cpp/utility/compare/strong ordering"><span class="t-lines"><span>strong_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/weak_ordering.html" title="cpp/utility/compare/weak ordering"><span class="t-lines"><span>weak_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/partial_ordering.html" title="cpp/utility/compare/partial ordering"><span class="t-lines"><span>partial_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/common_comparison_category.html" title="cpp/utility/compare/common comparison category"><span class="t-lines"><span>common_comparison_category</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/compare_three_way_result.html" title="cpp/utility/compare/compare three way result"><span class="t-lines"><span>compare_three_way_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/compare_three_way.html" title="cpp/utility/compare/compare three way"><span class="t-lines"><span>compare_three_way</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/strong_order.html" title="cpp/utility/compare/strong order"><span class="t-lines"><span>strong_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/weak_order.html" title="cpp/utility/compare/weak order"><span class="t-lines"><span>weak_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/partial_order.html" title="cpp/utility/compare/partial order"><span class="t-lines"><span>partial_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/compare_strong_order_fallback.html" title="cpp/utility/compare/compare strong order fallback"><span class="t-lines"><span>compare_strong_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/compare_weak_order_fallback.html" title="cpp/utility/compare/compare weak order fallback"><span class="t-lines"><span>compare_weak_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/compare_partial_order_fallback.html" title="cpp/utility/compare/compare partial order fallback"><span class="t-lines"><span>compare_partial_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/named_comparison_functions.html" title="cpp/utility/compare/named comparison functions"><span class="t-lines"><span>is_eq</span><span>is_lt</span><span>is_lteq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="compare/named_comparison_functions.html" title="cpp/utility/compare/named comparison functions"><span class="t-lines"><span>is_neq</span><span>is_gt</span><span>is_gteq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">通用工具</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="functional.html" title="cpp/utility/functional">函数对象</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bit.html" title="cpp/utility/bit">位操纵</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bitset.html" title="cpp/utility/bitset"><span class="t-lines"><span>bitset</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="hash.html" title="cpp/utility/hash"><span class="t-lines"><span>hash</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E5.85.B3.E7.B3.BB.E8.BF.90.E7.AE.97.E7.AC.A6" title="cpp/utility">关系运算符</a> <span class="t-mark-rev t-deprecated-cxx20" style="white-space: nowrap;">(C++20 弃用)</span></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rel_ops/operator_cmp.html" title="cpp/utility/rel ops/operator cmp"><span class="t-lines"><span>rel_ops::operator!=</span><span>rel_ops::operator&gt;</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rel_ops/operator_cmp.html" title="cpp/utility/rel ops/operator cmp"><span class="t-lines"><span>rel_ops::operator&lt;=</span><span>rel_ops::operator&gt;=</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E6.95.B4.E6.95.B0.E6.AF.94.E8.BE.83.E5.87.BD.E6.95.B0" title="cpp/utility">整数比较函数</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="intcmp.html" title="cpp/utility/intcmp"><span class="t-lines"><span>cmp_equal</span><span>cmp_less</span><span>cmp_less_than</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="intcmp.html" title="cpp/utility/intcmp"><span class="t-lines"><span>cmp_not_equal</span><span>cmp_greater</span><span>cmp_greater_than</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="in_range.html" title="cpp/utility/in range"><span class="t-lines"><span>in_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../utility.html#.E4.BA.A4.E6.8D.A2" title="cpp/utility">交换</a>与<a href="../utility.html#.E7.B1.BB.E5.9E.8B.E8.BF.90.E7.AE.97" title="cpp/utility">类型运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/swap.html" title="cpp/algorithm/swap"><span class="t-lines"><span>swap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ranges/swap.html" title="cpp/utility/ranges/swap"><span class="t-lines"><span>ranges::swap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="exchange.html" title="cpp/utility/exchange"><span class="t-lines"><span>exchange</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="declval.html" title="cpp/utility/declval"><span class="t-lines"><span>declval</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="to_underlying.html" title="cpp/utility/to underlying"><span class="t-lines"><span>to_underlying</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="forward.html" title="cpp/utility/forward"><span class="t-lines"><span>forward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="forward_like.html" title="cpp/utility/forward like"><span class="t-lines"><span>forward_like</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="move.html" title="cpp/utility/move"><span class="t-lines"><span>move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="move_if_noexcept.html" title="cpp/utility/move if noexcept"><span class="t-lines"><span>move_if_noexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="as_const.html" title="cpp/utility/as const"><span class="t-lines"><span>as_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">常用词汇类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="pair.html" title="cpp/utility/pair"><span class="t-lines"><span>pair</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tuple.html" title="cpp/utility/tuple"><span class="t-lines"><span>tuple</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="optional.html" title="cpp/utility/optional"><span class="t-lines"><span>optional</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="any.html" title="cpp/utility/any"><span class="t-lines"><span>any</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="variant.html" title="cpp/utility/variant"><span class="t-lines"><span>variant</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tuple_size.html" title="cpp/utility/tuple size"><span class="t-lines"><span>tuple_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tuple_element.html" title="cpp/utility/tuple element"><span class="t-lines"><span>tuple_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="apply.html" title="cpp/utility/apply"><span class="t-lines"><span>apply</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="make_from_tuple.html" title="cpp/utility/make from tuple"><span class="t-lines"><span>make_from_tuple</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="expected.html" title="cpp/utility/expected"><span class="t-lines"><span>expected</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>如果包含 <a href="../header/version.html" title="cpp/header/version"><tt>&lt;version&gt;</tt></a> 或下表中指定的标头之一，那么就会定义对应的宏。
+</p>
+<div class="t-template-editlink" style="">
+</div>
+<table class="wikitable sortable" style="font-size: 100%;">
+
+<tr>
+<th>宏名
+</th>
+<th>值
+</th>
+<th>标头
+</th>
+<th style="word-break: keep-all;"> 独立 
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_adaptor_iterator_pair_constructor" title="cpp/feature test"><code>__cpp_lib_adaptor_iterator_pair_constructor</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202106L</span></span></span>
+</td>
+<td><a href="../header/stack.html" title="cpp/header/stack"><tt>&lt;stack&gt;</tt></a> <a href="../header/queue.html" title="cpp/header/queue"><tt>&lt;queue&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_addressof_constexpr" title="cpp/feature test"><code>__cpp_lib_addressof_constexpr</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_algorithm_default_value_type" title="cpp/feature test"><code>__cpp_lib_algorithm_default_value_type</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a> <a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a> <a href="../header/list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a> <a href="../header/forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <a href="../header/vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_algorithm_iterator_requirements" title="cpp/feature test"><code>__cpp_lib_algorithm_iterator_requirements</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a> <a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a> <a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_aligned_accessor" title="cpp/feature test"><code>__cpp_lib_aligned_accessor</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/mdspan.html" title="cpp/header/mdspan"><tt>&lt;mdspan&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_allocate_at_least" title="cpp/feature test"><code>__cpp_lib_allocate_at_least</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202302L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_allocator_traits_is_always_equal" title="cpp/feature test"><code>__cpp_lib_allocator_traits_is_always_equal</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201411L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a> <a href="../header/scoped_allocator.html" title="cpp/header/scoped allocator"><tt>&lt;scoped_allocator&gt;</tt></a> <a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a> <a href="../header/forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <a href="../header/list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a> <a href="../header/vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a> <a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_any" title="cpp/feature test"><code>__cpp_lib_any</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201606L</span></span></span>
+</td>
+<td><a href="../header/any.html" title="cpp/header/any"><tt>&lt;any&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_apply" title="cpp/feature test"><code>__cpp_lib_apply</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_array_constexpr" title="cpp/feature test"><code>__cpp_lib_array_constexpr</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a> <a href="../header/array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_as_const" title="cpp/feature test"><code>__cpp_lib_as_const</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201510L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_associative_heterogeneous_erasure" title="cpp/feature test"><code>__cpp_lib_associative_heterogeneous_erasure</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202110L</span></span></span>
+</td>
+<td><a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_associative_heterogeneous_insertion" title="cpp/feature test"><code>__cpp_lib_associative_heterogeneous_insertion</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_assume_aligned" title="cpp/feature test"><code>__cpp_lib_assume_aligned</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_flag_test" title="cpp/feature test"><code>__cpp_lib_atomic_flag_test</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_float" title="cpp/feature test"><code>__cpp_lib_atomic_float</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201711L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_is_always_lock_free" title="cpp/feature test"><code>__cpp_lib_atomic_is_always_lock_free</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_lock_free_type_aliases" title="cpp/feature test"><code>__cpp_lib_atomic_lock_free_type_aliases</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_min_max" title="cpp/feature test"><code>__cpp_lib_atomic_min_max</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_ref" title="cpp/feature test"><code>__cpp_lib_atomic_ref</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_shared_ptr" title="cpp/feature test"><code>__cpp_lib_atomic_shared_ptr</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201711L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_value_initialization" title="cpp/feature test"><code>__cpp_lib_atomic_value_initialization</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201911L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_atomic_wait" title="cpp/feature test"><code>__cpp_lib_atomic_wait</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_barrier" title="cpp/feature test"><code>__cpp_lib_barrier</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202302L</span></span></span>
+</td>
+<td><a href="../header/barrier.html" title="cpp/header/barrier"><tt>&lt;barrier&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_bind_back" title="cpp/feature test"><code>__cpp_lib_bind_back</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_bind_front" title="cpp/feature test"><code>__cpp_lib_bind_front</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_bit_cast" title="cpp/feature test"><code>__cpp_lib_bit_cast</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201806L</span></span></span>
+</td>
+<td><a href="../header/bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_bitops" title="cpp/feature test"><code>__cpp_lib_bitops</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_bitset" title="cpp/feature test"><code>__cpp_lib_bitset</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_bool_constant" title="cpp/feature test"><code>__cpp_lib_bool_constant</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201505L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_bounded_array_traits" title="cpp/feature test"><code>__cpp_lib_bounded_array_traits</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201902L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_boyer_moore_searcher" title="cpp/feature test"><code>__cpp_lib_boyer_moore_searcher</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_byte" title="cpp/feature test"><code>__cpp_lib_byte</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/cstddef.html" title="cpp/header/cstddef"><tt>&lt;cstddef&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_byteswap" title="cpp/feature test"><code>__cpp_lib_byteswap</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202110L</span></span></span>
+</td>
+<td><a href="../header/bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_char8_t" title="cpp/feature test"><code>__cpp_lib_char8_t</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <a href="../header/filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a> <a href="../header/istream.html" title="cpp/header/istream"><tt>&lt;istream&gt;</tt></a> <a href="../header/limits.html" title="cpp/header/limits"><tt>&lt;limits&gt;</tt></a> <a href="../header/locale.html" title="cpp/header/locale"><tt>&lt;locale&gt;</tt></a> <a href="../header/ostream.html" title="cpp/header/ostream"><tt>&lt;ostream&gt;</tt></a> <a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_chrono" title="cpp/feature test"><code>__cpp_lib_chrono</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/chrono.html" title="cpp/header/chrono"><tt>&lt;chrono&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_chrono_udls" title="cpp/feature test"><code>__cpp_lib_chrono_udls</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/chrono.html" title="cpp/header/chrono"><tt>&lt;chrono&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_clamp" title="cpp/feature test"><code>__cpp_lib_clamp</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_common_reference" title="cpp/feature test"><code>__cpp_lib_common_reference</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202302L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_common_reference_wrapper" title="cpp/feature test"><code>__cpp_lib_common_reference_wrapper</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202302L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_complex_udls" title="cpp/feature test"><code>__cpp_lib_complex_udls</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201309L</span></span></span>
+</td>
+<td><a href="../header/complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_concepts" title="cpp/feature test"><code>__cpp_lib_concepts</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a> <a href="../header/compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_algorithms" title="cpp/feature test"><code>__cpp_lib_constexpr_algorithms</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a> <a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_atomic" title="cpp/feature test"><code>__cpp_lib_constexpr_atomic</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_bitset" title="cpp/feature test"><code>__cpp_lib_constexpr_bitset</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_charconv" title="cpp/feature test"><code>__cpp_lib_constexpr_charconv</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_cmath" title="cpp/feature test"><code>__cpp_lib_constexpr_cmath</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a> <a href="../header/cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_complex" title="cpp/feature test"><code>__cpp_lib_constexpr_complex</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_dynamic_alloc" title="cpp/feature test"><code>__cpp_lib_constexpr_dynamic_alloc</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_exceptions" title="cpp/feature test"><code>__cpp_lib_constexpr_exceptions</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_functional" title="cpp/feature test"><code>__cpp_lib_constexpr_functional</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_inplace_vector" title="cpp/feature test"><code>__cpp_lib_constexpr_inplace_vector</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202502L</span></span></span>
+</td>
+<td><a href="../header/inplace_vector.html" title="cpp/header/inplace vector"><tt>&lt;inplace_vector&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_iterator" title="cpp/feature test"><code>__cpp_lib_constexpr_iterator</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_memory" title="cpp/feature test"><code>__cpp_lib_constexpr_memory</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_new" title="cpp/feature test"><code>__cpp_lib_constexpr_new</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_numeric" title="cpp/feature test"><code>__cpp_lib_constexpr_numeric</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201911L</span></span></span>
+</td>
+<td><a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_string" title="cpp/feature test"><code>__cpp_lib_constexpr_string</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_string_view" title="cpp/feature test"><code>__cpp_lib_constexpr_string_view</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_tuple" title="cpp/feature test"><code>__cpp_lib_constexpr_tuple</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_typeinfo" title="cpp/feature test"><code>__cpp_lib_constexpr_typeinfo</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202106L</span></span></span>
+</td>
+<td><a href="../header/typeinfo.html" title="cpp/header/typeinfo"><tt>&lt;typeinfo&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_utility" title="cpp/feature test"><code>__cpp_lib_constexpr_utility</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constexpr_vector" title="cpp/feature test"><code>__cpp_lib_constexpr_vector</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_constrained_equality" title="cpp/feature test"><code>__cpp_lib_constrained_equality</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a> <a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <a href="../header/optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a> <a href="../header/variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a> <a href="../header/expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_containers_ranges" title="cpp/feature test"><code>__cpp_lib_containers_ranges</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a> <a href="../header/list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a> <a href="../header/forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a> <a href="../header/deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a> <a href="../header/queue.html" title="cpp/header/queue"><tt>&lt;queue&gt;</tt></a> <a href="../header/stack.html" title="cpp/header/stack"><tt>&lt;stack&gt;</tt></a> <a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_copyable_function" title="cpp/feature test"><code>__cpp_lib_copyable_function</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_coroutine" title="cpp/feature test"><code>__cpp_lib_coroutine</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201902L</span></span></span>
+</td>
+<td><a href="../header/coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_debugging" title="cpp/feature test"><code>__cpp_lib_debugging</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/debugging.html" title="cpp/header/debugging"><tt>&lt;debugging&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_destroying_delete" title="cpp/feature test"><code>__cpp_lib_destroying_delete</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201806L</span></span></span>
+</td>
+<td><a href="../header/new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_enable_shared_from_this" title="cpp/feature test"><code>__cpp_lib_enable_shared_from_this</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_endian" title="cpp/feature test"><code>__cpp_lib_endian</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_erase_if" title="cpp/feature test"><code>__cpp_lib_erase_if</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202002L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a> <a href="../header/forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <a href="../header/list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a> <a href="../header/vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a> <a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_exchange_function" title="cpp/feature test"><code>__cpp_lib_exchange_function</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_execution" title="cpp/feature test"><code>__cpp_lib_execution</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201902L</span></span></span>
+</td>
+<td><a href="../header/execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_expected" title="cpp/feature test"><code>__cpp_lib_expected</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202211L</span></span></span>
+</td>
+<td><a href="../header/expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_filesystem" title="cpp/feature test"><code>__cpp_lib_filesystem</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201703L</span></span></span>
+</td>
+<td><a href="../header/filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_flat_map" title="cpp/feature test"><code>__cpp_lib_flat_map</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/flat_map.html" title="cpp/header/flat map"><tt>&lt;flat_map&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_flat_set" title="cpp/feature test"><code>__cpp_lib_flat_set</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/flat_set.html" title="cpp/header/flat set"><tt>&lt;flat_set&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_format" title="cpp/feature test"><code>__cpp_lib_format</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/format.html" title="cpp/header/format"><tt>&lt;format&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_format_ranges" title="cpp/feature test"><code>__cpp_lib_format_ranges</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/format.html" title="cpp/header/format"><tt>&lt;format&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_format_path" title="cpp/feature test"><code>__cpp_lib_format_path</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_format_uchar" title="cpp/feature test"><code>__cpp_lib_format_uchar</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/format.html" title="cpp/header/format"><tt>&lt;format&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_formatters" title="cpp/feature test"><code>__cpp_lib_formatters</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202302L</span></span></span>
+</td>
+<td><a href="../header/stacktrace.html" title="cpp/header/stacktrace"><tt>&lt;stacktrace&gt;</tt></a> <a href="../header/thread.html" title="cpp/header/thread"><tt>&lt;thread&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_forward_like" title="cpp/feature test"><code>__cpp_lib_forward_like</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_algorithm" title="cpp/feature test"><code>__cpp_lib_freestanding_algorithm</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_array" title="cpp/feature test"><code>__cpp_lib_freestanding_array</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_char_traits" title="cpp/feature test"><code>__cpp_lib_freestanding_char_traits</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_charconv" title="cpp/feature test"><code>__cpp_lib_freestanding_charconv</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_cstdlib" title="cpp/feature test"><code>__cpp_lib_freestanding_cstdlib</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a> <a href="../header/cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_cstring" title="cpp/feature test"><code>__cpp_lib_freestanding_cstring</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_cwchar" title="cpp/feature test"><code>__cpp_lib_freestanding_cwchar</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_errc" title="cpp/feature test"><code>__cpp_lib_freestanding_errc</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/cerrno.html" title="cpp/header/cerrno"><tt>&lt;cerrno&gt;</tt></a> <a href="../header/system_error.html" title="cpp/header/system error"><tt>&lt;system_error&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_expected" title="cpp/feature test"><code>__cpp_lib_freestanding_expected</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_feature_test_macros" title="cpp/feature test"><code>__cpp_lib_freestanding_feature_test_macros</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_functional" title="cpp/feature test"><code>__cpp_lib_freestanding_functional</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_iterator" title="cpp/feature test"><code>__cpp_lib_freestanding_iterator</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_mdspan" title="cpp/feature test"><code>__cpp_lib_freestanding_mdspan</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/mdspan.html" title="cpp/header/mdspan"><tt>&lt;mdspan&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_memory" title="cpp/feature test"><code>__cpp_lib_freestanding_memory</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_numeric" title="cpp/feature test"><code>__cpp_lib_freestanding_numeric</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_optional" title="cpp/feature test"><code>__cpp_lib_freestanding_optional</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_ranges" title="cpp/feature test"><code>__cpp_lib_freestanding_ranges</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_ratio" title="cpp/feature test"><code>__cpp_lib_freestanding_ratio</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_string_view" title="cpp/feature test"><code>__cpp_lib_freestanding_string_view</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_tuple" title="cpp/feature test"><code>__cpp_lib_freestanding_tuple</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_utility" title="cpp/feature test"><code>__cpp_lib_freestanding_utility</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_freestanding_variant" title="cpp/feature test"><code>__cpp_lib_freestanding_variant</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_fstream_native_handle" title="cpp/feature test"><code>__cpp_lib_fstream_native_handle</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/fstream.html" title="cpp/header/fstream"><tt>&lt;fstream&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_function_ref" title="cpp/feature test"><code>__cpp_lib_function_ref</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_gcd_lcm" title="cpp/feature test"><code>__cpp_lib_gcd_lcm</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201606L</span></span></span>
+</td>
+<td><a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_generator" title="cpp/feature test"><code>__cpp_lib_generator</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/generator.html" title="cpp/header/generator"><tt>&lt;generator&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_generic_associative_lookup" title="cpp/feature test"><code>__cpp_lib_generic_associative_lookup</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_generic_unordered_lookup" title="cpp/feature test"><code>__cpp_lib_generic_unordered_lookup</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_hardware_interference_size" title="cpp/feature test"><code>__cpp_lib_hardware_interference_size</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201703L</span></span></span>
+</td>
+<td><a href="../header/new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_has_unique_object_representations" title="cpp/feature test"><code>__cpp_lib_has_unique_object_representations</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201606L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_hazard_pointer" title="cpp/feature test"><code>__cpp_lib_hazard_pointer</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/hazard_pointer.html" title="cpp/header/hazard pointer"><tt>&lt;hazard_pointer&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_hypot" title="cpp/feature test"><code>__cpp_lib_hypot</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_incomplete_container_elements" title="cpp/feature test"><code>__cpp_lib_incomplete_container_elements</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201505L</span></span></span>
+</td>
+<td><a href="../header/forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <a href="../header/list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a> <a href="../header/vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_inplace_vector" title="cpp/feature test"><code>__cpp_lib_inplace_vector</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/inplace_vector.html" title="cpp/header/inplace vector"><tt>&lt;inplace_vector&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_int_pow2" title="cpp/feature test"><code>__cpp_lib_int_pow2</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202002L</span></span></span>
+</td>
+<td><a href="../header/bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_integer_comparison_functions" title="cpp/feature test"><code>__cpp_lib_integer_comparison_functions</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202002L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_integer_sequence" title="cpp/feature test"><code>__cpp_lib_integer_sequence</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_integral_constant_callable" title="cpp/feature test"><code>__cpp_lib_integral_constant_callable</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_interpolate" title="cpp/feature test"><code>__cpp_lib_interpolate</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201902L</span></span></span>
+</td>
+<td><a href="../header/cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a> <a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_invoke" title="cpp/feature test"><code>__cpp_lib_invoke</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201411L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_invoke_r" title="cpp/feature test"><code>__cpp_lib_invoke_r</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202106L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ios_noreplace" title="cpp/feature test"><code>__cpp_lib_ios_noreplace</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/ios.html" title="cpp/header/ios"><tt>&lt;ios&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_aggregate" title="cpp/feature test"><code>__cpp_lib_is_aggregate</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201703L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_constant_evaluated" title="cpp/feature test"><code>__cpp_lib_is_constant_evaluated</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_final" title="cpp/feature test"><code>__cpp_lib_is_final</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201402L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_implicit_lifetime" title="cpp/feature test"><code>__cpp_lib_is_implicit_lifetime</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202302L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_invocable" title="cpp/feature test"><code>__cpp_lib_is_invocable</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201703L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_layout_compatible" title="cpp/feature test"><code>__cpp_lib_is_layout_compatible</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_nothrow_convertible" title="cpp/feature test"><code>__cpp_lib_is_nothrow_convertible</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201806L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_null_pointer" title="cpp/feature test"><code>__cpp_lib_is_null_pointer</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201309L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_pointer_interconvertible" title="cpp/feature test"><code>__cpp_lib_is_pointer_interconvertible</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_scoped_enum" title="cpp/feature test"><code>__cpp_lib_is_scoped_enum</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202011L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_sufficiently_aligned" title="cpp/feature test"><code>__cpp_lib_is_sufficiently_aligned</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_swappable" title="cpp/feature test"><code>__cpp_lib_is_swappable</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_virtual_base_of" title="cpp/feature test"><code>__cpp_lib_is_virtual_base_of</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_is_within_lifetime" title="cpp/feature test"><code>__cpp_lib_is_within_lifetime</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_jthread" title="cpp/feature test"><code>__cpp_lib_jthread</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201911L</span></span></span>
+</td>
+<td><a href="../header/stop_token.html" title="cpp/header/stop token"><tt>&lt;stop_token&gt;</tt></a> <a href="../header/thread.html" title="cpp/header/thread"><tt>&lt;thread&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_latch" title="cpp/feature test"><code>__cpp_lib_latch</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/latch.html" title="cpp/header/latch"><tt>&lt;latch&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_launder" title="cpp/feature test"><code>__cpp_lib_launder</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201606L</span></span></span>
+</td>
+<td><a href="../header/new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_linalg" title="cpp/feature test"><code>__cpp_lib_linalg</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202412L</span></span></span>
+</td>
+<td><a href="../header/linalg.html" title="cpp/header/linalg"><tt>&lt;linalg&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_list_remove_return_type" title="cpp/feature test"><code>__cpp_lib_list_remove_return_type</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201806L</span></span></span>
+</td>
+<td><a href="../header/forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <a href="../header/list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_logical_traits" title="cpp/feature test"><code>__cpp_lib_logical_traits</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201510L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_make_from_tuple" title="cpp/feature test"><code>__cpp_lib_make_from_tuple</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201606L</span></span></span>
+</td>
+<td><a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_make_reverse_iterator" title="cpp/feature test"><code>__cpp_lib_make_reverse_iterator</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201402L</span></span></span>
+</td>
+<td><a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_make_unique" title="cpp/feature test"><code>__cpp_lib_make_unique</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_map_try_emplace" title="cpp/feature test"><code>__cpp_lib_map_try_emplace</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201411L</span></span></span>
+</td>
+<td><a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_math_constants" title="cpp/feature test"><code>__cpp_lib_math_constants</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/numbers.html" title="cpp/header/numbers"><tt>&lt;numbers&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_math_special_functions" title="cpp/feature test"><code>__cpp_lib_math_special_functions</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_mdspan" title="cpp/feature test"><code>__cpp_lib_mdspan</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/mdspan.html" title="cpp/header/mdspan"><tt>&lt;mdspan&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_memory_resource" title="cpp/feature test"><code>__cpp_lib_memory_resource</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/memory_resource.html" title="cpp/header/memory resource"><tt>&lt;memory_resource&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_modules" title="cpp/feature test"><code>__cpp_lib_modules</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_move_iterator_concept" title="cpp/feature test"><code>__cpp_lib_move_iterator_concept</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_move_only_function" title="cpp/feature test"><code>__cpp_lib_move_only_function</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202110L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_node_extract" title="cpp/feature test"><code>__cpp_lib_node_extract</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201606L</span></span></span>
+</td>
+<td><a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_nonmember_container_access" title="cpp/feature test"><code>__cpp_lib_nonmember_container_access</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201411L</span></span></span>
+</td>
+<td><a href="../header/array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a> <a href="../header/deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a> <a href="../header/forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a> <a href="../header/list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a> <a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/regex.html" title="cpp/header/regex"><tt>&lt;regex&gt;</tt></a> <a href="../header/set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a> <a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <a href="../header/unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a> <a href="../header/vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_not_fn" title="cpp/feature test"><code>__cpp_lib_not_fn</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_null_iterators" title="cpp/feature test"><code>__cpp_lib_null_iterators</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_optional" title="cpp/feature test"><code>__cpp_lib_optional</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202110L</span></span></span>
+</td>
+<td><a href="../header/optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_optional_range_support" title="cpp/feature test"><code>__cpp_lib_optional_range_support</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_out_ptr" title="cpp/feature test"><code>__cpp_lib_out_ptr</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_parallel_algorithm" title="cpp/feature test"><code>__cpp_lib_parallel_algorithm</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a> <a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_philox_engine" title="cpp/feature test"><code>__cpp_lib_philox_engine</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_polymorphic_allocator" title="cpp/feature test"><code>__cpp_lib_polymorphic_allocator</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201902L</span></span></span>
+</td>
+<td><a href="../header/memory_resource.html" title="cpp/header/memory resource"><tt>&lt;memory_resource&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_print" title="cpp/feature test"><code>__cpp_lib_print</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/print.html" title="cpp/header/print"><tt>&lt;print&gt;</tt></a> <a href="../header/ostream.html" title="cpp/header/ostream"><tt>&lt;ostream&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_quoted_string_io" title="cpp/feature test"><code>__cpp_lib_quoted_string_io</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/iomanip.html" title="cpp/header/iomanip"><tt>&lt;iomanip&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges" title="cpp/feature test"><code>__cpp_lib_ranges</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a> <a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a> <a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a> <a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a> <a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_as_const" title="cpp/feature test"><code>__cpp_lib_ranges_as_const</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_as_rvalue" title="cpp/feature test"><code>__cpp_lib_ranges_as_rvalue</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_cache_latest" title="cpp/feature test"><code>__cpp_lib_ranges_cache_latest</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_cartesian_product" title="cpp/feature test"><code>__cpp_lib_ranges_cartesian_product</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_chunk" title="cpp/feature test"><code>__cpp_lib_ranges_chunk</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_chunk_by" title="cpp/feature test"><code>__cpp_lib_ranges_chunk_by</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_concat" title="cpp/feature test"><code>__cpp_lib_ranges_concat</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_contains" title="cpp/feature test"><code>__cpp_lib_ranges_contains</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_enumerate" title="cpp/feature test"><code>__cpp_lib_ranges_enumerate</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202302L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_find_last" title="cpp/feature test"><code>__cpp_lib_ranges_find_last</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_fold" title="cpp/feature test"><code>__cpp_lib_ranges_fold</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_generate_random" title="cpp/feature test"><code>__cpp_lib_ranges_generate_random</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_iota" title="cpp/feature test"><code>__cpp_lib_ranges_iota</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_join_with" title="cpp/feature test"><code>__cpp_lib_ranges_join_with</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_repeat" title="cpp/feature test"><code>__cpp_lib_ranges_repeat</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_slide" title="cpp/feature test"><code>__cpp_lib_ranges_slide</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_starts_ends_with" title="cpp/feature test"><code>__cpp_lib_ranges_starts_ends_with</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202106L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_stride" title="cpp/feature test"><code>__cpp_lib_ranges_stride</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_to_container" title="cpp/feature test"><code>__cpp_lib_ranges_to_container</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_zip" title="cpp/feature test"><code>__cpp_lib_ranges_zip</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202110L</span></span></span>
+</td>
+<td><a href="../header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ratio" title="cpp/feature test"><code>__cpp_lib_ratio</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_raw_memory_algorithms" title="cpp/feature test"><code>__cpp_lib_raw_memory_algorithms</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_rcu" title="cpp/feature test"><code>__cpp_lib_rcu</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/rcu.html" title="cpp/header/rcu"><tt>&lt;rcu&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_reference_from_temporary" title="cpp/feature test"><code>__cpp_lib_reference_from_temporary</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_reference_wrapper" title="cpp/feature test"><code>__cpp_lib_reference_wrapper</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_remove_cvref" title="cpp/feature test"><code>__cpp_lib_remove_cvref</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201711L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_result_of_sfinae" title="cpp/feature test"><code>__cpp_lib_result_of_sfinae</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201210L</span></span></span>
+</td>
+<td><a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a> <a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_robust_nonmodifying_seq_ops" title="cpp/feature test"><code>__cpp_lib_robust_nonmodifying_seq_ops</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_sample" title="cpp/feature test"><code>__cpp_lib_sample</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201603L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_saturation_arithmetic" title="cpp/feature test"><code>__cpp_lib_saturation_arithmetic</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_scoped_lock" title="cpp/feature test"><code>__cpp_lib_scoped_lock</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201703L</span></span></span>
+</td>
+<td><a href="../header/mutex.html" title="cpp/header/mutex"><tt>&lt;mutex&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_semaphore" title="cpp/feature test"><code>__cpp_lib_semaphore</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/semaphore.html" title="cpp/header/semaphore"><tt>&lt;semaphore&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_senders" title="cpp/feature test"><code>__cpp_lib_senders</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202406L</span></span></span>
+</td>
+<td><a href="../header/execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_shared_mutex" title="cpp/feature test"><code>__cpp_lib_shared_mutex</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201505L</span></span></span>
+</td>
+<td><a href="../header/shared_mutex.html" title="cpp/header/shared mutex"><tt>&lt;shared_mutex&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_shared_ptr_arrays" title="cpp/feature test"><code>__cpp_lib_shared_ptr_arrays</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201707L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_shared_ptr_weak_type" title="cpp/feature test"><code>__cpp_lib_shared_ptr_weak_type</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201606L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_shared_timed_mutex" title="cpp/feature test"><code>__cpp_lib_shared_timed_mutex</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201402L</span></span></span>
+</td>
+<td><a href="../header/shared_mutex.html" title="cpp/header/shared mutex"><tt>&lt;shared_mutex&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_shift" title="cpp/feature test"><code>__cpp_lib_shift</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_simd" title="cpp/feature test"><code>__cpp_lib_simd</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/simd.html" title="cpp/header/simd"><tt>&lt;simd&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_smart_ptr_for_overwrite" title="cpp/feature test"><code>__cpp_lib_smart_ptr_for_overwrite</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202002L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_smart_ptr_owner_equality" title="cpp/feature test"><code>__cpp_lib_smart_ptr_owner_equality</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_source_location" title="cpp/feature test"><code>__cpp_lib_source_location</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/source_location.html" title="cpp/header/source location"><tt>&lt;source_location&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_span" title="cpp/feature test"><code>__cpp_lib_span</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_span_initializer_list" title="cpp/feature test"><code>__cpp_lib_span_initializer_list</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_spanstream" title="cpp/feature test"><code>__cpp_lib_spanstream</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202106L</span></span></span>
+</td>
+<td><a href="../header/spanstream.html" title="cpp/header/spanstream"><tt>&lt;spanstream&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ssize" title="cpp/feature test"><code>__cpp_lib_ssize</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201902L</span></span></span>
+</td>
+<td><a href="../header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_sstream_from_string_view" title="cpp/feature test"><code>__cpp_lib_sstream_from_string_view</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/sstream.html" title="cpp/header/sstream"><tt>&lt;sstream&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_stacktrace" title="cpp/feature test"><code>__cpp_lib_stacktrace</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202011L</span></span></span>
+</td>
+<td><a href="../header/stacktrace.html" title="cpp/header/stacktrace"><tt>&lt;stacktrace&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_start_lifetime_as" title="cpp/feature test"><code>__cpp_lib_start_lifetime_as</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202207L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_starts_ends_with" title="cpp/feature test"><code>__cpp_lib_starts_ends_with</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201711L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_stdatomic_h" title="cpp/feature test"><code>__cpp_lib_stdatomic_h</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202011L</span></span></span>
+</td>
+<td><a href="../header/stdatomic.h.html" title="cpp/header/stdatomic.h"><tt>&lt;stdatomic.h&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_string_contains" title="cpp/feature test"><code>__cpp_lib_string_contains</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202011L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_string_resize_and_overwrite" title="cpp/feature test"><code>__cpp_lib_string_resize_and_overwrite</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202110L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_string_udls" title="cpp/feature test"><code>__cpp_lib_string_udls</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_string_view" title="cpp/feature test"><code>__cpp_lib_string_view</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202403L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <a href="../header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_submdspan" title="cpp/feature test"><code>__cpp_lib_submdspan</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202411L</span></span></span>
+</td>
+<td><a href="../header/mdspan.html" title="cpp/header/mdspan"><tt>&lt;mdspan&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_syncbuf" title="cpp/feature test"><code>__cpp_lib_syncbuf</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201803L</span></span></span>
+</td>
+<td><a href="../header/syncstream.html" title="cpp/header/syncstream"><tt>&lt;syncstream&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_text_encoding" title="cpp/feature test"><code>__cpp_lib_text_encoding</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/text_encoding.html" title="cpp/header/text encoding"><tt>&lt;text_encoding&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_three_way_comparison" title="cpp/feature test"><code>__cpp_lib_three_way_comparison</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_to_address" title="cpp/feature test"><code>__cpp_lib_to_address</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201711L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_to_array" title="cpp/feature test"><code>__cpp_lib_to_array</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201907L</span></span></span>
+</td>
+<td><a href="../header/array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_to_chars" title="cpp/feature test"><code>__cpp_lib_to_chars</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_to_string" title="cpp/feature test"><code>__cpp_lib_to_string</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_to_underlying" title="cpp/feature test"><code>__cpp_lib_to_underlying</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202102L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_transformation_trait_aliases" title="cpp/feature test"><code>__cpp_lib_transformation_trait_aliases</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_transparent_operators" title="cpp/feature test"><code>__cpp_lib_transparent_operators</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201510L</span></span></span>
+</td>
+<td><a href="../header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a> <a href="../header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_tuple_element_t" title="cpp/feature test"><code>__cpp_lib_tuple_element_t</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201402L</span></span></span>
+</td>
+<td><a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_tuple_like" title="cpp/feature test"><code>__cpp_lib_tuple_like</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202311L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a> <a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <a href="../header/map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a> <a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_tuples_by_type" title="cpp/feature test"><code>__cpp_lib_tuples_by_type</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201304L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a> <a href="../header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_type_identity" title="cpp/feature test"><code>__cpp_lib_type_identity</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201806L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_type_trait_variable_templates" title="cpp/feature test"><code>__cpp_lib_type_trait_variable_templates</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201510L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_uncaught_exceptions" title="cpp/feature test"><code>__cpp_lib_uncaught_exceptions</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201411L</span></span></span>
+</td>
+<td><a href="../header/exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_unordered_map_try_emplace" title="cpp/feature test"><code>__cpp_lib_unordered_map_try_emplace</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201411L</span></span></span>
+</td>
+<td><a href="../header/unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_unreachable" title="cpp/feature test"><code>__cpp_lib_unreachable</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202202L</span></span></span>
+</td>
+<td><a href="../header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_unwrap_ref" title="cpp/feature test"><code>__cpp_lib_unwrap_ref</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201811L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_variant" title="cpp/feature test"><code>__cpp_lib_variant</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">202306L</span></span></span>
+</td>
+<td><a href="../header/variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_void_t" title="cpp/feature test"><code>__cpp_lib_void_t</code></a>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">201411L</span></span></span>
+</td>
+<td><a href="../header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">是
+</td></tr>
+<tr>
+<th colspan="4">宏的总数量：245
+</th></tr></table>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>“值”列中的每个值都遵循以下模式：<span class="mw-geshi cpp source-cpp"><span class="st0">"yyyymmL"</span></span>，其中 <span class="mw-geshi cpp source-cpp"><span class="st0">"yyyy"</span></span> 是年份，<span class="mw-geshi cpp source-cpp"><span class="st0">"mm"</span></span> 是相应功能集被接受标准化的月份。如果给定特性的功能有所扩展，则某些值会在引入后有所增加。上表仅包含最新值（即来自最新的 C++ 语言标准草案）。包括初始值和中间值在内的所有值可在<a href="../feature_test.html#.E5.BA.93.E7.89.B9.E6.80.A7" title="cpp/feature test">这里</a>找到。
+</p>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue4126">LWG 4126</a>
+</td>
+<td> C++20<br>C++23
+</td>
+<td> 某些完全独立的特性对应的特性测试宏不是独立的
+</td>
+<td> 它们也是独立的
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td> <a href="../feature_test.html" title="cpp/feature test"><b>功能特性测试</b></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>
+</td>
+<td> 一套预处理器宏，用于测试与 C++ 语言和库功能相对应的功能
+</td></tr>
+
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>独立实现规定的标头</span></span>的 <span><span><a href="../freestanding.html#.E9.92.88.E5.AF.B9.E6.A0.87.E5.87.86.E5.BA.93.E6.A0.87.E5.A4.B4.E7.9A.84.E8.A7.84.E5.AE.9A" title="cpp/freestanding">C++ 文档</a></span></span></div>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>预定义宏表</span></span>的 <span><span><a href="../preprocessor/replace.html#.E9.A2.84.E5.AE.9A.E4.B9.89.E5.AE.8F" title="cpp/preprocessor/replace">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 31998/1000000
+Preprocessor generated node count: 16195/1000000
+Post‐expand include size: 456672/4194304 bytes
+Template argument size: 108975/4194304 bytes
+Highest expansion depth: 18/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:11640-0!*!0!!*!*!zh!* and timestamp 20250318194018 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/utility/feature_test&amp;oldid=99226">https://zh.cppreference.com/mwiki/index.php?title=cpp/utility/feature_test&amp;oldid=99226</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/utility/feature_test">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月18日 (星期二) 19:58。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 19.755 secs. -->
+	</body>
+<!-- Cached 20250318194018 -->
+</html>

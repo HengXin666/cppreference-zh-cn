@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>实验性 C++ 特性</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../common/favicon.ico">
+<link rel="stylesheet" href="../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/experimental","wgTitle":"cpp/experimental","wgCurRevisionId":100075,"wgArticleId":9456,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/experimental","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_experimental skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">实验性 C++ 特性</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../cpp.html" title="cpp">cpp</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">技术规范</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink">实验性</strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="experimental.html#.E6.8A.80.E6.9C.AF.E8.A7.84.E8.8C.83" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/fs.html" title="cpp/experimental/fs">文件系统库</a> <span class="t-mark-rev t-since-fs-ts t-mark-ts" style="white-space: nowrap;">(文件系统 TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/lib_extensions.html" title="cpp/experimental/lib extensions">库基础</a> <span class="t-mark-rev t-since-libfund-ts t-mark-ts" style="white-space: nowrap;">(库基础 TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/lib_extensions_2.html" title="cpp/experimental/lib extensions 2">库基础 2</a> <span class="t-mark-rev t-since-libfund-ts-2 t-mark-ts" style="white-space: nowrap;">(库基础 TS v2)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/lib_extensions_3.html" title="cpp/experimental/lib extensions 3">库基础 3</a> <span class="t-mark-rev t-since-libfund-ts-3 t-mark-ts" style="white-space: nowrap;">(库基础 TS v3)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/parallelism.html" title="cpp/experimental/parallelism">并行扩展</a> <span class="t-mark-rev t-since-parallelism-ts t-mark-ts" style="white-space: nowrap;">(并行 TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/parallelism_2.html" title="cpp/experimental/parallelism 2">并行扩展 2</a> <span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts" style="white-space: nowrap;">(并行 TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/concurrency.html" title="cpp/experimental/concurrency">并发扩展</a> <span class="t-mark-rev t-since-concurrency-ts t-mark-ts" style="white-space: nowrap;">(并发 TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/experimental/concurrency_2&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/concurrency 2（页面不存在）">并发扩展 2</a> <span class="t-mark-rev t-since-concurrency-ts-2 t-mark-ts" style="white-space: nowrap;">(并发 TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/constraints.html" title="cpp/experimental/constraints">概念</a> <span class="t-mark-rev t-since-concepts-ts t-mark-ts" style="white-space: nowrap;">(概念 TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/ranges.html" title="cpp/experimental/ranges">范围</a> <span class="t-mark-rev t-since-ranges-ts t-mark-ts" style="white-space: nowrap;">(范围 TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/reflect.html" title="cpp/experimental/reflect">反射</a> <span class="t-mark-rev t-since-reflection-ts t-mark-ts" style="white-space: nowrap;">(反射 TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/special_functions.html" title="cpp/experimental/special functions">数学特殊函数</a> <span class="t-mark-rev t-since-special-math-tr t-mark-ts" style="white-space: nowrap;">(特殊函数 TR)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="experimental.html#.E5.AE.9E.E9.AA.8C.E6.80.A7.E9.9D.9E_TS_.E5.8A.9F.E8.83.BD.E7.89.B9.E6.80.A7" title="cpp/experimental">实验性非 TS 功能特性</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/experimental/pm&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/pm（页面不存在）">模式匹配</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/experimental/la&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/la（页面不存在）">线性代数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="execution.html" title="cpp/experimental/execution" class="mw-redirect">std::execution</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental/contracts.html" title="cpp/experimental/contracts">契约</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/experimental/2dgraphics&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/2dgraphics（页面不存在）">2D 图形</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>C++ 标准委员会为未来的标准化出版实验性 C++ 语言与库扩展。
+</p><p>注意：2012 年之前，这些出版使用 <b>TR</b>（技术报告）格式。从 2012 年起，ISO 手续改为使用 <b>TS</b>（技术规范）格式。
+</p>
+<h4><span class="mw-headline" id="TR.2FTS_.E8.A7.84.E8.8C.83">TR/TS 规范</span></h4>
+<table class="wikitable">
+
+<tr>
+<th>ISO 编号</th>
+<th>名称</th>
+<th>状态</th>
+<th>链接，头文件
+</th></tr>
+<tr>
+<td> ISO/IEC TR 18015:2006
+</td>
+<td> C++ 性能技术报告
+</td>
+<td> 出版于 2006（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/33907.html">ISO 商店</a>）<br>草案：<a rel="nofollow" class="external text" href="https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf">TR18015</a> (2006-02-15)。
+</td>
+<td>
+</td></tr>
+<tr>
+<td> ISO/IEC TR 19768:2007
+</td>
+<td> C++ 库扩展技术报告
+</td>
+<td> 出版于 2007-11-15（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/38841.html">ISO 商店</a>）<br>草案： <a rel="nofollow" class="external text" href="https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2005/n1836.pdf">n1836</a> (2005-06-24)。<br>
+<p>分离到 ISO 29124，剩下的并入 C++11。
+</p>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> ISO/IEC 29124:2010
+</td>
+<td> 支持数学特殊函数的 C++ 库扩展
+</td>
+<td> 出版于 2010-09-03（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/50511.html">ISO 商店</a>）<br>最终草案： <a rel="nofollow" class="external text" href="https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2010/n3060.pdf">n3060</a> (2010-03-06)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span><a href="numeric/special_functions.html" title="cpp/numeric/special functions">并入 C++17</a>。
+</p>
+</td>
+<td> <a href="experimental/special_functions.html" title="cpp/experimental/special functions">特殊函数</a>（实验性），<a href="numeric/special_functions.html" title="cpp/numeric/special functions">特殊函数</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TR 24733:2011
+</td>
+<td> 支持十进制浮点算术的编程语言 C++ 扩展
+</td>
+<td> 出版于 2011-10-25（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/38843.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n2849">N2849</a> (2009-03-06)。<br>
+<p>可能会为将来的 TS 所取代或并入未来的 C++ 修订版（最近的合并提案为 <a rel="nofollow" class="external text" href="https://wg21.link/n3871">N3871</a>）。
+</p>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 18822:2015
+</td>
+<td> C++ 文件系统技术规范
+</td>
+<td> 出版于 2015-06-18（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/63483.html">ISO 商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4100">N4100</a> (2014-07-04)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span><a href="filesystem.html" title="cpp/filesystem">并入 C++17</a>。
+</p>
+</td>
+<td> <a href="experimental/fs.html" title="cpp/experimental/fs">文件系统</a>（实验性），<a href="filesystem.html" title="cpp/filesystem">文件系统</a>，<a href="header/filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19570:2015
+</td>
+<td> 并行的 C++ 扩展
+</td>
+<td> 出版于 2015-06-24（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/65241.html">ISO 商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4507">N4507</a> (2015-05-05)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span>并入 C++17。
+</p>
+</td>
+<td> <a href="experimental/parallelism.html" title="cpp/experimental/parallelism">并行</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19841:2015
+</td>
+<td> 事务性内存 TS
+</td>
+<td> 出版于 2015-09-16（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/66343.html">ISO 商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4514">N4514</a> (2015-05-08)。
+</td>
+<td> <a href="language/transactional_memory.html" title="cpp/language/transactional memory">事务性内存</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19568:2015
+</td>
+<td> 库基础的 C++ 扩展
+</td>
+<td> 出版于 2015-09-30（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/65238.html">ISO 商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4480">N4480</a> (2015-04-07)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span>并入 C++17，除了调用特征。
+</p>
+</td>
+<td><a href="experimental/lib_extensions.html" title="cpp/experimental/lib extensions">库扩展</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19217:2015
+</td>
+<td> 概念的 C++ 扩展
+</td>
+<td> 出版于 2015-11-13（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/64031.html">商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4553">N4553</a> (2015-10-02) 当前草案：<a rel="nofollow" class="external text" href="https://wg21.link/p0734r0">P0734R0</a> (2017-07-14)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span><a href="language/constraints.html" title="cpp/language/constraints">并入 C++20</a>（有修改）。
+</p>
+</td>
+<td><a href="experimental/constraints.html" title="cpp/experimental/constraints">约束与概念</a>（实验性），<a href="concepts.html" title="cpp/concepts">概念</a>，<a href="header/concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19571:2016
+</td>
+<td> 并发的 C++ 扩展
+</td>
+<td> 出版于 2016-01-19（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/65242.html">ISO 商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/p0159r0">P0159R0</a> (2015-10-22)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span>部分并入 C++20。
+</p>
+</td>
+<td> <a href="experimental/concurrency.html" title="cpp/experimental/concurrency">并发</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19568:2017
+</td>
+<td> 库基础的 C++ 扩展，版本 2
+</td>
+<td> 出版于 2017-03-30（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/70587.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4617">N4617</a> (2016-11-28)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span>部分并入 C++17 与 C++20。
+</p>
+</td>
+<td> <a href="experimental/lib_extensions_2.html" title="cpp/experimental/lib extensions 2">库扩展 2</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 21425:2017
+</td>
+<td> 范围 TS
+</td>
+<td> 出版于 2017-12-05（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/70910.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4685">N4685</a> (2017-07-31)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span><a href="ranges.html" title="cpp/ranges">并入 C++20</a>。
+</p>
+</td>
+<td> <a href="experimental/ranges.html" title="cpp/experimental/ranges">范围</a>（实验性），<a href="ranges.html" title="cpp/ranges">范围</a>，<a href="header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 22277:2017
+</td>
+<td> 协程 TS
+</td>
+<td> 出版于 2017-12-05（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/73008.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4736">N4736</a> (2018-03-31)，最新草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4775">N4775</a> (2018-10-07)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span><a href="coroutine.html" title="cpp/coroutine">并入 C++20</a>。
+</p>
+</td>
+<td><a href="header/coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19216:2018
+</td>
+<td> 网络 TS
+</td>
+<td> 出版于 2018-04-24（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/64030.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4734">N4734</a> (2017-04-04) 。最新草案 <a rel="nofollow" class="external text" href="https://wg21.link/n4771">N4771</a> (2018-10-08)。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">参阅非 TS 提案</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 标准安全网络功能——<a rel="nofollow" class="external text" href="https://wg21.link/P2586R0">P2586R0</a> (2022-09-13)
+</li><li> 网络功能的发送器-接收器接口——<a rel="nofollow" class="external text" href="https://wg21.link/P2762R2">P2762R2</a> (2023-10-12)
+</li><li> 关于 C++ 标准网络的基于 <a rel="nofollow" class="external text" href="https://datatracker.ietf.org/doc/draft-ietf-taps-arch/">IETF TAPS</a> 提案方向——<a rel="nofollow" class="external text" href="https://wg21.link/P3185R0">P3185R0</a> (2024-12-14)
+</li><li> 用于基于 TAPS 网络连接的提案 API——<a rel="nofollow" class="external text" href="https://wg21.link/P3482R0">P3482R0</a> (2024-12-14)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td> <a href="experimental/networking.html" title="cpp/experimental/networking">网络</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 21544:2018
+</td>
+<td> 模块 TS
+</td>
+<td> 出版于 2018-05-16（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/71051.html">ISO 商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4720">N4720</a> (2018-01-29)。<br>
+<p><span style="font-size:21px;color:green"><b>✔</b></span><a href="language/modules.html" title="cpp/language/modules">并入 C++20</a>（有修改）。
+</p>
+</td>
+<td>
+</td></tr>
+<tr id=".E5.B9.B6.E8.A1.8C_TS_.E7.89.88.E6.9C.AC_2">
+<td> ISO/IEC TS 19570:2018
+</td>
+<td> 并行 TS 版本 2
+</td>
+<td> 出版于 2018-11-15（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/70588.html">ISO 商店</a>）。最终草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4793">N4793</a> (2018-11-26)。发布后草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4808">N4808</a> (2019-03-11)。另见<a href="experimental.html#SIMD_.E6.8F.90.E6.A1.88">下文</a>非 TS 的 <code>std::simd</code> 提案。
+</td>
+<td> <a href="experimental/parallelism_2.html" title="cpp/experimental/parallelism 2">并行 2</a>
+</td></tr>
+<tr id=".E5.8F.8D.E5.B0.84_TS">
+<td> ISO/IEC TS 23619
+</td>
+<td> 反射 TS
+</td>
+<td> 出版于 2021-10-11（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/76425.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4856">N4856</a> (2020-03-02)。另见<a href="experimental.html#.E5.8F.8D.E5.B0.84.E6.8F.90.E6.A1.88">下文</a>非 TS 提案。。
+</td>
+<td> <a href="experimental/reflect.html" title="cpp/experimental/reflect">反射</a>
+</td></tr>
+<tr>
+<td>
+</td>
+<td> 数值
+</td>
+<td> 早期开发。草案 <a rel="nofollow" class="external text" href="https://wg21.link/p1889r1">P1889R1</a> (2019-12-27)。
+</td>
+<td>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 9922
+</td>
+<td> 并发 TS 版本 2
+</td>
+<td> 出版于 2024-10-09（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/83630.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4956">N4956</a> (2023-07-05)。
+</td>
+<td> <a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/experimental/concurrency_2&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/concurrency 2（页面不存在）">并发 2</a>
+</td></tr>
+<tr>
+<td> ISO/IEC TS 19568:2024
+</td>
+<td> 库基础的 C++ 扩展，版本 3
+</td>
+<td> 出版于 2024-08-26（<a rel="nofollow" class="external text" href="https://www.iso.org/standard/86293.html">ISO 商店</a>）。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4948">N4948</a> (2023-05-08)。
+</td>
+<td> <a href="experimental/lib_extensions_3.html" title="cpp/experimental/lib extensions 3">库扩展 3</a>
+</td></tr>
+<tr>
+<td> ISO/IEC DTS 12907
+</td>
+<td> 事务性内存 TS，版本 2
+</td>
+<td> 早期开发。草案：<a rel="nofollow" class="external text" href="https://wg21.link/n4923">N4923</a> (2022-10-14)。
+</td>
+<td>
+</td></tr>
+<tr>
+<td> ISO/IEC NP 19569
+</td>
+<td> 数组扩展 TS
+</td>
+<td> <span style="font-size:21px;color:red"><b>×</b></span>已撤销。废弃草案：<a rel="nofollow" class="external text" href="https://wg21.link/n3820">N3820</a> (2013-10-10)。
+</td>
+<td>
+</td></tr></table>
+<h4><span class="mw-headline" id=".E9.9D.9E_TS_.E6.8F.90.E6.A1.88">非 TS 提案</span></h4>
+<table class="wikitable">
+
+<tr>
+<th>名称</th>
+<th>状态</th>
+<th>链接，头文件
+</th></tr>
+<tr>
+<td> 线性代数
+</td>
+<td><span style="font-size:21px;color:green"><b>✔</b></span><a href="header/linalg.html" title="cpp/header/linalg">已合并入 C++26</a>。提案：<a rel="nofollow" class="external text" href="https://wg21.link/P1673R13">P1673R13</a> (2023-11-10)。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 为 C++ 标准库添加线性代数支持的提案——<a rel="nofollow" class="external text" href="https://wg21.link/P1385R7">P1385R7</a> (2022-10-15)
+</li><li> 从 <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms" class="extiw" title="enwiki:Basic Linear Algebra Subprograms">BLAS</a> 发展一个标准 C++ 线性代数库——<a rel="nofollow" class="external text" href="https://wg21.link/P1674R2">P1674R2</a> (2022-05-15)
+</li><li> Issaquah 2023 会议上面向 LEWG 的 <a rel="nofollow" class="external text" href="https://wg21.link/P1385R7">P1385R7</a> 演示——<a rel="nofollow" class="external text" href="https://wg21.link/P2802R0">P2802R0</a> (2023-02-09)
+</li><li> 修正 C++26：优化非复数值类型的 <span class="mw-geshi cpp source-cpp">linalg<span class="sy4">::</span><span class="me2">conjugated</span></span>——<a rel="nofollow" class="external text" href="https://wg21.link/P3050R3">P3050R3</a> (2024-10-29)
+</li><li> 修正 C++26：使<a href="https://en.wikipedia.org/wiki/Symmetric_matrix" class="extiw" title="enwiki:Symmetric matrix">对称</a>和<a href="https://en.wikipedia.org/wiki/Hermitian_matrix" class="extiw" title="enwiki:Hermitian matrix">厄米特</a>的秩-k 与秩-2k 更新与 <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms" class="extiw" title="enwiki:Basic Linear Algebra Subprograms">BLAS</a> 一致——<a rel="nofollow" class="external text" href="https://wg21.link/P3371R3">P3371R3</a> (2024-10-29)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td><a href="header/linalg.html" title="cpp/header/linalg"><tt>&lt;linalg&gt;</tt></a>
+</td></tr>
+<tr>
+<td><span class="t-lc">std::execution</span>
+</td>
+<td><span style="font-size:21px;color:green"><b>✔</b></span><a href="header/execution.html" title="cpp/header/execution">已合并入 C++26</a>。提案：<a rel="nofollow" class="external text" href="https://wg21.link/P2300R10">P2300R10</a> (2024-06-28)。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 系统执行上下文——<a rel="nofollow" class="external text" href="https://wg21.link/P2079R7">P2079R7</a> (2025-02-12)
+</li><li> 网络发送器-接收器接口——<a rel="nofollow" class="external text" href="https://wg21.link/P2762R2">P2762R2</a> (2023-10-12)
+</li><li> 发送器和接收器的成员定制点——<a rel="nofollow" class="external text" href="https://wg21.link/P2855R1">P2855R1</a> (2024-02-22)
+</li><li> C++ 执行器的事件模型——<a rel="nofollow" class="external text" href="https://wg21.link/P2882R0">P2882R0</a> (2023-05-11)
+</li><li> 发送器算法的定制化——<a rel="nofollow" class="external text" href="https://wg21.link/P2999R3">P2999R3</a> (2023-12-13)
+</li><li> <span class="t-lc">std::execution</span> 介绍——<a rel="nofollow" class="external text" href="https://wg21.link/P3090R0">P3090R0</a> (2024-02-14)
+</li><li> C++26 的 <span class="t-lc">std::execution</span> 推进计划——<a rel="nofollow" class="external text" href="https://wg21.link/P3109R0">P3109R0</a> (2024-02-12)
+</li><li> 改进发送器表达式的诊断——<a rel="nofollow" class="external text" href="https://wg21.link/P3164R3">P3164R3</a> (2025-01-10)
+</li><li> 重新考虑 <span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">execution</span><span class="sy4">::</span><span class="me2">on</span></span> 算法——<a rel="nofollow" class="external text" href="https://wg21.link/P3175R3">P3175R3</a> (2024-06-25)
+</li><li> 用于完成行为的发送器查询——<a rel="nofollow" class="external text" href="https://wg21.link/P3206R0">P3206R0</a> (2025-01-13)
+</li><li> 发送器适配器 <code>finally</code>、<code>write_env</code> 与 <code>unstoppable</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P3284R3">P3284R3</a> (2025-02-13)
+</li><li> 修复惰性发送器算法的定制化——<a rel="nofollow" class="external text" href="https://wg21.link/P3303R1">P3303R1</a> (2024-06-25)
+</li><li> 用于创建执行环境的工具——<a rel="nofollow" class="external text" href="https://wg21.link/P3325R5">P3325R5</a> (2024-11-22)
+</li><li> 何时可知 <code>connect</code> 不会抛异常？——<a rel="nofollow" class="external text" href="https://wg21.link/P3388R1">P3388R1</a> (2025-01-11)
+</li><li> <span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">execution</span></span> 措辞修订——<a rel="nofollow" class="external text" href="https://wg21.link/P3396R1">P3396R1</a> (2024-11-19)
+</li><li> 使能更高效的基于停止令牌的发送器取消——<a rel="nofollow" class="external text" href="https://wg21.link/P3409R1">P3409R1</a> (2024-11-17)
+</li><li> Win32、Darwin 和 Linux 上的 <code>system_scheduler</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P3456R0">P3456R0</a> (2024-10-15)
+</li><li> <span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">execution</span><span class="sy4">::</span><span class="me2">bulk</span><span class="br0">(</span><span class="br0">)</span></span> 问题总结——<a rel="nofollow" class="external text" href="https://wg21.link/P3481R2">P3481R2</a> (2025-02-11)
+</li><li> 采用 constexpr 异常的高质量发送器诊断——<a rel="nofollow" class="external text" href="https://wg21.link/P3557R1">P3557R1</a> (2025-02-13)
+</li><li> 发送器-接收器中的 optional variant——<a rel="nofollow" class="external text" href="https://wg21.link/P3570R0">P3570R0</a> (2025-02-10)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td><a href="execution.html" title="cpp/experimental/execution" class="mw-redirect">执行</a> (实验性),<br><a href="execution.html" title="cpp/execution">Execution</a>,<br><a href="header/execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a>
+</td></tr>
+<tr>
+<td><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">inplace_vector</span></span>
+</td>
+<td><span style="font-size:21px;color:green"><b>✔</b></span><a href="header/inplace_vector.html" title="cpp/header/inplace vector">已合并入 C++26</a>。提案：<a rel="nofollow" class="external text" href="https://wg21.link/P0843R14">P0843R14</a> (2024-06-26)。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> <code>inplace_vector</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P0843">P0843</a>（<a rel="nofollow" class="external text" href="https://wg21.link/P0843R7">R7</a>）LEWG 演示——<a rel="nofollow" class="external text" href="https://wg21.link/P2925R0">P2925R0</a> (2023-06-16)
+</li><li> 向量的一种方向——<a rel="nofollow" class="external text" href="https://wg21.link/P3147R1">P3147R1</a> (2024-03-18)
+</li><li> 一种知分配器的 <span class="t-lc">std::inplace_vector</span>——<a rel="nofollow" class="external text" href="https://wg21.link/P3160R2">P3160R2</a> (2024-10-15)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td><a href="header/inplace_vector.html" title="cpp/header/inplace vector"><tt>&lt;inplace_vector&gt;</tt></a>
+</td></tr>
+<tr id="SIMD_.E6.8F.90.E6.A1.88">
+<td><a href="experimental/simd.html" title="cpp/experimental/simd"><code>experimental::simd</code></a><br><span class="t-lc">std::simd</span>
+</td>
+<td><span style="font-size:21px;color:green"><b>✔</b></span><a href="header/simd.html" title="cpp/header/simd">已并入 C++26</a>。提案：<a rel="nofollow" class="external text" href="https://wg21.link/P1928R15">P1928R15</a> (2024-11-22).<br>主文档 (TS ISO/IEC 19570:2018) 在上文<a href="experimental.html#.E5.B9.B6.E8.A1.8C_TS_.E7.89.88.E6.9C.AC_2">“C++ 并行计算扩展 V2”</a>中描述。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 并行 TS2 中 SIMD 的预期反馈——<a rel="nofollow" class="external text" href="https://wg21.link/P1915R0">P1915R0</a> (2019-10-07)
+</li><li> Intel 对 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 的反馈——<a rel="nofollow" class="external text" href="https://wg21.link/P2638R0">P2638R0</a> (2022-09-22)
+</li><li> 在 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 中支持交错复数值的提案——<a rel="nofollow" class="external text" href="https://wg21.link/P2663R7">P2663R7</a> (2025-02-17)
+</li><li> 扩展 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 的排列 API 的提案——<a rel="nofollow" class="external text" href="https://wg21.link/P2664R9">P2664R9</a> (2025-01-13)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 介绍幻灯片——<a rel="nofollow" class="external text" href="https://wg21.link/P2803R0">P2803R0</a> (2023-02-09)
+</li><li> Intel 对 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 反馈的 Issaquah 幻灯片——<a rel="nofollow" class="external text" href="https://wg21.link/P2807R0">P2807R0</a> (2023-02-10)
+</li><li> 扩展 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 的更多构造函数和访问函数的提案——<a rel="nofollow" class="external text" href="https://wg21.link/P2876R2">P2876R2</a> (2025-02-14)
+</li><li> 算法风格 vs 基于 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 的 RNG API——<a rel="nofollow" class="external text" href="https://wg21.link/P2880R0">P2880R0</a> (2023-05-18)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 类型应为正规类型——<a rel="nofollow" class="external text" href="https://wg21.link/P2892R0">P2892R0</a> (2023-05-19)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 类型应为正规类型——<a rel="nofollow" class="external text" href="https://wg21.link/P2892R0">P2892R0</a> LEWG 演示——<a rel="nofollow" class="external text" href="https://wg21.link/P2926R0">P2926R0</a> (2023-06-19)
+</li><li> <code>simd_invoke</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P2929R0">P2929R0</a> (2023-07-19)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 对 <a href="header/bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a> 的重载——<a rel="nofollow" class="external text" href="https://wg21.link/P2933R4">P2933R4</a> (2025-02-17)
+</li><li> 为 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 添加饱和运算的库支持——<a rel="nofollow" class="external text" href="https://wg21.link/P2956R0">P2956R0</a> (2023-08-01)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 中允许用于定义类型——<a rel="nofollow" class="external text" href="https://wg21.link/P2964R1">P2964R1</a> (2024-05-22)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 的接口方向——<a rel="nofollow" class="external text" href="https://wg21.link/P3024R0">P3024R0</a> (2023-11-30)
+</li><li> 提供用于常见操作的预定义 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 排列生成器函数——<a rel="nofollow" class="external text" href="https://wg21.link/P3067R0">P3067R0</a> (2024-05-22)
+</li><li> 用取值（getter）与设值（setter）函数取代 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> <span class="mw-geshi cpp source-cpp">operator<span class="br0">[</span><span class="br0">]</span></span>（或不取代）——<a rel="nofollow" class="external text" href="https://wg21.link/P3275R0">P3275R0</a> (2024-05-22)
+</li><li> 探索 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 的命名空间——<a rel="nofollow" class="external text" href="https://wg21.link/P3287R3">P3287R3</a> (2025-02-13)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 的范围构造函数——<a rel="nofollow" class="external text" href="https://wg21.link/P3299R3">P3299R3</a> (2024-12-17)
+</li><li> 为 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 添加 <code>iota</code> 对象（及其他）——<a rel="nofollow" class="external text" href="https://wg21.link/P3319R5">P3319R5</a> (2025-02-14)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 问题：显式，无顺序，标定元素位置，以及已禁用 simd 的成员——<a rel="nofollow" class="external text" href="https://wg21.link/P3430R3">P3430R3</a> (2025-02-13)
+</li><li> 为 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 添加 <code>n_elements</code> 具名构造函数——<a rel="nofollow" class="external text" href="https://wg21.link/P3440R0">P3440R0</a> (2024-10-15)
+</li><li> 重命名 <code>simd_split</code> 为 <code>simd_chunk</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P3441R2">P3441R2</a> (2025-01-30)
+</li><li> 添加工具以进行更容易的 <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 中的类型-位转换——<a rel="nofollow" class="external text" href="https://wg21.link/P3445R0">P3445R0</a> (2024-10-16)
+</li><li> <a href="experimental/simd.html" title="cpp/experimental/simd"><code>std::simd</code></a> 是一种 <a href="ranges/range.html" title="cpp/ranges/range"><code>range</code></a>——<a rel="nofollow" class="external text" href="https://wg21.link/P3480R4">P3480R4</a> (2025-02-14)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td><a href="experimental/simd.html" title="cpp/experimental/simd">数据并行类型</a> (实验性),<br><a href="numeric/simd.html" title="cpp/numeric/simd">数据并行类型</a>,<br><a href="header/simd.html" title="cpp/header/simd"><tt>&lt;simd&gt;</tt></a>
+</td></tr>
+<tr>
+<td> 契约
+</td>
+<td> <span style="font-size:21px;color:green"><b>✔</b></span><a href="header/simd.html" title="cpp/header/simd">已合并入 C++26</a>。提案：C++ 契约 - <a rel="nofollow" class="external text" href="https://wg21.link/P2900R14">P2900R14</a> (2025-02-13)。<br>
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 出版契约技术规范的提案——<a rel="nofollow" class="external text" href="https://wg21.link/P2659R2">P2659R2</a> (2022-11-30)
+</li><li> 提案契约 TS - <a rel="nofollow" class="external text" href="https://wg21.link/P2660R0">P2660R0</a> (2022-10-14)
+</li><li> 契约 TS 的杂项订正——<a rel="nofollow" class="external text" href="https://wg21.link/P2661R0">P2661R0</a> (2022-10-15)
+</li><li> C++ 契约：优先应对安全性——<a rel="nofollow" class="external text" href="https://wg21.link/P2680R1">P2680R1</a> (2022-12-15)
+</li><li> C++ 契约的建议计划——<a rel="nofollow" class="external text" href="https://wg21.link/P2695R1">P2695R1</a> (2023-02-09)
+</li><li> 以条件为中心的契约语法提案——<a rel="nofollow" class="external text" href="https://wg21.link/P2737R0">P2737R0</a> (2022-12-30)
+</li><li> C++ 契约：优先应对安全性——演示幻灯片——<a rel="nofollow" class="external text" href="https://wg21.link/P2743R0">P2743R0</a> (2022-12-13)
+</li><li> 受检查契约的求值——<a rel="nofollow" class="external text" href="https://wg21.link/P2751R1">P2751R1</a> (2023-02-14)
+</li><li> 完整契约设施的大胆计划——<a rel="nofollow" class="external text" href="https://wg21.link/P2755R1">P2755R1</a> (2024-04-11)
+</li><li> 契约 MVP 背后的想法——<a rel="nofollow" class="external text" href="https://wg21.link/P2817R0">P2817R0</a> (2023-03-05)
+</li><li> 支持‘定义时 const’风格契约的提案——<a rel="nofollow" class="external text" href="https://wg21.link/P2829R0">P2829R0</a> (2023-04-13)
+</li><li> 契约 MVP 的契约违例处理语义——<a rel="nofollow" class="external text" href="https://wg21.link/P2852R0">P2852R0</a> (2023-04-24)
+</li><li> Lakos 规则：窄契约与 <span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 天生不兼容——<a rel="nofollow" class="external text" href="https://wg21.link/P2861R0">P2861R0</a> (2023-05-19)
+</li><li> 对契约语法的需求——<a rel="nofollow" class="external text" href="https://wg21.link/P2885R3">P2885R3</a> (2023-10-05)
+</li><li> lambda 上的契约——<a rel="nofollow" class="external text" href="https://wg21.link/P2890R2">P2890R2</a> (2023-12-13)
+</li><li> 契约的常量求值——<a rel="nofollow" class="external text" href="https://wg21.link/P2894R2">P2894R2</a> (2024-01-11)
+</li><li> 契约 MVP 的突出设计问题——<a rel="nofollow" class="external text" href="https://wg21.link/P2896R0">P2896R0</a> (2023-08-22)
+</li><li> C++ 契约：原理——<a rel="nofollow" class="external text" href="https://wg21.link/P2899R1">P2899R1</a> (2025-03-14)
+</li><li> C++ 契约——<a rel="nofollow" class="external text" href="https://wg21.link/P2900R13">P2900R13</a> (2025-01-13)
+</li><li> 应对契约的开放设计问题的原则性方法——<a rel="nofollow" class="external text" href="https://wg21.link/P2932R3">P2932R3</a> (2024-01-16)
+</li><li> 契约的属性式语法——<a rel="nofollow" class="external text" href="https://wg21.link/P2935R4">P2935R4</a> (2023-11-05)
+</li><li> 契约必须避免泄露敏感信息——<a rel="nofollow" class="external text" href="https://wg21.link/P2947R0">P2947R0</a> (2023-07-20)
+</li><li> <a rel="nofollow" class="external text" href="https://wg21.link/P2861R0">P2861R0</a> 的幻灯片：窄契约与 <span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 天生不兼容——<a rel="nofollow" class="external text" href="https://wg21.link/P2949R0">P2949R0</a> (2023-07-14)
+</li><li> 契约 MVP 的契约与虚函数——<a rel="nofollow" class="external text" href="https://wg21.link/P2954R0">P2954R0</a> (2023-08-03)
+</li><li> 契约与协程——<a rel="nofollow" class="external text" href="https://wg21.link/P2957R2">P2957R2</a> (2024-10-14)
+</li><li> 契约的自然语法——<a rel="nofollow" class="external text" href="https://wg21.link/P2961R2">P2961R2</a> (2023-11-08)
+</li><li> 契约语法选择概述——<a rel="nofollow" class="external text" href="https://wg21.link/P3028R0">P3028R0</a> (2023-11-05)
+</li><li> 保护契约不发生改动——<a rel="nofollow" class="external text" href="https://wg21.link/P3071R1">P3071R1</a> (2023-12-17)
+</li><li> 契约 MVP 中移除 <code>evaluation_undefined_behavior</code> 和 <code>will_continue</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P3073R0">P3073R0</a> (2024-01-27)
+</li><li> 契约的常量求值中应当存在 <code>ignore</code> 和 <code>observe</code> 吗？——<a rel="nofollow" class="external text" href="https://wg21.link/P3079R0">P3079R0</a> (2024-01-11)
+</li><li> C++ 契约：支持虚函数——<a rel="nofollow" class="external text" href="https://wg21.link/P3097R0">P3097R0</a> (2024-04-15)
+</li><li> C++ 契约：后条件捕捉——<a rel="nofollow" class="external text" href="https://wg21.link/P3098R1">P3098R1</a> (2024-12-11)
+</li><li> 未定义和错误行为就是契约违例——<a rel="nofollow" class="external text" href="https://wg21.link/P3100R1">P3100R1</a> (2024-10-16)
+</li><li> 契约的东京会议技术修正——<a rel="nofollow" class="external text" href="https://wg21.link/P3119R1">P3119R1</a> (2024-05-09)
+</li><li> 契约 MVP 的虚函数契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3165R0">P3165R0</a> (2024-02-27)
+</li><li> 契约继承——<a rel="nofollow" class="external text" href="https://wg21.link/P3169R0">P3169R0</a> (2024-04-14)
+</li><li> 契约的测试支持——<a rel="nofollow" class="external text" href="https://wg21.link/P3183R1">P3183R1</a> (2024-05-22)
+</li><li> <a rel="nofollow" class="external text" href="https://wg21.link/P2900R6">P2900R6</a> LEWG 演示的幻灯片：C++ 契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3189R0">P3189R0</a> (2024-03-19)
+</li><li> <a rel="nofollow" class="external text" href="https://wg21.link/P2900R7">P2900R7</a> LEWG 演示的幻灯片：C++ 契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3190R0">P3190R0</a> (2024-03-20)
+</li><li> 对契约 MVP (<a rel="nofollow" class="external text" href="https://wg21.link/P2900R6">P2900R6</a>) 东京会议 EWG 投票调查的回应——<a rel="nofollow" class="external text" href="https://wg21.link/P3197R0">P3197R0</a> (2024-04-12)
+</li><li> 东京会议的契约 MVP LEWG 会议纪要——<a rel="nofollow" class="external text" href="https://wg21.link/P3198R0">P3198R0</a> (2024-03-29)
+</li><li> 为何契约？——<a rel="nofollow" class="external text" href="https://wg21.link/P3204R0">P3204R0</a> (2024-11-07)
+</li><li> <span class="t-lc"><a href="algorithm/sort.html" title="cpp/algorithm/sort">sort()</a></span> 的契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3212R0">P3212R0</a> (2024-07-03)
+</li><li> C++ 契约：<i>Louis 语义</i>的命名——<a rel="nofollow" class="external text" href="https://wg21.link/P3226R0">P3226R0</a> (2024-04-12)
+</li><li> C++ 契约：修正契约违例处理 API——<a rel="nofollow" class="external text" href="https://wg21.link/P3227R1">P3227R1</a> (2024-10-24)
+</li><li> C++ 契约：再论契约检查的消除与重复——<a rel="nofollow" class="external text" href="https://wg21.link/P3228R1">P3228R1</a> (2024-05-21)
+</li><li> 令错误行为与契约兼容——<a rel="nofollow" class="external text" href="https://wg21.link/P3229R1">P3229R1</a> (2025-02-10)
+</li><li> 一种命名契约语义的替代方案——<a rel="nofollow" class="external text" href="https://wg21.link/P3238R0">P3238R0</a> (2024-05-06)
+</li><li> 用于引入新名字的模式匹配和契约的统一语法——<a rel="nofollow" class="external text" href="https://wg21.link/P3249R0">P3249R0</a> (2024-05-22)
+</li><li> C++ 契约与函数指针——<a rel="nofollow" class="external text" href="https://wg21.link/P3250R0">P3250R0</a> (2024-05-07)
+</li><li> C++ 契约与协程——<a rel="nofollow" class="external text" href="https://wg21.link/P3251R0">P3251R0</a> (2024-05-07)
+</li><li> 使 <code>contract_assert</code> 的谓词更正规——<a rel="nofollow" class="external text" href="https://wg21.link/P3257R0">P3257R0</a> (2024-04-26)
+</li><li> 以 TS 方式发布契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3265R3">P3265R3</a> (2024-05-28)
+</li><li> 通往 C++ 契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3267R1">P3267R1</a> (2024-05-22)
+</li><li> C++ 契约的常量化挑战，关注当前代码——<a rel="nofollow" class="external text" href="https://wg21.link/P3268R0">P3268R0</a> (2024-05-07)
+</li><li> 不要以 TS 方式发布契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3269R0">P3269R0</a> (2024-05-21)
+</li><li> <code>contract_assert</code> 的重复、消除与常量化——<a rel="nofollow" class="external text" href="https://wg21.link/P3270R0">P3270R0</a> (2024-05-22)
+</li><li> 函数用法类型（函数指针的契约）——<a rel="nofollow" class="external text" href="https://wg21.link/P3271R1">P3271R1</a> (2024-10-15)
+</li><li> <a rel="nofollow" class="external text" href="https://wg21.link/P2900">P2900</a> 优于契约 TS——<a rel="nofollow" class="external text" href="https://wg21.link/P3276R0">P3276R0</a> (2024-05-18)
+</li><li> 契约：对保护器的保护——<a rel="nofollow" class="external text" href="https://wg21.link/P3285R0">P3285R0</a> (2024-05-15)
+</li><li> 集成既存断言与契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3290R2">P3290R2</a> (2024-09-06)
+</li><li> C++26 需要契约检查——<a rel="nofollow" class="external text" href="https://wg21.link/P3297R1">P3297R1</a> (2024-06-21)
+</li><li> 一种在 C++ 契约中集成传统断言设施的非强制方案——<a rel="nofollow" class="external text" href="https://wg21.link/P3311R0">P3311R0</a> (2024-05-22)
+</li><li> 编译时解析的契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3317R0">P3317R0</a> (2024-05-22)
+</li><li> 契约与工具的交互——<a rel="nofollow" class="external text" href="https://wg21.link/P3321R0">P3321R0</a> (2024-07-12)
+</li><li> 函数指针的契约断言——<a rel="nofollow" class="external text" href="https://wg21.link/P3327R0">P3327R0</a> (2024-10-16)
+</li><li> 契约评估过程中的可观察检查点——<a rel="nofollow" class="external text" href="https://wg21.link/P3328R0">P3328R0</a> (2024-06-14)
+</li><li> BDE 的契约使用体验——<a rel="nofollow" class="external text" href="https://wg21.link/P3336R0">P3336R0</a> (2024-06-23)
+</li><li> 契约——我们所为何事（EWG 演示）——<a rel="nofollow" class="external text" href="https://wg21.link/P3343R0">P3343R0</a> (2024-06-25)
+</li><li> 虚函数的契约（EWG - <a rel="nofollow" class="external text" href="https://wg21.link/P3097">P3097</a> 的演示）——<a rel="nofollow" class="external text" href="https://wg21.link/P3344R0">P3344R0</a> (2024-06-28)
+</li><li> 类不变式与契约检查哲学——<a rel="nofollow" class="external text" href="https://wg21.link/P3361R1">P3361R1</a> (2024-07-23)
+</li><li> 静态分析与契约“安全”，<a rel="nofollow" class="external text" href="https://wg21.link/P2900">P2900</a> vs <a rel="nofollow" class="external text" href="https://wg21.link/P2680">P2680</a>/<a rel="nofollow" class="external text" href="https://wg21.link/P3285">P3285</a>——<a rel="nofollow" class="external text" href="https://wg21.link/P3362R0">P3362R0</a> (2024-08-13)
+</li><li> 契约断言 vs. 静态分析和“安全性”——<a rel="nofollow" class="external text" href="https://wg21.link/P3376R0">P3376R0</a> (2024-10-14)
+</li><li> 以 P2900 进行契约的静态分析——<a rel="nofollow" class="external text" href="https://wg21.link/P3386R1">P3386R1</a> (2024-11-25)
+</li><li> 协程的契约断言——<a rel="nofollow" class="external text" href="https://wg21.link/P3387R0">P3387R0</a> (2024-10-09)
+</li><li> 用标签规定契约断言的属性——<a rel="nofollow" class="external text" href="https://wg21.link/P3400R1">P3400R1</a> (2025-02-28)
+</li><li> 改进对契约断言中抛出异常的处理——<a rel="nofollow" class="external text" href="https://wg21.link/P3417R1">P3417R1</a> (2025-03-05)
+</li><li> 契约实现方报告——<a rel="nofollow" class="external text" href="https://wg21.link/P3460R0">P3460R0</a> (2024-10-16)
+</li><li> 标准库的加固——<a rel="nofollow" class="external text" href="https://wg21.link/P3471R4">P3471R4</a> (2025-02-14)
+</li><li> const 化不应当是 MVP（最小可行产品）的内容——<a rel="nofollow" class="external text" href="https://wg21.link/P3478R0">P3478R0</a> (2024-10-16)
+</li><li> 探索严格契约谓词——<a rel="nofollow" class="external text" href="https://wg21.link/P3499R1">P3499R1</a> (2025-02-09)
+</li><li> 契约是否 'safe'？——<a rel="nofollow" class="external text" href="https://wg21.link/P3500R1">P3500R1</a> (2025-02-09)
+</li><li> <a rel="nofollow" class="external text" href="https://wg21.link/P2900R11">P2900R11</a> 的幻灯片——C++ 契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3502R0">P3502R0</a> (2024-11-18)
+</li><li> P2900 对 C++26 仍未就绪——<a rel="nofollow" class="external text" href="https://wg21.link/P3506R0">P3506R0</a> (2025-01-13)
+</li><li> 违例处理器与 <span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 对比——<a rel="nofollow" class="external text" href="https://wg21.link/P3541R1">P3541R1</a> (2025-01-07)
+</li><li> 核心语言缺省契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3558R1">P3558R1</a> (2025-02-03)
+</li><li> 契约的关注事项——<a rel="nofollow" class="external text" href="https://wg21.link/P3573R0">P3573R0</a> (2025-01-12)
+</li><li> 要求无抛出的缺省契约违例处理函数——<a rel="nofollow" class="external text" href="https://wg21.link/P3577R0">P3577R0</a> (2025-01-12)
+</li><li> 观察到契约违例？跳过后续断言！——<a rel="nofollow" class="external text" href="https://wg21.link/P3582R0">P3582R0</a> (2025-01-13)
+</li><li> 契约、类型与函数——<a rel="nofollow" class="external text" href="https://wg21.link/P3583R0">P3583R0</a> (2025-01-13)
+</li><li> 契约要点问题的语境背景——<a rel="nofollow" class="external text" href="https://wg21.link/P3591R0">P3591R0</a> (2025-02-03)
+</li><li> 隐式契约断言的初始部分——<a rel="nofollow" class="external text" href="https://wg21.link/P3599R0">P3599R0</a> (2025-02-03)
+</li><li> 契约与剖面配置：C++26 应当合理提供什么——<a rel="nofollow" class="external text" href="https://wg21.link/P3608R0">P3608R0</a> (2025-02-01)
+</li><li> 现在应当移除虚函数的契约——<a rel="nofollow" class="external text" href="https://wg21.link/P3616R0">P3616R0</a> (2025-02-08)
+</li><li> 使契约默认是可靠的——<a rel="nofollow" class="external text" href="https://wg21.link/P3640R0">P3640R0</a> (2025-03-17)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td><a href="language/contracts.html" title="cpp/language/contracts">契约断言</a>、<br><a href="language/functions/function_contract_specifiers.html" title="cpp/language/functions/function contract specifiers">函数契约说明符</a>、<br><a href="language/contract_assert.html" title="cpp/language/contract assert"><tt>contract_assert</tt></a>、<br><a href="identifier_with_special_meaning/pre.html" title="cpp/identifier with special meaning/pre"><tt>pre</tt></a>、<a href="identifier_with_special_meaning/post.html" title="cpp/identifier with special meaning/post"><tt>post</tt></a>、<br><a href="header/contracts.html" title="cpp/header/contracts"><tt>&lt;contracts&gt;</tt></a>
+</td></tr>
+<tr>
+<td> 模式匹配
+</td>
+<td> 早期开发。草案 <a rel="nofollow" class="external text" href="https://wg21.link/P1371R3">P1371R3</a> (2020-09-15)。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 使用 <span class="mw-geshi cpp source-cpp">is</span> 和 <span class="mw-geshi cpp source-cpp">as</span> 的模式匹配——<a rel="nofollow" class="external text" href="https://wg21.link/P2392R3">P2392R3</a> (2024-10-16)
+</li><li> 模式匹配：<span class="mw-geshi cpp source-cpp">match</span> 表达式——<a rel="nofollow" class="external text" href="https://wg21.link/P2688R5">P2688R5</a> (2025-01-13)
+</li><li> <span class="mw-geshi cpp source-cpp"><span class="kw1">switch</span></span> 用于模式匹配——<a rel="nofollow" class="external text" href="https://wg21.link/P2940R0">P2940R0</a> (2022-04-18)
+</li><li> 用于模式匹配的标识符——<a rel="nofollow" class="external text" href="https://wg21.link/P2941R0">P2941R0</a> (2022-02-24)
+</li><li> 后条件<i>是一种</i>模式匹配——<a rel="nofollow" class="external text" href="https://wg21.link/P3210R2">P3210R2</a> (2024-09-10)
+</li><li> 用于引入新名字的模式匹配和契约的统一语法——<a rel="nofollow" class="external text" href="https://wg21.link/P3249R0">P3249R0</a> (2024-05-22)
+</li><li> 一种更简单的模式匹配写法——<a rel="nofollow" class="external text" href="https://wg21.link/P3332R0">P3332R0</a> (2024-06-18)
+</li><li> P2688R2 演示——模式匹配：<span class="mw-geshi cpp source-cpp">match</span> 表达式——<a rel="nofollow" class="external text" href="https://wg21.link/P3476R0">P3476R0</a> (2024-10-16)
+</li><li> 模式匹配：开放和类型的定制化点——<a rel="nofollow" class="external text" href="https://wg21.link/P3521R0">P3521R0</a> (2024-12-17)
+</li><li> 模式匹配：*变体式* 与 'std::expected'——<a rel="nofollow" class="external text" href="https://wg21.link/P3527R1">P3527R1</a> (2025-01-13)
+</li><li> 模式匹配——<a rel="nofollow" class="external text" href="https://wg21.link/P3572R0">P3572R0</a> (2025-01-12)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td>
+</td></tr>
+<tr id=".E5.8F.8D.E5.B0.84.E6.8F.90.E6.A1.88">
+<td>反射
+</td>
+<td>主文档 (ISO/IEC TS 23619:2021) 在上文<a href="experimental.html#.E5.8F.8D.E5.B0.84_TS">反射 TS</a>中说明。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 可缩放的 C++ 反射——<a rel="nofollow" class="external text" href="https://wg21.link/P1240R2">P1240R2</a> (2022-01-14)
+</li><li> 展开语句——<a rel="nofollow" class="external text" href="https://wg21.link/P1306R3">P1306R3</a> (2024-10-14)
+</li><li> 属性的反射——<a rel="nofollow" class="external text" href="https://wg21.link/P1887R1">P1887R1</a> (2020-01-13)
+</li><li> 元编程——<a rel="nofollow" class="external text" href="https://wg21.link/P2237R0">P2237R0</a> (2020-10-15)
+</li><li> 带有基于值的反射的 Python 绑定——<a rel="nofollow" class="external text" href="https://wg21.link/P2911R1">P2911R1</a> (2023-10-13)
+</li><li> C++26 的反射——<a rel="nofollow" class="external text" href="https://wg21.link/P2996R10">P2996R10</a> (2025-02-27)
+</li><li> 在 JS 绑定生成中用反射取代元语言——<a rel="nofollow" class="external text" href="https://wg21.link/P3010R0">P3010R0</a> (2023-10-13)
+</li><li> 以反射进行 ABI 比较——<a rel="nofollow" class="external text" href="https://wg21.link/P3095R0">P3095R0</a> (2024-02-15)
+</li><li> C++26 反射中的函数形参反射——<a rel="nofollow" class="external text" href="https://wg21.link/P3096R7">P3096R7</a> (2025-03-15)
+</li><li> 反射的生成式扩展——<a rel="nofollow" class="external text" href="https://wg21.link/P3157R1">P3157R1</a> (2024-05-22)
+</li><li> 反射语法——<a rel="nofollow" class="external text" href="https://wg21.link/P3381R0">P3381R0</a> (2024-09-17)
+</li><li> 属性的反射——<a rel="nofollow" class="external text" href="https://wg21.link/P3385R4">P3385R4</a> (2025-03-11)
+</li><li> 用于反射的标注——<a rel="nofollow" class="external text" href="https://wg21.link/P3394R2">P3394R2</a> (2025-03-14)
+</li><li> 反射语法选项总结——<a rel="nofollow" class="external text" href="https://wg21.link/P3419R0">P3419R0</a> (2024-10-11)
+</li><li> 模板的反射——<a rel="nofollow" class="external text" href="https://wg21.link/P3420R1">P3420R1</a> (2025-01-13)
+</li><li> 反射标头应当最小化标准库依赖——<a rel="nofollow" class="external text" href="https://wg21.link/P3429R1">P3429R1</a> (2024-11-29)
+</li><li> 反射与元编程——<a rel="nofollow" class="external text" href="https://wg21.link/P3435R0">P3435R0</a> (2024-10-14)
+</li><li> 默认原则的建议：反射 C++，生成 C++——<a rel="nofollow" class="external text" href="https://wg21.link/P3437R1">P3437R1</a> (2024-11-07)
+</li><li> SG21 反射的 2024 进度——<a rel="nofollow" class="external text" href="https://wg21.link/P3443R0">P3443R0</a> (2024-10-14)
+</li><li> 针对反射访问控制的建议——<a rel="nofollow" class="external text" href="https://wg21.link/P3451R0">P3451R0</a> (2024-10-15)
+</li><li> 对反射与访问的深思——<a rel="nofollow" class="external text" href="https://wg21.link/P3493R0">P3493R0</a> (2024-11-10)
+</li><li> 反射对访问控制的建模——<a rel="nofollow" class="external text" href="https://wg21.link/P3547R1">P3547R1</a> (2025-02-09)
+</li><li> 反射中的错误处理——<a rel="nofollow" class="external text" href="https://wg21.link/P3560R0">P3560R0</a> (2025-01-12)
+</li><li> 拆分反射中的 <code>define_aggregate</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P3569R0">P3569R0</a> (2025-01-11)
+</li><li> 重新考虑 C++26 的反射访问——<a rel="nofollow" class="external text" href="https://wg21.link/P3587R0">P3587R0</a> (2025-01-13)
+</li><li> 不要移除或延后 <code>access_context::unchecked</code>——<a rel="nofollow" class="external text" href="https://wg21.link/P3614R0">P3614R0</a> (2025-02-06)
+</li><li> 从 <span class="t-lc"><a href="error/exception.html" title="cpp/error/exception">std::exception</a></span> 继承 <span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">meta</span><span class="sy4">::</span><span class="me2">exception</span></span>——<a rel="nofollow" class="external text" href="https://wg21.link/P3637R0">P3637R0</a> (2025-03-08)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td> <a href="experimental/reflect.html" title="cpp/experimental/reflect">反射</a> (实验性)
+</td></tr>
+<tr>
+<td> 2D 图形
+</td>
+<td> 早期开发。草案 <a rel="nofollow" class="external text" href="https://wg21.link/P0267R10">P0267R10</a> (2019-10-07)。
+</td>
+<td>
+</td></tr>
+<tr>
+<td>图库
+</td>
+<td>早期开发。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 图库：概述——<a rel="nofollow" class="external text" href="https://wg21.link/P3126R2">P3126R2</a> (2024-08-05)
+</li><li> 图库：算法——<a rel="nofollow" class="external text" href="https://wg21.link/P3128R2">P3128R2</a> (2024-09-12)
+</li><li> 图库：图容器接口——<a rel="nofollow" class="external text" href="https://wg21.link/P3130R2">P3130R2</a> (2024-08-05)
+</li><li> 图库：图容器——<a rel="nofollow" class="external text" href="https://wg21.link/P3131R2">P3131R2</a> (2024-08-05)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>统计
+</td>
+<td>早期开发。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 基本统计——<a rel="nofollow" class="external text" href="https://wg21.link/P1708R9">P1708R9</a> (2024-10-15)
+</li><li> 对基本统计 <a rel="nofollow" class="external text" href="https://wg21.link/P1708R9">P1708R9</a> 的评注——<a rel="nofollow" class="external text" href="https://wg21.link/P3495R0">P3495R0</a> (2024-11-13)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>剖面配置
+</td>
+<td>早期开发。
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">更多提案：</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<ul><li> 安全性剖面配置：ISO 标准 C++ 中的类型与资源安全编程——<a rel="nofollow" class="external text" href="https://wg21.link/P2816R0">P2816R0</a> (2023-02-16)
+</li><li> 对初始各项剖面配置的具体建议——<a rel="nofollow" class="external text" href="https://wg21.link/P3038R0">P3038R0</a> (2023-12-16)
+</li><li> 核心安全性剖面配置：规范，可采纳性与影响——<a rel="nofollow" class="external text" href="https://wg21.link/P3081R2">P3081R2</a> (2025-02-03)
+</li><li> 一种剖面配置开发框架——<a rel="nofollow" class="external text" href="https://wg21.link/P3274R0">P3274R0</a> (2024-05-10)
+</li><li> 一种验证类初始化的安全性剖面配置——<a rel="nofollow" class="external text" href="https://wg21.link/P3402R1">P3402R1</a> (2024-10-15)
+</li><li> 剖面配置验证：消除悬挂指针——<a rel="nofollow" class="external text" href="https://wg21.link/P3446R0">P3446R0</a> (2024-10-14)
+</li><li> 剖面配置语法——<a rel="nofollow" class="external text" href="https://wg21.link/P3447R0">P3447R0</a> (2024-10-14)
+</li><li> 对核心安全性剖面配置（<a rel="nofollow" class="external text" href="https://wg21.link/P3081R0">P3081R0</a>）的回应——<a rel="nofollow" class="external text" href="https://wg21.link/P3543R0">P3543R0</a> (2024-12-17)
+</li><li> 剖面配置问题过剩——<a rel="nofollow" class="external text" href="https://wg21.link/P3586R0">P3586R0</a> (2025-01-13)
+</li><li> C++ 剖面配置：框架——<a rel="nofollow" class="external text" href="https://wg21.link/P3589R1">P3589R1</a> (2025-02-03)
+</li><li> 契约与剖面配置：C++26 应当合理提供什么——<a rel="nofollow" class="external text" href="https://wg21.link/P3608R0">P3608R0</a> (2025-02-01)
+</li><li> 处理指针错误：区分静态和动态检查——<a rel="nofollow" class="external text" href="https://wg21.link/P3611R0">P3611R0</a> (2025-02-04)
+</li><li> 易于采纳的用于防止现存 C++ 代码中 RCE（远程代码执行）的安全性剖面配置——<a rel="nofollow" class="external text" href="https://wg21.link/P3627R0">P3627R0</a> (2025-02-11)
+</li><li> 二十一世纪的 C++ - <a rel="nofollow" class="external text" href="https://wg21.link/P3650R0">P3650R0</a> (2025-03-05)
+</li><li> 对 C++ 标准委员会成员的提醒——<a rel="nofollow" class="external text" href="https://wg21.link/P3651R0">P3651R0</a> (2025-03-06)
+</li></ul>
+</td></tr></table></div>
+</td>
+<td>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>实验性 C 特性</span></span>的 <span><span><a href="../c/experimental.html" title="c/experimental">C 文档</a></span></span></div>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id=".E5.A4.96.E9.83.A8.E9.93.BE.E6.8E.A5">外部链接</span></h3>
+<table style="border-top:solid 1px;border-bottom:none;border-left:none;border-right:none;">
+
+<tr style="vertical-align:top;">
+<td>1. </td>
+<td><a rel="nofollow" class="external text" href="https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/sd-1.htm">PL22.16/WG21 文档列表</a> - 2016-2025 年间 C++ 委员会的全部文档（TS/提案）。
+</td></tr>
+<tr style="vertical-align:top;">
+<td>2. </td>
+<td><a rel="nofollow" class="external text" href="https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2025/">JTC1/SC22/WG21 2025 年度提案（通讯）</a>。
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 8931/1000000
+Preprocessor generated node count: 13245/1000000
+Post‐expand include size: 92614/4194304 bytes
+Template argument size: 15416/4194304 bytes
+Highest expansion depth: 14/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:9456-0!*!0!!zh!*!zh!* and timestamp 20250320193143 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/experimental&amp;oldid=100075">https://zh.cppreference.com/mwiki/index.php?title=cpp/experimental&amp;oldid=100075</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/experimental">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年3月19日 (星期三) 23:58。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../common/site_scripts.js"></script>
+<!-- Served in 2.195 secs. -->
+	</body>
+<!-- Cached 20250320193143 -->
+</html>

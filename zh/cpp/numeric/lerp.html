@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>std::lerp</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/numeric/lerp","wgTitle":"cpp/numeric/lerp","wgCurRevisionId":95854,"wgArticleId":11996,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/numeric/lerp","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_numeric_lerp skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::</span>lerp</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../numeric.html" title="cpp/numeric">numeric</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../numeric.html" title="cpp/numeric">数值库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="math.html" title="cpp/numeric/math">常用数学函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="special_functions.html" title="cpp/numeric/special functions">数学特殊函数</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constants.html" title="cpp/numeric/constants">数学常数</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="linalg.html" title="cpp/numeric/linalg">基本线性代数算法</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="simd.html" title="cpp/numeric/simd">数据并行类型（SIMD）</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="fenv.html" title="cpp/numeric/fenv">浮点数环境</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="complex.html" title="cpp/numeric/complex">复数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="valarray.html" title="cpp/numeric/valarray">数值数组 (<code>valarray</code>)</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="random.html" title="cpp/numeric/random">伪随机数生成</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility/bit.html" title="cpp/utility/bit">位操纵</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html#.E9.A5.B1.E5.92.8C.E7.AE.97.E6.9C.AF" title="cpp/numeric">饱和算术</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../numeric.html#.E5.9B.A0.E6.95.B0.E8.BF.90.E7.AE.97" title="cpp/numeric">因数运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gcd.html" title="cpp/numeric/gcd"><span class="t-lines"><span>gcd</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lcm.html" title="cpp/numeric/lcm"><span class="t-lines"><span>lcm</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../numeric.html#.E6.8F.92.E5.80.BC.E8.BF.90.E7.AE.97" title="cpp/numeric">插值</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="midpoint.html" title="cpp/numeric/midpoint"><span class="t-lines"><span>midpoint</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>lerp</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../numeric.html#.E7.AE.97.E6.9C.AF.E8.BF.90.E7.AE.97" title="cpp/numeric">泛型算术运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/iota.html" title="cpp/algorithm/iota"><span class="t-lines"><span>iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/ranges/iota.html" title="cpp/algorithm/ranges/iota"><span class="t-lines"><span>ranges::iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/accumulate.html" title="cpp/algorithm/accumulate"><span class="t-lines"><span>accumulate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/inner_product.html" title="cpp/algorithm/inner product"><span class="t-lines"><span>inner_product</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/adjacent_difference.html" title="cpp/algorithm/adjacent difference"><span class="t-lines"><span>adjacent_difference</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/partial_sum.html" title="cpp/algorithm/partial sum"><span class="t-lines"><span>partial_sum</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/reduce.html" title="cpp/algorithm/reduce"><span class="t-lines"><span>reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/transform_reduce.html" title="cpp/algorithm/transform reduce"><span class="t-lines"><span>transform_reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/inclusive_scan.html" title="cpp/algorithm/inclusive scan"><span class="t-lines"><span>inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/exclusive_scan.html" title="cpp/algorithm/exclusive scan"><span class="t-lines"><span>exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/transform_inclusive_scan.html" title="cpp/algorithm/transform inclusive scan"><span class="t-lines"><span>transform_inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../algorithm/transform_exclusive_scan.html" title="cpp/algorithm/transform exclusive scan"><span class="t-lines"><span>transform_exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../numeric.html#.E5.B8.A6.E6.A3.80.E6.9F.A5.E6.95.B4.E6.95.B0.E7.AE.97.E6.9C.AF" title="cpp/numeric">C 风格带检查整数算术</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ckd_add.html" title="cpp/numeric/ckd add"><span class="t-lines"><span>ckd_add</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ckd_sub.html" title="cpp/numeric/ckd sub"><span class="t-lines"><span>ckd_sub</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ckd_mul.html" title="cpp/numeric/ckd mul"><span class="t-lines"><span>ckd_mul</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/cmath.html" title="cpp/header/cmath">&lt;cmath&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(1)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx20 t-until-cxx23">
+<td><div><span id=".E7.89.88.E6.9C.AC_1"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span> <span class="kw4">float</span>       lerp<span class="br0">(</span> <span class="kw4">float</span> a, <span class="kw4">float</span> b, <span class="kw4">float</span> t <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span><br>
+<p><span class="kw4">constexpr</span> <span class="kw4">double</span>      lerp<span class="br0">(</span> <span class="kw4">double</span> a, <span class="kw4">double</span> b, <span class="kw4">double</span> t <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span><br>
+<span class="kw4">constexpr</span> <span class="kw4">long</span> <span class="kw4">double</span> lerp<span class="br0">(</span> <span class="kw4">long</span> <span class="kw4">double</span> a, <span class="kw4">long</span> <span class="kw4">double</span> b,<br>
+</p>
+                            <span class="kw4">long</span> <span class="kw4">double</span> t <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> <br><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx23">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span> <span class="coMULTI">/* floating-point-type */</span><br>
+<p>    lerp<span class="br0">(</span> <span class="coMULTI">/* floating-point-type */</span> a,<br>
+          <span class="coMULTI">/* floating-point-type */</span> b,<br>
+</p>
+          <span class="coMULTI">/* floating-point-type */</span> t <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-h">
+<td> <div><a href="lerp.html#.E6.B3.A8.E8.A7.A3">额外重载</a></div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/cmath.html" title="cpp/header/cmath">&lt;cmath&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> Arithmetic1, <span class="kw1">class</span> Arithmetic2, <span class="kw1">class</span> Arithmetic3 <span class="sy1">&gt;</span><br>
+<p><span class="kw4">constexpr</span> <span class="coMULTI">/* common-floating-point-type */</span><br>
+</p>
+    lerp<span class="br0">(</span> Arithmetic1 a, Arithmetic2 b, Arithmetic3 t <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (A) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 如果形参 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 在 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">1</span></span></span><code>)</code> 之内，则计算 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 与 <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 间参的<a href="https://en.wikipedia.org/wiki/Linear_interpolation" class="extiw" title="enwiki:Linear interpolation">线性内插</a>（否则是<a href="https://en.wikipedia.org/wiki/Extrapolation#Linear" class="extiw" title="enwiki:Extrapolation">线性外插</a>），即其结果为 <span class="mjax" style="display:none">\(a+t(b−a)\)</span><span class="mjax-fallback texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">a+t(b−a)</span>（计入浮点数运算的不精确性）。<span class="t-rev-inl t-since-cxx23"><span>标准库提供所有以无 cv 限定的浮点数类型作为参数 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 的类型的重载。</span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></span></div>
+<div class="t-li1"><span class="t-li">A)</span> 为算术类型的所有其他组合提供额外重载。</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> a, b, t
+</td>
+<td> -
+</td>
+<td> 浮点数或整数
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<p><span class="mjax" style="display:none">\(a + t(b − a)\)</span><span class="mjax-fallback texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">a + t(b − a)</span>
+</p><p>当 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="math/isfinite.html"><span class="kw1372">std::<span class="me2">isfinite</span></span></a><span class="br0">(</span>a<span class="br0">)</span> <span class="sy3">&amp;&amp;</span> <a href="math/isfinite.html"><span class="kw1372">std::<span class="me2">isfinite</span></span></a><span class="br0">(</span>b<span class="br0">)</span></span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> 时，保证下列属性：
+</p>
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">t <span class="sy1">==</span> <span class="nu0">0</span></span></span>，那么结果等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">t <span class="sy1">==</span> <span class="nu0">1</span></span></span>，那么结果等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">t <span class="sy1">&gt;=</span> <span class="nu0">0</span> <span class="sy3">&amp;&amp;</span> t <span class="sy1">&lt;=</span> <span class="nu0">1</span></span></span>，那么结果有限。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">isfinite<span class="br0">(</span>t<span class="br0">)</span> <span class="sy3">&amp;&amp;</span> a <span class="sy1">==</span> b</span></span>，那么结果等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">isfinite<span class="br0">(</span>t<span class="br0">)</span> <span class="sy3">||</span> <span class="br0">(</span>b <span class="sy2">-</span> a <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span> <span class="sy3">&amp;&amp;</span> <a href="math/isinf.html"><span class="kw1373">std::<span class="me2">isinf</span></span></a><span class="br0">(</span>t<span class="br0">)</span><span class="br0">)</span></span></span>，那么结果非 <a href="math/NAN.html" title="cpp/numeric/math/NAN"><tt>NaN</tt></a>。
+</li></ul>
+<p>令 <span class="t-c"><span class="mw-geshi cpp source-cpp">CMP<span class="br0">(</span>x, y<span class="br0">)</span></span></span> 在 <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">&gt;</span> y</span></span> 时是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">1</span></span></span>，在 <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">&lt;</span> y</span></span> 时是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">-</span><span class="nu0">1</span></span></span>，否则是 <span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span>。对于任意 <span class="t-c"><span class="mw-geshi cpp source-cpp">t1</span></span> 与 <span class="t-c"><span class="mw-geshi cpp source-cpp">t2</span></span>，以下三者的积非负（即 <code>std::lerp</code> 单调）：
+</p>
+<ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">CMP<span class="br0">(</span>std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>a, b, t2<span class="br0">)</span>, std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>a, b, t1<span class="br0">)</span><span class="br0">)</span></span></span>
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">CMP<span class="br0">(</span>t2, t1<span class="br0">)</span></span></span>
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">CMP<span class="br0">(</span>b, a<span class="br0">)</span></span></span>
+</li></ul>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>额外重载不需要以 <span class="t-v">(A)</span> 的形式提供。它们只需要能够对它们的第一个实参 <span class="t-c"><span class="mw-geshi cpp source-cpp">num1</span></span>，第二个实参 <span class="t-c"><span class="mw-geshi cpp source-cpp">num2</span></span> 和第三个实参 <span class="t-c"><span class="mw-geshi cpp source-cpp">num3</span></span> 满足以下要求：
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx23"><td>
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">num1</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">num2</span></span> 或 <span class="t-c"><span class="mw-geshi cpp source-cpp">num3</span></span> 具有 <span class="mw-geshi cpp source-cpp"><span class="kw4">long</span> <span class="kw4">double</span></span> 类型，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>num1, num2, num3<span class="br0">)</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span><span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">long</span> <span class="kw4">double</span><span class="sy1">&gt;</span><span class="br0">(</span>num1<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">long</span> <span class="kw4">double</span><span class="sy1">&gt;</span><span class="br0">(</span>num2<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">long</span> <span class="kw4">double</span><span class="sy1">&gt;</span><span class="br0">(</span>num3<span class="br0">)</span><span class="br0">)</span></span></span> 的效果相同。
+</li><li> 否则，如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">num1</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">num2</span></span> 和/或 <span class="t-c"><span class="mw-geshi cpp source-cpp">num3</span></span> 具有 <span class="mw-geshi cpp source-cpp"><span class="kw4">double</span></span> 或整数类型，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>num1, num2, num3<span class="br0">)</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span><span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">double</span><span class="sy1">&gt;</span><span class="br0">(</span>num1<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">double</span><span class="sy1">&gt;</span><span class="br0">(</span>num2<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">double</span><span class="sy1">&gt;</span><span class="br0">(</span>num3<span class="br0">)</span><span class="br0">)</span></span></span> 的效果相同。
+</li><li> 否则，如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">num1</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">num2</span></span> 或 <span class="t-c"><span class="mw-geshi cpp source-cpp">num3</span></span> 具有 <span class="mw-geshi cpp source-cpp"><span class="kw4">float</span></span> 类型，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>num1, num2, num3<span class="br0">)</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span><span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">float</span><span class="sy1">&gt;</span><span class="br0">(</span>num1<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">float</span><span class="sy1">&gt;</span><span class="br0">(</span>num2<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="kw4">float</span><span class="sy1">&gt;</span><span class="br0">(</span>num3<span class="br0">)</span><span class="br0">)</span></span></span> 的效果相同。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">num1</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">num2</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">num3</span></span> 具有算术类型，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>num1, num2, num3<span class="br0">)</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span><span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="coMULTI">/*公共浮点数类型*/</span><span class="sy1">&gt;</span><span class="br0">(</span>num1<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="coMULTI">/*公共浮点数类型*/</span><span class="sy1">&gt;</span><span class="br0">(</span>num2<span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">          <span class="kw1">static_cast</span><span class="sy1">&lt;</span><span class="coMULTI">/*公共浮点数类型*/</span><span class="sy1">&gt;</span><span class="br0">(</span>num3<span class="br0">)</span><span class="br0">)</span></span></span> 的效果相同，其中 <span class="mw-geshi cpp source-cpp"><span class="coMULTI">/*公共浮点数类型*/</span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp">num1</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">num2</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">num3</span></span> 的类型中<a href="../language/usual_arithmetic_conversions.html#.E6.B5.AE.E7.82.B9.E6.95.B0.E8.BD.AC.E6.8D.A2.E7.AD.89.E7.BA.A7" title="cpp/language/usual arithmetic conversions">浮点数转换等级</a>和<a href="../language/usual_arithmetic_conversions.html#.E6.B5.AE.E7.82.B9.E6.95.B0.E8.BD.AC.E6.8D.A2.E5.AD.90.E7.AD.89.E7.BA.A7" title="cpp/language/usual arithmetic conversions">浮点数转换子等级</a>最高的浮点数类型，整数类型的实参被视为具有与 <span class="mw-geshi cpp source-cpp"><span class="kw4">double</span></span> 相等的浮点数转换等级。
+</p><p>如果不存在等级和子等级最高的浮点数类型，那么在<a href="../language/overload_resolution.html" title="cpp/language/overload resolution">重载决议</a>时不会从提供的重载中产生可用的候选。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<table class="wikitable ftm-begin">
+
+<tr>
+<th><a href="../utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr></th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr></th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_interpolate" title="cpp/feature test"><code>__cpp_lib_interpolate</code></a></td>
+<td><a href="../compiler_support/20.html#cpp_lib_interpolate_201902L" title="cpp/compiler support/20"><code>201902L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td><code>std::lerp</code>, <span class="t-lc">std::midpoint</span>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cassert&gt;</span>
+<span class="co2">#include &lt;cmath&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw4">float</span> naive_lerp<span class="br0">(</span><span class="kw4">float</span> a, <span class="kw4">float</span> b, <span class="kw4">float</span> t<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> a <span class="sy2">+</span> t <span class="sy2">*</span> <span class="br0">(</span>b <span class="sy2">-</span> a<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/boolalpha.html"><span class="kw1768">std::<span class="me2">boolalpha</span></span></a><span class="sy4">;</span>
+ 
+    <span class="kw4">const</span> <span class="kw4">float</span> a <span class="sy1">=</span> 1e8f, b <span class="sy1">=</span> <span class="nu17">1.0f</span><span class="sy4">;</span>
+    <span class="kw4">const</span> <span class="kw4">float</span> midpoint <span class="sy1">=</span> std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>a, b, <span class="nu17">0.5f</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"a = "</span> <span class="sy1">&lt;&lt;</span> a <span class="sy1">&lt;&lt;</span> <span class="st0">"，"</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"b = "</span> <span class="sy1">&lt;&lt;</span> b <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span>
+              <span class="sy1">&lt;&lt;</span> <span class="st0">"中点 = "</span> <span class="sy1">&lt;&lt;</span> midpoint <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"std::lerp 是否精确？："</span>
+              <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>a <span class="sy1">==</span> std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>a, b, <span class="nu17">0.0f</span><span class="br0">)</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span>
+              <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>b <span class="sy1">==</span> std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>a, b, <span class="nu17">1.0f</span><span class="br0">)</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"naive_lerp 是否精确？："</span>
+              <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>a <span class="sy1">==</span> naive_lerp<span class="br0">(</span>a, b, <span class="nu17">0.0f</span><span class="br0">)</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span>
+              <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>b <span class="sy1">==</span> naive_lerp<span class="br0">(</span>a, b, <span class="nu17">1.0f</span><span class="br0">)</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"std::lerp(a, b, 1.0f) = "</span> <span class="sy1">&lt;&lt;</span> std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>a, b, <span class="nu17">1.0f</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span>
+              <span class="sy1">&lt;&lt;</span> <span class="st0">"naive_lerp(a, b, 1.0f) = "</span> <span class="sy1">&lt;&lt;</span> naive_lerp<span class="br0">(</span>a, b, <span class="nu17">1.0f</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <a href="../error/assert.html"><span class="kw776">assert</span></a><span class="br0">(</span>not <a href="math/isnan.html"><span class="kw1374">std::<span class="me2">isnan</span></span></a><span class="br0">(</span>std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span>a, b, <a href="math/INFINITY.html"><span class="kw1380">INFINITY</span></a><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 这里的 lerp 可以是 -inf</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"演示外插，给定 std::lerp(5, 10, t)：<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">auto</span> t<span class="br0">{</span><span class="sy2">-</span><span class="nu16">2.0</span><span class="br0">}</span><span class="sy4">;</span> t <span class="sy1">&lt;=</span> <span class="nu16">2.0</span><span class="sy4">;</span> t <span class="sy2">+</span><span class="sy1">=</span> <span class="nu16">0.5</span><span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> std<span class="sy4">::</span><span class="me2">lerp</span><span class="br0">(</span><span class="nu16">5.0</span>, <span class="nu16">10.0</span>, t<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">a = 1e+08，b = 1
+中点 = 5e+07
+std::lerp 是否精确？：true true
+naive_lerp 是否精确？：true false
+std::lerp(a, b, 1.0f) = 1
+naive_lerp(a, b, 1.0f) = 0
+演示外插，给定 std::lerp(5, 10, t)：
+-5 -2.5 0 2.5 5 7.5 10 12.5 15</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="midpoint.html" title="cpp/numeric/midpoint"> <span class="t-lines"><span>midpoint</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  两个数值或指针间的中点 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 5056/1000000
+Preprocessor generated node count: 14573/1000000
+Post‐expand include size: 126770/4194304 bytes
+Template argument size: 28165/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:11996-0!*!0!!zh!*!zh!* and timestamp 20250323193922 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/lerp&amp;oldid=95854">https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/lerp&amp;oldid=95854</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/numeric/lerp">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年11月20日 (星期三) 07:27。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 5.924 secs. -->
+	</body>
+<!-- Cached 20250323193922 -->
+</html>

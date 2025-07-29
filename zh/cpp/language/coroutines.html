@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>协程 (C++20)</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/coroutines","wgTitle":"cpp/language/coroutines","wgCurRevisionId":100098,"wgArticleId":12015,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["有原因的 todo"],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/language/coroutines","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_coroutines skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">协程 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language">C++ 语言</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">一般主题</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../preprocessor.html" title="cpp/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../comment.html" title="cpp/comment">注释</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../keyword.html" title="cpp/keyword">关键词</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="statements.html" title="cpp/language/statements">流程控制</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">条件执行语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重复语句（循环）</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="range-for.html" title="cpp/language/range-for">范围 <span class="mw-geshi cpp source-cpp"><span class="kw1">for</span></span></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="do.html" title="cpp/language/do"><code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">跳转语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="functions.html" title="cpp/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 函数表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><span class="mw-geshi cpp source-cpp"><span class="kw1">inline</span></span> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="except_spec.html" title="cpp/language/except spec">动态异常说明</a> <span class="t-mark" style="white-space: nowrap;">(<span title="C++11 中弃用">C++17 前*</span>)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept_spec.html" title="cpp/language/noexcept spec"><span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">异常</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><span class="mw-geshi cpp source-cpp"><span class="kw1">throw</span></span> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="try.html" title="cpp/language/try"><span class="mw-geshi cpp source-cpp"><span class="kw1">try</span></span> 块</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="catch.html" title="cpp/language/catch"><code>catch</code> 处理块</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">命名空间</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace.html" title="cpp/language/namespace">命名空间声明</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace_alias.html" title="cpp/language/namespace alias">命名空间别名</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="types.html" title="cpp/language/types">基础类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="enum.html" title="cpp/language/enum">枚举类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数类型</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类/结构体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="union.html" title="cpp/language/union">联合体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">说明符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="cv.html" title="cpp/language/cv"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>/<span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="consteval.html" title="cpp/language/consteval"><tt>consteval</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constinit.html" title="cpp/language/constinit"><tt>constinit</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="storage_duration.html" title="cpp/language/storage duration">存储期说明符</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html" title="cpp/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_initialization.html" title="cpp/language/default initialization">默认初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_initialization.html" title="cpp/language/value initialization">值初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="zero_initialization.html" title="cpp/language/zero initialization">零初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="list_initialization.html" title="cpp/language/list initialization">列表初始化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="expressions.html" title="cpp/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">运算符优先级</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">替代表示</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#.E5.AD.97.E9.9D.A2.E9.87.8F" title="cpp/language/expressions">字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔</a> - <a href="integer_literal.html" title="cpp/language/integer literal">整数</a> - <a href="floating_literal.html" title="cpp/language/floating literal">浮点</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符</a> - <a href="string_literal.html" title="cpp/language/string literal">字符串</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">工具</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="attributes.html" title="cpp/language/attributes">属性</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typedef.html" title="cpp/language/typedef"><code>typedef</code> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="type_alias.html" title="cpp/language/type alias">类型别名声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">内存分配</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="classes.html" title="cpp/language/classes">类</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constructor.html" title="cpp/language/constructor">构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="this.html" title="cpp/language/this"><code>this</code> 指针</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="access.html" title="cpp/language/access">访问说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="friend.html" title="cpp/language/friend"><code>friend</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类特有的函数性质</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="virtual.html" title="cpp/language/virtual">虚函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="override.html" title="cpp/language/override"><code>override</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="final.html" title="cpp/language/final"><code>final</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static.html" title="cpp/language/static"><tt>static</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">特殊成员函数</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_constructor.html" title="cpp/language/default constructor">默认构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="copy_assignment.html" title="cpp/language/copy assignment">复制赋值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_assignment.html" title="cpp/language/move assignment">移动赋值</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="destructor.html" title="cpp/language/destructor">析构函数</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates">模板</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class_template.html" title="cpp/language/class template">类模板</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function_template.html" title="cpp/language/function template">函数模板</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="template_specialization.html" title="cpp/language/template specialization">模板特化</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="pack.html" title="cpp/language/pack">形参包</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">杂项</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="asm.html" title="cpp/language/asm">内联汇编</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="history.html" title="cpp/language/history">C++ 的历史</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="functions.html" title="cpp/language/functions"> 函数</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">声明</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html#.E5.BD.A2.E5.8F.82.E5.88.97.E8.A1.A8" title="cpp/language/function">函数形参列表</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html#.E5.87.BD.E6.95.B0.E5.AE.9A.E4.B9.89" title="cpp/language/function">函数定义</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html#.E5.87.BD.E6.95.B0.E5.A5.91.E7.BA.A6.E8.AF.B4.E6.98.8E.E7.AC.A6" title="cpp/language/function">函数契约说明符</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="default_arguments.html" title="cpp/language/default arguments">默认实参</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="variadic_arguments.html" title="cpp/language/variadic arguments">变长实参</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><code>inline</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 表达式</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">协程</strong> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="replacement_function.html" title="cpp/language/replacement function">替换函数</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">函数调用</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="adl.html" title="cpp/language/adl">实参依赖查找</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_other.html#.E5.86.85.E5.BB.BA.E7.9A.84.E5.87.BD.E6.95.B0.E8.B0.83.E7.94.A8.E8.BF.90.E7.AE.97.E7.AC.A6" title="cpp/language/operator other">函数调用运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req/FunctionObject.html" title="cpp/named req/FunctionObject">函数对象</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重载</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="overload_resolution.html" title="cpp/language/overload resolution">重载决议</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符重载</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="overloaded_address.html" title="cpp/language/overloaded address">重载集的地址</a></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>协程是能暂停执行以在之后恢复的函数。协程是无栈的：它们通过返回到调用方暂停执行，并且恢复执行所需的数据与栈分离存储。这样就可以编写异步执行的顺序代码（例如不使用显式的回调来处理非阻塞输入/输出），还支持作用于惰性计算的无限序列上的算法及其他用途。
+</p><p>定义中包含了以下之一的函数是协程：
+</p>
+<ul><li> <span class="mw-geshi cpp source-cpp">co_await</span> 表达式——用于暂停执行，直到恢复：
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">task<span class="sy1">&lt;&gt;</span> tcp_echo_server<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">char</span> data<span class="br0">[</span><span class="nu0">1024</span><span class="br0">]</span><span class="sy4">;</span>
+    <span class="kw1">while</span> <span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> n <span class="sy1">=</span> co_await socket.<span class="me1">async_read_some</span><span class="br0">(</span>buffer<span class="br0">(</span>data<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+        co_await async_write<span class="br0">(</span>socket, buffer<span class="br0">(</span>data, n<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<ul><li> <span class="mw-geshi cpp source-cpp">co_yield</span> 表达式——用于暂停执行并返回一个值：
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">generator<span class="sy1">&lt;</span><span class="kw4">unsigned</span> <span class="kw4">int</span><span class="sy1">&gt;</span> iota<span class="br0">(</span><span class="kw4">unsigned</span> <span class="kw4">int</span> n <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">while</span> <span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span>
+        co_yield n<span class="sy2">++</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<ul><li> <span class="mw-geshi cpp source-cpp">co_return</span> 语句——用于完成执行并返回一个值：
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">lazy<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> f<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    co_return <span class="nu0">7</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>每个协程必须具有能够满足一组要求的返回类型，如下所述。
+</p>
+<h3><span class="mw-headline" id=".E9.99.90.E5.88.B6">限制</span></h3>
+<p>协程不能使用<a href="variadic_arguments.html" title="cpp/language/variadic arguments">变长实参</a>，普通的 <a href="return.html" title="cpp/language/return">return</a> 语句，或<a href="function.html" title="cpp/language/function">占位符返回类型</a>（<a href="auto.html" title="cpp/language/auto"><code>auto</code></a> 或 <a href="constraints.html#.E6.A6.82.E5.BF.B5" title="cpp/language/constraints">概念</a>）。
+</p><p><a href="consteval.html" title="cpp/language/consteval">consteval 函数</a>、<a href="constexpr.html" title="cpp/language/constexpr">constexpr 函数</a>、<a href="constructor.html" title="cpp/language/constructor">构造函数</a>、<a href="destructor.html" title="cpp/language/destructor">析构函数</a>及 <a href="main_function.html" title="cpp/language/main function"><code>main</code> 函数</a> 不能是协程。
+</p>
+<h3><span class="mw-headline" id=".E6.89.A7.E8.A1.8C">执行</span></h3>
+<p>每个协程都与下列对象关联：
+</p>
+<ul><li> <i>承诺对象</i>，在协程内部操纵。协程通过此对象提交其结果或异常。承诺对象和 <span class="t-lc"><a href="../thread/promise.html" title="cpp/thread/promise">std::promise</a></span> 没有任何关系。
+</li><li> <i>协程句柄</i>，在协程外部操纵。这是用于恢复协程执行或销毁协程帧的不带所有权句柄。
+</li><li> <i>协程状态</i>，一个动态存储分配（除非优化掉其分配）的内部对象，其包含：
+</li></ul>
+<dl><dd><ul><li> 承诺对象
+</li><li> 各个形参（全部按值复制）
+</li><li> 当前暂停点的某种表示，使得程序在恢复时知晓要从何处继续，销毁时知晓有哪些局部变量在作用域内
+</li><li> 生存期跨过当前暂停点的局部变量和临时量
+</li></ul>
+</dd></dl>
+<p>当协程开始执行时，进行下列操作：
+</p>
+<ul><li> 用 <span class="t-lc"><a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">operator new</a></span> <a href="coroutines.html#.E5.8A.A8.E6.80.81.E5.88.86.E9.85.8D">分配</a>协程状态对象。
+</li><li> 将所有函数形参复制到协程状态中：按值传递的形参被移动或复制，按引用传递的形参保持为引用（因此，如果在被指代对象的生存期结束后恢复协程，它可能变成悬垂引用——参见下面的示例）。
+</li><li> 调用承诺对象的构造函数。如果承诺类型拥有接收所有协程形参的构造函数，那么以复制后的协程实参调用该构造函数。否则调用其默认构造函数。
+</li><li> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">get_return_object</span><span class="br0">(</span><span class="br0">)</span></span></span> 并将结果保存在局部变量中。该调用的结果将在协程首次暂停时返回给调用方。至此并包含这个步骤为止，任何抛出的异常均传播回调用方，而非置于承诺中。
+</li><li> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">initial_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> 并 <span class="mw-geshi cpp source-cpp">co_await</span> 它的结果。典型的承诺类型 <code>Promise</code> 要么（对于惰性启动的协程）返回<a href="../coroutine/suspend_always.html" title="cpp/coroutine/suspend always"><tt>std::suspend_always</tt></a>，要么（对于急切启动的协程）返回<a href="../coroutine/suspend_never.html" title="cpp/coroutine/suspend never"><tt>std::suspend_never</tt></a>。
+</li><li> 当 <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await promise.<span class="me1">initial_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> 恢复时，开始协程体的执行。
+</li></ul>
+<p>一些形参会悬垂的例子:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;coroutine&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">struct</span> promise<span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> coroutine <span class="sy4">:</span> <a href="../coroutine/coroutine_handle.html"><span class="kw3206">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;</span>promise<span class="sy1">&gt;</span>
+<span class="br0">{</span>
+    <span class="kw1">using</span> promise_type <span class="sy1">=</span> <span class="sy4">::</span><span class="me2">promise</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> promise
+<span class="br0">{</span>
+    coroutine get_return_object<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span>coroutine<span class="sy4">::</span><span class="me2">from_promise</span><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a> initial_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a> final_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">void</span> return_void<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="kw4">void</span> unhandled_exception<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> i<span class="sy4">;</span>
+    coroutine f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i<span class="sy4">;</span>
+        co_return<span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> bad1<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    coroutine h <span class="sy1">=</span> S<span class="br0">{</span><span class="nu0">0</span><span class="br0">}</span>.<span class="me1">f</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// S{0} 被销毁</span>
+    h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 协程恢复并执行了 std::cout &lt;&lt; i，这在释放之后使用了 S::i</span>
+    h.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+coroutine bad2<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    S s<span class="br0">{</span><span class="nu0">0</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw1">return</span> s.<span class="me1">f</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 返回的协程不能被恢复执行，否则会导致释放后使用</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> bad3<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    coroutine h <span class="sy1">=</span> <span class="br0">[</span>i <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> coroutine <span class="co1">// 一个 lambda，同时也是个协程</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i<span class="sy4">;</span>
+        co_return<span class="sy4">;</span>
+    <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 立即调用</span>
+    <span class="co1">// lambda 被销毁</span>
+    h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 释放后使用了 (匿名 lambda 类型)::i</span>
+    h.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> good<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    coroutine h <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> coroutine <span class="co1">// i 是一个协程形参</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i<span class="sy4">;</span>
+        co_return<span class="sy4">;</span>
+    <span class="br0">}</span><span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// lambda 被销毁</span>
+    h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 没有问题，i 已经作为按值传递的形参被复制到协程帧中</span>
+    h.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>当协程抵达暂停点时：
+</p>
+<ul><li> 将先前获得的返回对象返回给调用方/恢复方，如果需要就先隐式转换到协程的返回类型。
+</li></ul>
+<p>当协程抵达 <span class="mw-geshi cpp source-cpp">co_return</span> 语句时，进行下列操作：
+</p>
+<ul><li> 对下列情形调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">return_void</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</li></ul>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return<span class="sy4">;</span></span></span>
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return expr<span class="sy4">;</span></span></span>，其中 <span class="t-c"><span class="mw-geshi cpp source-cpp">expr</span></span> 具有 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span> 类型
+</li></ul>
+</dd></dl>
+<ul><li> 或对于 <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return expr<span class="sy4">;</span></span></span>，其中 <span class="t-c"><span class="mw-geshi cpp source-cpp">expr</span></span> 具有非 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span> 类型时，调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">return_value</span><span class="br0">(</span>expr<span class="br0">)</span></span></span>
+</li><li> 以创建顺序的逆序销毁所有具有自动存储期的变量。
+</li><li> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">final_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> 并 <span class="mw-geshi cpp source-cpp">co_await</span> 它的结果。
+</li></ul>
+<p>控制流出协程的结尾，等价于 <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return<span class="sy4">;</span></span></span>，但如果在 <code>Promise</code> 的作用域中没有找到 <code>return_void</code> 的声明，那么行为未定义。函数体中没有任何一个定义关键词的函数不是协程，无论其返回类型为何，并且如果返回类型不是（可有 cv 限定的） <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>，那么控制流出结尾导致未定义行为。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 假定 task 为某种协程任务类型</span>
+task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> f<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 不是协程，未定义行为</span>
+<span class="br0">}</span>
+ 
+task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    co_return<span class="sy4">;</span>  <span class="co1">// OK</span>
+<span class="br0">}</span>
+ 
+task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> h<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    co_await g<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// OK, 隐式 co_return;</span>
+<span class="br0">}</span></pre></div></div>
+<p>如果协程因未捕获的异常结束，那么进行下列操作：
+</p>
+<ul><li> 捕获异常并在处理块内调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">unhandled_exception</span><span class="br0">(</span><span class="br0">)</span></span></span>。
+</li><li> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">final_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> 并 <span class="mw-geshi cpp source-cpp">co_await</span> 它的结果（例如，恢复某个继续或发布某个结果）。此时开始恢复协程是未定义行为。
+</li></ul>
+<p>当经由 <span class="mw-geshi cpp source-cpp">co_return</span> 或未捕获异常而终止协程导致协程状态被销毁，或通过它的句柄销毁它时，进行下列操作：
+</p>
+<ul><li> 调用承诺对象的析构函数。
+</li><li> 调用各个函数形参副本的析构函数。
+</li><li> 调用 <span class="t-lc"><a href="../memory/new/operator_delete.html" title="cpp/memory/new/operator delete">operator delete</a></span> 以释放协程状态所用的内存。
+</li><li> 转移执行回到调用方/恢复方。
+</li></ul>
+<h3><span class="mw-headline" id=".E5.8A.A8.E6.80.81.E5.88.86.E9.85.8D">动态分配</span></h3>
+<p>协程状态通过非数组形式 <span class="t-lc"><a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">operator new</a></span> 动态分配。
+</p><p>如果承诺类型 <code>Promise</code> 定义了类级别的替代函数，那么会使用它，否则会使用全局的 <span class="t-lc"><a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">operator new</a></span>。
+</p><p>如果承诺类型 <code>Promise</code> 定义了接收额外形参的 <a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new"><tt>operator new</tt></a> 的布置形式，且它们所匹配的实参列表中的第一实参是要求的大小（<span class="t-lc"><a href="../types/size_t.html" title="cpp/types/size t">std::size_t</a></span> 类型），而其余则是各个协程函数实参，那么将这些实参传递给 <span class="t-lc"><a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">operator new</a></span>（这使得能对协程使用<a href="../memory/uses_allocator.html#.E4.BD.BF.E7.94.A8.E5.88.86.E9.85.8D.E5.99.A8.E6.9E.84.E9.80.A0" title="cpp/memory/uses allocator">前导分配器约定</a>）
+</p><p>以下情况下，可以优化掉对 <span class="t-lc"><a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">operator new</a></span> 的调用（即使使用了自定义分配器）：
+</p>
+<ul><li> 协程状态的生存期严格内嵌于调用方的生存期，且
+</li><li> 协程帧的大小在调用点已知
+</li></ul>
+<p>此时协程状态嵌入调用方的栈帧（如果调用方是普通函数）或协程状态（如果调用方是协程）之中。
+</p><p>如果分配失败，那么协程抛出 <span class="t-lc"><a href="../memory/new/bad_alloc.html" title="cpp/memory/new/bad alloc">std::bad_alloc</a></span>，除非承诺类型 <code>Promise</code> 类型定义了成员函数 <span class="mw-geshi cpp source-cpp">Promise<span class="sy4">::</span><span class="me2">get_return_object_on_allocation_failure</span><span class="br0">(</span><span class="br0">)</span></span>。如果定义了该成员函数，那么使用 <span class="t-lc"><a href="../memory/new/operator_new.html" title="cpp/memory/new/operator new">operator new</a></span> 的不抛出形式进行分配，而在分配失败时，协程会立即将从 <span class="mw-geshi cpp source-cpp">Promise<span class="sy4">::</span><span class="me2">get_return_object_on_allocation_failure</span><span class="br0">(</span><span class="br0">)</span></span> 获得的对象返回给调用方，例如：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> Coroutine<span class="sy4">::</span><span class="me2">promise_type</span>
+<span class="br0">{</span>
+    <span class="coMULTI">/* ... */</span>
+ 
+    <span class="co1">// 确保使用不抛出 operator-new</span>
+    <span class="kw4">static</span> Coroutine get_return_object_on_allocation_failure<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cerr.html"><span class="kw1764">std::<span class="me2">cerr</span></span></a> <span class="sy1">&lt;&lt;</span> __func__ <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+        <span class="kw1">throw</span> <a href="../memory/new/bad_alloc.html"><span class="kw696">std::<span class="me2">bad_alloc</span></span></a><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 或者返回 Coroutine(nullptr);</span>
+    <span class="br0">}</span>
+ 
+    <span class="co1">// 自定义重载不抛出 new</span>
+    <span class="kw4">void</span><span class="sy2">*</span> <a href="../memory/new/operator_new.html"><span class="kw690">operator new</span></a><span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> n<span class="br0">)</span> <span class="kw1">noexcept</span>
+    <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> mem <span class="sy1">=</span> <a href="../memory/c/malloc.html"><span class="kw761">std::<span class="me2">malloc</span></span></a><span class="br0">(</span>n<span class="br0">)</span><span class="br0">)</span>
+            <span class="kw1">return</span> mem<span class="sy4">;</span>
+        <span class="kw1">return</span> nullptr<span class="sy4">;</span> <span class="co1">// 分配失败</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<h3><span class="mw-headline" id=".E6.89.BF.E8.AF.BA">承诺</span></h3>
+<p>编译器用 <span class="t-lc">std::coroutine_traits</span> 从协程的返回类型确定承诺类型 <code>Promise</code>。
+</p><p>正式而言，
+</p>
+<ul><li> 令 <code>R</code> 与 <code>Args...</code> 分别代表协程的返回类型与形参类型列表，
+</li><li> 如果协程被定义为非静态成员函数，那么令 <code>ClassT</code> 代表协程所属的类，
+</li><li> 如果协程被定义为非静态成员函数，那么令 <span class="t-spar">cv</span> 代表协程的<a href="function.html" title="cpp/language/function">函数声明</a>的 cv 限定，
+</li></ul>
+<p>以如下方式确定它的承诺类型 <code>Promise</code>：
+</p>
+<ul><li> <span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3207">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>R, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span>，如果协程未被定义为<a href="member_functions.html" title="cpp/language/member functions">隐式对象成员函数</a>，
+</li><li> <span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3207">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>R,</span><code> </code><span class="t-spar">cv</span><code> </code><span class="mw-geshi cpp source-cpp">ClassT<span class="sy3">&amp;</span>, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span>，如果协程被定义为非右值引用限定的隐式对象成员函数，
+</li><li> <span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3207">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>R,</span><code> </code><span class="t-spar">cv</span><code> </code><span class="mw-geshi cpp source-cpp">ClassT<span class="sy3">&amp;&amp;</span>, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span>，如果协程被定义为右值引用限定的隐式对象成员函数。
+</li></ul>
+<p>例如：
+</p>
+<table class="wikitable">
+<tr>
+<th>如果定义协程为</th>
+<th>那么它的承诺类型 <code>Promise</code> 是
+</th></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> foo<span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span><span class="sy4">;</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3207">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span>, <span class="kw4">int</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> Bar<span class="sy4">::</span><span class="me2">foo</span><span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3207">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span>, <span class="kw4">const</span> Bar<span class="sy3">&amp;</span>, <span class="kw4">int</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span> 
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> Bar<span class="sy4">::</span><span class="me2">foo</span><span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span> <span class="sy3">&amp;&amp;</span><span class="sy4">;</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3207">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span>, Bar<span class="sy3">&amp;&amp;</span>, <span class="kw4">int</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span>
+</td></tr></table>
+<h3><span class="mw-headline" id="co_await"><span class="mw-geshi cpp source-cpp">co_await</span></span></h3>
+<p><span id="co_await"></span>
+一元运算符 <span class="mw-geshi cpp source-cpp">co_await</span> 暂停协程并将控制返回给调用方。
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"> <code><b>co_await</b></code> <span class="t-spar">表达式</span>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<p><span class="mw-geshi cpp source-cpp">co_await</span> 表达式只能在常规<a href="function.html#.E5.87.BD.E6.95.B0.E5.AE.9A.E4.B9.89" title="cpp/language/function">函数体</a>（包括 <a href="lambda.html" title="cpp/language/lambda">lambda 表达式</a>的函数体）里面的<a href="expressions.html#.E6.BD.9C.E5.9C.A8.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">潜在求值</a>表达式中出现，并且不能在以下位置出现：
+</p>
+<ul><li> <a href="catch.html" title="cpp/language/catch">处理块</a>中，
+</li><li> <a href="declarations.html" title="cpp/language/declarations">声明</a>语句中，但可以在该声明语句的初始化式中出现，
+</li><li> <span class="t-spar">初始化语句</span> ﻿的<a href="declarations.html#.E7.AE.80.E5.8D.95.E5.A3.B0.E6.98.8E" title="cpp/language/declarations">简单声明</a>中（见 <a href="if.html" title="cpp/language/if"><code>if</code></a>、<a href="switch.html" title="cpp/language/switch"><code>switch</code></a>、<a href="for.html" title="cpp/language/for"><code>for</code></a> 以及<a href="range-for.html" title="cpp/language/range-for">范围 <span class="mw-geshi cpp source-cpp"><span class="kw1">for</span></span></a>），但可以在该<span class="t-spar">初始化语句</span> ﻿的初始化式中出现，
+</li><li> <a href="default_arguments.html" title="cpp/language/default arguments">默认实参</a>中
+</li><li> 具有静态或线程<a href="storage_duration.html" title="cpp/language/storage duration">存储期</a>的块作用域变量的初始化式中。
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx26"><td>
+<p><span class="mw-geshi cpp source-cpp">co_await</span> 表达式不可以是<a href="contracts.html" title="cpp/language/contracts">契约断言</a>的谓词的<a href="expressions.html#.E6.BD.9C.E5.9C.A8.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">潜在求值</a>的子表达式。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+</table>
+<p>首先，以下列方式将<span class="t-spar">表达式</span> ﻿转换成可等待体：
+</p>
+<ul><li> 如果<span class="t-spar">表达式</span> ﻿由初始暂停点、最终暂停点或 yield 表达式所产生，那么可等待体是<span class="t-spar">表达式</span> ﻿本身。
+</li><li> 否则，如果当前协程的承诺类型 <code>Promise</code> 拥有成员函数 <code>await_transform</code>，那么可等待体是 <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">await_transform</span><span class="br0">(</span>表达式<span class="br0">)</span></span></span>。
+</li><li> 否则，可等待体是<span class="t-spar">表达式</span> ﻿本身。
+</li></ul>
+<p>然后以下列方式获得等待器对象：
+</p>
+<ul><li> 如果针对 <span class="mw-geshi cpp source-cpp">operator co_await</span> 的重载决议给出单个最佳重载，那么等待器是该调用的结果：
+</li></ul>
+<dl><dd><ul><li> 对于成员重载为 <span class="t-c"><span class="mw-geshi cpp source-cpp">awaitable.<span class="me1">operator</span> co_await<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></span>，
+</li><li> 对于非成员重载为 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator co_await<span class="br0">(</span><span class="kw1">static_cast</span><span class="sy1">&lt;</span>Awaitable<span class="sy3">&amp;&amp;</span><span class="sy1">&gt;</span><span class="br0">(</span>awaitable<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span></span></span>.
+</li></ul>
+</dd></dl>
+<ul><li> 否则，如果重载决议找不到 <span class="mw-geshi cpp source-cpp">operator co_await</span>，那么等待器是可等待体本身。
+</li><li> 否则，如果重载决议有歧义，那么程序非良构。
+</li></ul>
+<p>如果上述表达式为<a href="value_category.html#.E7.BA.AF.E5.8F.B3.E5.80.BC" title="cpp/language/value category">纯右值</a>，那么等待器对象是从它<a href="implicit_conversion.html#.E4.B8.B4.E6.97.B6.E9.87.8F.E5.AE.9E.E8.B4.A8.E5.8C.96" title="cpp/language/implicit conversion">实质化</a>的临时量。否则，如果上述表达式为<a href="value_category.html#.E6.B3.9B.E5.B7.A6.E5.80.BC" title="cpp/language/value category">泛左值</a>，那么等待器对象是它所指代的对象。
+</p><p>然后，调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_ready</span><span class="br0">(</span><span class="br0">)</span></span></span>（这是当已知结果就绪或可以同步完成时，用以避免暂停开销的快捷方式）。如果结果按语境转换到 <span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span> 的结果是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span>，那么：
+</p>
+<dl><dd> 暂停协程（以各局部变量和当前暂停点填充其协程状态）。
+</dd><dd> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_suspend</span><span class="br0">(</span>handle<span class="br0">)</span></span></span>，其中 <span class="t-c"><span class="mw-geshi cpp source-cpp">handle</span></span> 是表示当前协程的协程句柄。这个函数内部可以通过这个句柄观察暂停协程的状态，而且此函数负责调度它以在某个执行器上恢复，或将其销毁（并返回 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span> 当做调度）
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">await_suspend</span></span> 返回 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>，那么立即将控制返回给当前协程的调用方/恢复方（此协程保持暂停），否则
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">await_suspend</span></span> 返回 <span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span>，那么：
+</li></ul>
+<dl><dd><ul><li> 值为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> 时将控制返回给当前协程的调用方/恢复方
+</li><li> 值为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span> 时恢复当前协程。
+</li></ul>
+</dd></dl>
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">await_suspend</span></span> 返回某个其他协程的协程句柄，那么（通过调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">handle.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span></span></span>）恢复该句柄（注意这可以连锁进行，并最终导致当前协程恢复）。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">await_suspend</span></span> 抛出异常，那么捕获该异常，恢复协程，并立即重抛异常。
+</li></ul>
+</dd></dl>
+<p>最后，当协程重新获得控制时（无论协程是否被暂停过），调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_resume</span><span class="br0">(</span><span class="br0">)</span></span></span>，它的结果就是整个 <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await expr</span></span> 表达式的结果。
+</p><p>如果协程在 <span class="mw-geshi cpp source-cpp">co_await</span> 表达式中暂停而在后来恢复，那么恢复点处于紧接对 <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_resume</span><span class="br0">(</span><span class="br0">)</span></span></span> 的调用之前。
+</p><p>注意，协程在进入 <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> 前已经完全暂停。在 <span class="mw-geshi cpp source-cpp">await_suspend<span class="br0">(</span><span class="br0">)</span></span> 函数返回前，可以将其句柄共享给另一线程并恢复执行。（要注意，默认的内存安全性规则仍适用，因此如果不加锁地跨线程共享协程句柄，那么其等待器至少应当使用<a href="../atomic/memory_order.html#.E9.87.8A.E6.94.BE.E6.93.8D.E4.BD.9C" title="cpp/atomic/memory order">释放语义</a>，而且恢复方至少应当使用<a href="../atomic/memory_order.html#.E8.8E.B7.E5.BE.97.E6.93.8D.E4.BD.9C" title="cpp/atomic/memory order">获得语义</a>。）例如，可以将协程句柄放入回调内部，将它调度成在异步输入/输出操作完成时在线程池上运行等。此时因为当前协程可能已被恢复，从而执行了等待器对象的析构函数，同时由于 <span class="t-c"><span class="mw-geshi cpp source-cpp">await_suspend<span class="br0">(</span><span class="br0">)</span></span></span> 在当前线程上持续执行，<span class="t-c"><span class="mw-geshi cpp source-cpp">await_suspend<span class="br0">(</span><span class="br0">)</span></span></span> 应该把 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> 当作已被销毁并且在句柄被发布到其他线程后不再访问它。
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;coroutine&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;stdexcept&gt;</span>
+<span class="co2">#include &lt;thread&gt;</span>
+ 
+<span class="kw4">auto</span> switch_to_new_thread<span class="br0">(</span><a href="../thread/jthread.html"><span class="kw3237">std::<span class="me2">jthread</span></span></a><span class="sy3">&amp;</span> out<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">struct</span> awaitable
+    <span class="br0">{</span>
+        <a href="../thread/jthread.html"><span class="kw3237">std::<span class="me2">jthread</span></span></a><span class="sy2">*</span> p_out<span class="sy4">;</span>
+        <span class="kw4">bool</span> await_ready<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">void</span> await_suspend<span class="br0">(</span><a href="../coroutine/coroutine_handle.html"><span class="kw3206">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;&gt;</span> h<span class="br0">)</span>
+        <span class="br0">{</span>
+            <a href="../thread/jthread.html"><span class="kw3237">std::<span class="me2">jthread</span></span></a><span class="sy3">&amp;</span> out <span class="sy1">=</span> <span class="sy2">*</span>p_out<span class="sy4">;</span>
+            <span class="kw1">if</span> <span class="br0">(</span>out.<span class="me1">joinable</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+                <span class="kw1">throw</span> <a href="../error/runtime_error.html"><span class="kw772">std::<span class="me2">runtime_error</span></span></a><span class="br0">(</span><span class="st0">"jthread 输出参数非空"</span><span class="br0">)</span><span class="sy4">;</span>
+            out <span class="sy1">=</span> <a href="../thread/jthread.html"><span class="kw3237">std::<span class="me2">jthread</span></span></a><span class="br0">(</span><span class="br0">[</span>h<span class="br0">]</span> <span class="br0">{</span> h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>
+            <span class="co1">// 潜在的未定义行为：访问潜在被销毁的 *this</span>
+            <span class="co1">// std::cout &lt;&lt; "新线程 ID：" &lt;&lt; p_out-&gt;get_id() &lt;&lt; '\n';</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"新线程 ID："</span> <span class="sy1">&lt;&lt;</span> out.<span class="me1">get_id</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// 这样没问题</span>
+        <span class="br0">}</span>
+        <span class="kw4">void</span> await_resume<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw1">return</span> awaitable<span class="br0">{</span><span class="sy3">&amp;</span>out<span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">struct</span> task
+<span class="br0">{</span>
+    <span class="kw1">struct</span> promise_type
+    <span class="br0">{</span>
+        task get_return_object<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+        <a href="../coroutine/suspend_never.html"><span class="kw3259">std::<span class="me2">suspend_never</span></span></a> initial_suspend<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+        <a href="../coroutine/suspend_never.html"><span class="kw3259">std::<span class="me2">suspend_never</span></span></a> final_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">void</span> return_void<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+        <span class="kw4">void</span> unhandled_exception<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+task resuming_on_new_thread<span class="br0">(</span><a href="../thread/jthread.html"><span class="kw3237">std::<span class="me2">jthread</span></span></a><span class="sy3">&amp;</span> out<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"协程开始，线程 ID："</span> <span class="sy1">&lt;&lt;</span> <a href="../thread/get_id.html"><span class="kw2152">std::<span class="me2">this_thread</span><span class="sy4">::</span><span class="me2">get_id</span></span></a><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    co_await switch_to_new_thread<span class="br0">(</span>out<span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// 等待器在此销毁</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"协程恢复，线程 ID："</span> <span class="sy1">&lt;&lt;</span> <a href="../thread/get_id.html"><span class="kw2152">std::<span class="me2">this_thread</span><span class="sy4">::</span><span class="me2">get_id</span></span></a><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../thread/jthread.html"><span class="kw3237">std::<span class="me2">jthread</span></span></a> out<span class="sy4">;</span>
+    resuming_on_new_thread<span class="br0">(</span>out<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">协程开始，线程 ID：139972277602112
+新线程 ID：139972267284224
+协程恢复，线程 ID：139972267284224</pre></div></div> 
+</div>
+<p>注意：等待器对象是协程状态的一部分（作为生存期跨过暂停点的临时量），并且在 <span class="mw-geshi cpp source-cpp">co_await</span> 表达式结束前销毁。可以用它维护某些异步输入/输出 API 所要求的每操作内状态，而无需用到额外的堆分配。
+</p><p>标准库定义了两个平凡的可等待体：<a href="../coroutine/suspend_always.html" title="cpp/coroutine/suspend always"><tt>std::suspend_always</tt></a> 及 <a href="../coroutine/suspend_never.html" title="cpp/coroutine/suspend never"><tt>std::suspend_never</tt></a>。
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：示例 </td></tr></table>
+<div style="margin-left:0px">
+<table class="mw-collapsible mw-collapsed" style="background: transparent; text-align: left; border: 1px solid silver; margin: 0.2em auto auto; width:100%; clear: both; padding: 1px;">
+
+<tr>
+<th style="background: #F0F2F5; font-size:87%; padding:0.2em 0.3em; text-align:center;"> <span style="font-size:115%">演示 <span class="mw-geshi cpp source-cpp">promise_type<span class="sy4">::</span><span class="me2">await_transform</span></span> 和一个提供等待器的程序</span>
+</th></tr>
+<tr>
+<td style="border: solid 1px silver; padding: 8px; background: white;">
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B_2">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cassert&gt;</span>
+<span class="co2">#include &lt;coroutine&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">struct</span> tunable_coro
+<span class="br0">{</span>
+    <span class="co1">// 一种等待器，其 "就绪状态" 由构造函数参数决定。</span>
+    <span class="kw1">class</span> tunable_awaiter
+    <span class="br0">{</span>
+        <span class="kw4">bool</span> ready_<span class="sy4">;</span>
+    <span class="kw1">public</span><span class="sy4">:</span>
+        <span class="kw1">explicit</span><span class="br0">(</span><span class="kw2">false</span><span class="br0">)</span> tunable_awaiter<span class="br0">(</span><span class="kw4">bool</span> ready<span class="br0">)</span> <span class="sy4">:</span> ready_<span class="br0">{</span>ready<span class="br0">}</span> <span class="br0">{</span><span class="br0">}</span>
+        <span class="co1">// 三个标准等待器接口函数：</span>
+        <span class="kw4">bool</span> await_ready<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> ready_<span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">static</span> <span class="kw4">void</span> await_suspend<span class="br0">(</span><a href="../coroutine/coroutine_handle.html"><span class="kw3206">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;&gt;</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span><span class="br0">}</span>
+        <span class="kw4">static</span> <span class="kw4">void</span> await_resume<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">struct</span> promise_type
+    <span class="br0">{</span>
+        <span class="kw1">using</span> coro_handle <span class="sy1">=</span> <a href="../coroutine/coroutine_handle.html"><span class="kw3206">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;</span>promise_type<span class="sy1">&gt;</span><span class="sy4">;</span>
+        <span class="kw4">auto</span> get_return_object<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> coro_handle<span class="sy4">::</span><span class="me2">from_promise</span><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">static</span> <span class="kw4">auto</span> initial_suspend<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">static</span> <span class="kw4">auto</span> final_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">static</span> <span class="kw4">void</span> return_void<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+        <span class="kw4">static</span> <span class="kw4">void</span> unhandled_exception<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <a href="../error/terminate.html"><span class="kw785">std::<span class="me2">terminate</span></span></a><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="co1">// 一个用户提供的变换函数，返回自定义等待器：</span>
+        <span class="kw4">auto</span> await_transform<span class="br0">(</span><a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> tunable_awaiter<span class="br0">(</span><span class="sy3">!</span>ready_<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">void</span> disable_suspension<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> ready_ <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw1">private</span><span class="sy4">:</span>
+        <span class="kw4">bool</span> ready_<span class="br0">{</span><span class="kw2">true</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    tunable_coro<span class="br0">(</span>promise_type<span class="sy4">::</span><span class="me2">coro_handle</span> h<span class="br0">)</span> <span class="sy4">:</span> handle_<span class="br0">(</span>h<span class="br0">)</span> <span class="br0">{</span> <a href="../error/assert.html"><span class="kw776">assert</span></a><span class="br0">(</span>h<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+    <span class="co1">// 为简化起见，将四个特殊函数声明为弃置：</span>
+    tunable_coro<span class="br0">(</span>tunable_coro <span class="kw4">const</span><span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+    tunable_coro<span class="br0">(</span>tunable_coro<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+    tunable_coro<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>tunable_coro <span class="kw4">const</span><span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+    tunable_coro<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>tunable_coro<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+ 
+    ~tunable_coro<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span>handle_<span class="br0">)</span>
+            handle_.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">void</span> disable_suspension<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span>handle_.<span class="me1">done</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+            <span class="kw1">return</span><span class="sy4">;</span>
+        handle_.<span class="me1">promise</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">disable_suspension</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+        handle_<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">bool</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>handle_.<span class="me1">done</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+            handle_<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+        <span class="kw1">return</span> <span class="sy3">!</span>handle_.<span class="me1">done</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="kw1">private</span><span class="sy4">:</span>
+    promise_type<span class="sy4">::</span><span class="me2">coro_handle</span> handle_<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+tunable_coro generate<span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy3">!</span><span class="sy1">=</span> n<span class="sy4">;</span> <span class="sy2">++</span>i<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span>
+        <span class="co1">// 传递给 co_await 的等待器会交给 promise_type::await_transform，</span>
+        <span class="co1">// 它给出的是导致起始暂停的 tunable_awaiter（每次循环均返回到 main），</span>
+        <span class="co1">// 但经过一次对 disable_suspension 的调用后不再发生暂停，</span>
+        <span class="co1">// 而循环到结尾都不再返回到 main()。</span>
+        co_await <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">auto</span> coro <span class="sy1">=</span> generate<span class="br0">(</span><span class="nu0">8</span><span class="br0">)</span><span class="sy4">;</span>
+    coro<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 仅发出一个首元素 == 0</span>
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> k<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> k <span class="sy1">&lt;</span> <span class="nu0">4</span><span class="sy4">;</span> <span class="sy2">++</span>k<span class="br0">)</span>
+    <span class="br0">{</span>
+        coro<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 发出 1 2 3 4，每次迭代一个元素</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">": "</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    coro.<span class="me1">disable_suspension</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    coro<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 一次性发出剩余的数 5 6 7</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">0 1 : 2 : 3 : 4 : 5 6 7</pre></div></div> 
+</div>
+</td></tr></table></div>
+<h3><span class="mw-headline" id="co_yield"><span class="mw-geshi cpp source-cpp">co_yield</span></span></h3>
+<p><code>co_yield</code> 表达式向调用方返回一个值并暂停当前协程：它是可恢复生成器函数的常用构建块。
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"> <code><b>co_yield</b></code> <span class="t-spar">表达式</span>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"> <code><b>co_yield</b></code> <span class="t-spar">花括号初始化式列表</span>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<p>等价于
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">co_await promise.<span class="me1">yield_value</span><span class="br0">(</span>表达式<span class="br0">)</span></pre></div></div>
+<p>典型的生成器的 <code>yield_value</code> 会将其实参存储（复制/移动或仅存储它的地址，因为实参的生存期跨过 <code>co_await</code> 内的暂停点）到生成器对象中并返回 <a href="../coroutine/suspend_always.html" title="cpp/coroutine/suspend always"><tt>std::suspend_always</tt></a>，将控制转移给调用方/恢复方。
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;coroutine&gt;</span>
+<span class="co2">#include &lt;cstdint&gt;</span>
+<span class="co2">#include &lt;exception&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> Generator
+<span class="br0">{</span>
+    <span class="co1">// 类名 'Generator' 只是我们的选择，使用协程魔法不依赖它。</span>
+    <span class="co1">// 编译器通过关键词 'co_yield' 的存在识别协程。</span>
+    <span class="co1">// 你可以使用 'MyGenerator'（或者任何别的名字）作为替代，只要在类中包括了</span>
+    <span class="co1">// 拥有 'MyGenerator get_return_object()' 方法的嵌套 struct promise_type。</span>
+    <span class="co1">// （注意：在重命名时，你还需要调整构造函数/析构函数的声明。）</span>
+ 
+    <span class="kw1">struct</span> promise_type<span class="sy4">;</span>
+    <span class="kw1">using</span> handle_type <span class="sy1">=</span> <a href="../coroutine/coroutine_handle.html"><span class="kw3206">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;</span>promise_type<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+    <span class="kw1">struct</span> promise_type <span class="co1">// 必要</span>
+    <span class="br0">{</span>
+        T value_<span class="sy4">;</span>
+        <a href="../error/exception_ptr.html"><span class="kw778">std::<span class="me2">exception_ptr</span></span></a> exception_<span class="sy4">;</span>
+ 
+        Generator get_return_object<span class="br0">(</span><span class="br0">)</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> Generator<span class="br0">(</span>handle_type<span class="sy4">::</span><span class="me2">from_promise</span><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+        <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a> initial_suspend<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+        <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a> final_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+        <span class="kw4">void</span> unhandled_exception<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> exception_ <span class="sy1">=</span> <a href="../error/current_exception.html"><span class="kw780">std::<span class="me2">current_exception</span></span></a><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span> <span class="co1">// 保存异常</span>
+ 
+        <span class="kw1">template</span> <span class="sy1">&lt;</span><a href="../concepts/convertible_to.html"><span class="kw2935">std::<span class="me2">convertible_to</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> From<span class="sy1">&gt;</span> <span class="co1">// C++20 概念</span>
+        <a href="../coroutine/suspend_always.html"><span class="kw3258">std::<span class="me2">suspend_always</span></span></a> yield_value<span class="br0">(</span>From<span class="sy3">&amp;&amp;</span> from<span class="br0">)</span>
+        <span class="br0">{</span>
+            value_ <span class="sy1">=</span> <a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>From<span class="sy1">&gt;</span><span class="br0">(</span>from<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 在承诺中缓存结果</span>
+            <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+        <span class="kw4">void</span> return_void<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    handle_type h_<span class="sy4">;</span>
+ 
+    Generator<span class="br0">(</span>handle_type h<span class="br0">)</span> <span class="sy4">:</span> h_<span class="br0">(</span>h<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    ~Generator<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> h_.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw1">explicit</span> operator <span class="kw4">bool</span><span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        fill<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 获知协程是结束了还是仍能通过 C++ getter（下文的 operator()）</span>
+                <span class="co1">// 获得下一个生成值的唯一可靠方式，是执行/恢复协程到下一个 co_yield 节点</span>
+                <span class="co1">// （或让执行流抵达结尾）。</span>
+                <span class="co1">// 我们在承诺中存储/缓存了执行结果，使得 getter（下文的 operator()）</span>
+                <span class="co1">// 可以获得这一结果而不执行协程。</span>
+        <span class="kw1">return</span> <span class="sy3">!</span>h_.<span class="me1">done</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    T operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        fill<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+        full_ <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span><span class="co1">// 我们将移动走先前缓存的结果来重新置空承诺</span>
+        <span class="kw1">return</span> std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>h_.<span class="me1">promise</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">value_</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+<span class="kw1">private</span><span class="sy4">:</span>
+    <span class="kw4">bool</span> full_ <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> fill<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>full_<span class="br0">)</span>
+        <span class="br0">{</span>
+            h_<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+            <span class="kw1">if</span> <span class="br0">(</span>h_.<span class="me1">promise</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">exception_</span><span class="br0">)</span>
+                <a href="../error/rethrow_exception.html"><span class="kw781">std::<span class="me2">rethrow_exception</span></span></a><span class="br0">(</span>h_.<span class="me1">promise</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">exception_</span><span class="br0">)</span><span class="sy4">;</span>
+            <span class="co1">// 在调用上下文中传播协程异常</span>
+ 
+            full_ <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+Generator<span class="sy1">&lt;</span>uint64_t<span class="sy1">&gt;</span>
+fibonacci_sequence<span class="br0">(</span><span class="kw4">unsigned</span> n<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">if</span> <span class="br0">(</span>n <span class="sy1">==</span> <span class="nu0">0</span><span class="br0">)</span>
+        co_return<span class="sy4">;</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span>n <span class="sy1">&gt;</span> <span class="nu0">94</span><span class="br0">)</span>
+        <span class="kw1">throw</span> <a href="../error/runtime_error.html"><span class="kw772">std::<span class="me2">runtime_error</span></span></a><span class="br0">(</span><span class="st0">"斐波那契序列过大，元素将会溢出。"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    co_yield <span class="nu0">0</span><span class="sy4">;</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span>n <span class="sy1">==</span> <span class="nu0">1</span><span class="br0">)</span>
+        co_return<span class="sy4">;</span>
+ 
+    co_yield <span class="nu0">1</span><span class="sy4">;</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span>n <span class="sy1">==</span> <span class="nu0">2</span><span class="br0">)</span>
+        co_return<span class="sy4">;</span>
+ 
+    uint64_t a <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+    uint64_t b <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">unsigned</span> i <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> i <span class="sy1">&lt;</span> n<span class="sy4">;</span> i<span class="sy2">++</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        uint64_t s <span class="sy1">=</span> a <span class="sy2">+</span> b<span class="sy4">;</span>
+        co_yield s<span class="sy4">;</span>
+        a <span class="sy1">=</span> b<span class="sy4">;</span>
+        b <span class="sy1">=</span> s<span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">try</span>
+    <span class="br0">{</span>
+        <span class="kw4">auto</span> gen <span class="sy1">=</span> fibonacci_sequence<span class="br0">(</span><span class="nu0">10</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 最大值94，避免 uint64_t 溢出</span>
+ 
+        <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> j <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> gen<span class="sy4">;</span> j<span class="sy2">++</span><span class="br0">)</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"fib("</span> <span class="sy1">&lt;&lt;</span> j <span class="sy1">&lt;&lt;</span> <span class="st0">")="</span> <span class="sy1">&lt;&lt;</span> gen<span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">catch</span> <span class="br0">(</span><span class="kw4">const</span> <a href="../error/exception.html"><span class="kw766">std::<span class="me2">exception</span></span></a><span class="sy3">&amp;</span> ex<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cerr.html"><span class="kw1764">std::<span class="me2">cerr</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"发生了异常："</span> <span class="sy1">&lt;&lt;</span> ex.<span class="me1">what</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">catch</span> <span class="br0">(</span>...<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cerr.html"><span class="kw1764">std::<span class="me2">cerr</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"未知异常。<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">fib(0)=0
+fib(1)=1
+fib(2)=1
+fib(3)=2
+fib(4)=3
+fib(5)=5
+fib(6)=8
+fib(7)=13
+fib(8)=21
+fib(9)=34</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<table class="wikitable">
+
+<tr>
+<th><a href="../utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_impl_coroutine" title="cpp/feature test"><code>__cpp_impl_coroutine</code></a></td>
+<td><a href="../compiler_support/20.html#cpp_impl_coroutine_201902L" title="cpp/compiler support/20"><code>201902L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td><a href="coroutines.html#top">协程</a>（编译器支持）
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_coroutine" title="cpp/feature test"><code>__cpp_lib_coroutine</code></a></td>
+<td><a href="../compiler_support/20.html#cpp_lib_coroutine_201902L" title="cpp/compiler support/20"><code>201902L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td><a href="../coroutine.html" title="cpp/coroutine">协程</a>（库支持）
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_generator" title="cpp/feature test"><code>__cpp_lib_generator</code></a></td>
+<td><a href="../compiler_support/23.html#cpp_lib_generator_202207L" title="cpp/compiler support/23"><code>202207L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++23)</span></td>
+<td><span class="t-lc">std::generator</span>: 适用于范围的同步协程生成器
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.85.B3.E9.94.AE.E8.AF.8D">关键词</span></h3>
+<p><a href="../keyword/co_await.html" title="cpp/keyword/co await"><tt>co_await</tt></a>,
+<a href="../keyword/co_return.html" title="cpp/keyword/co return"><tt>co_return</tt></a>,
+<a href="../keyword/co_yield.html" title="cpp/keyword/co yield"><tt>co_yield</tt></a>
+</p>
+<h3><span class="mw-headline" id=".E5.BA.93.E6.94.AF.E6.8C.81">库支持</span></h3>
+<p><a href="../coroutine.html" title="cpp/coroutine">协程支持库</a>定义数个类型，提供协程的编译与运行时支持。
+</p>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2556.html">CWG 2556</a>
+</td>
+<td> C++20
+</td>
+<td> 非法的 <code>return_void</code> 会导致控制流出协程的结尾的行为未定义
+</td>
+<td> 此时程序非良构
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2668.html">CWG 2668</a>
+</td>
+<td> C++20
+</td>
+<td> <span class="mw-geshi cpp source-cpp">co_await</span> 不能在 lambda 表达式中出现
+</td>
+<td> 可以出现
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2754.html">CWG 2754</a>
+</td>
+<td> C++23
+</td>
+<td> 对显式对象成员函数构造承诺对象时会取 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>
+</td>
+<td> 此时不会取 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../coroutine/generator.html" title="cpp/coroutine/generator"> <span class="t-lines"><span>generator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  表示同步<strong class="selflink">协程</strong>生成器的 <a href="../ranges/view.html" title="cpp/ranges/view"><code>view</code></a> <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E5.A4.96.E9.83.A8.E9.93.BE.E6.8E.A5">外部链接</span></h3>
+<table style="border-top:solid 1px;border-bottom:none;border-left:none;border-right:none;">
+
+<tr style="vertical-align:top;">
+<td>1. </td>
+<td>Lewis Baker, 2017-2022 - <a rel="nofollow" class="external text" href="https://lewissbaker.github.io/">非对称转移</a>
+</td></tr>
+<tr style="vertical-align:top;">
+<td>2. </td>
+<td>David Mazières, 2021 - <a rel="nofollow" class="external text" href="https://www.scs.stanford.edu/~dm/blog/c++-coroutines.html">C++20 协程教程</a>
+</td></tr>
+<tr style="vertical-align:top;">
+<td>3. </td>
+<td>许传奇 &amp; 祁宇 &amp; 韩垚, 2021 - <a rel="nofollow" class="external text" href="https://zhuanlan.zhihu.com/p/497224333">C++20 协程原理和应用</a>
+</td></tr>
+<tr style="vertical-align:top;">
+<td>4. </td>
+<td>Simon Tatham, 2023 - <a rel="nofollow" class="external text" href="https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/coroutines-c++20/">编写自定义的 C++20 协程系统</a>
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 6669/1000000
+Preprocessor generated node count: 16956/1000000
+Post‐expand include size: 165841/4194304 bytes
+Template argument size: 48164/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:12015-0!*!0!!zh!*!zh!* and timestamp 20250323122544 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/language/coroutines&amp;oldid=100098">https://zh.cppreference.com/mwiki/index.php?title=cpp/language/coroutines&amp;oldid=100098</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/language/coroutines">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年3月20日 (星期四) 18:25。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 0.091 secs. -->
+	</body>
+<!-- Cached 20250323130515 -->
+</html>

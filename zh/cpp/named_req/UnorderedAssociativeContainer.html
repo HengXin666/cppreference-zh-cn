@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>C++ 具名要求：无序关联容器 (UnorderedAssociativeContainer)  (C++11 起)</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/named_req/UnorderedAssociativeContainer","wgTitle":"cpp/named req/UnorderedAssociativeContainer","wgCurRevisionId":96039,"wgArticleId":9313,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["有原因的 todo"],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/named_req/UnorderedAssociativeContainer","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_named_req_UnorderedAssociativeContainer skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">C++ 具名要求：</span><span style="font-style:italic">无序关联容器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(UnorderedAssociativeContainer)</span>  <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../named_req.html" title="cpp/named req">named req</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../named_req.html" title="cpp/named req">C++ 具名要求</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E5.9F.BA.E7.A1.80" title="cpp/named req">基础</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span class="t-lines"><span>DefaultConstructible</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="MoveConstructible.html" title="cpp/named req/MoveConstructible"><span class="t-lines"><span>MoveConstructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="CopyConstructible.html" title="cpp/named req/CopyConstructible"><span class="t-lines"><span>CopyConstructible</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="CopyAssignable.html" title="cpp/named req/CopyAssignable"><span class="t-lines"><span>CopyAssignable</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="MoveAssignable.html" title="cpp/named req/MoveAssignable"><span class="t-lines"><span>MoveAssignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Destructible.html" title="cpp/named req/Destructible"><span class="t-lines"><span>Destructible</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E7.B1.BB.E5.9E.8B.E5.B1.9E.E6.80.A7" title="cpp/named req">类型属性</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ScalarType.html" title="cpp/named req/ScalarType"><span class="t-lines"><span>ScalarType</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="PODType.html" title="cpp/named req/PODType"><span class="t-lines"><span>PODType</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="TriviallyCopyable.html" title="cpp/named req/TriviallyCopyable"><span class="t-lines"><span>TriviallyCopyable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="TrivialType.html" title="cpp/named req/TrivialType"><span class="t-lines"><span>TrivialType</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="StandardLayoutType.html" title="cpp/named req/StandardLayoutType"><span class="t-lines"><span>StandardLayoutType</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ImplicitLifetimeType.html" title="cpp/named req/ImplicitLifetimeType"><span class="t-lines"><span>ImplicitLifetimeType</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E5.85.A8.E5.BA.93.E8.8C.83.E5.9B.B4.E7.9A.84.E8.A6.81.E6.B1.82" title="cpp/named req">全库范围</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="BooleanTestable.html" title="cpp/named req/BooleanTestable"><span class="t-lines"><span>BooleanTestable</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="EqualityComparable.html" title="cpp/named req/EqualityComparable"><span class="t-lines"><span>EqualityComparable</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="LessThanComparable.html" title="cpp/named req/LessThanComparable"><span class="t-lines"><span>LessThanComparable</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Swappable.html" title="cpp/named req/Swappable"><span class="t-lines"><span>Swappable</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ValueSwappable.html" title="cpp/named req/ValueSwappable"><span class="t-lines"><span>ValueSwappable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="NullablePointer.html" title="cpp/named req/NullablePointer"><span class="t-lines"><span>NullablePointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Hash.html" title="cpp/named req/Hash"><span class="t-lines"><span>Hash</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Allocator.html" title="cpp/named req/Allocator"><span class="t-lines"><span>Allocator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="FunctionObject.html" title="cpp/named req/FunctionObject"><span class="t-lines"><span>FunctionObject</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Callable.html" title="cpp/named req/Callable"><span class="t-lines"><span>Callable</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Predicate.html" title="cpp/named req/Predicate"><span class="t-lines"><span>Predicate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="BinaryPredicate.html" title="cpp/named req/BinaryPredicate"><span class="t-lines"><span>BinaryPredicate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Compare.html" title="cpp/named req/Compare"><span class="t-lines"><span>Compare</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E5.AE.B9.E5.99.A8" title="cpp/named req">容器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Container.html" title="cpp/named req/Container"><span class="t-lines"><span>Container</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ReversibleContainer.html" title="cpp/named req/ReversibleContainer"><span class="t-lines"><span>ReversibleContainer</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="AllocatorAwareContainer.html" title="cpp/named req/AllocatorAwareContainer"><span class="t-lines"><span>AllocatorAwareContainer</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="SequenceContainer.html" title="cpp/named req/SequenceContainer"><span class="t-lines"><span>SequenceContainer</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ContiguousContainer.html" title="cpp/named req/ContiguousContainer"><span class="t-lines"><span>ContiguousContainer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="AssociativeContainer.html" title="cpp/named req/AssociativeContainer"><span class="t-lines"><span>AssociativeContainer</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><strong class="selflink"><span class="t-lines"><span>UnorderedAssociativeContainer</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../named_req.html#.E5.AE.B9.E5.99.A8.E5.85.83.E7.B4.A0" title="cpp/named req">容器元素</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="DefaultInsertable.html" title="cpp/named req/DefaultInsertable"><span class="t-lines"><span>DefaultInsertable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="CopyInsertable.html" title="cpp/named req/CopyInsertable"><span class="t-lines"><span>CopyInsertable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="MoveInsertable.html" title="cpp/named req/MoveInsertable"><span class="t-lines"><span>MoveInsertable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span class="t-lines"><span>EmplaceConstructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Erasable.html" title="cpp/named req/Erasable"><span class="t-lines"><span>Erasable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E8.BF.AD.E4.BB.A3.E5.99.A8" title="cpp/named req">迭代器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Iterator.html" title="cpp/named req/Iterator"><span class="t-lines"><span>LegacyIterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="InputIterator.html" title="cpp/named req/InputIterator"><span class="t-lines"><span>LegacyInputIterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="OutputIterator.html" title="cpp/named req/OutputIterator"><span class="t-lines"><span>LegacyOutputIterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ForwardIterator.html" title="cpp/named req/ForwardIterator"><span class="t-lines"><span>LegacyForwardIterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="BidirectionalIterator.html" title="cpp/named req/BidirectionalIterator"><span class="t-lines"><span>LegacyBidirectionalIterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span class="t-lines"><span>LegacyRandomAccessIterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ContiguousIterator.html" title="cpp/named req/ContiguousIterator"><span class="t-lines"><span>LegacyContiguousIterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="ConstexprIterator.html" title="cpp/named req/ConstexprIterator"><span class="t-lines"><span>ConstexprIterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E6.B5.81_I.2FO_.E5.87.BD.E6.95.B0" title="cpp/named req">流 I/O</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="FormattedInputFunction.html" title="cpp/named req/FormattedInputFunction"><span class="t-lines"><span>FormattedInputFunction</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="UnformattedInputFunction.html" title="cpp/named req/UnformattedInputFunction"><span class="t-lines"><span>UnformattedInputFunction</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="FormattedOutputFunction.html" title="cpp/named req/FormattedOutputFunction"><span class="t-lines"><span>FormattedOutputFunction</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="UnformattedOutputFunction.html" title="cpp/named req/UnformattedOutputFunction"><span class="t-lines"><span>UnformattedOutputFunction</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E6.A0.BC.E5.BC.8F.E5.8C.96.E5.99.A8" title="cpp/named req">格式化器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="BasicFormatter.html" title="cpp/named req/BasicFormatter"><span class="t-lines"><span>BasicFormatter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Formatter.html" title="cpp/named req/Formatter"><span class="t-lines"><span>Formatter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E9.9A.8F.E6.9C.BA.E6.95.B0.E7.94.9F.E6.88.90" title="cpp/named req">随机数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="SeedSequence.html" title="cpp/named req/SeedSequence"><span class="t-lines"><span>SeedSequence</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="RandomNumberEngine.html" title="cpp/named req/RandomNumberEngine"><span class="t-lines"><span>RandomNumberEngine</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="RandomNumberDistribution.html" title="cpp/named req/RandomNumberDistribution"><span class="t-lines"><span>RandomNumberDistribution</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="UniformRandomBitGenerator.html" title="cpp/named req/UniformRandomBitGenerator"><span class="t-lines"><span>UniformRandomBitGenerator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="RandomNumberEngineAdaptor.html" title="cpp/named req/RandomNumberEngineAdaptor"><span class="t-lines"><span>RandomNumberEngineAdaptor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E5.B9.B6.E5.8F.91" title="cpp/named req">并发</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="BasicLockable.html" title="cpp/named req/BasicLockable"><span class="t-lines"><span>BasicLockable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Lockable.html" title="cpp/named req/Lockable"><span class="t-lines"><span>Lockable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="TimedLockable.html" title="cpp/named req/TimedLockable"><span class="t-lines"><span>TimedLockable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="SharedLockable.html" title="cpp/named req/SharedLockable"><span class="t-lines"><span>SharedLockable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="SharedTimedLockable.html" title="cpp/named req/SharedTimedLockable"><span class="t-lines"><span>SharedTimedLockable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Mutex.html" title="cpp/named req/Mutex"><span class="t-lines"><span>Mutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="TimedMutex.html" title="cpp/named req/TimedMutex"><span class="t-lines"><span>TimedMutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="SharedMutex.html" title="cpp/named req/SharedMutex"><span class="t-lines"><span>SharedMutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="SharedTimedMutex.html" title="cpp/named req/SharedTimedMutex"><span class="t-lines"><span>SharedTimedMutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E8.8C.83.E5.9B.B4" title="cpp/named req">范围</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="RangeAdaptorObject.html" title="cpp/named req/RangeAdaptorObject"><span class="t-lines"><span>RangeAdaptorObject</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="RangeAdaptorClosureObject.html" title="cpp/named req/RangeAdaptorClosureObject"><span class="t-lines"><span>RangeAdaptorClosureObject</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E5.A4.9A.E7.BB.B4.E8.A7.86.E5.9B.BE.E5.AE.9A.E5.88.B6" title="cpp/named req">多维视图</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="LayoutMapping.html" title="cpp/named req/LayoutMapping"><span class="t-lines"><span>LayoutMapping</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="LayoutMappingPolicy.html" title="cpp/named req/LayoutMappingPolicy"><span class="t-lines"><span>LayoutMappingPolicy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="AccessorPolicy.html" title="cpp/named req/AccessorPolicy"><span class="t-lines"><span>AccessorPolicy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../named_req.html#.E5.85.B6.E4.BB.96" title="cpp/named req">其他</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="CharTraits.html" title="cpp/named req/CharTraits"><span class="t-lines"><span>CharTraits</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="RegexTraits.html" title="cpp/named req/RegexTraits"><span class="t-lines"><span>RegexTraits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="BitmaskType.html" title="cpp/named req/BitmaskType"><span class="t-lines"><span>BitmaskType</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="LiteralType.html" title="cpp/named req/LiteralType"><span class="t-lines"><span>LiteralType</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="NumericType.html" title="cpp/named req/NumericType"><span class="t-lines"><span>NumericType</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="UnaryTypeTrait.html" title="cpp/named req/UnaryTypeTrait"><span class="t-lines"><span>UnaryTypeTrait</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="BinaryTypeTrait.html" title="cpp/named req/BinaryTypeTrait"><span class="t-lines"><span>BinaryTypeTrait</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="TransformationTrait.html" title="cpp/named req/TransformationTrait"><span class="t-lines"><span>TransformationTrait</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="Clock.html" title="cpp/named req/Clock"><span class="t-lines"><span>Clock</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-named-req-table"><div><a href="TrivialClock.html" title="cpp/named req/TrivialClock"><span class="t-lines"><span>TrivialClock</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p><b>无序关联容器</b> ﻿是提供基于键的快速对象查找的<a href="Container.html" title="cpp/named req/Container"><span style="font-style:italic">容器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Container)</span> </a>。
+最坏情况的复杂度为线性，但平均而言大多数操作则快得多。
+</p><p>无序关联容器基于以下各项参数化：<code>Key</code>；<code>Hash</code>，表现为 <code>Key</code> 上散列函数的<a href="Hash.html" title="cpp/named req/Hash"><span style="font-style:italic">散列</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Hash)</span> </a>函数对象；<code>Pred</code>，评估 <code>Key</code> 间的等价性的<a href="BinaryPredicate.html" title="cpp/named req/BinaryPredicate"><span style="font-style:italic">二元谓词</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(BinaryPredicate)</span> </a>。
+<span class="t-lc"><a href="../container/unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span> 与 <span class="t-lc"><a href="../container/unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span> 还拥有与 <code>Key</code> 关联的被映射类型 <code>T</code>。
+</p><p>如果两个 <code>Key</code> 按照 <code>Pred</code> 比较为相等，那么 <code>Hash</code> 必须对两个键返回相同值。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>如果 <code>Hash::is_transparent</code> 与 <code>Pred::is_transparent</code> 均存在且均代表类型，那么成员函数 <code>find</code>、<code>contains</code>、<code>count</code> 与 <code>equal_range</code> 接受异于 <code>Key</code> 的实参类型并期待 <code>Hash</code> 能以那些类型调用，而 <code>Pred</code> 是如 <span class="t-lc">std::equal_to&lt;&gt;</span> 的透明比较函数。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p><span class="t-lc"><a href="../container/unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span> 与 <span class="t-lc"><a href="../container/unordered_set.html" title="cpp/container/unordered set">std::unordered_set</a></span> 能容纳至多一个带给定键的元素，而 <span class="t-lc"><a href="../container/unordered_multiset.html" title="cpp/container/unordered multiset">std::unordered_multiset</a></span> 与 <span class="t-lc"><a href="../container/unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span> 能拥有带同一键的多个元素（它们在迭代时必然相邻）。
+</p><p>对于 <span class="t-lc"><a href="../container/unordered_set.html" title="cpp/container/unordered set">std::unordered_set</a></span> 和 <span class="t-lc"><a href="../container/unordered_multiset.html" title="cpp/container/unordered multiset">std::unordered_multiset</a></span>，它们的值类型与键类型相同，且 <code>iterator</code> 和 <code>const_iterator</code> 都是常量迭代器。对于 <span class="t-lc"><a href="../container/unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span> 与 <span class="t-lc"><a href="../container/unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span>，值类型是 <span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> Key, T<span class="sy1">&gt;</span></span>。
+</p><p>无序关联容器中的元素被组织到桶中，拥有相同散列值的键将归于相同的桶中。
+桶数在容器大小增加时增加，以保持每个桶中的平均元素数在某个确定值之下。
+</p><p>重散列会使迭代器失效，并可能导致元素被重排到不同的桶中，但不会使元素的引用失效。
+</p><p>无序关联容器满足<a href="AllocatorAwareContainer.html" title="cpp/named req/AllocatorAwareContainer"><span style="font-style:italic">知分配器容器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(AllocatorAwareContainer)</span> </a>的要求。对于 <span class="t-lc"><a href="../container/unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span> 与 <span class="t-lc"><a href="../container/unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span>，<a href="AllocatorAwareContainer.html" title="cpp/named req/AllocatorAwareContainer"><span style="font-style:italic">知分配器容器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(AllocatorAwareContainer)</span> </a>中 <code>value_type</code> 的要求应用到 <code>key_type</code> 和 <code>mapped_type</code>（而非到 <code>value_type</code>）。
+</p>
+<h3><span class="mw-headline" id=".E8.A6.81.E6.B1.82">要求</span></h3>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.87.A1.E4.BE.8B"> 凡例 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td> <code>X</code>
+</td>
+<td> 无序关联容器类
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span>
+</td>
+<td> <code>X</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a2</span></span>
+</td>
+<td> 一个与 <code>X</code> <a href="../container/node_handle.html" title="cpp/container/node handle">节点兼容</a> 的类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span>
+</td>
+<td> 类型为 <code>X</code> 或 <code>const X</code> 的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq</span></span>
+</td>
+<td> <code>X</code> 支持唯一键时，<code>X</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq</span></span>
+</td>
+<td> <code>X</code> 支持等价键时，<code>X</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran</span></span>
+</td>
+<td> 当有限定标识符 <code>X::key_equal::is_transparent</code> 和 <code>X::hasher::is_transparent</code> 都有效且代表<a href="../language/template_argument_deduction.html" title="cpp/language/template argument deduction">类型</a>时，
+<p>为 <code>X</code> 或 <code>const X</code> 类型的值
+</p>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span>
+</td>
+<td>  引用 <code>value_type</code> 的输入迭代器
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code>
+</td>
+<td> 合法范围
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">rg</span></span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td> <code>R</code> 类型的值，实现 <span class="t-c"><a href="../ranges/to.html#.E5.AE.B9.E5.99.A8.E5.85.BC.E5.AE.B9.E8.8C.83.E5.9B.B4" title="cpp/ranges/to"><tt><i>container-compatible-range</i></tt></a><code>&lt;value_type&gt;</code></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">p</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">q2</span></span>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的合法常量迭代器
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">q</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">q1</span></span>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的合法且可解引用的常量迭代器
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">r</span></span>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的合法且可解引用的迭代器
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">q1</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">q2</span></span><code>)</code>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的合法范围
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">il</span></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="../utility/initializer_list.html"><span class="kw962">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span>value_type<span class="sy1">&gt;</span></span> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span>
+</td>
+<td> <code>X::value_type</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">k</span></span>
+</td>
+<td> <code>key_type</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">hf</span></span>
+</td>
+<td> <code>hasher</code> 或 <code>const hasher</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">eq</span></span>
+</td>
+<td> <code>key_equal</code> 或 <code>const key_equal</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">ke</span></span>
+</td>
+<td> 值，当 <span class="t-c"><span class="mw-geshi cpp source-cpp">r1</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">r2</span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran</span></span> 的元素的键时，满足
+<ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, ke<span class="br0">)</span> <span class="sy1">==</span> eq<span class="br0">(</span>ke, r1<span class="br0">)</span></span></span>,
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">hf<span class="br0">(</span>r1<span class="br0">)</span> <span class="sy1">==</span> hf<span class="br0">(</span>ke<span class="br0">)</span></span></span> 当 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, ke<span class="br0">)</span></span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>，且
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, ke<span class="br0">)</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r2, ke<span class="br0">)</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, r2<span class="br0">)</span></span></span> 中有两个是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>，那么三个都是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>
+</li></ul>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">kx</span></span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td> 值，当 <span class="t-c"><span class="mw-geshi cpp source-cpp">r1</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">r2</span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran</span></span> 的元素的键时，满足
+<ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, kx<span class="br0">)</span> <span class="sy1">==</span> eq<span class="br0">(</span>kx, r1<span class="br0">)</span></span></span>,
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">hf<span class="br0">(</span>r1<span class="br0">)</span> <span class="sy1">==</span> hf<span class="br0">(</span>kx<span class="br0">)</span></span></span> 当 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, kx<span class="br0">)</span></span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>，
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, kx<span class="br0">)</span></span></span>、<span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r2, kx<span class="br0">)</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq<span class="br0">(</span>r1, r2<span class="br0">)</span></span></span> 中有两个是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>，那么三个都是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> 且
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">kx</span></span> 不能转换到 <code>iterator</code> 或者 <code>const_iterator</code>
+</li></ul>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>
+</td>
+<td> <code>size_type</code> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">z</span></span>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><span class="kw4">float</span></span> 类型的值
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td> <code>X::node_type</code> 类型的右值
+</td></tr>
+
+</table>
+<h4><span class="mw-headline" id=".E6.88.90.E5.91.98.E7.B1.BB.E5.9E.8B">成员类型</span></h4>
+<table class="wikitable">
+<tr>
+<th>名字</th>
+<th>类型</th>
+<th>要求</th>
+<th>注解
+</th></tr>
+<tr>
+<td><code>X::key_type</code>
+</td>
+<td><code>Key</code>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><code>X::mapped_type</code>
+</td>
+<td><code>T</code>
+</td>
+<td>仅 <span class="t-lc"><a href="../container/unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span> 和 <span class="t-lc"><a href="../container/unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span>
+</td>
+<td>
+</td></tr>
+<tr>
+<td rowspan="2"><code>X::value_type</code>
+</td>
+<td><code>Key</code>
+</td>
+<td>仅 <span class="t-lc"><a href="../container/unordered_set.html" title="cpp/container/unordered set">std::unordered_set</a></span> 和 <span class="t-lc"><a href="../container/unordered_multiset.html" title="cpp/container/unordered multiset">std::unordered_multiset</a></span>。<code>X</code> <a href="Erasable.html" title="cpp/named req/Erasable"><span style="font-style:italic">可擦除</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Erasable)</span> </a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> Key, T<span class="sy1">&gt;</span></span>
+</td>
+<td>仅 <span class="t-lc"><a href="../container/unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span> 和 <span class="t-lc"><a href="../container/unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span>。<code>X</code> <a href="Erasable.html" title="cpp/named req/Erasable"><span style="font-style:italic">可擦除</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Erasable)</span> </a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><code>X::hasher</code>
+</td>
+<td><code>Hash</code>
+</td>
+<td><a href="Hash.html" title="cpp/named req/Hash"><span style="font-style:italic">散列</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Hash)</span> </a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><code>X::key_equal</code>
+</td>
+<td><code>Pred</code>
+</td>
+<td><a href="CopyConstructible.html" title="cpp/named req/CopyConstructible"><span style="font-style:italic">可复制构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(CopyConstructible)</span> </a>；接受两个 <code>Key</code> 类型的参数，并表达等价关系的<a href="BinaryPredicate.html" title="cpp/named req/BinaryPredicate"><span style="font-style:italic">二元谓词</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(BinaryPredicate)</span> </a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><code>X::local_iterator</code>
+</td>
+<td><a href="Iterator.html" title="cpp/named req/Iterator"><span style="font-style:italic">老式迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyIterator)</span> </a>
+</td>
+<td>具有和 <code>X::iterator</code> 相同的类别和类型
+</td>
+<td rowspan="2">可用于遍历单个桶，但不能遍历所有桶
+</td></tr>
+<tr>
+<td><code>X::const_local_iterator</code>
+</td>
+<td><a href="Iterator.html" title="cpp/named req/Iterator"><span style="font-style:italic">老式迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyIterator)</span> </a>
+</td>
+<td>具有和 <code>X::const_iterator</code> 相同的类别和类型
+</td></tr>
+<tr>
+<td><code>X::node_type</code> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><a href="../container/node_handle.html" title="cpp/container/node handle">node-handle</a> 类模板的特化
+</td>
+<td>其公开嵌套类型与 <code>X</code> 中的对应类型相同。
+</td>
+<td>
+</td></tr></table>
+<h4><span class="mw-headline" id=".E6.88.90.E5.91.98.E5.87.BD.E6.95.B0.E5.92.8C.E8.BF.90.E7.AE.97.E7.AC.A6">成员函数和运算符</span></h4>
+<div style="max-width: 100%; overflow-x: scroll;">
+<table class="wikitable" style="font-size:0.9em">
+<tr>
+<th>表达式</th>
+<th>结果</th>
+<th>前条件</th>
+<th>效果</th>
+<th>返回值</th>
+<th>复杂度
+</th></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>n, hf, eq<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>构造一个至少包含 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hf</span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq</span></span> 作为键相等性谓词
+</td>
+<td>
+</td>
+<td><span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>n, hf<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td><code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>
+</td>
+<td>构造一个至少包含 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hf</span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词
+</td>
+<td>
+</td>
+<td><span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td><code>hasher</code> 和 <code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>
+</td>
+<td>构造一个至少包含 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hasher<span class="br0">(</span><span class="br0">)</span></span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词
+</td>
+<td>
+</td>
+<td><span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X a <span class="sy1">=</span> X<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></span><br><span class="t-c"><span class="mw-geshi cpp source-cpp">X a<span class="sy4">;</span></span></span>
+</td>
+<td>
+</td>
+<td><code>hasher</code> 和 <code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>
+</td>
+<td>构造一个具有未指定数量的桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hasher<span class="br0">(</span><span class="br0">)</span></span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词
+</td>
+<td>
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>i, j, n, hf, eq<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td><code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个至少具有 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hf</span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq</span></span> 作为键相等性谓词，并向其插入 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>i, j, n, hf<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td><code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>。<code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个至少具有 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hf</span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词，并向其插入 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>i, j, n<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td><code>hasher</code> 和 <code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>。<code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个至少具有 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hasher<span class="br0">(</span><span class="br0">)</span></span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词，并向其插入 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>i, j<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td><code>hasher</code> 和 <code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>。<code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个未指定数量的桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hasher<span class="br0">(</span><span class="br0">)</span></span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词，并向其插入 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span><a href="../ranges/from_range.html"><span class="kw3504">std::<span class="me2">from_range</span></span></a>,</span><br><span class="mw-geshi cpp source-cpp">  rg, n, hf, eq<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td>
+</td>
+<td><code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span><a href="../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>rg<span class="br0">)</span></span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个至少具有 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hf</span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">eq</span></span> 作为键相等性谓词，并向其插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">rg</span></span> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span><a href="../ranges/from_range.html"><span class="kw3504">std::<span class="me2">from_range</span></span></a>,</span><br><span class="mw-geshi cpp source-cpp">  rg, n, hf<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td>
+</td>
+<td><code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>。<code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span><a href="../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>rg<span class="br0">)</span></span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个至少具有 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hf</span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词，并向其插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">rg</span></span> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span><a href="../ranges/from_range.html"><span class="kw3504">std::<span class="me2">from_range</span></span></a>,</span><br><span class="mw-geshi cpp source-cpp">  rg, n<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td>
+</td>
+<td><code>hasher</code> 和 <code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>。<code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span><a href="../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>rg<span class="br0">)</span></span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个至少具有 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hasher<span class="br0">(</span><span class="br0">)</span></span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词，并向其插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">rg</span></span> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span><a href="../ranges/from_range.html"><span class="kw3504">std::<span class="me2">from_range</span></span></a>,</span><br><span class="mw-geshi cpp source-cpp">  rg<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td>
+</td>
+<td><code>hasher</code> 和 <code>key_equal</code> 满足<a href="DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>。<code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span><a href="../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>rg<span class="br0">)</span></span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>构造一个未指定数量的桶的空容器，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">hasher<span class="br0">(</span><span class="br0">)</span></span></span> 作为散列函数，使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">key_equal<span class="br0">(</span><span class="br0">)</span></span></span> 作为键相等性谓词，并向其插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">rg</span></span> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>（<span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>），最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, il.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il, n<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, il.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, n<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il, n, hf<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, il.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, n, hf<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il, n, hf, eq<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>il.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, il.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, n, hf, eq<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">X<span class="br0">(</span>b<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><a href="Container.html" title="cpp/named req/Container"><span style="font-style:italic">容器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Container)</span> </a>；复制散列函数、谓词和最大负载因子
+</td>
+<td>
+</td>
+<td>平均为与 <span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span> 成线性，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">=</span> b</span></span>
+</td>
+<td><code>X&amp;</code>
+</td>
+<td>
+</td>
+<td><a href="Container.html" title="cpp/named req/Container"><span style="font-style:italic">容器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Container)</span> </a>；复制哈希函数、谓词和最大负载因子
+</td>
+<td>
+</td>
+<td>平均为与 <span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span> 成线性，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">=</span> il</span></span>
+</td>
+<td><code>X&amp;</code>
+</td>
+<td><code>value_type</code> 满足<a href="CopyInsertable.html" title="cpp/named req/CopyInsertable"><span style="font-style:italic">可复制插入</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(CopyInsertable)</span> </a>到 <code>X</code> 且<a href="CopyAssignable.html" title="cpp/named req/CopyAssignable"><span style="font-style:italic">可复制赋值</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(CopyAssignable)</span> </a>
+</td>
+<td>使用 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">il.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span></span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">il.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 赋值给 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span>。<span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的所有元素都或被赋值或被销毁
+</td>
+<td>
+</td>
+<td>平均为与 <span class="t-c"><span class="mw-geshi cpp source-cpp">li.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span> 成线性，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">hash_function</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td><code>hasher</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 的散列函数
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">key_eq</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td><code>key_equal</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 的键相等性谓词
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq.<span class="me1">emplace</span><span class="br0">(</span>args<span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span></span><br><span class="mw-geshi cpp source-cpp">  iterator,</span><br><span class="mw-geshi cpp source-cpp">  <span class="kw4">bool</span><span class="sy1">&gt;</span></span>
+</td>
+<td><code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp">args</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>当且仅当容器中不存在具有与 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 的键等价的键的元素时，插入一个使用 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span>...</span></span> 构造的 <code>value_type</code> 类型的对象 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span>
+</td>
+<td>当且仅当发生插入时，返回的对偶的 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span> 组分为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>，并且该对偶的迭代器组分指向具有的键等价于 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 的键的元素
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">emplace</span><span class="br0">(</span>args<span class="br0">)</span></span></span>
+</td>
+<td><code>iterator</code>
+</td>
+<td><code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp">args</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td>插入一个使用 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span>...</span></span> 构造的 <code>value_type</code> 类型的对象 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span>
+</td>
+<td>指向新插入元素的迭代器
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">emplace_hint</span><span class="br0">(</span>p, args<span class="br0">)</span></span></span>
+</td>
+<td><code>iterator</code>
+</td>
+<td><code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp">args</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">emplace</span><span class="br0">(</span></span><br><span class="mw-geshi cpp source-cpp">  <a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span>...<span class="br0">)</span></span></span>
+</td>
+<td>指向具有与新插入元素等价的键的元素的迭代器。<code>const_iterator</code> <span class="t-c"><span class="mw-geshi cpp source-cpp">p</span></span> 是一个提示，指向搜索应该开始的位置。允许实现忽略提示
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq.<span class="me1">insert</span><span class="br0">(</span>t<span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span></span><br><span class="mw-geshi cpp source-cpp">  iterator,</span><br><span class="mw-geshi cpp source-cpp">  <span class="kw4">bool</span><span class="sy1">&gt;</span></span>
+</td>
+<td>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 是非 const 右值，则 <code>value_type</code> <a href="MoveInsertable.html" title="cpp/named req/MoveInsertable"><span style="font-style:italic">可移动插入</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(MoveInsertable)</span> </a>到 <code>X</code>；否则，<code>value_type</code> <a href="CopyInsertable.html" title="cpp/named req/CopyInsertable"><span style="font-style:italic">可复制插入</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(CopyInsertable)</span> </a>到 <code>X</code>
+</td>
+<td>当且仅当容器中不存在键与 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 的键相同的元素时，插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span>
+</td>
+<td>返回的对偶中的 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span> 组分指示是否发生插入，而 <code>iterator</code> 组分则指向键与 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 的键等价的元素
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">insert</span><span class="br0">(</span>t<span class="br0">)</span></span></span>
+</td>
+<td><code>iterator</code>
+</td>
+<td>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 是非 const 右值，则 <code>value_type</code> <a href="MoveInsertable.html" title="cpp/named req/MoveInsertable"><span style="font-style:italic">可移动插入</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(MoveInsertable)</span> </a>到 <code>X</code>；否则，<code>value_type</code> <a href="CopyInsertable.html" title="cpp/named req/CopyInsertable"><span style="font-style:italic">可复制插入</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(CopyInsertable)</span> </a>到 <code>X</code>
+</td>
+<td>插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span>
+</td>
+<td>指向新插入元素的迭代器
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>p, t<span class="br0">)</span></span></span>
+</td>
+<td><code>iterator</code>
+</td>
+<td>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 是非 const 右值，则 <code>value_type</code> <a href="MoveInsertable.html" title="cpp/named req/MoveInsertable"><span style="font-style:italic">可移动插入</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(MoveInsertable)</span> </a>到 <code>X</code>；否则，<code>value_type</code> <a href="CopyInsertable.html" title="cpp/named req/CopyInsertable"><span style="font-style:italic">可复制插入</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(CopyInsertable)</span> </a>到 <code>X</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>t<span class="br0">)</span></span></span>。迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">p</span></span> 是一个提示，指向搜索应该开始的位置。允许实现忽略提示
+</td>
+<td>指向键与 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span> 相等的元素的迭代器
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>i, j<span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>
+</td>
+<td><code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i</span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>，<span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span> 都不是 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的迭代器
+</td>
+<td>对于 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code> 中的每个元素 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>t<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>，其中 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>i, j<span class="br0">)</span></span></span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">N·<span class="br0">(</span>a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">+</span> <span class="nu0">1</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert_range</span><span class="br0">(</span>rg<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>
+</td>
+<td><code>value_type</code> 满足从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span><a href="../../../http:/zh.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2882">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>rg<span class="br0">)</span></span></span> <a href="EmplaceConstructible.html" title="cpp/named req/EmplaceConstructible"><span style="font-style:italic">可就位构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(EmplaceConstructible)</span> </a>到 <code>X</code>。<span class="t-c"><span class="mw-geshi cpp source-cpp">rg</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 不重叠
+</td>
+<td>对于 <span class="t-c"><span class="mw-geshi cpp source-cpp">rg</span></span> 中的每个元素 <span class="t-c"><span class="mw-geshi cpp source-cpp">t</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>t<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>，其中 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/ranges/distance.html"><span class="kw3142">ranges::<span class="me2">distance</span></span></a><span class="br0">(</span>rg<span class="br0">)</span></span></span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">N·<span class="br0">(</span>a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">+</span> <span class="nu0">1</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>il<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>il.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, il.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq.<span class="me1">insert</span><span class="br0">(</span>nh<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><code>insert_return_type</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空，或
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span><br><span class="mw-geshi cpp source-cpp"><span class="sy1">==</span></span><br><span class="mw-geshi cpp source-cpp">nh.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span></span>
+是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>
+</p>
+</td>
+<td>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空，则无效。否则，当且仅当容器中不存在键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh.<span class="me1">key</span><span class="br0">(</span><span class="br0">)</span></span></span> 的元素时，插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 拥有的元素。确保：如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空，则 <span class="t-c"><span class="mw-geshi cpp source-cpp">inserted</span></span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">position</span></span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp">end<span class="br0">(</span><span class="br0">)</span></span></span>，并且 <span class="t-c"><span class="mw-geshi cpp source-cpp">node</span></span> 为空。否则，如果发生插入，则 <span class="t-c"><span class="mw-geshi cpp source-cpp">inserted</span></span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">position</span></span> 指向插入的元素，而 <span class="t-c"><span class="mw-geshi cpp source-cpp">node</span></span> 为空；如果插入失败，则 <span class="t-c"><span class="mw-geshi cpp source-cpp">inserted</span></span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">node</span></span> 具有 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 的先前值，并且 <span class="t-c"><span class="mw-geshi cpp source-cpp">position</span></span> 指向键相当于 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh.<span class="me1">key</span><span class="br0">(</span><span class="br0">)</span></span></span> 的元素
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_uniq.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">insert</span><span class="br0">(</span>nh<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><code>iterator</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空，或
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span><br><span class="mw-geshi cpp source-cpp"><span class="sy1">==</span></span><br><span class="mw-geshi cpp source-cpp">nh.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span></span>
+是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>
+</p>
+</td>
+<td>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空，则无效并返回 <span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span></span></span>。否则，插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 拥有的元素并返回指向新插入元素的迭代器。确保：<span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_eq.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">insert</span><span class="br0">(</span>q, nh<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><code>iterator</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空，或
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span><br><span class="mw-geshi cpp source-cpp"><span class="sy1">==</span></span><br><span class="mw-geshi cpp source-cpp">nh.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span></span>
+是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>
+</p>
+</td>
+<td>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空，则无效并返回 <span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span></span></span>。否则，当且仅当在具有唯一键的容器中不存在键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh.<span class="me1">key</span><span class="br0">(</span><span class="br0">)</span></span></span> 的元素时，插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 拥有的元素；始终将 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 拥有的元素插入具有相同键的容器中。迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">q</span></span> 是一个提示，指向搜索应该开始的位置。允许实现忽略提示。确保：如果插入成功，<span class="t-c"><span class="mw-geshi cpp source-cpp">nh</span></span> 为空；如果插入失败，则保持不变
+</td>
+<td>指向键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">nh.<span class="me1">key</span><span class="br0">(</span><span class="br0">)</span></span></span> 的元素的迭代器
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">extract</span><span class="br0">(</span>k<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><code>node_type</code>
+</td>
+<td>
+</td>
+<td>移除容器中键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">k</span></span> 的元素
+</td>
+<td>如果找到，则为拥有该元素的 <code>node_type</code>，否则为空 <code>node_type</code>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">extract</span><span class="br0">(</span>kx<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td><code>node_type</code>
+</td>
+<td>
+</td>
+<td>移除容器中键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">kx</span></span> 的元素
+</td>
+<td>如果找到，则为拥有该元素的 <code>node_type</code>，否则为空 <code>node_type</code>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">extract</span><span class="br0">(</span>q<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><code>node_type</code>
+</td>
+<td>
+</td>
+<td>移除 <span class="t-c"><span class="mw-geshi cpp source-cpp">q</span></span> 指向的元素
+</td>
+<td>拥有该元素的 <code>node_type</code>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">merge</span><span class="br0">(</span>a2<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span><br><span class="mw-geshi cpp source-cpp"><span class="sy1">==</span></span><br><span class="mw-geshi cpp source-cpp">a2.<span class="me1">get_allocator</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td>a2} 中提取该元素}。确保：指代被传输 <span class="t-c"><span class="mw-geshi cpp source-cpp">a2</span></span> 元素的指针和引用仍指代相同的这些元素，但将作为 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的成员。指代已传输元素的迭代器和指代 <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span> 的所有迭代器都将失效，但指向 <span class="t-c"><span class="mw-geshi cpp source-cpp">a2</span></span> 中剩余元素的迭代器将保持有效
+</td>
+<td>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N)</span>，其中 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">N</span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp">a2.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">N· <span class="br0">(</span>a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">+</span> <span class="nu0">1</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">erase</span><span class="br0">(</span>k<span class="br0">)</span></span></span>
+</td>
+<td><code>size_type</code>
+</td>
+<td>
+</td>
+<td>擦除键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">k</span></span> 的所有元素
+</td>
+<td>擦除的元素数量
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">count</span><span class="br0">(</span>k<span class="br0">)</span></span></span>)，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">erase</span><span class="br0">(</span>kx<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td><code>size_type</code>
+</td>
+<td>
+</td>
+<td>擦除键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">kx</span></span> 的所有元素
+</td>
+<td>擦除的元素数量
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">count</span><span class="br0">(</span>kx<span class="br0">)</span></span></span>)，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">erase</span><span class="br0">(</span>q<span class="br0">)</span></span></span>
+</td>
+<td><code>iterator</code>
+</td>
+<td>
+</td>
+<td>擦除 <span class="t-c"><span class="mw-geshi cpp source-cpp">q</span></span> 指向的元素
+</td>
+<td>擦除之前，紧跟在 <span class="t-c"><span class="mw-geshi cpp source-cpp">q</span></span> 之后的迭代器
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">erase</span><span class="br0">(</span>r<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>
+</td>
+<td><code>iterator</code>
+</td>
+<td>
+</td>
+<td>擦除 <span class="t-c"><span class="mw-geshi cpp source-cpp">r</span></span> 指向的元素
+</td>
+<td>擦除之前紧跟在 <span class="t-c"><span class="mw-geshi cpp source-cpp">r</span></span> 之后的迭代器
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">erase</span><span class="br0">(</span>q1, q2<span class="br0">)</span></span></span>
+</td>
+<td><code>iterator</code>
+</td>
+<td>
+</td>
+<td>擦除范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">q1</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">q2</span></span><code>)</code> 内的所有元素
+</td>
+<td>擦除之前紧随所擦除元素的迭代器
+</td>
+<td>平均为线性 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>q1, q2<span class="br0">)</span></span></span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">clear</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>
+</td>
+<td>
+</td>
+<td>擦除容器中的所有元素。确保：<span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">empty</span><span class="br0">(</span><span class="br0">)</span></span></span> 为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>
+</td>
+<td>
+</td>
+<td>与 <span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span> 成线性
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">find</span><span class="br0">(</span>k<span class="br0">)</span></span></span>
+</td>
+<td><code>iterator</code>；对于常量 <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 为 <code>const_iterator</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>指向键等价于 <span class="t-c"><span class="mw-geshi cpp source-cpp">k</span></span> 的元素的迭代器，或当不存在这种元素时为 <span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">find</span><span class="br0">(</span>ke<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>?
+</td>
+<td><code>iterator</code>；对于常量 <span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran</span></span> 为 <code>const_iterator</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>指向键等价于 <span class="t-c"><span class="mw-geshi cpp source-cpp">ke</span></span> 的元素的迭代器，或当不存在这种元素时为 <span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(1)</span>，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">count</span><span class="br0">(</span>k<span class="br0">)</span></span></span>
+</td>
+<td><code>size_type</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">k</span></span> 的元素数量
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">count</span><span class="br0">(</span>k<span class="br0">)</span></span></span>)，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">count</span><span class="br0">(</span>ke<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span>?
+</td>
+<td><code>size_type</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">ke</span></span> 的元素数量
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">count</span><span class="br0">(</span>ke<span class="br0">)</span></span></span>)，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">contains</span><span class="br0">(</span>k<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>?
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">find</span><span class="br0">(</span>k<span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> b.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">contains</span><span class="br0">(</span>ke<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>?
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">find</span><span class="br0">(</span>ke<span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> a_tran.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">equal_range</span><span class="br0">(</span>k<span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span></span><br><span class="mw-geshi cpp source-cpp">  iterator,</span><br><span class="mw-geshi cpp source-cpp">  iterator<span class="sy1">&gt;</span></span>;
+<p>对于常量 <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 为 <span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span></span><br><span class="mw-geshi cpp source-cpp">  const_iterator,</span><br><span class="mw-geshi cpp source-cpp">  const_iterator<span class="sy1">&gt;</span></span>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>包含键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">k</span></span> 的所有元素的范围。不存在这样的元素时返回
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/pair/make_pair.html"><span class="kw1100">std::<span class="me2">make_pair</span></span></a><span class="br0">(</span></span><br><span class="mw-geshi cpp source-cpp">  b.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, b.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span></span></span>
+</p>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">count</span><span class="br0">(</span>k<span class="br0">)</span></span></span>)，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">equal_range</span><span class="br0">(</span>ke<span class="br0">)</span></span></span><br><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>?
+</td>
+<td><span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span></span><br><span class="mw-geshi cpp source-cpp">  iterator,</span><br><span class="mw-geshi cpp source-cpp">  iterator<span class="sy1">&gt;</span></span>;
+<p>对于常量 <span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran</span></span> 为 <span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span></span><br><span class="mw-geshi cpp source-cpp">  const_iterator,</span><br><span class="mw-geshi cpp source-cpp">  const_iterator<span class="sy1">&gt;</span></span>
+</p>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>包含键等于 <span class="t-c"><span class="mw-geshi cpp source-cpp">ke</span></span> 的所有元素的范围。不存在这样的元素时返回
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/pair/make_pair.html"><span class="kw1100">std::<span class="me2">make_pair</span></span></a><span class="br0">(</span></span><br><span class="mw-geshi cpp source-cpp">  a_tran.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">  a_tran.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span></span></span>
+</p>
+</td>
+<td>平均 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">count</span><span class="br0">(</span>ke<span class="br0">)</span></span></span>)，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td><code>size_type</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 包含的桶数
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">max_bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td><code>size_type</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 可以包含的存储桶数量的上限
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket</span><span class="br0">(</span>k<span class="br0">)</span></span></span>
+</td>
+<td><code>size_type</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&gt;</span> <span class="nu0">0</span></span></span>
+</td>
+<td>
+</td>
+<td>如果存在任何具有等价于 <span class="t-c"><span class="mw-geshi cpp source-cpp">k</span></span> 的键的元素，则为在其中找到此类元素的桶的索引。返回值在 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 中
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">bucket</span><span class="br0">(</span>ke<span class="br0">)</span></span></span>
+</td>
+<td><code>size_type</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.</span><br><span class="mw-geshi cpp source-cpp">bucket_count<span class="br0">(</span><span class="br0">)</span> <span class="sy1">&gt;</span> <span class="nu0">0</span></span></span>
+</td>
+<td>
+</td>
+<td>如果存在任何具有等价于 <span class="t-c"><span class="mw-geshi cpp source-cpp">ke</span></span> 的键的元素，则为在其中找到此类元素的桶的索引。返回值必然在 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">a_tran.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 范围内
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_size</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td><code>size_type</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 在范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 内
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span><sup>th</sup> 桶中的元素数量
+</td>
+<td><span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O</span>(<span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_size</span><span class="br0">(</span>n<span class="br0">)</span></span></span>)
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">begin</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td><code>local_iterator</code>；对于常量 <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 为 <code>const_local_iterator</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 在范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 内
+</td>
+<td>
+</td>
+<td>指向桶中第一个元素的迭代器。如果桶是空的，则 <span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">begin</span><span class="br0">(</span>n<span class="br0">)</span> <span class="sy1">==</span> b.<span class="me1">end</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">end</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td><code>local_iterator</code>；对于常量 <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> 为 <code>const_local_iterator</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 在范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 内
+</td>
+<td>
+</td>
+<td>迭代器，它是桶的末尾后值
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">cbegin</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td><code>const_local_iterator</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 在范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 内
+</td>
+<td>
+</td>
+<td>指向桶中第一个元素的迭代器。如果桶是空的，则 <span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">cbegin</span><span class="br0">(</span>n<span class="br0">)</span> <span class="sy1">==</span> b.<span class="me1">cend</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">cend</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td><code>const_local_iterator</code>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 在范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span></span></span><code>)</code> 内
+</td>
+<td>
+</td>
+<td>迭代器，它是桶的末尾后值
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">load_factor</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">float</span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>每个桶的平均元素数量
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">b.<span class="me1">max_load_factor</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">float</span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>容器尝试保持负载系数小于或等于的正数。容器根据需要自动增加桶的数量，以将负载系数保持在该数值以下
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">max_load_factor</span><span class="br0">(</span>z<span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">z</span></span> 为正。可以使用 <span class="t-c"><span class="mw-geshi cpp source-cpp">z</span></span> 作为提示来更改容器的最大负载系数
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>常数
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">rehash</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>
+</td>
+<td>
+</td>
+<td>保证：
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&gt;=</span></span><br><span class="mw-geshi cpp source-cpp">  a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">/</span> a.<span class="me1">max_load_factor</span><span class="br0">(</span><span class="br0">)</span></span></span>
+且 <span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">bucket_count</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&gt;=</span> n</span></span>
+</p>
+</td>
+<td>
+</td>
+<td>平均为与 <span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span></span></span> 成线性，最坏 <span class="texhtml" style="white-space:nowrap;font-family:'Times New Roman',serif;font-size:120%;line-height:1em;margin-left:-0.1em;">O(N<sup>2</sup>)</span>
+</td></tr>
+<tr>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">reserve</span><span class="br0">(</span>n<span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td><span class="t-c"><span class="mw-geshi cpp source-cpp">a.<span class="me1">rehash</span><span class="br0">(</span><a href="../numeric/math/ceil.html"><span class="kw1353">std::<span class="me2">ceil</span></span></a><span class="br0">(</span></span><br><span class="mw-geshi cpp source-cpp">  n <span class="sy2">/</span> a.<span class="me1">max_load_factor</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span></span></span>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+</table>
+</div>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：考虑成员函数的要求 </td></tr></table>
+<h3><span class="mw-headline" id=".E6.A0.87.E5.87.86.E5.BA.93">标准库</span></h3>
+<p>下列标准库容器均满足<span style="font-style:italic">无序关联容器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(UnorderedAssociativeContainer)</span> ：
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../container/unordered_set.html" title="cpp/container/unordered set"> <span class="t-lines"><span>unordered_set</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span></div></div>
+</td>
+<td>   唯一键的集合，按照键生成散列  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../container/unordered_multiset.html" title="cpp/container/unordered multiset"> <span class="t-lines"><span>unordered_multiset</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span></div></div>
+</td>
+<td>   键的集合，按照键生成散列  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../container/unordered_map.html" title="cpp/container/unordered map"> <span class="t-lines"><span>unordered_map</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span></div></div>
+</td>
+<td>   键值对的集合，按照键生成散列，键是唯一的  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../container/unordered_multimap.html" title="cpp/container/unordered multimap"> <span class="t-lines"><span>unordered_multimap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span></div></div>
+</td>
+<td>   键值对的集合，按照键生成散列  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2156">LWG 2156</a>
+</td>
+<td> C++11
+</td>
+<td> 重散列后负载系数只能严格小于最大负载系数
+</td>
+<td> 可以等于最大负载系数
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 27224/1000000
+Preprocessor generated node count: 28149/1000000
+Post‐expand include size: 394860/4194304 bytes
+Template argument size: 81091/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:9313-0!*!0!!zh!*!zh!* and timestamp 20250322194719 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/named_req/UnorderedAssociativeContainer&amp;oldid=96039">https://zh.cppreference.com/mwiki/index.php?title=cpp/named_req/UnorderedAssociativeContainer&amp;oldid=96039</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/named_req/UnorderedAssociativeContainer">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年11月21日 (星期四) 22:33。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 35.903 secs. -->
+	</body>
+<!-- Cached 20250322194720 -->
+</html>

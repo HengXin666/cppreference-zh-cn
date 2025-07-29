@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>std::num_put&lt;CharT,OutputIt&gt;::put, std::num_put&lt;CharT,OutputIt&gt;::do_put</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/locale/num_put/put","wgTitle":"cpp/locale/num put/put","wgCurRevisionId":99099,"wgArticleId":2876,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/locale/num_put/put","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_locale_num_put_put skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::num_put&lt;CharT,OutputIt&gt;::</span>put, <span style="font-size:0.8em; line-height:125%">std::num_put&lt;CharT,OutputIt&gt;::</span>do_put</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../locale.html" title="cpp/locale">locale</a>‎ | <a href="../num_put.html" title="cpp/locale/num put">num put</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../text.html" title="cpp/text">文本处理库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../../locale.html" title="cpp/locale">本地化库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../regex.html" title="cpp/regex">正则表达式库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility/format.html" title="cpp/utility/format">格式化库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../text.html#.E7.A9.BA.E7.BB.88.E6.AD.A2.E5.BA.8F.E5.88.97.E5.B7.A5.E5.85.B7" title="cpp/text">空终止序列工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string/byte.html" title="cpp/string/byte">字节字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string/multibyte.html" title="cpp/string/multibyte">多字节字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string/wide.html" title="cpp/string/wide">宽字符串</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../text.html#.E5.88.9D.E7.AD.89.E6.95.B0.E5.80.BC.E8.BD.AC.E6.8D.A2" title="cpp/text">初等数值转换</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/to_chars.html" title="cpp/utility/to chars"><span class="t-lines"><span>to_chars</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/to_chars_result.html" title="cpp/utility/to chars result"><span class="t-lines"><span>to_chars_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/from_chars.html" title="cpp/utility/from chars"><span class="t-lines"><span>from_chars</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/from_chars_result.html" title="cpp/utility/from chars result"><span class="t-lines"><span>from_chars_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/chars_format.html" title="cpp/utility/chars format"><span class="t-lines"><span>chars_format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../text.html#.E6.96.87.E6.9C.AC.E7.BC.96.E7.A0.81.E8.AF.86.E5.88.AB" title="cpp/text">文本编码识别</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../text/text_encoding.html" title="cpp/text/text encoding"><span class="t-lines"><span>text_encoding</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../locale.html" title="cpp/locale">本地化库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../../locale.html#.E6.9C.AC.E5.9C.B0.E7.8E.AF.E5.A2.83.E4.B8.8E.E5.88.BB.E9.9D.A2" title="cpp/locale">本地环境与刻面</a><code>  </code></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#.E6.9C.AC.E5.9C.B0.E7.8E.AF.E5.A2.83" title="cpp/locale">本地环境</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../has_facet.html" title="cpp/locale/has facet"><span class="t-lines"><span>has_facet</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../use_facet.html" title="cpp/locale/use facet"><span class="t-lines"><span>use_facet</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../locale.html" title="cpp/locale/locale"><span class="t-lines"><span>locale</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#.E5.88.BB.E9.9D.A2.E7.B1.BB.E5.88.AB.E5.9F.BA.E7.B1.BB" title="cpp/locale">刻面类别基类</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ctype_base.html" title="cpp/locale/ctype base"><span class="t-lines"><span>ctype_base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../codecvt_base.html" title="cpp/locale/codecvt base"><span class="t-lines"><span>codecvt_base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../messages_base.html" title="cpp/locale/messages base"><span class="t-lines"><span>messages_base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../time_base.html" title="cpp/locale/time base"><span class="t-lines"><span>time_base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../money_base.html" title="cpp/locale/money base"><span class="t-lines"><span>money_base</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#ctype.EF.BC.88.E5.AD.97.E7.AC.A6.E7.B1.BB.E5.88.AB.EF.BC.89.E5.88.BB.E9.9D.A2" title="cpp/locale">ctype（字符类别）刻面</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ctype.html" title="cpp/locale/ctype"><span class="t-lines"><span>ctype</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ctype_char.html" title="cpp/locale/ctype char"><span class="t-lines"><span>ctype<span style="font-size:0.8em; line-height:125%">&lt;char&gt;</span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ctype_byname.html" title="cpp/locale/ctype byname"><span class="t-lines"><span>ctype_byname</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../codecvt.html" title="cpp/locale/codecvt"><span class="t-lines"><span>codecvt</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../codecvt_byname.html" title="cpp/locale/codecvt byname"><span class="t-lines"><span>codecvt_byname</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#numeric.EF.BC.88.E6.95.B0.E5.80.BC.EF.BC.89.E5.88.BB.E9.9D.A2" title="cpp/locale">numeric（数值）刻面</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../num_get.html" title="cpp/locale/num get"><span class="t-lines"><span>num_get</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../num_put.html" title="cpp/locale/num put"><span class="t-lines"><span>num_put</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../numpunct.html" title="cpp/locale/numpunct"><span class="t-lines"><span>numpunct</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../numpunct_byname.html" title="cpp/locale/numpunct byname"><span class="t-lines"><span>numpunct_byname</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#collate.EF.BC.88.E6.A0.A1.E6.8E.92.EF.BC.89.E5.88.BB.E9.9D.A2" title="cpp/locale">collate（校排）刻面</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../collate.html" title="cpp/locale/collate"><span class="t-lines"><span>collate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../collate_byname.html" title="cpp/locale/collate byname"><span class="t-lines"><span>collate_byname</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#time.EF.BC.88.E6.97.B6.E9.97.B4.EF.BC.89.E5.88.BB.E9.9D.A2" title="cpp/locale">time（时间）刻面</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../time_get.html" title="cpp/locale/time get"><span class="t-lines"><span>time_get</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../time_put.html" title="cpp/locale/time put"><span class="t-lines"><span>time_put</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../time_get_byname.html" title="cpp/locale/time get byname"><span class="t-lines"><span>time_get_byname</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../time_put_byname.html" title="cpp/locale/time put byname"><span class="t-lines"><span>time_put_byname</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#monetary.EF.BC.88.E8.B4.A7.E5.B8.81.EF.BC.89.E5.88.BB.E9.9D.A2" title="cpp/locale">monetary（货币）刻面</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../money_get.html" title="cpp/locale/money get"><span class="t-lines"><span>money_get</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../money_put.html" title="cpp/locale/money put"><span class="t-lines"><span>money_put</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../moneypunct.html" title="cpp/locale/moneypunct"><span class="t-lines"><span>moneypunct</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../moneypunct_byname.html" title="cpp/locale/moneypunct byname"><span class="t-lines"><span>moneypunct_byname</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#messages.EF.BC.88.E6.B6.88.E6.81.AF.EF.BC.89.E5.88.BB.E9.9D.A2" title="cpp/locale">messages（消息）刻面</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../messages.html" title="cpp/locale/messages"><span class="t-lines"><span>messages</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../messages_byname.html" title="cpp/locale/messages byname"><span class="t-lines"><span>messages_byname</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../locale.html#.E5.AD.97.E7.AC.A6.E5.88.86.E7.B1.BB.E4.B8.8E.E8.BD.AC.E6.8D.A2" title="cpp/locale">字符分类与转换</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#.E5.AD.97.E7.AC.A6.E5.88.86.E7.B1.BB" title="cpp/locale">字符分类</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isspace.html" title="cpp/locale/isspace"><span class="t-lines"><span>isspace</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../iscntrl.html" title="cpp/locale/iscntrl"><span class="t-lines"><span>iscntrl</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isupper.html" title="cpp/locale/isupper"><span class="t-lines"><span>isupper</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../islower.html" title="cpp/locale/islower"><span class="t-lines"><span>islower</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isalpha.html" title="cpp/locale/isalpha"><span class="t-lines"><span>isalpha</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ispunct.html" title="cpp/locale/ispunct"><span class="t-lines"><span>ispunct</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isdigit.html" title="cpp/locale/isdigit"><span class="t-lines"><span>isdigit</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isxdigit.html" title="cpp/locale/isxdigit"><span class="t-lines"><span>isxdigit</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isalnum.html" title="cpp/locale/isalnum"><span class="t-lines"><span>isalnum</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isblank.html" title="cpp/locale/isblank"><span class="t-lines"><span>isblank</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isprint.html" title="cpp/locale/isprint"><span class="t-lines"><span>isprint</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../isgraph.html" title="cpp/locale/isgraph"><span class="t-lines"><span>isgraph</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#.E5.AD.97.E7.AC.A6.E8.BD.AC.E6.8D.A2" title="cpp/locale">字符转换</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../toupper.html" title="cpp/locale/toupper"><span class="t-lines"><span>toupper</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../tolower.html" title="cpp/locale/tolower"><span class="t-lines"><span>tolower</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../locale.html#.E5.AD.97.E7.AC.A6.E4.B8.B2.E4.B8.8E.E6.B5.81.E8.BD.AC.E6.8D.A2" title="cpp/locale">字符串与流转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../wstring_convert.html" title="cpp/locale/wstring convert"><span class="t-lines"><span>wstring_convert</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="deprecated in C++17, removed in C++26">C++11/17/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../wbuffer_convert.html" title="cpp/locale/wbuffer convert"><span class="t-lines"><span>wbuffer_convert</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="deprecated in C++17, removed in C++26">C++11/17/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../locale.html#.E7.8B.AC.E7.AB.8B.E4.BA.8E.E6.9C.AC.E5.9C.B0.E7.8E.AF.E5.A2.83.E7.9A.84_Unicode_.E8.BD.AC.E6.8D.A2.E5.88.BB.E9.9D.A2" title="cpp/locale">Unicode 转换刻面</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../codecvt_utf8.html" title="cpp/locale/codecvt utf8"><span class="t-lines"><span>codecvt_utf8</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="deprecated in C++17, removed in C++26">C++11/17/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../codecvt_utf16.html" title="cpp/locale/codecvt utf16"><span class="t-lines"><span>codecvt_utf16</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="deprecated in C++17, removed in C++26">C++11/17/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../codecvt_utf8_utf16.html" title="cpp/locale/codecvt utf8 utf16"><span class="t-lines"><span>codecvt_utf8_utf16</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="deprecated in C++17, removed in C++26">C++11/17/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../codecvt_mode.html" title="cpp/locale/codecvt mode"><span class="t-lines"><span>codecvt_mode</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="deprecated in C++17, removed in C++26">C++11/17/26*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../locale.html#C_.E5.BA.93.E6.9C.AC.E5.9C.B0.E7.8E.AF.E5.A2.83" title="cpp/locale">C 库本地环境</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../LC_categories.html" title="cpp/locale/LC categories"><span class="t-lines"><span>LC_ALL</span><span>LC_COLLATE</span><span>LC_CTYPE</span><span>LC_MONETARY</span><span>LC_NUMERIC</span><span>LC_TIME</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../setlocale.html" title="cpp/locale/setlocale"><span class="t-lines"><span>setlocale</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../localeconv.html" title="cpp/locale/localeconv"><span class="t-lines"><span>localeconv</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../lconv.html" title="cpp/locale/lconv"><span class="t-lines"><span>lconv</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../num_put.html" title="cpp/locale/num put"><tt>std::num_put</tt></a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">成员函数</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="num_put.html" title="cpp/locale/num put/num put"><span class="t-lines"><span>num_put::num_put</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="~num_put.html" title="cpp/locale/num put/~num put"><span class="t-lines"><span>num_put::~num_put</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>num_put::put</span><span>num_put::do_put</span></span></strong></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../../header/locale.html" title="cpp/header/locale">&lt;locale&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(1)</td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">public</span><span class="sy4">:</span><br>
+<p>iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+</p>
+               char_type fill, <span class="kw4">bool</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+               char_type fill, <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp">iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+               char_type fill, <span class="kw4">long</span> <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+               char_type fill, <span class="kw4">unsigned</span> <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp">iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+               char_type fill, <span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+               char_type fill, <span class="kw4">double</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+               char_type fill, <span class="kw4">long</span> <span class="kw4">double</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">iter_type put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+               char_type fill, <span class="kw4">const</span> <span class="kw4">void</span><span class="sy2">*</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(2)</td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">protected</span><span class="sy4">:</span><br>
+<p><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+</p>
+                          char_type fill, <span class="kw4">bool</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+                          char_type fill, <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+                          char_type fill, <span class="kw4">long</span> <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+                          char_type fill, <span class="kw4">unsigned</span> <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+                          char_type fill, <span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+                          char_type fill, <span class="kw4">double</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+                          char_type fill, <span class="kw4">long</span> <span class="kw4">double</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span> iter_type do_put<span class="br0">(</span> iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,<br>
+                          char_type fill, <span class="kw4">const</span> <span class="kw4">void</span><span class="sy2">*</span> val <span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 公开成员函数，调用最终派生类的受保护虚成员函数 <code>do_put</code>。</div>
+<div class="t-li1"><span class="t-li">2)</span> 写字符到输出序列 <span class="t-c"><span class="mw-geshi cpp source-cpp">out</span></span>，这些字符表示 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 的值，按格式标志 <span class="t-c"><span class="mw-geshi cpp source-cpp">str.<span class="me1">flags</span><span class="br0">(</span><span class="br0">)</span></span></span> 和流 <span class="t-c"><span class="mw-geshi cpp source-cpp">str</span></span> 中浸染的本地环境的 <span class="t-lc"><a href="../numpunct.html" title="cpp/locale/numpunct">std::numpunct</a></span> 和 <span class="t-lc"><a href="../ctype.html" title="cpp/locale/ctype">std::ctype</a></span> 刻面所要求者格式化。此函数会被所有有格式输出流运算符，如 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> n<span class="sy4">;</span></span></span> 调用。</div>
+<p>转换分为四个阶段进行：
+</p>
+<h4><span class="mw-headline" id=".E9.98.B6.E6.AE.B5_1.EF.BC.9A.E9.80.89.E6.8B.A9.E8.BD.AC.E6.8D.A2.E8.AF.B4.E6.98.8E.E7.AC.A6">阶段 1：选择转换说明符</span></h4>
+<ul><li> 获得输入/输出格式标志，如同以
+</li></ul>
+<dl><dd> <span class="t-c"><span class="mw-geshi cpp source-cpp">fmtflags basefield <span class="sy1">=</span> <span class="br0">(</span>str.<span class="me1">flags</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1686">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">basefield</span></span></a><span class="br0">)</span><span class="sy4">;</span></span></span>
+</dd><dd> <span class="t-c"><span class="mw-geshi cpp source-cpp">fmtflags uppercase <span class="sy1">=</span> <span class="br0">(</span>str.<span class="me1">flags</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1700">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">uppercase</span></span></a><span class="br0">)</span><span class="sy4">;</span></span></span>
+</dd><dd> <span class="t-c"><span class="mw-geshi cpp source-cpp">fmtflags floatfield <span class="sy1">=</span> <span class="br0">(</span>str.<span class="me1">flags</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1693">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">floatfield</span></span></a><span class="br0">)</span><span class="sy4">;</span></span></span>
+</dd><dd> <span class="t-c"><span class="mw-geshi cpp source-cpp">fmtflags showpos <span class="sy1">=</span> <span class="br0">(</span>str.<span class="me1">flags</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1697">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">showpos</span></span></a><span class="br0">)</span><span class="sy4">;</span></span></span>
+</dd><dd> <span class="t-c"><span class="mw-geshi cpp source-cpp">fmtflags showbase <span class="sy1">=</span> <span class="br0">(</span>str.<span class="me1">flags</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1695">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">showbase</span></span></a><span class="br0">)</span><span class="sy4">;</span></span></span>
+</dd><dd> <span class="t-c"><span class="mw-geshi cpp source-cpp">fmtflags showpoint <span class="sy1">=</span> <span class="br0">(</span>str.<span class="me1">flags</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1696">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">showpoint</span></span></a><span class="br0">)</span><span class="sy4">;</span></span></span>
+</dd></dl>
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 的类型是 <span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span>：
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">boolalpha <span class="sy1">==</span> <span class="nu0">0</span></span></span>，那么将 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 转换到 <span class="mw-geshi cpp source-cpp"><span class="kw4">int</span></span> 类型并进行整数输出。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">boolalpha <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span></span></span>，那么在 <span class="t-c"><span class="mw-geshi cpp source-cpp">val <span class="sy1">==</span> <span class="kw2">true</span></span></span> 时获得<span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../numpunct.html"><span class="kw1965">std::<span class="me2">numpunct</span></span></a><span class="sy1">&lt;</span>charT<span class="sy1">&gt;&gt;</span><span class="br0">(</span>str.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>.<span class="me1">truename</span><span class="br0">(</span><span class="br0">)</span></span></span>，或者在 <span class="t-c"><span class="mw-geshi cpp source-cpp">v <span class="sy1">==</span> <span class="kw2">false</span></span></span> 时获得 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../numpunct.html"><span class="kw1965">std::<span class="me2">numpunct</span></span></a><span class="sy1">&lt;</span>charT<span class="sy1">&gt;&gt;</span><span class="br0">(</span>str.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>.<span class="me1">falsename</span><span class="br0">(</span><span class="br0">)</span></span></span>，并以 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>out<span class="sy2">++</span> <span class="sy1">=</span> c</span></span> 输出该字符串的每个相继字符 <span class="t-c"><span class="mw-geshi cpp source-cpp">c</span></span> 到 <span class="t-c"><span class="mw-geshi cpp source-cpp">out</span></span>。此时不进行进一步的操作，函数返回 <span class="t-c"><span class="mw-geshi cpp source-cpp">out</span></span>。
+</li></ul>
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 的类型是整数类型，那么选择下列首个可应用选项：
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">basefield <span class="sy1">==</span> oct</span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>o</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">basefield <span class="sy1">==</span> hex <span class="sy3">&amp;&amp;</span> <span class="sy3">!</span>uppercase</span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>x</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">basefield <span class="sy1">==</span> hex</span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>X</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 的类型有符号，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>d</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 的类型无符号，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>u</span></span>。
+</li></ul>
+</li><li> 对于整数类型，在有需要时添加长度修饰符到转换说明：对于 <span class="mw-geshi cpp source-cpp"><span class="kw4">long</span></span> 和 <span class="mw-geshi cpp source-cpp"><span class="kw4">unsigned</span> <span class="kw4">long</span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp">l</span></span><span class="t-rev-inl t-since-cxx11"><span>，对于 <span class="mw-geshi cpp source-cpp"><span class="kw4">long</span> <span class="kw4">long</span></span> 和 <span class="mw-geshi cpp source-cpp"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp">ll</span></span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 是浮点数类型，那么选择下列首个可应用选项：
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx11"><td>
+<dl><dd><ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1692">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">fixed</span></span></a></span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>f</span></span>。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span></td></tr>
+<tr class="t-rev t-since-cxx11"><td>
+<dl><dd><ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1692">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">fixed</span></span></a> <span class="sy3">&amp;&amp;</span> <span class="sy3">!</span>uppercase</span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>f</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1692">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">fixed</span></span></a></span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>F</span></span>。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<dl><dd><ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1691">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">scientific</span></span></a> <span class="sy3">&amp;&amp;</span> <span class="sy3">!</span>uppercase</span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>e</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1691">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">scientific</span></span></a></span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>E</span></span>。
+</li></ul>
+</dd></dl>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<dl><dd><ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <span class="br0">(</span><a href="../../io/ios_base/fmtflags.html"><span class="kw1692">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">fixed</span></span></a> <span class="sy3">|</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1691">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">scientific</span></span></a><span class="br0">)</span> <span class="sy3">&amp;&amp;</span> <span class="sy3">!</span>uppercase</span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>a</span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <span class="br0">(</span><a href="../../io/ios_base/fmtflags.html"><span class="kw1692">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">fixed</span></span></a> <span class="sy3">|</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1691">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">scientific</span></span></a><span class="br0">)</span></span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>A</span></span>。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<dl><dd><ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span>uppercase</span></span>，那么会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>g</span></span>。
+</li><li> 否则就会使用转换说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>G</span></span>。
+</li></ul>
+</dd><dd> 并且：
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 的类型是 <span class="mw-geshi cpp source-cpp"><span class="kw4">long</span> <span class="kw4">double</span></span>，那么会添加长度修饰符 <span class="t-c"><span class="mw-geshi cpp source-cpp">L</span></span> 到转换说明符。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 是浮点数类型<span class="t-rev-inl t-since-cxx11"><span>且 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy3">!</span><span class="sy1">=</span> <span class="br0">(</span>ios_base<span class="sy4">::</span><span class="me2">fixed</span> <span class="sy3">|</span> ios_base<span class="sy4">::</span><span class="me2">scientific</span><span class="br0">)</span></span></span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>，那么添加设为 <span class="t-c"><span class="mw-geshi cpp source-cpp">str.<span class="me1">precision</span><span class="br0">(</span><span class="br0">)</span></span></span> 的精度说明符。否则不指定精度。
+</li></ul>
+</dd></dl>
+<ul><li> 对于整数和浮点数类型，如果设置了 <span class="t-c"><span class="mw-geshi cpp source-cpp">showpos</span></span>，那么会前附修饰符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">+</span></span></span>。
+</li><li> 对于整数类型，如果设置了 <span class="t-c"><span class="mw-geshi cpp source-cpp">showbase</span></span>，那么会前附修饰符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="co2">#</span></span></span>。
+</li><li> 对于浮点数类型，如果设置了 <span class="t-c"><span class="mw-geshi cpp source-cpp">showpoint</span></span>，那么会前附修饰符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="co2">#</span></span></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">val</span></span> 的类型是 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="sy2">*</span></span>，那么会使用格式说明符 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>p</span></span>。
+</li><li> 如同以在 "C" 本地环境中调用 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../io/c/fprintf.html"><span class="kw1849">std::<span class="me2">printf</span></span></a><span class="br0">(</span>spec, val<span class="br0">)</span></span></span> 创建窄字符串，其中 <span class="t-c"><span class="mw-geshi cpp source-cpp">spec</span></span> 是所选的格式说明符。
+</li></ul>
+<h4><span class="mw-headline" id=".E9.98.B6.E6.AE.B5_2.EF.BC.9A.E6.9C.AC.E5.9C.B0.E7.8E.AF.E5.A2.83.E9.99.90.E5.AE.9A.E8.BD.AC.E6.8D.A2">阶段 2：本地环境限定转换</span></h4>
+<ul><li> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../ctype.html"><span class="kw1942">std::<span class="me2">ctype</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span><span class="br0">(</span>str.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>.<span class="me1">widen</span><span class="br0">(</span>c<span class="br0">)</span></span></span>，将阶段 1 中获得的每个小数点 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">'.'</span></span></span> 以外的字符 <span class="t-c"><span class="mw-geshi cpp source-cpp">c</span></span> 转换到 <code>CharT</code>。
+</li><li> 对于算术类型，按照 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../numpunct.html"><span class="kw1965">std::<span class="me2">numpunct</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span><span class="br0">(</span>str.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>.<span class="me1">grouping</span><span class="br0">(</span><span class="br0">)</span></span></span> 提供的分组规则，插入从 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../numpunct.html"><span class="kw1965">std::<span class="me2">numpunct</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span><span class="br0">(</span>str.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>.<span class="me1">thousands_sep</span><span class="br0">(</span><span class="br0">)</span></span></span> 获得的千位分隔字符到序列中。
+</li><li> 以 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../numpunct.html"><span class="kw1965">std::<span class="me2">numpunct</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span><span class="br0">(</span>str.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>.<span class="me1">decimal_point</span><span class="br0">(</span><span class="br0">)</span></span></span> 替换小数点字符（<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">'.'</span></span></span>）。
+</li></ul>
+<h4><span class="mw-headline" id=".E9.98.B6.E6.AE.B5_3.EF.BC.9A.E5.A1.AB.E5.85.85">阶段 3：填充</span></h4>
+<ul><li> 如同以 <span class="t-c"><span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">fmtflags</span> adjustfield <span class="sy1">=</span> <span class="br0">(</span>flags <span class="sy3">&amp;</span> <span class="br0">(</span><a href="../../io/ios_base/fmtflags.html"><span class="kw1690">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">adjustfield</span></span></a><span class="br0">)</span><span class="br0">)</span></span></span> 获得调整标志，并以如下方式检验它以鉴别填充位置：
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">adjustfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1687">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">left</span></span></a></span></span>，那么会在后方填充。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">adjustfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1688">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">right</span></span></a></span></span>，那么会在前方填充。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">adjustfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1689">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">internal</span></span></a></span></span> 且表示中出现符号字符，那么会在符号后填充。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">adjustfield <span class="sy1">==</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1689">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">internal</span></span></a></span></span> 而阶段 1 表示以 0x 或 0X 开始，那么会在 x 或 X 后填充。
+</li><li> 否则就会在前方填充。
+</li></ul>
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">str.<span class="me1">width</span><span class="br0">(</span><span class="br0">)</span></span></span> 非零（例如刚使用了 <span class="t-lc"><a href="../../io/manip/setw.html" title="cpp/io/manip/setw">std::setw</a></span> ）且阶段 2 后的 <code>CharT</code> 数小于 <span class="t-c"><span class="mw-geshi cpp source-cpp">str.<span class="me1">width</span><span class="br0">(</span><span class="br0">)</span></span></span>，那么会在填充所指示的位置插入 <span class="t-c"><span class="mw-geshi cpp source-cpp">fill</span></span> 字符的副本，使得序列长度达到 <span class="t-c"><span class="mw-geshi cpp source-cpp">str.<span class="me1">width</span><span class="br0">(</span><span class="br0">)</span></span></span>。
+</li></ul>
+<p>任何情况下都会调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">str.<span class="me1">width</span><span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span></span></span> 以取消 <span class="t-lc"><a href="../../io/manip/setw.html" title="cpp/io/manip/setw">std::setw</a></span> 的效果。
+</p>
+<h4><span class="mw-headline" id=".E9.98.B6.E6.AE.B5_4.EF.BC.9A.E8.BE.93.E5.87.BA">阶段 4：输出</span></h4>
+<p>如同用 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>out<span class="sy2">++</span> <span class="sy1">=</span> c</span></span> 输出来自阶段 3 的 <code>CharT</code> 序列的每个相继字符 <span class="t-c"><span class="mw-geshi cpp source-cpp">c</span></span>。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> out
+</td>
+<td> -
+</td>
+<td> 指向首个要写入字符的迭代器
+</td></tr>
+<tr class="t-par">
+<td> str
+</td>
+<td> -
+</td>
+<td> 取得格式化信息来源的流
+</td></tr>
+<tr class="t-par">
+<td> fill
+</td>
+<td> -
+</td>
+<td> 需要填充结果到域宽时使用的填充字符
+</td></tr>
+<tr class="t-par">
+<td> val
+</td>
+<td> -
+</td>
+<td> 转换为字符串并输出的值
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp">out</span></span>
+</p>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>转换说明 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="co2">#o</span></span></span>（例如产生自 <span class="t-lc"><a href="../../io/manip/showbase.html" title="cpp/io/manip/showbase">std::showbase</a></span> 和 <span class="t-lc"><a href="../../io/manip/hex.html" title="cpp/io/manip/hex">std::oct</a></span> 的组合）不计为填充字符。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>格式化浮点数是 hexfloat 时（即 <span class="t-c"><span class="mw-geshi cpp source-cpp">floatfield <span class="sy1">==</span> <span class="br0">(</span><a href="../../io/ios_base/fmtflags.html"><span class="kw1692">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">fixed</span></span></a> <span class="sy3">|</span> <a href="../../io/ios_base/fmtflags.html"><span class="kw1691">std::<span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">scientific</span></span></a><span class="br0">)</span></span></span> 时），不使用流的精度；而是始终以足以准确表示值的精度打印该数。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><p>用平面直接输出数，并演示用户定义的刻面：</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;locale&gt;</span>
+ 
+<span class="co1">// 此定制 num_put 平面输出所有整数类型的平方（除了 long long）</span>
+<span class="kw1">struct</span> squaring_num_put <span class="sy4">:</span> <a href="../num_put.html"><span class="kw1962">std::<span class="me2">num_put</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span>
+<span class="br0">{</span>
+    iter_type do_put<span class="br0">(</span>iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,
+                     char_type fill, <span class="kw4">long</span> val<span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <a href="../num_put.html"><span class="kw1962">std::<span class="me2">num_put</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">do_put</span><span class="br0">(</span>out, str, fill, val <span class="sy2">*</span> val<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    iter_type do_put<span class="br0">(</span>iter_type out, <a href="../../io/ios_base.html"><span class="kw1673">std::<span class="me2">ios_base</span></span></a><span class="sy3">&amp;</span> str,
+                     char_type fill, <span class="kw4">unsigned</span> <span class="kw4">long</span> val<span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <a href="../num_put.html"><span class="kw1962">std::<span class="me2">num_put</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">do_put</span><span class="br0">(</span>out, str, fill, val <span class="sy2">*</span> val<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">auto</span><span class="sy3">&amp;</span> facet <span class="sy1">=</span> <a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../num_put.html"><span class="kw1962">std::<span class="me2">num_put</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;&gt;</span><span class="br0">(</span><a href="../locale.html"><span class="kw1898">std::<span class="me2">locale</span></span></a><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    facet.<span class="me1">put</span><span class="br0">(</span><a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>, <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>, <span class="st0">'0'</span>, <span class="nu16">2.71</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>.<span class="me1">imbue</span><span class="br0">(</span><a href="../locale.html"><span class="kw1898">std::<span class="me2">locale</span></span></a><span class="br0">(</span><a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a>.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span>, new squaring_num_put<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="nu0">6</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="sy1">&lt;&lt;</span> <span class="sy2">-</span><span class="nu0">12</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">2.71
+36 144</pre></div></div> 
+</div>
+<div class="t-example"><p>用户定义类型的 <span class="t-lc">operator&lt;&lt;</span> 的实现。</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;iterator&gt;</span>
+<span class="co2">#include &lt;locale&gt;</span>
+ 
+<span class="kw1">struct</span> base <span class="br0">{</span> <span class="kw4">long</span> x <span class="sy1">=</span> <span class="nu0">10</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+<a href="../../io/basic_ostream.html"><span class="kw1719">std::<span class="me2">basic_ostream</span></span></a><span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span>
+    operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span><a href="../../io/basic_ostream.html"><span class="kw1719">std::<span class="me2">basic_ostream</span></span></a><span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> os, <span class="kw4">const</span> base<span class="sy3">&amp;</span> b<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">try</span>
+    <span class="br0">{</span>
+        <span class="kw1">typename</span> <a href="../../io/basic_ostream.html"><span class="kw1719">std::<span class="me2">basic_ostream</span></span></a><span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">sentry</span> s<span class="br0">(</span>os<span class="br0">)</span><span class="sy4">;</span>
+ 
+        <span class="kw1">if</span> <span class="br0">(</span>s<span class="br0">)</span>
+        <span class="br0">{</span>
+            <a href="../../iterator/ostreambuf_iterator.html"><span class="kw674">std::<span class="me2">ostreambuf_iterator</span></span></a><span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span> it<span class="br0">(</span>os<span class="br0">)</span><span class="sy4">;</span>
+            <a href="../use_facet.html"><span class="kw1901">std::<span class="me2">use_facet</span></span></a><span class="sy1">&lt;</span><a href="../num_put.html"><span class="kw1962">std::<span class="me2">num_put</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span><span class="br0">(</span>os.<span class="me1">getloc</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+                .<span class="me1">put</span><span class="br0">(</span>it, os, os.<span class="me1">fill</span><span class="br0">(</span><span class="br0">)</span>, b.<span class="me1">x</span><span class="br0">)</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+    <span class="kw1">catch</span> <span class="br0">(</span>...<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="co1">// 设置 os 上的 badbit，而且在需要时重新抛出</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw1">return</span> os<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    base b<span class="sy4">;</span>
+    <a href="../../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> b<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">10</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue34">LWG 34</a>
+</td>
+<td> C++98
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span> 重载使用了 <span class="t-lc"><a href="../ctype.html" title="cpp/locale/ctype">std::ctype</a></span> 的不存在的成员 <span class="t-c"><span class="mw-geshi cpp source-cpp">truename</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">falsename</span></span>
+</td>
+<td> 使用 <span class="t-lc"><a href="../numpunct.html" title="cpp/locale/numpunct">std::numpunct</a></span> 的这些成员
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue231">LWG 231</a>
+</td>
+<td> C++98
+</td>
+<td> 只有在 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>flags <span class="sy3">&amp;</span> fixed<span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span></span></span> 或<br><span class="t-c"><span class="mw-geshi cpp source-cpp">str.<span class="me1">precision</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&gt;</span> <span class="nu0">0</span></span></span> 时才会添加精度说明符
+</td>
+<td> 移除这些条件
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue282">LWG 282</a>
+</td>
+<td> C++98
+</td>
+<td> 阶段 2 中只会对整数类型插入千位分隔符
+</td>
+<td> 对浮点数类型也会
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue4084">LWG 4084</a>
+</td>
+<td> C++11
+</td>
+<td> 无法打印 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"NAN"</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"INF"</span></span></span>
+</td>
+<td> 可以打印
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../io/basic_ostream/operator_ltlt.html" title="cpp/io/basic ostream/operator ltlt"> <span class="t-lines"><span>operator&lt;&lt;</span></span></a></div></div>
+</td>
+<td>  插入带格式数据 <br> <span class="t-mark" style="white-space: nowrap;">(<code>std::basic_ostream&lt;CharT,Traits&gt;</code> 的公开成员函数)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 11124/1000000
+Preprocessor generated node count: 15150/1000000
+Post‐expand include size: 206159/4194304 bytes
+Template argument size: 46235/4194304 bytes
+Highest expansion depth: 32/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:2876-0!*!0!!zh!*!zh!* and timestamp 20250318232107 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/locale/num_put/put&amp;oldid=99099">https://zh.cppreference.com/mwiki/index.php?title=cpp/locale/num_put/put&amp;oldid=99099</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/locale/num_put/put">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月17日 (星期一) 01:37。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<!-- Served in 10.679 secs. -->
+	</body>
+<!-- Cached 20250318232107 -->
+</html>

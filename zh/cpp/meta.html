@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>元编程库 (C++11 起)</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../common/favicon.ico">
+<link rel="stylesheet" href="../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/meta","wgTitle":"cpp/meta","wgCurRevisionId":99413,"wgArticleId":13990,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/meta","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_meta skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">元编程库 <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../cpp.html" title="cpp">cpp</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">元编程库</strong> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink"> 元编程库</strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">类型特征</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">类型类别</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_void.html" title="cpp/types/is void"><span class="t-lines"><span>is_void</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_null_pointer.html" title="cpp/types/is null pointer"><span class="t-lines"><span>is_null_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark" style="white-space: nowrap;">(<span title="libc++ 的 C++11 模式中不可用">DR*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_array.html" title="cpp/types/is array"><span class="t-lines"><span>is_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_pointer.html" title="cpp/types/is pointer"><span class="t-lines"><span>is_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_enum.html" title="cpp/types/is enum"><span class="t-lines"><span>is_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_union.html" title="cpp/types/is union"><span class="t-lines"><span>is_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_class.html" title="cpp/types/is class"><span class="t-lines"><span>is_class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_function.html" title="cpp/types/is function"><span class="t-lines"><span>is_function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_reference.html" title="cpp/types/is reference"><span class="t-lines"><span>is_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><code> </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_object.html" title="cpp/types/is object"><span class="t-lines"><span>is_object</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_scalar.html" title="cpp/types/is scalar"><span class="t-lines"><span>is_scalar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_compound.html" title="cpp/types/is compound"><span class="t-lines"><span>is_compound</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_integral.html" title="cpp/types/is integral"><span class="t-lines"><span>is_integral</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_floating_point.html" title="cpp/types/is floating point"><span class="t-lines"><span>is_floating_point</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_fundamental.html" title="cpp/types/is fundamental"><span class="t-lines"><span>is_fundamental</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_arithmetic.html" title="cpp/types/is arithmetic"><span class="t-lines"><span>is_arithmetic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_lvalue_reference.html" title="cpp/types/is lvalue reference"><span class="t-lines"><span>is_lvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_rvalue_reference.html" title="cpp/types/is rvalue reference"><span class="t-lines"><span>is_rvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_member_pointer.html" title="cpp/types/is member pointer"><span class="t-lines"><span>is_member_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_member_object_pointer.html" title="cpp/types/is member object pointer"><span class="t-lines"><span>is_member_object_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_member_function_pointer.html" title="cpp/types/is member function pointer"><span class="t-lines"><span>is_member_function_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型属性</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_const.html" title="cpp/types/is const"><span class="t-lines"><span>is_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_volatile.html" title="cpp/types/is volatile"><span class="t-lines"><span>is_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_empty.html" title="cpp/types/is empty"><span class="t-lines"><span>is_empty</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_polymorphic.html" title="cpp/types/is polymorphic"><span class="t-lines"><span>is_polymorphic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_final.html" title="cpp/types/is final"><span class="t-lines"><span>is_final</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_abstract.html" title="cpp/types/is abstract"><span class="t-lines"><span>is_abstract</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_aggregate.html" title="cpp/types/is aggregate"><span class="t-lines"><span>is_aggregate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_implicit_lifetime.html" title="cpp/types/is implicit lifetime"><span class="t-lines"><span>is_implicit_lifetime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_trivial.html" title="cpp/types/is trivial"><span class="t-lines"><span>is_trivial</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-deprecated-cxx26" style="white-space: nowrap;">(C++26 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_trivially_copyable.html" title="cpp/types/is trivially copyable"><span class="t-lines"><span>is_trivially_copyable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_standard_layout.html" title="cpp/types/is standard layout"><span class="t-lines"><span>is_standard_layout</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_literal_type.html" title="cpp/types/is literal type"><span class="t-lines"><span>is_literal_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark" style="white-space: nowrap;">(<span title="C++17 弃用">C++20 前*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_pod.html" title="cpp/types/is pod"><span class="t-lines"><span>is_pod</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-deprecated-cxx20" style="white-space: nowrap;">(C++20 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_signed.html" title="cpp/types/is signed"><span class="t-lines"><span>is_signed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_unsigned.html" title="cpp/types/is unsigned"><span class="t-lines"><span>is_unsigned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_bounded_array.html" title="cpp/types/is bounded array"><span class="t-lines"><span>is_bounded_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_unbounded_array.html" title="cpp/types/is unbounded array"><span class="t-lines"><span>is_unbounded_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_scoped_enum.html" title="cpp/types/is scoped enum"><span class="t-lines"><span>is_scoped_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/has_unique_object_representations.html" title="cpp/types/has unique object representations"><span class="t-lines"><span>has_unique_object_representations</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型特征常量</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/integral_constant.html" title="cpp/types/integral constant"><span class="t-lines"><span>integral_constant</span><span>bool_constant</span><span>true_type</span><span>false_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">元函数</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/conjunction.html" title="cpp/types/conjunction"><span class="t-lines"><span>conjunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/disjunction.html" title="cpp/types/disjunction"><span class="t-lines"><span>disjunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/negation.html" title="cpp/types/negation"><span class="t-lines"><span>negation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">受支持操作</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_constructible.html" title="cpp/types/is constructible"><span class="t-lines"><span>is_constructible</span><span>is_trivially_constructible</span><span>is_nothrow_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_default_constructible.html" title="cpp/types/is default constructible"><span class="t-lines"><span>is_default_constructible</span><span>is_trivially_default_constructible</span><span>is_nothrow_default_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_copy_constructible.html" title="cpp/types/is copy constructible"><span class="t-lines"><span>is_copy_constructible</span><span>is_trivially_copy_constructible</span><span>is_nothrow_copy_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_move_constructible.html" title="cpp/types/is move constructible"><span class="t-lines"><span>is_move_constructible</span><span>is_trivially_move_constructible</span><span>is_nothrow_move_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_assignable.html" title="cpp/types/is assignable"><span class="t-lines"><span>is_assignable</span><span>is_trivially_assignable</span><span>is_nothrow_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_copy_assignable.html" title="cpp/types/is copy assignable"><span class="t-lines"><span>is_copy_assignable</span><span>is_trivially_copy_assignable</span><span>is_nothrow_copy_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_move_assignable.html" title="cpp/types/is move assignable"><span class="t-lines"><span>is_move_assignable</span><span>is_trivially_move_assignable</span><span>is_nothrow_move_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_destructible.html" title="cpp/types/is destructible"><span class="t-lines"><span>is_destructible</span><span>is_trivially_destructible</span><span>is_nothrow_destructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/has_virtual_destructor.html" title="cpp/types/has virtual destructor"><span class="t-lines"><span>has_virtual_destructor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_swappable.html" title="cpp/types/is swappable"><span class="t-lines"><span>is_swappable_with</span><span>is_swappable</span><span>is_nothrow_swappable_with</span><span>is_nothrow_swappable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">关系与属性查询</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_same.html" title="cpp/types/is same"><span class="t-lines"><span>is_same</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_convertible.html" title="cpp/types/is convertible"><span class="t-lines"><span>is_convertible</span><span>is_nothrow_convertible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_layout_compatible.html" title="cpp/types/is layout compatible"><span class="t-lines"><span>is_layout_compatible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_pointer_interconvertible_base_of.html" title="cpp/types/is pointer interconvertible base of"><span class="t-lines"><span>is_pointer_interconvertible_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_pointer_interconvertible_with_class.html" title="cpp/types/is pointer interconvertible with class"><span class="t-lines"><span>is_pointer_interconvertible_with_class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_corresponding_member.html" title="cpp/types/is corresponding member"><span class="t-lines"><span>is_corresponding_member</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/reference_constructs_from_temporary.html" title="cpp/types/reference constructs from temporary"><span class="t-lines"><span>reference_constructs_from_temporary</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/reference_converts_from_temporary.html" title="cpp/types/reference converts from temporary"><span class="t-lines"><span>reference_converts_from_temporary</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_base_of.html" title="cpp/types/is base of"><span class="t-lines"><span>is_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_virtual_base_of.html" title="cpp/types/is virtual base of"><span class="t-lines"><span>is_virtual_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/alignment_of.html" title="cpp/types/alignment of"><span class="t-lines"><span>alignment_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/rank.html" title="cpp/types/rank"><span class="t-lines"><span>rank</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/extent.html" title="cpp/types/extent"><span class="t-lines"><span>extent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/is_invocable.html" title="cpp/types/is invocable"><span class="t-lines"><span>is_invocable</span><span>is_invocable_r</span><span>is_nothrow_invocable</span><span>is_nothrow_invocable_r</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型修改</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/remove_cv.html" title="cpp/types/remove cv"><span class="t-lines"><span>remove_cv</span><span>remove_const</span><span>remove_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/add_cv.html" title="cpp/types/add cv"><span class="t-lines"><span>add_cv</span><span>add_const</span><span>add_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/make_signed.html" title="cpp/types/make signed"><span class="t-lines"><span>make_signed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/make_unsigned.html" title="cpp/types/make unsigned"><span class="t-lines"><span>make_unsigned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/remove_reference.html" title="cpp/types/remove reference"><span class="t-lines"><span>remove_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/add_reference.html" title="cpp/types/add reference"><span class="t-lines"><span>add_lvalue_reference</span><span>add_rvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/remove_pointer.html" title="cpp/types/remove pointer"><span class="t-lines"><span>remove_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/add_pointer.html" title="cpp/types/add pointer"><span class="t-lines"><span>add_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/remove_extent.html" title="cpp/types/remove extent"><span class="t-lines"><span>remove_extent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/remove_all_extents.html" title="cpp/types/remove all extents"><span class="t-lines"><span>remove_all_extents</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型变换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/aligned_storage.html" title="cpp/types/aligned storage"><span class="t-lines"><span>aligned_storage</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-deprecated-cxx23" style="white-space: nowrap;">(C++23 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/aligned_union.html" title="cpp/types/aligned union"><span class="t-lines"><span>aligned_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-deprecated-cxx23" style="white-space: nowrap;">(C++23 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/decay.html" title="cpp/types/decay"><span class="t-lines"><span>decay</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/remove_cvref.html" title="cpp/types/remove cvref"><span class="t-lines"><span>remove_cvref</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/result_of.html" title="cpp/types/result of"><span class="t-lines"><span>result_of</span><span>invoke_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark" style="white-space: nowrap;">(<span title="C++17 弃用">C++20 前*</span>)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/conditional.html" title="cpp/types/conditional"><span class="t-lines"><span>conditional</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/common_type.html" title="cpp/types/common type"><span class="t-lines"><span>common_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/common_reference.html" title="cpp/types/common reference"><span class="t-lines"><span>common_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/underlying_type.html" title="cpp/types/underlying type"><span class="t-lines"><span>underlying_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/type_identity.html" title="cpp/types/type identity"><span class="t-lines"><span>type_identity</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/enable_if.html" title="cpp/types/enable if"><span class="t-lines"><span>enable_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="types/void_t.html" title="cpp/types/void t"><span class="t-lines"><span>void_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="numeric/ratio.html" title="cpp/numeric/ratio">编译时有理数算术</a></td></tr>
+<tr class="t-nv-h1"><td colspan="5">编译时整数序列</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="utility/integer_sequence.html" title="cpp/utility/integer sequence"><span class="t-lines"><span>integer_sequence</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>C++ 提供元编程设施，诸如类型特征、编译时有理数算术，以及编译时整数序列。
+</p>
+<h3><span class="mw-headline" id=".E5.AE.9A.E4.B9.89">定义</span></h3>
+<p>以下类型统称为<i>可引用类型</i>：
+</p>
+<ul><li> <a href="language/type.html#.E5.AF.B9.E8.B1.A1.E7.B1.BB.E5.9E.8B" title="cpp/language/type">对象类型</a>
+</li><li> 没有<span class="t-spar">cv限定符</span> ﻿和<span class="t-spar">引用限定符</span> ﻿的<a href="language/function.html#.E5.87.BD.E6.95.B0.E7.B1.BB.E5.9E.8B" title="cpp/language/function">函数类型</a>
+</li><li> <a href="language/reference.html" title="cpp/language/reference">引用类型</a>
+</li></ul>
+<p>对于任何可引用类型 <code>T</code>，都可以创建到它的引用<sup id="cite_ref-1" class="reference"><a href="meta.html#cite_note-1">[1]</a></sup>。
+</p>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="meta.html#cite_ref-1">↑</a></span> <span class="reference-text">引用类型可以通过<a href="language/reference.html#.E5.BC.95.E7.94.A8.E6.8A.98.E5.8F.A0" title="cpp/language/reference">引用折叠</a>实现</span>
+</li>
+</ol>
+<h3><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B.E7.89.B9.E5.BE.81">类型特征</span></h3>
+<p>类型特征定义基于模板的编译时接口，用以查询类型的属性。
+</p><p>试图特化在标头 <a href="header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a> 定义且在本页列出的模板会导致未定义行为，但可以按描述要求特化 <span class="t-lc"><a href="types/common_type.html" title="cpp/types/common type">std::common_type</a></span> <span class="t-rev-inl t-since-cxx20"><span>和 <a href="types/common_reference.html" title="cpp/types/common reference"><tt>std::basic_common_reference</tt></a></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>。
+</p><p>除非另有说明，标头 <a href="header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a> 定义的模板都可以用不完整类型实例化，尽管以不完整类型实例化标准库模板通常是禁止的。
+</p>
+<h4><span class="mw-headline" id=".E5.9F.BA.E7.B1.BB">基类</span></h4>
+<p>大部分非变换类型特征需要无歧义地公开继承 <span class="t-lc"><a href="types/integral_constant.html" title="cpp/types/integral constant">std::integral_constant</a></span>，以满足<a href="named_req/UnaryTypeTrait.html" title="cpp/named req/UnaryTypeTrait"><span style="font-style:italic">一元类型特征</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(UnaryTypeTrait)</span> </a>或<a href="named_req/BinaryTypeTrait.html" title="cpp/named req/BinaryTypeTrait"><span style="font-style:italic">二元类型特征</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(BinaryTypeTrait)</span> </a>。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/integral_constant.html" title="cpp/types/integral constant"> <span class="t-lines"><span>integral_constant</span><span>bool_constant</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  具有指定值的指定类型的编译期常量  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<p>标准提供 <span class="t-lc"><a href="types/integral_constant.html" title="cpp/types/integral constant">std::integral_constant</a></span> 对类型 <span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span> 的两个特化： 
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td> 类型
+</td>
+<td> 定义
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>true_type</code>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="types/integral_constant.html"><span class="kw650">std::<span class="me2">integral_constant</span></span></a><span class="sy1">&lt;</span><span class="kw4">bool</span>, <span class="kw2">true</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>false_type</code>
+</td>
+<td> <span class="mw-geshi cpp source-cpp"><a href="types/integral_constant.html"><span class="kw650">std::<span class="me2">integral_constant</span></span></a><span class="sy1">&lt;</span><span class="kw4">bool</span>, <span class="kw2">false</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+</table>
+<h4><span class="mw-headline" id=".E4.B8.80.E5.85.83.E7.B1.BB.E5.9E.8B.E7.89.B9.E5.BE.81">一元类型特征</span></h4>
+<p>一元类型特征可以用于在编译时查询类型的布尔属性。
+</p><p>所有这些类型特征都满足<a href="named_req/UnaryTypeTrait.html" title="cpp/named req/UnaryTypeTrait"><span style="font-style:italic">一元类型特征</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(UnaryTypeTrait)</span> </a>，每个类型特征的基特征都是 <span class="t-lc"><a href="types/integral_constant.html" title="cpp/types/integral constant">std::true_type</a></span> 和 <span class="t-lc"><a href="types/integral_constant.html" title="cpp/types/integral constant">std::false_type</a></span> 之一，取决于是否符合对应的条件。
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.9F.BA.E7.A1.80.E7.B1.BB.E5.9E.8B.E7.B1.BB.E5.88.AB"> 基础类型类别 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_void.html" title="cpp/types/is void"> <span class="t-lines"><span>is_void</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span> <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_null_pointer.html" title="cpp/types/is null pointer"> <span class="t-lines"><span>is_null_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark" style="white-space: nowrap;">(<span title="libc++ 的 C++11 模式中不可用">DR*</span>)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为 <span class="t-lc"><a href="types/nullptr_t.html" title="cpp/types/nullptr t">std::nullptr_t</a></span> <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_integral.html" title="cpp/types/is integral"> <span class="t-lines"><span>is_integral</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为整数类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_floating_point.html" title="cpp/types/is floating point"> <span class="t-lines"><span>is_floating_point</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为浮点数类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_array.html" title="cpp/types/is array"> <span class="t-lines"><span>is_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为数组类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_enum.html" title="cpp/types/is enum"> <span class="t-lines"><span>is_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为枚举类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_union.html" title="cpp/types/is union"> <span class="t-lines"><span>is_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为联合体类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_class.html" title="cpp/types/is class"> <span class="t-lines"><span>is_class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为非联合类类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_function.html" title="cpp/types/is function"> <span class="t-lines"><span>is_function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为函数类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_pointer.html" title="cpp/types/is pointer"> <span class="t-lines"><span>is_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为指针类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_lvalue_reference.html" title="cpp/types/is lvalue reference"> <span class="t-lines"><span>is_lvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为<i>左值引用</i>  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_rvalue_reference.html" title="cpp/types/is rvalue reference"> <span class="t-lines"><span>is_rvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为<i>右值引用</i>  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_member_object_pointer.html" title="cpp/types/is member object pointer"> <span class="t-lines"><span>is_member_object_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为指向非静态成员对象的指针 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_member_function_pointer.html" title="cpp/types/is member function pointer"> <span class="t-lines"><span>is_member_function_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为指向非静态成员函数的指针 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.A4.8D.E5.90.88.E7.B1.BB.E5.9E.8B.E7.B1.BB.E5.88.AB"> 复合类型类别 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_fundamental.html" title="cpp/types/is fundamental"> <span class="t-lines"><span>is_fundamental</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为基础类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_arithmetic.html" title="cpp/types/is arithmetic"> <span class="t-lines"><span>is_arithmetic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为算术类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_scalar.html" title="cpp/types/is scalar"> <span class="t-lines"><span>is_scalar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为标量类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_object.html" title="cpp/types/is object"> <span class="t-lines"><span>is_object</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为对象类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_compound.html" title="cpp/types/is compound"> <span class="t-lines"><span>is_compound</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为复合类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_reference.html" title="cpp/types/is reference"> <span class="t-lines"><span>is_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为<i>左值引用</i> ﻿或<i>右值引用</i> <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_member_pointer.html" title="cpp/types/is member pointer"> <span class="t-lines"><span>is_member_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为指向非静态成员函数或对象的指针类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E7.B1.BB.E5.9E.8B.E5.B1.9E.E6.80.A7"> 类型属性 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_const.html" title="cpp/types/is const"> <span class="t-lines"><span>is_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为 const 限定 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_volatile.html" title="cpp/types/is volatile"> <span class="t-lines"><span>is_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为 volatile 限定 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_trivial.html" title="cpp/types/is trivial"> <span class="t-lines"><span>is_trivial</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-deprecated-cxx26" style="white-space: nowrap;">(C++26 弃用)</span></span></span></div></div>
+</td>
+<td>  检查类型是否平凡 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_trivially_copyable.html" title="cpp/types/is trivially copyable"> <span class="t-lines"><span>is_trivially_copyable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否可平凡复制 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_standard_layout.html" title="cpp/types/is standard layout"> <span class="t-lines"><span>is_standard_layout</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为<a href="language/data_members.html#.E6.A0.87.E5.87.86.E5.B8.83.E5.B1.80" title="cpp/language/data members">标准布局</a>类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_pod.html" title="cpp/types/is pod"> <span class="t-lines"><span>is_pod</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-deprecated-cxx20" style="white-space: nowrap;">(C++20 弃用)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为简旧数据（POD）类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_literal_type.html" title="cpp/types/is literal type"> <span class="t-lines"><span>is_literal_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-deprecated-cxx17" style="white-space: nowrap;">(C++17 弃用)</span></span><span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 移除)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为字面类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/has_unique_object_representations.html" title="cpp/types/has unique object representations"> <span class="t-lines"><span>has_unique_object_representations</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   检查是否该类型对象的每一位都对其值有贡献  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_empty.html" title="cpp/types/is empty"> <span class="t-lines"><span>is_empty</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为类（但非联合体）类型且无非静态数据成员 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_polymorphic.html" title="cpp/types/is polymorphic"> <span class="t-lines"><span>is_polymorphic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为多态类类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_abstract.html" title="cpp/types/is abstract"> <span class="t-lines"><span>is_abstract</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为抽象类类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_final.html" title="cpp/types/is final"> <span class="t-lines"><span>is_final</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div>
+</td>
+<td>   检查类型是否为 <code>final</code> 类类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_aggregate.html" title="cpp/types/is aggregate"> <span class="t-lines"><span>is_aggregate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为聚合类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_implicit_lifetime.html" title="cpp/types/is implicit lifetime"> <span class="t-lines"><span>is_implicit_lifetime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为隐式生存期类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_signed.html" title="cpp/types/is signed"> <span class="t-lines"><span>is_signed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为有符号算术类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_unsigned.html" title="cpp/types/is unsigned"> <span class="t-lines"><span>is_unsigned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为无符号算术类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_bounded_array.html" title="cpp/types/is bounded array"> <span class="t-lines"><span>is_bounded_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为有已知边界的数组类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_unbounded_array.html" title="cpp/types/is unbounded array"> <span class="t-lines"><span>is_unbounded_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为有未知边界的数组类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_scoped_enum.html" title="cpp/types/is scoped enum"> <span class="t-lines"><span>is_scoped_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  检查类型是否为有作用域枚举类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.8F.97.E6.94.AF.E6.8C.81.E6.93.8D.E4.BD.9C"> 受支持操作 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_constructible.html" title="cpp/types/is constructible"> <span class="t-lines"><span>is_constructible</span><span>is_trivially_constructible</span><span>is_nothrow_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否带有针对特定实参的构造函数  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_default_constructible.html" title="cpp/types/is default constructible"> <span class="t-lines"><span>is_default_constructible</span><span>is_trivially_default_constructible</span><span>is_nothrow_default_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否有默认构造函数 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_copy_constructible.html" title="cpp/types/is copy constructible"> <span class="t-lines"><span>is_copy_constructible</span><span>is_trivially_copy_constructible</span><span>is_nothrow_copy_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否有复制构造函数 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_move_constructible.html" title="cpp/types/is move constructible"> <span class="t-lines"><span>is_move_constructible</span><span>is_trivially_move_constructible</span><span>is_nothrow_move_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否能从右值引用构造 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_assignable.html" title="cpp/types/is assignable"> <span class="t-lines"><span>is_assignable</span><span>is_trivially_assignable</span><span>is_nothrow_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查类型是否有针对特定实参的赋值运算符  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_copy_assignable.html" title="cpp/types/is copy assignable"> <span class="t-lines"><span>is_copy_assignable</span><span>is_trivially_copy_assignable</span><span>is_nothrow_copy_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否有复制赋值运算符 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_move_assignable.html" title="cpp/types/is move assignable"> <span class="t-lines"><span>is_move_assignable</span><span>is_trivially_move_assignable</span><span>is_nothrow_move_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否有移动赋值运算符 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_destructible.html" title="cpp/types/is destructible"> <span class="t-lines"><span>is_destructible</span><span>is_trivially_destructible</span><span>is_nothrow_destructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否有未被弃置的析构函数 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/has_virtual_destructor.html" title="cpp/types/has virtual destructor"> <span class="t-lines"><span>has_virtual_destructor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查类型是否有虚析构函数 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_swappable.html" title="cpp/types/is swappable"> <span class="t-lines"><span>is_swappable_with</span><span>is_swappable</span><span>is_nothrow_swappable_with</span><span>is_nothrow_swappable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  检查类型的对象是否能与同类型或不同类型的对象交换 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/reference_constructs_from_temporary.html" title="cpp/types/reference constructs from temporary"> <span class="t-lines"><span>reference_constructs_from_temporary</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   检查在直接初始化中引用是否绑定到临时对象  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/reference_converts_from_temporary.html" title="cpp/types/reference converts from temporary"> <span class="t-lines"><span>reference_converts_from_temporary</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   检查在复制初始化中引用是否绑定到临时对象  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E5.B1.9E.E6.80.A7.E6.9F.A5.E8.AF.A2">属性查询</span></h4>
+<p>属性查询特征可以用于在编译时查询类型的整数属性。
+</p><p>所有这些类型特征都满足<a href="named_req/UnaryTypeTrait.html" title="cpp/named req/UnaryTypeTrait"><span style="font-style:italic">一元类型特征</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(UnaryTypeTrait)</span> </a>，每个类型特征的基特征都是 <span class="mw-geshi cpp source-cpp"><a href="types/integral_constant.html"><span class="kw650">std::<span class="me2">integral_constant</span></span></a><span class="sy1">&lt;</span><a href="types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a>, Value<span class="sy1">&gt;</span></span>，其中 <code>Value</code> 是对应属性的查询结果。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/alignment_of.html" title="cpp/types/alignment of"> <span class="t-lines"><span>alignment_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  获取类型的对齐要求 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/rank.html" title="cpp/types/rank"> <span class="t-lines"><span>rank</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   获取数组类型的维数  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/extent.html" title="cpp/types/extent"> <span class="t-lines"><span>extent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  获取数组类型在指定维数的大小 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B.E5.85.B3.E7.B3.BB">类型关系</span></h4>
+<p>类型关系特征可以用于在编译时查询类型之间的关系。
+</p><p>所有这些类型特征都满足<a href="named_req/BinaryTypeTrait.html" title="cpp/named req/BinaryTypeTrait"><span style="font-style:italic">二元类型特征</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(BinaryTypeTrait)</span> </a>，每个类型特征的基特征都是 <span class="t-lc"><a href="types/integral_constant.html" title="cpp/types/integral constant">std::true_type</a></span> 和 <span class="t-lc"><a href="types/integral_constant.html" title="cpp/types/integral constant">std::false_type</a></span> 之一，取决于是否符合对应的条件。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_same.html" title="cpp/types/is same"> <span class="t-lines"><span>is_same</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查两个类型是否相同 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_base_of.html" title="cpp/types/is base of"> <span class="t-lines"><span>is_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  检查一个类型是否为另一个类型的基类 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_virtual_base_of.html" title="cpp/types/is virtual base of"> <span class="t-lines"><span>is_virtual_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  检查一个类型是否为另一个类型的虚基类 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_convertible.html" title="cpp/types/is convertible"> <span class="t-lines"><span>is_convertible</span><span>is_nothrow_convertible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   检查是否能转换一个类型为另一类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_layout_compatible.html" title="cpp/types/is layout compatible"> <span class="t-lines"><span>is_layout_compatible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查两个类型是否<a href="language/data_members.html#.E6.A0.87.E5.87.86.E5.B8.83.E5.B1.80" title="cpp/language/data members"><i>布局兼容</i></a> <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_pointer_interconvertible_base_of.html" title="cpp/types/is pointer interconvertible base of"> <span class="t-lines"><span>is_pointer_interconvertible_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查一个类型是否为另一类型的<i><a href="language/static_cast.html#.E6.8C.87.E9.92.88.E5.8F.AF.E4.BB.A5.E4.BA.92.E7.9B.B8.E8.BD.AC.E6.8D.A2" title="cpp/language/static cast">指针可以互相转换</a></i>（起始）基类 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_invocable.html" title="cpp/types/is invocable"> <span class="t-lines"><span>is_invocable</span><span>is_invocable_r</span><span>is_nothrow_invocable</span><span>is_nothrow_invocable_r</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  检查类型能否以给定的实参类型调用（如同以 <span class="t-lc"><a href="utility/functional/invoke.html" title="cpp/utility/functional/invoke">std::invoke</a></span>） <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B.E5.8F.98.E6.8D.A2">类型变换</span></h4>
+<p>类型变换特征按照预定义对着将一个类型变换到另一个。 
+</p><p>所有这些类型特征都满足<a href="named_req/TransformationTrait.html" title="cpp/named req/TransformationTrait"><span style="font-style:italic">变换特征</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(TransformationTrait)</span> </a>。
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.B8.B8.E6.80.A7.2F.E6.98.93.E5.8F.98.E6.80.A7.E8.AF.B4.E6.98.8E.E7.AC.A6"> 常性/易变性说明符 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/remove_cv.html" title="cpp/types/remove cv"> <span class="t-lines"><span>remove_cv</span><span>remove_const</span><span>remove_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  从给定类型移除 <span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span> 和/或 <span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span> 限定符 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/add_cv.html" title="cpp/types/add cv"> <span class="t-lines"><span>add_cv</span><span>add_const</span><span>add_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  向给定类型添加 <span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span> 和/或 <span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span> 限定符 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.BC.95.E7.94.A8"> 引用 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/remove_reference.html" title="cpp/types/remove reference"> <span class="t-lines"><span>remove_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  从给定类型移除引用 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/add_reference.html" title="cpp/types/add reference"> <span class="t-lines"><span>add_lvalue_reference</span><span>add_rvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  向给定类型添加<i>左值</i> ﻿或<i>右值</i> ﻿引用 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E7.AC.A6.E5.8F.B7.E4.BF.AE.E9.A5.B0.E7.AC.A6"> 符号修饰符 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/make_signed.html" title="cpp/types/make signed"> <span class="t-lines"><span>make_signed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   获取整数类型的对应有符号类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/make_unsigned.html" title="cpp/types/make unsigned"> <span class="t-lines"><span>make_unsigned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   获取整数类型的对应无符号类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.95.B0.E7.BB.84"> 数组 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/remove_extent.html" title="cpp/types/remove extent"> <span class="t-lines"><span>remove_extent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  从给定数组类型移除一个维度 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/remove_all_extents.html" title="cpp/types/remove all extents"> <span class="t-lines"><span>remove_all_extents</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   从给定数组类型移除所有维度  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E6.8C.87.E9.92.88"> 指针 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/remove_pointer.html" title="cpp/types/remove pointer"> <span class="t-lines"><span>remove_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   从给定类型移除一层指针  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/add_pointer.html" title="cpp/types/add pointer"> <span class="t-lines"><span>add_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  向给定类型添加一层指针 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.85.B6.E4.BB.96.E5.8F.98.E6.8D.A2"> 其他变换 </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/aligned_storage.html" title="cpp/types/aligned storage"> <span class="t-lines"><span>aligned_storage</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span><span><span class="t-mark-rev t-deprecated-cxx23" style="white-space: nowrap;">(C++23 弃用)</span></span></span></div></div>
+</td>
+<td>  定义适于用作给定大小的类型的未初始化存储的类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/aligned_union.html" title="cpp/types/aligned union"> <span class="t-lines"><span>aligned_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span><span><span class="t-mark-rev t-deprecated-cxx23" style="white-space: nowrap;">(C++23 弃用)</span></span></span></div></div>
+</td>
+<td>  定义适于用作所有给定类型的未初始化存储的类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/decay.html" title="cpp/types/decay"> <span class="t-lines"><span>decay</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  应用当按值传递实参给函数时所进行的类型变换 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/remove_cvref.html" title="cpp/types/remove cvref"> <span class="t-lines"><span>remove_cvref</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将 <span class="t-lc"><a href="types/remove_cv.html" title="cpp/types/remove cv">std::remove_cv</a></span> 与 <span class="t-lc"><a href="types/remove_reference.html" title="cpp/types/remove reference">std::remove_reference</a></span> 结合 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/enable_if.html" title="cpp/types/enable if"> <span class="t-lines"><span>enable_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   条件性地从重载决议<a href="language/sfinae.html" title="cpp/language/sfinae">移除</a>函数重载或模板特化  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/conditional.html" title="cpp/types/conditional"> <span class="t-lines"><span>conditional</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   基于编译时布尔值选择一个类型或另一个  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/common_type.html" title="cpp/types/common type"> <span class="t-lines"><span>common_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   确定一组类型的公共类型  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/common_reference.html" title="cpp/types/common reference"> <span class="t-lines"><span>common_reference</span><span>basic_common_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  确定一组类型的公共引用类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/underlying_type.html" title="cpp/types/underlying type"> <span class="t-lines"><span>underlying_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  获得给定枚举类型的底层整数类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/result_of.html" title="cpp/types/result of"> <span class="t-lines"><span>result_of</span><span></span><span>invoke_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 移除)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  推导以一组实参调用一个可调用对象的结果类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/void_t.html" title="cpp/types/void t"> <span class="t-lines"><span>void_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  <code>void</code> 变参别名模板 <br> <span class="t-mark" style="white-space: nowrap;">(别名模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/type_identity.html" title="cpp/types/type identity"> <span class="t-lines"><span>type_identity</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回不更改的类型实参 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<p><span id=".E9.80.BB.E8.BE.91.E8.BF.90.E7.AE.97"></span>
+</p>
+<h4><span class="mw-headline" id=".E9.80.BB.E8.BE.91.E8.BF.90.E7.AE.97_.28C.2B.2B17_.E8.B5.B7.29">逻辑运算 <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></h4>
+<p>逻辑运算符特征将逻辑运算符应用到其他类型特征上。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/conjunction.html" title="cpp/types/conjunction"> <span class="t-lines"><span>conjunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   变参的逻辑与元函数  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/disjunction.html" title="cpp/types/disjunction"> <span class="t-lines"><span>disjunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   变参的逻辑或元函数  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/negation.html" title="cpp/types/negation"> <span class="t-lines"><span>negation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  逻辑非元函数 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<p><span id=".E6.88.90.E5.91.98.E5.85.B3.E7.B3.BB"></span>
+</p>
+<h4><span class="mw-headline" id=".E6.88.90.E5.91.98.E5.85.B3.E7.B3.BB_.28C.2B.2B17_.E8.B5.B7.29">成员关系 <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/type_traits.html" title="cpp/header/type traits">&lt;type_traits&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_pointer_interconvertible_with_class.html" title="cpp/types/is pointer interconvertible with class"> <span class="t-lines"><span>is_pointer_interconvertible_with_class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查一个类型的对象是否与该类型的指定子对象指针<i><a href="language/static_cast.html#.E6.8C.87.E9.92.88.E5.8F.AF.E4.BB.A5.E4.BA.92.E7.9B.B8.E8.BD.AC.E6.8D.A2" title="cpp/language/static cast">可以互相转换</a></i> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="types/is_corresponding_member.html" title="cpp/types/is corresponding member"> <span class="t-lines"><span>is_corresponding_member</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查两个指定成员是否在两个指定类型中的公共起始序列中彼此对应 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E7.BC.96.E8.AF.91.E6.97.B6.E6.9C.89.E7.90.86.E6.95.B0.E7.AE.97.E6.9C.AF"><a href="numeric/ratio.html" title="cpp/numeric/ratio">编译时有理数算术</a></span></h3>
+<p>标头 <a href="header/ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a> 提供<a href="numeric/ratio.html" title="cpp/numeric/ratio">操作和存储编译时比值的类型和函数</a>。
+</p><p><span id=".E7.BC.96.E8.AF.91.E6.97.B6.E6.95.B4.E6.95.B0.E5.BA.8F.E5.88.97"></span>
+</p>
+<h3><span class="mw-headline" id=".E7.BC.96.E8.AF.91.E6.97.B6.E6.95.B4.E6.95.B0.E5.BA.8F.E5.88.97_.28C.2B.2B14_.E8.B5.B7.29">编译时整数序列 <span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/utility.html" title="cpp/header/utility">&lt;utility&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="utility/integer_sequence.html" title="cpp/utility/integer sequence"> <span class="t-lines"><span>integer_sequence</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div>
+</td>
+<td>  实现编译时整数数列 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 22436/1000000
+Preprocessor generated node count: 17762/1000000
+Post‐expand include size: 958471/4194304 bytes
+Template argument size: 207048/4194304 bytes
+Highest expansion depth: 22/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:13990-0!*!0!!zh!*!zh!* and timestamp 20250322071432 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/meta&amp;oldid=99413">https://zh.cppreference.com/mwiki/index.php?title=cpp/meta&amp;oldid=99413</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/meta">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月25日 (星期二) 01:31。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../common/site_scripts.js"></script>
+<!-- Served in 0.038 secs. -->
+	</body>
+<!-- Cached 20250322193044 -->
+</html>

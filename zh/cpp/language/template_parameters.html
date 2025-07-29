@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>模板形参与模板实参</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/template_parameters","wgTitle":"cpp/language/template parameters","wgCurRevisionId":97486,"wgArticleId":9255,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["带有未审核 CWG DR 记号的页面","有原因的 todo"],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/language/template_parameters","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_template_parameters skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">模板形参与模板实参</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language">C++ 语言</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">一般主题</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../preprocessor.html" title="cpp/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../comment.html" title="cpp/comment">注释</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../keyword.html" title="cpp/keyword">关键词</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="statements.html" title="cpp/language/statements">流程控制</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">条件执行语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重复语句（循环）</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="range-for.html" title="cpp/language/range-for">范围 <span class="mw-geshi cpp source-cpp"><span class="kw1">for</span></span></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="do.html" title="cpp/language/do"><code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">跳转语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="functions.html" title="cpp/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 函数表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><span class="mw-geshi cpp source-cpp"><span class="kw1">inline</span></span> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="except_spec.html" title="cpp/language/except spec">动态异常说明</a> <span class="t-mark" style="white-space: nowrap;">(<span title="C++11 中弃用">C++17 前*</span>)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept_spec.html" title="cpp/language/noexcept spec"><span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span></span> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">异常</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><span class="mw-geshi cpp source-cpp"><span class="kw1">throw</span></span> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="try.html" title="cpp/language/try"><span class="mw-geshi cpp source-cpp"><span class="kw1">try</span></span> 块</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="catch.html" title="cpp/language/catch"><code>catch</code> 处理块</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">命名空间</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace.html" title="cpp/language/namespace">命名空间声明</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="namespace_alias.html" title="cpp/language/namespace alias">命名空间别名</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="types.html" title="cpp/language/types">基础类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="enum.html" title="cpp/language/enum">枚举类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数类型</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类/结构体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="union.html" title="cpp/language/union">联合体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">说明符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="cv.html" title="cpp/language/cv"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span>/<span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="consteval.html" title="cpp/language/consteval"><tt>consteval</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constinit.html" title="cpp/language/constinit"><tt>constinit</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="storage_duration.html" title="cpp/language/storage duration">存储期说明符</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html" title="cpp/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_initialization.html" title="cpp/language/default initialization">默认初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_initialization.html" title="cpp/language/value initialization">值初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="zero_initialization.html" title="cpp/language/zero initialization">零初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="list_initialization.html" title="cpp/language/list initialization">列表初始化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="expressions.html" title="cpp/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">运算符优先级</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">替代表示</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#.E5.AD.97.E9.9D.A2.E9.87.8F" title="cpp/language/expressions">字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔</a> - <a href="integer_literal.html" title="cpp/language/integer literal">整数</a> - <a href="floating_literal.html" title="cpp/language/floating literal">浮点</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符</a> - <a href="string_literal.html" title="cpp/language/string literal">字符串</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">工具</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="attributes.html" title="cpp/language/attributes">属性</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typedef.html" title="cpp/language/typedef"><code>typedef</code> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="type_alias.html" title="cpp/language/type alias">类型别名声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">内存分配</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="classes.html" title="cpp/language/classes">类</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constructor.html" title="cpp/language/constructor">构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="this.html" title="cpp/language/this"><code>this</code> 指针</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="access.html" title="cpp/language/access">访问说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="friend.html" title="cpp/language/friend"><code>friend</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类特有的函数性质</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="virtual.html" title="cpp/language/virtual">虚函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="override.html" title="cpp/language/override"><code>override</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="final.html" title="cpp/language/final"><code>final</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static.html" title="cpp/language/static"><tt>static</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">特殊成员函数</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="default_constructor.html" title="cpp/language/default constructor">默认构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="copy_assignment.html" title="cpp/language/copy assignment">复制赋值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_assignment.html" title="cpp/language/move assignment">移动赋值</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="destructor.html" title="cpp/language/destructor">析构函数</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates">模板</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="class_template.html" title="cpp/language/class template">类模板</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function_template.html" title="cpp/language/function template">函数模板</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="template_specialization.html" title="cpp/language/template specialization">模板特化</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="pack.html" title="cpp/language/pack">形参包</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">杂项</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="asm.html" title="cpp/language/asm">内联汇编</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="history.html" title="cpp/language/history">C++ 的历史</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="declarations.html" title="cpp/language/declarations">声明</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">概览</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="declarations.html" title="cpp/language/declarations">声明语法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="declarations.html#.E8.AF.B4.E6.98.8E.E7.AC.A6" title="cpp/language/declarations"><i>声明说明符序列</i></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="declarations.html#.E5.A3.B0.E6.98.8E.E7.AC.A6" title="cpp/language/declarations">声明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="conflicting_declarations.html" title="cpp/language/conflicting declarations">有冲突的声明</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">说明符</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="typedef.html" title="cpp/language/typedef"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw1">typedef</span></span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="inline.html" title="cpp/language/inline"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw1">inline</span></span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="virtual.html" title="cpp/language/virtual"><span class="mw-geshi cpp source-cpp"><span class="kw1">virtual</span></span> 函数说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="explicit.html" title="cpp/language/explicit"><span class="mw-geshi cpp source-cpp"><span class="kw1">explicit</span></span> 函数说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="friend.html" title="cpp/language/friend"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw1">friend</span></span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="constexpr.html" title="cpp/language/constexpr"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="consteval.html" title="cpp/language/consteval"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp">consteval</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="constinit.html" title="cpp/language/constinit"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp">constinit</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="storage_duration.html" title="cpp/language/storage duration">存储类说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="tu_local.html" title="cpp/language/tu local">翻译单元局部</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>      </td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="class.html" title="cpp/language/class"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw1">class</span></span>/<span class="mw-geshi cpp source-cpp"><span class="kw1">struct</span></span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="union.html" title="cpp/language/union"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw1">union</span></span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="enum.html" title="cpp/language/enum"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw2">enum</span></span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="decltype.html" title="cpp/language/decltype"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp">decltype</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="auto.html" title="cpp/language/auto"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="alignas.html" title="cpp/language/alignas"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp">alignas</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="cv.html" title="cpp/language/cv"><span class="t-lines"><span><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span></span><span><span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="pack_indexing.html#.E5.8C.85.E7.B4.A2.E5.BC.95.E8.AF.B4.E6.98.8E.E7.AC.A6" title="cpp/language/pack indexing">包索引说明符</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span>    </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="elaborated_type_specifier.html" title="cpp/language/elaborated type specifier">详述类型说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="attributes.html" title="cpp/language/attributes">属性</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">声明符</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference.html" title="cpp/language/reference">引用</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="pointer.html" title="cpp/language/pointer">指针</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="array.html" title="cpp/language/array">数组</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">块声明</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="declarations.html" title="cpp/language/declarations">简单声明</a></td></tr>
+<tr class="t-nv"><td colspan="5">  →<a href="structured_binding.html" title="cpp/language/structured binding">结构化绑定声明</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="type_alias.html" title="cpp/language/type alias">别名声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="namespace_alias.html" title="cpp/language/namespace alias">命名空间别名定义</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="using_declaration.html" title="cpp/language/using declaration"><span class="mw-geshi cpp source-cpp"><span class="kw1">using</span></span> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="namespace.html#using_.E6.8C.87.E4.BB.A4" title="cpp/language/namespace"><span class="mw-geshi cpp source-cpp"><span class="kw1">using</span></span> 指令</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_assert.html" title="cpp/language/static assert"><span class="mw-geshi cpp source-cpp">static_assert</span> 声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="asm.html" title="cpp/language/asm"><span class="mw-geshi cpp source-cpp">asm</span> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="enum.html" title="cpp/language/enum">笼统 enum 声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">其他声明</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="namespace.html" title="cpp/language/namespace">命名空间定义</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="class_template.html" title="cpp/language/class template">类模板声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function_template.html" title="cpp/language/function template">函数模板声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="class_template.html#.E6.98.BE.E5.BC.8F.E5.AE.9E.E4.BE.8B.E5.8C.96" title="cpp/language/class template">显式模板实例化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="template_specialization.html" title="cpp/language/template specialization">显式模板特化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="language_linkage.html" title="cpp/language/language linkage">链接说明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="declarations.html" title="cpp/language/declarations">属性声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="declarations.html" title="cpp/language/declarations">空声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="expressions.html" title="cpp/language/expressions"> 表达式</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5">概述</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_expression.html" title="cpp/language/constant expression">常量表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="expressions.html#.E5.88.9D.E7.AD.89.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">初等表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 表达式</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="requires.html" title="cpp/language/requires">requires 表达式</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="pack_indexing.html#.E5.8C.85.E7.B4.A2.E5.BC.95.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/pack indexing">包索引表达式</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="expressions.html#.E6.BD.9C.E5.9C.A8.E6.B1.82.E5.80.BC.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">潜在求值表达式</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">字面量</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="integer_literal.html" title="cpp/language/integer literal">整数字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="floating_literal.html" title="cpp/language/floating literal">浮点字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符字面量</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string_literal.html" title="cpp/language/string literal">字符串字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="nullptr.html" title="cpp/language/nullptr">空指针字面量</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义字面量</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">运算符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="operator_assignment.html" title="cpp/language/operator assignment">赋值运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_incdec.html" title="cpp/language/operator incdec">自增与自减</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_arithmetic.html" title="cpp/language/operator arithmetic">算术运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_logical.html" title="cpp/language/operator logical">逻辑运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_comparison.html" title="cpp/language/operator comparison">比较运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_member_access.html" title="cpp/language/operator member access">成员访问运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_other.html" title="cpp/language/operator other">其他运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code>new</code> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code>delete</code> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><code>throw</code> 表达式</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="alignof.html" title="cpp/language/alignof"><code>alignof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="sizeof.html" title="cpp/language/sizeof"><code>sizeof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="sizeof....html" title="cpp/language/sizeof..."><code>sizeof...</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typeid.html" title="cpp/language/typeid"><code>typeid</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept.html" title="cpp/language/noexcept"><code>noexcept</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="fold.html" title="cpp/language/fold">折叠表达式</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">运算符的代用表示</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">优先级和结合性</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符重载</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="default_comparisons.html" title="cpp/language/default comparisons">预置比较</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="usual_arithmetic_conversions.html" title="cpp/language/usual arithmetic conversions">一般算术转换</a>    </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="cast_operator.html" title="cpp/language/cast operator">用户定义转换</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><code>const_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><code>static_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><code>dynamic_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><code>reinterpret_cast</code></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="templates.html" title="cpp/language/templates">模板</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">模板形参与实参</strong> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template">类模板</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template">函数模板</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="member_template.html" title="cpp/language/member template">类成员模板</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="variable_template.html" title="cpp/language/variable template">变量模板</a><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="template_argument_deduction.html" title="cpp/language/template argument deduction">模板实参推导</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="class_template_argument_deduction.html" title="cpp/language/class template argument deduction">类模板实参推导</a><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization">显式（全）特化</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="partial_specialization.html" title="cpp/language/partial specialization">部分特化</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dependent_name.html" title="cpp/language/dependent name">待决名</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="pack.html" title="cpp/language/pack">包</a><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="sizeof....html" title="cpp/language/sizeof..."> <code>sizeof...</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="fold.html" title="cpp/language/fold"> 折叠表达式</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="pack_indexing.html" title="cpp/language/pack indexing"> 形参包索引</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sfinae.html" title="cpp/language/sfinae"> SFINAE</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constraints.html" title="cpp/language/constraints">约束与概念</a><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="requires.html" title="cpp/language/requires"> requires 表达式</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<h3><span class="mw-headline" id=".E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">模板形参</span></h3>
+<p>每个<a href="templates.html" title="cpp/language/templates">模板</a>都会由一个或多个模板形参参数化，它们在模板声明语法中的<span class="t-spar">形参列表</span> ﻿中指定：
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>template</b></code> <code><b>&lt;</b></code> <span class="t-spar">形参列表</span> <code><b>&gt;</b></code> <span class="t-spar">声明</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>template</b></code> <code><b>&lt;</b></code> <span class="t-spar">形参列表</span> <code><b>&gt;</b></code> <code><b>requires</b></code> <span class="t-spar">约束</span> <span class="t-spar">声明</span>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<p><span class="t-spar">形参列表</span> 中的每个形参可以是：
+</p>
+<ul><li> 非类型模板形参；
+</li><li> 类型模板形参；
+</li><li> 模板模板形参。
+</li></ul>
+<h4><span class="mw-headline" id=".E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">非类型模板形参</span></h4>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型</span> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型</span> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>=</b></code> <span class="t-spar">默认值</span>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型</span> <code><b>...</b></code> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> 非类型模板形参。</div>
+<div class="t-li1"><span class="t-li">2)</span> 带有默认模板实参的非类型模板形参。</div>
+<div class="t-li1"><span class="t-li">3)</span> 非类型模板<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">形参包</a>。</div>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> <span class="t-spar">类型</span>
+</td>
+<td> -
+</td>
+<td> 以下类型之一：
+<ul><li> 结构化类型（见下文）
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<ul><li> 包含<a href="auto.html" title="cpp/language/auto">占位符类型</a>的类型
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<ul><li> <a href="class_template_argument_deduction.html" title="cpp/language/class template argument deduction">被推导类类型的占位符</a>
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">名字</span>
+</td>
+<td> -
+</td>
+<td> 非类型模板形参的名字
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">默认值</span>
+</td>
+<td> -
+</td>
+<td> <a href="template_parameters.html#.E9.BB.98.E8.AE.A4.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">默认模板实参</a>
+</td></tr></table>
+<p><i>结构化类型</i>是下列类型之一（可以有 cv 限定，忽略限定符）：
+</p>
+<ul><li> （到对象或函数的）<a href="reference.html#.E5.B7.A6.E5.80.BC.E5.BC.95.E7.94.A8" title="cpp/language/reference">左值引用类型</a>；
+</li><li> <a href="type.html" title="cpp/language/type">整数类型</a>；
+</li><li> （指向对象或函数的）<a href="pointer.html" title="cpp/language/pointer">指针类型</a>；
+</li><li> （指向成员对象或成员函数的）<a href="pointer.html#.E6.88.90.E5.91.98.E6.8C.87.E9.92.88" title="cpp/language/pointer">成员指针类型</a>；
+</li><li> <a href="enum.html" title="cpp/language/enum">枚举类型</a>；
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<ul><li> <span class="t-lc"><a href="../types/nullptr_t.html" title="cpp/types/nullptr t">std::nullptr_t</a></span>；
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<ul><li> <a href="type.html" title="cpp/language/type">浮点数类型</a>；
+</li><li> 其 lambda 表达式无捕获的 <a href="lambda.html#.E9.97.AD.E5.8C.85.E7.B1.BB.E5.9E.8B" title="cpp/language/lambda">lambda 闭包类型</a>；
+</li><li> 拥有下列属性的非闭包<a href="../named_req/LiteralType.html" title="cpp/named req/LiteralType">字面类类型</a>：
+</li></ul>
+<dl><dd><ul><li> 所有基类与非静态数据成员都是公开且非 mutable 的，且
+</li><li> 所有基类与非静态数据成员的类型都是结构化类型或它的（可能多维的）数组。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>数组与函数类型可以写在模板声明中，但它们会被自动替换为适合的对象指针和函数指针。
+</p><p>在类模板体内使用的非类型模板形参的名字是不可修改的<a href="value_category.html" title="cpp/language/value category">纯右值</a>，除非它的类型是左值引用类型<span class="t-rev-inl t-since-cxx20"><span>或类类型</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>。
+</p><p>形式为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">class</span> Foo</span></span> 的模板形参不是类型为 <code>Foo</code> 的无名非类型模板形参，虽然 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">class</span> Foo</span></span> 还能是<a href="elaborated_type_specifier.html" title="cpp/language/elaborated type specifier">详述类型说明符</a>且 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">class</span> Foo x<span class="sy4">;</span></span></span> 声明 <span class="t-c"><span class="mw-geshi cpp source-cpp">x</span></span> 为 <code>Foo</code> 类型的对象。
+</p><p><span id=".E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82.E5.AF.B9.E8.B1.A1"></span>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>指名类类型 <code>T</code> 的某个非类型模板形参的<a href="identifiers.html" title="cpp/language/identifiers">标识符</a>代表一个 <span class="mw-geshi cpp source-cpp"><span class="kw4">const</span> T</span> 类型的静态存储期对象，该对象被称为 <i>模板形参对象</i>，它与对应模板实参转换到模板形参的类型之后的值<a href="template_parameters.html#.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82.E7.AD.89.E4.BB.B7.E6.80.A7">模板实参等价</a>。任何两个模板形参对象都不模板实参等价。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw1">friend</span> <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> A<span class="sy3">&amp;</span>, <span class="kw4">const</span> A<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>A a<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="sy3">&amp;</span>a<span class="sy4">;</span>                       <span class="co1">// OK</span>
+    <span class="kw4">const</span> A<span class="sy3">&amp;</span> ra <span class="sy1">=</span> a, <span class="sy3">&amp;</span>rb <span class="sy1">=</span> a<span class="sy4">;</span> <span class="co1">// 都绑定到同一个模板形参对象</span>
+    <a href="../error/assert.html"><span class="kw776">assert</span></a><span class="br0">(</span><span class="sy3">&amp;</span>ra <span class="sy1">==</span> <span class="sy3">&amp;</span>rb<span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// 通过</span>
+<span class="br0">}</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">类型模板形参</span></h4>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型形参关键词</span> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型形参关键词</span> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>=</b></code> <span class="t-spar">默认值</span>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型形参关键词</span> <code><b>...</b></code> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型约束</span> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (4)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型约束</span> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>=</b></code> <span class="t-spar">默认值</span>
+</td>
+<td> (5)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">类型约束</span> <code><b>...</b></code> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (6)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> <span class="t-spar">类型形参关键词</span>
+</td>
+<td> -
+</td>
+<td> <code><b>typename</b></code> 或 <code><b>class</b></code> 之一。这两个关键词在类型模板形参声明中没有区别
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">类型约束</span>
+</td>
+<td> -
+</td>
+<td> <a href="constraints.html" title="cpp/language/constraints">概念</a>的名字或概念名后随模板实参列表（在角括号中）。两种方式种的概念名都可以有限定
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">名字</span>
+</td>
+<td> -
+</td>
+<td> 类型模板形参的名字
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">默认值</span>
+</td>
+<td> -
+</td>
+<td> <a href="template_parameters.html#.E9.BB.98.E8.AE.A4.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">默认模板实参</a>
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> 没有默认类型的类型模板形参。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">class</span> My_vector <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">2)</span> 有默认类型的类型模板形参。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T <span class="sy1">=</span> <span class="kw4">void</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> My_op_functor <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">3)</span> 类型模板<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">形参包</a>。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span>... <span class="me1">Ts</span><span class="sy1">&gt;</span>
+<span class="kw1">class</span> My_tuple <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">4)</span> 没有默认实参的受约束类型模板形参。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span> <span class="sy1">&lt;</span>My_concept T<span class="sy1">&gt;</span>
+<span class="kw1">class</span> My_constrained_vector <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">5)</span> 有默认实参的受约束类型模板形参。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span> <span class="sy1">&lt;</span>My_concept T <span class="sy1">=</span> <span class="kw4">void</span><span class="sy1">&gt;</span>
+<span class="kw1">class</span> My_constrained_op_functor <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">6)</span> 受约束的类型模板<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">形参包</a>。
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span>My_concept... <span class="me1">Ts</span><span class="sy1">&gt;</span>
+<span class="kw1">class</span> My_constrained_tuple <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<p>形参的名字是可选的：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 对上面所示模板的声明：</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span><span class="sy1">&gt;</span>
+<span class="kw1">class</span> My_vector<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> <span class="sy1">=</span> <span class="kw4">void</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> My_op_functor<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span>...<span class="sy1">&gt;</span>
+<span class="kw1">class</span> My_tuple<span class="sy4">;</span></pre></div></div>
+<p>在模板声明体内，类型形参的名字是 typedef 名字，它是当模板被实例化时所提供的类型的别名。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p><span id=".E5.8F.97.E7.BA.A6.E6.9D.9F.E7.9A.84.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82"></span>
+对于每个受约束形参 <code>P</code>，它的<span class="t-spar">类型约束</span> <code>Q</code> 指定了概念 <code>C</code>，那么根据以下规则引入一个<a href="constraints.html" title="cpp/language/constraints">约束表达式</a> <code>E</code>：
+</p>
+<ul><li> 如果 <code>Q</code> 是 <code>C</code>（没有实参列表），
+</li></ul>
+<dl><dd><ul><li> 如果 <code>P</code> 不是形参包，那么 <code>E</code> 是 <code>C&lt;P&gt;</code>
+</li><li> 否则，<code>P</code> 是形参包，那么 <code>E</code> 是折叠表达式 <code>(C&lt;P&gt; &amp;&amp; ...)</code>
+</li></ul>
+</dd></dl>
+<ul><li> 如果 <code>Q</code> 是 <code>C&lt;A1,A2...,AN&gt;</code>，那么 <code>E</code> 分别是 <code>C&lt;P,A1,A2,...AN&gt;</code> 或 <code>(C&lt;P,A1,A2,...AN&gt; &amp;&amp; ...)</code>。
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+concept C1 <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span>... <span class="me1">Ts</span><span class="sy1">&gt;</span> <span class="co1">// 变参概念</span>
+concept C2 <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T, <span class="kw1">typename</span> U<span class="sy1">&gt;</span>
+concept C3 <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>C1 T<span class="sy1">&gt;</span>         <span class="kw1">struct</span> s1<span class="sy4">;</span> <span class="co1">// 约束表达式是 C1&lt;T&gt;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span>C1... <span class="me1">T</span><span class="sy1">&gt;</span>      <span class="kw1">struct</span> s2<span class="sy4">;</span> <span class="co1">// 约束表达式是 (C1&lt;T&gt; &amp;&amp; ...)</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span>C2... <span class="me1">T</span><span class="sy1">&gt;</span>      <span class="kw1">struct</span> s3<span class="sy4">;</span> <span class="co1">// 约束表达式是 (C2&lt;T&gt; &amp;&amp; ...)</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span>C3<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> T<span class="sy1">&gt;</span>    <span class="kw1">struct</span> s4<span class="sy4">;</span> <span class="co1">// 约束表达式是 C3&lt;T, int&gt;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span>C3<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span>... <span class="me1">T</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> s5<span class="sy4">;</span> <span class="co1">// 约束表达式是 (C3&lt;T, int&gt; &amp;&amp; ...)</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id=".E6.A8.A1.E6.9D.BF.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">模板模板形参</span></h4>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>template</b></code> <code><b>&lt;</b></code> <span class="t-spar">形参列表</span> <code><b>&gt;</b></code> <code><b>类型形参关键词</b></code> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>template</b></code> <code><b>&lt;</b></code> <span class="t-spar">形参列表</span> <code><b>&gt;</b></code> <code><b>类型形参关键词</b></code> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code><b>=</b></code> <span class="t-spar">默认值</span>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>template</b></code> <code><b>&lt;</b></code> <span class="t-spar">形参列表</span> <code><b>&gt;</b></code> <code><b>类型形参关键词</b></code> <code><b>...</b></code> <span class="t-spar">名字</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> <span class="t-spar">类型形参关键词</span>
+</td>
+<td> -
+</td>
+<td> <code><b>class</b></code> <span class="t-rev-inl t-since-cxx17"><span>或 <code><b>typename</b></code> 之一</span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> 可以有名字的模板模板形参。</div>
+<div class="t-li1"><span class="t-li">2)</span> 有默认模板且可以有名字的模板模板形参。</div>
+<div class="t-li1"><span class="t-li">3)</span> 可以有名字的模板模板<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">形参包</a>。</div>
+<p>在模板声明体内，此形参的名字是一个模板名（且需要实参以实例化）。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">class</span> my_array <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// 两个类型模板形参和一个模板模板形参：</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> K, <span class="kw1">typename</span> V, <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span><span class="sy1">&gt;</span> <span class="kw1">typename</span> C <span class="sy1">=</span> my_array<span class="sy1">&gt;</span>
+<span class="kw1">class</span> Map
+<span class="br0">{</span>
+    C<span class="sy1">&lt;</span>K<span class="sy1">&gt;</span> key<span class="sy4">;</span>
+    C<span class="sy1">&lt;</span>V<span class="sy1">&gt;</span> value<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<h4><span class="mw-headline" id=".E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82.E7.9A.84.E5.90.8D.E5.AD.97.E5.86.B3.E8.AE.AE">模板形参的名字决议</span></h4>
+<p>模板形参的名字不能在它的作用域（包括内嵌作用域）内重声明。模板形参的名字不能与模板的名字相同。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw4">int</span> N<span class="sy1">&gt;</span>
+<span class="kw1">class</span> Y
+<span class="br0">{</span>
+    <span class="kw4">int</span> T<span class="sy4">;</span>      <span class="co1">// 错误：重声明模板形参</span>
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">char</span> T<span class="sy4">;</span> <span class="co1">// 错误：重声明模板形参</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> X<span class="sy1">&gt;</span>
+<span class="kw1">class</span> X<span class="sy4">;</span> <span class="co1">// 错误：重声明模板形参</span></pre></div></div>
+<p>在某个类模板定义外的出现的类模板成员定义中，类模板成员名会隐藏任何外围类模板的模板形参名，但如果该成员是类或函数模板就不会隐藏该成员的模板形参。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw1">struct</span> B <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw1">typedef</span> <span class="kw4">void</span> C<span class="sy4">;</span>
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw4">void</span> g<span class="br0">(</span>U<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> B<span class="sy1">&gt;</span>
+<span class="kw4">void</span> A<span class="sy1">&lt;</span>B<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    B b<span class="sy4">;</span> <span class="co1">// A 的 B，不是模板形参</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> B<span class="sy1">&gt;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> C<span class="sy1">&gt;</span>
+<span class="kw4">void</span> A<span class="sy1">&lt;</span>B<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">g</span><span class="br0">(</span>C<span class="br0">)</span>
+<span class="br0">{</span>
+    B b<span class="sy4">;</span> <span class="co1">// A 的 B，不是模板形参</span>
+    C c<span class="sy4">;</span> <span class="co1">// 模板形参 C，不是 A 的 C</span>
+<span class="br0">}</span></pre></div></div>
+<p>在包含某个类模板的定义的命名空间外出现的该类模板的成员定义中，模板形参名隐藏此命名空间的成员名。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> N
+<span class="br0">{</span>
+    <span class="kw1">class</span> C <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">class</span> B
+    <span class="br0">{</span>
+        <span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> C<span class="sy1">&gt;</span>
+<span class="kw4">void</span> N<span class="sy4">::</span><span class="me2">B</span><span class="sy1">&lt;</span>C<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span>C<span class="br0">)</span>
+<span class="br0">{</span>
+    C b<span class="sy4">;</span> <span class="co1">// C 是模板形参，不是 N::C</span>
+<span class="br0">}</span></pre></div></div>
+<p>在类模板定义中，或类模板某个成员的位于模板定义外的定义中，对于每个非<a href="dependent_name.html#.E5.BE.85.E5.86.B3.E7.B1.BB.E5.9E.8B" title="cpp/language/dependent name">待决</a>基类，如果基类名或基类成员名与模板形参名相同，那么该基类名或成员名隐藏模板形参名。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw1">struct</span> B <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw4">int</span> C<span class="sy4">;</span>
+    <span class="kw4">int</span> Y<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> B, <span class="kw1">class</span> C<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> X <span class="sy4">:</span> A
+<span class="br0">{</span>
+    B b<span class="sy4">;</span> <span class="co1">// A 的 B</span>
+    C b<span class="sy4">;</span> <span class="co1">// 错误：A 的 C 不是类型名</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<h3><span class="mw-headline" id=".E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">模板实参</span></h3>
+<p>为使模板被实例化，它的每个模板形参（类型、非类型或模板）都必须被一个对应的模板实参替换。对于<a href="class_template.html" title="cpp/language/class template">类模板</a>，实参可以被显式提供<span class="t-rev-inl t-since-cxx17"><span>，或<a href="class_template_argument_deduction.html" title="cpp/language/class template argument deduction">从初始化式推导</a>，</span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>或为默认。对于<a href="function_template.html" title="cpp/language/function template">函数模板</a>，实参可以被显式提供，或<a href="template_argument_deduction.html" title="cpp/language/template argument deduction">从语境推导</a>，或为默认。
+</p><p>如果实参可以同时被解释为<a href="type.html#.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.91.BD.E5.90.8D" title="cpp/language/type">类型标识</a>和表达式，那么它始终会被解释为类型标识，即使它对应的是非类型模板形参：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #1</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> I<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    f<span class="sy1">&lt;</span><span class="kw4">int</span><span class="br0">(</span><span class="br0">)</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// "int()" 既是类型又是表达式，</span>
+                <span class="co1">// 因为它被解释成类型，所以调用 #1</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id=".E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">非类型模板实参</span></h4>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx11"><td>
+<p>可以用在非类型模板形参上的模板实参，可以是任何<a href="constant_expression.html#.E6.98.8E.E6.98.BE.E5.B8.B8.E9.87.8F.E6.B1.82.E5.80.BC.E7.9A.84.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">明显常量求值的表达式</a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span></td></tr>
+<tr class="t-rev t-since-cxx11"><td>
+<p>可以用在非类型模板形参上的模板实参，可以是任何<a href="initialization.html#.E5.88.9D.E5.A7.8B.E5.8C.96.E5.BC.8F" title="cpp/language/initialization">初始化式子句</a>。如果此初始化式子句是表达式，则它必须是<a href="constant_expression.html#.E5.B8.B8.E9.87.8F.E6.B1.82.E5.80.BC.E7.9A.84.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">明显常量求值的表达式</a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<p>给定<a href="template_parameters.html#.E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">非类型模板形参声明</a>的<span class="t-spar">类型</span> ﻿为 <code>T</code>，提供给该形参的模板实参为 <span class="t-c"><span class="mw-geshi cpp source-cpp">E</span></span>。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx26"><td>
+<p>虚设声明 <span class="t-c"><span class="mw-geshi cpp source-cpp">T x <span class="sy1">=</span> E<span class="sy4">;</span></span></span> 必须满足对具有<a href="storage_duration.html#.E9.9D.99.E6.80.81.E5.AD.98.E5.82.A8.E6.9C.9F" title="cpp/language/storage duration">静态存储期</a>的 <a href="constexpr.html#constexpr_.E5.8F.98.E9.87.8F" title="cpp/language/constexpr"><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span></span> 变量</a>的定义的语义约束。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+<tr class="t-rev t-since-cxx17"><td>
+<p>如果 <code>T</code> 包含占位符类型，或者是<a href="class_template_argument_deduction.html" title="cpp/language/class template argument deduction">被推导类类型的占位符</a>，那么模板形参的类型是对虚设声明 <span class="t-c"><span class="mw-geshi cpp source-cpp">T x <span class="sy1">=</span> E<span class="sy4">;</span></span></span> 中的变量 <span class="t-c"><span class="mw-geshi cpp source-cpp">x</span></span> 所推导的类型，其中 <span class="t-c"><span class="mw-geshi cpp source-cpp">E</span></span> 是为该形参所提供的模板实参。
+</p><p>如果被推导的类型不是<a href="template_parameters.html#.E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">结构化类型</a>，那么程序非良构。
+</p><p>对于类型中使用了占位符类型的非类型模板形参包，每个模板实参的类型会独立进行推导，而且不需要互相匹配。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">auto</span> n<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+B<span class="sy1">&lt;</span><span class="nu0">5</span><span class="sy1">&gt;</span> b1<span class="sy4">;</span>   <span class="co1">// OK：非类型模板形参的类型是 int</span>
+B<span class="sy1">&lt;</span><span class="st0">'a'</span><span class="sy1">&gt;</span> b2<span class="sy4">;</span> <span class="co1">// OK：非类型模板形参的类型是 char</span>
+B<span class="sy1">&lt;</span><span class="nu16">2.5</span><span class="sy1">&gt;</span> b3<span class="sy4">;</span> <span class="co1">// 错误（C++20 前）：非类型模板形参的类型不能是 double</span>
+ 
+<span class="co1">// C++20 的推导类类型占位符，在调用处推导类模板实参</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a> arr<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+f<span class="sy1">&lt;</span><a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a><span class="sy1">&lt;</span><span class="kw4">double</span>, <span class="nu0">8</span><span class="sy1">&gt;</span><span class="br0">{</span><span class="br0">}</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">auto</span>...<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> C <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+C<span class="sy1">&lt;</span><span class="st0">'C'</span>, <span class="nu0">0</span>, <span class="nu0">2L</span>, nullptr<span class="sy1">&gt;</span> x<span class="sy4">;</span> <span class="co1">// OK</span></pre></div></div>
+<p><span class="t-rev-inl t-since-cxx17"><span>（可能推导的）</span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span><code>T</code> 类型的非类型模板形参 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 的值，按如下方式从它的模板实参 <span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 确定：
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx11"><td>
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 是 <code>T</code> 类型的<a href="constant_expression.html#.E7.BB.8F.E8.BD.AC.E6.8D.A2.E5.B8.B8.E9.87.8F.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">经转换常量表达式</a>，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 的值为（转换后的）<span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span>。
+</li><li> 否则，程序非良构。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span></td></tr>
+<tr class="t-rev t-since-cxx11 t-until-cxx20"><td>
+<ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 是表达式：
+</li></ul>
+<dl><dd><ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 是 <code>T</code> 类型的<a href="constant_expression.html#.E7.BB.8F.E8.BD.AC.E6.8D.A2.E5.B8.B8.E9.87.8F.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">经转换常量表达式</a>，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 的值为（转换后的）<span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span>。
+</li><li> 否则，程序非良构。
+</li></ul>
+</dd></dl>
+<ul><li> 否则（<span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 是花括号包围的初始化式列表），引入一个临时变量 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span> T v <span class="sy1">=</span> A<span class="sy4">;</span></span></span>。<span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 的值为 <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> 的值。
+</li></ul>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> 的<a href="lifetime.html" title="cpp/language/lifetime">生存期</a>在其初始化后立即结束。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span><br><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<ul><li> 如果 <code>T</code> 不是类类型且 <span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 是表达式：
+</li></ul>
+<dl><dd><ul><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 是 <code>T</code> 类型的<a href="constant_expression.html#.E7.BB.8F.E8.BD.AC.E6.8D.A2.E5.B8.B8.E9.87.8F.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">经转换常量表达式</a>，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 的值为（转换后的）<span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span>。
+</li><li> 否则，程序非良构。
+</li></ul>
+</dd></dl>
+<ul><li> 否则（<code>T</code> 是类类型，或 <span class="t-c"><span class="mw-geshi cpp source-cpp">A</span></span> 是花括号包围的初始化式列表），引入一个临时变量 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span> T v <span class="sy1">=</span> A<span class="sy4">;</span></span></span>。
+</li></ul>
+<dl><dd><ul><li> 如果 <code>T</code> 是类类型，那么存在一个<a href="template_parameters.html#.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82.E5.AF.B9.E8.B1.A1">模板形参对象</a>（其亦由 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 所代表）。<span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 从某个未指明的与 <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> <a href="template_parameters.html#.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82.E7.AD.89.E4.BB.B7.E6.80.A7">模板实参等价</a>的初始化式进行复制初始化。
+</li></ul>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> 的<a href="lifetime.html" title="cpp/language/lifetime">生存期</a>在它和 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 初始化后立即结束。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 的初始化满足以下任一条件，则程序非良构：
+</li></ul>
+<dl><dd><ul><li> 此初始化非良构。
+</li><li> 此初始化中所虚构的声明符-初始化式序列的<a href="expressions.html#.E5.85.A8.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/expressions">全表达式</a>，当作为<a href="constant_expression.html#.E6.98.8E.E6.98.BE.E5.B8.B8.E9.87.8F.E6.B1.82.E5.80.BC.E7.9A.84.E8.A1.A8.E8.BE.BE.E5.BC.8F" title="cpp/language/constant expression">明显常量求值的表达式</a>解释时并不是常量表达式。
+</li><li> 此初始化会导致 <span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 与 <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> 并不<a href="template_parameters.html#.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82.E7.AD.89.E4.BB.B7.E6.80.A7">模板实参等价</a>。
+</li></ul>
+</dd></dl>
+</dd></dl>
+<ul><li> 否则，<span class="t-c"><span class="mw-geshi cpp source-cpp">P</span></span> 的值为 <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> 的值。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> i<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> C <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+C<span class="sy1">&lt;</span><span class="br0">{</span><span class="nu0">42</span><span class="br0">}</span><span class="sy1">&gt;</span> c1<span class="sy4">;</span> <span class="co1">// OK</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">auto</span> n<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> J1
+<span class="br0">{</span>
+    J1<span class="sy2">*</span> self <span class="sy1">=</span> this<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+B<span class="sy1">&lt;</span>J1<span class="br0">{</span><span class="br0">}</span><span class="sy1">&gt;</span> j1<span class="sy4">;</span> <span class="co1">// 错误：模板形参对象的初始化不是常量表达式</span>
+ 
+<span class="kw1">struct</span> J2
+<span class="br0">{</span>
+    J2 <span class="sy2">*</span>self <span class="sy1">=</span> this<span class="sy4">;</span>
+    <span class="kw4">constexpr</span> J2<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="kw4">constexpr</span> J2<span class="br0">(</span><span class="kw4">const</span> J2<span class="sy3">&amp;</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+B<span class="sy1">&lt;</span>J2<span class="br0">{</span><span class="br0">}</span><span class="sy1">&gt;</span> j2<span class="sy4">;</span> <span class="co1">// 错误：模板形参对象与引入的临时量并不模板实参等价</span></pre></div></div>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx17"><td>
+<p>在实例化拥有非类型模板形参的模板时应用下列限制：
+</p>
+<ul><li> 对于整型和算术类型，实例化时所提供的模板实参必须是模板形参类型的<a href="constant_expression.html" title="cpp/language/constant expression">经转换常量表达式</a>（因此适用某些隐式转换）。
+</li><li> 对于对象指针，模板实参必须指定某个具有静态<a href="storage_duration.html" title="cpp/language/storage duration">存储期</a>和（内部或外部）<a href="storage_duration.html#.E8.BF.9E.E6.8E.A5" title="cpp/language/storage duration">连接</a>的完整对象的地址，或者是求值为适当的空指针<span class="t-rev-inl t-since-cxx11"><span>或 <span class="t-lc"><a href="../types/nullptr_t.html" title="cpp/types/nullptr t">std::nullptr_t</a></span> </span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>值的常量表达式。
+</li><li> 对于函数指针，合法的实参是指向具有连接的函数的指针（或求值为空指针值的常量表达式）。
+</li><li> 对于左值引用形参，实例化时所提供的实参不能是临时量、无名左值或无连接的具名左值（换言之，实参必须具有连接）。
+</li><li> 对于成员指针，实参必须是表示成 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;</span>Class<span class="sy4">::</span><span class="me2">Member</span></span></span> 的成员指针，或求值为空指针值<span class="t-rev-inl t-since-cxx11"><span>或 <span class="t-lc"><a href="../types/nullptr_t.html" title="cpp/types/nullptr t">std::nullptr_t</a></span> </span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>值的常量表达式。
+</li></ul>
+<p>特别是，这意味着字符串字面量、数组元素的地址和非静态成员的地址，不能被用作模板实参，来实例化它对应的非类型模板形参是对象指针的模板形参的模板。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></td></tr>
+<tr class="t-rev t-since-cxx17"><td>
+<p>引用或指针类型的非类型模板形参<span class="t-rev-inl t-since-cxx20"><span>以及类类型的非类型模板形参和它的子对象之中的引用或指针类型的非静态数据成员</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>，它们不能指代下列对象或者是下列对象的地址：
+</p>
+<ul><li> 临时对象（包括在<a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a>期间创建的对象）；
+</li><li> <a href="string_literal.html" title="cpp/language/string literal">字符串字面量</a>；
+</li><li> <a href="typeid.html" title="cpp/language/typeid"><code>typeid</code></a> 的结果；
+</li><li> 预定义变量 <span class="t-c"><span class="mw-geshi cpp source-cpp">__func__</span></span>；
+</li><li> 或<span class="t-rev-inl t-since-cxx20"><span>以上之一的</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>子对象（包括非静态类成员、基类子对象或数组元素）。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy2">*</span> pci<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> X <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> ai<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="sy4">;</span>
+X<span class="sy1">&lt;</span>ai<span class="sy1">&gt;</span> xi<span class="sy4">;</span> <span class="co1">// OK：数组到指针转换和 cv 限定转换</span>
+ 
+<span class="kw1">struct</span> Y <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">const</span> Y<span class="sy3">&amp;</span> b<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> Z <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+Y y<span class="sy4">;</span>
+Z<span class="sy1">&lt;</span>y<span class="sy1">&gt;</span> z<span class="sy4">;</span>   <span class="co1">// OK：没有转换</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span>pa<span class="br0">)</span><span class="br0">[</span><span class="nu0">5</span><span class="br0">]</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> W <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> b<span class="br0">[</span><span class="nu0">5</span><span class="br0">]</span><span class="sy4">;</span>
+W<span class="sy1">&lt;</span>b<span class="sy1">&gt;</span> w<span class="sy4">;</span>   <span class="co1">// OK：没有转换</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">char</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">void</span> <span class="br0">(</span><span class="sy2">*</span>pf<span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> A <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+A<span class="sy1">&lt;</span><span class="sy3">&amp;</span>f<span class="sy1">&gt;</span> a<span class="sy4">;</span>  <span class="co1">// OK：重载决议选择 f(int)</span></pre></div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> p<span class="sy1">&gt;</span>
+<span class="kw1">class</span> X <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+X<span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="st0">"Studebaker"</span><span class="sy1">&gt;</span> x1<span class="sy4">;</span> <span class="co1">// 错误：将字符串字面量用作模板实参</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy2">*</span> p<span class="sy1">&gt;</span>
+<span class="kw1">class</span> X <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> m<span class="sy4">;</span>
+    <span class="kw4">static</span> <span class="kw4">int</span> s<span class="sy4">;</span>
+<span class="br0">}</span> s<span class="sy4">;</span>
+ 
+X<span class="sy1">&lt;</span><span class="sy3">&amp;</span>a<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy1">&gt;</span> x3<span class="sy4">;</span> <span class="co1">// 错误（C++20 前）：数组元素的地址</span>
+X<span class="sy1">&lt;</span><span class="sy3">&amp;</span>s.<span class="me1">m</span><span class="sy1">&gt;</span> x4<span class="sy4">;</span>  <span class="co1">// 错误（C++20 前）：非静态成员的地址</span>
+X<span class="sy1">&lt;</span><span class="sy3">&amp;</span>s.<span class="me1">s</span><span class="sy1">&gt;</span> x5<span class="sy4">;</span>  <span class="co1">// OK：静态成员的地址</span>
+X<span class="sy1">&lt;</span><span class="sy3">&amp;</span>S<span class="sy4">::</span><span class="me2">s</span><span class="sy1">&gt;</span> x6<span class="sy4">;</span> <span class="co1">// OK：静态成员的地址</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy3">&amp;</span> CRI<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+B<span class="sy1">&lt;</span><span class="nu0">1</span><span class="sy1">&gt;</span> b2<span class="sy4">;</span>     <span class="co1">// 错误：模板实参要求临时量</span>
+<span class="kw4">int</span> c <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+B<span class="sy1">&lt;</span>c<span class="sy1">&gt;</span> b1<span class="sy4">;</span>     <span class="co1">// OK</span></pre></div></div>
+<h4><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">类型模板实参</span></h4>
+<p>类型模板形参的模板实参必须是<a href="type.html#.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.91.BD.E5.90.8D" title="cpp/language/type">类型标识</a>，它可以指名不完整类型：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">class</span> X <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 类模板</span>
+ 
+<span class="kw1">struct</span> A<span class="sy4">;</span>            <span class="co1">// 不完整类型</span>
+<span class="kw1">typedef</span> <span class="kw1">struct</span> <span class="br0">{</span><span class="br0">}</span> B<span class="sy4">;</span> <span class="co1">// 无名类型的类型别名</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    X<span class="sy1">&lt;</span>A<span class="sy1">&gt;</span> x1<span class="sy4">;</span>  <span class="co1">// OK：'A' 指名类型</span>
+    X<span class="sy1">&lt;</span>A<span class="sy2">*</span><span class="sy1">&gt;</span> x2<span class="sy4">;</span> <span class="co1">// OK：'A*' 指名类型</span>
+    X<span class="sy1">&lt;</span>B<span class="sy1">&gt;</span> x3<span class="sy4">;</span>  <span class="co1">// OK：'B' 指名类型</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id=".E6.A8.A1.E6.9D.BF.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">模板模板实参</span></h4>
+<p>模板模板形参的模板实参是必须是一个<a href="identifiers.html#.E5.9C.A8.E8.A1.A8.E8.BE.BE.E5.BC.8F.E4.B8.AD" title="cpp/language/identifiers">标识表达式</a>，它指名一个类模板或模板别名。
+</p><p>当实参是类模板时，进行形参匹配时只考虑它的主模板。即使存在部分特化，它们也只会在基于此模板模板形参的特化恰好要被实例化时才会被考虑。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span> <span class="co1">// 主模板</span>
+<span class="kw1">class</span> A <span class="br0">{</span> <span class="kw4">int</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span> <span class="co1">// 部分特化</span>
+<span class="kw1">class</span> A<span class="sy1">&lt;</span>T<span class="sy2">*</span><span class="sy1">&gt;</span> <span class="br0">{</span> <span class="kw4">long</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// 带有模板模板形参 V 的类模板</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span><span class="sy1">&gt;</span> <span class="kw1">class</span> V<span class="sy1">&gt;</span>
+<span class="kw1">class</span> C
+<span class="br0">{</span>
+    V<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> y<span class="sy4">;</span>  <span class="co1">// 使用主模板</span>
+    V<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy2">*</span><span class="sy1">&gt;</span> z<span class="sy4">;</span> <span class="co1">// 使用部分特化</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+C<span class="sy1">&lt;</span>A<span class="sy1">&gt;</span> c<span class="sy4">;</span> <span class="co1">// c.y.x 的类型是 int，c.z.x 的类型是 long</span></pre></div></div>
+<p>为匹配模板模板实参 <code>A</code> 与模板模板形参 <code>P</code>，<code>P</code> 必须至少和 <code>A</code> 一样特殊。<span class="t-rev-inl t-since-cxx11"><span>如果 <code>P</code> 的形参列表包含一个<a href="pack.html" title="cpp/language/parameter pack" class="mw-redirect">形参包</a>，那么来自 <code>A</code> 的模板形参列表中的零或更多模板形参（或形参包）和它匹配。</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>
+</p><p>正式来说，给定以下对两个函数模板的重写，根据<a href="function_template.html" title="cpp/language/function template">函数模板</a>的偏序规则，如果对应于模板模板形参 <code>P</code> 的函数模板，至少与对应于模板模板实参 <code>A</code> 的函数模板同样特殊，那么 <code>P</code> 至少和 <code>A</code> 一样特殊。给定一个虚设的类模板 <code>X</code>，它拥有 <code>A</code> 的模板形参列表（包含默认实参）：
+</p>
+<ul><li> 两个函数模板各自分别拥有与 <code>P</code> 或 <code>A</code> 相同的各个模板形参。
+</li><li> 每个函数模板均拥有单个函数形参，它的类型是以对应于各自函数模板的模板形参的模板实参对 <code>X</code> 的特化，其中对于函数模板的模板形参列表中的每个模板形参 <code>PP</code>，构成一个对应的模板实参 <code>AA</code>。<span class="t-rev-inl t-since-cxx11"><span>如果 <code>PP</code> 声明参数包，那么 <code>AA</code> 是包展开 <code>PP...</code>；否则，</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span> <code>AA</code> 是标识表达式 <code>PP</code>。
+</li></ul>
+<p>如果重写生成了非法类型，那么 <code>P</code> 并不会至少与 <code>A</code> 同样特殊。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> eval<span class="sy4">;</span>                     <span class="co1">// 主模板 </span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span>, <span class="kw1">typename</span>...<span class="sy1">&gt;</span> <span class="kw1">class</span> TT, <span class="kw1">typename</span> T1, <span class="kw1">typename</span>... <span class="me1">Rest</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> eval<span class="sy1">&lt;</span>TT<span class="sy1">&lt;</span>T1, Rest...<span class="sy1">&gt;&gt;</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// eval 的部分特化</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T1<span class="sy1">&gt;</span> <span class="kw1">struct</span> A<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T1, <span class="kw1">typename</span> T2<span class="sy1">&gt;</span> <span class="kw1">struct</span> B<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> N<span class="sy1">&gt;</span> <span class="kw1">struct</span> C<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T1, <span class="kw4">int</span> N<span class="sy1">&gt;</span> <span class="kw1">struct</span> D<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T1, <span class="kw1">typename</span> T2, <span class="kw4">int</span> N <span class="sy1">=</span> <span class="nu0">17</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> E<span class="sy4">;</span>
+ 
+eval<span class="sy1">&lt;</span>A<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;&gt;</span> eA<span class="sy4">;</span>        <span class="co1">// OK：匹配 eval 的部分特化</span>
+eval<span class="sy1">&lt;</span>B<span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="kw4">float</span><span class="sy1">&gt;&gt;</span> eB<span class="sy4">;</span> <span class="co1">// OK：匹配 eval 的部分特化</span>
+eval<span class="sy1">&lt;</span>C<span class="sy1">&lt;</span><span class="nu0">17</span><span class="sy1">&gt;&gt;</span> eC<span class="sy4">;</span>         <span class="co1">// 错误：C 在部分特化中不匹配 TT，因为 TT 的首个形参是类型模板形参</span>
+                        <span class="co1">// 而 17 不指名类型</span>
+eval<span class="sy1">&lt;</span>D<span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="nu0">17</span><span class="sy1">&gt;&gt;</span> eD<span class="sy4">;</span>    <span class="co1">// 错误：D 在部分特化中不匹配 TT，</span>
+                        <span class="co1">// 因为 TT 的第二个形参是类型形参包，而 17 不指名类型</span>
+eval<span class="sy1">&lt;</span>E<span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="kw4">float</span><span class="sy1">&gt;&gt;</span> eE<span class="sy4">;</span> <span class="co1">// 错误：E 在部分特化中不匹配 TT</span>
+                        <span class="co1">// 因为 E 的第三个（默认）形参是非类型形参</span></pre></div></div>
+<p>在采纳 <a rel="nofollow" class="external text" href="https://wg21.link/p0552r0">P0552R0</a> 前，<code>A</code> 中的每个模板形参必须精确匹配 <code>P</code> 中的对应模板形参。这使得很多合理的模板实参无法被接受。
+</p><p>虽然很早就有人指出来了这个问题（<a rel="nofollow" class="external text" href="https://wg21.cmeerw.net/cwg/issue150">CWG#150</a>），但解决它的时候作出的更改只能应用到 C++17 草案中，因此该解决方案事实上成为了 C++17 的特性。许多编译器默认禁用了该方案：
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="https://gcc.gnu.org/gcc-7/changes.html#cxx">GCC</a> 在 C++17 以前的语言模式中默认禁用了该方案，只有通过设置编译器参数才能在这些模式中启用该方案。
+</li><li> <a rel="nofollow" class="external text" href="https://clang.llvm.org/cxx_status.html#p0522">Clang</a> 在所有语言模式中默认禁用了该方案，只有通过设置编译器参数才能启用该方案。
+</li><li> <a rel="nofollow" class="external text" href="https://docs.microsoft.com/en-us/cpp/overview/visual-cpp-language-conformance">Microsoft Visual Studio</a> 把该方案视为一个通常 C++17 特性，并只在 C++17 及以后的语言模式中启用它（即在默认的语言模式——C++14 模式中不支持该方案）
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">class</span> A <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U <span class="sy1">=</span> T<span class="sy1">&gt;</span> <span class="kw1">class</span> B <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Types</span><span class="sy1">&gt;</span> <span class="kw1">class</span> C <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span><span class="sy1">&gt;</span> <span class="kw1">class</span> P<span class="sy1">&gt;</span> <span class="kw1">class</span> X <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+X<span class="sy1">&lt;</span>A<span class="sy1">&gt;</span> xa<span class="sy4">;</span> <span class="co1">// OK</span>
+X<span class="sy1">&lt;</span>B<span class="sy1">&gt;</span> xb<span class="sy4">;</span> <span class="co1">// 在 P0552R0 后 OK；之前是错误的：非严格匹配</span>
+X<span class="sy1">&lt;</span>C<span class="sy1">&gt;</span> xc<span class="sy4">;</span> <span class="co1">// 在 P0552R0 后 OK；之前是错误的：非严格匹配</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>...<span class="sy1">&gt;</span> <span class="kw1">class</span> Q<span class="sy1">&gt;</span> <span class="kw1">class</span> Y <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+Y<span class="sy1">&lt;</span>A<span class="sy1">&gt;</span> ya<span class="sy4">;</span> <span class="co1">// OK</span>
+Y<span class="sy1">&lt;</span>B<span class="sy1">&gt;</span> yb<span class="sy4">;</span> <span class="co1">// OK</span>
+Y<span class="sy1">&lt;</span>C<span class="sy1">&gt;</span> yc<span class="sy4">;</span> <span class="co1">// OK</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">auto</span> n<span class="sy1">&gt;</span> <span class="kw1">class</span> D <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>   <span class="co1">// 注意：C++17</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> <span class="kw1">class</span> R<span class="sy1">&gt;</span> <span class="kw1">class</span> Z <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+Z<span class="sy1">&lt;</span>D<span class="sy1">&gt;</span> zd<span class="sy4">;</span> <span class="co1">// 在 P0552R0 后 OK：模板形参比模板实参更特殊</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> SI <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">auto</span><span class="sy1">&gt;</span> <span class="kw1">class</span><span class="sy1">&gt;</span> <span class="kw4">void</span> FA<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 注意：C++17</span>
+FA<span class="sy1">&lt;</span>SI<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 错误</span></pre></div></div>
+<h4><span class="mw-headline" id=".E9.BB.98.E8.AE.A4.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">默认模板实参</span></h4>
+<p>默认模板实参在形参列表中在 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">=</span></span></span> 号之后指定。可以为任何种类的模板形参（类型、非类型或模板）指定默认实参<span class="t-rev-inl t-since-cxx11"><span>，但不能对形参包指定</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>。
+</p><p>如果为主类模板<span class="t-rev-inl t-since-cxx14"><span>、主变量模板</span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></span></span>或别名模版的模板形参指定默认实参，那么它后面的所有模板形参都必须有默认实参<span class="t-rev-inl t-since-cxx11"><span>，但最后一个可以是模板形参包</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>。在函数模板中，对跟在默认实参之后的形参没有限制<span class="t-rev-inl t-since-cxx11"><span>，而只有在类型形参具有默认实参，或可以从函数实参推导时，才能跟在形参包之后</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>。
+</p><p>以下情况不允许默认形参：
+</p>
+<ul><li> 在<a href="class_template.html" title="cpp/language/class template">类模板</a>的成员的类外定义中（必须在类体内的声明中提供它们）。注意非模板类的<a href="member_template.html" title="cpp/language/member template">成员模板</a>可以在它的类外定义中使用默认形参（见 <a rel="nofollow" class="external text" href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53856">GCC 漏洞 53856</a>）
+</li><li> 在<a href="friend.html#.E6.A8.A1.E6.9D.BF.E5.8F.8B.E5.85.83" title="cpp/language/friend">友元类模板</a>声明中
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx11"><td>
+<ul><li> 在任何<a href="function_template.html" title="cpp/language/function template">函数模板</a>声明或定义中
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span></td></tr>
+</table>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>在友元函数模板的声明上，仅当声明是定义，且此翻译单元不出现此函数的其他声明时，才允许默认模板实参。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<p>各个声明中所出现的默认模板实参，以类似默认函数实参的方式合并：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T1, <span class="kw1">typename</span> T2 <span class="sy1">=</span> <span class="kw4">int</span><span class="sy1">&gt;</span> <span class="kw1">class</span> A<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T1 <span class="sy1">=</span> <span class="kw4">int</span>, <span class="kw1">typename</span> T2<span class="sy1">&gt;</span> <span class="kw1">class</span> A<span class="sy4">;</span>
+ 
+<span class="co1">// 如上与如下相同：</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T1 <span class="sy1">=</span> <span class="kw4">int</span>, <span class="kw1">typename</span> T2 <span class="sy1">=</span> <span class="kw4">int</span><span class="sy1">&gt;</span> <span class="kw1">class</span> A<span class="sy4">;</span></pre></div></div>
+<p>但在同一作用域中不能两次为同一形参指定默认实参：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T <span class="sy1">=</span> <span class="kw4">int</span><span class="sy1">&gt;</span> <span class="kw1">class</span> X<span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T <span class="sy1">=</span> <span class="kw4">int</span><span class="sy1">&gt;</span> <span class="kw1">class</span> X <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 错误</span></pre></div></div>
+<p>当解析非类型模板形参的默认模板实参时，第一个非嵌套的 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy1">&gt;</span></span></span> 被当做模板形参列表的结尾而非大于运算符：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">3</span> <span class="sy1">&gt;</span> <span class="nu0">4</span><span class="sy1">&gt;</span>   <span class="co1">// 语法错误</span>
+<span class="kw1">class</span> X <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> i <span class="sy1">=</span> <span class="br0">(</span><span class="nu0">3</span> <span class="sy1">&gt;</span> <span class="nu0">4</span><span class="br0">)</span><span class="sy1">&gt;</span> <span class="co1">// OK</span>
+<span class="kw1">class</span> Y <span class="br0">{</span> <span class="coMULTI">/* ... */</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>模板模板形参的模板形参列表可拥有它自己的默认实参，它只会在模板模板实参自身处于作用域中时有效：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// 类模板，带有默认实参的类型模板形参</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T <span class="sy1">=</span> <span class="kw4">float</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// 模板模板形参 T 有形参列表，</span>
+<span class="co1">// 它由一个带默认实参的类型模板形参组成</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> <span class="sy1">=</span> <span class="kw4">float</span><span class="sy1">&gt;</span> <span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// 类体外的成员函数模板定义</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> TT<span class="sy1">&gt;</span> <span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    T<span class="sy1">&lt;&gt;</span> t<span class="sy4">;</span> <span class="co1">// 错误：TT 在作用域中没有默认实参</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> TT <span class="sy1">=</span> <span class="kw4">char</span><span class="sy1">&gt;</span> <span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">g</span><span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    T<span class="sy1">&lt;&gt;</span> t<span class="sy4">;</span> <span class="co1">// OK：t 是 T&lt;char&gt;</span>
+<span class="br0">}</span></pre></div></div>
+<p>默认模板形参中所用的名字的<a href="access.html" title="cpp/language/access">成员访问</a>，在声明中，而非在使用点检查：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> B <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">class</span> C
+<span class="br0">{</span>
+<span class="kw1">protected</span><span class="sy4">:</span>
+    <span class="kw1">typedef</span> T TT<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> U, <span class="kw1">typename</span> V <span class="sy1">=</span> <span class="kw1">typename</span> U<span class="sy4">::</span><span class="me2">TT</span><span class="sy1">&gt;</span>
+<span class="kw1">class</span> D<span class="sy4">:</span> <span class="kw1">public</span> U <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+D<span class="sy1">&lt;</span>C<span class="sy1">&lt;</span>B<span class="sy1">&gt;&gt;</span><span class="sy2">*</span> d<span class="sy4">;</span> <span class="co1">// 错误：C::TT 是受保护的</span></pre></div></div>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>默认模板实参在需要该默认实参的值时被隐式实例化，除非模板用于指名函数：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T, <span class="kw1">typename</span> U <span class="sy1">=</span> <span class="kw4">int</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> S <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+S<span class="sy1">&lt;</span><span class="kw4">bool</span><span class="sy1">&gt;</span><span class="sy2">*</span> p<span class="sy4">;</span> <span class="co1">// 默认模板实参 U 在此点实例化</span>
+            <span class="co1">// p 的类型是 S&lt;bool, int&gt;*</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id=".E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82.E7.AD.89.E4.BB.B7.E6.80.A7">模板实参等价性</span></h4>
+<p>模板实参等价性用来确定两个<a href="templates.html#.E6.A8.A1.E6.9D.BF.E6.A0.87.E8.AF.86" title="cpp/language/templates">模板标识</a>是否相同。
+</p><p>如果两个值拥有相同的类型，且满足以下条件之一，那么它们<i>模板实参等价</i>：
+</p>
+<ul><li> 它们拥有整数或枚举类型且它们的值相同。
+</li><li> 它们拥有指针类型且它们拥有同一指针值。
+</li><li> 它们拥有成员指针类型且它们指代同一类成员或都是空成员指针值。
+</li><li> 它们拥有左值引用类型且它们指代同一对象或函数。
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<ul><li> 它们拥有 <span class="t-lc"><a href="../types/nullptr_t.html" title="cpp/types/nullptr t">std::nullptr_t</a></span> 类型。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<ul><li> 它们拥有浮点数类型且它们的值相同。
+</li><li> 它们拥有数组类型（此情况下数组必须是某类/联合体的成员对象）且它们对应的元素模板实参等价。
+</li><li> 它们拥有联合体类型且它们均无活跃成员，或它们拥有相同的活跃成员且它们的活跃成员模板实参等价。
+</li><li> 它们拥有 lambda 闭包类型。
+</li><li> 它们拥有非联合类类型且它们对应的直接子对象和引用成员模板实参等价。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>模板形参中，对类型和非类型形参都可以使用类型约束，这取决于是否有 <span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span>。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span><span class="sy1">&gt;</span>
+concept C <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>C,     <span class="co1">// 类型形参</span>
+         C <span class="kw4">auto</span> <span class="co1">// 非类型形参</span>
+        <span class="sy1">&gt;</span>
+<span class="kw1">struct</span> S<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+S<span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="nu0">0</span><span class="sy1">&gt;</span> s<span class="sy4">;</span></pre></div></div>
+<p><br>
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<table class="wikitable">
+
+<tr>
+<th>功能特性测试宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_nontype_template_parameter_auto" title="cpp/feature test"><code>__cpp_nontype_template_parameter_auto</code></a></td>
+<td><a href="../compiler_support/17.html#cpp_nontype_template_parameter_auto_201606L" title="cpp/compiler support/17"><code>201606L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td>声明带有 <code>auto</code> 的<a href="template_parameters.html#.E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">非类型模板形参</a>
+</td></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_template_template_args" title="cpp/feature test"><code>__cpp_template_template_args</code></a></td>
+<td><a href="../compiler_support/17.html#cpp_template_template_args_201611L" title="cpp/compiler support/17"><code>201611L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(c++17)</span><br><span class="t-mark" style="white-space: nowrap;">(DR)</span></td>
+<td><a href="template_parameters.html#.E6.A8.A1.E6.9D.BF.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">模板模板实参</a>的匹配
+</td></tr>
+<tr>
+<td rowspan="2"><a href="../feature_test.html#cpp_nontype_template_args" title="cpp/feature test"><code>__cpp_nontype_template_args</code></a></td>
+<td><a href="../compiler_support/17.html#cpp_nontype_template_args_201411L" title="cpp/compiler support/17"><code>201411L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td>允许所有<a href="template_parameters.html#.E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.AE.9E.E5.8F.82">非类型模板实参</a>的常量求值
+</td></tr>
+<tr>
+<td><a href="../compiler_support/20.html#cpp_nontype_template_args_201911L" title="cpp/compiler support/20"><code>201911L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td><a href="template_parameters.html#.E9.9D.9E.E7.B1.BB.E5.9E.8B.E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">非类型模板形参</a>中的类类型和浮点数类型
+</td></tr></table>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;array&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;numeric&gt;</span>
+ 
+<span class="co1">// 简单的非类型模板形参</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> N<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> S <span class="br0">{</span> <span class="kw4">int</span> a<span class="br0">[</span>N<span class="br0">]</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> S2 <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// 复杂的非类型形参的例子</span>
+<span class="kw1">template</span>
+<span class="sy1">&lt;</span>
+    <span class="kw4">char</span> c,             <span class="co1">// 整型类型</span>
+    <span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span>ra<span class="br0">)</span><span class="br0">[</span><span class="nu0">5</span><span class="br0">]</span>,       <span class="co1">// 到（数组类型）对象的左值引用</span>
+    <span class="kw4">int</span> <span class="br0">(</span><span class="sy2">*</span>pf<span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span>,     <span class="co1">// 函数指针</span>
+    <span class="kw4">int</span> <span class="br0">(</span>S<span class="sy1">&lt;</span><span class="nu0">10</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="sy2">*</span>a<span class="br0">)</span><span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span> <span class="co1">// 指向（int[10] 类型的）成员对象的指针</span>
+<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> Complicated
+<span class="br0">{</span>
+    <span class="co1">// 调用编译时所选择的函数</span>
+    <span class="co1">// 并在编译时将它的结果存储在数组中</span>
+    <span class="kw4">void</span> foo<span class="br0">(</span><span class="kw4">char</span> base<span class="br0">)</span>
+    <span class="br0">{</span>
+        ra<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span> <span class="sy1">=</span> pf<span class="br0">(</span>c <span class="sy2">-</span> base<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">//  S2&lt;"fail"&gt; s2;        // 错误：不能用字符串字面量</span>
+    <span class="kw4">char</span> okay<span class="br0">[</span><span class="br0">]</span> <span class="sy1">=</span> <span class="st0">"okay"</span><span class="sy4">;</span> <span class="co1">// 有连接的静态对象</span>
+<span class="co1">//  S2&lt;&amp;okay[0] &gt; s3;    // 错误：数组元素无连接</span>
+    S2<span class="sy1">&lt;</span>okay<span class="sy1">&gt;</span> s4<span class="sy4">;</span>          <span class="co1">// 能用</span>
+ 
+<span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">5</span><span class="br0">]</span><span class="sy4">;</span>
+<span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> n<span class="sy4">;</span> <span class="br0">}</span>
+ 
+<span class="co1">// C++20：非类型模板形参可以具有字面量类类型</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a> arr<span class="sy1">&gt;</span>
+<span class="kw4">constexpr</span>
+<span class="kw4">auto</span> sum<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <a href="../algorithm/accumulate.html"><span class="kw1655">std::<span class="me2">accumulate</span></span></a><span class="br0">(</span>arr.<span class="me1">cbegin</span><span class="br0">(</span><span class="br0">)</span>, arr.<span class="me1">cend</span><span class="br0">(</span><span class="br0">)</span>, <span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+<span class="co1">// C++20：可以在调用处推导出类模板实参</span>
+static_assert<span class="br0">(</span>sum<span class="sy1">&lt;</span><a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a><span class="sy1">&lt;</span><span class="kw4">double</span>, <span class="nu0">8</span><span class="sy1">&gt;</span><span class="br0">{</span><span class="nu0">3</span>, <span class="nu0">1</span>, <span class="nu0">4</span>, <span class="nu0">1</span>, <span class="nu0">5</span>, <span class="nu0">9</span>, <span class="nu0">2</span>, <span class="nu0">6</span><span class="br0">}</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> <span class="nu16">31.0</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="co1">// C++20：非类型模板形参的实参推导和类模板实参推导</span>
+static_assert<span class="br0">(</span>sum<span class="sy1">&lt;</span><a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a><span class="br0">{</span><span class="nu0">2</span>, <span class="nu0">7</span>, <span class="nu0">1</span>, <span class="nu0">8</span>, <span class="nu0">2</span>, <span class="nu0">8</span><span class="br0">}</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">28</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    S<span class="sy1">&lt;</span><span class="nu0">10</span><span class="sy1">&gt;</span> s<span class="sy4">;</span> <span class="co1">// s.a 是含有 10 个 int 的数组</span>
+    s.<span class="me1">a</span><span class="br0">[</span><span class="nu0">9</span><span class="br0">]</span> <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span>
+ 
+    Complicated<span class="sy1">&lt;</span><span class="st0">'2'</span>, a, f, <span class="sy3">&amp;</span>S<span class="sy1">&lt;</span><span class="nu0">10</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">a</span><span class="sy1">&gt;</span> c<span class="sy4">;</span>
+    c.<span class="me1">foo</span><span class="br0">(</span><span class="st0">'0'</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> s.<span class="me1">a</span><span class="br0">[</span><span class="nu0">9</span><span class="br0">]</span> <span class="sy1">&lt;&lt;</span> a<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">42</pre></div></div> 
+</div>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：更多示例 </td></tr></table>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/150.html">CWG 150</a><br>(<a rel="nofollow" class="external text" href="https://wg21.link/P0522R0">P0522R0</a>)
+</td>
+<td> C++98
+</td>
+<td> 模板模板实参必须准确匹配模板模板形参的形参列表
+</td>
+<td> 模板形参可以比模板实参更特殊
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/184.html">CWG 184</a>
+</td>
+<td> C++98
+</td>
+<td> 未指明模板模板形参中的模板形参是否可以有默认实参
+</td>
+<td> 添加相应说明
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/354.html">CWG 354</a>
+</td>
+<td> C++98
+</td>
+<td> 非类型模板实参不能是空指针值
+</td>
+<td> 可以是空指针值
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1398.html">CWG 1398</a>
+</td>
+<td> C++11
+</td>
+<td> 非类型模板实参不能具有 <code>std::nullptr_t</code> 类型
+</td>
+<td> 可以具有该类型
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1570.html">CWG 1570</a>
+</td>
+<td> C++98
+</td>
+<td> 非类型模板实参可以表示子对象的地址
+</td>
+<td> 只能表示完整对象的地址
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1922.html">CWG 1922</a>
+</td>
+<td> C++98
+</td>
+<td> 不明确名字是注入类名的类模板是否可以使用之前的声明中的默认模板实参
+</td>
+<td> 可以使用
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2032.html">CWG 2032</a>
+</td>
+<td> C++14
+</td>
+<td> 对于变量模板，有默认实参的模板形参后的模板形参没有任何限制
+</td>
+<td> 应用与类模板和别名模板相同的限制
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2542.html">CWG 2542</a>
+</td>
+<td> C++20
+</td>
+<td> 不明确闭包类型是不是结构化类型
+</td>
+<td> 不是结构化类型
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2845.html">CWG 2845</a>
+</td>
+<td> C++20
+</td>
+<td> 闭包类型不是结构化类型
+</td>
+<td> 无捕获时是结构化类型
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://wg21.link/P2308R1">P2308R1</a>
+</td>
+<td> C++11<br>C++20
+</td>
+<td> 1. 非类型模板实参不允许列表初始化（C++11）<br>2. 不明确类类型的非类型模板形参如何初始化（C++20）
+</td>
+<td> 1. 允许<br>2. 使之明确
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 10945/1000000
+Preprocessor generated node count: 23167/1000000
+Post‐expand include size: 312280/4194304 bytes
+Template argument size: 72237/4194304 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:9255-0!*!0!!zh!*!zh!* and timestamp 20250323193656 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/language/template_parameters&amp;oldid=97486">https://zh.cppreference.com/mwiki/index.php?title=cpp/language/template_parameters&amp;oldid=97486</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/language/template_parameters">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年1月7日 (星期二) 19:38。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 10.383 secs. -->
+	</body>
+<!-- Cached 20250323193656 -->
+</html>

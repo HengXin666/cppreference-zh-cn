@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>std::async</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/thread/async","wgTitle":"cpp/thread/async","wgCurRevisionId":95317,"wgArticleId":3740,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/thread/async","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_thread_async skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::</span>async</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../thread.html" title="cpp/thread">thread</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../thread.html" title="cpp/thread"> 并发支持库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E7.BA.BF.E7.A8.8B" title="cpp/thread">线程</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="thread.html" title="cpp/thread/thread"><span class="t-lines"><span>thread</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="jthread.html" title="cpp/thread/jthread"><span class="t-lines"><span>jthread</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="hardware_destructive_interference_size.html" title="cpp/thread/hardware destructive interference size"><span class="t-lines"><span>hardware_destructive_interference_size</span><span>hardware_constructive_interference_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../thread.html#.E7.AE.A1.E7.90.86.E5.BD.93.E5.89.8D.E7.BA.BF.E7.A8.8B.E7.9A.84.E5.87.BD.E6.95.B0" title="cpp/thread"><code>this_thread</code> 命名空间</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="get_id.html" title="cpp/thread/get id"><span class="t-lines"><span>get_id</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="yield.html" title="cpp/thread/yield"><span class="t-lines"><span>yield</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sleep_for.html" title="cpp/thread/sleep for"><span class="t-lines"><span>sleep_for</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sleep_until.html" title="cpp/thread/sleep until"><span class="t-lines"><span>sleep_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E5.8D.8F.E4.BD.9C.E5.BC.8F.E5.8F.96.E6.B6.88" title="cpp/thread">协作式取消</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stop_token.html" title="cpp/thread/stop token"><span class="t-lines"><span>stop_token</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/inplace_stop_token&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/inplace stop token（页面不存在）"><span class="t-lines"><span>inplace_stop_token</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="never_stop_token.html" title="cpp/thread/never stop token"><span class="t-lines"><span>never_stop_token</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stop_source.html" title="cpp/thread/stop source"><span class="t-lines"><span>stop_source</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/inplace_stop_source&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/inplace stop source（页面不存在）"><span class="t-lines"><span>inplace_stop_source</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stop_callback.html" title="cpp/thread/stop callback"><span class="t-lines"><span>stop_callback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/inplace_stop_callback&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/inplace stop callback（页面不存在）"><span class="t-lines"><span>inplace_stop_callback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stop_callback_for_t.html" title="cpp/thread/stop callback for t"><span class="t-lines"><span>stop_callback_for_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stoppable_token.html" title="cpp/thread/stoppable token"><span class="t-lines"><span>stoppable_token</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unstoppable_token.html" title="cpp/thread/unstoppable token"><span class="t-lines"><span>unstoppable_token</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/stoppable_source&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/stoppable source（页面不存在）"><span class="t-lines"><span><i>stoppable-source</i></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/stoppable_callback_for&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/stoppable callback for（页面不存在）"><span class="t-lines"><span><i>stoppable-callback-for</i></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E4.BA.92.E6.96.A5" title="cpp/thread">互斥</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="mutex.html" title="cpp/thread/mutex"><span class="t-lines"><span>mutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="recursive_mutex.html" title="cpp/thread/recursive mutex"><span class="t-lines"><span>recursive_mutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="shared_mutex.html" title="cpp/thread/shared mutex"><span class="t-lines"><span>shared_mutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timed_mutex.html" title="cpp/thread/timed mutex"><span class="t-lines"><span>timed_mutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="recursive_timed_mutex.html" title="cpp/thread/recursive timed mutex"><span class="t-lines"><span>recursive_timed_mutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="shared_timed_mutex.html" title="cpp/thread/shared timed mutex"><span class="t-lines"><span>shared_timed_mutex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../thread.html#.E9.80.9A.E7.94.A8.E4.BA.92.E6.96.A5.E4.BD.93.E7.AE.A1.E7.90.86" title="cpp/thread">通用锁管理</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lock.html" title="cpp/thread/lock"><span class="t-lines"><span>lock</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lock_guard.html" title="cpp/thread/lock guard"><span class="t-lines"><span>lock_guard</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="scoped_lock.html" title="cpp/thread/scoped lock"><span class="t-lines"><span>scoped_lock</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unique_lock.html" title="cpp/thread/unique lock"><span class="t-lines"><span>unique_lock</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="shared_lock.html" title="cpp/thread/shared lock"><span class="t-lines"><span>shared_lock</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="once_flag.html" title="cpp/thread/once flag"><span class="t-lines"><span>once_flag</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="call_once.html" title="cpp/thread/call once"><span class="t-lines"><span>call_once</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="try_lock.html" title="cpp/thread/try lock"><span class="t-lines"><span>try_lock</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lock_tag.html" title="cpp/thread/lock tag"><span class="t-lines"><span>defer_lock</span><span>try_to_lock</span><span>adopt_lock</span><span>defer_lock_t</span><span>try_to_lock_t</span><span>adopt_lock_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E6.9D.A1.E4.BB.B6.E5.8F.98.E9.87.8F" title="cpp/thread">条件变量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="condition_variable.html" title="cpp/thread/condition variable"><span class="t-lines"><span>condition_variable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="condition_variable_any.html" title="cpp/thread/condition variable any"><span class="t-lines"><span>condition_variable_any</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="notify_all_at_thread_exit.html" title="cpp/thread/notify all at thread exit"><span class="t-lines"><span>notify_all_at_thread_exit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="cv_status.html" title="cpp/thread/cv status"><span class="t-lines"><span>cv_status</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E4.BF.A1.E5.8F.B7.E9.87.8F" title="cpp/thread">信号量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="counting_semaphore.html" title="cpp/thread/counting semaphore"><span class="t-lines"><span>counting_semaphore</span><span>binary_semaphore</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E9.97.A9.E4.B8.8E.E5.B1.8F.E9.9A.9C" title="cpp/thread">闩与屏障</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="latch.html" title="cpp/thread/latch"><span class="t-lines"><span>latch</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="barrier.html" title="cpp/thread/barrier"><span class="t-lines"><span>barrier</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E6.9C.AA.E6.9D.A5.E4.BD.93" title="cpp/thread">未来体</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="promise.html" title="cpp/thread/promise"><span class="t-lines"><span>promise</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="future.html" title="cpp/thread/future"><span class="t-lines"><span>future</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="shared_future.html" title="cpp/thread/shared future"><span class="t-lines"><span>shared_future</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="packaged_task.html" title="cpp/thread/packaged task"><span class="t-lines"><span>packaged_task</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>async</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="launch.html" title="cpp/thread/launch"><span class="t-lines"><span>launch</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="future_status.html" title="cpp/thread/future status"><span class="t-lines"><span>future_status</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="future_error.html" title="cpp/thread/future error"><span class="t-lines"><span>future_error</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="future_category.html" title="cpp/thread/future category"><span class="t-lines"><span>future_category</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="future_errc.html" title="cpp/thread/future errc"><span class="t-lines"><span>future_errc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E5.AE.89.E5.85.A8.E5.9B.9E.E6.94.B6" title="cpp/thread">安全回收</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/rcu_obj_base&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/rcu obj base（页面不存在）"><span class="t-lines"><span>rcu_obj_base</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/rcu_domain&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/rcu domain（页面不存在）"><span class="t-lines"><span>rcu_domain</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/rcu_default_domain&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/rcu default domain（页面不存在）"><span class="t-lines"><span>rcu_default_domain</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/rcu_synchronize&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/rcu synchronize（页面不存在）"><span class="t-lines"><span>rcu_synchronize</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/rcu_barrier&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/rcu barrier（页面不存在）"><span class="t-lines"><span>rcu_barrier</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/rcu_retire&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/rcu retire（页面不存在）"><span class="t-lines"><span>rcu_retire</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../thread.html#.E9.A3.8E.E9.99.A9.E6.8C.87.E9.92.88" title="cpp/thread">风险指针</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/hazard_pointer_obj_base&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/hazard pointer obj base（页面不存在）"><span class="t-lines"><span>hazard_pointer_obj_base</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/hazard_pointer&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/hazard pointer（页面不存在）"><span class="t-lines"><span>hazard_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/make_hazard_pointer&amp;action=edit&amp;redlink=1" class="new" title="cpp/thread/make hazard pointer（页面不存在）"><span class="t-lines"><span>make_hazard_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E5.8E.9F.E5.AD.90.E7.B1.BB.E5.9E.8B" title="cpp/thread">原子类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic.html" title="cpp/atomic/atomic"><span class="t-lines"><span>atomic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_ref.html" title="cpp/atomic/atomic ref"><span class="t-lines"><span>atomic_ref</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_flag.html" title="cpp/atomic/atomic flag"><span class="t-lines"><span>atomic_flag</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../thread.html#.E5.88.9D.E5.A7.8B.E5.8C.96" title="cpp/thread">原子类型的初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_init.html" title="cpp/atomic/atomic init"><span class="t-lines"><span>atomic_init</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-deprecated-cxx20" style="white-space: nowrap;">(C++20 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/ATOMIC_VAR_INIT.html" title="cpp/atomic/ATOMIC VAR INIT"><span class="t-lines"><span>ATOMIC_VAR_INIT</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-deprecated-cxx20" style="white-space: nowrap;">(C++20 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/ATOMIC_FLAG_INIT.html" title="cpp/atomic/ATOMIC FLAG INIT"><span class="t-lines"><span>ATOMIC_FLAG_INIT</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E5.86.85.E5.AD.98.E5.90.8C.E6.AD.A5.E5.AE.9A.E5.BA.8F" title="cpp/thread">内存定序</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/memory_order.html" title="cpp/atomic/memory order"><span class="t-lines"><span>memory_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/kill_dependency.html" title="cpp/atomic/kill dependency"><span class="t-lines"><span>kill_dependency</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-deprecated-cxx26" style="white-space: nowrap;">(C++26 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_thread_fence.html" title="cpp/atomic/atomic thread fence"><span class="t-lines"><span>atomic_thread_fence</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_signal_fence.html" title="cpp/atomic/atomic signal fence"><span class="t-lines"><span>atomic_signal_fence</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E5.8E.9F.E5.AD.90.E7.B1.BB.E5.9E.8B.E4.B8.8A.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/thread">原子操作的自由函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_store.html" title="cpp/atomic/atomic store"><span class="t-lines"><span>atomic_store</span><span>atomic_store_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_load.html" title="cpp/atomic/atomic load"><span class="t-lines"><span>atomic_load</span><span>atomic_load_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_exchange.html" title="cpp/atomic/atomic exchange"><span class="t-lines"><span>atomic_exchange</span><span>atomic_exchange_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_compare_exchange.html" title="cpp/atomic/atomic compare exchange"><span class="t-lines"><span>atomic_compare_exchange_weak</span><span>atomic_compare_exchange_weak_explicit</span><span>atomic_compare_exchange_strong</span><span>atomic_compare_exchange_strong_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_fetch_add.html" title="cpp/atomic/atomic fetch add"><span class="t-lines"><span>atomic_fetch_add</span><span>atomic_fetch_add_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_fetch_sub.html" title="cpp/atomic/atomic fetch sub"><span class="t-lines"><span>atomic_fetch_sub</span><span>atomic_fetch_sub_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_fetch_and.html" title="cpp/atomic/atomic fetch and"><span class="t-lines"><span>atomic_fetch_and</span><span>atomic_fetch_and_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_fetch_or.html" title="cpp/atomic/atomic fetch or"><span class="t-lines"><span>atomic_fetch_or</span><span>atomic_fetch_or_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_fetch_xor.html" title="cpp/atomic/atomic fetch xor"><span class="t-lines"><span>atomic_fetch_xor</span><span>atomic_fetch_xor_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_fetch_max.html" title="cpp/atomic/atomic fetch max"><span class="t-lines"><span>atomic_fetch_max</span><span>atomic_fetch_max_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_fetch_min.html" title="cpp/atomic/atomic fetch min"><span class="t-lines"><span>atomic_fetch_min</span><span>atomic_fetch_min_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_is_lock_free.html" title="cpp/atomic/atomic is lock free"><span class="t-lines"><span>atomic_is_lock_free</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_wait.html" title="cpp/atomic/atomic wait"><span class="t-lines"><span>atomic_wait</span><span>atomic_wait_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_notify_one.html" title="cpp/atomic/atomic notify one"><span class="t-lines"><span>atomic_notify_one</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_notify_all.html" title="cpp/atomic/atomic notify all"><span class="t-lines"><span>atomic_notify_all</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../thread.html#.E6.A0.87.E5.BF.97.E7.B1.BB.E5.9E.8B.E5.8F.8A.E6.93.8D.E4.BD.9C" title="cpp/thread">原子标志的自由函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_flag_test_and_set.html" title="cpp/atomic/atomic flag test and set"><span class="t-lines"><span>atomic_flag_test_and_set</span><span>atomic_flag_test_and_set_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_flag_clear.html" title="cpp/atomic/atomic flag clear"><span class="t-lines"><span>atomic_flag_clear</span><span>atomic_flag_clear_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_flag_test.html" title="cpp/atomic/atomic flag test"><span class="t-lines"><span>atomic_flag_test</span><span>atomic_flag_test_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_flag_wait.html" title="cpp/atomic/atomic flag wait"><span class="t-lines"><span>atomic_flag_wait</span><span>atomic_flag_wait_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_flag_notify_one.html" title="cpp/atomic/atomic flag notify one"><span class="t-lines"><span>atomic_flag_notify_one</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../atomic/atomic_flag_notify_all.html" title="cpp/atomic/atomic flag notify all"><span class="t-lines"><span>atomic_flag_notify_all</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/future.html" title="cpp/header/future">&lt;future&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> F, <span class="kw1">class</span>... <span class="me1">Args</span> <span class="sy1">&gt;</span><br>
+<a href="future.html"><span class="kw2184">std::<span class="me2">future</span></span></a><span class="sy1">&lt;</span><span class="coMULTI">/* 见下文 */</span><span class="sy1">&gt;</span> async<span class="br0">(</span> F<span class="sy3">&amp;&amp;</span> f, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span> <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> F, <span class="kw1">class</span>... <span class="me1">Args</span> <span class="sy1">&gt;</span><br>
+<p><a href="future.html"><span class="kw2184">std::<span class="me2">future</span></span></a><span class="sy1">&lt;</span><span class="coMULTI">/* 见下文 */</span><span class="sy1">&gt;</span> async<span class="br0">(</span> <a href="launch.html"><span class="kw2187">std::<span class="me2">launch</span></span></a> policy,<br>
+</p>
+                                 F<span class="sy3">&amp;&amp;</span> f, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span> <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>函数模板 <code>std::async</code> 异步地运行函数 <span class="t-c"><span class="mw-geshi cpp source-cpp">f</span></span>（有可能在可能是线程池一部分的分离线程中），并返回最终将保有该函数调用结果的 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span>。
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 表现如同以 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a> <span class="sy3">|</span> <a href="launch.html"><span class="kw2189">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">deferred</span></span></a></span></span> 作为 <span class="t-c"><span class="mw-geshi cpp source-cpp">policy</span></span> 调用 <span class="t-v">(2)</span>。</div>
+<div class="t-li1"><span class="t-li">2)</span> 按照特定的启动策略 <span class="t-c"><span class="mw-geshi cpp source-cpp">policy</span></span>（见<a href="async.html#.E5.90.AF.E5.8A.A8.E7.AD.96.E7.95.A5">下文</a>），以参数 <span class="t-c"><span class="mw-geshi cpp source-cpp">args</span></span> 调用函数 <span class="t-c"><span class="mw-geshi cpp source-cpp">f</span></span>。</div>
+<p><code>std::async</code> 的返回类型为 <span class="mw-geshi cpp source-cpp"><a href="future.html"><span class="kw2184">std::<span class="me2">future</span></span></a><span class="sy1">&lt;</span>V<span class="sy1">&gt;</span></span>，其中 <span class="t-c"><span class="mw-geshi cpp source-cpp">V</span></span> 为：
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx17"><td>
+<p><span class="mw-geshi cpp source-cpp"><span class="kw1">typename</span> <a href="../types/result_of.html"><span class="kw642">std::<span class="me2">result_of</span></span></a><span class="sy1">&lt;</span><span class="kw1">typename</span> <a href="../types/decay.html"><span class="kw631">std::<span class="me2">decay</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="br0">(</span></span><br><span class="mw-geshi cpp source-cpp">                        <span class="kw1">typename</span> <a href="../types/decay.html"><span class="kw631">std::<span class="me2">decay</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span>...<span class="br0">)</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span></span>
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></td></tr>
+<tr class="t-rev t-since-cxx17"><td>
+<p><span class="mw-geshi cpp source-cpp"><a href="../types/result_of.html"><span class="kw3218">std::<span class="me2">invoke_result_t</span></span></a><span class="sy1">&lt;</span><a href="../types/decay.html"><span class="kw632">std::<span class="me2">decay_t</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span>, <a href="../types/decay.html"><span class="kw632">std::<span class="me2">decay_t</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span>...<span class="sy1">&gt;</span></span>
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></td></tr>
+</table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>如果满足以下任意条件，那么程序非良构：
+</p>
+<ul><li> <code>F</code> 不<a href="../named_req/MoveConstructible.html" title="cpp/named req/MoveConstructible"><span style="font-style:italic">可移动构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(MoveConstructible)</span> </a>。
+</li><li> <code>Args</code> 中的任何类型不<a href="../named_req/MoveConstructible.html" title="cpp/named req/MoveConstructible"><span style="font-style:italic">可移动构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(MoveConstructible)</span> </a>。
+</li><li> <span class="t-c"><a href="../utility/functional.html" title="cpp/utility/functional"><tt><i>INVOKE</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span></span><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span>,</span><br><code>       </code><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span><span class="br0">)</span>...<span class="br0">)</span></span></span> 不是合法的表达式。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>如果以下任意值是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span>，那么程序非良构：
+</p>
+<ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../types/is_constructible.html"><span class="kw528">std::<span class="me2">is_constructible_v</span></span></a><span class="sy1">&lt;</span><a href="../types/decay.html"><span class="kw632">std::<span class="me2">decay_t</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span>, F<span class="sy1">&gt;</span></span></span>
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../types/is_constructible.html"><span class="kw528">std::<span class="me2">is_constructible_v</span></span></a><span class="sy1">&lt;</span><a href="../types/decay.html"><span class="kw632">std::<span class="me2">decay_t</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span>, Args<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> ...<span class="br0">)</span></span></span>
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../types/is_invocable.html"><span class="kw2714">std::<span class="me2">is_invocable_v</span></span></a><span class="sy1">&lt;</span><a href="../types/decay.html"><span class="kw632">std::<span class="me2">decay_t</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span>, <a href="../types/decay.html"><span class="kw632">std::<span class="me2">decay_t</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span>...<span class="sy1">&gt;</span></span></span>
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>对 <code>std::async</code> 的调用<a href="../atomic/memory_order.html" title="cpp/atomic/memory order">同步于</a>对 <span class="t-c"><span class="mw-geshi cpp source-cpp">f</span></span> 的调用，且 <span class="t-c"><span class="mw-geshi cpp source-cpp">f</span></span> 的完成<a href="../language/eval_order.html" title="cpp/language/eval order">按顺序早于</a>令共享状态就绪。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> f
+</td>
+<td> -
+</td>
+<td> 要调用的<a href="../named_req/Callable.html" title="cpp/named req/Callable"><span style="font-style:italic">可调用</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(Callable)</span> </a>对象
+</td></tr>
+<tr class="t-par">
+<td> args
+</td>
+<td> -
+</td>
+<td> 要传递给 <span class="t-c"><span class="mw-geshi cpp source-cpp">f</span></span> 的形参
+</td></tr>
+<tr class="t-par">
+<td> policy
+</td>
+<td> -
+</td>
+<td> 位掩码值，每个单独位控制允许的执行方法
+</td></tr></table>
+<h3><span class="mw-headline" id=".E8.BF.94.E5.9B.9E.E5.80.BC">返回值</span></h3>
+<p>指代此次调用 <code>std::async</code> 所创建的共享状态的 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span>。
+</p>
+<h3><span class="mw-headline" id=".E5.90.AF.E5.8A.A8.E7.AD.96.E7.95.A5">启动策略</span></h3>
+<h4><span class="mw-headline" id=".E5.BC.82.E6.AD.A5.E8.B0.83.E7.94.A8">异步调用</span></h4>
+<p>如果有设置<i>异步</i> ﻿标志，即 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>policy <span class="sy3">&amp;</span> <a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span></span></span>，那么 <code>std::async</code> 会如同在一个以 <span class="t-lc"><a href="thread.html" title="cpp/thread/thread">std::thread</a></span> 对象表示的新执行线程中调用
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx23"><td>
+<p><span class="t-c"><a href="../utility/functional.html" title="cpp/utility/functional"><tt><i>INVOKE</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span></span><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp"> </span><span class="mw-geshi cpp source-cpp"> </span><span class="mw-geshi cpp source-cpp"> </span><span class="mw-geshi cpp source-cpp"> </span><span class="mw-geshi cpp source-cpp"> </span><span class="mw-geshi cpp source-cpp"> </span><span class="mw-geshi cpp source-cpp"> </span><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span><span class="br0">)</span>...<span class="br0">)</span></span></span>
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span><span class="kw4">auto</span><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">            <span class="kw4">auto</span><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span><span class="br0">)</span>...<span class="br0">)</span></span></span>
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<p><br>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx23"><td>
+<p><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a> 的调用在当前线程求值。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span> 产生的值在当前线程<a href="../language/implicit_conversion.html#.E4.B8.B4.E6.97.B6.E9.87.8F.E5.AE.9E.E8.B4.A8.E5.8C.96" title="cpp/language/implicit conversion">实质化</a>。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<p>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">f</span></span> 返回值或抛出异常，那么它们会存储到 <code>std::async</code> 返回给调用方的 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span> 的共享状态中。
+</p>
+<h4><span class="mw-headline" id=".E6.8E.A8.E8.BF.9F.E8.B0.83.E7.94.A8">推迟调用</span></h4>
+<p>如果有设置<i>推迟</i> ﻿标志（即 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>policy <span class="sy3">&amp;</span> <a href="launch.html"><span class="kw2189">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">deferred</span></span></a><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span></span></span>），那么 <code>std::async</code> 会将
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx23"><td>
+<p><span class="t-c"><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span></span></span> 和 <span class="t-c"><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span><span class="br0">)</span>...</span></span>
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span></span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span><span class="br0">)</span>...</span></span>
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<p>存储到共享状态中。
+</p><p>进行<i>惰性求值</i>：
+</p>
+<ul><li> 在 <code>std::async</code> 返回给调用方的 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span> 上首次调用非定时等待函数时会在调用等待函数的线程（不一定是最初调用 <code>std::async</code> 的线程）中求值 <span class="t-c"><a href="../utility/functional.html" title="cpp/utility/functional"><tt><i>INVOKE</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>g<span class="br0">)</span>, std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>xyz<span class="br0">)</span><span class="br0">)</span></span></span>，其中
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx23"><td>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">g</span></span> 是存储的 <span class="t-c"><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span></span></span> 的值，并且
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">xyz</span></span> 是存储的 <span class="t-c"><a href="../standard_library/decay-copy.html" title="cpp/standard library/decay-copy"><tt><i>decay-copy</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span><span class="br0">)</span>...</span></span> 的副本。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">g</span></span> 是存储的 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>F<span class="sy1">&gt;</span><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span></span></span> 的值，并且
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">xyz</span></span> 是存储的 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span><span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span><span class="br0">(</span>args<span class="br0">)</span><span class="br0">)</span>...</span></span> 的副本。
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></td></tr>
+</table>
+<ul><li> 将结果或异常置于关联到该 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span> 的共享状态，然后才令它就绪。对同一 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span> 的所有后续访问都会立即返回结果。
+</li></ul>
+<h4><span class="mw-headline" id=".E5.85.B6.E4.BB.96.E7.AD.96.E7.95.A5">其他策略</span></h4>
+<p>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">policy</span></span> 中没有设置 <span class="t-lc"><a href="launch.html" title="cpp/thread/launch">std::launch::async</a></span>，<span class="t-lc"><a href="launch.html" title="cpp/thread/launch">std::launch::deferred</a></span> 或任何由实现定义的其他策略标志，那么行为未定义。
+</p>
+<h3><span class="mw-headline" id=".E7.AD.96.E7.95.A5.E9.80.89.E6.8B.A9">策略选择</span></h3>
+<p>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">policy</span></span> 中设置了多个标志，那么由实现定义选择哪个策略。对于默认情况（<span class="t-c"><span class="mw-geshi cpp source-cpp">policy</span></span> 中同时设置了 <span class="t-lc"><a href="launch.html" title="cpp/thread/launch">std::launch::async</a></span> 和 <span class="t-lc"><a href="launch.html" title="cpp/thread/launch">std::launch::deferred</a></span> 两个标志），标准建议（但不要求）利用现有的并发资源，并且推迟另外的任务。
+</p><p>如果选择了 <span class="t-lc"><a href="launch.html" title="cpp/thread/launch">std::launch::async</a></span> 策略，那么：
+</p>
+<ul><li> 对于共享该 <code>std::async</code> 创建的共享状态的某个异步返回对象，对它的等待函数的调用会阻塞，直到关联的线程如同以结束执行或超时的方式完成。
+</li><li> 关联线程的完成<i>同步于</i> ﻿首个在共享状态上等待的函数的成功返回和最后一个释放共享状态的函数的返回，两者中的先到来的一方。
+</li></ul>
+<h3><span class="mw-headline" id=".E5.BC.82.E5.B8.B8">异常</span></h3>
+<p>可能会抛出以下异常：
+</p>
+<ul><li> 如果无法分配内部数据结构所用的内存，那么就会抛出 <span class="t-lc"><a href="../memory/new/bad_alloc.html" title="cpp/memory/new/bad alloc">std::bad_alloc</a></span>。
+</li><li> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">policy <span class="sy1">==</span> <a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a></span></span> 且实现无法开始新线程，那么就会抛出以 <span class="t-lc"><a href="../error/errc.html" title="cpp/error/errc">std::errc::resource_unavailable_try_again</a></span> 为错误条件的 <span class="t-lc"><a href="../error/system_error.html" title="cpp/error/system error">std::system_error</a></span>。
+<ul><li> 此时如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">policy</span></span> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a> <span class="sy3">|</span> <a href="launch.html"><span class="kw2189">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">deferred</span></span></a></span></span> 或者设置了额外位，那么就会回退到推迟调用或其他由实现定义的策略。
+</li></ul>
+</li></ul>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>实现可以通过在默认运行策略中启用额外（实现定义的）位，扩展 <code>std::async</code> 重载 <span class="t-v">(1)</span> 的行为。
+</p><p>由实现定义的启动策略的例子是同步策略（在 <code>std::async</code> 调用内立即执行）和任务策略（类似 <code>std::async</code>，但不清理线程局域对象）。
+</p><p>如果从 <code>std::async</code> 获得的 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span> 没有被移动或绑定到引用，那么在完整表达式结尾， <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span> 的析构函数将阻塞到异步计算完成，实质上令如下代码同步：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">std<span class="sy4">::</span><span class="me2">async</span><span class="br0">(</span><a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a>, <span class="br0">[</span><span class="br0">]</span><span class="br0">{</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 临时量的析构函数等待 f()</span>
+std<span class="sy4">::</span><span class="me2">async</span><span class="br0">(</span><a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a>, <span class="br0">[</span><span class="br0">]</span><span class="br0">{</span> g<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// f() 完成前不开始</span></pre></div></div>
+<p>注意：以调用 <code>std::async</code> 以外的方式获得的 <span class="t-lc"><a href="future.html" title="cpp/thread/future">std::future</a></span> 的析构函数不会阻塞。
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;algorithm&gt;</span>
+<span class="co2">#include &lt;future&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;mutex&gt;</span>
+<span class="co2">#include &lt;numeric&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+<span class="co2">#include &lt;vector&gt;</span>
+ 
+<a href="mutex.html"><span class="kw2158">std::<span class="me2">mutex</span></span></a> m<span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="kw4">void</span> foo<span class="br0">(</span><span class="kw4">int</span> i, <span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> str<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="lock_guard.html"><span class="kw2170">std::<span class="me2">lock_guard</span></span></a><span class="sy1">&lt;</span><a href="mutex.html"><span class="kw2158">std::<span class="me2">mutex</span></span></a><span class="sy1">&gt;</span> lk<span class="br0">(</span>m<span class="br0">)</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> str <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="sy1">&lt;&lt;</span> i <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">void</span> bar<span class="br0">(</span><span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> str<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="lock_guard.html"><span class="kw2170">std::<span class="me2">lock_guard</span></span></a><span class="sy1">&lt;</span><a href="mutex.html"><span class="kw2158">std::<span class="me2">mutex</span></span></a><span class="sy1">&gt;</span> lk<span class="br0">(</span>m<span class="br0">)</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> str <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">int</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="lock_guard.html"><span class="kw2170">std::<span class="me2">lock_guard</span></span></a><span class="sy1">&lt;</span><a href="mutex.html"><span class="kw2158">std::<span class="me2">mutex</span></span></a><span class="sy1">&gt;</span> lk<span class="br0">(</span>m<span class="br0">)</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+        <span class="kw1">return</span> i <span class="sy2">+</span> <span class="nu0">10</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> RandomIt<span class="sy1">&gt;</span>
+<span class="kw4">int</span> parallel_sum<span class="br0">(</span>RandomIt beg, RandomIt end<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">auto</span> len <span class="sy1">=</span> end <span class="sy2">-</span> beg<span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>len <span class="sy1">&lt;</span> <span class="nu0">1000</span><span class="br0">)</span>
+        <span class="kw1">return</span> <a href="../algorithm/accumulate.html"><span class="kw1655">std::<span class="me2">accumulate</span></span></a><span class="br0">(</span>beg, end, <span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    RandomIt mid <span class="sy1">=</span> beg <span class="sy2">+</span> len <span class="sy2">/</span> <span class="nu0">2</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> handle <span class="sy1">=</span> std<span class="sy4">::</span><span class="me2">async</span><span class="br0">(</span><a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a>,
+                             parallel_sum<span class="sy1">&lt;</span>RandomIt<span class="sy1">&gt;</span>, mid, end<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">int</span> sum <span class="sy1">=</span> parallel_sum<span class="br0">(</span>beg, mid<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> sum <span class="sy2">+</span> handle.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> v<span class="br0">(</span><span class="nu0">10000</span>, <span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"和为 "</span> <span class="sy1">&lt;&lt;</span> parallel_sum<span class="br0">(</span>v.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, v.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    X x<span class="sy4">;</span>
+    <span class="co1">// 以默认策略调用 x.foo(42, "Hello") ：</span>
+    <span class="co1">// 可能同时打印 "Hello 42" 或延迟执行</span>
+    <span class="kw4">auto</span> a1 <span class="sy1">=</span> std<span class="sy4">::</span><span class="me2">async</span><span class="br0">(</span><span class="sy3">&amp;</span>X<span class="sy4">::</span><span class="me2">foo</span>, <span class="sy3">&amp;</span>x, <span class="nu0">42</span>, <span class="st0">"Hello"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// 以 deferred 策略调用 x.bar("world!")</span>
+    <span class="co1">// 调用 a2.get() 或 a2.wait() 时打印 "world!"</span>
+    <span class="kw4">auto</span> a2 <span class="sy1">=</span> std<span class="sy4">::</span><span class="me2">async</span><span class="br0">(</span><a href="launch.html"><span class="kw2189">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">deferred</span></span></a>, <span class="sy3">&amp;</span>X<span class="sy4">::</span><span class="me2">bar</span>, x, <span class="st0">"world!"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// 以 async 策略调用 X()(43) ：</span>
+    <span class="co1">// 同时打印 "43"</span>
+    <span class="kw4">auto</span> a3 <span class="sy1">=</span> std<span class="sy4">::</span><span class="me2">async</span><span class="br0">(</span><a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a>, X<span class="br0">(</span><span class="br0">)</span>, <span class="nu0">43</span><span class="br0">)</span><span class="sy4">;</span>
+    a2.<span class="me1">wait</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>                     <span class="co1">// 打印 "world!"</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> a3.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// 打印 "53"</span>
+<span class="br0">}</span> <span class="co1">// 若 a1 在此点未完成，则 a1 的析构函数在此打印 "Hello 42"</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">和为 10000
+43
+world!
+53
+Hello 42</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2021">LWG 2021</a>
+</td>
+<td> C++11
+</td>
+<td> 返回类型不正确， deferred 的情况下参数的值类别不明
+</td>
+<td> 更正返回类型，明确使用右值
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2078">LWG 2078</a>
+</td>
+<td> C++11
+</td>
+<td> 不明确 <span class="t-c"><span class="mw-geshi cpp source-cpp">policy</span></span> 在除 <span class="t-lc"><a href="launch.html" title="cpp/thread/launch">std::launch::async</a></span> 外还指定了<br>其他启动策略时是否会抛出 <span class="t-lc"><a href="../error/system_error.html" title="cpp/error/system error">std::system_error</a></span>
+</td>
+<td> 仅限<br><span class="t-c"><span class="mw-geshi cpp source-cpp">policy <span class="sy1">==</span> <a href="launch.html"><span class="kw2188">std::<span class="me2">launch</span><span class="sy4">::</span><span class="me2">async</span></span></a></span></span>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2100">LWG 2100</a>
+</td>
+<td> C++11
+</td>
+<td> 使用 <span class="t-lc"><a href="launch.html" title="cpp/thread/launch">std::launch::async</a></span> 策略时计时等待函数不能超时
+</td>
+<td> 可以超时
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2120">LWG 2120</a>
+</td>
+<td> C++11
+</td>
+<td> 未设置标准或实现定义的策略的情况下行为不明
+</td>
+<td> 行为未定义
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2186">LWG 2186</a>
+</td>
+<td> C++11
+</td>
+<td> 不明确如何处理惰性求值返回的值和抛出的异常
+</td>
+<td> 会将它们存储到共享状态中
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2752">LWG 2752</a>
+</td>
+<td> C++11
+</td>
+<td> <code>std::async</code> 在无法分配内部数据结构所用的<br>内存时不一定会抛出 <span class="t-lc"><a href="../memory/new/bad_alloc.html" title="cpp/memory/new/bad alloc">std::bad_alloc</a></span>
+</td>
+<td> 会抛出
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue3476">LWG 3476</a>
+</td>
+<td> C++20
+</td>
+<td> <code>F</code> 和实参类型（在退化后）被直接要求必须可移动构造
+</td>
+<td> 移除这些要求<sup id="cite_ref-1" class="reference"><a href="async.html#cite_note-1">[1]</a></sup>
+</td></tr></table>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="async.html#cite_ref-1">↑</a></span> <span class="reference-text"><span class="t-lc"><a href="../types/is_constructible.html" title="cpp/types/is constructible">std::is_constructible_v</a></span> 已间接要求了可移动构造性。</span>
+</li>
+</ol>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="future.html" title="cpp/thread/future"> <span class="t-lines"><span>future</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  等待被异步设置的值 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>执行支持库</span></span>的 <span><span><a href="../execution.html" title="cpp/execution">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 12060/1000000
+Preprocessor generated node count: 17412/1000000
+Post‐expand include size: 385933/4194304 bytes
+Template argument size: 94748/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:3740-0!*!0!!zh!*!zh!* and timestamp 20250322072255 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/async&amp;oldid=95317">https://zh.cppreference.com/mwiki/index.php?title=cpp/thread/async&amp;oldid=95317</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/thread/async">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年10月28日 (星期一) 20:33。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 6.018 secs. -->
+	</body>
+<!-- Cached 20250322072255 -->
+</html>

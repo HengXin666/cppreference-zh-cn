@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>迭代器库</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../common/favicon.ico">
+<link rel="stylesheet" href="../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/iterator","wgTitle":"cpp/iterator","wgCurRevisionId":98035,"wgArticleId":872,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/iterator","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_iterator skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">迭代器库</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../cpp.html" title="cpp">cpp</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">迭代器库</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink">迭代器库</strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E8.BF.AD.E4.BB.A3.E5.99.A8.E6.A6.82.E5.BF.B5" title="cpp/iterator">迭代器概念</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><span class="t-lines"><span>indirectly_readable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_writable.html" title="cpp/iterator/indirectly writable"><span class="t-lines"><span>indirectly_writable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/weakly_incrementable.html" title="cpp/iterator/weakly incrementable"><span class="t-lines"><span>weakly_incrementable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/incrementable.html" title="cpp/iterator/incrementable"><span class="t-lines"><span>incrementable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/is-integer-like.html" title="cpp/iterator/is-integer-like"><span class="t-lines"><span><i>is-integer-like</i><br><i>is-signed-integer-like</i></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/sentinel_for.html" title="cpp/iterator/sentinel for"><span class="t-lines"><span>sentinel_for</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/sized_sentinel_for.html" title="cpp/iterator/sized sentinel for"><span class="t-lines"><span>sized_sentinel_for</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/input_iterator.html" title="cpp/iterator/input iterator"><span class="t-lines"><span>input_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/output_iterator.html" title="cpp/iterator/output iterator"><span class="t-lines"><span>output_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/input_or_output_iterator.html" title="cpp/iterator/input or output iterator"><span class="t-lines"><span>input_or_output_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/forward_iterator.html" title="cpp/iterator/forward iterator"><span class="t-lines"><span>forward_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/bidirectional_iterator.html" title="cpp/iterator/bidirectional iterator"><span class="t-lines"><span>bidirectional_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/random_access_iterator.html" title="cpp/iterator/random access iterator"><span class="t-lines"><span>random_access_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/contiguous_iterator.html" title="cpp/iterator/contiguous iterator"><span class="t-lines"><span>contiguous_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E8.BF.AD.E4.BB.A3.E5.99.A8.E5.8E.9F.E8.AF.AD" title="cpp/iterator">迭代器原语</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/iterator_tags.html" title="cpp/iterator/iterator tags"><span class="t-lines"><span>input_iterator_tag</span><span>output_iterator_tag</span><span>forward_iterator_tag</span><span>bidirectional_iterator_tag</span><span>random_access_iterator_tag</span><span>contiguous_iterator_tag</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span></span><span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/iter_t.html" title="cpp/iterator/iter t"><span class="t-lines"><span>iter_value_t</span><span>iter_difference_t</span><span>iter_reference_t</span><span>iter_const_reference_t</span><span>iter_rvalue_reference_t</span><span>iter_common_reference_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/iterator.html" title="cpp/iterator/iterator"><span class="t-lines"><span>iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx17" style="white-space: nowrap;">(C++17 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/iterator_traits.html" title="cpp/iterator/iterator traits"><span class="t-lines"><span>iterator_traits</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/incrementable_traits.html" title="cpp/iterator/incrementable traits"><span class="t-lines"><span>incrementable_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_readable_traits.html" title="cpp/iterator/indirectly readable traits"><span class="t-lines"><span>indirectly_readable_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E7.AE.97.E6.B3.95.E6.A6.82.E5.BF.B5.E4.B8.8E.E5.B7.A5.E5.85.B7" title="cpp/iterator">算法概念与工具</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="iterator.html#.E9.97.B4.E6.8E.A5.E5.8F.AF.E8.B0.83.E7.94.A8.E6.A6.82.E5.BF.B5" title="cpp/iterator">间接可调用概念</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_unary_invocable.html" title="cpp/iterator/indirectly unary invocable"><span class="t-lines"><span>indirectly_unary_invocable</span><span>indirectly_regular_unary_invocable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirect_unary_predicate.html" title="cpp/iterator/indirect unary predicate"><span class="t-lines"><span>indirect_unary_predicate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirect_binary_predicate.html" title="cpp/iterator/indirect binary predicate"><span class="t-lines"><span>indirect_binary_predicate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirect_equivalence_relation.html" title="cpp/iterator/indirect equivalence relation"><span class="t-lines"><span>indirect_equivalence_relation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirect_strict_weak_order.html" title="cpp/iterator/indirect strict weak order"><span class="t-lines"><span>indirect_strict_weak_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="iterator.html#.E5.B8.B8.E7.94.A8.E7.AE.97.E6.B3.95.E8.A6.81.E6.B1.82" title="cpp/iterator">常用算法要求</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_movable.html" title="cpp/iterator/indirectly movable"><span class="t-lines"><span>indirectly_movable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_movable_storable.html" title="cpp/iterator/indirectly movable storable"><span class="t-lines"><span>indirectly_movable_storable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_copyable.html" title="cpp/iterator/indirectly copyable"><span class="t-lines"><span>indirectly_copyable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_copyable_storable.html" title="cpp/iterator/indirectly copyable storable"><span class="t-lines"><span>indirectly_copyable_storable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_swappable.html" title="cpp/iterator/indirectly swappable"><span class="t-lines"><span>indirectly_swappable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirectly_comparable.html" title="cpp/iterator/indirectly comparable"><span class="t-lines"><span>indirectly_comparable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/permutable.html" title="cpp/iterator/permutable"><span class="t-lines"><span>permutable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/mergeable.html" title="cpp/iterator/mergeable"><span class="t-lines"><span>mergeable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/sortable.html" title="cpp/iterator/sortable"><span class="t-lines"><span>sortable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="iterator.html#.E5.B7.A5.E5.85.B7" title="cpp/iterator">工具</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/indirect_result_t.html" title="cpp/iterator/indirect result t"><span class="t-lines"><span>indirect_result_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/projected.html" title="cpp/iterator/projected"><span class="t-lines"><span>projected</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/projected_value_t.html" title="cpp/iterator/projected value t"><span class="t-lines"><span>projected_value_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E8.BF.AD.E4.BB.A3.E5.99.A8.E9.80.82.E9.85.8D.E5.99.A8" title="cpp/iterator">迭代器适配器</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/reverse_iterator.html" title="cpp/iterator/reverse iterator"><span class="t-lines"><span>reverse_iterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/make_reverse_iterator.html" title="cpp/iterator/make reverse iterator"><span class="t-lines"><span>make_reverse_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/move_iterator.html" title="cpp/iterator/move iterator"><span class="t-lines"><span>move_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/make_move_iterator.html" title="cpp/iterator/make move iterator"><span class="t-lines"><span>make_move_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/default_sentinel_t.html" title="cpp/iterator/default sentinel t"><span class="t-lines"><span>default_sentinel_t</span><span>default_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/unreachable_sentinel_t.html" title="cpp/iterator/unreachable sentinel t"><span class="t-lines"><span>unreachable_sentinel_t</span><span>unreachable_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/front_insert_iterator.html" title="cpp/iterator/front insert iterator"><span class="t-lines"><span>front_insert_iterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/back_insert_iterator.html" title="cpp/iterator/back insert iterator"><span class="t-lines"><span>back_insert_iterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/inserter.html" title="cpp/iterator/inserter"><span class="t-lines"><span>inserter</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/insert_iterator.html" title="cpp/iterator/insert iterator"><span class="t-lines"><span>insert_iterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/front_inserter.html" title="cpp/iterator/front inserter"><span class="t-lines"><span>front_inserter</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/back_inserter.html" title="cpp/iterator/back inserter"><span class="t-lines"><span>back_inserter</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/move_sentinel.html" title="cpp/iterator/move sentinel"><span class="t-lines"><span>move_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/common_iterator.html" title="cpp/iterator/common iterator"><span class="t-lines"><span>common_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/counted_iterator.html" title="cpp/iterator/counted iterator"><span class="t-lines"><span>counted_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/basic_const_iterator.html" title="cpp/iterator/basic const iterator"><span class="t-lines"><span>basic_const_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/basic_const_iterator.html" title="cpp/iterator/basic const iterator"><span class="t-lines"><span>const_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/basic_const_iterator.html" title="cpp/iterator/basic const iterator"><span class="t-lines"><span>const_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/basic_const_iterator.html" title="cpp/iterator/basic const iterator"><span class="t-lines"><span>make_const_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/basic_const_iterator.html" title="cpp/iterator/basic const iterator"><span class="t-lines"><span>make_const_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E6.B5.81.E8.BF.AD.E4.BB.A3.E5.99.A8" title="cpp/iterator">流迭代器</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/istream_iterator.html" title="cpp/iterator/istream iterator"><span class="t-lines"><span>istream_iterator</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ostream_iterator.html" title="cpp/iterator/ostream iterator"><span class="t-lines"><span>ostream_iterator</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/istreambuf_iterator.html" title="cpp/iterator/istreambuf iterator"><span class="t-lines"><span>istreambuf_iterator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ostreambuf_iterator.html" title="cpp/iterator/ostreambuf iterator"><span class="t-lines"><span>ostreambuf_iterator</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E8.BF.AD.E4.BB.A3.E5.99.A8.E5.AE.9A.E5.88.B6.E7.82.B9" title="cpp/iterator">迭代器定制点</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ranges/iter_move.html" title="cpp/iterator/ranges/iter move"><span class="t-lines"><span>ranges::iter_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ranges/iter_swap.html" title="cpp/iterator/ranges/iter swap"><span class="t-lines"><span>ranges::iter_swap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E8.BF.AD.E4.BB.A3.E5.99.A8.E6.93.8D.E4.BD.9C" title="cpp/iterator">迭代器操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/advance.html" title="cpp/iterator/advance"><span class="t-lines"><span>advance</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/distance.html" title="cpp/iterator/distance"><span class="t-lines"><span>distance</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/prev.html" title="cpp/iterator/prev"><span class="t-lines"><span>prev</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/next.html" title="cpp/iterator/next"><span class="t-lines"><span>next</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ranges/advance.html" title="cpp/iterator/ranges/advance"><span class="t-lines"><span>ranges::advance</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ranges/distance.html" title="cpp/iterator/ranges/distance"><span class="t-lines"><span>ranges::distance</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ranges/prev.html" title="cpp/iterator/ranges/prev"><span class="t-lines"><span>ranges::prev</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/ranges/next.html" title="cpp/iterator/ranges/next"><span class="t-lines"><span>ranges::next</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="iterator.html#.E8.8C.83.E5.9B.B4.E8.AE.BF.E9.97.AE" title="cpp/iterator">范围访问</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/begin.html" title="cpp/iterator/begin"><span class="t-lines"><span>begin</span><span>cbegin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/rbegin.html" title="cpp/iterator/rbegin"><span class="t-lines"><span>rbegin</span><span>crbegin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/end.html" title="cpp/iterator/end"><span class="t-lines"><span>end</span><span>cend</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/rend.html" title="cpp/iterator/rend"><span class="t-lines"><span>rend</span><span>crend</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/size.html" title="cpp/iterator/size"><span class="t-lines"><span>size</span><span>ssize</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/empty.html" title="cpp/iterator/empty"><span class="t-lines"><span>empty</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator/data.html" title="cpp/iterator/data"><span class="t-lines"><span>data</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>迭代器是一种广义化的<a href="language/pointer.html" title="cpp/language/pointer">指针</a>，它使得 C++ 程序可以通过统一的方式处理不同的数据结构（例如<a href="container.html" title="cpp/container">容器</a><span class="t-rev-inl t-since-cxx20"><span>和<a href="container.html" title="cpp/container">范围</a></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>）。迭代器库提供了迭代器的定义，同时还提供了迭代器特征、适配器及相关的工具函数。
+</p><p>因为迭代器是指针的抽象，所以它们的语义是 C++ 的指针的大多数语义的泛化。这确保所有接受迭代器的<a href="language/function_template.html" title="cpp/language/function template">函数模板</a>都可以对普通指针正常工作。
+</p>
+<h3><span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E5.88.86.E7.B1.BB">迭代器分类</span></h3>
+<p>共有<span class="t-rev-inl t-until-cxx17"><span>五</span><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span></span><span class="t-rev-inl t-since-cxx17"><span>六</span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>种迭代器：<a href="named_req/InputIterator.html" title="cpp/named req/InputIterator"><span style="font-style:italic">老式输入迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyInputIterator)</span> </a>、<a href="named_req/OutputIterator.html" title="cpp/named req/OutputIterator"><span style="font-style:italic">老式输出迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyOutputIterator)</span> </a>、<a href="named_req/ForwardIterator.html" title="cpp/named req/ForwardIterator"><span style="font-style:italic">老式向前迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyForwardIterator)</span> </a>、<a href="named_req/BidirectionalIterator.html" title="cpp/named req/BidirectionalIterator"><span style="font-style:italic">老式双向迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyBidirectionalIterator)</span> </a>、<a href="named_req/RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span style="font-style:italic">老式随机访问迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyRandomAccessIterator)</span> </a><span class="t-rev-inl t-since-cxx17"><span>，及<a href="named_req/ContiguousIterator.html" title="cpp/named req/ContiguousIterator"><span style="font-style:italic">老式连续迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyContiguousIterator)</span> </a></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>。（对于最基本的迭代器种类，参见<a href="named_req/Iterator.html" title="cpp/named req/Iterator"><span style="font-style:italic">老式迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyIterator)</span> </a>。）
+</p><p>定义各个迭代器类别的依据并不是迭代器的类型，而是迭代器所支持的操作。这种定义方式意味着，支持必要的操作的任何类型，都可以作为迭代器使用。例如，指针支持<a href="named_req/RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span style="font-style:italic">老式随机访问迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyRandomAccessIterator)</span> </a>要求的所有操作，于是任何需要<a href="named_req/RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span style="font-style:italic">老式随机访问迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyRandomAccessIterator)</span> </a>的地方都可以使用指针。
+</p><p>可以把所有迭代器类别（除了<a href="named_req/OutputIterator.html" title="cpp/named req/OutputIterator"><span style="font-style:italic">老式输出迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyOutputIterator)</span> </a>）组织到一个层级中，其中更强力的迭代器类别（如<a href="named_req/RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span style="font-style:italic">老式随机访问迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyRandomAccessIterator)</span> </a>）支持较不强力的类别（例如<a href="named_req/InputIterator.html" title="cpp/named req/InputIterator"><span style="font-style:italic">老式输入迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyInputIterator)</span> </a>）的所有操作。如果迭代器落入这些类别之一且同时满足<a href="named_req/OutputIterator.html" title="cpp/named req/OutputIterator"><span style="font-style:italic">老式输出迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyOutputIterator)</span> </a>的要求，那么它被称为<i>可变</i> ﻿迭代器并且<i>同时</i> ﻿支持输入和输出。非可变迭代器被称为<i>常</i> ﻿迭代器。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>提供的所有满足迭代器类别要求的操作都是 <a href="language/constexpr.html#constexpr_.E5.87.BD.E6.95.B0" title="cpp/language/constexpr">constexpr 函数</a>的迭代器被称为 <i>constexpr</i> 迭代器。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<table class="wikitable">
+<tr>
+<th rowspan="3">迭代器类别
+</th>
+<th colspan="7">操作和存储要求
+</th></tr>
+<tr style="text-align: center;">
+<td rowspan="2" style="width: 60px;">写
+</td>
+<td rowspan="2" style="width: 60px;">读
+</td>
+<td colspan="2">自增
+</td>
+<td rowspan="2" style="width: 60px;">自减
+</td>
+<td rowspan="2" style="width: 60px;">随机访问
+</td>
+<td rowspan="2" style="width: 60px;">连续存储
+</td></tr>
+<tr style="text-align: center;">
+<td style="width: 60px;">无多趟
+</td>
+<td style="width: 60px;">有多趟
+</td></tr>
+<tr style="text-align:center;">
+<td><a href="named_req/Iterator.html" title="cpp/named req/Iterator"><span style="font-style:italic">老式迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyIterator)</span> </a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr style="text-align:center;">
+<td><a href="named_req/OutputIterator.html" title="cpp/named req/OutputIterator"><span style="font-style:italic">老式输出迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyOutputIterator)</span> </a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr style="text-align:center;">
+<td><a href="named_req/InputIterator.html" title="cpp/named req/InputIterator"><span style="font-style:italic">老式输入迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyInputIterator)</span> </a><br><span style="font-size:0.8em; line-height:125%">支持写操作时是可变迭代器</span>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr style="text-align:center;">
+<td><a href="named_req/ForwardIterator.html" title="cpp/named req/ForwardIterator"><span style="font-style:italic">老式向前迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyForwardIterator)</span> </a><br><span style="font-size:0.8em; line-height:125%">同时满足<a href="named_req/InputIterator.html" title="cpp/named req/InputIterator"><span style="font-style:italic">老式输入迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyInputIterator)</span> </a></span>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr style="text-align:center;">
+<td><a href="named_req/BidirectionalIterator.html" title="cpp/named req/BidirectionalIterator"><span style="font-style:italic">老式双向迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyBidirectionalIterator)</span> </a><br><span style="font-size:0.8em; line-height:125%">同时满足<a href="named_req/ForwardIterator.html" title="cpp/named req/ForwardIterator"><span style="font-style:italic">老式向前迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyForwardIterator)</span> </a></span>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr style="text-align:center;">
+<td><a href="named_req/RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span style="font-style:italic">老式随机访问迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyRandomAccessIterator)</span> </a><br><span style="font-size:0.8em; line-height:125%">同时满足<a href="named_req/BidirectionalIterator.html" title="cpp/named req/BidirectionalIterator"><span style="font-style:italic">老式双向迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyBidirectionalIterator)</span> </a></span>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td>
+</td></tr>
+<tr style="text-align:center;">
+<td> <a href="named_req/ContiguousIterator.html" title="cpp/named req/ContiguousIterator"><span style="font-style:italic">老式连续迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyContiguousIterator)</span> </a><sup id="cite_ref-1" class="reference"><a href="iterator.html#cite_note-1">[1]</a></sup><br><span style="font-size:0.8em; line-height:125%">同时满足<a href="named_req/RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span style="font-style:italic">老式随机访问迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyRandomAccessIterator)</span> </a></span>
+</td>
+<td>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">需要支持
+</td></tr></table>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="iterator.html#cite_ref-1">↑</a></span> <span class="reference-text"><a href="named_req/ContiguousIterator.html" title="cpp/named req/ContiguousIterator"><span style="font-style:italic">老式连续迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyContiguousIterator)</span> </a>类别只在 C++17 中正式规定，但 <span class="t-lc"><a href="container/vector.html" title="cpp/container/vector">std::vector</a></span>、<span class="t-lc"><a href="string/basic_string.html" title="cpp/string/basic string">std::basic_string</a></span>、<span class="t-lc"><a href="container/array.html" title="cpp/container/array">std::array</a></span>，及 <span class="t-lc"><a href="numeric/valarray.html" title="cpp/numeric/valarray">std::valarray</a></span> 的迭代器还有指向 C 数组中的指针在 C++17 前的代码中通常都被处理成独立类别。</span>
+</li>
+</ol>
+<p>注意：支持上方表格其中一行的所有操作的类型并不一定属于对应的迭代器类别，迭代器类别页面中包含了完整的要求列表。
+</p>
+<h3><span class="mw-headline" id=".E5.AE.9A.E4.B9.89">定义</span></h3>
+<h4><span class="mw-headline" id=".E7.B1.BB.E5.9E.8B.E4.B8.8E.E5.8F.AF.E5.86.99.E6.80.A7">类型与可写性</span></h4>
+<p>输入迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 支持表达式 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i</span></span>，结果是某个<a href="language/type.html" title="cpp/language/type">对象类型</a> <code>T</code> 的值，此类型被称为该迭代器的<i>值类型</i>。
+</p><p>输出迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 有一个<span class="t-rev-inl t-until-cxx20"><span><i>可写入</i></span><span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></span></span><span class="t-rev-inl t-since-cxx20"><span><a href="iterator/indirectly_writable.html" title="cpp/iterator/indirectly writable"><tt>indirectly_writable</tt></a> 到</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>该迭代器的类型的非空集合；对于其中的每个类型 <code>T</code>，在 <span class="t-c"><span class="mw-geshi cpp source-cpp">o</span></span> 是 <code>T</code> 类型的值时表达式 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i <span class="sy1">=</span> o</span></span> 合法。
+</p><p>每个<span class="t-rev-inl t-until-cxx20"><span>定义了相等性的</span><span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></span></span>迭代器类型 <code>X</code> 都有一个对应的有符号<span class="t-rev-inl t-until-cxx20"><span><a href="language/types.html#.E6.9C.89.E7.AC.A6.E5.8F.B7.E5.92.8C.E6.97.A0.E7.AC.A6.E5.8F.B7.E6.95.B4.E6.95.B0.E7.B1.BB.E5.9E.8B" title="cpp/language/types">整数</a></span><span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></span></span><span class="t-rev-inl t-since-cxx20"><span><a href="iterator/is-integer-like.html" title="cpp/iterator/is-integer-like">整数式</a></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>类型，此类型被称为该迭代器的<i>差类型</i>。
+</p>
+<h4><span class="mw-headline" id=".E5.8F.AF.E8.A7.A3.E6.80.A7.E4.B8.8E.E6.9C.89.E6.95.88.E6.80.A7">可解性与有效性</span></h4>
+<p>与指向<a href="language/array.html" title="cpp/language/array">数组</a>的通常指针保证存在一个指向该数组的尾后元素的指针值一样，任何迭代器类型也保证存在一个指向对应序列的尾后元素的迭代器值。这种值被称为<i>尾后</i> ﻿值。
+</p><p>定义了表达式 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>i</span></span> 的迭代器值 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 被称为<i>可解引用</i> ﻿的值。<a href="standard_library.html" title="cpp/standard library">标准库</a>始终不会假设尾后值可解引用。
+</p><p>迭代器也可以具有不与任何序列关联的<i>奇异</i> ﻿值。大部分表达式对于奇异值的结果未定义，除了：
+</p>
+<ul><li> 将非奇异值赋给持有奇异值的迭代器
+</li><li> 销毁持有奇异值的迭代器
+</li><li> 对于满足了<a href="named_req/DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-style:italic">可默认构造</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(DefaultConstructible)</span> </a>的要求的迭代器，使用<a href="language/value_initialization.html" title="cpp/language/value initialization">值初始化</a>的迭代器作为复制<span class="t-rev-inl t-since-cxx11"><span>或移动</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>操作的来源。
+</li></ul>
+<p>此时奇异值会和其他值一样被覆写。可解引用的值始终不会是奇异值。
+</p><p><i>无效</i> ﻿的迭代器是可能持有奇异值的迭代器。
+</p>
+<h4><span class="mw-headline" id=".E8.8C.83.E5.9B.B4">范围</span></h4>
+<p>标准库的大部分操作数据结构的算法模板都有使用范围的接口。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>对于两个迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span>，当且仅当存在表达式 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">++</span>i</span></span> 的有限次应用序列使得 <span class="t-c"><span class="mw-geshi cpp source-cpp">i <span class="sy1">==</span> j</span></span> 时，<span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span> 从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> <i>可及</i>。如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span> 从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 可及，那么它们指代相同序列中的元素。
+</p><p><i>范围</i> ﻿是一对指定了计算的开头和结尾的迭代器。范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>)</code> 是空范围；通常来说，范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code> 指代数据结构中从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 指向的元素开始直至（但不包含）<span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span> 指向的元素为止的那些元素。
+</p><p>范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span><code>)</code> 当且仅当 <span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span> 从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 可及时<i>有效</i>。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p><i>范围</i> ﻿有以下两种表示：
+</p>
+<ul><li> <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span><code>)</code>，由迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 和<i>哨位</i> <span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span> 组成，指定了计算的开头和结尾（<span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span> 可以具有不同的类型）。
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code> + </code><code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span><code>)</code>，由迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 和计数 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 组成，指定了计算要应用的开头和元素数量。
+</li></ul>
+<h5> <span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8-.E5.93.A8.E4.BD.8D.E8.8C.83.E5.9B.B4">迭代器-哨位范围</span></h5>
+<p>由迭代器和哨位组成的范围可以比较。<code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span><code>)</code> 在 <span class="t-c"><span class="mw-geshi cpp source-cpp">i <span class="sy1">==</span> s</span></span> 时为空；否则 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span><code>)</code> 指代数据结构中从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 指向的元素开始直至（但不包含）首个满足 <span class="t-c"><span class="mw-geshi cpp source-cpp">j <span class="sy1">==</span> s</span></span> 的迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">j</span></span> 指向的元素为止的那些元素。
+</p><p>对于迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 和哨位 <span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span>，当且仅当存在表达式 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">++</span>i</span></span> 的有限次应用序列使得 <span class="t-c"><span class="mw-geshi cpp source-cpp">i <span class="sy1">==</span> s</span></span> 时，<span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span> 从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> <i>可及</i>。
+</p><p>如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span> 从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 可及，那么 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span><code>)</code> 表示的范围<i>有效</i>。
+</p>
+<h5> <span class="mw-headline" id=".E8.AE.A1.E6.95.B0.E8.8C.83.E5.9B.B4">计数范围</span></h5>
+<p><i>计数范围</i> <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code> + </code><code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span><code>)</code> 在 <span class="t-c"><span class="mw-geshi cpp source-cpp">n <span class="sy1">==</span> <span class="nu0">0</span></span></span> 时为空；否则 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code> + </code><code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span><code>)</code> 指代数据结构中从 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 指向的元素开始直至（但不包含，如果存在）应用了 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 次 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">++</span>i</span></span> 的结果指向的元素（如果存在）为止的 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 个元素。
+</p><p>计数范围 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span><code> + </code><code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span><code>)</code> 当且仅当满足以下任一条件时<i>有效</i>：
+</p>
+<ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">n <span class="sy1">==</span> <span class="nu0">0</span></span></span>
+</li><li> 满足以下所有条件：
+<ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 是正数，
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span> 可解引用，
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">++</span>i</span></span><code> + </code><code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">--</span>n</span></span><code>)</code> 有效。
+</li></ul>
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>将标准库函数应用到无效范围的结果未定义。
+</p><p><span id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E6.A6.82.E5.BF.B5"></span>
+</p>
+<h3><span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E6.A6.82.E5.BF.B5_.28C.2B.2B20_.E8.B5.B7.29">迭代器概念 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></h3>
+<p>C++20 引入了基于<a href="language/constraints.html" title="cpp/language/constraints">概念</a>的新迭代器系统，它与 C++17 迭代器不同。虽然基础分类法保持类似，但单独的迭代器类别的要求有些区别。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在命名空间 <code>std</code> 定义</div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"> <span class="t-lines"><span>indirectly_readable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定类型通过应用运算符 <code>*</code> 可读 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_writable.html" title="cpp/iterator/indirectly writable"> <span class="t-lines"><span>indirectly_writable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可向迭代器所引用的对象写入值 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/weakly_incrementable.html" title="cpp/iterator/weakly incrementable"> <span class="t-lines"><span>weakly_incrementable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定 <a href="concepts/semiregular.html" title="cpp/concepts/semiregular"><code>semiregular</code></a> 类型能以前后自增运算符自增 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/incrementable.html" title="cpp/iterator/incrementable"> <span class="t-lines"><span>incrementable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定 <a href="iterator/weakly_incrementable.html" title="cpp/iterator/weakly incrementable"><code>weakly_incrementable</code></a> 类型上的自增操作<a href="concepts.html#.E7.9B.B8.E7.AD.89.E6.80.A7.E4.BF.9D.E6.8C.81" title="cpp/concepts">保持相等性</a>，而且该类型为 <a href="concepts/equality_comparable.html" title="cpp/concepts/equality comparable"><code>equality_comparable</code></a>  <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/is-integer-like.html" title="cpp/iterator/is-integer-like"> <i><span class="t-lines"><span>is-integer-like</span><span>is-signed-integer-like</span></span></i></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定类型表现为（有符号）整数类型 <br> <span class="t-mark t-mark-expos" style="white-space: nowrap;">(<span title="此定义仅用于展示。实现不需要通过这种方式定义实体。此实体的名字未指定。">仅用于阐述的概念*</span>)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/input_or_output_iterator.html" title="cpp/iterator/input or output iterator"> <span class="t-lines"><span>input_or_output_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定该类型对象可以自增且可以解引用 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/sentinel_for.html" title="cpp/iterator/sentinel for"> <span class="t-lines"><span>sentinel_for</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   指定类型为某个 <a href="iterator/input_or_output_iterator.html" title="cpp/iterator/input or output iterator"><code>input_or_output_iterator</code></a> 类型的哨位类型 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/sized_sentinel_for.html" title="cpp/iterator/sized sentinel for"> <span class="t-lines"><span>sized_sentinel_for</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可对一个迭代器和一个哨位应用 <code>-</code> 运算符，以在常数时间计算其距离 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/input_iterator.html" title="cpp/iterator/input iterator"> <span class="t-lines"><span>input_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定类型为输入迭代器，即可读取其所引用的值，且可前/后自增 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/output_iterator.html" title="cpp/iterator/output iterator"> <span class="t-lines"><span>output_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定类型为给定的值类型的输出迭代器，即可向其写入该类型的值，且可前/后自增 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/forward_iterator.html" title="cpp/iterator/forward iterator"> <span class="t-lines"><span>forward_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定 <a href="iterator/input_iterator.html" title="cpp/iterator/input iterator"><code>input_iterator</code></a> 为向前迭代器，支持相等比较与多趟操作 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/bidirectional_iterator.html" title="cpp/iterator/bidirectional iterator"> <span class="t-lines"><span>bidirectional_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定 <a href="iterator/forward_iterator.html" title="cpp/iterator/forward iterator"><code>forward_iterator</code></a> 为双向迭代器，支持向后移动 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/random_access_iterator.html" title="cpp/iterator/random access iterator"> <span class="t-lines"><span>random_access_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定 <a href="iterator/bidirectional_iterator.html" title="cpp/iterator/bidirectional iterator"><code>bidirectional_iterator</code></a> 为随机访问迭代器，支持常数时间内的前进和下标访问 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/contiguous_iterator.html" title="cpp/iterator/contiguous iterator"> <span class="t-lines"><span>contiguous_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定 <a href="iterator/random_access_iterator.html" title="cpp/iterator/random access iterator"><code>random_access_iterator</code></a> 为连续迭代器，指代内存中连续相接的元素 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+</table>
+<p><span id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E5.85.B3.E8.81.94.E7.B1.BB.E5.9E.8B"></span>
+</p>
+<h3><span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E5.85.B3.E8.81.94.E7.B1.BB.E5.9E.8B_.28C.2B.2B20_.E8.B5.B7.29">迭代器关联类型 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在命名空间 <code>std</code> 定义</div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/incrementable_traits.html" title="cpp/iterator/incrementable traits"> <span class="t-lines"><span>incrementable_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算 <a href="iterator/weakly_incrementable.html" title="cpp/iterator/weakly incrementable"><code>weakly_incrementable</code></a> 类型的差类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_readable_traits.html" title="cpp/iterator/indirectly readable traits"> <span class="t-lines"><span>indirectly_readable_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型的值类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/iter_t.html" title="cpp/iterator/iter t"> <span class="t-lines"><span>iter_value_t</span><span>iter_reference_t</span><span>iter_const_reference_t</span><span>iter_difference_t</span><span>iter_rvalue_reference_t</span><span>iter_common_reference_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算迭代器的关联类型 <br> <span class="t-mark" style="white-space: nowrap;">(别名模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E5.8E.9F.E8.AF.AD">迭代器原语</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/iterator_traits.html" title="cpp/iterator/iterator traits"> <span class="t-lines"><span>iterator_traits</span></span></a></div></div>
+</td>
+<td>  为迭代器各项性质提供统一接口 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/iterator_tags.html" title="cpp/iterator/iterator tags"> <span class="t-lines"><span>input_iterator_tag</span><span>output_iterator_tag</span><span>forward_iterator_tag</span><span>bidirectional_iterator_tag</span><span>random_access_iterator_tag</span><span>contiguous_iterator_tag</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span></span><span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指示迭代器类别的空类类型 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/iterator.html" title="cpp/iterator/iterator"> <span class="t-lines"><span>iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx17" style="white-space: nowrap;">(C++17 弃用)</span></span></span></div></div>
+</td>
+<td>  简化简单的迭代器的必要类型定义的基类 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<p><span id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E5.AE.9A.E5.88.B6.E7.82.B9"></span>
+</p>
+<h3><span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E5.AE.9A.E5.88.B6.E7.82.B9_.28C.2B.2B20_.E8.B5.B7.29">迭代器定制点 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在命名空间 <code>std::ranges</code> 定义</div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ranges/iter_move.html" title="cpp/iterator/ranges/iter move"> <span class="t-lines"><span>iter_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  转换解引用迭代器的结果为其关联的右值引用类型 <br> <span class="t-mark" style="white-space: nowrap;">(定制点对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ranges/iter_swap.html" title="cpp/iterator/ranges/iter swap"> <span class="t-lines"><span>iter_swap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  交换两个可解引用对象所引用的值 <br> <span class="t-mark" style="white-space: nowrap;">(定制点对象)</span> </td></tr>
+</table>
+<p><span id=".E7.AE.97.E6.B3.95.E6.A6.82.E5.BF.B5.E4.B8.8E.E5.B7.A5.E5.85.B7"></span>
+</p>
+<h3><span class="mw-headline" id=".E7.AE.97.E6.B3.95.E6.A6.82.E5.BF.B5.E4.B8.8E.E5.B7.A5.E5.85.B7_.28C.2B.2B20_.E8.B5.B7.29">算法概念与工具 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></h3>
+<p>还提供了为简化常用算法操作的约束而设计的一组概念和相关的工具模板。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/iterator.html" title="cpp/header/iterator">&lt;iterator&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在命名空间 <code>std</code> 定义</div>
+</td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E9.97.B4.E6.8E.A5.E5.8F.AF.E8.B0.83.E7.94.A8.E5.AF.B9.E8.B1.A1"> 间接可调用对象 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_unary_invocable.html" title="cpp/iterator/indirectly unary invocable"> <span class="t-lines"><span>indirectly_unary_invocable</span><span>indirectly_regular_unary_invocable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可调用类型能以解引用某个 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型的结果进行调用 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirect_unary_predicate.html" title="cpp/iterator/indirect unary predicate"> <span class="t-lines"><span>indirect_unary_predicate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可调用类型，在以解引用一个 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型的结果进行调用时，满足 <a href="concepts/predicate.html" title="cpp/concepts/predicate"><code>predicate</code></a> <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirect_binary_predicate.html" title="cpp/iterator/indirect binary predicate"> <span class="t-lines"><span>indirect_binary_predicate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   指定可调用类型，在以解引用两个 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型的结果进行调用时，满足 <a href="concepts/predicate.html" title="cpp/concepts/predicate"><code>predicate</code></a> <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirect_equivalence_relation.html" title="cpp/iterator/indirect equivalence relation"> <span class="t-lines"><span>indirect_equivalence_relation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   指定可调用类型，在以解引用两个 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型的结果进行调用时，满足 <a href="concepts/equivalence_relation.html" title="cpp/concepts/equivalence relation"><code>equivalence_relation</code></a> <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirect_strict_weak_order.html" title="cpp/iterator/indirect strict weak order"> <span class="t-lines"><span>indirect_strict_weak_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可调用类型，在以解引用两个 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型的结果进行调用时，满足 <a href="concepts/strict_weak_order.html" title="cpp/concepts/strict weak order"><code>strict_weak_order</code></a> <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.B8.B8.E7.94.A8.E7.AE.97.E6.B3.95.E8.A6.81.E6.B1.82"> 常用算法要求 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_movable.html" title="cpp/iterator/indirectly movable"> <span class="t-lines"><span>indirectly_movable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可从 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型移动值给 <a href="iterator/indirectly_writable.html" title="cpp/iterator/indirectly writable"><code>indirectly_writable</code></a> 类型 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_movable_storable.html" title="cpp/iterator/indirectly movable storable"> <span class="t-lines"><span>indirectly_movable_storable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可从 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型移动值给 <a href="iterator/indirectly_writable.html" title="cpp/iterator/indirectly writable"><code>indirectly_writable</code></a> 类型，且该移动可以通过中间对象进行 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_copyable.html" title="cpp/iterator/indirectly copyable"> <span class="t-lines"><span>indirectly_copyable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可从 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型复制值给 <a href="iterator/indirectly_writable.html" title="cpp/iterator/indirectly writable"><code>indirectly_writable</code></a> 类型 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_copyable_storable.html" title="cpp/iterator/indirectly copyable storable"> <span class="t-lines"><span>indirectly_copyable_storable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定可从 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型复制值给 <a href="iterator/indirectly_writable.html" title="cpp/iterator/indirectly writable"><code>indirectly_writable</code></a> 类型，且该复制可以通过中间对象进行 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_swappable.html" title="cpp/iterator/indirectly swappable"> <span class="t-lines"><span>indirectly_swappable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定能交换两个 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型所引用的值 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirectly_comparable.html" title="cpp/iterator/indirectly comparable"> <span class="t-lines"><span>indirectly_comparable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定能比较两个 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型所引用的值 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/permutable.html" title="cpp/iterator/permutable"> <span class="t-lines"><span>permutable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定在原位重排元素的算法的共同要求 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/mergeable.html" title="cpp/iterator/mergeable"> <span class="t-lines"><span>mergeable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定通过复制元素将已排序序列归并到输出序列中的算法的要求 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/sortable.html" title="cpp/iterator/sortable"> <span class="t-lines"><span>sortable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  指定重排序列为有序序列的算法的共用要求 <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id=".E5.B7.A5.E5.85.B7"> 工具 </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/indirect_result_t.html" title="cpp/iterator/indirect result t"> <span class="t-lines"><span>indirect_result_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算在解引用某组 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型的结果上调用可调用对象的结果 <br> <span class="t-mark" style="white-space: nowrap;">(别名模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/projected.html" title="cpp/iterator/projected"> <span class="t-lines"><span>projected</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  用于对接受投影的算法指定约束的辅助模板 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/projected_value_t.html" title="cpp/iterator/projected value t"> <span class="t-lines"><span>projected_value_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  计算 <a href="iterator/indirectly_readable.html" title="cpp/iterator/indirectly readable"><code>indirectly_readable</code></a> 类型投影后的值类型 <br> <span class="t-mark" style="white-space: nowrap;">(别名模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E9.80.82.E9.85.8D.E5.99.A8">迭代器适配器</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/reverse_iterator.html" title="cpp/iterator/reverse iterator"> <span class="t-lines"><span>reverse_iterator</span></span></a></div></div>
+</td>
+<td>  逆序遍历的迭代器适配器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/make_reverse_iterator.html" title="cpp/iterator/make reverse iterator"> <span class="t-lines"><span>make_reverse_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div>
+</td>
+<td>  创建拥有从实参推出的类型的 <span class="t-lc"><a href="iterator/reverse_iterator.html" title="cpp/iterator/reverse iterator">std::reverse_iterator</a></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/back_insert_iterator.html" title="cpp/iterator/back insert iterator"> <span class="t-lines"><span>back_insert_iterator</span></span></a></div></div>
+</td>
+<td>  在容器尾部插入的迭代器适配器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/back_inserter.html" title="cpp/iterator/back inserter"> <span class="t-lines"><span>back_inserter</span></span></a></div></div>
+</td>
+<td>  创建拥有从实参推出的类型的 <span class="t-lc"><a href="iterator/back_insert_iterator.html" title="cpp/iterator/back insert iterator">std::back_insert_iterator</a></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/front_insert_iterator.html" title="cpp/iterator/front insert iterator"> <span class="t-lines"><span>front_insert_iterator</span></span></a></div></div>
+</td>
+<td>  在容器头部插入的迭代器适配器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/front_inserter.html" title="cpp/iterator/front inserter"> <span class="t-lines"><span>front_inserter</span></span></a></div></div>
+</td>
+<td>  创建拥有从实参推出的类型的 <span class="t-lc"><a href="iterator/front_insert_iterator.html" title="cpp/iterator/front insert iterator">std::front_insert_iterator</a></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/insert_iterator.html" title="cpp/iterator/insert iterator"> <span class="t-lines"><span>insert_iterator</span></span></a></div></div>
+</td>
+<td>  插入到容器的迭代器适配器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/inserter.html" title="cpp/iterator/inserter"> <span class="t-lines"><span>inserter</span></span></a></div></div>
+</td>
+<td>  创建拥有从实参推出的类型的 <span class="t-lc"><a href="iterator/insert_iterator.html" title="cpp/iterator/insert iterator">std::insert_iterator</a></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/basic_const_iterator.html" title="cpp/iterator/basic const iterator"> <span class="t-lines"><span>basic_const_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   转换迭代器为常量迭代器的迭代器适配器  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/basic_const_iterator.html#.E8.BE.85.E5.8A.A9.E5.88.AB.E5.90.8D.E6.A8.A1.E6.9D.BF" title="cpp/iterator/const iterator" class="mw-redirect"> <span class="t-lines"><span>const_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  计算给定类型的常量迭代器类型 <br> <span class="t-mark" style="white-space: nowrap;">(别名模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/basic_const_iterator.html#.E8.BE.85.E5.8A.A9.E5.88.AB.E5.90.8D.E6.A8.A1.E6.9D.BF" title="cpp/iterator/const sentinel" class="mw-redirect"> <span class="t-lines"><span>const_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  计算被用于常量迭代器的哨位类型 <br> <span class="t-mark" style="white-space: nowrap;">(别名模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/basic_const_iterator.html#.E8.BE.85.E5.8A.A9.E5.87.BD.E6.95.B0.E6.A8.A1.E6.9D.BF" title="cpp/iterator/make const iterator" class="mw-redirect"> <span class="t-lines"><span>make_const_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  创建从实参推断出的类型的 <span class="t-lc">std::const_iterator</span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/basic_const_iterator.html#.E8.BE.85.E5.8A.A9.E5.87.BD.E6.95.B0.E6.A8.A1.E6.9D.BF" title="cpp/iterator/make const sentinel" class="mw-redirect"> <span class="t-lines"><span>make_const_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  创建从实参推断出的类型的 <span class="t-lc">std::const_sentinel</span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/move_iterator.html" title="cpp/iterator/move iterator"> <span class="t-lines"><span>move_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  解引用结果为右值的迭代器适配器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/move_sentinel.html" title="cpp/iterator/move sentinel"> <span class="t-lines"><span>move_sentinel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="iterator/move_iterator.html" title="cpp/iterator/move iterator">std::move_iterator</a></span> 的哨位适配器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/make_move_iterator.html" title="cpp/iterator/make move iterator"> <span class="t-lines"><span>make_move_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  创建拥有从实参推出的类型的 <span class="t-lc"><a href="iterator/move_iterator.html" title="cpp/iterator/move iterator">std::move_iterator</a></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/common_iterator.html" title="cpp/iterator/common iterator"> <span class="t-lines"><span>common_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  适配一个迭代器类型及其哨位为一个公共迭代器类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/default_sentinel_t.html" title="cpp/iterator/default sentinel t"> <span class="t-lines"><span>default_sentinel_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  用于知晓其范围边界的迭代器的默认哨位 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/counted_iterator.html" title="cpp/iterator/counted iterator"> <span class="t-lines"><span>counted_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  对到范围结尾距离进行跟踪的迭代器适配器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/unreachable_sentinel_t.html" title="cpp/iterator/unreachable sentinel t"> <span class="t-lines"><span>unreachable_sentinel_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  始终与任何 <a href="iterator/weakly_incrementable.html" title="cpp/iterator/weakly incrementable"><code>weakly_incrementable</code></a> 类型比较都不相等的哨位 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.B5.81.E8.BF.AD.E4.BB.A3.E5.99.A8">流迭代器</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/istream_iterator.html" title="cpp/iterator/istream iterator"> <span class="t-lines"><span>istream_iterator</span></span></a></div></div>
+</td>
+<td>  从 <span class="t-lc"><a href="io/basic_istream.html" title="cpp/io/basic istream">std::basic_istream</a></span> 读取的输入迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ostream_iterator.html" title="cpp/iterator/ostream iterator"> <span class="t-lines"><span>ostream_iterator</span></span></a></div></div>
+</td>
+<td>  写入 <span class="t-lc"><a href="io/basic_ostream.html" title="cpp/io/basic ostream">std::basic_ostream</a></span> 的输出迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/istreambuf_iterator.html" title="cpp/iterator/istreambuf iterator"> <span class="t-lines"><span>istreambuf_iterator</span></span></a></div></div>
+</td>
+<td>  从 <span class="t-lc"><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf">std::basic_streambuf</a></span> 读取的输入迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ostreambuf_iterator.html" title="cpp/iterator/ostreambuf iterator"> <span class="t-lines"><span>ostreambuf_iterator</span></span></a></div></div>
+</td>
+<td>  写入 <span class="t-lc"><a href="io/basic_streambuf.html" title="cpp/io/basic streambuf">std::basic_streambuf</a></span> 的输出迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E8.BF.AD.E4.BB.A3.E5.99.A8.E6.93.8D.E4.BD.9C">迭代器操作</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/iterator.html" title="cpp/header/iterator">&lt;iterator&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/advance.html" title="cpp/iterator/advance"> <span class="t-lines"><span>advance</span></span></a></div></div>
+</td>
+<td>  令迭代器前进给定的距离 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/distance.html" title="cpp/iterator/distance"> <span class="t-lines"><span>distance</span></span></a></div></div>
+</td>
+<td>  返回两个迭代器间的距离 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/next.html" title="cpp/iterator/next"> <span class="t-lines"><span>next</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  令迭代器自增 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/prev.html" title="cpp/iterator/prev"> <span class="t-lines"><span>prev</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  令迭代器自减 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ranges/advance.html" title="cpp/iterator/ranges/advance"> <span class="t-lines"><span>ranges::advance</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  令迭代器前进给定的距离或到给定的边界 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ranges/distance.html" title="cpp/iterator/ranges/distance"> <span class="t-lines"><span>ranges::distance</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回迭代器与哨位间的距离，或范围起始与结尾间的距离 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ranges/next.html" title="cpp/iterator/ranges/next"> <span class="t-lines"><span>ranges::next</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  自增迭代器给定的距离或到边界 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/ranges/prev.html" title="cpp/iterator/ranges/prev"> <span class="t-lines"><span>ranges::prev</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  自减迭代器给定的距离或到边界 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<p><span id=".E8.8C.83.E5.9B.B4.E8.AE.BF.E9.97.AE"></span>
+</p>
+<h3><span class="mw-headline" id=".E8.8C.83.E5.9B.B4.E8.AE.BF.E9.97.AE_.28C.2B.2B11_.E8.B5.B7.29">范围访问 <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></h3>
+<p>这些非成员函数模板提供对容器、通常数组，及 <span class="t-lc"><a href="utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span> 的通用接口。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/array.html" title="cpp/header/array">&lt;array&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/deque.html" title="cpp/header/deque">&lt;deque&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/flat_map.html" title="cpp/header/flat map">&lt;flat_map&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/flat_set.html" title="cpp/header/flat set">&lt;flat_set&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/forward_list.html" title="cpp/header/forward list">&lt;forward_list&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/inplace_vector.html" title="cpp/header/inplace vector">&lt;inplace_vector&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/iterator.html" title="cpp/header/iterator">&lt;iterator&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/list.html" title="cpp/header/list">&lt;list&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/map.html" title="cpp/header/map">&lt;map&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/regex.html" title="cpp/header/regex">&lt;regex&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/set.html" title="cpp/header/set">&lt;set&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/span.html" title="cpp/header/span">&lt;span&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/string.html" title="cpp/header/string">&lt;string&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/string_view.html" title="cpp/header/string view">&lt;string_view&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/unordered_map.html" title="cpp/header/unordered map">&lt;unordered_map&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/unordered_set.html" title="cpp/header/unordered set">&lt;unordered_set&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/vector.html" title="cpp/header/vector">&lt;vector&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在命名空间 <code>std</code> 定义</div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/begin.html" title="cpp/iterator/begin"> <span class="t-lines"><span>begin</span><span>cbegin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div>
+</td>
+<td>  返回指向容器或数组起始的迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/end.html" title="cpp/iterator/end"> <span class="t-lines"><span>end</span><span>cend</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div>
+</td>
+<td>  返回指向容器或数组结尾的迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/rbegin.html" title="cpp/iterator/rbegin"> <span class="t-lines"><span>rbegin</span><span>crbegin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div>
+</td>
+<td>  返回指向一个容器或数组的逆向迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/rend.html" title="cpp/iterator/rend"> <span class="t-lines"><span>rend</span><span>crend</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div>
+</td>
+<td>  返回容器或数组的逆向尾迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/size.html" title="cpp/iterator/size"> <span class="t-lines"><span>size</span><span>ssize</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   返回容器或数组的大小 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/empty.html" title="cpp/iterator/empty"> <span class="t-lines"><span>empty</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  检查容器是否为空 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="iterator/data.html" title="cpp/iterator/data"> <span class="t-lines"><span>data</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  获得指向底层数组的指针 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1181.html">CWG 1181</a>
+</td>
+<td> C++98
+</td>
+<td> 数组类型不能为值类型
+</td>
+<td> 它们能
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue208">LWG 208</a>
+</td>
+<td> C++98
+</td>
+<td> 尾后迭代器不会持有奇异值
+</td>
+<td> 可能会持有奇异值
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue278">LWG 278</a>
+</td>
+<td> C++98
+</td>
+<td> 未定义迭代器的有效性
+</td>
+<td> 定义为始终不持有奇异值
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue324">LWG 324</a>
+</td>
+<td> C++98
+</td>
+<td> 输出迭代器具有值类型
+</td>
+<td> 改成具有可写入类型
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue407">LWG 407</a>
+</td>
+<td> C++98
+</td>
+<td> 不能销毁持有奇异值的迭代器
+</td>
+<td> 可以销毁
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue408">LWG 408</a><br>(<a rel="nofollow" class="external text" href="https://wg21.link/N3066">N3066</a>)
+</td>
+<td> C++98
+</td>
+<td> 不能复制持有奇异值的迭代器
+</td>
+<td> 它是值初始化的情况下可以
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue1185">LWG 1185</a><br>(<a rel="nofollow" class="external text" href="https://wg21.link/N3066">N3066</a>)
+</td>
+<td> C++98
+</td>
+<td> <a href="named_req/ForwardIterator.html" title="cpp/named req/ForwardIterator"><span style="font-style:italic">老式向前迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyForwardIterator)</span> </a>、<br><a href="named_req/BidirectionalIterator.html" title="cpp/named req/BidirectionalIterator"><span style="font-style:italic">老式双向迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyBidirectionalIterator)</span> </a>和<br><a href="named_req/RandomAccessIterator.html" title="cpp/named req/RandomAccessIterator"><span style="font-style:italic">老式随机访问迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyRandomAccessIterator)</span> </a><br>始终满足<a href="named_req/OutputIterator.html" title="cpp/named req/OutputIterator"><span style="font-style:italic">老式输出迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyOutputIterator)</span> </a>
+</td>
+<td> 它们不一定满足<br><a href="named_req/OutputIterator.html" title="cpp/named req/OutputIterator"><span style="font-style:italic">老式输出迭代器</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(LegacyOutputIterator)</span> </a>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue1210">LWG 1210</a><br>(<a rel="nofollow" class="external text" href="https://wg21.link/N3066">N3066</a>)
+</td>
+<td> C++98
+</td>
+<td> 迭代器的奇异性和可及性的定义依赖容器
+</td>
+<td> 改为依赖序列
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue3009">LWG 3009</a>
+</td>
+<td> C++17
+</td>
+<td> <a href="header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a> 没有提供范围访问函数模板
+</td>
+<td> 提供这些模板
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue3987">LWG 3987</a>
+</td>
+<td> C++23
+</td>
+<td> <a href="header/flat_map.html" title="cpp/header/flat map"><tt>&lt;flat_map&gt;</tt></a> 和 <a href="header/flat_set.html" title="cpp/header/flat set"><tt>&lt;flat_set&gt;</tt></a> 没有提供范围访问函数模板
+</td>
+<td> 提供这些模板
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 29692/1000000
+Preprocessor generated node count: 22306/1000000
+Post‐expand include size: 849954/4194304 bytes
+Template argument size: 185769/4194304 bytes
+Highest expansion depth: 21/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:872-0!*!0!!zh!*!zh!* and timestamp 20250402181856 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator&amp;oldid=98035">https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator&amp;oldid=98035</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/iterator">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年1月28日 (星期二) 11:33。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../common/site_scripts.js"></script>
+<!-- Served in 8.636 secs. -->
+	</body>
+<!-- Cached 20250402181856 -->
+</html>

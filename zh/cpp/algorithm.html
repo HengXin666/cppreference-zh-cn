@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>算法库</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../common/favicon.ico">
+<link rel="stylesheet" href="../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/algorithm","wgTitle":"cpp/algorithm","wgCurRevisionId":98851,"wgArticleId":700,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/algorithm","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_algorithm skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">算法库</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../cpp.html" title="cpp">cpp</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">算法库</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink">算法库</strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm/ranges.html" title="cpp/algorithm/ranges">受约束算法及范围上的算法</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5">包含算法例如 <a href="algorithm/ranges/copy.html" title="cpp/algorithm/ranges/copy"><tt>ranges::copy</tt></a>, <a href="algorithm/ranges/sort.html" title="cpp/algorithm/ranges/sort"><tt>ranges::sort</tt></a>, ...</td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm.html#.E6.89.A7.E8.A1.8C.E7.AD.96.E7.95.A5" title="cpp/algorithm">执行策略 <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/is_execution_policy.html" title="cpp/algorithm/is execution policy"><span class="t-lines"><span>is_execution_policy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>  </span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/execution_policy_tag.html" title="cpp/algorithm/execution policy tag"><span class="t-lines"><span>execution::seq</span><span>execution::par</span><span>execution::par_unseq</span><span>execution::unseq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>    </span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/execution_policy_tag_t.html" title="cpp/algorithm/execution policy tag t"><span class="t-lines"><span>execution::sequenced_policy</span><span>execution::parallel_policy</span><span>execution::parallel_unsequenced_policy</span><span>execution::parallel_unsequenced</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm.html#.E4.B8.8D.E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm">不修改序列的操作</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E6.89.B9.E9.87.8F.E6.93.8D.E4.BD.9C" title="cpp/algorithm">批量操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/for_each.html" title="cpp/algorithm/for each"><span class="t-lines"><span>for_each</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/for_each_n.html" title="cpp/algorithm/for each n"><span class="t-lines"><span>for_each_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E6.90.9C.E7.B4.A2.E6.93.8D.E4.BD.9C" title="cpp/algorithm">搜索操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/all_any_none_of.html" title="cpp/algorithm/all any none of"><span class="t-lines"><span>all_of</span><span>any_of</span><span>none_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>                   </span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/count.html" title="cpp/algorithm/count"><span class="t-lines"><span>count</span><span>count_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/mismatch.html" title="cpp/algorithm/mismatch"><span class="t-lines"><span>mismatch</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/equal.html" title="cpp/algorithm/equal"><span class="t-lines"><span>equal</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/find.html" title="cpp/algorithm/find"><span class="t-lines"><span>find</span><span>find_if</span><span>find_if_not</span></span></a></div><div><span class="t-lines"><span></span><span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/find_end.html" title="cpp/algorithm/find end"><span class="t-lines"><span>find_end</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/find_first_of.html" title="cpp/algorithm/find first of"><span class="t-lines"><span>find_first_of</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/adjacent_find.html" title="cpp/algorithm/adjacent find"><span class="t-lines"><span>adjacent_find</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/search.html" title="cpp/algorithm/search"><span class="t-lines"><span>search</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/search_n.html" title="cpp/algorithm/search n"><span class="t-lines"><span>search_n</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm.html#.E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm">修改序列的操作</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E5.A4.8D.E5.88.B6.E6.93.8D.E4.BD.9C" title="cpp/algorithm">复制操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/copy.html" title="cpp/algorithm/copy"><span class="t-lines"><span>copy</span><span>copy_if</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/copy_backward.html" title="cpp/algorithm/copy backward"><span class="t-lines"><span>copy_backward</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/copy_n.html" title="cpp/algorithm/copy n"><span class="t-lines"><span>copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/move.html" title="cpp/algorithm/move"><span class="t-lines"><span>move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/move_backward.html" title="cpp/algorithm/move backward"><span class="t-lines"><span>move_backward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E4.BA.A4.E6.8D.A2.E6.93.8D.E4.BD.9C" title="cpp/algorithm">交换操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/swap.html" title="cpp/algorithm/swap"><span class="t-lines"><span>swap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/iter_swap.html" title="cpp/algorithm/iter swap"><span class="t-lines"><span>iter_swap</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/swap_ranges.html" title="cpp/algorithm/swap ranges"><span class="t-lines"><span>swap_ranges</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E5.8F.98.E6.8D.A2.E6.93.8D.E4.BD.9C" title="cpp/algorithm">变换操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/replace.html" title="cpp/algorithm/replace"><span class="t-lines"><span>replace</span><span>replace_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/transform.html" title="cpp/algorithm/transform"><span class="t-lines"><span>transform</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/replace_copy.html" title="cpp/algorithm/replace copy"><span class="t-lines"><span>replace_copy</span><span>replace_copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E7.94.9F.E6.88.90.E6.93.8D.E4.BD.9C" title="cpp/algorithm">生成操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/fill.html" title="cpp/algorithm/fill"><span class="t-lines"><span>fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/fill_n.html" title="cpp/algorithm/fill n"><span class="t-lines"><span>fill_n</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/generate.html" title="cpp/algorithm/generate"><span class="t-lines"><span>generate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/generate_n.html" title="cpp/algorithm/generate n"><span class="t-lines"><span>generate_n</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E7.A7.BB.E9.99.A4.E6.93.8D.E4.BD.9C" title="cpp/algorithm">移除操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/remove.html" title="cpp/algorithm/remove"><span class="t-lines"><span>remove</span><span>remove_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/unique.html" title="cpp/algorithm/unique"><span class="t-lines"><span>unique</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/remove_copy.html" title="cpp/algorithm/remove copy"><span class="t-lines"><span>remove_copy</span><span>remove_copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/unique_copy.html" title="cpp/algorithm/unique copy"><span class="t-lines"><span>unique_copy</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E9.A1.BA.E5.BA.8F.E5.8F.98.E6.9B.B4.E6.93.8D.E4.BD.9C" title="cpp/algorithm">顺序变更操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/reverse.html" title="cpp/algorithm/reverse"><span class="t-lines"><span>reverse</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/reverse_copy.html" title="cpp/algorithm/reverse copy"><span class="t-lines"><span>reverse_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/rotate.html" title="cpp/algorithm/rotate"><span class="t-lines"><span>rotate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/rotate_copy.html" title="cpp/algorithm/rotate copy"><span class="t-lines"><span>rotate_copy</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/random_shuffle.html" title="cpp/algorithm/random shuffle"><span class="t-lines"><span>random_shuffle</span><span>shuffle</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/shift.html" title="cpp/algorithm/shift"><span class="t-lines"><span>shift_left</span><span>shift_right</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E9.87.87.E6.A0.B7.E6.93.8D.E4.BD.9C" title="cpp/algorithm">采样操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/sample.html" title="cpp/algorithm/sample"><span class="t-lines"><span>sample</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm.html#.E6.8E.92.E5.BA.8F.E5.92.8C.E7.9B.B8.E5.85.B3.E6.93.8D.E4.BD.9C" title="cpp/algorithm">排序和相关操作</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E5.88.92.E5.88.86.E6.93.8D.E4.BD.9C" title="cpp/algorithm">划分操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/partition.html" title="cpp/algorithm/partition"><span class="t-lines"><span>partition</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/partition_copy.html" title="cpp/algorithm/partition copy"><span class="t-lines"><span>partition_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/stable_partition.html" title="cpp/algorithm/stable partition"><span class="t-lines"><span>stable_partition</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/is_partitioned.html" title="cpp/algorithm/is partitioned"><span class="t-lines"><span>is_partitioned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/partition_point.html" title="cpp/algorithm/partition point"><span class="t-lines"><span>partition_point</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E6.8E.92.E5.BA.8F.E6.93.8D.E4.BD.9C" title="cpp/algorithm">排序操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/sort.html" title="cpp/algorithm/sort"><span class="t-lines"><span>sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/stable_sort.html" title="cpp/algorithm/stable sort"><span class="t-lines"><span>stable_sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/partial_sort.html" title="cpp/algorithm/partial sort"><span class="t-lines"><span>partial_sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/partial_sort_copy.html" title="cpp/algorithm/partial sort copy"><span class="t-lines"><span>partial_sort_copy</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/is_sorted.html" title="cpp/algorithm/is sorted"><span class="t-lines"><span>is_sorted</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/is_sorted_until.html" title="cpp/algorithm/is sorted until"><span class="t-lines"><span>is_sorted_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/nth_element.html" title="cpp/algorithm/nth element"><span class="t-lines"><span>nth_element</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E4.BA.8C.E5.88.86.E6.90.9C.E7.B4.A2.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E5.B7.B2.E5.88.92.E5.88.86.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm">二分搜索操作（在已划分范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/lower_bound.html" title="cpp/algorithm/lower bound"><span class="t-lines"><span>lower_bound</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/upper_bound.html" title="cpp/algorithm/upper bound"><span class="t-lines"><span>upper_bound</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/equal_range.html" title="cpp/algorithm/equal range"><span class="t-lines"><span>equal_range</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/binary_search.html" title="cpp/algorithm/binary search"><span class="t-lines"><span>binary_search</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E9.9B.86.E5.90.88.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E6.9C.89.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm">集合操作（在有序范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/includes.html" title="cpp/algorithm/includes"><span class="t-lines"><span>includes</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/set_union.html" title="cpp/algorithm/set union"><span class="t-lines"><span>set_union</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/set_intersection.html" title="cpp/algorithm/set intersection"><span class="t-lines"><span>set_intersection</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/set_difference.html" title="cpp/algorithm/set difference"><span class="t-lines"><span>set_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/set_symmetric_difference.html" title="cpp/algorithm/set symmetric difference"><span class="t-lines"><span>set_symmetric_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E5.BD.92.E5.B9.B6.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E6.9C.89.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89" title="cpp/algorithm">归并操作（在有序范围上）</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/merge.html" title="cpp/algorithm/merge"><span class="t-lines"><span>merge</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/inplace_merge.html" title="cpp/algorithm/inplace merge"><span class="t-lines"><span>inplace_merge</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E5.A0.86.E6.93.8D.E4.BD.9C" title="cpp/algorithm">堆操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/push_heap.html" title="cpp/algorithm/push heap"><span class="t-lines"><span>push_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/pop_heap.html" title="cpp/algorithm/pop heap"><span class="t-lines"><span>pop_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/make_heap.html" title="cpp/algorithm/make heap"><span class="t-lines"><span>make_heap</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/sort_heap.html" title="cpp/algorithm/sort heap"><span class="t-lines"><span>sort_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/is_heap.html" title="cpp/algorithm/is heap"><span class="t-lines"><span>is_heap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/is_heap_until.html" title="cpp/algorithm/is heap until"><span class="t-lines"><span>is_heap_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E6.9C.80.E5.B0.8F.2F.E6.9C.80.E5.A4.A7.E6.93.8D.E4.BD.9C" title="cpp/algorithm">最小/最大操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/max.html" title="cpp/algorithm/max"><span class="t-lines"><span>max</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/min.html" title="cpp/algorithm/min"><span class="t-lines"><span>min</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/minmax.html" title="cpp/algorithm/minmax"><span class="t-lines"><span>minmax</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/clamp.html" title="cpp/algorithm/clamp"><span class="t-lines"><span>clamp</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/max_element.html" title="cpp/algorithm/max element"><span class="t-lines"><span>max_element</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/min_element.html" title="cpp/algorithm/min element"><span class="t-lines"><span>min_element</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/minmax_element.html" title="cpp/algorithm/minmax element"><span class="t-lines"><span>minmax_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E5.AD.97.E5.85.B8.E5.BA.8F.E6.AF.94.E8.BE.83.E6.93.8D.E4.BD.9C" title="cpp/algorithm">字典序比较操作</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/lexicographical_compare.html" title="cpp/algorithm/lexicographical compare"><span class="t-lines"><span>lexicographical_compare</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/lexicographical_compare_three_way.html" title="cpp/algorithm/lexicographical compare three way"><span class="t-lines"><span>lexicographical_compare_three_way</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="algorithm.html#.E6.8E.92.E5.88.97.E6.93.8D.E4.BD.9C" title="cpp/algorithm">排列操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/next_permutation.html" title="cpp/algorithm/next permutation"><span class="t-lines"><span>next_permutation</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/prev_permutation.html" title="cpp/algorithm/prev permutation"><span class="t-lines"><span>prev_permutation</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/is_permutation.html" title="cpp/algorithm/is permutation"><span class="t-lines"><span>is_permutation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm.html#C_.E5.BA.93" title="cpp/algorithm">C 库</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/qsort.html" title="cpp/algorithm/qsort"><span class="t-lines"><span>qsort</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/bsearch.html" title="cpp/algorithm/bsearch"><span class="t-lines"><span>bsearch</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm.html#.E6.95.B0.E5.80.BC.E8.BF.90.E7.AE.97" title="cpp/algorithm">数值运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/iota.html" title="cpp/algorithm/iota"><span class="t-lines"><span>iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>                       </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/inner_product.html" title="cpp/algorithm/inner product"><span class="t-lines"><span>inner_product</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/adjacent_difference.html" title="cpp/algorithm/adjacent difference"><span class="t-lines"><span>adjacent_difference</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/accumulate.html" title="cpp/algorithm/accumulate"><span class="t-lines"><span>accumulate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/reduce.html" title="cpp/algorithm/reduce"><span class="t-lines"><span>reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/transform_reduce.html" title="cpp/algorithm/transform reduce"><span class="t-lines"><span>transform_reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/partial_sum.html" title="cpp/algorithm/partial sum"><span class="t-lines"><span>partial_sum</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/inclusive_scan.html" title="cpp/algorithm/inclusive scan"><span class="t-lines"><span>inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>  </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/exclusive_scan.html" title="cpp/algorithm/exclusive scan"><span class="t-lines"><span>exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/transform_inclusive_scan.html" title="cpp/algorithm/transform inclusive scan"><span class="t-lines"><span>transform_inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="algorithm/transform_exclusive_scan.html" title="cpp/algorithm/transform exclusive scan"><span class="t-lines"><span>transform_exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="algorithm.html#.E5.9C.A8.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.86.85.E5.AD.98.E4.B8.8A.E7.9A.84.E6.93.8D.E4.BD.9C" title="cpp/algorithm">在未初始化内存上的操作</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_copy.html" title="cpp/memory/uninitialized copy"><span class="t-lines"><span>uninitialized_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_move.html" title="cpp/memory/uninitialized move"><span class="t-lines"><span>uninitialized_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span>   </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_fill.html" title="cpp/memory/uninitialized fill"><span class="t-lines"><span>uninitialized_fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_copy_n.html" title="cpp/memory/uninitialized copy n"><span class="t-lines"><span>uninitialized_copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_move_n.html" title="cpp/memory/uninitialized move n"><span class="t-lines"><span>uninitialized_move_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_fill_n.html" title="cpp/memory/uninitialized fill n"><span class="t-lines"><span>uninitialized_fill_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/destroy.html" title="cpp/memory/destroy"><span class="t-lines"><span>destroy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/destroy_n.html" title="cpp/memory/destroy n"><span class="t-lines"><span>destroy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/destroy_at.html" title="cpp/memory/destroy at"><span class="t-lines"><span>destroy_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/construct_at.html" title="cpp/memory/construct at"><span class="t-lines"><span>construct_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>     </span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_default_construct.html" title="cpp/memory/uninitialized default construct"><span class="t-lines"><span>uninitialized_default_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_value_construct.html" title="cpp/memory/uninitialized value construct"><span class="t-lines"><span>uninitialized_value_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_default_construct_n.html" title="cpp/memory/uninitialized default construct n"><span class="t-lines"><span>uninitialized_default_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="memory/uninitialized_value_construct_n.html" title="cpp/memory/uninitialized value construct n"><span class="t-lines"><span>uninitialized_value_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>算法库提供大量用途的函数（例如查找、排序、计数、操作），它们在元素范围上操作。注意，<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator/&amp;action=edit&amp;redlink=1" class="new" title="cpp/iterator/（页面不存在）">范围</a>定义为 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span><code>)</code>，其中 <span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span> 指代要查询或修改的最后元素的<i>后一个</i> ﻿元素。
+</p><p><span id=".E5.8F.97.E7.BA.A6.E6.9D.9F.E7.AE.97.E6.B3.95"></span>
+</p>
+<h3><span class="mw-headline" id=".E5.8F.97.E7.BA.A6.E6.9D.9F.E7.AE.97.E6.B3.95_.28C.2B.2B20_.E8.B5.B7.29"><a href="algorithm/ranges.html" title="cpp/algorithm/ranges">受约束算法</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></h3>
+<p>C++20 在命名空间 <code>std::ranges</code> 中提供大多数算法的<a href="language/constraints.html" title="cpp/language/constraints">受约束</a>版本，在这些算法中，<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator/&amp;action=edit&amp;redlink=1" class="new" title="cpp/iterator/（页面不存在）">范围</a>既可以由<a href="iterator/input_or_output_iterator.html" title="cpp/iterator/input or output iterator">迭代器</a>-<a href="iterator/sentinel_for.html" title="cpp/iterator/sentinel for">哨位</a>对，也可以由单个 <a href="ranges/range.html" title="cpp/ranges/range"><code>range</code></a> 实参指定，还支持投影和成员指针可调用对象。另外，还更改了大多数算法的<a href="algorithm/ranges.html#.E8.BF.94.E5.9B.9E.E7.B1.BB.E5.9E.8B" title="cpp/algorithm/ranges">返回类型</a>，以返回算法执行过程中计算的所有潜在有用信息。
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><a href="container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> v<span class="br0">{</span><span class="nu0">7</span>, <span class="nu0">1</span>, <span class="nu0">4</span>, <span class="nu0">0</span>, <span class="sy2">-</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span>
+std<span class="sy4">::</span><a href="algorithm/ranges/sort.html"><span class="kw2852">ranges::<span class="me2">sort</span></span></a><span class="br0">(</span>v<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 受约束算法</span></pre></div></div>
+<p><span id=".E6.89.A7.E8.A1.8C.E7.AD.96.E7.95.A5"></span>
+</p>
+<h3><span class="mw-headline" id=".E6.89.A7.E8.A1.8C.E7.AD.96.E7.95.A5_.28C.2B.2B17_.E8.B5.B7.29">执行策略 <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></h3>
+<p>大多数算法拥有接受执行策略的重载。标准库的算法支持几种<a href="algorithm/execution_policy_tag_t.html" title="cpp/algorithm/execution policy tag t">执行策略</a>，库中提供了相应的执行策略类型和对象。用户可以通过以对应类型的<a href="algorithm/execution_policy_tag.html" title="cpp/algorithm/execution policy tag">执行策略对象</a>为参数调用并行算法，静态地选择执行策略。
+</p><p>标准库实现（但不是用户）可以定义额外的执行策略作为扩展。以实现定义类型的执行策略对象调用并行算法的语义是由实现定义的。
+</p><p>允许算法的并行版本（除了 <span class="t-lc"><a href="algorithm/for_each.html" title="cpp/algorithm/for each">std::for_each</a></span> 与 <span class="t-lc"><a href="algorithm/for_each_n.html" title="cpp/algorithm/for each n">std::for_each_n</a></span>）从范围进行任意的元素复制，只要 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="types/is_copy_constructible.html"><span class="kw542">std::<span class="me2">is_trivially_copy_constructible_v</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span></span></span> 与 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="types/is_destructible.html"><span class="kw572">std::<span class="me2">is_trivially_destructible_v</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span></span></span> 都是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>，其中 <code>T</code> 是元素的类型。
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/execution.html" title="cpp/header/execution">&lt;execution&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在命名空间 <code>std::execution</code> 定义</div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/execution_policy_tag_t.html" title="cpp/algorithm/execution policy tag t"> <span class="t-lines"><span>sequenced_policy</span><span>parallel_policy</span><span>parallel_unsequenced_policy</span><span>unsequenced_policy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  执行策略类型 <br> <span class="t-mark" style="white-space: nowrap;">(类)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/execution_policy_tag.html" title="cpp/algorithm/execution policy tag"> <span class="t-lines"><span>seq</span><span>par</span><span>par_unseq</span><span>unseq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  全局执行策略对象 <br> <span class="t-mark" style="white-space: nowrap;">(常量)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在命名空间 <code>std</code> 定义</div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/is_execution_policy.html" title="cpp/algorithm/is execution policy"> <span class="t-lines"><span>is_execution_policy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  测试类是否表示某种执行策略 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+<table class="wikitable">
+
+<tr>
+<th><a href="utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_parallel_algorithm" title="cpp/feature test"><code>__cpp_lib_parallel_algorithm</code></a></td>
+<td><a href="compiler_support/17.html#cpp_lib_parallel_algorithm_201603L" title="cpp/compiler support/17"><code>201603L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td>并行算法
+</td></tr>
+<tr>
+<td rowspan="2"><a href="feature_test.html#cpp_lib_execution" title="cpp/feature test"><code>__cpp_lib_execution</code></a></td>
+<td><a href="compiler_support/17.html#cpp_lib_execution_201603L" title="cpp/compiler support/17"><code>201603L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td>执行策略
+</td></tr>
+<tr>
+<td><a href="compiler_support/20.html#cpp_lib_execution_201902L" title="cpp/compiler support/20"><code>201902L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td><span class="t-lc">std::execution::unsequenced_policy</span>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E4.B8.8D.E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C">不修改序列的操作</span></h3>
+<h4><span class="mw-headline" id=".E6.89.B9.E9.87.8F.E6.93.8D.E4.BD.9C">批量操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/for_each.html" title="cpp/algorithm/for each"> <span class="t-lines"><span>for_each</span></span></a></div></div>
+</td>
+<td>  应用一元<a href="named_req/FunctionObject.html" title="cpp/named req/FunctionObject">函数对象</a>到<a href="iterator.html#.E8.8C.83.E5.9B.B4" title="cpp/iterator">范围</a>中元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/for_each.html" title="cpp/algorithm/ranges/for each"> <span class="t-lines"><span>ranges::for_each</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  应用一元<a href="named_req/FunctionObject.html" title="cpp/named req/FunctionObject">函数对象</a>到<a href="iterator.html#.E8.8C.83.E5.9B.B4" title="cpp/iterator">范围</a>中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/for_each_n.html" title="cpp/algorithm/for each n"> <span class="t-lines"><span>for_each_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   应用函数对象到序列的前 N 个元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/for_each_n.html" title="cpp/algorithm/ranges/for each n"> <span class="t-lines"><span>ranges::for_each_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   应用函数对象到序列的前 N 个元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E6.90.9C.E7.B4.A2.E6.93.8D.E4.BD.9C">搜索操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/all_any_none_of.html" title="cpp/algorithm/all any none of"> <span class="t-lines"><span>all_of</span><span>any_of</span><span>none_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查谓词是否对范围中所有、任一或无元素为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/all_any_none_of.html" title="cpp/algorithm/ranges/all any none of"> <span class="t-lines"><span>ranges::all_of</span><span>ranges::any_of</span><span>ranges::none_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查谓词是否对范围中所有、任一或无元素为 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/contains.html" title="cpp/algorithm/ranges/contains"> <span class="t-lines"><span>ranges::contains</span><span>ranges::contains_subrange</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   检查范围是否包含给定元素或子范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/find.html" title="cpp/algorithm/find"> <span class="t-lines"><span>find</span><span>find_if</span><span>find_if_not</span></span></a></div><div><span class="t-lines"><span></span><span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   查找首个满足特定条件的元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/find.html" title="cpp/algorithm/ranges/find"> <span class="t-lines"><span>ranges::find</span><span>ranges::find_if</span><span>ranges::find_if_not</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   查找首个满足特定条件的元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/find_last.html" title="cpp/algorithm/ranges/find last"> <span class="t-lines"><span>ranges::find_last</span><span>ranges::find_last_if</span><span>ranges::find_last_if_not</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   查找最后一个满足特定条件的元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/find_end.html" title="cpp/algorithm/find end"> <span class="t-lines"><span>find_end</span></span></a></div></div>
+</td>
+<td>   查找元素序列在特定范围中最后一次出现 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/find_end.html" title="cpp/algorithm/ranges/find end"> <span class="t-lines"><span>ranges::find_end</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   查找元素序列在特定范围中最后一次出现 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/find_first_of.html" title="cpp/algorithm/find first of"> <span class="t-lines"><span>find_first_of</span></span></a></div></div>
+</td>
+<td>   搜索一组元素中任一元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/find_first_of.html" title="cpp/algorithm/ranges/find first of"> <span class="t-lines"><span>ranges::find_first_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   搜索一组元素中任一元素  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/adjacent_find.html" title="cpp/algorithm/adjacent find"> <span class="t-lines"><span>adjacent_find</span></span></a></div></div>
+</td>
+<td>   查找首对相同（或满足给定谓词）的相邻元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/adjacent_find.html" title="cpp/algorithm/ranges/adjacent find"> <span class="t-lines"><span>ranges::adjacent_find</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   查找首对相同（或满足给定谓词）的相邻元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/count.html" title="cpp/algorithm/count"> <span class="t-lines"><span>count</span><span>count_if</span></span></a></div></div>
+</td>
+<td>  返回满足特定条件的元素数目 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/count.html" title="cpp/algorithm/ranges/count"> <span class="t-lines"><span>ranges::count</span><span>ranges::count_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回满足特定条件的元素数目 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/mismatch.html" title="cpp/algorithm/mismatch"> <span class="t-lines"><span>mismatch</span></span></a></div></div>
+</td>
+<td>   查找两个范围的首个不同之处 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/mismatch.html" title="cpp/algorithm/ranges/mismatch"> <span class="t-lines"><span>ranges::mismatch</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  查找两个范围的首个不同之处 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/equal.html" title="cpp/algorithm/equal"> <span class="t-lines"><span>equal</span></span></a></div></div>
+</td>
+<td>   判断两组元素是否相同  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/equal.html" title="cpp/algorithm/ranges/equal"> <span class="t-lines"><span>ranges::equal</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  判断两组元素是否相同 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/search.html" title="cpp/algorithm/search"> <span class="t-lines"><span>search</span></span></a></div></div>
+</td>
+<td>   搜索元素范围的首次出现  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/search.html" title="cpp/algorithm/ranges/search"> <span class="t-lines"><span>ranges::search</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  搜索元素范围的首次出现  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/search_n.html" title="cpp/algorithm/search n"> <span class="t-lines"><span>search_n</span></span></a></div></div>
+</td>
+<td>  搜索元素在范围中首次连续若干次出现 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/search_n.html" title="cpp/algorithm/ranges/search n"> <span class="t-lines"><span>ranges::search_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  搜索元素在范围中首次连续若干次出现 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/starts_with.html" title="cpp/algorithm/ranges/starts with"> <span class="t-lines"><span>ranges::starts_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   检查一个范围是否始于另一范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/ends_with.html" title="cpp/algorithm/ranges/ends with"> <span class="t-lines"><span>ranges::ends_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   检查一个范围是否终于另一范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<p><span id=".E6.8A.98.E5.8F.A0.E6.93.8D.E4.BD.9C"></span>
+</p>
+<h4><span class="mw-headline" id=".E6.8A.98.E5.8F.A0.E6.93.8D.E4.BD.9C_.28C.2B.2B23_.E8.B5.B7.29">折叠操作 <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fold_left.html" title="cpp/algorithm/ranges/fold left"> <span class="t-lines"><span>ranges::fold_left</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  左折叠范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fold_left_first.html" title="cpp/algorithm/ranges/fold left first"> <span class="t-lines"><span>ranges::fold_left_first</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  以首元素为初值左折叠范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fold_right.html" title="cpp/algorithm/ranges/fold right"> <span class="t-lines"><span>ranges::fold_right</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  右折叠范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fold_right_last.html" title="cpp/algorithm/ranges/fold right last"> <span class="t-lines"><span>ranges::fold_right_last</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  以末元素为初值右折叠范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fold_left_with_iter.html" title="cpp/algorithm/ranges/fold left with iter"> <span class="t-lines"><span>ranges::fold_left_with_iter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  左折叠范围中元素，并返回 <a href="algorithm/ranges/return_types/in_value_result.html" title="cpp/algorithm/ranges/return types/in value result">pair</a>（迭代器，值） <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fold_left_first_with_iter.html" title="cpp/algorithm/ranges/fold left first with iter"> <span class="t-lines"><span>ranges::fold_left_first_with_iter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  以首元素为初值左折叠范围中元素，并返回 <a href="algorithm/ranges/return_types/in_value_result.html" title="cpp/algorithm/ranges/return types/in value result">pair</a>（迭代器，<a href="utility/optional.html" title="cpp/utility/optional">optional</a>） <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E4.BF.AE.E6.94.B9.E5.BA.8F.E5.88.97.E7.9A.84.E6.93.8D.E4.BD.9C">修改序列的操作</span></h3>
+<h4><span class="mw-headline" id=".E5.A4.8D.E5.88.B6.E6.93.8D.E4.BD.9C">复制操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/copy.html" title="cpp/algorithm/copy"> <span class="t-lines"><span>copy</span><span>copy_if</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   复制范围中元素到新位置 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/copy.html" title="cpp/algorithm/ranges/copy"> <span class="t-lines"><span>ranges::copy</span><span>ranges::copy_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制范围中元素到新位置 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/copy_n.html" title="cpp/algorithm/copy n"> <span class="t-lines"><span>copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   复制若干元素到新位置 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/copy_n.html" title="cpp/algorithm/ranges/copy n"> <span class="t-lines"><span>ranges::copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制若干元素到新位置  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/copy_backward.html" title="cpp/algorithm/copy backward"> <span class="t-lines"><span>copy_backward</span></span></a></div></div>
+</td>
+<td>   从后往前复制范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/copy_backward.html" title="cpp/algorithm/ranges/copy backward"> <span class="t-lines"><span>ranges::copy_backward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  从后往前复制范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/move.html" title="cpp/algorithm/move"> <span class="t-lines"><span>move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   将范围中元素移到新位置 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/move.html" title="cpp/algorithm/ranges/move"> <span class="t-lines"><span>ranges::move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将范围中元素移到新位置 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/move_backward.html" title="cpp/algorithm/move backward"> <span class="t-lines"><span>move_backward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   从后往前将范围中元素移到新位置  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/move_backward.html" title="cpp/algorithm/ranges/move backward"> <span class="t-lines"><span>ranges::move_backward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  从后往前将范围中元素移到新位置  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E4.BA.A4.E6.8D.A2.E6.93.8D.E4.BD.9C">交换操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义<code>   </code><span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span> </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/utility.html" title="cpp/header/utility">&lt;utility&gt;</a></code> 定义<code>     </code><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/string_view.html" title="cpp/header/string view">&lt;string_view&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/swap.html" title="cpp/algorithm/swap"> <span class="t-lines"><span>swap</span></span></a></div></div>
+</td>
+<td>   交换两个对象的值  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/swap_ranges.html" title="cpp/algorithm/swap ranges"> <span class="t-lines"><span>swap_ranges</span></span></a></div></div>
+</td>
+<td>   交换两个范围的元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/swap_ranges.html" title="cpp/algorithm/ranges/swap ranges"> <span class="t-lines"><span>ranges::swap_ranges</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  交换两个范围的元素  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/iter_swap.html" title="cpp/algorithm/iter swap"> <span class="t-lines"><span>iter_swap</span></span></a></div></div>
+</td>
+<td>   交换两个迭代器所指向的元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E5.8F.98.E6.8D.A2.E6.93.8D.E4.BD.9C">变换操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/transform.html" title="cpp/algorithm/transform"> <span class="t-lines"><span>transform</span></span></a></div></div>
+</td>
+<td>   应用函数到元素范围，并在目标范围存储结果  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/transform.html" title="cpp/algorithm/ranges/transform"> <span class="t-lines"><span>ranges::transform</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  应用函数到元素范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/replace.html" title="cpp/algorithm/replace"> <span class="t-lines"><span>replace</span><span>replace_if</span></span></a></div></div>
+</td>
+<td>   替换所有满足特定条件的值为另一个值  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/replace.html" title="cpp/algorithm/ranges/replace"> <span class="t-lines"><span>ranges::replace</span><span>ranges::replace_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  替换所有满足特定条件的值为另一个值  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/replace_copy.html" title="cpp/algorithm/replace copy"> <span class="t-lines"><span>replace_copy</span><span>replace_copy_if</span></span></a></div></div>
+</td>
+<td>  复制范围，并将满足特定条件的元素替换为另一个值 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/replace_copy.html" title="cpp/algorithm/ranges/replace copy"> <span class="t-lines"><span>ranges::replace_copy</span><span>ranges::replace_copy_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制范围，并将满足特定条件的元素替换为另一个值 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E7.94.9F.E6.88.90.E6.93.8D.E4.BD.9C">生成操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/fill.html" title="cpp/algorithm/fill"> <span class="t-lines"><span>fill</span></span></a></div></div>
+</td>
+<td>   以复制的方式赋给定值到范围中所有元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fill.html" title="cpp/algorithm/ranges/fill"> <span class="t-lines"><span>ranges::fill</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  赋给定值到范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/fill_n.html" title="cpp/algorithm/fill n"> <span class="t-lines"><span>fill_n</span></span></a></div></div>
+</td>
+<td>   以复制的方式赋给定值到范围中 N 个元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/fill_n.html" title="cpp/algorithm/ranges/fill n"> <span class="t-lines"><span>ranges::fill_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  赋给定值到若干元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/generate.html" title="cpp/algorithm/generate"> <span class="t-lines"><span>generate</span></span></a></div></div>
+</td>
+<td>  赋连续函数调用结果到范围中所有元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/generate.html" title="cpp/algorithm/ranges/generate"> <span class="t-lines"><span>ranges::generate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将函数结果保存到范围中 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/generate_n.html" title="cpp/algorithm/generate n"> <span class="t-lines"><span>generate_n</span></span></a></div></div>
+</td>
+<td>   赋连续函数调用结果到范围中 N 个元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/generate_n.html" title="cpp/algorithm/ranges/generate n"> <span class="t-lines"><span>ranges::generate_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  保存 N 次函数应用的结果 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E7.A7.BB.E9.99.A4.E6.93.8D.E4.BD.9C">移除操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/remove.html" title="cpp/algorithm/remove"> <span class="t-lines"><span>remove</span><span>remove_if</span></span></a></div></div>
+</td>
+<td>  移除满足特定条件的元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/remove.html" title="cpp/algorithm/ranges/remove"> <span class="t-lines"><span>ranges::remove</span><span>ranges::remove_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  移除满足特定条件的元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/remove_copy.html" title="cpp/algorithm/remove copy"> <span class="t-lines"><span>remove_copy</span><span>remove_copy_if</span></span></a></div></div>
+</td>
+<td>   复制范围并忽略满足特定条件的元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/remove_copy.html" title="cpp/algorithm/ranges/remove copy"> <span class="t-lines"><span>ranges::remove_copy</span><span>ranges::remove_copy_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制范围并忽略满足特定条件的元素  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/unique.html" title="cpp/algorithm/unique"> <span class="t-lines"><span>unique</span></span></a></div></div>
+</td>
+<td>   移除范围中连续重复元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/unique.html" title="cpp/algorithm/ranges/unique"> <span class="t-lines"><span>ranges::unique</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  移除范围中连续重复元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/unique_copy.html" title="cpp/algorithm/unique copy"> <span class="t-lines"><span>unique_copy</span></span></a></div></div>
+</td>
+<td>   创建某范围的不含连续重复元素的副本  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/unique_copy.html" title="cpp/algorithm/ranges/unique copy"> <span class="t-lines"><span>ranges::unique_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  创建某范围的不含连续重复元素的副本 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E9.A1.BA.E5.BA.8F.E5.8F.98.E6.9B.B4.E6.93.8D.E4.BD.9C">顺序变更操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/reverse.html" title="cpp/algorithm/reverse"> <span class="t-lines"><span>reverse</span></span></a></div></div>
+</td>
+<td>   逆转范围中的元素顺序  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/reverse.html" title="cpp/algorithm/ranges/reverse"> <span class="t-lines"><span>ranges::reverse</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  逆转范围中的元素顺序 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/reverse_copy.html" title="cpp/algorithm/reverse copy"> <span class="t-lines"><span>reverse_copy</span></span></a></div></div>
+</td>
+<td>   创建范围的逆向副本  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/reverse_copy.html" title="cpp/algorithm/ranges/reverse copy"> <span class="t-lines"><span>ranges::reverse_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  创建范围的逆向副本  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/rotate.html" title="cpp/algorithm/rotate"> <span class="t-lines"><span>rotate</span></span></a></div></div>
+</td>
+<td>   旋转范围中的元素顺序  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/rotate.html" title="cpp/algorithm/ranges/rotate"> <span class="t-lines"><span>ranges::rotate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  旋转范围中的元素顺序 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/rotate_copy.html" title="cpp/algorithm/rotate copy"> <span class="t-lines"><span>rotate_copy</span></span></a></div></div>
+</td>
+<td>   复制并旋转元素范围 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/rotate_copy.html" title="cpp/algorithm/ranges/rotate copy"> <span class="t-lines"><span>ranges::rotate_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制并旋转元素范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/shift.html" title="cpp/algorithm/shift"> <span class="t-lines"><span>shift_left</span><span>shift_right</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  迁移范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/shift.html" title="cpp/algorithm/ranges/shift"> <span class="t-lines"><span>ranges::shift_left</span><span>ranges::shift_right</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   迁移范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/random_shuffle.html" title="cpp/algorithm/random shuffle"> <span class="t-lines"><span>random_shuffle</span><span>shuffle</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   随机重排范围中元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/shuffle.html" title="cpp/algorithm/ranges/shuffle"> <span class="t-lines"><span>ranges::shuffle</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  随机重排范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E9.87.87.E6.A0.B7.E6.93.8D.E4.BD.9C">采样操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/sample.html" title="cpp/algorithm/sample"> <span class="t-lines"><span>sample</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   从序列中随机选择 N 个元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/sample.html" title="cpp/algorithm/ranges/sample"> <span class="t-lines"><span>ranges::sample</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   从序列中随机选择 N 个元素 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.8E.92.E5.BA.8F.E5.92.8C.E7.9B.B8.E5.85.B3.E6.93.8D.E4.BD.9C">排序和相关操作</span></h3>
+<h4><span class="mw-headline" id=".E8.A6.81.E6.B1.82">要求</span></h4>
+<p>部分算法要求由实参表示的序列“已排序”或“已划分”。未满足要求时行为未定义。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>序列在满足以下条件时<i>已按比较器 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 排序</i>：对于指向序列中的每个迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">iter</span></span> 和每个非负整数 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>，如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">iter <span class="sy2">+</span> n</span></span><sup id="cite_ref-plus_1-0" class="reference"><a href="algorithm.html#cite_note-plus-1">[1]</a></sup> 是一个指向序列中的某个元素的<a href="iterator.html#.E5.8F.AF.E8.A7.A3.E6.80.A7.E4.B8.8E.E6.9C.89.E6.95.88.E6.80.A7" title="cpp/iterator">有效迭代器</a>，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp<span class="br0">(</span><span class="sy2">*</span><span class="br0">(</span>iter <span class="sy2">+</span> n<span class="br0">)</span>, <span class="sy2">*</span>iter<span class="br0">)</span> <span class="sy1">==</span> <span class="kw2">false</span></span></span><sup id="cite_ref-plus_1-1" class="reference"><a href="algorithm.html#cite_note-plus-1">[1]</a></sup>。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>序列在满足以下条件时<i>已按比较器 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 和投影 <span class="t-c"><span class="mw-geshi cpp source-cpp">proj</span></span> 排序</i>：对于指向序列中的每个迭代器 <span class="t-c"><span class="mw-geshi cpp source-cpp">iter</span></span> 和每个非负整数 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>，如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">iter <span class="sy2">+</span> n</span></span><sup id="cite_ref-plus_1-2" class="reference"><a href="algorithm.html#cite_note-plus-1">[1]</a></sup> 是一个指向序列中的某个元素的有效迭代器，那么 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span><span class="br0">(</span><a href="utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>comp, <a href="utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>proj, <span class="sy2">*</span><span class="br0">(</span>iter <span class="sy2">+</span> n<span class="br0">)</span><span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">                       <a href="utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>proj, <span class="sy2">*</span>iter<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span></span></span><sup id="cite_ref-plus_1-3" class="reference"><a href="algorithm.html#cite_note-plus-1">[1]</a></sup> 是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span>。
+</p><p>序列在满足以下条件时<i>已按比较器 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 排序</i>：该序列已按比较器 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 和投影 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="utility/functional/identity.html"><span class="kw2723">std::<span class="me2">identity</span></span></a><span class="br0">{</span><span class="br0">}</span></span></span>（即投影到自身）排序。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>序列 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">start</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">finish</span></span><code>)</code> 在满足以下条件时<i>已按表达式 <span class="t-c"><span class="mw-geshi cpp source-cpp">f<span class="br0">(</span>e<span class="br0">)</span></span></span> 划分</i>：存在一个整数 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>，使得对于 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="iterator/distance.html"><span class="kw676">std::<span class="me2">distance</span></span></a><span class="br0">(</span>start, finish<span class="br0">)</span></span></span><code>)</code> 中的所有整数 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">f<span class="br0">(</span><span class="sy2">*</span><span class="br0">(</span>start <span class="sy2">+</span> i<span class="br0">)</span><span class="br0">)</span></span></span><sup id="cite_ref-plus_1-4" class="reference"><a href="algorithm.html#cite_note-plus-1">[1]</a></sup> 当且仅当 <span class="t-c"><span class="mw-geshi cpp source-cpp">i <span class="sy1">&lt;</span> n</span></span> 时是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span>。
+</p>
+<ol class="references">
+<li id="cite_note-plus-1"><span class="mw-cite-backlink">↑ <sup><a href="algorithm.html#cite_ref-plus_1-0">1.0</a></sup> <sup><a href="algorithm.html#cite_ref-plus_1-1">1.1</a></sup> <sup><a href="algorithm.html#cite_ref-plus_1-2">1.2</a></sup> <sup><a href="algorithm.html#cite_ref-plus_1-3">1.3</a></sup> <sup><a href="algorithm.html#cite_ref-plus_1-4">1.4</a></sup></span> <span class="reference-text">在这里 <span class="t-c"><span class="mw-geshi cpp source-cpp">iter <span class="sy2">+</span> n</span></span> 只表示 “<span class="t-c"><span class="mw-geshi cpp source-cpp">iter</span></span> 自增 <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> 次后的结果”，而 <span class="t-c"><span class="mw-geshi cpp source-cpp">iter</span></span> 本身不需要是随机访问迭代器。</span>
+</li>
+</ol>
+<h4><span class="mw-headline" id=".E5.88.92.E5.88.86.E6.93.8D.E4.BD.9C">划分操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/is_partitioned.html" title="cpp/algorithm/is partitioned"> <span class="t-lines"><span>is_partitioned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   判断范围是否已按给定谓词划分  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/is_partitioned.html" title="cpp/algorithm/ranges/is partitioned"> <span class="t-lines"><span>ranges::is_partitioned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  判断范围是否已按给定谓词划分  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/partition.html" title="cpp/algorithm/partition"> <span class="t-lines"><span>partition</span></span></a></div></div>
+</td>
+<td>   将范围中元素分为两组  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/partition.html" title="cpp/algorithm/ranges/partition"> <span class="t-lines"><span>ranges::partition</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将范围中元素分为两组 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/partition_copy.html" title="cpp/algorithm/partition copy"> <span class="t-lines"><span>partition_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   复制范围并将元素分为两组  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/partition_copy.html" title="cpp/algorithm/ranges/partition copy"> <span class="t-lines"><span>ranges::partition_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制范围并将元素分为两组 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/stable_partition.html" title="cpp/algorithm/stable partition"> <span class="t-lines"><span>stable_partition</span></span></a></div></div>
+</td>
+<td>   将元素分为两组，同时保留其相对顺序  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/stable_partition.html" title="cpp/algorithm/ranges/stable partition"> <span class="t-lines"><span>ranges::stable_partition</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将元素分为两组，同时保留其相对顺序 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/partition_point.html" title="cpp/algorithm/partition point"> <span class="t-lines"><span>partition_point</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   定位已划分范围的划分点  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/partition_point.html" title="cpp/algorithm/ranges/partition point"> <span class="t-lines"><span>ranges::partition_point</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  定位已划分范围的划分点 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E6.8E.92.E5.BA.8F.E6.93.8D.E4.BD.9C">排序操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/sort.html" title="cpp/algorithm/sort"> <span class="t-lines"><span>sort</span></span></a></div></div>
+</td>
+<td>   将范围按升序排序  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/sort.html" title="cpp/algorithm/ranges/sort"> <span class="t-lines"><span>ranges::sort</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将范围按升序排序  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/stable_sort.html" title="cpp/algorithm/stable sort"> <span class="t-lines"><span>stable_sort</span></span></a></div></div>
+</td>
+<td>   将范围中元素排序，同时保持相等元之间的顺序  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/stable_sort.html" title="cpp/algorithm/ranges/stable sort"> <span class="t-lines"><span>ranges::stable_sort</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将范围中元素排序，同时保持相等元之间的顺序  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/partial_sort.html" title="cpp/algorithm/partial sort"> <span class="t-lines"><span>partial_sort</span></span></a></div></div>
+</td>
+<td>   将范围中前 N 个元素排序  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/partial_sort.html" title="cpp/algorithm/ranges/partial sort"> <span class="t-lines"><span>ranges::partial_sort</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将范围中前 N 个元素排序 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/partial_sort_copy.html" title="cpp/algorithm/partial sort copy"> <span class="t-lines"><span>partial_sort_copy</span></span></a></div></div>
+</td>
+<td>   复制范围中元素并部分排序  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/partial_sort_copy.html" title="cpp/algorithm/ranges/partial sort copy"> <span class="t-lines"><span>ranges::partial_sort_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制范围中元素并部分排序  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/is_sorted.html" title="cpp/algorithm/is sorted"> <span class="t-lines"><span>is_sorted</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   检查范围是否已按升序排列  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/is_sorted.html" title="cpp/algorithm/ranges/is sorted"> <span class="t-lines"><span>ranges::is_sorted</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查范围是否已按升序排列 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/is_sorted_until.html" title="cpp/algorithm/is sorted until"> <span class="t-lines"><span>is_sorted_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>  找出最大的有序子范围 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/is_sorted_until.html" title="cpp/algorithm/ranges/is sorted until"> <span class="t-lines"><span>ranges::is_sorted_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  找出最大的有序子范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/nth_element.html" title="cpp/algorithm/nth element"> <span class="t-lines"><span>nth_element</span></span></a></div></div>
+</td>
+<td>   将给定范围部分排序，确保其按给定元素划分  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/nth_element.html" title="cpp/algorithm/ranges/nth element"> <span class="t-lines"><span>ranges::nth_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将给定范围部分排序，确保其按给定元素划分  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E4.BA.8C.E5.88.86.E6.90.9C.E7.B4.A2.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E5.B7.B2.E5.88.92.E5.88.86.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89">二分搜索操作（在已划分范围上）</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/lower_bound.html" title="cpp/algorithm/lower bound"> <span class="t-lines"><span>lower_bound</span></span></a></div></div>
+</td>
+<td>  返回首个<i>不小于</i> ﻿给定值的元素的迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/lower_bound.html" title="cpp/algorithm/ranges/lower bound"> <span class="t-lines"><span>ranges::lower_bound</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回首个<i>不小于</i> ﻿给定值的元素的迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/upper_bound.html" title="cpp/algorithm/upper bound"> <span class="t-lines"><span>upper_bound</span></span></a></div></div>
+</td>
+<td>  返回首个<i>大于</i> ﻿给定值的元素的迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/upper_bound.html" title="cpp/algorithm/ranges/upper bound"> <span class="t-lines"><span>ranges::upper_bound</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回首个<i>大于</i> ﻿给定值的元素的迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/equal_range.html" title="cpp/algorithm/equal range"> <span class="t-lines"><span>equal_range</span></span></a></div></div>
+</td>
+<td>   返回匹配特定键值的元素范围  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/equal_range.html" title="cpp/algorithm/ranges/equal range"> <span class="t-lines"><span>ranges::equal_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回匹配特定键值的元素范围  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/binary_search.html" title="cpp/algorithm/binary search"> <span class="t-lines"><span>binary_search</span></span></a></div></div>
+</td>
+<td>   判断元素是否在偏序范围中  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/binary_search.html" title="cpp/algorithm/ranges/binary search"> <span class="t-lines"><span>ranges::binary_search</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  判断元素是否在偏序范围中 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E9.9B.86.E5.90.88.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E5.B7.B2.E6.8E.92.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89">集合操作（在已排序范围上）</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/includes.html" title="cpp/algorithm/includes"> <span class="t-lines"><span>includes</span></span></a></div></div>
+</td>
+<td>   当一个序列是另一个的子序列时返回 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/includes.html" title="cpp/algorithm/ranges/includes"> <span class="t-lines"><span>ranges::includes</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  当一个序列是另一个的子序列时返回 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/set_union.html" title="cpp/algorithm/set union"> <span class="t-lines"><span>set_union</span></span></a></div></div>
+</td>
+<td>   计算两个集合的并集  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/set_union.html" title="cpp/algorithm/ranges/set union"> <span class="t-lines"><span>ranges::set_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算两个集合的并集  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/set_intersection.html" title="cpp/algorithm/set intersection"> <span class="t-lines"><span>set_intersection</span></span></a></div></div>
+</td>
+<td>   计算两个集合的交集  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/set_intersection.html" title="cpp/algorithm/ranges/set intersection"> <span class="t-lines"><span>ranges::set_intersection</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算两个集合的交集  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/set_difference.html" title="cpp/algorithm/set difference"> <span class="t-lines"><span>set_difference</span></span></a></div></div>
+</td>
+<td>   计算两个集合的差集  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/set_difference.html" title="cpp/algorithm/ranges/set difference"> <span class="t-lines"><span>ranges::set_difference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算两个集合的差集  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/set_symmetric_difference.html" title="cpp/algorithm/set symmetric difference"> <span class="t-lines"><span>set_symmetric_difference</span></span></a></div></div>
+</td>
+<td>   计算两个集合的对称差 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/set_symmetric_difference.html" title="cpp/algorithm/ranges/set symmetric difference"> <span class="t-lines"><span>ranges::set_symmetric_difference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  计算两个集合的对称差  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E5.BD.92.E5.B9.B6.E6.93.8D.E4.BD.9C.EF.BC.88.E5.9C.A8.E5.B7.B2.E6.8E.92.E5.BA.8F.E8.8C.83.E5.9B.B4.E4.B8.8A.EF.BC.89">归并操作（在已排序范围上）</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/merge.html" title="cpp/algorithm/merge"> <span class="t-lines"><span>merge</span></span></a></div></div>
+</td>
+<td>  合并两个有序范围 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/merge.html" title="cpp/algorithm/ranges/merge"> <span class="t-lines"><span>ranges::merge</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  合并两个有序范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/inplace_merge.html" title="cpp/algorithm/inplace merge"> <span class="t-lines"><span>inplace_merge</span></span></a></div></div>
+</td>
+<td>   就地合并两个有序范围  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/inplace_merge.html" title="cpp/algorithm/ranges/inplace merge"> <span class="t-lines"><span>ranges::inplace_merge</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  就地合并两个有序范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E5.A0.86.E6.93.8D.E4.BD.9C">堆操作</span></h4>
+<table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>随机访问<a href="iterator.html#.E8.8C.83.E5.9B.B4" title="cpp/iterator">范围</a> <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span><code>)</code> 在满足以下条件时是一个<i>关于比较器 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 的堆</i>：对于 <code>(</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last <span class="sy2">-</span> first</span></span><code>)</code> 中的所有整数 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span><span class="br0">(</span>comp<span class="br0">(</span>first<span class="br0">[</span><span class="br0">(</span>i <span class="sy2">-</span> <span class="nu0">1</span><span class="br0">)</span> <span class="sy2">/</span> <span class="nu0">2</span><span class="br0">]</span>, first<span class="br0">[</span>i<span class="br0">]</span><span class="br0">)</span><span class="br0">)</span></span></span> 都是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span>。
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>随机访问<a href="iterator.html#.E8.8C.83.E5.9B.B4" title="cpp/iterator">范围</a> <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span><code>)</code> 在满足以下条件时是一个<i>关于比较器 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 和投影 <span class="t-c"><span class="mw-geshi cpp source-cpp">proj</span></span> 的堆</i>：对于 <code>(</code><span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last <span class="sy2">-</span> first</span></span><code>)</code> 中的所有整数 <span class="t-c"><span class="mw-geshi cpp source-cpp">i</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span><span class="br0">(</span><a href="utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>comp, <a href="utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>proj, first<span class="br0">[</span><span class="br0">(</span>i <span class="sy2">-</span> <span class="nu0">1</span><span class="br0">)</span> <span class="sy2">/</span> <span class="nu0">2</span><span class="br0">]</span><span class="br0">)</span>,</span><br><span class="mw-geshi cpp source-cpp">                       <a href="utility/functional/invoke.html"><span class="kw1063">std::<span class="me2">invoke</span></span></a><span class="br0">(</span>proj, first<span class="br0">[</span>i<span class="br0">]</span><span class="br0">)</span><span class="br0">)</span></span></span> 都是 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span>。
+</p><p>随机访问<a href="iterator.html#.E8.8C.83.E5.9B.B4" title="cpp/iterator">范围</a> <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp">first</span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp">last</span></span><code>)</code> 在满足以下条件时是一个<i>关于比较器 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 的堆</i>：该范围是一个关于 <span class="t-c"><span class="mw-geshi cpp source-cpp">comp</span></span> 和 <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="utility/functional/identity.html"><span class="kw2723">std::<span class="me2">identity</span></span></a><span class="br0">{</span><span class="br0">}</span></span></span>（即投影到自身）的堆。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></td></tr>
+</table>
+<p>可以通过 <span class="t-lc"><a href="algorithm/make_heap.html" title="cpp/algorithm/make heap">std::make_heap</a></span><span class="t-rev-inl t-since-cxx20"><span> 和 <span class="t-lc">ranges::make_heap</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span> 创建堆。
+</p><p>关于堆的更多性质，可以参考<a href="https://en.wikipedia.org/wiki/Binary_heap" class="extiw" title="enwiki:Binary heap">最大堆</a>。
+</p><p><br>
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/push_heap.html" title="cpp/algorithm/push heap"> <span class="t-lines"><span>push_heap</span></span></a></div></div>
+</td>
+<td>   添加元素到最大堆  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/push_heap.html" title="cpp/algorithm/ranges/push heap"> <span class="t-lines"><span>ranges::push_heap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  添加元素到最大堆  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/pop_heap.html" title="cpp/algorithm/pop heap"> <span class="t-lines"><span>pop_heap</span></span></a></div></div>
+</td>
+<td>   移除最大堆中最大元  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/pop_heap.html" title="cpp/algorithm/ranges/pop heap"> <span class="t-lines"><span>ranges::pop_heap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  移除最大堆中最大元  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/make_heap.html" title="cpp/algorithm/make heap"> <span class="t-lines"><span>make_heap</span></span></a></div></div>
+</td>
+<td>   从元素范围创建最大堆  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/make_heap.html" title="cpp/algorithm/ranges/make heap"> <span class="t-lines"><span>ranges::make_heap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  从元素范围创建最大堆  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/sort_heap.html" title="cpp/algorithm/sort heap"> <span class="t-lines"><span>sort_heap</span></span></a></div></div>
+</td>
+<td>   将最大堆变成按升序排序的元素范围  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/sort_heap.html" title="cpp/algorithm/ranges/sort heap"> <span class="t-lines"><span>ranges::sort_heap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  将最大堆变成按升序排序的元素范围  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/is_heap.html" title="cpp/algorithm/is heap"> <span class="t-lines"><span>is_heap</span></span></a></div></div>
+</td>
+<td>   检查给定范围是否为最大堆  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/is_heap.html" title="cpp/algorithm/ranges/is heap"> <span class="t-lines"><span>ranges::is_heap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  检查给定范围是否为最大堆 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/is_heap_until.html" title="cpp/algorithm/is heap until"> <span class="t-lines"><span>is_heap_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   查找能成为最大堆的最大子范围  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/is_heap_until.html" title="cpp/algorithm/ranges/is heap until"> <span class="t-lines"><span>ranges::is_heap_until</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  查找能成为最大堆的最大子范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E6.9C.80.E5.B0.8F.2F.E6.9C.80.E5.A4.A7.E6.93.8D.E4.BD.9C">最小/最大操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/max.html" title="cpp/algorithm/max"> <span class="t-lines"><span>max</span></span></a></div></div>
+</td>
+<td>   返回给定值中较大者  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/max.html" title="cpp/algorithm/ranges/max"> <span class="t-lines"><span>ranges::max</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回给定值中较大者 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/max_element.html" title="cpp/algorithm/max element"> <span class="t-lines"><span>max_element</span></span></a></div></div>
+</td>
+<td>   返回范围中最大元  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/max_element.html" title="cpp/algorithm/ranges/max element"> <span class="t-lines"><span>ranges::max_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回范围中最大元 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/min.html" title="cpp/algorithm/min"> <span class="t-lines"><span>min</span></span></a></div></div>
+</td>
+<td>   返回给定值中较小者 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/min.html" title="cpp/algorithm/ranges/min"> <span class="t-lines"><span>ranges::min</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回给定值中较小者 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/min_element.html" title="cpp/algorithm/min element"> <span class="t-lines"><span>min_element</span></span></a></div></div>
+</td>
+<td>   返回范围中最小元  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/min_element.html" title="cpp/algorithm/ranges/min element"> <span class="t-lines"><span>ranges::min_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回范围中最小元 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/minmax.html" title="cpp/algorithm/minmax"> <span class="t-lines"><span>minmax</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   返回两个元素间的较小者和较大者  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/minmax.html" title="cpp/algorithm/ranges/minmax"> <span class="t-lines"><span>ranges::minmax</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回两个元素间的较小者和较大者 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/minmax_element.html" title="cpp/algorithm/minmax element"> <span class="t-lines"><span>minmax_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   返回范围中的最小元和最大元  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/minmax_element.html" title="cpp/algorithm/ranges/minmax element"> <span class="t-lines"><span>ranges::minmax_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  返回范围中的最小元和最大元 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/clamp.html" title="cpp/algorithm/clamp"> <span class="t-lines"><span>clamp</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   在一对边界值下夹逼一个值  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/clamp.html" title="cpp/algorithm/ranges/clamp"> <span class="t-lines"><span>ranges::clamp</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   在一对边界值下夹逼一个值 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E5.AD.97.E5.85.B8.E5.BA.8F.E6.AF.94.E8.BE.83.E6.93.8D.E4.BD.9C">字典序比较操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/lexicographical_compare.html" title="cpp/algorithm/lexicographical compare"> <span class="t-lines"><span>lexicographical_compare</span></span></a></div></div>
+</td>
+<td>   当一个范围字典序小于另一个时返回 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/lexicographical_compare.html" title="cpp/algorithm/ranges/lexicographical compare"> <span class="t-lines"><span>ranges::lexicographical_compare</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  当一个范围字典序小于另一个时返回 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/lexicographical_compare_three_way.html" title="cpp/algorithm/lexicographical compare three way"> <span class="t-lines"><span>lexicographical_compare_three_way</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  三路比较两个范围 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+<h4><span class="mw-headline" id=".E6.8E.92.E5.88.97.E6.93.8D.E4.BD.9C">排列操作</span></h4>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/algorithm.html" title="cpp/header/algorithm">&lt;algorithm&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/next_permutation.html" title="cpp/algorithm/next permutation"> <span class="t-lines"><span>next_permutation</span></span></a></div></div>
+</td>
+<td>   生成元素范围的下一个字典序更大的排列  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/next_permutation.html" title="cpp/algorithm/ranges/next permutation"> <span class="t-lines"><span>ranges::next_permutation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  生成元素范围的下一个字典序更大的排列  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/prev_permutation.html" title="cpp/algorithm/prev permutation"> <span class="t-lines"><span>prev_permutation</span></span></a></div></div>
+</td>
+<td>   生成元素范围的下一个字典序更小的排列  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/prev_permutation.html" title="cpp/algorithm/ranges/prev permutation"> <span class="t-lines"><span>ranges::prev_permutation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  生成元素范围的下一个字典序更小的排列 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/is_permutation.html" title="cpp/algorithm/is permutation"> <span class="t-lines"><span>is_permutation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   判断一个序列是否为另一个序列的排列  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/is_permutation.html" title="cpp/algorithm/ranges/is permutation"> <span class="t-lines"><span>ranges::is_permutation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  判断一个序列是否为另一个序列的排列 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.95.B0.E5.80.BC.E8.BF.90.E7.AE.97">数值运算</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/numeric.html" title="cpp/header/numeric">&lt;numeric&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/iota.html" title="cpp/algorithm/iota"> <span class="t-lines"><span>iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   从初始值开始连续递增填充范围  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/iota.html" title="cpp/algorithm/ranges/iota"> <span class="t-lines"><span>ranges::iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>   从初始值开始连续递增填充范围  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/accumulate.html" title="cpp/algorithm/accumulate"> <span class="t-lines"><span>accumulate</span></span></a></div></div>
+</td>
+<td>   求和或折叠范围中元素 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/inner_product.html" title="cpp/algorithm/inner product"> <span class="t-lines"><span>inner_product</span></span></a></div></div>
+</td>
+<td>   计算两个范围中元素的内积  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/adjacent_difference.html" title="cpp/algorithm/adjacent difference"> <span class="t-lines"><span>adjacent_difference</span></span></a></div></div>
+</td>
+<td>   计算范围中相邻元素的差  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/partial_sum.html" title="cpp/algorithm/partial sum"> <span class="t-lines"><span>partial_sum</span></span></a></div></div>
+</td>
+<td>   计算范围中元素的部分和 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/reduce.html" title="cpp/algorithm/reduce"> <span class="t-lines"><span>reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  类似 <span class="t-lc"><a href="algorithm/accumulate.html" title="cpp/algorithm/accumulate">std::accumulate</a></span>，但不依序执行 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/exclusive_scan.html" title="cpp/algorithm/exclusive scan"> <span class="t-lines"><span>exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  类似 <span class="t-lc"><a href="algorithm/partial_sum.html" title="cpp/algorithm/partial sum">std::partial_sum</a></span>，第 i 个和中排除第 i 个输入 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/inclusive_scan.html" title="cpp/algorithm/inclusive scan"> <span class="t-lines"><span>inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  类似 <span class="t-lc"><a href="algorithm/partial_sum.html" title="cpp/algorithm/partial sum">std::partial_sum</a></span>，第 i 个和中包含第 i 个输入 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/transform_reduce.html" title="cpp/algorithm/transform reduce"> <span class="t-lines"><span>transform_reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   应用可调用对象，然后乱序规约 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/transform_exclusive_scan.html" title="cpp/algorithm/transform exclusive scan"> <span class="t-lines"><span>transform_exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  应用可调用对象，然后计算排除扫描 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/transform_inclusive_scan.html" title="cpp/algorithm/transform inclusive scan"> <span class="t-lines"><span>transform_inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>  应用可调用对象，然后计算包含扫描 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E5.9C.A8.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.86.85.E5.AD.98.E4.B8.8A.E7.9A.84.E6.93.8D.E4.BD.9C">在未初始化内存上的操作</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/memory.html" title="cpp/header/memory">&lt;memory&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_copy.html" title="cpp/memory/uninitialized copy"> <span class="t-lines"><span>uninitialized_copy</span></span></a></div></div>
+</td>
+<td>  复制范围中对象到未初始化内存 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_copy.html" title="cpp/memory/ranges/uninitialized copy"> <span class="t-lines"><span>ranges::uninitialized_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制范围中对象到未初始化内存 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_copy_n.html" title="cpp/memory/uninitialized copy n"> <span class="t-lines"><span>uninitialized_copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div>
+</td>
+<td>   复制若干对象到未初始化内存  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_copy_n.html" title="cpp/memory/ranges/uninitialized copy n"> <span class="t-lines"><span>ranges::uninitialized_copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制若干对象到未初始化内存 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_fill.html" title="cpp/memory/uninitialized fill"> <span class="t-lines"><span>uninitialized_fill</span></span></a></div></div>
+</td>
+<td>   复制一个对象到范围所定义的未初始化内存  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_fill.html" title="cpp/memory/ranges/uninitialized fill"> <span class="t-lines"><span>ranges::uninitialized_fill</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制一个对象到范围所定义的未初始化内存 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_fill_n.html" title="cpp/memory/uninitialized fill n"> <span class="t-lines"><span>uninitialized_fill_n</span></span></a></div></div>
+</td>
+<td>   复制一个对象到起点和数量所定义的未初始化内存  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_fill_n.html" title="cpp/memory/ranges/uninitialized fill n"> <span class="t-lines"><span>ranges::uninitialized_fill_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  复制一个对象到起点和数量所定义的未初始化内存 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_move.html" title="cpp/memory/uninitialized move"> <span class="t-lines"><span>uninitialized_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   移动范围中对象到未初始化内存  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_move.html" title="cpp/memory/ranges/uninitialized move"> <span class="t-lines"><span>ranges::uninitialized_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  移动范围中对象到未初始化内存 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_move_n.html" title="cpp/memory/uninitialized move n"> <span class="t-lines"><span>uninitialized_move_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   移动若干对象到未初始化内存  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_move_n.html" title="cpp/memory/ranges/uninitialized move n"> <span class="t-lines"><span>ranges::uninitialized_move_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  移动若干对象到未初始化内存 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_default_construct.html" title="cpp/memory/uninitialized default construct"> <span class="t-lines"><span>uninitialized_default_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   在范围所定义的未初始化内存中用<a href="language/default_initialization.html" title="cpp/language/default initialization">默认初始化</a>构造对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_default_construct.html" title="cpp/memory/ranges/uninitialized default construct"> <span class="t-lines"><span>ranges::uninitialized_default_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  在范围所定义的未初始化内存中用<a href="language/default_initialization.html" title="cpp/language/default initialization">默认初始化</a>构造对象 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_default_construct_n.html" title="cpp/memory/uninitialized default construct n"> <span class="t-lines"><span>uninitialized_default_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   在起点和数量所定义的未初始化内存中用<a href="language/default_initialization.html" title="cpp/language/default initialization">默认初始化</a>构造对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_default_construct_n.html" title="cpp/memory/ranges/uninitialized default construct n"> <span class="t-lines"><span>ranges::uninitialized_default_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  在起点和数量所定义的未初始化内存中用<a href="language/default_initialization.html" title="cpp/language/default initialization">默认初始化</a>构造对象 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_value_construct.html" title="cpp/memory/uninitialized value construct"> <span class="t-lines"><span>uninitialized_value_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   在范围所定义的未初始化内存中用<a href="language/value_initialization.html" title="cpp/language/value initialization">值初始化</a>构造对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_value_construct.html" title="cpp/memory/ranges/uninitialized value construct"> <span class="t-lines"><span>ranges::uninitialized_value_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  在范围所定义的未初始化内存中用<a href="language/value_initialization.html" title="cpp/language/value initialization">值初始化</a>构造对象 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/uninitialized_value_construct_n.html" title="cpp/memory/uninitialized value construct n"> <span class="t-lines"><span>uninitialized_value_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   在起点和数量所定义的未初始化内存中用<a href="language/value_initialization.html" title="cpp/language/value initialization">值初始化</a>构造对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/uninitialized_value_construct_n.html" title="cpp/memory/ranges/uninitialized value construct n"> <span class="t-lines"><span>ranges::uninitialized_value_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  在起点和数量所定义的未初始化内存中用<a href="language/value_initialization.html" title="cpp/language/value initialization">值初始化</a>构造对象 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/destroy.html" title="cpp/memory/destroy"> <span class="t-lines"><span>destroy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   销毁范围中的对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/destroy.html" title="cpp/memory/ranges/destroy"> <span class="t-lines"><span>ranges::destroy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  销毁范围中的对象 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/destroy_n.html" title="cpp/memory/destroy n"> <span class="t-lines"><span>destroy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   销毁范围中若干对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/destroy_n.html" title="cpp/memory/ranges/destroy n"> <span class="t-lines"><span>ranges::destroy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  销毁范围中若干对象 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/destroy_at.html" title="cpp/memory/destroy at"> <span class="t-lines"><span>destroy_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div>
+</td>
+<td>   销毁给定地址的对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/destroy_at.html" title="cpp/memory/ranges/destroy at"> <span class="t-lines"><span>ranges::destroy_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>  销毁给定地址的对象 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/construct_at.html" title="cpp/memory/construct at"> <span class="t-lines"><span>construct_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   在给定地址创建对象  <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="memory/ranges/construct_at.html" title="cpp/memory/ranges/construct at"> <span class="t-lines"><span>ranges::construct_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>   在给定地址创建对象  <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<p><span id=".E9.9A.8F.E6.9C.BA.E6.95.B0.E7.94.9F.E6.88.90"></span>
+</p>
+<h3><span class="mw-headline" id=".E9.9A.8F.E6.9C.BA.E6.95.B0.E7.94.9F.E6.88.90_.28C.2B.2B26_.E8.B5.B7.29">随机数生成 <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/random.html" title="cpp/header/random">&lt;random&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/ranges/generate_random.html" title="cpp/algorithm/ranges/generate random"> <span class="t-lines"><span>ranges::generate_random</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  用来自均匀随机位发生器的随机数填充范围 <br> <span class="t-mark" style="white-space: nowrap;">(算法函数对象)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<table class="wikitable">
+
+<tr>
+<th><a href="utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_algorithm_iterator_requirements" title="cpp/feature test"><code>__cpp_lib_algorithm_iterator_requirements</code></a></td>
+<td><a href="compiler_support/23.html#cpp_lib_algorithm_iterator_requirements_202207L" title="cpp/compiler support/23"><code>202207L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++23)</span></td>
+<td>对非范围算法使用范围迭代器
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_clamp" title="cpp/feature test"><code>__cpp_lib_clamp</code></a></td>
+<td><a href="compiler_support/17.html#cpp_lib_clamp_201603L" title="cpp/compiler support/17"><code>201603L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td><span class="t-lc"><a href="algorithm/clamp.html" title="cpp/algorithm/clamp">std::clamp</a></span>
+</td></tr>
+<tr>
+<td rowspan="2"><a href="feature_test.html#cpp_lib_constexpr_algorithms" title="cpp/feature test"><code>__cpp_lib_constexpr_algorithms</code></a></td>
+<td><a href="compiler_support/20.html#cpp_lib_constexpr_algorithms_201806L" title="cpp/compiler support/20"><code>201806L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td>constexpr 算法
+</td></tr>
+<tr>
+<td><a href="compiler_support/26.html#cpp_lib_constexpr_algorithms_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>constexpr 稳定排序
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_algorithm_default_value_type" title="cpp/feature test"><code>__cpp_lib_algorithm_default_value_type</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_algorithm_default_value_type_202403L" title="cpp/compiler support/26"><code>202403L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>算法的<a href="language/list_initialization.html" title="cpp/language/list initialization">列表初始化</a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_algorithm" title="cpp/feature test"><code>__cpp_lib_freestanding_algorithm</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_algorithm_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td><a href="header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a> 中的独立设施
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_robust_nonmodifying_seq_ops" title="cpp/feature test"><code>__cpp_lib_robust_nonmodifying_seq_ops</code></a></td>
+<td><a href="compiler_support/14.html#cpp_lib_robust_nonmodifying_seq_ops_201304L" title="cpp/compiler support/14"><code>201304L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++14)</span></td>
+<td>使不修改序列的操作更健壮（<span class="t-lc"><a href="algorithm/mismatch.html" title="cpp/algorithm/mismatch">std::mismatch</a></span>、<span class="t-lc"><a href="algorithm/equal.html" title="cpp/algorithm/equal">std::equal</a></span> 和 <span class="t-lc"><a href="algorithm/is_permutation.html" title="cpp/algorithm/is permutation">std::is_permutation</a></span> 的两个范围重载）
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_sample" title="cpp/feature test"><code>__cpp_lib_sample</code></a></td>
+<td><a href="compiler_support/17.html#cpp_lib_sample_201603L" title="cpp/compiler support/17"><code>201603L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++17)</span></td>
+<td><span class="t-lc"><a href="algorithm/sample.html" title="cpp/algorithm/sample">std::sample</a></span>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_shift" title="cpp/feature test"><code>__cpp_lib_shift</code></a></td>
+<td><a href="compiler_support/20.html#cpp_lib_shift_201806L" title="cpp/compiler support/20"><code>201806L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td><span class="t-lc">std::shift_left</span> 与 <span class="t-lc">std::shift_right</span>
+</td></tr></table>
+<h3><span class="mw-headline" id="C_.E5.BA.93">C 库</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="header/cstdlib.html" title="cpp/header/cstdlib">&lt;cstdlib&gt;</a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/qsort.html" title="cpp/algorithm/qsort"> <span class="t-lines"><span>qsort</span></span></a></div></div>
+</td>
+<td>  对未指定类型的元素范围排序 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="algorithm/bsearch.html" title="cpp/algorithm/bsearch"> <span class="t-lines"><span>bsearch</span></span></a></div></div>
+</td>
+<td>   在未指定类型的数组中搜索元素  <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue193">LWG 193</a>
+</td>
+<td> C++98
+</td>
+<td> 堆要求 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>first</span></span> 是最大的元素
+</td>
+<td> 可以有等于 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>first</span></span> 的元素
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2150">LWG 2150</a>
+</td>
+<td> C++98
+</td>
+<td> 已排序序列的定义不正确
+</td>
+<td> 已改正
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2166">LWG 2166</a>
+</td>
+<td> C++98
+</td>
+<td> 对堆的要求与<a href="https://en.wikipedia.org/wiki/Binary_heap" class="extiw" title="enwiki:Binary heap">最大堆</a>的定义不够接近
+</td>
+<td> 改进要求
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>算法</span></span>的 <span><span><a href="../c/algorithm.html" title="c/algorithm">C 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 37850/1000000
+Preprocessor generated node count: 29571/1000000
+Post‐expand include size: 1517751/4194304 bytes
+Template argument size: 304496/4194304 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:700-0!*!0!!zh!*!zh!* and timestamp 20250323193207 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/algorithm&amp;oldid=98851">https://zh.cppreference.com/mwiki/index.php?title=cpp/algorithm&amp;oldid=98851</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/algorithm">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月14日 (星期五) 20:15。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../common/site_scripts.js"></script>
+<!-- Served in 8.131 secs. -->
+	</body>
+<!-- Cached 20250323193207 -->
+</html>

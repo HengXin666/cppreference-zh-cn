@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>memory_order</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/atomic/memory_order","wgTitle":"c/atomic/memory order","wgCurRevisionId":93953,"wgArticleId":939,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["有原因的 todo","无示例的 todo"],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"c/atomic/memory_order","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_atomic_memory_order skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">memory_order</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../atomic.html" title="c/atomic">atomic</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="c/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="c/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="c/header">头文件</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../types.html" title="c/types">类型支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../program.html" title="c/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../variadic.html" title="c/variadic">可变参数函数支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="c/error">错误处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="c/memory">动态内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="c/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="c/algorithm">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="c/numeric">数值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="c/chrono">日期和时间工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="c/io">输入/输出支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="c/locale">本地化支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="c/thread">并发支持</a> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="c/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="c/symbol index">符号索引</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../thread.html" title="c/thread">并发支持库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> 线程</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_create.html" title="c/thread/thrd create"><span class="t-lines"><span>thrd_create</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_equal.html" title="c/thread/thrd equal"><span class="t-lines"><span>thrd_equal</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_current.html" title="c/thread/thrd current"><span class="t-lines"><span>thrd_current</span></span></a></div><div><span class="t-lines"><span>  </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_sleep.html" title="c/thread/thrd sleep"><span class="t-lines"><span>thrd_sleep</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_yield.html" title="c/thread/thrd yield"><span class="t-lines"><span>thrd_yield</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_exit.html" title="c/thread/thrd exit"><span class="t-lines"><span>thrd_exit</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_detach.html" title="c/thread/thrd detach"><span class="t-lines"><span>thrd_detach</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_join.html" title="c/thread/thrd join"><span class="t-lines"><span>thrd_join</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thrd_errors.html" title="c/thread/thrd errors"><span class="t-lines"><span>thrd_success</span><span>thrd_timedout</span><span>thrd_busy</span><span>thrd_nomem</span><span>thrd_error</span></span></a></div><div><span class="t-lines"><span>  </span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 原子操作</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_init.html" title="c/atomic/atomic init"><span class="t-lines"><span>atomic_init</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ATOMIC_VAR_INIT.html" title="c/atomic/ATOMIC VAR INIT"><span class="t-lines"><span>ATOMIC_VAR_INIT</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-c23" style="white-space: nowrap;">(C23 前)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ATOMIC_LOCK_FREE_consts.html" title="c/atomic/ATOMIC LOCK FREE consts"><span class="t-lines"><span>ATOMIC_***_LOCK_FREE</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_is_lock_free.html" title="c/atomic/atomic is lock free"><span class="t-lines"><span>atomic_is_lock_free</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_store.html" title="c/atomic/atomic store"><span class="t-lines"><span>atomic_store</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_load.html" title="c/atomic/atomic load"><span class="t-lines"><span>atomic_load</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_exchange.html" title="c/atomic/atomic exchange"><span class="t-lines"><span>atomic_exchange</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_compare_exchange.html" title="c/atomic/atomic compare exchange"><span class="t-lines"><span>atomic_compare_exchange</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_fetch_add.html" title="c/atomic/atomic fetch add"><span class="t-lines"><span>atomic_fetch_add</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_fetch_sub.html" title="c/atomic/atomic fetch sub"><span class="t-lines"><span>atomic_fetch_sub</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_fetch_or.html" title="c/atomic/atomic fetch or"><span class="t-lines"><span>atomic_fetch_or</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_fetch_xor.html" title="c/atomic/atomic fetch xor"><span class="t-lines"><span>atomic_fetch_xor</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_fetch_and.html" title="c/atomic/atomic fetch and"><span class="t-lines"><span>atomic_fetch_and</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> 原子标志</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_flag.html" title="c/atomic/atomic flag"><span class="t-lines"><span>atomic_flag</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ATOMIC_FLAG_INIT.html" title="c/atomic/ATOMIC FLAG INIT"><span class="t-lines"><span>ATOMIC_FLAG_INIT</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_flag_test_and_set.html" title="c/atomic/atomic flag test and set"><span class="t-lines"><span>atomic_flag_test_and_set</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_flag_clear.html" title="c/atomic/atomic flag clear"><span class="t-lines"><span>atomic_flag_clear</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 内存顺序</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>memory_order</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="kill_dependency.html" title="c/atomic/kill dependency"><span class="t-lines"><span>kill_dependency</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_thread_fence.html" title="c/atomic/atomic thread fence"><span class="t-lines"><span>atomic_thread_fence</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="atomic_signal_fence.html" title="c/atomic/atomic signal fence"><span class="t-lines"><span>atomic_signal_fence</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 互斥</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/mtx_init.html" title="c/thread/mtx init"><span class="t-lines"><span>mtx_init</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/mtx_lock.html" title="c/thread/mtx lock"><span class="t-lines"><span>mtx_lock</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/mtx_timedlock.html" title="c/thread/mtx timedlock"><span class="t-lines"><span>mtx_timedlock</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/mtx_trylock.html" title="c/thread/mtx trylock"><span class="t-lines"><span>mtx_trylock</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/call_once.html" title="c/thread/call once"><span class="t-lines"><span>call_once</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/mtx_unlock.html" title="c/thread/mtx unlock"><span class="t-lines"><span>mtx_unlock</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/mtx_destroy.html" title="c/thread/mtx destroy"><span class="t-lines"><span>mtx_destroy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/mtx_types.html" title="c/thread/mtx types"><span class="t-lines"><span>mtx_plain</span><span>mtx_recursive</span><span>mtx_timed</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 条件变量</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/cnd_init.html" title="c/thread/cnd init"><span class="t-lines"><span>cnd_init</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/cnd_signal.html" title="c/thread/cnd signal"><span class="t-lines"><span>cnd_signal</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/cnd_broadcast.html" title="c/thread/cnd broadcast"><span class="t-lines"><span>cnd_broadcast</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/cnd_wait.html" title="c/thread/cnd wait"><span class="t-lines"><span>cnd_wait</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/cnd_timedwait.html" title="c/thread/cnd timedwait"><span class="t-lines"><span>cnd_timedwait</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/cnd_destroy.html" title="c/thread/cnd destroy"><span class="t-lines"><span>cnd_destroy</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> 线程局部存储</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/thread_local.html" title="c/thread/thread local"><span class="t-lines"><span>thread_local</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/TSS_DTOR_ITERATIONS.html" title="c/thread/TSS DTOR ITERATIONS"><span class="t-lines"><span>TSS_DTOR_ITERATIONS</span></span></a></div><div><span class="t-lines"><span>  </span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/tss_create.html" title="c/thread/tss create"><span class="t-lines"><span>tss_create</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/tss_get.html" title="c/thread/tss get"><span class="t-lines"><span>tss_get</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/tss_set.html" title="c/thread/tss set"><span class="t-lines"><span>tss_set</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../thread/tss_delete.html" title="c/thread/tss delete"><span class="t-lines"><span>tss_delete</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/stdatomic.html" title="c/header/stdatomic"><tt>&lt;stdatomic.h&gt;</tt></a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw2">enum</span> memory_order<br>
+<p><span class="br0">{</span><br>
+    memory_order_relaxed,<br>
+    memory_order_consume,<br>
+    memory_order_acquire,<br>
+    memory_order_release,<br>
+    memory_order_acq_rel,<br>
+    memory_order_seq_cst<br>
+</p>
+<span class="br0">}</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c11" style="white-space: nowrap;">(C11 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p><code>memory_order</code> 指定内存访问，包括常规的非原子内存访问，如何围绕原子操作排序。在没有任何约束的多处理器系统上，多个线程同时读或写数个变量时，一个线程能观测到变量值更改的顺序不同于另一个线程写它们的顺序。实际上，更改的顺序甚至能在多个读取线程间相异。一些类似的效果还能在单处理器系统上出现，因为内存模型允许编译器进行变换。
+</p><p><a href="../language/atomic.html" title="c/language/atomic">语言</a>和库中所有原子操作的默认行为提供<i>序列一致定序</i>（见后述讨论）。该默认行为可能有损性能，不过可以给予库的原子操作额外的 <code>memory_order</code> 实参，以指定确切的约束，在原子性外，编译器和处理器还必须强制该操作。
+</p>
+<h3><span class="mw-headline" id=".E5.B8.B8.E9.87.8F">常量</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>在标头 <code><a href="../header/stdatomic.html" title="c/header/stdatomic"><tt>&lt;stdatomic.h&gt;</tt></a></code> 定义 </div>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td> 值
+</td>
+<td> 解释
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>memory_order_relaxed</code>
+</td>
+<td> 宽松操作：没有同步或定序约束，仅对此操作要求原子性（见下方<a href="memory_order.html#.E5.AE.BD.E6.9D.BE.E5.AE.9A.E5.BA.8F">宽松定序</a>）。
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>memory_order_consume</code><br><span class="t-mark-rev t-deprecated-cxx26" style="white-space: nowrap;">(C++26 弃用)</span>
+</td>
+<td> 有此内存定序的加载操作，在其影响的内存位置进行<i>消费操作</i>：当前线程中依赖于当前加载的值的读或写不能被重排到此加载之前。其他线程中对有数据依赖的变量进行的释放同一原子变量的写入，能为当前线程所见。在大多数平台上，这只影响到编译器优化（见下方<a href="memory_order.html#.E9.87.8A.E6.94.BE-.E6.B6.88.E8.B4.B9.E5.AE.9A.E5.BA.8F">释放-消费定序</a>）。
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>memory_order_acquire</code>
+</td>
+<td> 有此内存定序的加载操作，在其影响的内存位置进行<i>获得操作</i>：当前线程中读或写不能被重排到此加载之前。其他线程的所有释放同一原子变量的写入，能为当前线程所见（见下方<a href="memory_order.html#.E9.87.8A.E6.94.BE-.E8.8E.B7.E5.BE.97.E5.AE.9A.E5.BA.8F">释放-获得定序</a>）。
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>memory_order_release</code>
+</td>
+<td> 有此内存定序的存储操作进行<i>释放操作</i>：当前线程中的读或写不能被重排到此存储之后。当前线程的所有写入，可见于获得该同一原子变量的其他线程（见下方<a href="memory_order.html#.E9.87.8A.E6.94.BE-.E8.8E.B7.E5.BE.97.E5.AE.9A.E5.BA.8F">释放-获得定序</a>），并且对该原子变量的带依赖写入变得对于其他消费同一原子对象的线程可见（见下方<a href="memory_order.html#.E9.87.8A.E6.94.BE-.E6.B6.88.E8.B4.B9.E5.AE.9A.E5.BA.8F">释放-消费定序</a>）。
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>memory_order_acq_rel</code>
+</td>
+<td> 带此内存定序的读修改写操作既是<i>获得操作</i>又是<i>释放操作</i>。当前线程的读或写内存不能被重排到此存储之前或之后。所有释放同一原子变量的线程的写入可见于修改之前，而且修改可见于其他获得同一原子变量的线程。
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>memory_order_seq_cst</code>
+</td>
+<td> 有此内存定序的加载操作进行<i>获得操作</i>，存储操作进行<i>释放操作</i>，而读修改写操作进行<i>获得操作</i>和<i>释放操作</i>，再加上存在一个单独全序，其中所有线程以同一顺序观测到所有修改（见下方<a href="memory_order.html#.E5.BA.8F.E5.88.97.E4.B8.80.E8.87.B4.E5.AE.9A.E5.BA.8F">序列一致定序</a>）。
+</td></tr>
+
+</table>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：先发生于和其他概念同 C++ ，但保持修改顺序和<a href="../language/atomic.html" title="c/language/atomic">c/language/atomic</a>中的四种一致 </td></tr></table>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：在做上面的时候，不要忘记在 C11 出版时先发生于不是不成环的，这经由 DR 401 被更新到匹配 C++11 </td></tr></table>
+<h4><span class="mw-headline" id=".E5.AE.BD.E6.9D.BE.E9.A1.BA.E5.BA.8F">宽松顺序</span></h4>
+<p>被标以 <span class="t-c"><span class="mw-geshi c source-c">memory_order_relaxed</span></span> 的原子操作不是同步操作；它们不会为并发的内存访问行为添加定序约束。它们只保证原子性和修改顺序的一致性。
+</p><p>例如，对于初始值为零的 <code>x</code> 和 <code>y</code>，
+</p><p><span class="t-c"><span class="mw-geshi c source-c"><span class="co1">// 线程 1：</span><br>
+r1 <span class="sy1">=</span> <a href="atomic_load.html"><span class="kw933">atomic_load_explicit</span></a><span class="br0">(</span>y, memory_order_relaxed<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// A</span><br>
+<a href="atomic_store.html"><span class="kw931">atomic_store_explicit</span></a><span class="br0">(</span>x, r1, memory_order_relaxed<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// B</span><br>
+<span class="co1">// 线程 2：</span><br>
+r2 <span class="sy1">=</span> <a href="atomic_load.html"><span class="kw933">atomic_load_explicit</span></a><span class="br0">(</span>x, memory_order_relaxed<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// C</span><br>
+<a href="atomic_store.html"><span class="kw931">atomic_store_explicit</span></a><span class="br0">(</span>y, <span class="nu0">42</span>, memory_order_relaxed<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// D</span></span></span>
+允许产生 <span class="mw-geshi c source-c">r1 <span class="sy1">==</span> <span class="nu0">42</span> <span class="sy3">&amp;&amp;</span> r2 <span class="sy1">==</span> <span class="nu0">42</span></span>。因为即使线程 1 中 A <i>先序于</i> B 且线程 2 中 C <i>先序于</i> D，却无法避免在 <span class="t-c"><span class="mw-geshi c source-c">y</span></span> 的修改顺序中 D 会出现于 A 之前，且在 <span class="t-c"><span class="mw-geshi c source-c">x</span></span> 的修改顺序中 B 会出现于 C 之前。D 的对 <span class="t-c"><span class="mw-geshi c source-c">y</span></span> 的副效应可能可见于线程 1 中 A 的加载操作，而 B 对 <span class="t-c"><span class="mw-geshi c source-c">x</span></span> 的副效应可能可见于线程 2 中 C 的加载操作。尤其是，这可能在线程 2 中 D 于 C 之前完成的情况下发生，无论因为编译器重排还是发生于运行时。
+</p><p>宽松内存定序的典型的应用是计数器自增，例如引用计数器，因为这只要求原子性，但不要求定序或同步。
+</p>
+<h4><span class="mw-headline" id=".E9.87.8A.E6.94.BE.E6.B6.88.E8.B4.B9.E9.A1.BA.E5.BA.8F">释放消费顺序</span></h4>
+<p>若线程 A 中的原子存储被标以 <span class="t-c"><span class="mw-geshi c source-c">memory_order_release</span></span>，而线程 B 中从同一变量的原子加载被标以 <span class="t-c"><span class="mw-geshi c source-c">memory_order_consume</span></span>，而线程 B 中的加载读到了由线程 A 中的存储所写入的值，则线程 A 中的存储<i>按依赖先序于</i>线程 B 中的加载。
+</p><p>线程 A 视角中<i>先发生于</i>原子存储的所有内存写入（非原子和宽松原子的），会在线程 B 中该加载操作所<i>携带依赖</i>进入的操作中变成<i>可见副效应</i>，即一旦完成原子加载，则保证线程 B 中，使用从该加载获得的值的运算符和函数，能见到线程 A 写入内存的内容。
+</p><p>同步仅在<i>释放</i>和<i>消费</i>同一原子变量的线程间建立。其他线程能见到与被同步线程的一者或两者相异的内存访问顺序。
+</p><p>在除 DEC Alpha 之外的所有主流 CPU 上，依赖定序是自动的，无需为此同步模式发出额外的 CPU 指令，只有某些编译器优化会受影响（例如，编译器被禁止牵涉到依赖链的对象上的推测性加载）。
+</p><p>此定序的典型使用情况，包括对很少被写入的并发数据结构（路由表、配置、安全策略、防火墙规则等）的读取访问，和有指针中介发布的发布者-订阅者的情形，即生产者所发布的指针，消费者能通过其访问信息：无需令生产者写入内存的所有其他内容对消费者可见（这在弱顺序架构上可能是昂贵的操作）。这种场景的例子之一是 <a href="https://en.wikipedia.org/wiki/Read-copy-update" class="extiw" title="enwiki:Read-copy-update"><code>rcu_dereference</code></a>。
+</p><p>注意到 2015 年 2 月为止没有任何已知产品级编译器跟踪依赖链：消费操作均被提升为获得操作。
+</p>
+<h4><span class="mw-headline" id=".E9.87.8A.E6.94.BE.E5.BA.8F.E5.88.97">释放序列</span></h4>
+<p>若一些原子对象被存储-释放，而有数个其他线程对该原子对象进行读修改写操作，则会形成“释放序列”：所有对该原子对象读修改写的线程与首个线程同步，而且彼此同步，即使它们没有 <code>memory_order_release</code> 语义。这使得单产出-多消费情况可行，而无需在每个消费线程间强加不必要的同步。
+</p>
+<h4><span class="mw-headline" id=".E9.87.8A.E6.94.BE.E8.8E.B7.E5.BE.97.E9.A1.BA.E5.BA.8F">释放获得顺序</span></h4>
+<p>若线程 A 中的一个原子存储被标以 <span class="t-c"><span class="mw-geshi c source-c">memory_order_release</span></span>，而线程 B 中从同一变量的原子加载被标以 <span class="t-c"><span class="mw-geshi c source-c">memory_order_acquire</span></span>，且线程 B 中的加载读到了线程 A 中的存储所写入的值，则线程 A 中的存储<i>同步于</i>线程 B 中的加载。
+</p><p>从线程 A 的视角<i>先发生于</i>原子存储的所有内存写入（包括非原子及宽松原子的），在线程 B 中成为<i>可见副效应</i>。即一旦原子加载完成，则保证线程 B 能观察到线程 A 写入内存的所有内容。仅当 B 实际上返回了 A 所存储的值或其释放序列中后面的值时，才有此保证。
+</p><p>同步仅建立在<i>释放</i>和<i>获得</i>同一原子变量的线程之间。其他线程可能看到与被同步线程的一者或两者相异的内存访问顺序。
+</p><p>在强顺序系统（x86、SPARC TSO、IBM 大型机）上，释放-获得定序对于多数操作是自动进行的。无需为此同步模式发出额外的 CPU 指令，只有某些编译器优化受影响（例如，编译器被禁止将非原子存储移到原子存储-释放之后，或将非原子加载移到原子加载-获得之前）。在弱顺序系统（ARM、Itanium、Power PC）上，必须使用特别的 CPU 加载或内存栅栏指令。
+</p><p>互斥锁（例如<a href="../thread.html#.E4.BA.92.E6.96.A5" title="c/thread">互斥体</a>或<a href="atomic_flag_test_and_set.html" title="c/atomic/atomic flag test and set">原子自旋锁</a>）是释放-获得同步的例子：线程 A 释放锁而线程 B 获得它时，发生于线程 A 上下文的临界区（释放之前）中的所有事件，必须对于执行同一临界区的线程 B（获得之后）可见。
+</p>
+<h4><span class="mw-headline" id=".E5.BA.8F.E5.88.97.E4.B8.80.E8.87.B4.E9.A1.BA.E5.BA.8F">序列一致顺序</span></h4>
+<p>被标为 <span class="t-c"><span class="mw-geshi c source-c">memory_order_seq_cst</span></span> 的原子操作不仅以与释放-获得定序相同的方式进行内存定序（在一个线程中<i>先发生于</i>存储的任何副作用都变成进行加载的线程中的<i>可见副作用</i>），还对所有带此标签的内存操作建立了一个<i>单独全序</i>。
+</p><p>正式而言，
+</p><p>对原子对象 M 进行加载的每个 <code>memory_order_seq_cst</code> 操作 B，均会观测到以下之一：
+</p>
+<ul><li> 修改 M 的上个操作 A 的结果，A 在单独全序中先出现于 B，
+</li><li> 或者，若存在这种 A，则 B 可能观测到 M 上的某次修改结果，此次修改非 <code>memory_order_seq_cst</code> 而且不<i>先发生于</i> A，
+</li><li> 或者，若不存在这种 A，则 B 可能观测到 M 上的某次无关联修改的结果，此次修改非 <code>memory_order_seq_cst</code>。
+</li></ul>
+<p>若存在 <code>memory_order_seq_cst</code> 的 <span class="t-lc"><a href="atomic_thread_fence.html" title="c/atomic/atomic thread fence">atomic_thread_fence</a></span> 操作 X <i>先序于</i> B，则 B 观测到以下之一：
+</p>
+<ul><li> 在单独全序中先出现于 X 的上个 M 的 <code>memory_order_seq_cst</code> 修改，
+</li><li> 在单独全序中后出现于它的某次 M 的无关联修改。
+</li></ul>
+<p>设有 M 上的一对原子操作，称之为 A 和 B，这里 A 写入、B 读取 M 的值，若存在二个 <code>memory_order_seq_cst</code> 的 <span class="t-lc"><a href="atomic_thread_fence.html" title="c/atomic/atomic thread fence">atomic_thread_fence</a></span> X 和 Y，且若 A <i>先序于</i> X，Y <i>先序于</i> B，且 X 在单独全序中先出现于 Y，则 B 观测到二者之一：
+</p>
+<ul><li> A 的效应，
+</li><li> 在 M 的修改顺序中后出现于 A 的某次无关联修改。
+</li></ul>
+<p>设有 M 上的一对原子操作，称之为 A 和 B，若符合下列条件之一，则 M 的修改顺序中 B 先发生于 A：
+</p>
+<ul><li> 存在一个 <code>memory_order_seq_cst</code> 的 <span class="t-lc"><a href="atomic_thread_fence.html" title="c/atomic/atomic thread fence">atomic_thread_fence</a></span> X，它满足 A <i>先序于</i> X，且 X 在单独全序中先出现于 B，
+</li><li> 或者，存在一个 <code>memory_order_seq_cst</code> 的 <span class="t-lc"><a href="atomic_thread_fence.html" title="c/atomic/atomic thread fence">atomic_thread_fence</a></span> Y，它满足 Y <i>先序于</i> B，且 A 在单独全序中先出现于 Y，
+</li><li> 或者，存在 <code>memory_order_seq_cst</code> 的 <span class="t-lc"><a href="atomic_thread_fence.html" title="c/atomic/atomic thread fence">atomic_thread_fence</a></span> X 和 Y，它们满足 A <i>先序于</i> X，Y <i>先序于</i> B，且 X 在单独全序中先出现于 Y。
+</li></ul>
+<p>注意这表明：
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 一旦出现未标记 <code>memory_order_seq_cst</code> 的原子操作，则立即丧失序列一致性，</div>
+<div class="t-li1"><span class="t-li">2)</span> 序列一致栅栏仅为栅栏自身建立全序，而不为通常情况下的原子操作建立（<i>先序于</i> 不是跨线程关系，不同于<i>先发生于</i>）</div>
+<p>在多生产者-多消费者的情形中，若所有消费者都必须以相同顺序观察到所有生产者的动作出现，则可能必须进行序列定序。
+</p><p>全序列定序在所有多核系统上都要求完全的内存栅栏 CPU 指令。这可能成为性能瓶颈，因为它强制受影响的内存访问传播到每个核心。
+</p>
+<h3><span class="mw-headline" id=".E4.B8.8E_volatile_.E7.9A.84.E5.85.B3.E7.B3.BB">与 volatile 的关系</span></h3>
+<p>在执行线程中，不能将通过 <a href="../language/volatile.html" title="c/language/volatile">volatile 左值</a>进行的访问（读和写）重排到同线程内为序列点所分隔的可观测副效应（包含其他 volatile 访问）后，但不保证另一线程观察到此顺序，因为 volatile 访问不建立线程间同步。
+</p><p>另外，volatile 访问不是原子的（共时的读和写是<a href="../language/memory_model.html" title="c/language/memory model">数据竞争</a>），且没有内存定序（非 volatile 内存访问可以自由地重排到 volatile 访问前后）。
+</p><p>一个值得注意的例外是 Visual Studio，其中默认设置下，每个 volatile 写拥有释放语义，而每个 volatile 读拥有获得语义（<a rel="nofollow" class="external text" href="https://learn.microsoft.com/en-us/cpp/cpp/volatile-cpp">微软文档</a>），故而可将 volatile 对象用于线程间同步。标准的 <span class="mw-geshi c source-c"><span class="kw4">volatile</span></span> 语义不可应用于多线程编程，尽管它们在应用到 <span class="mw-geshi c source-c"><a href="../program/sig_atomic_t.html"><span class="kw499">sig_atomic_t</span></a></span> 对象时，足以用于例如与运行于同一线程的 <span class="t-lc"><a href="../program/signal.html" title="c/program/signal">signal</a></span> 处理函数间的通信。
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：暂无示例 </td></tr></table>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-23">
+<ul><li> C23 标准（ISO/IEC 9899:2024）：
+</li></ul>
+<dl><dd><ul><li> 7.17.1/4 memory_order （第 TBD 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.17.3 Order and consistency （第 TBD 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-17">
+<ul><li> C17 标准（ISO/IEC 9899:2018）：
+</li></ul>
+<dl><dd><ul><li> 7.17.1/4 memory_order （第 200 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.17.3 Order and consistency （第 201-203 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 标准（ISO/IEC 9899:2011）：
+</li></ul>
+<dl><dd><ul><li> 7.17.1/4 memory_order （第 273 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.17.3 Order and consistency （第 275-277 页）
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>内存顺序</span></span>的 <span><span><a href="../../cpp/atomic/memory_order.html" title="cpp/atomic/memory order">C++ 文档</a></span></span></div>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id=".E5.A4.96.E9.83.A8.E9.93.BE.E6.8E.A5">外部链接</span></h3>
+<table style="border-top:solid 1px;border-bottom:none;border-left:none;border-right:none;">
+
+<tr style="vertical-align:top;">
+<td>1. </td>
+<td><a href="https://en.wikipedia.org/wiki/MOESI_%E5%8D%8F%E8%AE%AE" class="extiw" title="enwiki:MOESI 协议">MOESI 协议</a>
+</td></tr>
+<tr style="vertical-align:top;">
+<td>2. </td>
+<td><a rel="nofollow" class="external text" href="http://www.cl.cam.ac.uk/~pes20/weakmemory/cacm.pdf">x86-TSO：x86 多处理器上严格而有用的程序员模型</a> P. Sewell 等，2010
+</td></tr>
+<tr style="vertical-align:top;">
+<td>3. </td>
+<td><a rel="nofollow" class="external text" href="http://www.cl.cam.ac.uk/~pes20/ppc-supplemental/test7.pdf">ARM 及 POWER 宽松内存模型的入门教程</a> P. Sewell 等，2012
+</td></tr>
+<tr style="vertical-align:top;">
+<td>4. </td>
+<td><a rel="nofollow" class="external text" href="https://researchspace.auckland.ac.nz/bitstream/handle/2292/11594/MESIF-2009.pdf?sequence=6">MESIF：点对点互联的两跳缓存一致性协议</a> J.R. Goodman, H.H.J. Hum，2009
+</td></tr>
+<tr style="vertical-align:top;">
+<td>5. </td>
+<td><a rel="nofollow" class="external text" href="https://research.swtch.com/mm">内存模型</a>  Russ Cox, 2021
+</td></tr></table>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：让我们在 QPI、MOESI，也许还有 Dragon 上找到好的参考资料。 </td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 5947/1000000
+Preprocessor generated node count: 12790/1000000
+Post‐expand include size: 129989/4194304 bytes
+Template argument size: 22085/4194304 bytes
+Highest expansion depth: 19/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:939-0!*!0!!zh!*!zh!* and timestamp 20250318222237 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=c/atomic/memory_order&amp;oldid=93953">https://zh.cppreference.com/mwiki/index.php?title=c/atomic/memory_order&amp;oldid=93953</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/c/atomic/memory_order">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年9月5日 (星期四) 05:05。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 0.930 secs. -->
+	</body>
+<!-- Cached 20250318222237 -->
+</html>

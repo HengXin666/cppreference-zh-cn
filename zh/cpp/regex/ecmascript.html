@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>有改动的 ECMAScript 正则表达式文法</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/regex/ecmascript","wgTitle":"cpp/regex/ecmascript","wgCurRevisionId":93538,"wgArticleId":10252,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["无示例的 todo"],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/regex/ecmascript","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-javascript {line-height: normal;}
+.source-javascript li, .source-javascript pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for javascript
+ * CSS class: source-javascript, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.javascript.source-javascript .de1, .javascript.source-javascript .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.javascript.source-javascript  {font-family:monospace;}
+.javascript.source-javascript .imp {font-weight: bold; color: red;}
+.javascript.source-javascript li, .javascript.source-javascript .li1 {font-weight: normal; vertical-align:top;}
+.javascript.source-javascript .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.javascript.source-javascript .li2 {font-weight: bold; vertical-align:top;}
+.javascript.source-javascript .kw1 {color: #000066; font-weight: bold;}
+.javascript.source-javascript .kw2 {color: #003366; font-weight: bold;}
+.javascript.source-javascript .kw3 {color: #000066;}
+.javascript.source-javascript .co1 {color: #006600; font-style: italic;}
+.javascript.source-javascript .co2 {color: #009966; font-style: italic;}
+.javascript.source-javascript .coMULTI {color: #006600; font-style: italic;}
+.javascript.source-javascript .es0 {color: #000099; font-weight: bold;}
+.javascript.source-javascript .br0 {color: #009900;}
+.javascript.source-javascript .sy0 {color: #339933;}
+.javascript.source-javascript .st0 {color: #3366CC;}
+.javascript.source-javascript .nu0 {color: #CC0000;}
+.javascript.source-javascript .me1 {color: #660066;}
+.javascript.source-javascript .ln-xtra, .javascript.source-javascript li.ln-xtra, .javascript.source-javascript div.ln-xtra {background-color: #ffc;}
+.javascript.source-javascript span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_regex_ecmascript skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">有改动的 ECMAScript 正则表达式文法</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../regex.html" title="cpp/regex">regex</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../text.html" title="cpp/text">文本处理库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../locale.html" title="cpp/locale">本地化库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../regex.html" title="cpp/regex">正则表达式库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility/format.html" title="cpp/utility/format">格式化库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../text.html#.E7.A9.BA.E7.BB.88.E6.AD.A2.E5.BA.8F.E5.88.97.E5.B7.A5.E5.85.B7" title="cpp/text">空终止序列工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string/byte.html" title="cpp/string/byte">字节字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string/multibyte.html" title="cpp/string/multibyte">多字节字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string/wide.html" title="cpp/string/wide">宽字符串</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../text.html#.E5.88.9D.E7.AD.89.E6.95.B0.E5.80.BC.E8.BD.AC.E6.8D.A2" title="cpp/text">初等数值转换</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/to_chars.html" title="cpp/utility/to chars"><span class="t-lines"><span>to_chars</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/to_chars_result.html" title="cpp/utility/to chars result"><span class="t-lines"><span>to_chars_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/from_chars.html" title="cpp/utility/from chars"><span class="t-lines"><span>from_chars</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/from_chars_result.html" title="cpp/utility/from chars result"><span class="t-lines"><span>from_chars_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../utility/chars_format.html" title="cpp/utility/chars format"><span class="t-lines"><span>chars_format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../text.html#.E6.96.87.E6.9C.AC.E7.BC.96.E7.A0.81.E8.AF.86.E5.88.AB" title="cpp/text">文本编码识别</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../text/text_encoding.html" title="cpp/text/text encoding"><span class="t-lines"><span>text_encoding</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../regex.html" title="cpp/regex">正则表达式库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">类</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_regex.html" title="cpp/regex/basic regex"><span class="t-lines"><span>basic_regex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sub_match.html" title="cpp/regex/sub match"><span class="t-lines"><span>sub_match</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="match_results.html" title="cpp/regex/match results"><span class="t-lines"><span>match_results</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">算法</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="regex_match.html" title="cpp/regex/regex match"><span class="t-lines"><span>regex_match</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="regex_search.html" title="cpp/regex/regex search"><span class="t-lines"><span>regex_search</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="regex_replace.html" title="cpp/regex/regex replace"><span class="t-lines"><span>regex_replace</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">迭代器</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="regex_iterator.html" title="cpp/regex/regex iterator"><span class="t-lines"><span>regex_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="regex_token_iterator.html" title="cpp/regex/regex token iterator"><span class="t-lines"><span>regex_token_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">异常</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="regex_error.html" title="cpp/regex/regex error"><span class="t-lines"><span>regex_error</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">特征</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="regex_traits.html" title="cpp/regex/regex traits"><span class="t-lines"><span>regex_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">常量</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="syntax_option_type.html" title="cpp/regex/syntax option type"><span class="t-lines"><span>syntax_option_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="match_flag_type.html" title="cpp/regex/match flag type"><span class="t-lines"><span>match_flag_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="error_type.html" title="cpp/regex/error type"><span class="t-lines"><span>error_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">正则表达式文法</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>有改动的 ECMAScript-262 文法</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>此页面描述以设置为 <code>ECMAScript</code>（默认值）的 <a href="syntax_option_type.html" title="cpp/regex/syntax option type"><code>syntax_option_type</code></a> 构造 <span class="t-lc"><a href="basic_regex.html" title="cpp/regex/basic regex">std::basic_regex</a></span> 时使用的正则表达式文法。其他受支持的正则表达式文法见 <a href="syntax_option_type.html" title="cpp/regex/syntax option type"><code>syntax_option_type</code></a>。
+</p><p>C++ 中的 <code>ECMAScript</code> 3 正则表达式文法是 <a rel="nofollow" class="external text" href="http://ecma-international.org/ecma-262/5.1/#sec-15.10">ECMA-262 语法</a>，并带有一些修改，下文将之标记为 <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>。
+</p>
+<h3><span class="mw-headline" id=".E6.80.BB.E8.A7.88">总览</span></h3>
+<p><a rel="nofollow" class="external text" href="https://eel.is/c++draft/re.grammar">有改动的正则表达式文法</a>几乎是 ECMAScript RegExp 文法，并带有<i>类原子</i> ﻿下进行本地环境上的 POSIX 类型展开。我们作出了相等检查与数量分析上的一些澄清。对于这里的多数示例，你可以在你的浏览器控制台中尝试等价的版本：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="javascript source-javascript"><pre class="de1"><span class="kw2">function</span> match<span class="br0">(</span>s<span class="sy0">,</span> re<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> s.<span class="me1">match</span><span class="br0">(</span><span class="kw2">new</span> RegExp<span class="br0">(</span>re<span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span> <span class="br0">}</span></pre></div></div>
+<p>标准中的“正式参考”指定 ECMAScript 3。我们这里链接到 ECMAScript 5.1 规范，因为它的正则表达式语法相比 ECMAScript 3 仅有微小改动，而且它有一个 HTML 版本。方言特性的概览见 <a rel="nofollow" class="external text" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">MDN Guide on JavaScript RegExp</a>。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.AF.E9.80.89.E9.A1.B9">可选项</span></h3>
+<p>正则表达式模式是一或多个以析取运算符 <code><b>|</b></code> 分隔的<i>可选项</i> ﻿的序列（换言之，析取运算符拥有最低优先级）
+</p><p><i>模式</i> ::
+</p>
+<dl><dd><i>析取</i>
+</dd></dl>
+<p><i>析取</i> ::
+</p>
+<dl><dd><i>可选项</i>
+</dd><dd><i>可选项</i> <code><b>|</b></code> <i>析取</i>
+</dd></dl>
+<p>模式首先尝试跳过<i>析取</i> ﻿并匹配（析取后的）后随剩余正则表达式的左侧<i>可选项</i>。
+</p><p>如果它失败，那么尝试跳过左侧<i>可选项</i> ﻿并匹配右侧<i>析取</i>（后随剩余正则表达式）。
+</p><p>如果左侧<i>可选项</i>、右侧<i>析取</i> ﻿和剩余正则表达式都拥有选择点，那么在尝试移动到左侧<i>可选项</i> ﻿中的下个选择前，尝试剩余表达式值中的所有选择。如果穷尽了左侧<i>可选项</i> ﻿中的所有选择，那么取代左侧<i>可选项</i> ﻿尝试右侧<i>析取</i>。
+</p><p>跳过的<i>可选项</i> ﻿内的任何捕获括号产生空子匹配。
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;regex&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+ 
+<span class="kw4">void</span> show_matches<span class="br0">(</span><span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> in, <span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> re<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="match_results.html"><span class="kw2014">std::<span class="me2">smatch</span></span></a> m<span class="sy4">;</span>
+    <a href="regex_search.html"><span class="kw2017">std::<span class="me2">regex_search</span></span></a><span class="br0">(</span>in, m, <a href="basic_regex.html"><span class="kw2004">std::<span class="me2">regex</span></span></a><span class="br0">(</span>re<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>m.<span class="me1">empty</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  "</span>
+                     <span class="st0">"prefix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">prefix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  smatch: "</span><span class="sy4">;</span>
+        <span class="kw1">for</span> <span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> n <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> n <span class="sy1">&lt;</span> m.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="sy2">++</span>n<span class="br0">)</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"m["</span> <span class="sy1">&lt;&lt;</span> n <span class="sy1">&lt;&lt;</span> <span class="st0">"]=["</span> <span class="sy1">&lt;&lt;</span> m<span class="br0">[</span>n<span class="br0">]</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"] "</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>  suffix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">suffix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">else</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]: NO MATCH<span class="es1">\n</span>"</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    show_matches<span class="br0">(</span><span class="st0">"abcdef"</span>, <span class="st0">"abc|def"</span><span class="br0">)</span><span class="sy4">;</span>
+    show_matches<span class="br0">(</span><span class="st0">"abc"</span>, <span class="st0">"ab|abc"</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 首先匹配左侧可选项</span>
+ 
+    <span class="co1">// 针对后随剩余正则表达式 (c|bc) 左侧可选项 (a) 的匹配成功</span>
+    <span class="co1">// 它生成 m[1]="a" 及 m[4]="bc"。</span>
+    <span class="co1">// 跳过的可选项 (ab) 和 (c) 将其子匹配 m[3] 和 m[5] 置为空。</span>
+    show_matches<span class="br0">(</span><span class="st0">"abc"</span>, <span class="st0">"((a)|(ab))((c)|(bc))"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">input=[abcdef], regex=[abc|def]
+  prefix=[]
+  smatch: m[0]=[abc]
+  suffix=[def]
+input=[abc], regex=[ab|abc]
+  prefix=[]
+  smatch: m[0]=[ab]
+  suffix=[c]
+input=[abc], regex=[((a)|(ab))((c)|(bc))]
+  prefix=[]
+  smatch: m[0]=[abc] m[1]=[a] m[2]=[a] m[3]=[] m[4]=[bc] m[5]=[] m[6]=[bc]
+  suffix=[]</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E9.A1.B9">项</span></h3>
+<p>每个<i>可选项</i> ﻿要么为空，要么是<i>项</i> ﻿的序列（<i>项</i> ﻿间无分隔符）
+</p><p><i>可选项</i> ::
+</p>
+<dl><dd> <i>[空]</i>
+</dd><dd> <i>可选项</i> <i>项</i>
+</dd></dl>
+<p>空的<i>可选项</i> ﻿始终匹配并且不消耗任何输入。
+</p><p>相继的<i>项</i> ﻿尝试同时匹配输入的连续部分。
+</p><p>如果左侧<i>可选项</i> ﻿、右侧<i>项</i> ﻿和剩余正则表达式都拥有选择点，那么在移动到右侧<i>项</i> ﻿中的下个选择前，尝试剩余正则表达式中的所有选择，并在移动到左侧<i>可选项</i> ﻿中的下个选择前，尝试右侧<i>项</i> ﻿中的所有选择。
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;regex&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+ 
+<span class="kw4">void</span> show_matches<span class="br0">(</span><span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> in, <span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> re<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="match_results.html"><span class="kw2014">std::<span class="me2">smatch</span></span></a> m<span class="sy4">;</span>
+    <a href="regex_search.html"><span class="kw2017">std::<span class="me2">regex_search</span></span></a><span class="br0">(</span>in, m, <a href="basic_regex.html"><span class="kw2004">std::<span class="me2">regex</span></span></a><span class="br0">(</span>re<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>m.<span class="me1">empty</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  "</span>
+                     <span class="st0">"prefix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">prefix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  smatch: "</span><span class="sy4">;</span>
+        <span class="kw1">for</span> <span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> n <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> n <span class="sy1">&lt;</span> m.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="sy2">++</span>n<span class="br0">)</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"m["</span> <span class="sy1">&lt;&lt;</span> n <span class="sy1">&lt;&lt;</span> <span class="st0">"]=["</span> <span class="sy1">&lt;&lt;</span> m<span class="br0">[</span>n<span class="br0">]</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"] "</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>  suffix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">suffix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">else</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]: NO MATCH<span class="es1">\n</span>"</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    show_matches<span class="br0">(</span><span class="st0">"abcdef"</span>, <span class="st0">""</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 空正则表达式是单个空可选项</span>
+    show_matches<span class="br0">(</span><span class="st0">"abc"</span>, <span class="st0">"abc|"</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 左可选项首先匹配</span>
+    show_matches<span class="br0">(</span><span class="st0">"abc"</span>, <span class="st0">"|abc"</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 左可选项首先匹配，留待 abc 未匹配</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">input=[abcdef], regex=[]
+  prefix=[]
+  smatch: m[0]=[]
+  suffix=[abcdef]
+input=[abc], regex=[abc|]
+  prefix=[]
+  smatch: m[0]=[abc]
+  suffix=[]
+input=[abc], regex=[|abc]
+  prefix=[]
+  smatch: m[0]=[]
+  suffix=[abc]</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E6.95.B0.E9.87.8F.E8.AF.8D">数量词</span></h3>
+<ul><li> 每个<i>项</i> ﻿是<i>断言</i>（见下文）、<i>原子</i>（见下文），和<i>原子</i> ﻿立即后随<i>数量词</i> ﻿之一
+</li></ul>
+<p><i>项</i> ::
+</p>
+<dl><dd> <i>断言</i>
+</dd><dd> <i>原子</i>
+</dd><dd> <i>原子</i> <i>数量词</i>
+</dd></dl>
+<p>每个<i>数量词</i> ﻿要么是<i>贪心</i> ﻿数量词（仅由一个<i>数量词前缀</i> ﻿组成），要么是<i>非贪心</i> ﻿数量词（由一个<i>数量词前缀</i> ﻿后随问号 <code><b>?</b></code> 组成）。
+</p><p><i>数量词</i> ::
+</p>
+<dl><dd> <i>数量词前缀</i>
+</dd><dd> <i>数量词前缀</i> <code><b>?</b></code>
+</dd></dl>
+<p>每个<i>数量词前缀</i> ﻿确定两个数：最小重复数和最大重复数，如下：
+</p>
+<table class="wikitable">
+
+<tr>
+<th>数量词前缀</th>
+<th>最小</th>
+<th>最大
+</th></tr>
+<tr>
+<td> <code><b>*</b></code>
+</td>
+<td> 零
+</td>
+<td> 无穷大
+</td></tr>
+<tr>
+<td> <code><b>+</b></code>
+</td>
+<td> 一
+</td>
+<td> 无穷大
+</td></tr>
+<tr>
+<td> <code><b>?</b></code>
+</td>
+<td> 零
+</td>
+<td> 一
+</td></tr>
+<tr>
+<td> <code><b>{ </b></code> <i>十进制数</i> <code><b>} </b></code>
+</td>
+<td> 十进制数的值
+</td>
+<td> 十进制数的值
+</td></tr>
+<tr>
+<td> <code><b>{</b></code> <i>十进制数</i> <code><b>,</b></code> <code><b>} </b></code>
+</td>
+<td> 十进制数的值
+</td>
+<td> 无穷大
+</td></tr>
+<tr>
+<td> <code><b>{</b></code> <i>十进制数</i> <code><b>,</b></code> <i>十进制数</i> <code><b>} </b></code>
+</td>
+<td> 逗号前的十进制数的值
+</td>
+<td> 逗号后的十进制数的值
+</td></tr></table>
+<p>通过在每个数位上调用 <span class="t-lc"><a href="regex_traits/value.html" title="cpp/regex/regex traits/value">std::regex_traits::value</a></span><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>获得单独的<i>十进制数</i> ﻿的值。
+</p><p><i>原子</i> ﻿后随<i>数量词</i> ﻿重复<i>数量词</i> ﻿所指定的次数。<i>数量词</i> ﻿可以是<i>非贪心</i> ﻿的，此时<i>原子</i> ﻿模式重复在仍然匹配剩余正则表达式的同时尽可能少的次数；也可以是<i>贪心</i> ﻿的，此时<i>原子</i> ﻿模式重复在仍然匹配剩余正则表达式的同时尽可能多的次数。
+</p><p>重复的是<i>原子</i> ﻿模式，而非它匹配的输入，因此<i>原子</i> ﻿的不同重复能匹配不同的输入子串。
+</p><p>如果<i>原子</i> ﻿和剩余正则表达式都有选择点，那么首先将<i>原子</i> ﻿匹配尽可能多（或少，如果是<i>非贪心</i> ﻿的）次。，移动到<i>原子</i> ﻿的最后一次重复中的下个选择前，尝试剩余正则表达式中的所有选择。移动到<i>原子</i> ﻿的倒数第二（第 n-1）次重复中的下个选择前，尝试<i>原子</i> ﻿的最后一（第 n）次重复中的所有选择；在明确现在可能有<i>原子</i> ﻿的更多或更少重复时；在移动到<i>原子</i> ﻿的第 n-1 次重复中的下个选择前，将这些穷尽（再次以尽可能少或多开始），以此类推。
+</p><p>每次重复<i>原子</i> ﻿时，清除它的捕获（见下文 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"(z)((a+)?(b+)?(c))*"</span></span></span> 的示例）
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;regex&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+ 
+<span class="kw4">void</span> show_matches<span class="br0">(</span><span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> in, <span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> re<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="match_results.html"><span class="kw2014">std::<span class="me2">smatch</span></span></a> m<span class="sy4">;</span>
+    <a href="regex_search.html"><span class="kw2017">std::<span class="me2">regex_search</span></span></a><span class="br0">(</span>in, m, <a href="basic_regex.html"><span class="kw2004">std::<span class="me2">regex</span></span></a><span class="br0">(</span>re<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>m.<span class="me1">empty</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  "</span>
+                     <span class="st0">"prefix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">prefix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  smatch: "</span><span class="sy4">;</span>
+        <span class="kw1">for</span> <span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> n <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> n <span class="sy1">&lt;</span> m.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="sy2">++</span>n<span class="br0">)</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"m["</span> <span class="sy1">&lt;&lt;</span> n <span class="sy1">&lt;&lt;</span> <span class="st0">"]=["</span> <span class="sy1">&lt;&lt;</span> m<span class="br0">[</span>n<span class="br0">]</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"] "</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>  suffix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">suffix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">else</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]: NO MATCH<span class="es1">\n</span>"</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 贪心匹配，重复 [a-z] 4 次</span>
+    show_matches<span class="br0">(</span><span class="st0">"abcdefghi"</span>, <span class="st0">"a[a-z]{2,4}"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="co1">// 非贪心匹配，重复 [a-z] 2 次</span>
+    show_matches<span class="br0">(</span><span class="st0">"abcdefghi"</span>, <span class="st0">"a[a-z]{2,4}?"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 数量词的选择点顺序，生成带二个重复的匹配，</span>
+    <span class="co1">// 第一个匹配子串 "aa"，第二个匹配子串 "ba"，保留 "ac" 匹配</span>
+    <span class="co1">// （"ba" 出现于 m[1] 的捕获子句中）</span>
+    show_matches<span class="br0">(</span><span class="st0">"aabaac"</span>, <span class="st0">"(aa|aabaac|ba|b|c)*"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 数量词的选择点顺序令此 regex 计算 10 与 15 间的最大公约数</span>
+    <span class="co1">// （答案是 5，并以 "aaaaa" 填充 m[1]）</span>
+    show_matches<span class="br0">(</span><span class="st0">"aaaaaaaaaa,aaaaaaaaaaaaaaa"</span>, <span class="st0">"^(a+)<span class="es1">\\</span>1*,<span class="es1">\\</span>1+$"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 子串 "bbb" 不出现于捕获子句 m[4] 中</span>
+    <span class="co1">// 因为它在原子 (a+)?(b+)?(c) 的第二次重复匹配子串 "ac" 时被声明</span>
+    <span class="co1">// 注：gcc 理解有误——它没有正确地按 ECMA-262 21.2.2.5.1 清除</span>
+    <span class="co1">// matches[4] 捕获组，从而错误地对于该组捕获 "bbb"。</span>
+    show_matches<span class="br0">(</span><span class="st0">"zaacbbbcac"</span>, <span class="st0">"(z)((a+)?(b+)?(c))*"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">input=[abcdefghi], regex=[a[a-z]{2,4}]
+  prefix=[]
+  smatch: m[0]=[abcde]
+  suffix=[fghi]
+input=[abcdefghi], regex=[a[a-z]{2,4}?]
+  prefix=[]
+  smatch: m[0]=[abc]
+  suffix=[defghi]
+input=[aabaac], regex=[(aa|aabaac|ba|b|c)*]
+  prefix=[]
+  smatch: m[0]=[aaba] m[1]=[ba]
+  suffix=[ac]
+input=[aaaaaaaaaa,aaaaaaaaaaaaaaa], regex=[^(a+)\1*,\1+$]
+  prefix=[]
+  smatch: m[0]=[aaaaaaaaaa,aaaaaaaaaaaaaaa] m[1]=[aaaaa]
+  suffix=[]
+input=[zaacbbbcac], regex=[(z)((a+)?(b+)?(c))*]
+  prefix=[]
+  smatch: m[0]=[zaacbbbcac] m[1]=[z] m[2]=[ac] m[3]=[a] m[4]=[] m[5]=[c] 
+  suffix=[]</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E6.96.AD.E8.A8.80">断言</span></h3>
+<p><i>断言</i> 匹配条件，而非输入字符串的子串。它们不会消耗任何来自输入的字符。每个<i>断言</i> ﻿是下列之一
+</p><p><i>断言</i> ::
+</p>
+<dl><dd> <code><b>^</b></code>
+</dd><dd> <code><b>$</b></code>
+</dd><dd> <code><b>\</b></code> <code><b>b</b></code>
+</dd><dd> <code><b>\</b></code> <code><b>B</b></code>
+</dd><dd> <code><b>(</b></code> <code><b>?</b></code> <code><b>=</b></code> <i>析取</i> <code><b>)</b></code>
+</dd><dd> <code><b>(</b></code> <code><b>?</b></code> <code><b>!</b></code> <i>析取</i> <code><b>)</b></code>
+</dd></dl>
+<p>断言 <code><b>^</b></code>（行起始）匹配
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 立即后随<i>行终止符</i> ﻿字符的位置<span class="t-rev-inl t-until-cxx17"><span>（这可能不受支持）</span><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span></span><span class="t-rev-inl t-since-cxx17"><span>（这只有在启用 <a href="syntax_option_type.html" title="cpp/regex/syntax option type"><tt>std::regex_constants::multiline</tt></a><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> 时才会得到保证）</span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span></div>
+<div class="t-li1"><span class="t-li">2)</span> 输入的起始（除非启用 <span class="t-lc"><a href="match_flag_type.html" title="cpp/regex/match flag type">std::regex_constants::match_not_bol</a></span><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ）</div>
+<p>断言 <code><b>$</b></code>（行结尾）匹配
+</p>
+<div class="t-li1"><span class="t-li">1)</span> <i>行终止符</i> ﻿字符的位置<span class="t-rev-inl t-until-cxx17"><span>（这可能不受支持）</span><span><span class="t-mark-rev t-until-cxx17" style="white-space: nowrap;">(C++17 前)</span></span></span><span class="t-rev-inl t-since-cxx17"><span>（这只有在启用 <a href="syntax_option_type.html" title="cpp/regex/syntax option type"><tt>std::regex_constants::multiline</tt></a><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> 时才会得到保证）</span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span></div>
+<div class="t-li1"><span class="t-li">2)</span> 输入的结尾（除非启用 <span class="t-lc"><a href="match_flag_type.html" title="cpp/regex/match flag type">std::regex_constants::match_not_bol</a></span><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>）</div>
+<p>在上面两个断言和下面的原子 <code><b>.</b></code> 中，<i>行终止符</i> ﻿是下列四个字符之一： <code>U+000A</code> （<code>\n</code> 或换行）、<code>U+000D</code>（<code>\r</code> 或回车）、<code>U+2028</code>（行分隔符）或 <code>U+2029</code>（段分隔符）
+</p><p>断言 <code><b>\b</b></code>（词边界）匹配
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 词的起始（当前字符为字母、数字或下划线，而前一字符不是）</div>
+<div class="t-li1"><span class="t-li">2)</span> 词的结尾（当前字符不是字母、数字或下划线，而前一字符是这些之一）</div>
+<div class="t-li1"><span class="t-li">3)</span> 输入的起始，若首字符为字母、数字或下划线（除非启用 <span class="t-lc"><a href="match_flag_type.html" title="cpp/regex/match flag type">std::regex_constants::match_not_bow</a></span><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ）</div>
+<div class="t-li1"><span class="t-li">4)</span> 输入的结尾，若末字符为字母、数字或下划线（除非启用 <span class="t-lc"><a href="match_flag_type.html" title="cpp/regex/match flag type">std::regex_constants::match_not_eow</a></span><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ）</div>
+<p>断言 <code><b>\B</b></code> （反词边界）匹配所有字符，<b>除了</b>下列内容
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 词的起始（当前字符是字母、数字或下划线，而前一字符不是这些之一或不存在）</div>
+<div class="t-li1"><span class="t-li">2)</span> 词的结尾（当前字符不是字母、数字或下划线（或匹配者在输入结尾），前一字符是这些之一）</div>
+<p>如果<i>析取</i> ﻿会匹配在当前位置的输入，那么断言 <code><b>(</b></code> <code><b>?</b></code> <code><b>=</b></code> <i>析取</i> <code><b>)</b></code>（零宽正前瞻）匹配。
+</p><p>如果<i>析取</i> ﻿<b>不</b>会匹配在当前位置的的输入，那么断言 <code><b>(</b></code> <code><b>?</b></code> <code><b>!</b></code> <i>析取</i> <code><b>)</b></code>（零宽负前瞻）匹配。
+</p><p>对于两个前瞻断言，在匹配<i>析取</i> ﻿时，不在匹配剩余正则表达式之前令位置前进。另外，如果<i>析取</i> ﻿能以多种方式在当前位置匹配，那么只尝试第一个。
+</p><p>ECMAScript 禁止回撤到前瞻析取中，这影响到来自剩余正则表达式的正前瞻中的回溯引用（见下方示例）。到来自剩余正则表达式的负前瞻中的回溯引用始终没有定义（因为前瞻断言必定无法继续）。
+</p><p>注意：前瞻断言可用于创建多个正则表达式间的逻辑与（见下方示例）。
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;regex&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+ 
+<span class="kw4">void</span> show_matches<span class="br0">(</span><span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> in, <span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy3">&amp;</span> re<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="match_results.html"><span class="kw2014">std::<span class="me2">smatch</span></span></a> m<span class="sy4">;</span>
+    <a href="regex_search.html"><span class="kw2017">std::<span class="me2">regex_search</span></span></a><span class="br0">(</span>in, m, <a href="basic_regex.html"><span class="kw2004">std::<span class="me2">regex</span></span></a><span class="br0">(</span>re<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>m.<span class="me1">empty</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  "</span>
+                     <span class="st0">"prefix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">prefix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>  smatch: "</span><span class="sy4">;</span>
+        <span class="kw1">for</span> <span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> n <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> n <span class="sy1">&lt;</span> m.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="sy2">++</span>n<span class="br0">)</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"m["</span> <span class="sy1">&lt;&lt;</span> n <span class="sy1">&lt;&lt;</span> <span class="st0">"]=["</span> <span class="sy1">&lt;&lt;</span> m<span class="br0">[</span>n<span class="br0">]</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"] "</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>  suffix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">suffix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"]<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">else</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> <span class="st0">"]: NO MATCH<span class="es1">\n</span>"</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 在输入结尾匹配 a</span>
+    show_matches<span class="br0">(</span><span class="st0">"aaa"</span>, <span class="st0">"a$"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 在第一个词结尾匹配 o</span>
+    show_matches<span class="br0">(</span><span class="st0">"moo goo gai pan"</span>, <span class="st0">"o<span class="es1">\\</span>b"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 前瞻匹配立即在第一个 b 之后的空字符串</span>
+    <span class="co1">// 这以 "aaa" 填充 m[1]，尽管 m[0] 为空</span>
+    show_matches<span class="br0">(</span><span class="st0">"baaabac"</span>, <span class="st0">"(?=(a+))"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 因为禁止回溯引用回撤到前瞻中，</span>
+    <span class="co1">// 这匹配 aba 而非 aaaba</span>
+    show_matches<span class="br0">(</span><span class="st0">"baaabac"</span>, <span class="st0">"(?=(a+))a*b<span class="es1">\\</span>1"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 经由前瞻的逻辑与：此密码匹配，若它含有</span>
+    <span class="co1">// 至少一个小写字母</span>
+    <span class="co1">// 与 至少一个大写字母</span>
+    <span class="co1">// 与 至少一个标点字符</span>
+    <span class="co1">// 与 至少有 6 个字符长</span>
+    show_matches<span class="br0">(</span><span class="st0">"abcdef"</span>, <span class="st0">"(?=.*[[:lower:]])(?=.*[[:upper:]])(?=.*[[:punct:]]).{6,}"</span><span class="br0">)</span><span class="sy4">;</span>
+    show_matches<span class="br0">(</span><span class="st0">"aB,def"</span>, <span class="st0">"(?=.*[[:lower:]])(?=.*[[:upper:]])(?=.*[[:punct:]]).{6,}"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">input=[aaa], regex=[a$]
+  prefix=[aa]
+  smatch: m[0]=[a] 
+  suffix=[]
+input=[moo goo gai pan], regex=[o\b]
+  prefix=[mo]
+  smatch: m[0]=[o] 
+  suffix=[ goo gai pan]
+input=[baaabac], regex=[(?=(a+))]
+  prefix=[b]
+  smatch: m[0]=[] m[1]=[aaa] 
+  suffix=[aaabac]
+input=[baaabac], regex=[(?=(a+))a*b\1]
+  prefix=[baa]
+  smatch: m[0]=[aba] m[1]=[a] 
+  suffix=[c]
+input=[abcdef], regex=[(?=.*[[:lower:]])(?=.*[[:upper:]])(?=.*[[:punct:]]).{6,}]: NO MATCH
+input=[aB,def], regex=[(?=.*[[:lower:]])(?=.*[[:upper:]])(?=.*[[:punct:]]).{6,}]
+  prefix=[]
+  smatch: m[0]=[aB,def] 
+  suffix=[]</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.8E.9F.E5.AD.90">原子</span></h3>
+<p><i>原子</i> ﻿可以是下列之一：
+</p><p><i>原子</i> ::
+</p>
+<dl><dd> <i>模式字符</i>
+</dd><dd> <code><b>.</b></code>
+</dd><dd> <code><b>\</b></code> <i>原子转义</i>
+</dd><dd> <i>字符类</i>
+</dd><dd> <code><b>(</b></code> <i>析取</i> <code><b>)</b></code>
+</dd><dd> <code><b>(</b></code> <code><b>?</b></code> <code><b>:</b></code> <i>析取</i> <code><b>)</b></code>
+</dd></dl>
+<p>其中
+<i>原子转义</i> ::
+</p>
+<dl><dd> <i>数字转义</i>
+</dd><dd> <i>字符转义</i>
+</dd><dd> <i>字符类转义</i>
+</dd></dl>
+<p>不同种类的原子求值方式不同。
+</p>
+<h3><span class="mw-headline" id=".E5.AD.90.E8.A1.A8.E8.BE.BE.E5.BC.8F">子表达式</span></h3>
+<p><i>原子</i> <code><b>(</b></code> <i>析取</i> <code><b>)</b></code> 是有标记表达式：它执行<i>析取</i> ﻿并存储<i>析取</i> ﻿所消耗的输入子串于子匹配数组，下标对应在此点已遇到的整个正则表达式中，有标记子表达式的左开括号 <code><b>(</b></code> 次数。
+</p><p>除了在 <span class="t-lc"><a href="match_results.html" title="cpp/regex/match results">std::match_results</a></span> 中返回外，捕获的子匹配还可作为回溯引用（<code>\1</code>、<code>\2</code> ……）访问，并在正则表达式中引用它们。注意 <span class="t-lc"><a href="regex_replace.html" title="cpp/regex/regex replace">std::regex_replace</a></span> 以同 String.prototype.replace (ECMA-262, part 15.5.4.11) 的方式，对于回溯引用以 <code>$</code> 代替 <code>\</code>（<code>$1</code>、<code>$2</code> ……）。
+</p><p><i>原子</i> <code><b>(</b></code> <code><b>?</b></code> <code><b>:</b></code> <i>析取</i> <code><b>)</b></code> （非标记子表达式）简单地求值<i>析取</i> ﻿并不存储其结果于子匹配。这单纯是词法分组。
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：暂无示例 </td></tr></table>
+<h3><span class="mw-headline" id=".E5.9B.9E.E6.BA.AF.E5.BC.95.E7.94.A8">回溯引用</span></h3>
+<p><i>数字转义</i> ::
+</p>
+<dl><dd> <i>十进制整数字面量</i> [<i>前瞻</i> ∉ <i>十进制位</i>]
+</dd></dl>
+<p>如果 <code><b>\</b></code> 后随首位非 <code>0</code> 的十进制数 <code>N</code>，那么认为该转义序列为<i>回溯引用</i>。通过在每个数位上调用 <span class="t-lc"><a href="regex_traits/value.html" title="cpp/regex/regex traits/value">std::regex_traits::value</a></span><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> 并用底 10 算术组合及其结果获得 <code>N</code>。如果 <code>N</code> 大于整个正则表达式中捕获括号的总数，那么就是错误。
+</p><p>回溯引用 <code>\N</code> 作为原子出现时，它匹配当前存储于子匹配数组中第 N 个元素的子串。
+</p><p>十进制转义 <code>\0</code> <b>不</b>是回溯引用：它是表示空字符的字符转义。它不能为十进制数所后随。
+</p><p>如上，注意 <span class="t-lc"><a href="regex_replace.html" title="cpp/regex/regex replace">std::regex_replace</a></span> 对于回溯引用以 <code>$</code> 代替 <code>\</code>（<code>$1</code>、<code>$2</code> ……）。
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：暂无示例 </td></tr></table>
+<h3><span class="mw-headline" id=".E5.8D.95.E5.AD.97.E7.AC.A6.E5.8C.B9.E9.85.8D">单字符匹配</span></h3>
+<p><i>原子</i> <code><b>.</b></code> 匹配并消耗来自输入序列的任一字符，除了<i>行终止符</i>（<code>U+000A</code>、<code>U+000D</code>、<code>U+2028</code> 或 <code>U+2029</code>）
+</p><p><i>原子</i> <i>模式字符</i> ，其中<i>模式字符</i> ﻿是任意<i>源字符</i> ，<b>除了</b>字符 <code><b>^ $ \ . * + ? ( ) [ ] { } |</b></code>，匹配并消耗一个来自输入的字符，如果它等于此<i>模式字符</i>。
+</p><p>这个及所有其他单字符匹配定义如下：
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 如果设置了 <span class="t-lc"><a href="syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::icase</a></span>，那么在 <span class="t-lc"><a href="regex_traits/translate_nocase.html" title="cpp/regex/regex traits/translate nocase">std::regex_traits::translate_nocase</a></span> 的返回值相等时字符相等。<span class="t-mark" style="white-space: nowrap;">(仅 C++)</span></div>
+<div class="t-li1"><span class="t-li">2)</span> 否则，如果设置了 <span class="t-lc"><a href="syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::collate</a></span>，那么在 <span class="t-lc"><a href="regex_traits/translate.html" title="cpp/regex/regex traits/translate">std::regex_traits::translate</a></span> 的返回值相等时字符相等。<span class="t-mark" style="white-space: nowrap;">(仅 C++)</span></div>
+<div class="t-li1"><span class="t-li">3 )</span> 否则，如果 operator== 返回 true，那么字符相等。</div>
+<p>每个由转义字符 <code><b>\</b></code> 后随<i>字符转义</i> ﻿的<i>原子</i>，还有特殊十进制转义 <code><b>\0</b></code>，匹配消耗一个来自输入的字符，如果它等于<i>字符转义</i> ﻿所表示的字符。辨识下列字符转义序列：
+</p><p><i>字符转义</i> ::
+</p>
+<dl><dd> <i>控制转义</i>
+</dd><dd> <code><b>c</b></code> <i>控制字母</i>
+</dd><dd> <i>十六进制转义序列</i>
+</dd><dd> <i>Unicode 转义序列</i>
+</dd><dd> <i>恒等转义</i>
+</dd></dl>
+<p>此处<i>控制转义</i> ﻿是下列五个字符之一：<code><b>f n r t v</b></code>
+</p>
+<table class="wikitable">
+
+<tr>
+<th>控制转义</th>
+<th>编码单元</th>
+<th>名称
+</th></tr>
+<tr>
+<td> <code><b>f</b></code>
+</td>
+<td> U+000C
+</td>
+<td> 换页
+</td></tr>
+<tr>
+<td> <code><b>n</b></code>
+</td>
+<td> U+000A
+</td>
+<td> 换行
+</td></tr>
+<tr>
+<td> <code><b>r</b></code>
+</td>
+<td> U+000D
+</td>
+<td> 回车
+</td></tr>
+<tr>
+<td> <code><b>t</b></code>
+</td>
+<td> U+0009
+</td>
+<td> 水平制表
+</td></tr>
+<tr>
+<td> <code><b>v</b></code>
+</td>
+<td> U+000B
+</td>
+<td> 垂直制表
+</td></tr></table>
+<p><i>控制字母</i> ﻿是任何小写或大写 ASCII 字符，而此字符转义所匹配字符的编码单元等于<i>控制字母</i>的编码单元的值除以 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">32</span></span></span> <b>的余数</b>，例如 <code><b>\cD</b></code> 和 <code><b>\cd</b></code> 都匹配编码单元 <code>U+0004</code> (EOT)，因为 'D' 是 <code>U+0044</code> 而 <code>0x44 % 32 == 4</code> 并且 'd' 是 <code>U+0064</code> 而 <code>0x64 % 32 == 4</code>。
+</p><p><i>十六进制转义序列</i> ﻿是字母 <code><b>x</b></code> 后随准确二个<i>十六进制位</i>（其中<i>十六进制位</i> ﻿是 <code><b>0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F</b></code> 之一）。此字符转义所匹配字符的编码单元等于二位十六进制数的数值。
+</p><p><i>Unicode 转义序列</i> ﻿是字母 <code><b>u</b></code> 后随准确四个<i>十六进制位</i>。此字符转义所匹配字符的编码单元等于此四位十六进制数的数值。如果该值不适于此 <span class="t-lc"><a href="basic_regex.html" title="cpp/regex/basic regex">std::basic_regex</a></span> 的 CharT，那么就会抛出 <span class="t-lc"><a href="regex_error.html" title="cpp/regex/regex error">std::regex_error</a></span> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>。
+</p><p><i>恒等转义</i> 能为任何非字母数字的字符：例如另一反斜杠。它照原样匹配字符。
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;regex&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+ 
+<span class="kw4">void</span> show_matches<span class="br0">(</span><span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1235">std::<span class="me2">wstring</span></span></a><span class="sy3">&amp;</span> in, <span class="kw4">const</span> <a href="../string/basic_string.html"><span class="kw1235">std::<span class="me2">wstring</span></span></a><span class="sy3">&amp;</span> re<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="match_results.html"><span class="kw2015">std::<span class="me2">wsmatch</span></span></a> m<span class="sy4">;</span>
+    <a href="regex_search.html"><span class="kw2017">std::<span class="me2">regex_search</span></span></a><span class="br0">(</span>in, m, <a href="basic_regex.html"><span class="kw2005">std::<span class="me2">wregex</span></span></a><span class="br0">(</span>re<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>m.<span class="me1">empty</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1763">std::<span class="me2">wcout</span></span></a> <span class="sy1">&lt;&lt;</span> L<span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> L<span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> L<span class="st0">"]<span class="es1">\n</span>  "</span>
+                      L<span class="st0">"prefix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">prefix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> L<span class="st0">"]<span class="es1">\n</span>  wsmatch: "</span><span class="sy4">;</span>
+        <span class="kw1">for</span> <span class="br0">(</span><a href="../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> n <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> n <span class="sy1">&lt;</span> m.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="sy2">++</span>n<span class="br0">)</span>
+            <a href="../io/cout.html"><span class="kw1763">std::<span class="me2">wcout</span></span></a> <span class="sy1">&lt;&lt;</span> L<span class="st0">"m["</span> <span class="sy1">&lt;&lt;</span> n <span class="sy1">&lt;&lt;</span> L<span class="st0">"]=["</span> <span class="sy1">&lt;&lt;</span> m<span class="br0">[</span>n<span class="br0">]</span> <span class="sy1">&lt;&lt;</span> L<span class="st0">"] "</span><span class="sy4">;</span>
+        <a href="../io/cout.html"><span class="kw1763">std::<span class="me2">wcout</span></span></a> <span class="sy1">&lt;&lt;</span> L<span class="st0">"<span class="es1">\n</span>  suffix=["</span> <span class="sy1">&lt;&lt;</span> m.<span class="me1">suffix</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> L<span class="st0">"]<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">else</span>
+        <a href="../io/cout.html"><span class="kw1763">std::<span class="me2">wcout</span></span></a> <span class="sy1">&lt;&lt;</span> L<span class="st0">"input=["</span> <span class="sy1">&lt;&lt;</span> in <span class="sy1">&lt;&lt;</span> <span class="st0">"], regex=["</span> <span class="sy1">&lt;&lt;</span> re <span class="sy1">&lt;&lt;</span> L<span class="st0">"]: NO MATCH<span class="es1">\n</span>"</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// 大多数转义类似 C++ ，为元字符保存。你将需要在斜杠情形使用双重转义或未处理字符串。</span>
+    show_matches<span class="br0">(</span><span class="st0">"C++<span class="es1">\\</span>"</span>, R<span class="st0">"(C\+\+<span class="es1">\\</span>)"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 转义序列与 NUL 。</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s<span class="br0">(</span><span class="st0">"ab<span class="es2">\xff</span><span class="es5">\0</span>cd"</span>, <span class="nu0">5</span><span class="br0">)</span><span class="sy4">;</span>
+    show_matches<span class="br0">(</span>s, <span class="st0">"(<span class="es1">\\</span>0|<span class="es1">\\</span>u00ff)"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// 没有定义非 BMP Unicode 的匹配，因为 ECMAScript 使用 UTF-16 原子。</span>
+    <span class="co1">// 此 emoji 香蕉是否匹配能为平台依赖：</span>
+    <span class="co1">// XXX ：这些需要为宽字符串！</span>
+    <span class="co1">// show_matches(L"\U0001f34c", L"[\\u0000-\\ufffe]+");</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">
+input=[C++\], regex=[C\+\+\\]
+  prefix=[]
+  wsmatch: m[0]=[C++\]
+  suffix=[]
+input=[ab?c], regex=[(\0{{!}}\u00ff)]
+  prefix=[ab]
+  wsmatch: m[0]=[?] m[1]=[?]
+  suffix=[c]
+input=[?], regex=[[\u0000-\ufffe]+]: NO MATCH
+</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id=".E5.AD.97.E7.AC.A6.E7.B1.BB">字符类</span></h3>
+<p>原子能表示字符类，即它会匹配并消耗一个字符，若该字符属于预定义的字符组之一。
+</p><p>字符类能通过字符类转义引入：
+</p><p><i>原子</i> ::
+</p>
+<dl><dd> <code><b>\</b></code> <i>字符类转义</i>
+</dd></dl>
+<p>或直接为
+</p><p><i>原子</i> ::
+</p>
+<dl><dd> <i>字符类</i>
+</dd></dl>
+<p>字符类转义是一些常用字符类的简洁写法，如下：
+</p>
+<table class="wikitable">
+
+<tr>
+<th>字符类转义</th>
+<th>类名表达式<span class="t-mark" style="white-space: nowrap;">(仅 C++)</span></th>
+<th>含义
+</th></tr>
+<tr>
+<td> <code><b>d</b></code>
+</td>
+<td> <code><b>[[:digit:]]</b></code>
+</td>
+<td> 数字
+</td></tr>
+<tr>
+<td> <code><b>D</b></code>
+</td>
+<td> <code><b>[^[:digit:]]</b></code>
+</td>
+<td> 非数字
+</td></tr>
+<tr>
+<td> <code><b>s</b></code>
+</td>
+<td> <code><b>[[:space:]]</b></code>
+</td>
+<td> 空白字符
+</td></tr>
+<tr>
+<td> <code><b>S</b></code>
+</td>
+<td> <code><b>[^[:space:]]</b></code>
+</td>
+<td> 非空白字符
+</td></tr>
+<tr>
+<td> <code><b>w</b></code>
+</td>
+<td> <code><b>[_[:alnum:]]</b></code>
+</td>
+<td> 字母数字字符及字符 <code><b>_</b></code>
+</td></tr>
+<tr>
+<td> <code><b>W</b></code>
+</td>
+<td> <code><b>[^_[:alnum:]]</b></code>
+</td>
+<td> 异于字母数字或 <code><b>_</b></code> 的字符
+</td></tr></table><span style="font-size:0.8em; line-height:125%">C++ 中这些字符类转义的准确含义以依赖本地环境的具名字符类定义，而非通过显式列举同 ECMAScript 中的可接受字符。</span>
+<p><i>字符类</i> ﻿是方括号环绕的<i>类范围</i> ﻿序列，可选地以取反运算符 <code><b>^</b></code> 开始。如果它始于 <code><b>^</b></code> ，那么此<i>原子</i> ﻿匹配任何<b>不在</b>所有<i>类范围</i> ﻿的并所表示的字符集合中的字符。否则，此<i>原子</i> ﻿匹配任何<b>在</b>所有<i>类范围</i> ﻿的并所表示的字符集合中的字符。
+</p><p><i>字符类</i> ::
+</p>
+<dl><dd> <code><b>[</b></code> <code><b>[</b></code> <i>前瞻 ∉ {</i><code><b>^</b></code><i>}]</i> <i>类范围</i> <code><b>]</b></code>
+</dd><dd> <code><b>[</b></code> <code><b>^</b></code> <i>类范围</i> <code><b>]</b></code>
+</dd></dl>
+<p><i>类范围</i> ::
+</p>
+<dl><dd> [空]
+</dd><dd> <i>非空类范围</i>
+</dd></dl>
+<p><i>非空类范围</i> ::
+</p>
+<dl><dd> <i>类原子</i>
+</dd><dd> <i>类原子</i> <i>非空无连字符类范围</i>
+</dd><dd> <i>类原子</i> - <i>类原子</i> <i>类范围</i>
+</dd></dl>
+<p>如果非空类范围拥有形式 <code><b><i>ClassAtom</i> - <i>ClassAtom</i></b></code>，那么它匹配来自定义如下的范围的任何字符：<span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>
+</p><p>首个<i>类原子</i> ﻿必须匹配单个校排元素 <code>c1</code>，而第二个<i>类原子</i> ﻿必须匹配单个校排元素 <code>c2</code>。采用下列步骤，测试此范围是否匹配输入字符 <code>c</code>：
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 如果 <span class="t-lc"><a href="syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::collate</a></span> 不打开，那么通过直接比较编码点匹配字符：<code>c1 &lt;= c &amp;&amp; c &lt;= c2</code> 时匹配 <code>c</code></div>
+<div class="t-li1"><span class="t-li">2)</span> 否则（如果启用 <span class="t-lc"><a href="syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::collate</a></span>）：</div>
+<div class="t-li2"><span class="t-li">1)</span> 如果启用 <span class="t-lc"><a href="syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::icase</a></span>，那么传递所有三个字符（<code>c</code>、<code>c1</code> 及 <code>c2</code>）给 <span class="t-lc"><a href="regex_traits/translate_nocase.html" title="cpp/regex/regex traits/translate nocase">std::regex_traits::translate_nocase</a></span></div>
+<div class="t-li2"><span class="t-li">2)</span> 否则（如果未设置 <span class="t-lc"><a href="syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::icase</a></span>），那么传递所有三个字符（<code>c</code>、<code>c1</code> 及 <code>c2</code>）给 <span class="t-lc"><a href="regex_traits/translate.html" title="cpp/regex/regex traits/translate">std::regex_traits::translate</a></span></div>
+<div class="t-li1"><span class="t-li">3)</span> 用 <span class="t-lc"><a href="regex_traits/transform.html" title="cpp/regex/regex traits/transform">std::regex_traits::transform</a></span> 比较结果字符串，而在 <code>transformed c1 &lt;= transformed c &amp;&amp; transformed c &lt;= transformed c2</code> 时匹配 <code>c</code></div>
+<p>按字面对待字符 <code><b>-</b></code>，如果它是下列之一
+</p>
+<ul><li> <i>类范围</i> ﻿的首或末字符
+</li><li> 杠分隔范围规定的开始或结尾类原子
+</li><li> 立即在杠分隔范围规定之后。
+</li><li> 以反斜杠转义为<i>字符转义</i>
+</li></ul>
+<p><i>非空无连字符类范围</i> ::
+</p>
+<dl><dd> <i>类原子</i>
+</dd><dd> <i>无连字符类原子</i> <i>非空无连字符类范围</i>
+</dd><dd> <i>无连字符类原子</i> - <i>类原子</i> <i>类范围</i>
+</dd></dl>
+<p><i>类原子</i> ::
+</p>
+<dl><dd> <code><b>-</b></code>
+</dd><dd> <i>无连字符类原子</i>
+</dd><dd> <i>扩展类类原子</i> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>
+</dd><dd> <i>校排元素类原子</i> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>
+</dd><dd> <i>等价类原子</i><span class="t-mark" style="white-space: nowrap;">(仅 C++)</span>
+</dd></dl>
+<p><i>无连字符类原子</i> ::
+</p>
+<dl><dd> <i>源字符</i>（<code><b>\ ] -</b></code> 除外）
+</dd><dd> <code><b>\</b></code> <i>类转义</i>
+</dd></dl>
+<p>每个<i>无连字符类原子</i> ﻿表示单个字符——原状的<i>源字符</i> ﻿或转义如下的字符：
+</p><p><i>类转义</i> ::
+</p>
+<dl><dd> <i>数字转义</i>
+</dd><dd> <code><b>b</b></code>
+</dd><dd> <i>字符转义</i>
+</dd><dd> <i>字符类转义</i>
+</dd></dl>
+<p>特殊的<i>类转义</i> <code><b>\b</b></code> 产生匹配编码单元 U+0008（退格）的字符集。在<i>字符类</i> ﻿外，它是词边界<i>断言</i>。
+</p><p><i>字符类</i> ﻿内，<code><b>\B</b></code> 的使用和任何回溯引用（异于零的<i>十进制转义</i>）都是错误。
+</p><p>为将字符 <code><b>-</b></code> 和 <code><b>]</b></code> 当做原子，一些情形中需要转义它们。其他拥有在<i>字符类</i> ﻿外的特殊含义的字符，例如 <code><b>*</b></code> 或 <code><b>?</b></code>，不需要转义。
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：暂无示例 </td></tr></table>
+<h3><span class="mw-headline" id=".E5.9F.BA.E4.BA.8E_POSIX_.E7.9A.84.E5.AD.97.E7.AC.A6.E7.B1.BB">基于 POSIX 的字符类</span></h3>
+<p>这些字符类是对 ECMAScript 语法的扩展，并等价于 POSIX 正则表达式中找到的字符类。
+</p><p><i>扩展类类原子</i> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ::
+</p>
+<dl><dd> <code><b>[:</b></code> <i>类名</i> <code><b>:]</b></code>
+</dd></dl>
+<p>表示所有具名字符类<i>类名</i> ﻿中的成员。仅若 <span class="t-lc"><a href="regex_traits/lookup_classname.html" title="cpp/regex/regex traits/lookup classname">std::regex_traits::lookup_classname</a></span> 对此名称返回非零字符串，名称才合法。如 <span class="t-lc"><a href="regex_traits/lookup_classname.html" title="cpp/regex/regex traits/lookup classname">std::regex_traits::lookup_classname</a></span> 中描述，保证辨识下列名称：<code><b>alnum, alpha, blank, cntrl, digit, graph, lower, print, punct, space, upper, xdigit, d, s, w</b></code>。额外的名称（如日文中的 <code><b>jdigit</b></code> 或 <code><b>jkanji</b></code> ）可为系统提供的本地环境提供，或实现为用户定义的扩展：
+</p><p><i>校排元素类原子</i> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ::
+</p>
+<dl><dd> <code><b>[.</b></code> <i>类名</i> <code><b>.]</b></code>
+</dd></dl>
+<p>表示具名校排元素，它可表示单个字符，或在浸染的本地环境下作为单个单位校排的字符序列，例如 <code>[.tilde.]</code> 或捷克文中的 <code>[.ch.]</code>。只有在 <span class="t-lc"><a href="regex_traits/lookup_collatename.html" title="cpp/regex/regex traits/lookup collatename">std::regex_traits::lookup_collatename</a></span> 不是空字符串名称时才合法。
+</p><p>使用 <span class="t-lc"><a href="syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::collate</a></span> 时，始终能以对照元素为范围的端点（例如匈牙利文中的 <code>[[.dz.]-g]</code>）。
+</p><p><i>等价类原子</i> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ::
+</p>
+<dl><dd> <code><b>[=</b></code> <i>类名</i> <code><b>=]</b></code>
+</dd></dl>
+<p>表示与具名校排元素相同的等价类的所有成员字符，即它的主校排键与校排元素<i>类名</i> ﻿所拥有者相同的字符。只有在 <span class="t-lc"><a href="regex_traits/lookup_collatename.html" title="cpp/regex/regex traits/lookup collatename">std::regex_traits::lookup_collatename</a></span> 对该名称返回非空字符串，且 <span class="t-lc"><a href="regex_traits/transform_primary.html" title="cpp/regex/regex traits/transform primary">std::regex_traits::transform_primary</a></span> 对调用 <span class="t-lc"><a href="regex_traits/lookup_collatename.html" title="cpp/regex/regex traits/lookup collatename">std::regex_traits::lookup_collatename</a></span> 的结果的返回值不是空字符串时名称才合法。
+</p><p>主排序键是忽略大小写、标音符或本地环境限定裁剪的键；因此例如 <code></code> 匹配任何这些字符之一：<code>a, À, Á, Â, Ã, Ä, Å, A, à, á, â, ã, ä</code> 和 <code>å</code>。
+</p><p><i>类名</i> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ::
+</p>
+<dl><dd> 类名字符
+</dd><dd> 类名字符 类名
+</dd></dl>
+<p><i>类名字符</i> <span class="t-mark" style="white-space: nowrap;">(仅 C++)</span> ::
+</p>
+<dl><dd> <i>源字符</i> （<code><b>. = :</b></code> 除外）
+</dd></dl>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：暂无示例 </td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 5083/1000000
+Preprocessor generated node count: 13434/1000000
+Post‐expand include size: 113751/4194304 bytes
+Template argument size: 41918/4194304 bytes
+Highest expansion depth: 19/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:10252-0!*!0!!zh!*!zh!* and timestamp 20250318193816 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/regex/ecmascript&amp;oldid=93538">https://zh.cppreference.com/mwiki/index.php?title=cpp/regex/ecmascript&amp;oldid=93538</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/regex/ecmascript">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2024年8月18日 (星期日) 02:10。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<!-- Served in 3.092 secs. -->
+	</body>
+<!-- Cached 20250318193816 -->
+</html>

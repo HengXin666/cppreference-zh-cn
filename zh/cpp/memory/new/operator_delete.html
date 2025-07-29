@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>operator delete, operator delete[]</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/memory/new/operator_delete","wgTitle":"cpp/memory/new/operator delete","wgCurRevisionId":99446,"wgArticleId":2957,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/memory/new/operator_delete","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_memory_new_operator_delete skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">operator</span> delete<span style="font-size:0.8em; line-height:125%">, operator</span> delete[]</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../memory.html" title="cpp/memory">memory</a>‎ | <a href="../new.html" title="cpp/memory/new">new</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../utility.html" title="cpp/utility">工具库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility/feature_test.html" title="cpp/utility/feature test">库功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../types.html" title="cpp/types">类型支持</a>（基本类型、RTTI）</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility/program.html" title="cpp/utility/program">程序工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility/variadic.html" title="cpp/utility/variadic">可变参数函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../types/is_constant_evaluated.html" title="cpp/types/is constant evaluated"><span class="t-lines"><span>is_constant_evaluated</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../types/is_within_lifetime.html" title="cpp/types/is within lifetime"><span class="t-lines"><span>is_within_lifetime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/initializer_list.html" title="cpp/utility/initializer list"><span class="t-lines"><span>initializer_list</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/source_location.html" title="cpp/utility/source location"><span class="t-lines"><span>source_location</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../coroutine.html" title="cpp/coroutine">协程支持</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../contract.html" title="cpp/contract">契约支持</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../utility.html#.E4.B8.89.E8.B7.AF.E6.AF.94.E8.BE.83" title="cpp/utility">三路比较</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/three_way_comparable.html" title="cpp/utility/compare/three way comparable"><span class="t-lines"><span>three_way_comparable</span><span>three_way_comparable_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/strong_ordering.html" title="cpp/utility/compare/strong ordering"><span class="t-lines"><span>strong_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/weak_ordering.html" title="cpp/utility/compare/weak ordering"><span class="t-lines"><span>weak_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/partial_ordering.html" title="cpp/utility/compare/partial ordering"><span class="t-lines"><span>partial_ordering</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/common_comparison_category.html" title="cpp/utility/compare/common comparison category"><span class="t-lines"><span>common_comparison_category</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/compare_three_way_result.html" title="cpp/utility/compare/compare three way result"><span class="t-lines"><span>compare_three_way_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/compare_three_way.html" title="cpp/utility/compare/compare three way"><span class="t-lines"><span>compare_three_way</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/strong_order.html" title="cpp/utility/compare/strong order"><span class="t-lines"><span>strong_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/weak_order.html" title="cpp/utility/compare/weak order"><span class="t-lines"><span>weak_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/partial_order.html" title="cpp/utility/compare/partial order"><span class="t-lines"><span>partial_order</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/compare_strong_order_fallback.html" title="cpp/utility/compare/compare strong order fallback"><span class="t-lines"><span>compare_strong_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/compare_weak_order_fallback.html" title="cpp/utility/compare/compare weak order fallback"><span class="t-lines"><span>compare_weak_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/compare_partial_order_fallback.html" title="cpp/utility/compare/compare partial order fallback"><span class="t-lines"><span>compare_partial_order_fallback</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/named_comparison_functions.html" title="cpp/utility/compare/named comparison functions"><span class="t-lines"><span>is_eq</span><span>is_lt</span><span>is_lteq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/compare/named_comparison_functions.html" title="cpp/utility/compare/named comparison functions"><span class="t-lines"><span>is_neq</span><span>is_gt</span><span>is_gteq</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5">通用工具</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../../utility/functional.html" title="cpp/utility/functional">函数对象</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility/bit.html" title="cpp/utility/bit">位操纵</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/bitset.html" title="cpp/utility/bitset"><span class="t-lines"><span>bitset</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/hash.html" title="cpp/utility/hash"><span class="t-lines"><span>hash</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../utility.html#.E5.85.B3.E7.B3.BB.E8.BF.90.E7.AE.97.E7.AC.A6" title="cpp/utility">关系运算符</a> <span class="t-mark-rev t-deprecated-cxx20" style="white-space: nowrap;">(C++20 弃用)</span></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/rel_ops/operator_cmp.html" title="cpp/utility/rel ops/operator cmp"><span class="t-lines"><span>rel_ops::operator!=</span><span>rel_ops::operator&gt;</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/rel_ops/operator_cmp.html" title="cpp/utility/rel ops/operator cmp"><span class="t-lines"><span>rel_ops::operator&lt;=</span><span>rel_ops::operator&gt;=</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../utility.html#.E6.95.B4.E6.95.B0.E6.AF.94.E8.BE.83.E5.87.BD.E6.95.B0" title="cpp/utility">整数比较函数</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/intcmp.html" title="cpp/utility/intcmp"><span class="t-lines"><span>cmp_equal</span><span>cmp_less</span><span>cmp_less_than</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/intcmp.html" title="cpp/utility/intcmp"><span class="t-lines"><span>cmp_not_equal</span><span>cmp_greater</span><span>cmp_greater_than</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/in_range.html" title="cpp/utility/in range"><span class="t-lines"><span>in_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../utility.html#.E4.BA.A4.E6.8D.A2" title="cpp/utility">交换</a>与<a href="../../utility.html#.E7.B1.BB.E5.9E.8B.E8.BF.90.E7.AE.97" title="cpp/utility">类型运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/swap.html" title="cpp/algorithm/swap"><span class="t-lines"><span>swap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/ranges/swap.html" title="cpp/utility/ranges/swap"><span class="t-lines"><span>ranges::swap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/exchange.html" title="cpp/utility/exchange"><span class="t-lines"><span>exchange</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/declval.html" title="cpp/utility/declval"><span class="t-lines"><span>declval</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/to_underlying.html" title="cpp/utility/to underlying"><span class="t-lines"><span>to_underlying</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/forward.html" title="cpp/utility/forward"><span class="t-lines"><span>forward</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/forward_like.html" title="cpp/utility/forward like"><span class="t-lines"><span>forward_like</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/move.html" title="cpp/utility/move"><span class="t-lines"><span>move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/move_if_noexcept.html" title="cpp/utility/move if noexcept"><span class="t-lines"><span>move_if_noexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/as_const.html" title="cpp/utility/as const"><span class="t-lines"><span>as_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">常用词汇类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/pair.html" title="cpp/utility/pair"><span class="t-lines"><span>pair</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/tuple.html" title="cpp/utility/tuple"><span class="t-lines"><span>tuple</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/optional.html" title="cpp/utility/optional"><span class="t-lines"><span>optional</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/any.html" title="cpp/utility/any"><span class="t-lines"><span>any</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/variant.html" title="cpp/utility/variant"><span class="t-lines"><span>variant</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/tuple_size.html" title="cpp/utility/tuple size"><span class="t-lines"><span>tuple_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/tuple_element.html" title="cpp/utility/tuple element"><span class="t-lines"><span>tuple_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/apply.html" title="cpp/utility/apply"><span class="t-lines"><span>apply</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/make_from_tuple.html" title="cpp/utility/make from tuple"><span class="t-lines"><span>make_from_tuple</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/expected.html" title="cpp/utility/expected"><span class="t-lines"><span>expected</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../memory.html" title="cpp/memory">内存管理库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../voidify.html" title="cpp/memory/voidify"><span class="t-lines"><span><i>voidify</i></span></span></a></div><div><span class="t-lines"><span><span class="t-mark t-mark-expos" style="white-space: nowrap;">(<span title="此定义仅用于展示。实现不需要通过这种方式定义实体。此实体的名字未指定。">仅用于阐述*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E5.88.86.E9.85.8D.E5.99.A8" title="cpp/memory">分配器</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../allocator.html" title="cpp/memory/allocator"><span class="t-lines"><span>allocator</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../allocator_traits.html" title="cpp/memory/allocator traits"><span class="t-lines"><span>allocator_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../allocation_result.html" title="cpp/memory/allocation result"><span class="t-lines"><span>allocation_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../scoped_allocator_adaptor.html" title="cpp/memory/scoped allocator adaptor"><span class="t-lines"><span>scoped_allocator_adaptor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../polymorphic_allocator.html" title="cpp/memory/polymorphic allocator"><span class="t-lines"><span>pmr::polymorphic_allocator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../allocator_arg.html" title="cpp/memory/allocator arg"><span class="t-lines"><span>allocator_arg</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uses_allocator.html" title="cpp/memory/uses allocator"><span class="t-lines"><span>uses_allocator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uses_allocator_construction_args.html" title="cpp/memory/uses allocator construction args"><span class="t-lines"><span>uses_allocator_construction_args</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../make_obj_using_allocator.html" title="cpp/memory/make obj using allocator"><span class="t-lines"><span>make_obj_using_allocator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_construct_using_allocator.html" title="cpp/memory/uninitialized construct using allocator"><span class="t-lines"><span>uninitialized_construct_using_allocator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.86.85.E5.AD.98.E7.AE.97.E6.B3.95" title="cpp/memory">未初始化内存算法</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_copy.html" title="cpp/memory/uninitialized copy"><span class="t-lines"><span>uninitialized_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_fill.html" title="cpp/memory/uninitialized fill"><span class="t-lines"><span>uninitialized_fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_move.html" title="cpp/memory/uninitialized move"><span class="t-lines"><span>uninitialized_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_copy_n.html" title="cpp/memory/uninitialized copy n"><span class="t-lines"><span>uninitialized_copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_fill_n.html" title="cpp/memory/uninitialized fill n"><span class="t-lines"><span>uninitialized_fill_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_move_n.html" title="cpp/memory/uninitialized move n"><span class="t-lines"><span>uninitialized_move_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../construct_at.html" title="cpp/memory/construct at"><span class="t-lines"><span>construct_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_default_construct.html" title="cpp/memory/uninitialized default construct"><span class="t-lines"><span>uninitialized_default_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_value_construct.html" title="cpp/memory/uninitialized value construct"><span class="t-lines"><span>uninitialized_value_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../destroy.html" title="cpp/memory/destroy"><span class="t-lines"><span>destroy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_default_construct_n.html" title="cpp/memory/uninitialized default construct n"><span class="t-lines"><span>uninitialized_default_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../uninitialized_value_construct_n.html" title="cpp/memory/uninitialized value construct n"><span class="t-lines"><span>uninitialized_value_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../destroy_n.html" title="cpp/memory/destroy n"><span class="t-lines"><span>destroy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../destroy_at.html" title="cpp/memory/destroy at"><span class="t-lines"><span>destroy_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E5.8F.97.E7.BA.A6.E6.9D.9F.E7.9A.84.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.86.85.E5.AD.98.E7.AE.97.E6.B3.95" title="cpp/memory">受约束的未初始化内存算法</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_copy.html" title="cpp/memory/ranges/uninitialized copy"><span class="t-lines"><span>ranges::uninitialized_copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_fill.html" title="cpp/memory/ranges/uninitialized fill"><span class="t-lines"><span>ranges::uninitialized_fill</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_move.html" title="cpp/memory/ranges/uninitialized move"><span class="t-lines"><span>ranges::uninitialized_move</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_copy_n.html" title="cpp/memory/ranges/uninitialized copy n"><span class="t-lines"><span>ranges::uninitialized_copy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code> </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_fill_n.html" title="cpp/memory/ranges/uninitialized fill n"><span class="t-lines"><span>ranges::uninitialized_fill_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_move_n.html" title="cpp/memory/ranges/uninitialized move n"><span class="t-lines"><span>ranges::uninitialized_move_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/construct_at.html" title="cpp/memory/ranges/construct at"><span class="t-lines"><span>ranges::construct_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_default_construct.html" title="cpp/memory/ranges/uninitialized default construct"><span class="t-lines"><span>ranges::uninitialized_default_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_value_construct.html" title="cpp/memory/ranges/uninitialized value construct"><span class="t-lines"><span>ranges::uninitialized_value_construct</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/destroy.html" title="cpp/memory/ranges/destroy"><span class="t-lines"><span>ranges::destroy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_default_construct_n.html" title="cpp/memory/ranges/uninitialized default construct n"><span class="t-lines"><span>ranges::uninitialized_default_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span><code> </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/uninitialized_value_construct_n.html" title="cpp/memory/ranges/uninitialized value construct n"><span class="t-lines"><span>ranges::uninitialized_value_construct_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/destroy_n.html" title="cpp/memory/ranges/destroy n"><span class="t-lines"><span>ranges::destroy_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges/destroy_at.html" title="cpp/memory/ranges/destroy at"><span class="t-lines"><span>ranges::destroy_at</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E5.86.85.E5.AD.98.E8.B5.84.E6.BA.90" title="cpp/memory">内存资源</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../memory_resource.html" title="cpp/memory/memory resource"><span class="t-lines"><span>pmr::memory_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../get_default_resource.html" title="cpp/memory/get default resource"><span class="t-lines"><span>pmr::get_default_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../set_default_resource.html" title="cpp/memory/set default resource"><span class="t-lines"><span>pmr::set_default_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../new_delete_resource.html" title="cpp/memory/new delete resource"><span class="t-lines"><span>pmr::new_delete_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../pool_options.html" title="cpp/memory/pool options"><span class="t-lines"><span>pmr::pool_options</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../null_memory_resource.html" title="cpp/memory/null memory resource"><span class="t-lines"><span>pmr::null_memory_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../synchronized_pool_resource.html" title="cpp/memory/synchronized pool resource"><span class="t-lines"><span>pmr::synchronized_pool_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../unsynchronized_pool_resource.html" title="cpp/memory/unsynchronized pool resource"><span class="t-lines"><span>pmr::unsynchronized_pool_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../monotonic_buffer_resource.html" title="cpp/memory/monotonic buffer resource"><span class="t-lines"><span>pmr::monotonic_buffer_resource</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E6.98.BE.E5.BC.8F.E7.94.9F.E5.AD.98.E6.9C.9F.E7.AE.A1.E7.90.86" title="cpp/memory">显式生存期管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../start_lifetime_as.html" title="cpp/memory/start lifetime as"><span class="t-lines"><span>start_lifetime_as</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../start_lifetime_as.html" title="cpp/memory/start lifetime as"><span class="t-lines"><span>start_lifetime_as_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E7.94.A8.E4.BA.8E.E5.A4.8D.E5.90.88.E7.B1.BB.E8.AE.BE.E8.AE.A1.E7.9A.84.E7.B1.BB.E5.9E.8B" title="cpp/memory">用于复合类设计的类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../indirect.html" title="cpp/memory/indirect"><span class="t-lines"><span>indirect</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/memory/polymorphic&amp;action=edit&amp;redlink=1" class="new" title="cpp/memory/polymorphic（页面不存在）"><span class="t-lines"><span>polymorphic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E6.9C.AA.E5.88.9D.E5.A7.8B.E5.8C.96.E5.AD.98.E5.82.A8" title="cpp/memory">未初始化存储</a> <span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../raw_storage_iterator.html" title="cpp/memory/raw storage iterator"><span class="t-lines"><span>raw_storage_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx17" style="white-space: nowrap;">(C++17 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../get_temporary_buffer.html" title="cpp/memory/get temporary buffer"><span class="t-lines"><span>get_temporary_buffer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx17" style="white-space: nowrap;">(C++17 弃用)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../return_temporary_buffer.html" title="cpp/memory/return temporary buffer"><span class="t-lines"><span>return_temporary_buffer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx17" style="white-space: nowrap;">(C++17 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E5.9E.83.E5.9C.BE.E6.94.B6.E9.9B.86.E5.99.A8.E6.94.AF.E6.8C.81" title="cpp/memory">垃圾收集器支持</a> <span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../gc/declare_reachable.html" title="cpp/memory/gc/declare reachable"><span class="t-lines"><span>declare_reachable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../gc/declare_no_pointers.html" title="cpp/memory/gc/declare no pointers"><span class="t-lines"><span>declare_no_pointers</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../gc/pointer_safety.html" title="cpp/memory/gc/pointer safety"><span class="t-lines"><span>pointer_safety</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../gc/undeclare_reachable.html" title="cpp/memory/gc/undeclare reachable"><span class="t-lines"><span>undeclare_reachable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../gc/undeclare_no_pointers.html" title="cpp/memory/gc/undeclare no pointers"><span class="t-lines"><span>undeclare_no_pointers</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../gc/get_pointer_safety.html" title="cpp/memory/gc/get pointer safety"><span class="t-lines"><span>get_pointer_safety</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../new.html#.E4.BD.8E.E5.B1.82.E5.86.85.E5.AD.98.E7.AE.A1.E7.90.86" title="cpp/memory/new">低层内存管理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="operator_new.html" title="cpp/memory/new/operator new"><span class="t-lines"><span>operator new</span><span>operator new[]</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>operator delete</span><span>operator delete[]</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="nothrow.html" title="cpp/memory/new/nothrow t" class="mw-redirect"><span class="t-lines"><span>nothrow_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="nothrow.html" title="cpp/memory/new/nothrow"><span class="t-lines"><span>nothrow</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="new_handler.html" title="cpp/memory/new/new handler"><span class="t-lines"><span>new_handler</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="set_new_handler.html" title="cpp/memory/new/set new handler"><span class="t-lines"><span>set_new_handler</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="get_new_handler.html" title="cpp/memory/new/get new handler"><span class="t-lines"><span>get_new_handler</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bad_alloc.html" title="cpp/memory/new/bad alloc"><span class="t-lines"><span>bad_alloc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bad_array_new_length.html" title="cpp/memory/new/bad array new length"><span class="t-lines"><span>bad_array_new_length</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="align_val_t.html" title="cpp/memory/new/align val t"><span class="t-lines"><span>align_val_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="destroying_delete.html" title="cpp/memory/new/destroying delete t" class="mw-redirect"><span class="t-lines"><span>destroying_delete_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/launder.html" title="cpp/utility/launder"><span class="t-lines"><span>launder</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E6.99.BA.E8.83.BD.E6.8C.87.E9.92.88" title="cpp/memory">智能指针</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../unique_ptr.html" title="cpp/memory/unique ptr"><span class="t-lines"><span>unique_ptr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../shared_ptr.html" title="cpp/memory/shared ptr"><span class="t-lines"><span>shared_ptr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../weak_ptr.html" title="cpp/memory/weak ptr"><span class="t-lines"><span>weak_ptr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../auto_ptr.html" title="cpp/memory/auto ptr"><span class="t-lines"><span>auto_ptr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark" style="white-space: nowrap;">(<span title="C++11 中弃用">C++17 前*</span>)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../owner_less.html" title="cpp/memory/owner less"><span class="t-lines"><span>owner_less</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../owner_less_void.html" title="cpp/memory/owner less void"><span class="t-lines"><span>owner_less&lt;void&gt;</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../owner_hash.html" title="cpp/memory/owner hash"><span class="t-lines"><span>owner_hash</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../owner_equal.html" title="cpp/memory/owner equal"><span class="t-lines"><span>owner_equal</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../enable_shared_from_this.html" title="cpp/memory/enable shared from this"><span class="t-lines"><span>enable_shared_from_this</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../bad_weak_ptr.html" title="cpp/memory/bad weak ptr"><span class="t-lines"><span>bad_weak_ptr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../default_delete.html" title="cpp/memory/default delete"><span class="t-lines"><span>default_delete</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../out_ptr_t.html" title="cpp/memory/out ptr t"><span class="t-lines"><span>out_ptr_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../inout_ptr_t.html" title="cpp/memory/inout ptr t"><span class="t-lines"><span>inout_ptr_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../memory.html#.E6.9D.82.E9.A1.B9" title="cpp/memory">杂项</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../pointer_traits.html" title="cpp/memory/pointer traits"><span class="t-lines"><span>pointer_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../to_address.html" title="cpp/memory/to address"><span class="t-lines"><span>to_address</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../addressof.html" title="cpp/memory/addressof"><span class="t-lines"><span>addressof</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../align.html" title="cpp/memory/align"><span class="t-lines"><span>align</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../assume_aligned.html" title="cpp/memory/assume aligned"><span class="t-lines"><span>assume_aligned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../is_sufficiently_aligned.html" title="cpp/memory/is sufficiently aligned"><span class="t-lines"><span>is_sufficiently_aligned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../c.html" title="cpp/memory/c">C 库</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../c/malloc.html" title="cpp/memory/c/malloc"><span class="t-lines"><span>malloc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../c/calloc.html" title="cpp/memory/c/calloc"><span class="t-lines"><span>calloc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../c/realloc.html" title="cpp/memory/c/realloc"><span class="t-lines"><span>realloc</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../c/free.html" title="cpp/memory/c/free"><span class="t-lines"><span>free</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../c/aligned_alloc.html" title="cpp/memory/c/aligned alloc"><span class="t-lines"><span>aligned_alloc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../new.html" title="cpp/memory/new">低层内存管理</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"><a href="../new.html#.E5.87.BD.E6.95.B0" title="cpp/memory/new">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="operator_new.html" title="cpp/memory/new/operator new"><span class="t-lines"><span>operator new</span><span>operator new[]</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>operator delete</span><span>operator delete[]</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="get_new_handler.html" title="cpp/memory/new/get new handler"><span class="t-lines"><span>get_new_handler</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="set_new_handler.html" title="cpp/memory/new/set new handler"><span class="t-lines"><span>set_new_handler</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../new.html#.E7.B1.BB" title="cpp/memory/new">类</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bad_alloc.html" title="cpp/memory/new/bad alloc"><span class="t-lines"><span>bad_alloc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bad_array_new_length.html" title="cpp/memory/new/bad array new length"><span class="t-lines"><span>bad_array_new_length</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="align_val_t.html" title="cpp/memory/new/align val t"><span class="t-lines"><span>align_val_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../new.html#.E7.B1.BB.E5.9E.8B" title="cpp/memory/new">类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="new_handler.html" title="cpp/memory/new/new handler"><span class="t-lines"><span>new_handler</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../new.html#.E5.AF.B9.E8.B1.A1" title="cpp/memory/new">对象</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="nothrow.html" title="cpp/memory/new/nothrow"><span class="t-lines"><span>nothrow</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="destroying_delete.html" title="cpp/memory/new/destroying delete"><span class="t-lines"><span>destroying_delete</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../new.html#.E5.AF.B9.E8.B1.A1.E8.AE.BF.E9.97.AE" title="cpp/memory/new">对象访问</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../utility/launder.html" title="cpp/utility/launder"><span class="t-lines"><span>launder</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../../header/new.html" title="cpp/header/new">&lt;new&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>可替换的常规解分配函数</div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(1)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-cxx11">
+<td><div><span id="1"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr <span class="br0">)</span> <span class="kw1">throw</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(2)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-cxx11">
+<td><div><span id="2"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr <span class="br0">)</span> <span class="kw1">throw</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (3) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (4) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx14">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (5) </td>
+<td> <span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx14">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (6) </td>
+<td> <span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz,<br>
+                        <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (7) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz,<br>
+                        <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (8) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>可替换的布置解分配函数</div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(9)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-cxx11">
+<td><div><span id="9"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">const</span> <a href="nothrow.html"><span class="kw696">std::<span class="me2">nothrow_t</span></span></a><span class="sy3">&amp;</span> tag <span class="br0">)</span> <span class="kw1">throw</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">const</span> <a href="nothrow.html"><span class="kw696">std::<span class="me2">nothrow_t</span></span></a><span class="sy3">&amp;</span> tag <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(10)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-cxx11">
+<td><div><span id="10"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">const</span> <a href="nothrow.html"><span class="kw696">std::<span class="me2">nothrow_t</span></span></a><span class="sy3">&amp;</span> tag <span class="br0">)</span> <span class="kw1">throw</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">const</span> <a href="nothrow.html"><span class="kw696">std::<span class="me2">nothrow_t</span></span></a><span class="sy3">&amp;</span> tag <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al,<br>
+                        <span class="kw4">const</span> <a href="nothrow.html"><span class="kw696">std::<span class="me2">nothrow_t</span></span></a><span class="sy3">&amp;</span> tag <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (11) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al,<br>
+                        <span class="kw4">const</span> <a href="nothrow.html"><span class="kw696">std::<span class="me2">nothrow_t</span></span></a><span class="sy3">&amp;</span> tag <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (12) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>不分配布置解分配函数</div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(13)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-cxx11">
+<td><div><span id="13"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">void</span><span class="sy2">*</span> place <span class="br0">)</span> <span class="kw1">throw</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">void</span><span class="sy2">*</span> place <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(14)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-until-cxx11">
+<td><div><span id="14"></span><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">void</span><span class="sy2">*</span> place <span class="br0">)</span> <span class="kw1">throw</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx11" style="white-space: nowrap;">(C++11 前)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">void</span><span class="sy2">*</span> place <span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-h">
+<td> <div>用户定义的布置解分配函数</div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, args... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (15) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, args... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (16) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>类特定常规解分配函数</div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (17) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (18) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (19) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (20) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (21) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (22) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (23) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (24) </td>
+<td> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span> </td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>类特定布置解分配函数</div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete  <span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, args... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (25) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span> <span class="kw4">void</span><span class="sy2">*</span> ptr, args... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (26) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>类特定销毁解分配函数</div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span> T<span class="sy2">*</span> ptr, <a href="destroying_delete.html"><span class="kw2683">std::<span class="me2">destroying_delete_t</span></span></a><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (27) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span> T<span class="sy2">*</span> ptr, <a href="destroying_delete.html"><span class="kw2683">std::<span class="me2">destroying_delete_t</span></span></a>,<br>
+                         <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (28) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span> T<span class="sy2">*</span> ptr, <a href="destroying_delete.html"><span class="kw2683">std::<span class="me2">destroying_delete_t</span></span></a>, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (29) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span> T<span class="sy2">*</span> ptr, <a href="destroying_delete.html"><span class="kw2683">std::<span class="me2">destroying_delete_t</span></span></a>,<br>
+                         <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a> al <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (30) </td>
+<td> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>解分配先前由匹配的 <span class="t-lc"><a href="operator_new.html" title="cpp/memory/new/operator new">operator new</a></span> 所分配的存储。这些解分配函数会被 <a href="../../language/delete.html" title="cpp/language/delete"><span class="mw-geshi cpp source-cpp">delete</span>、<span class="mw-geshi cpp source-cpp">delete<span class="br0">[</span><span class="br0">]</span></span></a> 和<a href="../../language/new.html#.E5.B8.83.E7.BD.AEnew" title="cpp/language/new">布置 <span class="mw-geshi cpp source-cpp">new</span> 表达式</a>调用，以在析构（或构造失败）拥有动态存储期的对象后解分配内存。它们也可以用常规函数调用语法调用。
+</p>
+<div class="t-li1"><span class="t-li">1-12)</span> <a href="../../language/replacement_function.html" title="cpp/language/replacement function">可替换</a>的解分配函数。标准库会为这些函数提供默认实现，默认实现的效果见<a href="operator_delete.html#.E5.85.A8.E5.B1.80.E6.9B.BF.E6.8D.A2">下文</a>。</div>
+<div class="t-li2"><span class="t-li">1-8)</span> 被 <span class="mw-geshi cpp source-cpp">delete</span> 表达式调用。使所有非空 <span class="t-c"><span class="mw-geshi cpp source-cpp">ptr</span></span> 失效。</div>
+<div class="t-li2"><span class="t-li">9-12)</span> 被布置 <span class="mw-geshi cpp source-cpp">new</span> 表达式在<a href="../../language/new.html#.E5.88.9D.E5.A7.8B.E5.8C.96.E5.A4.B1.E8.B4.A5" title="cpp/language/new">初始化失败</a>时调用。<span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span></span> 会使所有非空 <span class="t-c"><span class="mw-geshi cpp source-cpp">ptr</span></span> 失效。</div>
+<dl><dd> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">ptr</span></span> 不是空指针，并且满足以下任一条件，那么行为未定义：
+<ul><li> 对于 <span class="mw-geshi cpp source-cpp">operator delete</span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">ptr</span></span> 的值表示的不是由先前的某次对（可能被替换的）<span class="mw-geshi cpp source-cpp"><a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">(</span><a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a><span class="br0">)</span></span>（对于重载 <span class="t-v">(1,5,9)</span>）或 <span class="mw-geshi cpp source-cpp"><a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">(</span><a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a>, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a><span class="br0">)</span></span>（对于重载 <span class="t-v">(3,7,11)</span>）调用分配的且尚未因其他 <span class="mw-geshi cpp source-cpp">operator delete</span> 调用而失效的内存块。
+</li><li> 对于 <span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span></span>，<span class="t-c"><span class="mw-geshi cpp source-cpp">ptr</span></span> 的值表示的不是由先前的某次对（可能被替换的）<span class="mw-geshi cpp source-cpp"><a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a><span class="br0">)</span></span>（对于重载 <span class="t-v">(1,5,9)</span>）或 <span class="mw-geshi cpp source-cpp"><a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a>, <a href="align_val_t.html"><span class="kw697">std::<span class="me2">align_val_t</span></span></a><span class="br0">)</span></span>（对于重载 <span class="t-v">(3,7,11)</span>）调用分配的且尚未因其他 <span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span></span> 调用而失效的内存块。
+</li></ul>
+</dd></dl>
+<div class="t-li1"><span class="t-li">13,14)</span> 在有调用<a href="operator_new.html#.E7.89.88.E6.9C.AC_9" title="cpp/memory/new/operator new">不分配布置分配函数</a>的布置 <span class="mw-geshi cpp source-cpp">new</span> 表达式中，在初始化因抛出异常而终止时被该表达式调用。不进行任何操作。</div>
+<div class="t-li1"><span class="t-li">15-30)</span> 被 <span class="mw-geshi cpp source-cpp">delete</span>、<span class="mw-geshi cpp source-cpp">delete<span class="br0">[</span><span class="br0">]</span></span> 和布置 <span class="mw-geshi cpp source-cpp">new</span> 表达式调用的用户定义解分配函数。</div>
+<div class="t-li1"><span class="t-li">27-30)</span> 有定义时 <span class="mw-geshi cpp source-cpp">delete</span> 表达式在调用 <span class="mw-geshi cpp source-cpp">operator delete</span> 前不会对 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>ptr</span></span> 执行析构函数。析构函数改为由此 <span class="mw-geshi cpp source-cpp">operator delete</span> 负责直接调用，例如用 <span class="t-c"><span class="mw-geshi cpp source-cpp">ptr<span class="sy2">-</span><span class="sy1">&gt;</span>~T<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></span>。</div>
+<p>即使不包含标头 <a href="../../header/new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a>，重载 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_1">1-8</a>)</span> 也会在每个翻译单元隐式声明。
+</p><p>选择重载的标准见 <a href="../../language/delete.html" title="cpp/language/delete"><span class="mw-geshi cpp source-cpp">delete</span> 表达式</a>。
+</p>
+<h3><span class="mw-headline" id=".E5.8F.82.E6.95.B0">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> ptr
+</td>
+<td> -
+</td>
+<td> 指向要解分配的内存块的指针或空指针
+</td></tr>
+<tr class="t-par">
+<td> sz
+</td>
+<td> -
+</td>
+<td> 传递给匹配的分配函数的大小
+</td></tr>
+<tr class="t-par">
+<td> place
+</td>
+<td> -
+</td>
+<td> 用作匹配的布置 new 中布置参数的指针
+</td></tr>
+<tr class="t-par">
+<td> tag
+</td>
+<td> -
+</td>
+<td> 匹配不抛出 operator new 所用标签的重载消歧义标签
+</td></tr>
+<tr class="t-par">
+<td> al
+</td>
+<td> -
+</td>
+<td> 被分配的对象或数组元素的对齐
+</td></tr>
+<tr class="t-par">
+<td> args
+</td>
+<td> -
+</td>
+<td> 匹配布置分配函数的任意参数（可包含 <span class="t-lc"><a href="../../types/size_t.html" title="cpp/types/size t">std::size_t</a></span> 与 <span class="t-lc"><a href="align_val_t.html" title="cpp/memory/new/align val t">std::align_val_t</a></span>）
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.BC.82.E5.B8.B8">异常</span></h3>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>所有解分配函数均为 <span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span><span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span></span>，除非在声明中另外说明。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<p>如果解分配函数以抛异常终止，那么行为未定义<span class="t-rev-inl t-since-cxx11"><span>，即使它以 <span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span><span class="br0">(</span><span class="kw2">false</span><span class="br0">)</span></span> 声明</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>。
+</p>
+<h3><span class="mw-headline" id=".E5.85.A8.E5.B1.80.E6.9B.BF.E6.8D.A2">全局替换</span></h3>
+<p>重载 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_1">1-8</a>)</span> <a href="../../language/replacement_function.html" title="cpp/language/replacement function">可以替换</a>。默认版本的效果如下：
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 如果 <span class="t-c"><span class="mw-geshi cpp source-cpp">ptr</span></span> 为空，那么什么也不做。否则回收先前 <span class="mw-geshi cpp source-cpp"><a href="operator_new.html"><span class="kw690">operator new</span></a></span> 调用分配的存储。</div>
+<div class="t-li1"><span class="t-li">2)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">(</span>ptr<span class="br0">)</span></span></span>，此时重载 <span class="t-v">(1)</span> 如同可以回收先前 <span class="mw-geshi cpp source-cpp"><a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">[</span><span class="br0">]</span></span> 调用分配的存储。</div>
+<div class="t-li1"><span class="t-li">3)</span> 同 <span class="t-v">(1)</span>。</div>
+<div class="t-li1"><span class="t-li">4)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">(</span>ptr, al<span class="br0">)</span></span></span>，此时重载 <span class="t-v">(3)</span> 如同可以回收先前 <span class="mw-geshi cpp source-cpp"><a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">[</span><span class="br0">]</span></span> 调用分配的存储。</div>
+<div class="t-li1"><span class="t-li">5)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">(</span>ptr<span class="br0">)</span></span></span>。</div>
+<div class="t-li1"><span class="t-li">6)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>ptr<span class="br0">)</span></span></span>。</div>
+<div class="t-li1"><span class="t-li">7)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">(</span>ptr, al<span class="br0">)</span></span></span>。</div>
+<div class="t-li1"><span class="t-li">8)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>ptr, al<span class="br0">)</span></span></span>。</div>
+<div class="t-li1"><span class="t-li">9)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">(</span>ptr<span class="br0">)</span></span></span>。</div>
+<div class="t-li1"><span class="t-li">10)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>ptr<span class="br0">)</span></span></span>。</div>
+<div class="t-li1"><span class="t-li">11)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">(</span>ptr, al<span class="br0">)</span></span></span>。</div>
+<div class="t-li1"><span class="t-li">12)</span> 调用 <span class="t-c"><span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>ptr, al<span class="br0">)</span></span></span>。</div>
+<div class="t-example"><p>替换全局 <code>operator</code> <span class="mw-geshi cpp source-cpp">new</span>/<span class="mw-geshi cpp source-cpp">delete</span>：</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstdio&gt;</span>
+<span class="co2">#include &lt;cstdlib&gt;</span>
+<span class="co2">#include &lt;new&gt;</span>
+ 
+<span class="co1">// 无 inline，由 [replacement.functions]/3 要求</span>
+<span class="kw4">void</span><span class="sy2">*</span> <a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">(</span><a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../../io/c/fprintf.html"><span class="kw1847">std::<span class="me2">printf</span></span></a><span class="br0">(</span><span class="st0">"1) new(size_t), size = %zu<span class="es1">\n</span>"</span>, sz<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>sz <span class="sy1">==</span> <span class="nu0">0</span><span class="br0">)</span>
+        <span class="sy2">++</span>sz<span class="sy4">;</span> <span class="co1">// 避免 std::malloc(0)，它可能会在成功时返回 nullptr</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span><span class="kw4">void</span> <span class="sy2">*</span>ptr <span class="sy1">=</span> <a href="../c/malloc.html"><span class="kw759">std::<span class="me2">malloc</span></span></a><span class="br0">(</span>sz<span class="br0">)</span><span class="br0">)</span>
+        <span class="kw1">return</span> ptr<span class="sy4">;</span>
+ 
+    <span class="kw1">throw</span> <a href="bad_alloc.html"><span class="kw694">std::<span class="me2">bad_alloc</span></span></a><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 由 [new.delete.single]/3 要求</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// 无 inline，由 [replacement.functions]/3 要求</span>
+<span class="kw4">void</span><span class="sy2">*</span> <a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../../io/c/fprintf.html"><span class="kw1847">std::<span class="me2">printf</span></span></a><span class="br0">(</span><span class="st0">"2) new[](size_t), size = %zu<span class="es1">\n</span>"</span>, sz<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>sz <span class="sy1">==</span> <span class="nu0">0</span><span class="br0">)</span>
+        <span class="sy2">++</span>sz<span class="sy4">;</span> <span class="co1">// 避免 std::malloc(0)，它可能会在成功时返回 nullptr</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span><span class="kw4">void</span> <span class="sy2">*</span>ptr <span class="sy1">=</span> <a href="../c/malloc.html"><span class="kw759">std::<span class="me2">malloc</span></span></a><span class="br0">(</span>sz<span class="br0">)</span><span class="br0">)</span>
+        <span class="kw1">return</span> ptr<span class="sy4">;</span>
+ 
+    <span class="kw1">throw</span> <a href="bad_alloc.html"><span class="kw694">std::<span class="me2">bad_alloc</span></span></a><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 由 [new.delete.single]/3 要求</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> operator delete<span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr<span class="br0">)</span> <span class="kw1">noexcept</span>
+<span class="br0">{</span>
+    <a href="../../io/c/puts.html"><span class="kw1832">std::<span class="me2">puts</span></span></a><span class="br0">(</span><span class="st0">"3) delete(void*)"</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../c/free.html"><span class="kw763">std::<span class="me2">free</span></span></a><span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> operator delete<span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> size<span class="br0">)</span> <span class="kw1">noexcept</span>
+<span class="br0">{</span>
+    <a href="../../io/c/fprintf.html"><span class="kw1847">std::<span class="me2">printf</span></span></a><span class="br0">(</span><span class="st0">"4) delete(void*, size_t), size = %zu<span class="es1">\n</span>"</span>, size<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../c/free.html"><span class="kw763">std::<span class="me2">free</span></span></a><span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr<span class="br0">)</span> <span class="kw1">noexcept</span>
+<span class="br0">{</span>
+    <a href="../../io/c/puts.html"><span class="kw1832">std::<span class="me2">puts</span></span></a><span class="br0">(</span><span class="st0">"5) delete[](void* ptr)"</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../c/free.html"><span class="kw763">std::<span class="me2">free</span></span></a><span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> size<span class="br0">)</span> <span class="kw1">noexcept</span>
+<span class="br0">{</span>
+    <a href="../../io/c/fprintf.html"><span class="kw1847">std::<span class="me2">printf</span></span></a><span class="br0">(</span><span class="st0">"6) delete[](void*, size_t), size = %zu<span class="es1">\n</span>"</span>, size<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../c/free.html"><span class="kw763">std::<span class="me2">free</span></span></a><span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span><span class="sy2">*</span> p1 <span class="sy1">=</span> new <span class="kw4">int</span><span class="sy4">;</span>
+    delete p1<span class="sy4">;</span>
+ 
+    <span class="kw4">int</span><span class="sy2">*</span> p2 <span class="sy1">=</span> new <span class="kw4">int</span><span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="sy4">;</span> <span class="co1">// C++11 中保证调用替换</span>
+    delete<span class="br0">[</span><span class="br0">]</span> p2<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">// 以 GCC-5 的 C++17 模式编译，可获得如下输出：
+1) op new(size_t), size = 4
+4) op delete(void*, size_t), size = 4
+2) op new[](size_t), size = 40
+5) op delete[](void* ptr)</pre></div></div> 
+</div>
+<p><span class="mw-geshi cpp source-cpp">operator delete</span> 与 <span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span></span> 带额外用户定义形参的重载（“布置形式”，<span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_15">15,16</a>)</span>）可照常在全局作用域声明，而且会被匹配的布置形式 <span class="mw-geshi cpp source-cpp">new</span> 表达式在所分配的对象的构造函数抛出异常时调用。
+</p><p><span class="mw-geshi cpp source-cpp">operator delete</span> 与 <span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span></span> 的标准库布置形式 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_13">13,14</a>)</span> 不能替换，而且只有在布置 {{c/core|<span class="mw-geshi cpp source-cpp">new</span> 表达式不使用 <span class="mw-geshi cpp source-cpp"><span class="sy4">::</span><span class="me2">new</span></span> 时语法才能被自定义，通过提供拥有匹配签名的类特定布置 delete <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_25">25,26</a>)</span>：<span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span>, <span class="kw4">void</span><span class="sy2">*</span><span class="br0">)</span></span> 或 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> T<span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span>, <span class="kw4">void</span><span class="sy2">*</span><span class="br0">)</span></span>。
+</p>
+<h3><span class="mw-headline" id=".E7.B1.BB.E7.89.B9.E5.AE.9A.E9.87.8D.E8.BD.BD">类特定重载</span></h3>
+<p>解分配函数 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_17">17-24</a>)</span> 可定义为类的静态成员函数。如果提供这些解分配函数，那么它们被 <span class="mw-geshi cpp source-cpp">delete</span> 表达式在删除此类的对象 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_17">17,19,21</a>)</span> 和数组 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_18">18,20,22</a>)</span> 时调用，除非 <span class="mw-geshi cpp source-cpp">delete</span> 表达式使用跳过类作用域查找的形式 <span class="mw-geshi cpp source-cpp"><span class="sy4">::</span><span class="me2">delete</span></span>。关键词 <span class="mw-geshi cpp source-cpp"><span class="kw4">static</span></span> 对这些函数声明是可选的：不管是否使用该关键词，解分配函数都始终是静态成员函数。
+</p><p><span class="mw-geshi cpp source-cpp">delete</span> 表达式从类作用域开始查找适当的解分配函数名（数组形式在数组元素类的作用域查找），然后在找不到成员时再继而照常寻找全局作用域。注意，同每个<a href="../../language/lookup.html" title="cpp/language/lookup">名称查找规则</a>，在类作用域声明的任何解分配函数都会隐藏所有全局解分配函数。
+</p><p>如果正在删除的对象的静态类型和动态类型不同（例如通过指向基类的指针删除一个<a href="../../language/object.html" title="cpp/language/object">多态</a>对象），且静态类型中的析构函数是虚的，那么 delete 的单对象形式从它的虚析构函数的最终覆盖者的定义点开始查找解分配函数的名称。无关乎运行时会执行哪个析构函数，为了能够编译，<span class="mw-geshi cpp source-cpp">operator delete</span> 的静态可见版本必须可访问。其他情况下，当通过指向基类的指针删除数组，或通过带非虚析构函数的指针删除时，行为未定义。
+</p><p>如果未提供单参数重载 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_17">17,18</a>)</span>，但提供接收 <span class="t-lc"><a href="../../types/size_t.html" title="cpp/types/size t">std::size_t</a></span> 为第二形参的具大小重载 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_21">21,22</a>)</span>，那么正常解分配调用具大小形式，且 C++ 运行时传递要被解分配的对象大小为第二实参。如果定义两种形式，那么调用不具大小的版本。
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="co1">// 指定大小的类特定解分配函数</span>
+<span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="kw4">static</span> <span class="kw4">void</span> operator delete<span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../../io/cout.html"><span class="kw1760">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"自定义 delete，大小是 "</span> <span class="sy1">&lt;&lt;</span> sz <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+        <span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">static</span> <span class="kw4">void</span> operator delete<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../../io/cout.html"><span class="kw1760">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"自定义 delete，大小是 "</span> <span class="sy1">&lt;&lt;</span> sz <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+        <span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    X<span class="sy2">*</span> p1 <span class="sy1">=</span> new X<span class="sy4">;</span>
+    delete p1<span class="sy4">;</span>
+ 
+    X<span class="sy2">*</span> p2 <span class="sy1">=</span> new X<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="sy4">;</span>
+    delete<span class="br0">[</span><span class="br0">]</span> p2<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>可能的输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">自定义 delete，大小是 1
+自定义 delete，大小是 18</pre></div></div> 
+</div>
+<p>带额外用户定义形参的 <span class="mw-geshi cpp source-cpp">operator delete</span> 与 <span class="mw-geshi cpp source-cpp">operator delete<span class="br0">[</span><span class="br0">]</span></span>（“布置形式”，<span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_25">25,26</a>)</span>）也可以定义为类成员。在失败的布置 <span class="mw-geshi cpp source-cpp">new</span> 表达式查找将调用的对应布置 <span class="mw-geshi cpp source-cpp">delete</span> 函数时，它首次从类作用域开始，在全局作用域之前查找，并且查找匹配布置 <span class="mw-geshi cpp source-cpp">new</span> 签名的函数：
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;stdexcept&gt;</span>
+ 
+<span class="kw1">struct</span> X
+<span class="br0">{</span>
+    X<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">throw</span> <a href="../../error/runtime_error.html"><span class="kw770">std::<span class="me2">runtime_error</span></span></a><span class="br0">(</span><span class="st0">"X(): std::runtime_error"</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+    <span class="co1">// 自定义布置 new</span>
+    <span class="kw4">static</span> <span class="kw4">void</span><span class="sy2">*</span> <a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">(</span><a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a> sz, <span class="kw4">bool</span> b<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../../io/cout.html"><span class="kw1760">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"已调用自定义布置 new，b = "</span> <span class="sy1">&lt;&lt;</span> b <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+        <span class="kw1">return</span> <span class="sy4">::</span><a href="operator_new.html"><span class="kw690">operator new</span></a><span class="br0">(</span>sz<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="co1">// 自定义布置 delete</span>
+    <span class="kw4">static</span> <span class="kw4">void</span> operator delete<span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr, <span class="kw4">bool</span> b<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../../io/cout.html"><span class="kw1760">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"已调用自定义布置 delete，b = "</span> <span class="sy1">&lt;&lt;</span> b <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+        <span class="sy4">::</span><span class="me2">operator</span> delete<span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">try</span>
+    <span class="br0">{</span>
+        <span class="br0">[</span><span class="br0">[</span>maybe_unused<span class="br0">]</span><span class="br0">]</span> X<span class="sy2">*</span> p1 <span class="sy1">=</span> new <span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span> X<span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">catch</span> <span class="br0">(</span><span class="kw4">const</span> <a href="../../error/exception.html"><span class="kw764">std::<span class="me2">exception</span></span></a><span class="sy3">&amp;</span> ex<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../../io/cout.html"><span class="kw1760">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> ex.<span class="me1">what</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<p>输出：
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">已调用自定义布置 new，b = 1
+已调用自定义布置 delete，b = 1
+X(): std::runtime_error</pre></div></div> 
+</div>
+<p>如果类级别的 <span class="mw-geshi cpp source-cpp">operator delete</span> 是模板函数，那么它的返回类型必须是 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span>，首个实参必须是 <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="sy2">*</span></span>，而且必须拥有两个或更多形参。换言之，只有布置形式可以是模板。模板实例始终不是常规解分配函数，无论其签名如何。模板 <span class="mw-geshi cpp source-cpp">operator delete</span> 的特化由<a href="../../language/template_argument_deduction.html" title="cpp/language/template argument deduction">模板实参推导</a>选择。
+</p>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>在多态类上调用类特定的 <span class="mw-geshi cpp source-cpp">T<span class="sy4">::</span><span class="me2">operator</span> delete</span> 是仅有的通过动态派发调用静态成员函数的情况。
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>要求下列函数是线程安全的：
+</p>
+<ul><li> <a href="operator_new.html" title="cpp/memory/new/operator new"><code>new</code> 运算符</a>和 <strong class="selflink"><code>delete</code> 运算符</strong>的库版本
+</li><li> 全局 <a href="operator_new.html" title="cpp/memory/new/operator new"><code>new</code> 运算符</a>和 <strong class="selflink"><code>delete</code> 运算符</strong>的用户替换版本
+</li><li> <span class="t-lc"><a href="../c/calloc.html" title="cpp/memory/c/calloc">std::calloc</a></span>、<span class="t-lc"><a href="../c/malloc.html" title="cpp/memory/c/malloc">std::malloc</a></span>、<span class="t-lc"><a href="../c/realloc.html" title="cpp/memory/c/realloc">std::realloc</a></span><span class="t-rev-inl t-since-cxx17"><span>、<span class="t-lc"><a href="../c/aligned_alloc.html" title="cpp/memory/c/aligned alloc">std::aligned_alloc</a></span></span><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17 起)</span></span></span>、<span class="t-lc"><a href="../c/free.html" title="cpp/memory/c/free">std::free</a></span>
+</li></ul>
+<p>对这些分配或解分配特定存储单元的函数调用以单独全序出现，而并且在此顺序中，每个解分配调用<a href="../../atomic/memory_order.html" title="cpp/atomic/memory order">先发生于</a>下个分配（如果存在）。
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<table class="wikitable">
+
+<tr>
+<th><a href="../../utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../../feature_test.html#cpp_sized_deallocation" title="cpp/feature test"><code>__cpp_sized_deallocation</code></a></td>
+<td><a href="../../compiler_support/14.html#cpp_sized_deallocation_201309L" title="cpp/compiler support/14"><code>201309L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++14)</span></td>
+<td>具大小解分配
+</td></tr>
+<tr>
+<td><a href="../../feature_test.html#cpp_impl_destroying_delete" title="cpp/feature test"><code>__cpp_impl_destroying_delete</code></a></td>
+<td><a href="../../compiler_support/20.html#cpp_impl_destroying_delete_201806L" title="cpp/compiler support/20"><code>201806L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td>销毁 operator delete (编译器支持)
+</td></tr>
+<tr>
+<td><a href="../../feature_test.html#cpp_lib_destroying_delete" title="cpp/feature test"><code>__cpp_lib_destroying_delete</code></a></td>
+<td><a href="../../compiler_support/20.html#cpp_lib_destroying_delete_201806L" title="cpp/compiler support/20"><code>201806L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td>销毁 operator delete (库支持)
+</td></tr></table>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/220.html">CWG 220</a>
+</td>
+<td> C++98
+</td>
+<td> 允许用户定义的解分配函数抛出异常
+</td>
+<td> 从解分配函数抛出异常会导致未定义行为
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1438.html">CWG 1438</a>
+</td>
+<td> C++98
+</td>
+<td> 任何非法指针值的使用都是未定义行为
+</td>
+<td> 只有间接和解分配是
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue206">LWG 206</a>
+</td>
+<td> C++98
+</td>
+<td> 替换掉 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_2">2</a>)</span> 不会影响 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_10">10</a>)</span> 的默认行为
+</td>
+<td> 默认行为也会有相应变更
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue298">LWG 298</a>
+</td>
+<td> C++98
+</td>
+<td> 替换掉 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_1">1</a>)</span> 不会影响 <span class="t-v">(<a href="operator_delete.html#.E7.89.88.E6.9C.AC_9">9</a>)</span> 的默认行为
+</td>
+<td> 默认行为也会有相应变更
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue404">LWG 404</a>
+</td>
+<td> C++98
+</td>
+<td> 可替换的解分配函数在替换时可以声明为 <span class="mw-geshi cpp source-cpp"><span class="kw1">inline</span></span>
+</td>
+<td> 已禁止，不要求诊断
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue2458">LWG 2458</a>
+</td>
+<td> C++14
+</td>
+<td> 有一个接受 <span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span>, <a href="../../types/size_t.html"><span class="kw107">std::<span class="me2">size_t</span></span></a>, <span class="kw4">const</span></span><br><span class="mw-geshi cpp source-cpp"><a href="nothrow.html"><span class="kw696">std::<span class="me2">nothrow_t</span></span></a><span class="sy3">&amp;</span><span class="br0">)</span></span> 的重载，但它无法被调用
+</td>
+<td> 移除虚假重载
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../coroutine/generator/promise_type/operator_delete.html" title="cpp/coroutine/generator/promise type/operator delete"> <span class="t-lines"><span>operator delete</span></span></a></div><div><span class="t-lines"><span><span class="t-cmark">[静态]</span> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>  解分配先前从 <code>operator new</code> 获得的内存 <br> <span class="t-mark" style="white-space: nowrap;">(<code>std::generator&lt;Ref,V,Allocator&gt;::promise_type</code> 的公开静态成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="operator_new.html" title="cpp/memory/new/operator new"> <span class="t-lines"><span>operator new</span><span>operator new[]</span></span></a></div></div>
+</td>
+<td>   分配函数  <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../return_temporary_buffer.html" title="cpp/memory/return temporary buffer"> <span class="t-lines"><span>return_temporary_buffer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx17" style="white-space: nowrap;">(C++17 弃用)</span></span><span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 移除)</span></span></span></div></div>
+</td>
+<td>  释放未初始化存储 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../c/free.html" title="cpp/memory/c/free"> <span class="t-lines"><span>free</span></span></a></div></div>
+</td>
+<td>   解分配之前分配的内存 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 21961/1000000
+Preprocessor generated node count: 24400/1000000
+Post‐expand include size: 584469/4194304 bytes
+Template argument size: 130064/4194304 bytes
+Highest expansion depth: 32/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:2957-0!*!0!!zh!*!zh!* and timestamp 20250402193752 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/memory/new/operator_delete&amp;oldid=99446">https://zh.cppreference.com/mwiki/index.php?title=cpp/memory/new/operator_delete&amp;oldid=99446</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/memory/new/operator_delete">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年2月27日 (星期四) 02:30。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<!-- Served in 10.505 secs. -->
+	</body>
+<!-- Cached 20250402193752 -->
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>std::datapar::basic_simd, std::datapar::simd</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/numeric/simd/basic_simd","wgTitle":"cpp/numeric/simd/basic simd","wgCurRevisionId":100178,"wgArticleId":16967,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["无示例的 todo"],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/numeric/simd/basic_simd","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_numeric_simd_basic_simd skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::</span><small>datapar::</small>basic_simd, <span style="font-size:0.8em; line-height:125%">std::</span><small>datapar::</small>simd</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../numeric.html" title="cpp/numeric">numeric</a>‎ | <a href="../simd.html" title="cpp/numeric/simd">simd</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="../../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../numeric.html" title="cpp/numeric">数值库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><a href="../math.html" title="cpp/numeric/math">常用数学函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../special_functions.html" title="cpp/numeric/special functions">数学特殊函数</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../constants.html" title="cpp/numeric/constants">数学常数</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../linalg.html" title="cpp/numeric/linalg">基本线性代数算法</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../simd.html" title="cpp/numeric/simd">数据并行类型（SIMD）</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../fenv.html" title="cpp/numeric/fenv">浮点数环境</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../complex.html" title="cpp/numeric/complex">复数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../valarray.html" title="cpp/numeric/valarray">数值数组 (<code>valarray</code>)</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../random.html" title="cpp/numeric/random">伪随机数生成</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility/bit.html" title="cpp/utility/bit">位操纵</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../numeric.html#.E9.A5.B1.E5.92.8C.E7.AE.97.E6.9C.AF" title="cpp/numeric">饱和算术</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../numeric.html#.E5.9B.A0.E6.95.B0.E8.BF.90.E7.AE.97" title="cpp/numeric">因数运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../gcd.html" title="cpp/numeric/gcd"><span class="t-lines"><span>gcd</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../lcm.html" title="cpp/numeric/lcm"><span class="t-lines"><span>lcm</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../numeric.html#.E6.8F.92.E5.80.BC.E8.BF.90.E7.AE.97" title="cpp/numeric">插值</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../midpoint.html" title="cpp/numeric/midpoint"><span class="t-lines"><span>midpoint</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../lerp.html" title="cpp/numeric/lerp"><span class="t-lines"><span>lerp</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../numeric.html#.E7.AE.97.E6.9C.AF.E8.BF.90.E7.AE.97" title="cpp/numeric">泛型算术运算</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/iota.html" title="cpp/algorithm/iota"><span class="t-lines"><span>iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/ranges/iota.html" title="cpp/algorithm/ranges/iota"><span class="t-lines"><span>ranges::iota</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/accumulate.html" title="cpp/algorithm/accumulate"><span class="t-lines"><span>accumulate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/inner_product.html" title="cpp/algorithm/inner product"><span class="t-lines"><span>inner_product</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/adjacent_difference.html" title="cpp/algorithm/adjacent difference"><span class="t-lines"><span>adjacent_difference</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/partial_sum.html" title="cpp/algorithm/partial sum"><span class="t-lines"><span>partial_sum</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/reduce.html" title="cpp/algorithm/reduce"><span class="t-lines"><span>reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/transform_reduce.html" title="cpp/algorithm/transform reduce"><span class="t-lines"><span>transform_reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/inclusive_scan.html" title="cpp/algorithm/inclusive scan"><span class="t-lines"><span>inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/exclusive_scan.html" title="cpp/algorithm/exclusive scan"><span class="t-lines"><span>exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/transform_inclusive_scan.html" title="cpp/algorithm/transform inclusive scan"><span class="t-lines"><span>transform_inclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../algorithm/transform_exclusive_scan.html" title="cpp/algorithm/transform exclusive scan"><span class="t-lines"><span>transform_exclusive_scan</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../numeric.html#.E5.B8.A6.E6.A3.80.E6.9F.A5.E6.95.B4.E6.95.B0.E7.AE.97.E6.9C.AF" title="cpp/numeric">C 风格带检查整数算术</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ckd_add.html" title="cpp/numeric/ckd add"><span class="t-lines"><span>ckd_add</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ckd_sub.html" title="cpp/numeric/ckd sub"><span class="t-lines"><span>ckd_sub</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ckd_mul.html" title="cpp/numeric/ckd mul"><span class="t-lines"><span>ckd_mul</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../simd.html" title="cpp/numeric/simd">数据并行类型 (SIMD)</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../simd.html#.E4.B8.BB.E7.B1.BB" title="cpp/numeric/simd">主类</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>basic_simd</span><span>simd</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd_mask&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd mask（页面不存在）"><span class="t-lines"><span>basic_simd_mask</span><span>simd_mask</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../simd.html#.E5.8A.A0.E8.BD.BD.E4.B8.8E.E5.AD.98.E5.82.A8.E6.A0.87.E5.BF.97" title="cpp/numeric/simd">加载与存储标志</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/flags&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/flags（页面不存在）"><span class="t-lines"><span>flags</span><span>flag_default</span><span>flag_convert</span><span>flag_aligned</span><span>flag_overaligned</span></span></a></div><div><span class="t-lines"><span><code>    </code></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../simd.html#.E5.8A.A0.E8.BD.BD.E4.B8.8E.E5.AD.98.E5.82.A8.E6.93.8D.E4.BD.9C" title="cpp/numeric/simd">加载与存储</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/load&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/load（页面不存在）"><span class="t-lines"><span>unchecked_load</span><span>partial_load</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/simd_store&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/simd store（页面不存在）"><span class="t-lines"><span>unchecked_store</span><span>partial_store</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../simd.html#.E8.BD.AC.E6.8D.A2" title="cpp/numeric/simd">转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/chunk&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/chunk（页面不存在）"><span class="t-lines"><span>chunk</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/cat&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/cat（页面不存在）"><span class="t-lines"><span>cat</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="../simd.html#.E7.AE.97.E6.B3.95" title="cpp/numeric/simd">算法</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/min_max&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/min max（页面不存在）"><span class="t-lines"><span>min</span><span>max</span><span>minmax</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/clamp&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/clamp（页面不存在）"><span class="t-lines"><span>clamp</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/select&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/select（页面不存在）"><span class="t-lines"><span>select</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../simd.html#.E5.BD.92.E7.BA.A6" title="cpp/numeric/simd">归约</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/all_any_none_of&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/all any none of（页面不存在）"><span class="t-lines"><span>all_of</span><span>any_of</span><span>none_of</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/reduce&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/reduce（页面不存在）"><span class="t-lines"><span>reduce</span><span>reduce_min</span><span>reduce_max</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/reduce_min_max_index&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/reduce min max index（页面不存在）"><span class="t-lines"><span>reduce_min_index</span><span>reduce_max_index</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/reduce_count&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/reduce count（页面不存在）"><span class="t-lines"><span>reduce_count</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../simd.html#.E7.89.B9.E5.BE.81" title="cpp/numeric/simd">特征</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/alignment&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/alignment（页面不存在）"><span class="t-lines"><span>alignment</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/rebind&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/rebind（页面不存在）"><span class="t-lines"><span>rebind</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/resize&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/resize（页面不存在）"><span class="t-lines"><span>resize</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink"><tt>std::datapar::basic_simd</tt></strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"><a href="basic_simd.html#.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0" title="cpp/numeric/simd/basic simd">成员函数</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/basic_simd&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/basic simd（页面不存在）"><span class="t-lines"><span>basic_simd</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_at&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator at（页面不存在）"><span class="t-lines"><span>operator[]</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_mem_arith&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator mem arith（页面不存在）"><span class="t-lines"><span>operator++</span><span>operator--</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_mem_arith2&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator mem arith2（页面不存在）"><span class="t-lines"><span>operator!</span><span>operator~</span><span>operator+</span><span>operator-</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="basic_simd.html#.E9.9D.9E.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0" title="cpp/numeric/simd/basic simd">非成员函数</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_arith&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator arith（页面不存在）"><span class="t-lines"><span>operator+</span><span>operator-</span><span>operator*</span><span>operator/</span><span>operator%</span><span>operator&amp;</span><span>operator|</span><span>operator^</span><span>operator&lt;&lt;</span><span>operator&gt;&gt;</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_cmp&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator cmp（页面不存在）"><span class="t-lines"><span>operator==</span><span>operator&lt;</span><span>operator&gt;</span></span></a></div><div><span class="t-lines"><span><code>  </code></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_compound&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator compound（页面不存在）"><span class="t-lines"><span>operator+=</span><span>operator-=</span><span>operator*=</span><span>operator/=</span><span>operator%=</span><span>operator&amp;=</span><span>operator|=</span><span>operator^=</span><span>operator&lt;&lt;=</span><span>operator&gt;&gt;=</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_cmp&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator cmp（页面不存在）"><span class="t-lines"><span>operator!=</span><span>operator&lt;=</span><span>operator&gt;=</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/select&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/select（页面不存在）"><span class="t-lines"><span><i>select</i><span class="t-dsc-small">(std::datapar::basic_simd)</span></span></span></a></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../../header/simd.html" title="cpp/header/simd">&lt;simd&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> T, <span class="kw1">class</span> Abi <span class="sy1">=</span> <span class="coMULTI">/*native-abi*/</span><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy1">&gt;</span><br>
+<span class="kw1">class</span> basic_simd<span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> T, <span class="coMULTI">/*simd-size-type*/</span> N <span class="sy1">=</span> <span class="coMULTI">/*simd-size-v*/</span><span class="sy1">&lt;</span>T, <span class="coMULTI">/*native-abi*/</span><span class="sy1">&lt;</span>T<span class="sy1">&gt;&gt;</span> <span class="sy1">&gt;</span><br>
+<span class="kw1">using</span> simd <span class="sy1">=</span> basic_simd<span class="sy1">&lt;</span>T, <span class="coMULTI">/*deduce-abi-t*/</span><span class="sy1">&lt;</span>T, N<span class="sy1">&gt;&gt;</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> <code>std::datapar::basic_simd</code> 的特化是数据并行类型。默认的 ABI 标签由实现在编译时决定。</div>
+<div class="t-li1"><span class="t-li">2)</span> <code>std::datapar::simd</code> 是允许用户指定某个特定大小的宽度的别名模板。默认宽度由实现在编译时决定。</div>
+<p><code>basic_simd</code> 的特化都是完整类型。
+</p>
+<ul><li> 如果 <code>T</code> 是<a href="../simd.html#.E5.8F.AF.E5.90.91.E9.87.8F.E5.8C.96.E7.B1.BB.E5.9E.8B" title="cpp/numeric/simd">可向量化类型</a>，并且范围 <code>[</code><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">1</span></span></span><code>, </code><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">64</span></span></span><code>]</code> 中存在某个值 <code>M</code> 使得 <code>Abi</code> 为 <span style="display: inline-block;"><a href="../simd.html#deduce-abi-t" title="cpp/numeric/simd"><tt><i>deduce-abi-t</i></tt></a><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;</span>T, M<span class="sy1">&gt;</span></span></span>，那么此特化被<i>启用</i>，
+</li><li> 否则，如果 <code>T</code> 不是可向量化类型，那么此特化被<i>禁用</i>，
+</li><li> 否则，这种特化是否被启用由实现定义。
+</li></ul>
+<p>如果 <span class="mw-geshi cpp source-cpp">basic_simd<span class="sy1">&lt;</span>T, Abi<span class="sy1">&gt;</span></span> 被禁用，那么此特化的默认构造函数、析构函数、复制构造函数和复制赋值都被弃置。此外，仅提供下述的成员类型。
+</p><p>如果 <span class="mw-geshi cpp source-cpp">basic_simd<span class="sy1">&lt;</span>T, Abi<span class="sy1">&gt;</span></span> 被启用，那么 <span class="mw-geshi cpp source-cpp">basic_simd<span class="sy1">&lt;</span>T, Abi<span class="sy1">&gt;</span></span> 是<a href="../../named_req/TriviallyCopyable.html" title="cpp/named req/TriviallyCopyable"><span style="font-style:italic">可平凡复制</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(TriviallyCopyable)</span> </a>。
+</p>
+<h3><span class="mw-headline" id=".E6.A8.A1.E6.9D.BF.E5.BD.A2.E5.8F.82">模板形参</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> T
+</td>
+<td> -
+</td>
+<td> 元素类型；为可向量化类型
+</td></tr>
+<tr class="t-par">
+<td> Abi
+</td>
+<td> -
+</td>
+<td> 用于确定宽度和存储的<a href="../simd.html#ABI_.E6.A0.87.E7.AD.BE" title="cpp/numeric/simd">标签类型</a>
+</td></tr>
+<tr class="t-par">
+<td> N
+</td>
+<td> -
+</td>
+<td> 数据并行类型的宽度；元素个数
+</td></tr></table>
+<h3><span class="mw-headline" id=".E6.88.90.E5.91.98.E7.B1.BB.E5.9E.8B">成员类型</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-hitem">
+<td> 类型
+</td>
+<td> 定义
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>value_type</code>
+</td>
+<td> <code>T</code>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>mask_type</code>
+</td>
+<td> <span class="mw-geshi cpp source-cpp">datapar<span class="sy4">::</span><span class="me2">basic_simd_mask</span><span class="sy1">&lt;</span>sizeof<span class="br0">(</span>T<span class="br0">)</span>, Abi<span class="sy1">&gt;</span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td> <code>abi_type</code>
+</td>
+<td> <code>Abi</code>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id=".E6.88.90.E5.91.98.E5.B8.B8.E9.87.8F">成员常量</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-hitem">
+<td> 名称
+</td>
+<td> 说明
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span><span class="t-dsc-small"><span style="display: inline-block;"><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span> <a href="../../types/integral_constant.html"><span class="kw650">std::<span class="me2">integral_constant</span></span></a><span class="sy1">&lt;</span></span><code><i><a href="../simd.html#simd-size-type" title="cpp/numeric/simd">simd-size-type</a></i></code><span class="mw-geshi cpp source-cpp">,</span><code> </code><code><i><a href="../simd.html#simd-size-v" title="cpp/numeric/simd">simd-size-v</a></i></code><span class="mw-geshi cpp source-cpp"><span class="sy1">&lt;</span>T, Abi<span class="sy1">&gt;&gt;</span></span></span></span> size</span></span></div><div><span class="t-lines"><span><span class="t-cmark">[静态]</span></span></span></div></div>
+</td>
+<td>  <code>basic_simd</code> 的宽度 <br> <span class="t-mark" style="white-space: nowrap;">(公开静态成员常量)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id=".E6.88.90.E5.91.98.E5.87.BD.E6.95.B0">成员函数</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div t-dsc-member-nobold-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/basic_simd&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/basic simd（页面不存在）"> <span class="t-lines"><span>(构造函数)</span></span></a></div></div>
+</td>
+<td>  构造 <code>basic_simd</code> 对象 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_at&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator at（页面不存在）"> <span class="t-lines"><span>operator[]</span></span></a></div></div>
+</td>
+<td>  访问指定元素 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_mem_arith&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator mem arith（页面不存在）"> <span class="t-lines"><span>operator++</span><span>operator++<span class="t-dsc-small">(int)</span></span><span>operator--</span><span>operator--<span class="t-dsc-small">(int)</span></span></span></a></div></div>
+</td>
+<td>  逐元素增量与减量 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_mem_arith2&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator mem arith2（页面不存在）"> <span class="t-lines"><span>operator!</span><span>operator~</span><span>operator+</span><span>operator-</span></span></a></div></div>
+</td>
+<td>  逐元素一元运算符 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id=".E9.9D.9E.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0">非成员函数</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_arith&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator arith（页面不存在）"> <span class="t-lines"><span>operator+</span><span>operator-</span><span>operator*</span><span>operator/</span><span>operator%</span><span>operator&amp;</span><span>operator|</span><span>operator^</span><span>operator&lt;&lt;</span><span>operator&gt;&gt;</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  逐元素二元运算符 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_compound&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator compound（页面不存在）"> <span class="t-lines"><span>operator+=</span><span>operator-=</span><span>operator*=</span><span>operator/=</span><span>operator%=</span><span>operator&amp;=</span><span>operator|=</span><span>operator^=</span><span>operator&lt;&lt;=</span><span>operator&gt;&gt;=</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  逐元素复合二元运算符 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/operator_cmp&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/operator cmp（页面不存在）"> <span class="t-lines"><span>operator==</span><span>operator!=</span><span>operator&gt;=</span><span>operator&lt;=</span><span>operator&gt;</span><span>operator&lt;</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  逐元素关系运算符 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+</table>
+<table class="t-dsc-begin">
+
+
+<tr class="t-dsc">
+<td> <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd/simd_select&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd/simd select（页面不存在）"> <span class="t-lines"><span><i>simd-select</i> <span class="t-dsc-small">(std::datapar::basic_simd)</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td> <code>simd_select</code> 的特化逐元素选择<br><span class="t-mark t-mark-expos" style="white-space: nowrap;">(<span title="此定义仅用于展示。实现不需要通过这种方式定义实体。此实体的名字未指定。">仅用于阐述的函数*</span>)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E6.8E.A8.E5.AF.BC.E6.8C.87.E5.BC.95">推导指引</span></h3>
+<table class="t-dcl-begin"><tbody>
+
+<tr class="t-dcl t-since-cxx26">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> R, <span class="kw1">class</span>... <span class="me1">Ts</span> <span class="sy1">&gt;</span><br>
+basic_simd<span class="br0">(</span> R<span class="sy3">&amp;&amp;</span> r, Ts... <span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="coMULTI">/* 见下文 */</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>仅当以下情况下提供推导指引：
+</p>
+<ul><li> <code>R</code> 实现 <a href="../../ranges/contiguous_range.html" title="cpp/ranges/contiguous range"><code>contiguous_range</code></a> 和 <a href="../../ranges/sized_range.html" title="cpp/ranges/sized range"><code>sized_range</code></a>，且
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../ranges/size.html"><span class="kw3100">ranges::<span class="me2">size</span></span></a><span class="br0">(</span>r<span class="br0">)</span></span></span> 是<a href="../../language/constant_expression.html" title="cpp/language/constant expression">常量表达式</a>。
+</li></ul>
+<p>推导的类型等价于 <span class="mw-geshi cpp source-cpp">datapar<span class="sy4">::</span><span class="me2">simd</span><span class="sy1">&lt;</span><a href="../../ranges/iterator_t.html"><span class="kw2894">ranges::<span class="me2">range_value_t</span></span></a><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span>, <a href="../../ranges/size.html"><span class="kw3100">ranges::<span class="me2">size</span></span></a><span class="br0">(</span>r<span class="br0">)</span><span class="sy1">&gt;</span></span>。
+</p>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>建议各实现支持 <code>basic_simd</code> 的被启用特化和适当的实现定义类型之间的显式转换。这些适当类型是实现中提供的非标准向量类型。
+</p>
+<h3><span class="mw-headline" id=".E7.A4.BA.E4.BE.8B">示例</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：暂无示例 </td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd_mask&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd mask（页面不存在）"> <span class="t-lines"><span>datapar::basic_simd_mask</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  元素类型为 <span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span> 的数据并行类型 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd_mask&amp;action=edit&amp;redlink=1" class="new" title="cpp/numeric/simd/basic simd mask（页面不存在）"> <span class="t-lines"><span>datapar::simd_mask</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div>
+</td>
+<td>  可以指定宽度的 <code>basic_simd_mask</code> 的便利别名模板 <br> <span class="t-mark" style="white-space: nowrap;">(别名模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../valarray.html" title="cpp/numeric/valarray"> <span class="t-lines"><span>valarray</span></span></a></div></div>
+</td>
+<td>  数值数组，数组掩码和数组切分 <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 7872/1000000
+Preprocessor generated node count: 16919/1000000
+Post‐expand include size: 236508/4194304 bytes
+Template argument size: 47490/4194304 bytes
+Highest expansion depth: 22/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:16967-0!*!0!!zh!*!zh!* and timestamp 20250402202529 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd&amp;oldid=100178">https://zh.cppreference.com/mwiki/index.php?title=cpp/numeric/simd/basic_simd&amp;oldid=100178</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/numeric/simd/basic_simd">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年3月24日 (星期一) 05:09。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<!-- Served in 2.886 secs. -->
+	</body>
+<!-- Cached 20250402202529 -->
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr" class="client-nojs">
+<head>
+<title>独立与宿主实现</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../common/favicon.ico">
+<link rel="stylesheet" href="../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-css:7:15cea3ec788a65b5187d4018eed543bf */</style>
+
+<script src="../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/freestanding","wgTitle":"cpp/freestanding","wgCurRevisionId":100188,"wgArticleId":11664,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"zh","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgMonthNamesShort":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRelevantPageName":"cpp/freestanding","wgUserVariant":"zh","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh","language":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-MathJax":1,"gadget-ColiruCompiler":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_zh_:resourceloader:filter:minify-js:7:258d7cd6aa9aa67dee25e01fb6a9e505 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_freestanding skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HW0LXMYCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HW0LXMYCY');
+</script>
+                <h1 id="firstHeading" class="firstHeading">独立与宿主实现</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">来自cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../cpp.html" title="cpp">cpp</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"><a href="compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><strong class="selflink">自立实现与有宿主实现</strong></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>C++ 标准定义了两种实现：<i><b>宿主</b></i>与<i><b>独立</b></i>实现。C++ 标准对<i>宿主 ﻿</i>实现所规定的标准库标头集合比对<i>独立 ﻿</i>实现所规定的大很多。<i>独立 ﻿</i>实现中程序可能在没有操作系统的情况下运行。
+</p><p>实现的种类由实现定义。<span class="t-rev-inl t-since-cxx11"><span>预定义宏 <code>__STDC_HOSTED__</code> 在宿主实现中会展开成 <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">1</span></span></span>，在独立实现中会展开成 <span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span>。</span><span><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></span></span>
+</p>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<h3> <span class="mw-headline" id=".E9.92.88.E5.AF.B9.E5.A4.9A.E7.BA.BF.E7.A8.8B.E6.89.A7.E8.A1.8C.E4.B8.8E.E6.95.B0.E6.8D.AE.E7.AB.9E.E4.BA.89.E7.9A.84.E8.A7.84.E5.AE.9A">针对<a href="language/memory_model.html" title="cpp/language/memory model">多线程执行与数据竞争</a>的规定</span></h3>
+<table cellpadding="8">
+<tr>
+<th> <i>独立</i> </th>
+<th> <i>宿主</i>
+</th></tr>
+<tr>
+<td> <i>独立 ﻿</i>实现下，程序能否拥有多于一个<a href="thread.html" title="cpp/thread">执行线程</a>由实现定义。
+</td>
+<td> <i>宿主 ﻿</i>实现下，C++ 程序可以拥有同时运行的多于一个<a href="thread.html" title="cpp/thread">线程</a>。
+</td></tr></table>
+</td>
+<td><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id=".E9.92.88.E5.AF.B9_main_.E5.87.BD.E6.95.B0.E7.9A.84.E8.A6.81.E6.B1.82">针对 <a href="language/main_function.html" title="cpp/language/main function"><tt>main</tt></a> 函数的要求</span></h3>
+<table cellpadding="8|">
+
+<tr>
+<th> <i>独立</i> </th>
+<th> <i>宿主</i>
+</th></tr>
+<tr>
+<td> <i>独立 ﻿</i>实现中，是否要求程序定义 <a href="language/main_function.html" title="cpp/language/main function"><tt>main</tt></a> 函数是由实现定义的。启动与终止过程是由实现定义的；启动过程中包含执行具有静态<a href="language/storage_duration.html" title="cpp/language/storage duration">存储期</a>的<a href="language/scope.html#.E5.91.BD.E5.90.8D.E7.A9.BA.E9.97.B4.E4.BD.9C.E7.94.A8.E5.9F.9F" title="cpp/language/scope">命名空间作用域</a>对象的<a href="language/constructor.html" title="cpp/language/constructor">构造函数</a>；终止过程中包含执行具有静态<a href="language/storage_duration.html" title="cpp/language/storage duration">存储期</a>的对象的<a href="language/destructor.html" title="cpp/language/destructor">析构函数</a>。
+</td>
+<td> <i>宿主 ﻿</i>实现中，程序必须包含一个名为 <a href="language/main_function.html" title="cpp/language/main function"><tt>main</tt></a> 的全局函数。程序执行时启动一个主<a href="thread.html" title="cpp/thread">执行线程</a>，在其中调用 <code>main</code> 函数，并且具有静态<a href="language/storage_duration.html" title="cpp/language/storage duration">存储期</a>的变量将在其中被初始化和销毁。
+</td></tr></table>
+<p><span id=".E6.A0.87.E5.A4.B4.E8.A7.84.E5.AE.9A"></span>
+</p>
+<h3><span class="mw-headline" id=".E9.92.88.E5.AF.B9.E6.A0.87.E5.87.86.E5.BA.93.E6.A0.87.E5.A4.B4.E7.9A.84.E8.A7.84.E5.AE.9A">针对<a href="header.html" title="cpp/header">标准库标头</a>的规定</span></h3>
+<p><i>独立 ﻿</i>实现拥有由实现定义的标头集合。此集合至少包含下表中的标头。
+</p><p>对于部分独立的标头，独立实现只需要提供对应概要中的部分实体：
+</p>
+<ul><li> 如果实体备注为 <span class="mw-geshi cpp source-cpp"><span class="co1">// 独立</span></span>，那么保证会提供它。
+</li></ul>
+<table class="t-rev-begin">
+<tr class="t-rev t-since-cxx26"><td>
+<ul><li> 如果实体（函数或函数模板）备注为 <span class="mw-geshi cpp source-cpp"><span class="co1">// 独立或弃置</span></span>，那么保证会提供或弃置它。
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+</table>
+<ul><li> 如果实体在某个概要以 <span class="mw-geshi cpp source-cpp"><span class="co1">// 全部独立</span></span> 或 <span class="mw-geshi cpp source-cpp"><span class="co1">// 基本独立</span></span> 开始的标头中声明，那么在该实体本身没有被备注的情况下保证会提供它。
+</li></ul>
+<h4><span class="mw-headline" id=".E7.8B.AC.E7.AB.8B.EF.BB.BF.E5.AE.9E.E7.8E.B0.E9.9C.80.E8.A6.81.E7.9A.84.E6.A0.87.E5.A4.B4">独立﻿实现需要的标头</span></h4>
+<div style="width: fit-content; max-height: 80vh; overflow-y: auto;">
+<table class="wikitable" style="margin: 0;">
+
+<tr>
+<th>库
+</th>
+<th>组件
+</th>
+<th>标头
+</th>
+<th> 是否独立 
+</th></tr>
+<tr>
+<td rowspan="13"><a href="utility.html#.E8.AF.AD.E8.A8.80.E6.94.AF.E6.8C.81" title="cpp/utility">语言支持</a>
+</td>
+<td>通用定义
+</td>
+<td><a href="header/cstddef.html" title="cpp/header/cstddef"><tt>&lt;cstddef&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>C 标准库
+</td>
+<td><a href="header/cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td>实现的属性
+</td>
+<td><a href="header/cfloat.html" title="cpp/header/cfloat"><tt>&lt;cfloat&gt;</tt></a><br><a href="header/climits.html" title="cpp/header/climits"><tt>&lt;climits&gt;</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span><br><a href="header/limits.html" title="cpp/header/limits"><tt>&lt;limits&gt;</tt></a><br><a href="header/version.html" title="cpp/header/version"><tt>&lt;version&gt;</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>整数类型
+</td>
+<td><a href="header/cstdint.html" title="cpp/header/cstdint"><tt>&lt;cstdint&gt;</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>动态内存管理
+</td>
+<td><a href="header/new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>类型鉴别
+</td>
+<td><a href="header/typeinfo.html" title="cpp/header/typeinfo"><tt>&lt;typeinfo&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>源代码位置
+</td>
+<td><a href="header/source_location.html" title="cpp/header/source location"><tt>&lt;source_location&gt;</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>异常处理
+</td>
+<td><a href="header/exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>初始化器列表
+</td>
+<td><a href="header/initializer_list.html" title="cpp/header/initializer list"><tt>&lt;initializer_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>比较
+</td>
+<td><a href="header/compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>协程支持
+</td>
+<td><a href="header/coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>其他运行时支持
+</td>
+<td><a href="header/cstdarg.html" title="cpp/header/cstdarg"><tt>&lt;cstdarg&gt;</tt></a>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>调试支持
+</td>
+<td><a href="header/debugging.html" title="cpp/header/debugging"><tt>&lt;debugging&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td colspan="2"><a href="concepts.html" title="cpp/concepts">概念</a>
+</td>
+<td><a href="header/concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td rowspan="2"><a href="error.html" title="cpp/error">诊断</a>
+</td>
+<td>错误号
+</td>
+<td><a href="header/cerrno.html" title="cpp/header/cerrno"><tt>&lt;cerrno&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td>系统错误支持
+</td>
+<td><a href="header/system_error.html" title="cpp/header/system error"><tt>&lt;system_error&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td><a href="memory.html" title="cpp/memory">内存管理</a> 
+</td>
+<td>内存
+</td>
+<td><a href="header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td rowspan="2"><a href="meta.html" title="cpp/meta">元编程</a>
+</td>
+<td>类型特性
+</td>
+<td><a href="header/type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>编译时有理数算术 
+</td>
+<td><a href="header/ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td rowspan="5"><a href="utility.html#.E9.80.9A.E7.94.A8.E5.B7.A5.E5.85.B7" title="cpp/utility">通用工具</a>
+</td>
+<td>工具组件
+</td>
+<td><a href="header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>多元组
+</td>
+<td><a href="header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td>函数对象
+</td>
+<td><a href="header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td>原始数值转换
+</td>
+<td><a href="header/charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td>位操作
+</td>
+<td><a href="header/bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr>
+<tr>
+<td rowspan="2"><a href="string.html" title="cpp/string">字符串</a>
+</td>
+<td>字符串类
+</td>
+<td><a href="header/string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td>空终止序列工具
+</td>
+<td><a href="header/cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td><a href="text.html" title="cpp/text">文本处理</a>
+</td>
+<td>空终止序列工具
+</td>
+<td><a href="header/cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td colspan="2"><a href="iterator.html" title="cpp/iterator">迭代器</a>
+</td>
+<td><a href="header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td colspan="2"><a href="ranges.html" title="cpp/ranges">范围</a>
+</td>
+<td><a href="header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td rowspan="2"><a href="numeric.html" title="cpp/numeric">数值</a>
+</td>
+<td>浮点数数学函数
+</td>
+<td><a href="header/cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td>随机数生成
+</td>
+<td><a href="header/random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td><a href="thread.html" title="cpp/thread">并发支持</a>
+</td>
+<td>原子操作
+</td>
+<td><a href="header/atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">    全部<sup id="cite_ref-1" class="reference"><a href="freestanding.html#cite_note-1">[1]</a></sup>
+</td></tr>
+<tr>
+<td colspan="2"><a href="execution.html" title="cpp/execution">执行控制</a>
+</td>
+<td><a href="header/execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span>
+</td>
+<td style="background: #ffff90; color: black; vertical-align: middle; text-align: center;" class="table-maybe">部分
+</td></tr>
+<tr>
+<td colspan="2"><b>弃用</b>的标头
+</td>
+<td><a href="header/ciso646.html" title="cpp/header/ciso646"><tt>&lt;ciso646&gt;</tt></a> <span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span><br><a href="header/cstdalign.html" title="cpp/header/cstdalign"><tt>&lt;cstdalign&gt;</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span> <br><a href="header/cstdbool.html" title="cpp/header/cstdbool"><tt>&lt;cstdbool&gt;</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11 起)</span><span class="t-mark-rev t-until-cxx20" style="white-space: nowrap;">(C++20 前)</span>
+</td>
+<td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes">全部
+</td></tr></table>
+</div>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="freestanding.html#cite_ref-1">↑</a></span> <span class="reference-text"><span class="t-rev-inl t-since-cxx20"><span>始终免锁的整数原子类型的支持，以及类型别名 <span class="t-lc">std::atomic_signed_lock_free</span> 与 <span class="t-lc">std::atomic_unsigned_lock_free</span> 的存在性在独立实现由实现定义。</span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span></span>
+</li>
+</ol>
+<h3><span class="mw-headline" id=".E6.B3.A8.E8.A7.A3">注解</span></h3>
+<p>一些编译器供应商可能无法完全支持独立实现，例如 GCC libstdc++ 在 GCC 13 之前存在实现和构建问题，而 LLVM libcxx 和 MSVC STL 完全不支持独立实现。
+</p><p>在 C++23 中，许多功能以部分标头的方式独立。但是，WG21 仍在讨论是否在未来标准中将其他标头制定为独立实现。无论如何，像 <span class="t-lc"><a href="container/vector.html" title="cpp/container/vector">vector</a></span>、<span class="t-lc"><a href="container/list.html" title="cpp/container/list">list</a></span>、<span class="t-lc"><a href="container/deque.html" title="cpp/container/deque">deque</a></span> 和 <span class="t-lc"><a href="container/map.html" title="cpp/container/map">map</a></span> 这样的容器永远不会独立，因为它们的实现依赖异常和堆。
+</p><p>GCC 13 为独立实现提供了更多标头，例如 <a href="header/optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a>、<a href="header/span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a>、<a href="header/array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a> 和 <a href="header/bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a>。但是，虽然在独立环境中使用这些标头可能无法移植，并且可能无法提供与宿主实现相同的能力，因而即使工具链提供了这些标头，最好也不要在独立环境中使用它们。
+</p>
+<table class="wikitable">
+
+<tr>
+<th><a href="utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_feature_test_macros" title="cpp/feature test"><code>__cpp_lib_freestanding_feature_test_macros</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_feature_test_macros_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的功能特性测试宏
+</td></tr>
+<tr>
+<td rowspan="2"><a href="feature_test.html#cpp_lib_freestanding_algorithm" title="cpp/feature test"><code>__cpp_lib_freestanding_algorithm</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_algorithm_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_algorithm_202502L" title="cpp/compiler support/26"><code>202502L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td><a href="header/algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a> 中的更多独立设施
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_array" title="cpp/feature test"><code>__cpp_lib_freestanding_array</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_array_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_char_traits" title="cpp/feature test"><code>__cpp_lib_freestanding_char_traits</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_char_traits_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <span class="t-lc"><a href="string/char_traits.html" title="cpp/string/char traits">std::char_traits</a></span>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_charconv" title="cpp/feature test"><code>__cpp_lib_freestanding_charconv</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_charconv_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_cstdlib" title="cpp/feature test"><code>__cpp_lib_freestanding_cstdlib</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_cstdlib_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_cstring" title="cpp/feature test"><code>__cpp_lib_freestanding_cstring</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_cstring_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_cwchar" title="cpp/feature test"><code>__cpp_lib_freestanding_cwchar</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_cwchar_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_errc" title="cpp/feature test"><code>__cpp_lib_freestanding_errc</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_errc_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <span class="t-lc"><a href="error/errc.html" title="cpp/error/errc">std::errc</a></span>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_execution" title="cpp/feature test"><code>__cpp_lib_freestanding_execution</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_execution_202502L" title="cpp/compiler support/26"><code>202502L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_expected" title="cpp/feature test"><code>__cpp_lib_freestanding_expected</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_expected_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_functional" title="cpp/feature test"><code>__cpp_lib_freestanding_functional</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_functional_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_iterator" title="cpp/feature test"><code>__cpp_lib_freestanding_iterator</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_iterator_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_mdspan" title="cpp/feature test"><code>__cpp_lib_freestanding_mdspan</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_mdspan_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/mdspan.html" title="cpp/header/mdspan"><tt>&lt;mdspan&gt;</tt></a>
+</td></tr>
+<tr>
+<td rowspan="2"><a href="feature_test.html#cpp_lib_freestanding_memory" title="cpp/feature test"><code>__cpp_lib_freestanding_memory</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_memory_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_memory_202502L" title="cpp/compiler support/26"><code>202502L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td><a href="header/memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a> 中的更多独立设施
+</td></tr>
+<tr>
+<td rowspan="2"><a href="feature_test.html#cpp_lib_freestanding_numeric" title="cpp/feature test"><code>__cpp_lib_freestanding_numeric</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_numeric_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_numeric_202502L" title="cpp/compiler support/26"><code>202502L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td><a href="header/numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a> 中的更多独立设施
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_optional" title="cpp/feature test"><code>__cpp_lib_freestanding_optional</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_optional_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_random" title="cpp/feature test"><code>__cpp_lib_freestanding_random</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_random_202502L" title="cpp/compiler support/26"><code>202502L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_ranges" title="cpp/feature test"><code>__cpp_lib_freestanding_ranges</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_ranges_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_ratio" title="cpp/feature test"><code>__cpp_lib_freestanding_ratio</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_ratio_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_string_view" title="cpp/feature test"><code>__cpp_lib_freestanding_string_view</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_string_view_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_tuple" title="cpp/feature test"><code>__cpp_lib_freestanding_tuple</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_tuple_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_utility" title="cpp/feature test"><code>__cpp_lib_freestanding_utility</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_utility_202306L" title="cpp/compiler support/26"><code>202306L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a>
+</td></tr>
+<tr>
+<td><a href="feature_test.html#cpp_lib_freestanding_variant" title="cpp/feature test"><code>__cpp_lib_freestanding_variant</code></a></td>
+<td><a href="compiler_support/26.html#cpp_lib_freestanding_variant_202311L" title="cpp/compiler support/26"><code>202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>独立的 <a href="header/variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a>
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.BC.95.E7.94.A8">引用</span></h3>
+<div class="t-ref-std-c++23">
+<ul><li> C++23 标准（ISO/IEC 14882:2024）：
+</li></ul>
+<dl><dd><ul><li> 4.1 Implementation compliance [intro.compliance]（第 10 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.9.2 Multi-threaded executions and data races [intro.multithread]（第 84 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.9.3.1 main function [basic.start.main]（第 89 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 16.4.2.5 Freestanding implementations [compliance]（第 483 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++20">
+<ul><li> C++20 标准（ISO/IEC 14882:2020）：
+</li></ul>
+<dl><dd><ul><li> 4.1 Implementation compliance [intro.compliance]（第 7 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.9.2 Multi-threaded executions and data races [intro.multithread]（第 77 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.9.3.1 main function [basic.start.main]（第 82 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 16.5.1.3 Freestanding implementations [compliance]（第 470 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++17">
+<ul><li> C++17 标准（ISO/IEC 14882:2017）：
+</li></ul>
+<dl><dd><ul><li> 4.1 Implementation compliance [intro.compliance]（第 5 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4.7 Multi-threaded executions and data races [intro.multithread]（第 15 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 6.6.1 main function [basic.start.main]（第 66 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 20.5.1.3 Freestanding implementations [compliance]（第 458 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++14">
+<ul><li> C++14 标准（ISO/IEC 14882:2014）：
+</li></ul>
+<dl><dd><ul><li> 1.4 Implementation compliance [intro.compliance]（第 5 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 1.10 Multi-threaded executions and data races [intro.multithread]（第 11 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 3.6.1 Main function [basic.start.main]（第 62 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 17.6.1.3 Freestanding implementations [compliance]（第 441 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++11">
+<ul><li> C++11 标准（ISO/IEC 14882:2011）：
+</li></ul>
+<dl><dd><ul><li> 1.4 Implementation compliance [intro.compliance]（第 5 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 1.10 Multi-threaded executions and data races [intro.multithread]（第 11 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 3.6.1 Main function [basic.start.main]（第 58 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 17.6.1.3 Freestanding implementations [compliance]（第 408 页）
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++03">
+<ul><li> C++03 标准（ISO/IEC 14882:2003）：
+</li></ul>
+<dl><dd><ul><li> 1.4 Implementation compliance [intro.compliance]（第 3 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 3.6.1 Main function [basic.start.main]（第 43 页）
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 17.4.1.3 Freestanding implementations [lib.compliance]（第 326 页）
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> 缺陷报告
+</th>
+<th> 应用于
+</th>
+<th> 出版时的行为
+</th>
+<th> 正确行为
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1938.html">CWG 1938</a>
+</td>
+<td> C++98
+</td>
+<td> 实现的文档不需要指明它是否有宿主
+</td>
+<td> 实现种类由实现定义（这样文档就需要指明）
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/LWG/issue3653">LWG 3653</a><br>(<a rel="nofollow" class="external text" href="https://wg21.link/P1642R11">P1642R11</a>)
+</td>
+<td> C++20
+</td>
+<td> <a href="header/coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a> 是独立的，<br>但它使用的 <span class="t-lc"><a href="utility/hash.html" title="cpp/utility/hash">std::hash</a></span> 不是
+</td>
+<td> <a href="header/functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a> 部分独立
+</td></tr></table>
+<h3><span class="mw-headline" id=".E5.8F.82.E9.98.85">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <div class="t-dsc-see"><span class=""><span>遵从性</span></span>的 <span><span><a href="../c/language/conformance.html" title="c/language/conformance">C 文档</a></span></span></div>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 8081/1000000
+Preprocessor generated node count: 11668/1000000
+Post‐expand include size: 85918/4194304 bytes
+Template argument size: 26015/4194304 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_zh_:pcache:idhash:11664-0!*!0!!zh!*!zh!* and timestamp 20250324125833 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    来自“<a href="https://zh.cppreference.com/mwiki/index.php?title=cpp/freestanding&amp;oldid=100188">https://zh.cppreference.com/mwiki/index.php?title=cpp/freestanding&amp;oldid=100188</a>”                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="https://zh.cppreference.com/w/cpp/freestanding">Online version</a></li><li>Offline version retrieved 2025-04-04 09:58.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> 本页面最后修改于2025年3月24日 (星期一) 05:58。</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.MathJax","ext.gadget.ColiruCompiler"], null, true);
+}</script>
+<script src="../../common/site_scripts.js"></script>
+<!-- Served in 0.032 secs. -->
+	</body>
+<!-- Cached 20250324193020 -->
+</html>
