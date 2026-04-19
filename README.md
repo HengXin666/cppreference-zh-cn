@@ -1,3 +1,6 @@
+> [!TIP]
+> ## 时至今日, [cppreference 中文版](https://zh.cppreference.com/%e9%a6%96%e9%a1%b5) 已经复活了!
+
 # cppreference 中文离线镜像 (2025-04-04)
 > 这是 cppreference.com 中文版本的本地离线镜像, 基于 2025年4月4日发布的 html-book 构建。
 
