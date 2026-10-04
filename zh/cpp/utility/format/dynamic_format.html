@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="zh-Hans-CN" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>std::dynamic_format</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRequestId":"73cbf459f4a6eadf65a492da","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/utility/format/dynamic_format","wgTitle":"cpp/utility/format/dynamic format","wgCurRevisionId":100819,"wgRevisionId":100819,"wgArticleId":17241,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["使用已弃用source标签的页面"],"wgPageViewLanguage":"zh-cn","wgPageContentLanguage":"zh-cn","wgPageContentModel":"wikitext","wgRelevantPageName":"cpp/utility/format/dynamic_format","wgRelevantArticleId":17241,"wgUserVariant":"zh-cn","wgIsProbablyEditable":false,"wgRelevantPageIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgCiteReferencePreviewsActive":true,"wgCheckUserClientHintsHeadersJsApi":["architecture","bitness","brands","fullVersionList","mobile","model","platform","platformVersion"]};
+RLSTATE={"site.styles":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.pygments":"ready","skins.cppreference2.styles":"ready"};RLPAGEMODULES=["ext.pygments.view","site","mediawiki.page.ready","mediawiki.toc","skins.cppreference2.js","ext.checkUser.clientHints","ext.gadget.MathJax","ext.gadget.ColiruCompiler"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});mw.user.options.set({"language":"zh-cn","variant":"zh-cn"});
+}];});});</script>
+<link rel="stylesheet" href="../../../../common/ext.css">
+<script async="" src="../../../../common/startup_scripts.js"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<meta name="generator" content="MediaWiki 1.43.8">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=1120">
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-cpp_utility_format_dynamic_format rootpage-cpp skin-cppreference2 action-view cpp-navbar"><!-- header -->
+<!-- /header -->
+
+<!-- content -->
+<div id="cpp-content-base">
+    <div id="content" class="mw-body">
+        <a id="top"></a>
+        <div id="mw-js-message" style="display:none;" lang="zh-Hans-CN" dir="ltr"></div>
+        <!-- firstHeading -->
+        <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::</span>dynamic_format</h1>
+        <!-- /firstHeading -->
+        <!-- bodyContent -->
+        <div id="bodyContent" class="mw-body-content">
+            <!-- tagline -->
+            <div id="siteSub">来自cppreference.com</div>
+            <!-- /tagline -->
+            <!-- subtitle -->
+            <div id="contentSub" lang="zh-Hans-CN" dir="ltr"><div id="mw-content-subtitle" lang="zh-Hans-CN" dir="ltr"><div class="subpages">&lt; <bdi dir="ltr"><a href="../../../cpp.html" title="cpp">cpp</a></bdi> | <bdi dir="ltr"><a href="../../utility.html" title="cpp/utility">utility</a></bdi> | <bdi dir="ltr"><a href="../format.html" title="cpp/utility/format">format</a></bdi></div></div></div>
+            <!-- /subtitle -->
+            <!-- bodycontent -->
+            <div id="mw-content-text"><div class="mw-content-ltr mw-parser-output" lang="zh-Hans-CN" dir="ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tbody><tr class="t-nv"><td colspan="5"><a href="../../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</tbody></table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../text.html" title="cpp/text">文本处理库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="../../locale.html" title="cpp/locale">本地化库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../regex.html" title="cpp/regex">正则表达式库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../format.html" title="cpp/utility/format">格式化库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../text.html#%E7%A9%BA%E7%BB%88%E6%AD%A2%E5%BA%8F%E5%88%97%E5%B7%A5%E5%85%B7" title="cpp/text">空终止序列工具</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string/byte.html" title="cpp/string/byte">字节字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string/multibyte.html" title="cpp/string/multibyte">多字节字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../../string/wide.html" title="cpp/string/wide">宽字符串</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../text.html#%E5%88%9D%E7%AD%89%E6%95%B0%E5%80%BC%E8%BD%AC%E6%8D%A2" title="cpp/text">初等数值转换</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../to_chars.html" title="cpp/utility/to chars"><span class="t-lines"><span>to_chars</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../to_chars_result.html" title="cpp/utility/to chars result"><span class="t-lines"><span>to_chars_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../from_chars.html" title="cpp/utility/from chars"><span class="t-lines"><span>from_chars</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../from_chars_result.html" title="cpp/utility/from chars result"><span class="t-lines"><span>from_chars_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../chars_format.html" title="cpp/utility/chars format"><span class="t-lines"><span>chars_format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></span></span></div></div></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../text.html#%E6%96%87%E6%9C%AC%E7%BC%96%E7%A0%81%E8%AF%86%E5%88%AB" title="cpp/text">文本编码识别</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../text/text_encoding.html" title="cpp/text/text encoding"><span class="t-lines"><span>text_encoding</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../format.html" title="cpp/utility/format"> 格式化库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h1"><td colspan="5"><a href="spec.html" title="cpp/utility/format/spec">标准格式说明</a></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="format.html#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0" title="cpp/utility/format/format">格式化函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="format.html" title="cpp/utility/format/format"><span class="t-lines"><span>format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="format_to.html" title="cpp/utility/format/format to"><span class="t-lines"><span>format_to</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="format_to_n.html" title="cpp/utility/format/format to n"><span class="t-lines"><span>format_to_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="formatted_size.html" title="cpp/utility/format/formatted size"><span class="t-lines"><span>formatted_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vformat.html" title="cpp/utility/format/vformat"><span class="t-lines"><span>vformat</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vformat_to.html" title="cpp/utility/format/vformat to"><span class="t-lines"><span>vformat_to</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="format.html#%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2" title="cpp/utility/format/format">格式字符串</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_format_string.html" title="cpp/utility/format/basic format string"><span class="t-lines"><span>basic_format_string</span><span>format_string</span><span>wformat_string</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a class="mw-selflink selflink"><span class="t-lines"><span>dynamic_format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="format.html#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A6%82%E5%BF%B5" title="cpp/utility/format/format">格式化概念</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="formattable.html" title="cpp/utility/format/formattable"><span class="t-lines"><span>formattable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">格式化器</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="formatter.html" title="cpp/utility/format/formatter"><span class="t-lines"><span>formatter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tuple_formatter.html" title="cpp/utility/format/tuple formatter"><span class="t-lines"><span>formatter<span class="t-dsc-small">&lt;<i>pair-or-tuple</i>&gt;</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ranges_formatter.html" title="cpp/utility/format/ranges formatter"><span class="t-lines"><span>formatter<span class="t-dsc-small">&lt;<i>range</i>&gt;</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="range_formatter.html" title="cpp/utility/format/range formatter"><span class="t-lines"><span>range_formatter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="enable_nonlocking_formatter_optimization.html" title="cpp/utility/format/enable nonlocking formatter optimization"><span class="t-lines"><span>enable_nonlocking_formatter_optimization</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_format_parse_context.html" title="cpp/utility/format/basic format parse context"><span class="t-lines"><span>basic_format_parse_context</span><span>format_parse_context</span><span>wformat_parse_context</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_format_context.html" title="cpp/utility/format/basic format context"><span class="t-lines"><span>basic_format_context</span><span>format_context</span><span>wformat_context</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="range_format.html" title="cpp/utility/format/range format"><span class="t-lines"><span>range_format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="format_kind.html" title="cpp/utility/format/format kind"><span class="t-lines"><span>format_kind</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">格式化参数</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_format_arg.html" title="cpp/utility/format/basic format arg"><span class="t-lines"><span>basic_format_arg</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_format_arg/handle.html" title="cpp/utility/format/basic format arg/handle"><span class="t-lines"><span>basic_format_arg::handle</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_format_args.html" title="cpp/utility/format/basic format args"><span class="t-lines"><span>basic_format_args</span><span>format_args</span><span>wformat_args</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="visit_format_arg.html" title="cpp/utility/format/visit format arg"><span class="t-lines"><span>visit_format_arg</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span> <span class="t-mark-rev t-deprecated-cxx26" style="white-space: nowrap;">(C++26 弃用)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="make_format_args.html" title="cpp/utility/format/make format args"><span class="t-lines"><span>make_format_args</span><span>make_wformat_args</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="format.html#%E6%A0%BC%E5%BC%8F%E9%94%99%E8%AF%AF" title="cpp/utility/format/format">格式错误</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="format_error.html" title="cpp/utility/format/format error"><span class="t-lines"><span>format_error</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div></td></tr>
+</tbody></table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../../header/format.html" title="cpp/header/format">&lt;format&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 80 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="cm">/*dynamic-format-string*/</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dynamic_format</span><span class="p">(</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">fmt</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 84 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="cm">/*dynamic-format-string*/</span><span class="o">&lt;</span><span class="kt">wchar_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dynamic_format</span><span class="p">(</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">wstring_view</span><span class="w"> </span><span class="n">fmt</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>返回一个对象，它存储一个可以直接在面向用户的格式化函数中使用的动态格式字符串，且可以隐式转换为 <a href="basic_format_string.html" title="cpp/utility/format/basic format string"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::basic_format_string</code></a>。
+</p>
+<h3><span id=".E5.8F.82.E6.95.B0"></span><span class="mw-headline" id="参数">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tbody><tr class="t-par">
+<td>fmt
+</td>
+<td>-
+</td>
+<td>字符串视图
+</td></tr></tbody></table>
+<h3><span id=".E8.BF.94.E5.9B.9E.E5.80.BC"></span><span class="mw-headline" id="返回值">返回值</span></h3>
+<p>一个具有以下仅用于阐释的类型的含有动态格式字符串的对象：
+</p>
+<div class="t-member">
+<h2><span id=".E7.B1.BB.E6.A8.A1.E6.9D.BF_dynamic-format-string_.3CCharT.3E"></span><span class="mw-headline" id="类模板_dynamic-format-string_&lt;CharT&gt;"><small><b>类模板</b></small> <span style="font-size:0.8em; line-height:125%"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><i>dynamic-format-string</i></code> <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&lt;CharT&gt;</code></span></span></h2>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dcl">
+<td> <div><div style="max-width: min(calc(7.68332px * 57 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CharT</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="cm">/*dynamic-format-string*/</span><span class="p">;</span>
+</pre></div></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark t-mark-expos" style="white-space: nowrap;">(<span title="此定义仅用于展示。实现不需要通过这种方式定义实体。此实体的名字未指定。">仅用于阐述*</span>)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<h4><span id=".E6.88.90.E5.91.98.E5.AF.B9.E8.B1.A1"></span><span class="mw-headline" id="成员对象">成员对象</span></h4>
+<p>所返回的对象包含一个 <span class="t-lc">std::basic_string_view&lt;CharT&gt;</span> 类型的仅用于阐释的非静态数据成员 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><i>str</i></code>。
+</p>
+<h4><span id=".E6.9E.84.E9.80.A0.E5.87.BD.E6.95.B0.E4.B8.8E.E8.B5.8B.E5.80.BC"></span><span class="mw-headline" id="构造函数与赋值">构造函数与赋值</span></h4>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dcl">
+<td> <div><div style="max-width: min(calc(7.68332px * 70 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="cm">/*dynamic-format-string*/</span><span class="p">(</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">basic_string_view</span><span class="o">&lt;</span><span class="n">CharT</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><div style="max-width: min(calc(7.68332px * 71 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="cm">/*dynamic-format-string*/</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="cm">/*dynamic-format-string*/</span><span class="o">&amp;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><div style="max-width: min(calc(7.68332px * 82 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="cm">/*dynamic-format-string*/</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="cm">/*dynamic-format-string*/</span><span class="o">&amp;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (3) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 以 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">s</code> 初始化 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><i>str</i></code>。</div>
+<div class="t-li1"><span class="t-li">2)</span> 复制构造函数被显式弃置。此类型既不可复制也不可移动。</div>
+<div class="t-li1"><span class="t-li">3)</span> 赋值被显式弃置。
+</div></div>
+<h3><span id=".E6.B3.A8.E8.A7.A3"></span><span class="mw-headline" id="注解">注解</span></h3>
+<p>由于 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">dynamic_format</code> 的返回类型既不可复制也不可移动，所以尝试把 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">dynamic_fmt</span></code></span> 作为泛左值进行传递会妨碍 <span class="t-lc">std::basic_format_string</span> 的构造，这导致程序非良构。要从 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">dynamic_format</code> 构造 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::basic_format_string</code>，<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">dynamic_format</code> 的返回值应直接按纯右值传递给 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::basic_format_string</code>，这样会保证发生复制消除。
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">dynamic_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">dynamic_format</span><span class="p">(</span><span class="s">"{}"</span><span class="p">);</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">s0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">dynamic_fmt</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 错误</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">dynamic_fmt</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 仍然错误</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">dynamic_format</span><span class="p">(</span><span class="s">"{}"</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// ok</span>
+</pre></div>
+<table class="wikitable">
+
+<tbody><tr>
+<th><a href="../feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td rowspan="2"><a href="../../feature_test.html#cpp_lib_format" title="cpp/feature test"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">__cpp_lib_format</code></a></td>
+<td><a href="../../compiler_support/26.html#cpp_lib_format_202311L" title="cpp/compiler support/26"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">202311L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>运行时格式字符串
+</td></tr>
+<tr>
+<td><a href="../../compiler_support/26.html#cpp_lib_format_202603L" title="cpp/compiler support/26"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">202603L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td>重命名 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">runtime_format</code> 为 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">dynamic_format</code>
+</td></tr></tbody></table>
+<h3><span id=".E7.A4.BA.E4.BE.8B"></span><span class="mw-headline" id="示例">示例</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;format&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;print&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string_view&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">"Hello {}!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">fmt</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">{};</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fmt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"{} "</span><span class="p">;</span><span class="w"> </span><span class="c1">// 构造格式化字符串</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">"{} : "</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">println</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">dynamic_format</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span><span class="w"> </span><span class="s">"alpha"</span><span class="p">,</span><span class="w"> </span><span class="sc">'Z'</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">,</span><span class="w"> </span><span class="s">"unused"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出：
+</p>
+<div class="mw-highlight mw-highlight-lang-text mw-content-ltr" dir="ltr"><pre><span></span>Hello world!
+{}  : alpha
+{} {}  : alpha Z
+{} {} {}  : alpha Z 3.14
+</pre></div> 
+</div>
+<h3><span id=".E5.8F.82.E9.98.85"></span><span class="mw-headline" id="参阅">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tbody><tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="format.html" title="cpp/utility/format/format"> <span class="t-lines"><span>format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>在新字符串中存储参数的格式化表示 <br> <span class="t-mark" style="white-space: nowrap;">(函数模板)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="vformat.html" title="cpp/utility/format/vformat"> <span class="t-lines"><span>vformat</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td><span class="t-lc">std::format</span> 的使用类型擦除的参数表示的非模板变体 <br> <span class="t-mark" style="white-space: nowrap;">(函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="basic_format_string.html" title="cpp/utility/format/basic format string"> <span class="t-lines"><span>basic_format_string</span><span>format_string</span><span>wformat_string</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>在构造时执行编译期格式字符串检查的类模板  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> </td></tr>
+</tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260501133034
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.128 seconds
+Real time usage: 0.297 seconds
+Preprocessor visited node count: 5388/1000000
+Post‐expand include size: 177114/4194304 bytes
+Template argument size: 40198/4194304 bytes
+Highest expansion depth: 21/100
+Expensive parser function count: 10/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 9825/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  251.799      1 -total
+ 62.53%  157.459      3 Template:source
+ 16.28%   41.000      1 Template:cpp/utility/format/navbar
+ 15.98%   40.228      1 Template:navbar
+  8.83%   22.229     64 Template:nv
+  7.80%   19.638     30 Template:nv_ln
+  7.39%   18.605      1 Template:cpp/utility/format/navbar_content
+  4.90%   12.339      3 Template:dsc_inc
+  4.75%   11.950      6 Template:dcl
+  4.28%   10.778      1 Template:member
+-->
+
+<!-- Saved in parser cache with key zh:pcache:idhash:17241-0!canonical!zh-cn and timestamp 20260501133116 and revision id 100819. Rendering was triggered because: edit-page
+ -->
+</div></div>
+            <!-- /bodycontent -->
+            <!-- catlinks -->
+            <!-- /catlinks -->
+            <div class="visualClear"></div>
+            <!-- debughtml -->
+                        <!-- /debughtml -->
+        </div>
+        <!-- /bodyContent -->
+    </div>
+</div>
+<!-- /content -->
+
+<!-- footer -->
+<div id="cpp-footer-base" class="noprint">
+    <div id="footer" lang="zh-Hans-CN" dir="ltr">
+        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="../../../../zh.cppreference.com/w/cpp/utility/format/dynamic_format">Online version</a></li><li>Offline version retrieved 2026-05-02 15:55.</li></ul></div>
+        </div>
+</div>
+<!-- /footer -->
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":1197,"wgPageParseReport":{"limitreport":{"cputime":"0.128","walltime":"0.297","ppvisitednodes":{"value":5388,"limit":1000000},"postexpandincludesize":{"value":177114,"limit":4194304},"templateargumentsize":{"value":40198,"limit":4194304},"expansiondepth":{"value":21,"limit":100},"expensivefunctioncount":{"value":10,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":9825,"limit":5000000},"timingprofile":["100.00%  251.799      1 -total"," 62.53%  157.459      3 Template:source"," 16.28%   41.000      1 Template:cpp/utility/format/navbar"," 15.98%   40.228      1 Template:navbar","  8.83%   22.229     64 Template:nv","  7.80%   19.638     30 Template:nv_ln","  7.39%   18.605      1 Template:cpp/utility/format/navbar_content","  4.90%   12.339      3 Template:dsc_inc","  4.75%   11.950      6 Template:dcl","  4.28%   10.778      1 Template:member"]},"cachereport":{"timestamp":"20260501133034","ttl":2592000,"transientcontent":false}}});});</script>
+</body>
+</html>

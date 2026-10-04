@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html><body><br>
+<b>Notice</b>:  Unexpected clearActionName after getActionName already called in <b>/var/www/cppreference.com/public/includes/context/RequestContext.php</b> on line <b>338</b><br>
+
+
+
+<meta charset="UTF-8">
+<title>约束与概念 (C++20 起)</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRequestId":"9855ae977d96302ffaed8be1","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/constraints","wgTitle":"cpp/language/constraints","wgCurRevisionId":100162,"wgRevisionId":100162,"wgArticleId":9283,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["使用已弃用source标签的页面","有原因的 todo"],"wgPageViewLanguage":"zh","wgPageContentLanguage":"zh","wgPageContentModel":"wikitext","wgRelevantPageName":"cpp/language/constraints","wgRelevantArticleId":9283,"wgUserVariant":"zh","wgIsProbablyEditable":false,"wgRelevantPageIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRedirectedFrom":"cpp/language/concepts","wgCiteReferencePreviewsActive":true,"wgInternalRedirectTargetUrl":"/cpp/language/constraints","wgCheckUserClientHintsHeadersJsApi":["architecture","bitness","brands","fullVersionList","mobile","model","platform","platformVersion"]};
+RLSTATE={"site.styles":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.pygments":"ready","skins.cppreference2.styles":"ready"};RLPAGEMODULES=["mediawiki.action.view.redirect","ext.pygments.view","site","mediawiki.page.ready","mediawiki.toc","skins.cppreference2.js","ext.checkUser.clientHints","ext.gadget.MathJax","ext.gadget.ColiruCompiler"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="../../../common/ext.css">
+<script async="" src="../../../common/startup_scripts.js"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<meta name="generator" content="MediaWiki 1.43.8">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=1120">
+<link rel="search" type="application/opensearchdescription+xml" href="../../../common/rest.php/v1/search" title="cppreference.com (zh)">
+<link rel="EditURI" type="application/rsd+xml" href="../../../zh.cppreference.com/api.php">
+<link rel="canonical" href="constraints.html">
+<link rel="alternate" hreflang="zh" href="constraints.html">
+<link rel="alternate" hreflang="zh-Hans" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="zh-Hans-CN" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="zh-Hans-MY" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="zh-Hans-SG" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="zh-Hant" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="zh-Hant-HK" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="zh-Hant-MO" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="zh-Hant-TW" href="../../../zh.cppreference.com/index.php">
+<link rel="alternate" hreflang="x-default" href="constraints.html">
+<link rel="alternate" type="application/atom+xml" title="cppreference.com的Atom订阅" href="../../../zh.cppreference.com/index.php">
+
+<!-- header -->
+<!-- /header -->
+
+<!-- content -->
+<div id="cpp-content-base">
+    <div id="content" class="mw-body">
+        <a id="top"></a>
+        <div id="mw-js-message" style="display:none;" lang="zh" dir="ltr"></div>
+        <!-- firstHeading -->
+        <h1 id="firstHeading" class="firstHeading">约束与概念 <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></h1>
+        <!-- /firstHeading -->
+        <!-- bodyContent -->
+        <div id="bodyContent" class="mw-body-content">
+            <!-- tagline -->
+            <div id="siteSub">来自cppreference.com</div>
+            <!-- /tagline -->
+            <!-- subtitle -->
+            <div id="contentSub" lang="zh" dir="ltr"><div id="mw-content-subtitle"><div class="subpages">&lt; <bdi dir="ltr"><a href="../../cpp.html" title="cpp">cpp</a></bdi> | <bdi dir="ltr"><a href="../language.html" title="cpp/language">language</a></bdi></div><span class="mw-redirectedfrom">（重定向自<a href="../../../zh.cppreference.com/index.php" class="mw-redirect" title="cpp/language/concepts">cpp/language/concepts</a>）</span></div></div>
+            <!-- /subtitle -->
+            <!-- bodycontent -->
+            <div id="mw-content-text"><div class="mw-content-ltr mw-parser-output" lang="zh" dir="ltr"><p><br>
+</p>
+<div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tbody><tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</tbody></table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language">C++ 语言</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h1"><td colspan="5">一般主题</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="../preprocessor.html" title="cpp/preprocessor">预处理器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../comment.html" title="cpp/comment">注释</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="../keyword.html" title="cpp/keyword">关键词</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="escape.html" title="cpp/language/escape">转义序列</a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="statements.html" title="cpp/language/statements">流程控制</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5">条件执行语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">重复语句（循环）</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="range-for.html" title="cpp/language/range-for">范围 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">for</span></code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="do.html" title="cpp/language/do"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">do-while</code></a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">跳转语句</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="functions.html" title="cpp/language/functions">函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="lambda.html" title="cpp/language/lambda">lambda 函数表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="inline.html" title="cpp/language/inline"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="kr">inline</span></code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="except_spec.html" title="cpp/language/except spec">动态异常说明</a> <span class="t-mark" style="white-space: nowrap;">(<span title="C++11 中弃用">C++17 前*</span>)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="noexcept_spec.html" title="cpp/language/noexcept spec"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">noexcept</span></code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">异常</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="throw.html" title="cpp/language/throw"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">throw</span></code> 表达式</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="try.html" title="cpp/language/try"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">try</span></code> 块</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="catch.html" title="cpp/language/catch"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">catch</code> 处理块</a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">命名空间</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="namespace.html" title="cpp/language/namespace">命名空间声明</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="namespace_alias.html" title="cpp/language/namespace alias">命名空间别名</a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">类型</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="types.html" title="cpp/language/types">基础类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="enum.html" title="cpp/language/enum">枚举类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function.html" title="cpp/language/function">函数类型</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类/结构体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="union.html" title="cpp/language/union">联合体类型</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">说明符</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="cv.html" title="cpp/language/cv"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">const</span></code>/<code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">volatile</span></code></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="consteval.html" title="cpp/language/consteval"><tt>consteval</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constinit.html" title="cpp/language/constinit"><tt>constinit</tt></a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="storage_duration.html" title="cpp/language/storage duration">存储期说明符</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="initialization.html" title="cpp/language/initialization">初始化</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="default_initialization.html" title="cpp/language/default initialization">默认初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="value_initialization.html" title="cpp/language/value initialization">值初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="zero_initialization.html" title="cpp/language/zero initialization">零初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_initialization.html" title="cpp/language/copy initialization">复制初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="direct_initialization.html" title="cpp/language/direct initialization">直接初始化</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">聚合初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="list_initialization.html" title="cpp/language/list initialization">列表初始化</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constant_initialization.html" title="cpp/language/constant initialization">常量初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reference_initialization.html" title="cpp/language/reference initialization">引用初始化</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h1"><td colspan="5"><a href="expressions.html" title="cpp/language/expressions">表达式</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="value_category.html" title="cpp/language/value category">值类别</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="eval_order.html" title="cpp/language/eval order">求值顺序</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="operators.html" title="cpp/language/operators">运算符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_precedence.html" title="cpp/language/operator precedence">运算符优先级</a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="operator_alternative.html" title="cpp/language/operator alternative">替代表示</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="expressions.html#%E5%AD%97%E9%9D%A2%E9%87%8F" title="cpp/language/expressions">字面量</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="bool_literal.html" title="cpp/language/bool literal">布尔</a> - <a href="integer_literal.html" title="cpp/language/integer literal">整数</a> - <a href="floating_literal.html" title="cpp/language/floating literal">浮点</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="character_literal.html" title="cpp/language/character literal">字符</a> - <a href="string_literal.html" title="cpp/language/string literal">字符串</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"><a href="user_literal.html" title="cpp/language/user literal">用户定义</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5">工具</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="attributes.html" title="cpp/language/attributes">属性</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型</td></tr>
+<tr class="t-nv"><td colspan="5"><a href="typedef.html" title="cpp/language/typedef"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">typedef</code> 声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="type_alias.html" title="cpp/language/type alias">类型别名声明</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类型转换</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="implicit_conversion.html" title="cpp/language/implicit conversion">隐式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="explicit_cast.html" title="cpp/language/explicit cast">显式转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">内存分配</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="new.html" title="cpp/language/new"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">new</code> 表达式</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="delete.html" title="cpp/language/delete"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">delete</code> 表达式</a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="classes.html" title="cpp/language/classes">类</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="class.html" title="cpp/language/class">类声明</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="constructor.html" title="cpp/language/constructor">构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="this.html" title="cpp/language/this"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">this</code> 指针</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="access.html" title="cpp/language/access">访问说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="friend.html" title="cpp/language/friend"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">friend</code> 说明符</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">类特有的函数性质</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="virtual.html" title="cpp/language/virtual">虚函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="override.html" title="cpp/language/override"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">override</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"><a href="final.html" title="cpp/language/final"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">final</code> 说明符</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="static.html" title="cpp/language/static"><tt>static</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5">特殊成员函数</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="default_constructor.html" title="cpp/language/default constructor">默认构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="copy_constructor.html" title="cpp/language/copy constructor">复制构造函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_constructor.html" title="cpp/language/move constructor">移动构造函数</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="copy_assignment.html" title="cpp/language/copy assignment">复制赋值</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="move_assignment.html" title="cpp/language/move assignment">移动赋值</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="destructor.html" title="cpp/language/destructor">析构函数</a></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates">模板</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="class_template.html" title="cpp/language/class template">类模板</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="function_template.html" title="cpp/language/function template">函数模板</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="template_specialization.html" title="cpp/language/template specialization">模板特化</a></td></tr>   
+<tr class="t-nv"><td colspan="5"><a href="pack.html" title="cpp/language/pack">形参包</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+</tbody></table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5">杂项</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="asm.html" title="cpp/language/asm">内联汇编</a></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><a href="history.html" title="cpp/language/history">C++ 的历史</a></td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="templates.html" title="cpp/language/templates">模板</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"> <a href="template_parameters.html" title="cpp/language/template parameters">模板形参与实参</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template">类模板</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template">函数模板</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="member_template.html" title="cpp/language/member template">类成员模板</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="variable_template.html" title="cpp/language/variable template">变量模板</a><span class="t-mark-rev t-since-cxx14" style="white-space: nowrap;">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="template_argument_deduction.html" title="cpp/language/template argument deduction">模板实参推导</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="class_template_argument_deduction.html" title="cpp/language/class template argument deduction">类模板实参推导</a><span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization">显式（全）特化</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="partial_specialization.html" title="cpp/language/partial specialization">部分特化</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dependent_name.html" title="cpp/language/dependent name">待决名</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="pack.html" title="cpp/language/pack">包</a><span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="sizeof....html" title="cpp/language/sizeof..."> <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">sizeof...</code></a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="fold.html" title="cpp/language/fold"> 折叠表达式</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="pack_indexing.html" title="cpp/language/pack indexing"> 形参包索引</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sfinae.html" title="cpp/language/sfinae"> SFINAE</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a class="mw-selflink selflink">约束与概念</a><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="requires.html" title="cpp/language/requires"> requires 表达式</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span> </td></tr>
+</tbody></table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p><a href="class_template.html" title="cpp/language/class template">类模板</a>，<a href="function_template.html" title="cpp/language/function template">函数模板</a>（包括<a href="lambda.html" title="cpp/language/lambda">泛型 lambda</a>），以及其他<a href="templates.html#%E6%A8%A1%E6%9D%BF%E5%8C%96%E5%AE%9E%E4%BD%93" title="cpp/language/templates">模板化函数</a>（通常为类模板的成员），可以与一项<i>约束 ﻿</i>相关联，它指定了对模板实参的一些要求，这些要求可以被用于选择最恰当的函数重载和模板特化。
+</p><p>这种<a href="requires.html" title="cpp/language/requires">要求</a>的具名集合被称为<i>概念 ﻿</i>。每个概念都是一个谓词，它在编译时求值，并在将之用作约束时成为模板接口的一部分：
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">运行此代码</div></div>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;concepts&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+
+<span class="c1">// 概念 Hashable 的声明可以被符合以下条件的任意类型 T 满足：</span>
+<span class="c1">// 对于 T 类型的值 a，表达式 std::hash&lt;T&gt;{}(a) 可以编译并且它的结果可以转换到 std::size_t</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Hashable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">requires</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">{}(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">meow</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="c1">// 受约束的 C++20 函数模板</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Hashable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+<span class="c1">//</span>
+<span class="c1">// 应用相同约束的另一种方式：</span>
+<span class="c1">// template&lt;typename T&gt;</span>
+<span class="c1">//     requires Hashable&lt;T&gt;</span>
+<span class="c1">// void f(T) {}</span>
+<span class="c1">//</span>
+<span class="c1">// template&lt;typename T&gt;</span>
+<span class="c1">// void f(T) requires Hashable&lt;T&gt; {}</span>
+<span class="c1">//</span>
+<span class="c1">// void f(Hashable auto /* 形参名 */) {}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="k">operator</span><span class="s">""</span><span class="n">s</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="s">"abc"</span><span class="n">s</span><span class="p">);</span><span class="w">    </span><span class="c1">// OK，std::string 满足 Hashable</span>
+<span class="w">    </span><span class="c1">// f(meow{}); // 错误：meow 不满足 Hashable</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在编译时（模板实例化过程的早期）就检测是否违背约束，这样错误信息就更容易理解：
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">-1</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">l</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w"> </span>
+<span class="c1">// 没有概念时典型编译器的诊断：</span>
+<span class="c1">// 二元表达式的操作数非法 ('std::_List_iterator&lt;int&gt;' 和 'std::_List_iterator&lt;int&gt;')</span>
+<span class="c1">//                           std::__lg(__last - __first) * 2);</span>
+<span class="c1">//                                     ~~~~~~ ^ ~~~~~~~</span>
+<span class="c1">// …… 50 行输出……</span>
+<span class="c1">//</span>
+<span class="c1">// 有概念时典型编译器的诊断：</span>
+<span class="c1">// 错误：无法以 std::_List_iterator&lt;int&gt; 调用 std::sort</span>
+<span class="c1">// 注意：未满足概念 RandomAccessIterator&lt;std::_List_iterator&lt;int&gt;&gt;</span>
+</pre></div>
+<p>概念的目的是塑造语义分类（Number、Range、RegularFunction）而非语法上的限制（HasPlus、Array）。按照 <a rel="nofollow" class="external text" href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#t20-avoid-concepts-without-meaningful-semantics">ISO C++ 核心方针 T.20</a> 所说，“与语法限制相反，真正的概念的一个决定性的特征是有能力指定有意义的语义。”
+</p>
+<h3><span id=".E6.A6.82.E5.BF.B5"></span><span class="mw-headline" id="概念">概念</span></h3>
+<p>概念是<a href="requires.html" title="cpp/language/requires">要求</a>的具名集合。概念的定义必须在命名空间作用域中出现。
+</p><p>概念定义拥有以下形式：
+</p>
+<table class="t-sdsc-begin">
+
+<tbody><tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><b>template &lt;</b></code> <span class="t-spar">模板形参列表</span> <code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><b>&gt;</b></code>
+<p><code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><b>concept</b></code> <span class="t-spar">概念名 属性</span> ﻿<span class="t-mark" style="white-space: nowrap;">(可选)</span> <code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><b>=</b></code> <span class="t-spar">约束表达式</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><b>;</b></code>
+</p>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></tbody></table>
+<table class="t-par-begin">
+
+
+<tbody><tr class="t-par">
+<td><span class="t-spar">属性</span>
+</td>
+<td>-
+</td>
+<td>任意数量的<a href="attributes.html" title="cpp/language/attributes">属性</a>的序列
+</td></tr></tbody></table>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="c1">// 概念</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">U</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_base_of</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+</pre></div>
+<p>概念不能递归地提及自身，而且不能受约束：
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误：递归的概念</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">C1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">C1</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Error1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误：C1 T 试图约束概念定义</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">C1</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Error2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误：requires 子句试图约束概念</span>
+</pre></div>
+<p>概念不能被显式实例化、显式特化或部分特化（不能更改约束的原初定义的含义）。
+</p><p>概念可以在标识表达式中命名。该标识表达式的值在满足约束表达式时是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="nb">true</span></code></span>，否则是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="nb">false</span></code></span>。
+</p><p>概念在作为以下内容的一部分时也可以在类型约束中被命名：
+</p>
+<ul><li><a href="template_parameters.html#%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E5%BD%A2%E5%8F%82" title="cpp/language/template parameters">模板类型形参声明</a></li>
+<li><a href="auto.html" title="cpp/language/auto">占位类型说明符</a></li>
+<li><a href="requires.html#%E5%A4%8D%E5%90%88%E8%A6%81%E6%B1%82" title="cpp/language/requires">复合要求</a></li></ul>
+<p>概念在 <span class="t-spar">类型约束</span> 中接受的实参要比它的形参列表要求的要少一个，因为按语境推导出的类型会隐式地用作第一个实参：
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">U</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_base_of</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+<span class="w"> </span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&lt;</span><span class="n">Base</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// T 被 Derived&lt;T, Base&gt; 约束</span>
+</pre></div>
+<h3><span id=".E7.BA.A6.E6.9D.9F"></span><span class="mw-headline" id="约束">约束</span></h3>
+<p>约束是逻辑操作和操作数的序列，它指定了对模板实参的要求。它们可以在 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span></code> 表达式中出现，也可以直接作为概念的主体。
+</p><p>有<span class="t-rev-inl t-until-cxx26"><span>三</span><span><span class="t-mark-rev t-until-cxx26" style="white-space: nowrap;">(C++26 前)</span></span></span><span class="t-rev-inl t-since-cxx26"><span>四</span><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></span></span>种类型的约束：
+</p>
+<div class="t-li1"><span class="t-li">1)</span> 合取</div>
+<div class="t-li1"><span class="t-li">2)</span> 析取</div>
+<div class="t-li1"><span class="t-li">3)</span> 原子（不可分割）约束</div>
+<table class="t-rev-begin">
+<tbody><tr class="t-rev t-since-cxx26"><td>
+<div class="t-li1"><span class="t-li">4)</span> 折叠展开约束</div>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+</tbody></table>
+<p>对包含遵循以下顺序的操作数的逻辑与表达式进行<a href="concepts.html#%E7%BA%A6%E6%9D%9F%E8%A7%84%E8%8C%83%E5%8C%96">规范化</a>，确定与一个声明关联的约束：
+</p>
+<ul><li>每个声明中受约束的<a href="template_parameters.html#%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF%E5%BD%A2%E5%8F%82" title="cpp/language/template parameters">类型模板形参</a>或带<a href="auto.html" title="cpp/language/auto">占位类型</a>声明的非类型模板形参所引入的约束表达式，按出现顺序；</li>
+<li>模板形参列表之后的 <a class="mw-selflink-fragment" href="concepts.html#requires_%E5%AD%90%E5%8F%A5"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span></code> 子句</a>中的约束表达式；</li>
+<li><a href="function_template.html#%E7%AE%80%E5%86%99%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF" title="cpp/language/function template">简写函数模板声明</a>中每个拥有受约束<a href="auto.html" title="cpp/language/auto">占位类型</a>的形参所引入的约束表达式;</li>
+<li>尾部的 <a class="mw-selflink-fragment" href="concepts.html#requires_%E5%AD%90%E5%8F%A5"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span></code> 子句</a>中的约束表达式。</li></ul>
+<p>这个顺序决定了在检查是否满足时各个约束时的实例化顺序。
+</p>
+<h4><span id=".E9.87.8D.E5.A4.8D.E5.A3.B0.E6.98.8E"></span><span class="mw-headline" id="重复声明">重复声明</span></h4>
+<p>受约束的声明只能以相同的语法形式重声明。不要求诊断：
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="c1">// 前两条 f 的声明没有问题</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Incrementable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">Decrementable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Incrementable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">Decrementable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK：重声明</span>
+
+<span class="c1">// f 的第三个声明式，逻辑上等价但语法上不同，若包括它则非良构，无须诊断</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w">	</span>
+<span class="w">    </span><span class="k">requires</span><span class="w"> </span><span class="n">Incrementable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">Decrementable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// 非良构，不要求诊断</span>
+
+<span class="c1">// 下列两个声明拥有不同的约束：</span>
+<span class="c1">// 第一个声明拥有 Incrementable&lt;T&gt; &amp;&amp; Decrementable&lt;T&gt;</span>
+<span class="c1">// 第二个声明拥有 Decrementable&lt;T&gt; &amp;&amp; Incrementable&lt;T&gt;</span>
+<span class="c1">// 尽管它们在逻辑上等价</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Incrementable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="kt">void</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">Decrementable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Decrementable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="kt">void</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">Incrementable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 非良构，不要求诊断</span>
+</pre></div>
+<h4><span id=".E5.90.88.E5.8F.96"></span><span class="mw-headline" id="合取">合取</span></h4>
+<p>两个约束的合取是通过在约束表达式中使用 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code> 运算符来构成的：
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Integral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">SignedIntegral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_signed</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">UnsignedIntegral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">SignedIntegral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+<p>两个约束的合取只有在两个约束都被满足时才会得到满足。合取从左到右短路求值（如果不满足左侧的约束，那么就不会尝试对右侧的约束进行模板实参替换：这样就会防止出现立即语境外的替换所导致的失败）。
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">get_value</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">T</span><span class="o">::</span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">requires</span><span class="w"> </span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">get_value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">())</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w">   </span><span class="c1">// #1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"> </span><span class="c1">// #2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">g</span><span class="p">()</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="sc">'A'</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK，调用 #2。当检查 #1 的约束时，</span>
+<span class="w">            </span><span class="c1">// 不满足 'sizeof(char) &gt; 1'，故不检查 get_value&lt;T&gt;()</span>
+<span class="p">}</span>
+</pre></div>
+<h4><span id=".E6.9E.90.E5.8F.96"></span><span class="mw-headline" id="析取">析取</span></h4>
+<p>两个约束的析取，是通过在约束表达式中使用 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code> 运算符来构成的：
+</p><p>如果其中一个约束得到满足，那么两个约束的析取得到满足。析取从左到右短路求值（如果满足左侧约束，那么就不会尝试对右侧约束进行模板实参替换）。
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">requires</span><span class="w"> </span><span class="n">EqualityComparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">Same</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">equal_to</span><span class="p">;</span>
+</pre></div>
+<h4><span id=".E5.8E.9F.E5.AD.90.E7.BA.A6.E6.9D.9F"></span><span class="mw-headline" id="原子约束">原子约束</span></h4>
+<p>原子约束由一个表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span>，和一个从 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 内出现的模板形参到（对受约束实体的各模板形参的有所涉及的）模板实参的映射组成。这种映射被称作<i>形参映射 ﻿</i>。
+</p><p>原子约束在<a href="concepts.html#%E7%BA%A6%E6%9D%9F%E8%A7%84%E8%8C%83%E5%8C%96">约束规范化</a>过程中形成。<span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 始终不会是逻辑与或者逻辑或表达式（它们分别构成合取和析取）。
+</p><p>对原子约束是否满足的检查会通过替换形参映射和各个模板实参到表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 中来进行。如果替换产生了无效的类型或表达式，那么约束就没有被满足。否则，在任何左值到右值转换后，<span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 应当是 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="kt">bool</span></code> 类型的纯右值常量表达式，当且仅当它求值为 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="nb">true</span></code></span> 时该约束才会得到满足。
+</p><p><span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 在替换后的类型必须严格为 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="kt">bool</span></code>。不能有任何转换：
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">S</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">constexpr</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="kt">bool</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">requires</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">{})</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w">   </span><span class="c1">// #1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"> </span><span class="c1">// #2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">g</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 错误：检查 #1 时 S&lt;int&gt;{} 不具有 bool 类型，</span>
+<span class="w">          </span><span class="c1">// 尽管 #2 能更好地匹配</span>
+<span class="p">}</span>
+</pre></div>
+<p>如果两个原子约束由在源码层面上相同的表达式组成，且它们的形参映射等价，那么认为它们<i>等同</i>。
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_meowable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Meowable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">is_meowable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">BadMeowableCat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">is_meowable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">is_cat</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">GoodMeowableCat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Meowable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">is_cat</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Meowable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #1</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">BadMeowableCat</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #2</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Meowable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #3</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">GoodMeowableCat</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #4</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">g</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">f1</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 错误，有歧义：</span>
+<span class="w">           </span><span class="c1">// BadMeowableCat 和 Meowable 中的 is_meowable&lt;T&gt;</span>
+<span class="w">           </span><span class="c1">// 构成了有区别的原子约束且它们并不等同（因此它们不互相包含）</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">f2</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK，调用 #4，它比 #3 更受约束</span>
+<span class="w">           </span><span class="c1">// GoodMeowableCat 从 Meowable 获得其 is_meowable&lt;T&gt;</span>
+<span class="p">}</span>
+</pre></div>
+<table class="t-rev-begin">
+<tbody><tr class="t-rev t-since-cxx26"><td>
+<h4><span id=".E6.8A.98.E5.8F.A0.E5.B1.95.E5.BC.80.E7.BA.A6.E6.9D.9F"></span><span class="mw-headline" id="折叠展开约束">折叠展开约束</span></h4>
+<p><i>折叠展开约束</i> ﻿由约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 和折叠运算符（<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code> 或 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code>）组成。折叠展开约束是<a href="parameter_pack.html" class="mw-redirect" title="cpp/language/parameter pack">包展开</a>。
+</p><p>设 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">N</span></code></span> 为包展开参数中元素的个数：
+</p>
+<ul><li>如果包展开无效（例如展开不同大小的多个包），那么折叠展开约束不会得到满足。</li>
+<li>如果 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">N</span></code></span> 是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="mi">0</span></code></span>，那么折叠展开约束在折叠运算符是 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code> 时会得到满足，而在折叠运算符是 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code> 时不会得到满足。</li>
+<li>对于具有正数 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">N</span></code></span> 的折叠展开约束，对于 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">[</code><span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="mi">1</span></code></span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">, </code><span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">N</span></code></span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">]</code> 中的每一个 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">i</span></code></span>，按递增顺序以第 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">i</span></code></span> 个元素替换每个对应的包展开参数：</li></ul>
+<dl><dd><ul><li>对于折叠运算符是 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code> 的折叠展开约束，如果对第 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">j</span></code></span> 个元素的替换会违背 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code>，那么该折叠展开约束不会得到满足。此时不会对大于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">j</span></code></span> 的任何 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">i</span></code></span> 进行替换。否则，该折叠展开约束会得到满足。</li>
+<li>对于折叠运算符是 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code> 的折叠展开约束，如果对第 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">j</span></code></span> 个元素的替换会满足 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code>，那么该折叠展开约束会得到满足。此时不会对大于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">j</span></code></span> 的任何 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">i</span></code></span> 进行替换。否则，该折叠展开约束不会得到满足。</li></ul></dd></dl>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">concept</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_move_constructible_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">concept</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">is_copy_constructible_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">concept</span><span class="w"> </span><span class="nc">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">B</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// C++23 中，g() 的这两个重载具有不同的原子约束，不相同且不包含另一方：调用 g() 有歧义</span>
+<span class="c1">// C++26 中，折叠被展开，重载 #2 的约束（同时需要移动和复制）包含重载 #1 的约束（仅需要移动）</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="p">...</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">requires</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">T</span><span class="p">...);</span><span class="w"> </span><span class="c1">// #1</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="p">...</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">requires</span><span class="w"> </span><span class="p">(</span><span class="n">C</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">T</span><span class="p">...);</span><span class="w"> </span><span class="c1">// #2</span>
+</pre></div>
+<p><br>
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+</tbody></table>
+<h4><span id=".E7.BA.A6.E6.9D.9F.E8.A7.84.E8.8C.83.E5.8C.96"></span><span class="mw-headline" id="约束规范化">约束规范化</span></h4>
+<p><i>约束规范化</i> ﻿是将一个约束表达式变换为一个原子约束的合取与析取的序列的过程。表达式的<i>范式</i> ﻿定义如下：
+</p>
+<ul><li>表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">E</span><span class="p">)</span></code></span> 的范式就是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 的范式；</li>
+<li>表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">E2</span></code></span> 的范式是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span></code></span> 和 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E2</span></code></span> 范式的合取；</li>
+<li>表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">E2</span></code></span> 的范式是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span></code></span> 和 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E2</span></code></span> 范式的析取；</li>
+<li>表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">C</span><span class="o">&lt;</span><span class="n">A1</span><span class="p">,</span><span class="w"> </span><span class="n">A2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">AN</span><span class="o">&gt;</span></code></span>（其中 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 指名某个概念）的范式，是以 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">A1</code>, <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">A2</code>, ... , <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">AN</code> 对 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 的每个原子约束的形参映射中的 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 的对应模板形参进行替换之后，<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 的约束表达式的范式。如果在这种形参映射中的替换产生了无效的类型或表达式，那么程序非良构，不要求诊断。</li></ul>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="o">::</span><span class="n">value</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">U</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="o">&lt;</span><span class="n">U</span><span class="o">*&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK：规范化为以下各项的析取</span>
+<span class="w">                   </span><span class="c1">// - T::value（映射为 T -&gt; U*）和</span>
+<span class="w">                   </span><span class="c1">// - true（映射为空）。</span>
+<span class="w">                   </span><span class="c1">// 映射中没有无效类型，尽管 T::value 对所有指针类型均非良构</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">V</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&amp;&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 规范化为以下的析取</span>
+<span class="w">                   </span><span class="c1">// - T::value（映射为 T-&gt; V&amp;*）和</span>
+<span class="w">                   </span><span class="c1">// - true（映射为空）。</span>
+<span class="w">                   </span><span class="c1">// 映射中构成了无效类型 V&amp;* =&gt; 非良构，不要求诊断</span>
+</pre></div>
+<table class="t-rev-begin">
+<tbody><tr class="t-rev t-since-cxx26"><td>
+<ul><li>表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">E</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...)</span></code></span> 和 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(...</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">E</span><span class="p">)</span></code></span> 的范式是一条折叠展开约束，其中 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 的范式，并且折叠运算符是 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code>。</li>
+<li>表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">E</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">...)</span></code></span> 和 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(...</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">E</span><span class="p">)</span></code></span> 的范式是一条折叠展开约束，其中 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 的范式，并且折叠运算符是 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code>。</li>
+<li>表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">E1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">E2</span><span class="p">)</span></code></span> 和 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">E1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">E2</span><span class="p">)</span></code></span> 的范式分别是：</li></ul>
+<dl><dd><ul><li><span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">E1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">E2</span></code></span> 的范式和 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">E1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">E2</span></code></span> 的范式（如果 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span></code></span> 含有未展开的包）</li>
+<li><span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(...</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">E2</span><span class="p">)</span></code></span> 的范式和 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(...</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">E2</span><span class="p">)</span></code></span> 的范式（如果 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E1</span></code></span> 不含未展开的包）</li></ul></dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+</tbody></table>
+<ul><li>任何其他表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 的范式都是一条原子约束，它的表达式是 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">E</span></code></span> 而它的形参映射是恒等映射。这包括所有<a href="fold.html" title="cpp/language/fold">折叠表达式</a>，甚至包括以 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code> 或 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code> 运算符进行的折叠。</li></ul>
+<p>用户定义的 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code> 或 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code> 重载在约束规范化上无效。
+</p><p><span id="requires_子句"></span>
+</p>
+<h3><span id="requires_.E5.AD.90.E5.8F.A5"></span><span class="mw-headline" id="requires_子句"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span></code> 子句</span></h3>
+<p>关键词 <a href="../keyword/requires.html" title="cpp/keyword/requires"><tt>requires</tt></a> 用来引入 <i><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span></code> 子句 ﻿</i>，它指定对各模板实参，或对函数声明的约束。
+</p>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">Eq</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 可以作为函数声明符的末尾元素出现</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">Addable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">// 或者在模板形参列表的右边</span>
+<span class="n">T</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+<p>这种情况下，关键词 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span></code> 必须后随某个常量表达式（因此可以写成 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span><span class="w"> </span><span class="nb">true</span></code></span>），但这是为了使用一个具名概念（如上例），具名概念的一条合取/析取，或者一个 <a href="requires.html" title="cpp/language/requires"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">requires</span></code> 表达式</a>。
+</p><p>表达式必须具有下列形式之一：
+</p>
+<ul><li><a href="expressions.html#%E5%88%9D%E7%AD%89%E8%A1%A8%E8%BE%BE%E5%BC%8F" title="cpp/language/expressions">初等表达式</a>，例如 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">Swappable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></code></span>、<span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span></code></span>、<span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_object_v</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...)</span></code></span> 或任何带括号的表达式</li>
+<li>以运算符 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">&amp;&amp;</code> 联结的初等表达式的序列</li>
+<li>以运算符 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">||</code> 联结的前述表达式的序列</li></ul>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_meowable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_purrable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">is_meowable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">is_purrable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// 错误：is_purrable&lt;T&gt;() 不是初等表达式</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">h</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="p">(</span><span class="n">is_purrable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">());</span><span class="w"> </span><span class="c1">// OK</span>
+</pre></div>
+<h3><span id=".E7.BA.A6.E6.9D.9F.E7.9A.84.E5.81.8F.E5.BA.8F"></span><span class="mw-headline" id="约束的偏序">约束的偏序</span></h3>
+<p>在任何进一步的分析之前都会对各个约束进行<a href="concepts.html#%E7%BA%A6%E6%9D%9F%E8%A7%84%E8%8C%83%E5%8C%96">规范化</a>，对每个具名概念的主体和每个 requires 表达式进行替换，直到剩下原子约束的合取与析取的序列为止。
+</p><p>如果根据约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">P</code> 和约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">Q</code> 中的各原子约束的同一性可以证明 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">P</code> <a href="https://en.wikipedia.org/wiki/Logical_consequence" class="extiw" title="enwiki:Logical consequence">蕴含</a> <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">Q</code>，那么称 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">P</code> <i>归入</i> <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">Q</code>。（并不进行类型和表达式的等价性分析：<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">N &gt; 0</code> 并不归入 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">N &gt;= 0</code>）。
+</p><p>具体来说，首先转换 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">P</code> 为析取范式并转换 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">Q</code> 为合取范式。当且仅当以下情况下 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">P</code> 归入 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">Q</code>：
+</p>
+<ul><li><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">P</code> 的析取范式中的每个析取子句都能归入 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">Q</code> 的合取范式中的每个合取子句，其中</li>
+<li>当且仅当析取子句中存在原子约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">U</code> 而合取子句中存在原子约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">V</code>，使得 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">U</code> 归入 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">V</code> 时，析取子句能归入合取子句；</li>
+<li>当且仅当使用<a href="concepts.html#%E5%8E%9F%E5%AD%90%E7%BA%A6%E6%9D%9F">上文</a>所述的规则判定为等同时，称原子约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">A</code> 能归入原子约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">B</code>。</li></ul>
+<table class="t-rev-begin">
+<tbody><tr class="t-rev t-since-cxx26"><td>
+<ul><li>当折叠展开约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">A</code> 和 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">B</code> 具有相同的折叠运算符，<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">A</code> 的约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 归入 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">B</code> 的约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code>，并且两个 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">C</code> 均包含等价的未展开包时，称折叠展开约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">A</code> 能归入折叠展开约束 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">B</code>。</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span></td></tr>
+</tbody></table>
+<p>归入关系定义了约束的偏序，用于确定：
+</p>
+<ul><li><a href="overload_resolution.html" title="cpp/language/overload resolution">重载决议</a>中非模板函数的最佳可行候选</li>
+<li>重载集中的<a href="overloaded_address.html" title="cpp/language/overloaded address">非模板函数的地址</a></li>
+<li>模板模板实参的最佳匹配</li>
+<li>类模板特化的偏序</li>
+<li>函数模板的<a href="function_template.html#%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E9%87%8D%E8%BD%BD" title="cpp/language/function template">偏序</a></li></ul>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tbody><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：从上述内容添加到此的回链 </td></tr></tbody></table>
+<p>如果声明 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D1</code> 和 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D2</code> 均受约束，且 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D1</code> 关联的约束能归入 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D2</code> 关联的约束，（或 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D2</code> 没有约束），那么称 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D1</code> 与 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D2</code> 相比<i>至少一样受约束</i>。如果 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D1</code> 至少与 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D2</code> 一样受约束，而 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D2</code> 并非至少与 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D1</code> 一样受约束，那么 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D1</code> 比 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">D2</code> <i>更受约束</i>。
+</p><p>在满足以下所有条件时，非模板函数 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">F1</code> 比非模板函数 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">F2</code> <i>更受偏序约束</i>：
+</p>
+<ul><li>它们的<a href="function.html#%E5%BD%A2%E5%8F%82%E7%B1%BB%E5%9E%8B%E5%88%97%E8%A1%A8" title="cpp/language/function">形参类型列表</a>相同<span class="t-rev-inl t-since-cxx23"><span>，其中忽略<a href="member_functions.html#%E6%98%BE%E5%BC%8F%E5%AF%B9%E8%B1%A1%E5%BD%A2%E5%8F%82" title="cpp/language/member functions">显式对象形参</a>的类型</span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23 起)</span></span></span>。</li>
+<li>如果它们是成员函数，那么它们是相同类的直接成员。</li>
+<li>如果它们都是非静态成员函数，那么它们的对象形参的类型相同。</li>
+<li><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">F1</code> 比 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">F2</code> 更受约束。</li></ul>
+<div class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">Decrementable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">requires</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">--</span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">RevIterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Decrementable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">requires</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// RevIterator 能归入 Decrementable，但反之不行</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Decrementable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #1</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">RevIterator</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #2，比 #1 更受约束</span>
+
+<span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">       </span><span class="c1">// int 只满足 Decrementable，选择 #1</span>
+<span class="n">f</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// int* 满足两个约束，选择 #2，因为它更受约束</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #3（无约束）</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Decrementable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #4</span>
+
+<span class="n">g</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// bool 不满足 Decrementable，选择 #3</span>
+<span class="n">g</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// int 满足 Decrementable，选择 #4，因为它更受约束</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">RevIterator2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">requires</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">--</span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">Decrementable</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">h</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #5</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">RevIterator2</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">h</span><span class="p">(</span><span class="n">T</span><span class="p">);</span><span class="w"> </span><span class="c1">// #6</span>
+
+<span class="n">h</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 有歧义</span>
+</pre></div>
+<h3><span id=".E6.B3.A8.E8.A7.A3"></span><span class="mw-headline" id="注解">注解</span></h3>
+<table class="wikitable">
+
+<tbody><tr>
+<th>功能特性测试宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td rowspan="2"><a href="../feature_test.html#cpp_concepts" title="cpp/feature test"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">__cpp_concepts</code></a></td>
+<td><a href="../compiler_support/20.html#cpp_concepts_201907L" title="cpp/compiler support/20"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">201907L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td>约束
+</td></tr>
+<tr>
+<td><a href="../compiler_support/20.html#cpp_concepts_202002L" title="cpp/compiler support/20"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">202002L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++20)</span></td>
+<td>有条件平凡的<a href="member_functions.html#%E7%89%B9%E6%AE%8A%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0" title="cpp/language/member functions">特殊成员函数</a>
+</td></tr></tbody></table>
+<h3><span id=".E5.85.B3.E9.94.AE.E8.AF.8D"></span><span class="mw-headline" id="关键词">关键词</span></h3>
+<p><a href="../keyword/template.html" title="cpp/keyword/template"><tt>template</tt></a>,
+<a href="../keyword/class.html" title="cpp/keyword/class"><tt>class</tt></a>,
+<a href="../keyword/typename.html" title="cpp/keyword/typename"><tt>typename</tt></a><span class="t-rev-inl t-since-cxx20"><span>, <a href="../keyword/concept.html" title="cpp/keyword/concept"><tt>concept</tt></a>, <a href="../keyword/requires.html" title="cpp/keyword/requires"><tt>requires</tt></a></span><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20 起)</span></span></span>
+</p>
+<h3><span id=".E7.BC.BA.E9.99.B7.E6.8A.A5.E5.91.8A"></span><span class="mw-headline" id="缺陷报告">缺陷报告</span></h3>
+<p>下列更改行为的缺陷报告追溯地应用于以前出版的 C++ 标准。
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tbody><tr>
+<th>缺陷报告
+</th>
+<th>应用于
+</th>
+<th>出版时的行为
+</th>
+<th>正确行为
+</th></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2428.html">CWG 2428</a>
+</td>
+<td>C++20
+</td>
+<td>不能将属性应用到概念
+</td>
+<td>可以应用
+</td></tr></tbody></table>
+<h3><span id=".E5.8F.82.E9.98.85"></span><span class="mw-headline" id="参阅">参阅</span></h3>
+<ul><li><a href="../experimental/constraints.html" title="cpp/experimental/constraints">概念 TS</a></li>
+<li><a href="../named_req.html" title="cpp/named req">具名要求</a></li></ul>
+<table class="t-dsc-begin">
+
+<tbody><tr class="t-dsc">
+<td><a href="requires.html" title="cpp/language/requires">requires 表达式</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span>
+</td>
+<td>产生描述约束的 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="kt">bool</span></code> 类型表达式</td></tr>
+</tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260502064847
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.255 seconds
+Real time usage: 0.979 seconds
+Preprocessor visited node count: 7729/1000000
+Post‐expand include size: 202593/4194304 bytes
+Template argument size: 41950/4194304 bytes
+Highest expansion depth: 18/100
+Expensive parser function count: 85/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 60097/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  899.754      1 -total
+ 79.65%  716.671     16 Template:source
+ 25.15%  226.328      1 Template:example
+ 21.27%  191.340      4 Template:rrev
+ 20.93%  188.345      4 Template:rev
+  4.72%   42.497      1 Template:cpp/language/templates/navbar
+  4.65%   41.823      1 Template:navbar
+  3.86%   34.712     52 Template:c
+  2.99%   26.895      1 Template:cpp/language/navbar_content
+  2.42%   21.739    129 Template:nv
+-->
+
+<!-- Saved in parser cache with key zh:pcache:idhash:9283-0!canonical!zh and timestamp 20260502064847 and revision id 100162. Rendering was triggered because: diff-page
+ -->
+</div></div>
+            <!-- /bodycontent -->
+            <!-- catlinks -->
+            <!-- /catlinks -->
+            <div class="visualClear"></div>
+            <!-- debughtml -->
+                        <!-- /debughtml -->
+        </div>
+        <!-- /bodyContent -->
+    </div>
+</div>
+<!-- /content -->
+
+<!-- footer -->
+<div id="cpp-footer-base" class="noprint">
+    <div id="footer" lang="zh" dir="ltr">
+        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="../../../zh.cppreference.com/w/cpp/language/concepts">Online version</a></li><li>Offline version retrieved 2026-05-02 15:56.</li></ul></div>
+        </div>
+</div>
+<!-- /footer -->
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":150,"wgPageParseReport":{"limitreport":{"cputime":"0.255","walltime":"0.979","ppvisitednodes":{"value":7729,"limit":1000000},"postexpandincludesize":{"value":202593,"limit":4194304},"templateargumentsize":{"value":41950,"limit":4194304},"expansiondepth":{"value":18,"limit":100},"expensivefunctioncount":{"value":85,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":60097,"limit":5000000},"timingprofile":["100.00%  899.754      1 -total"," 79.65%  716.671     16 Template:source"," 25.15%  226.328      1 Template:example"," 21.27%  191.340      4 Template:rrev"," 20.93%  188.345      4 Template:rev","  4.72%   42.497      1 Template:cpp/language/templates/navbar","  4.65%   41.823      1 Template:navbar","  3.86%   34.712     52 Template:c","  2.99%   26.895      1 Template:cpp/language/navbar_content","  2.42%   21.739    129 Template:nv"]},"cachereport":{"timestamp":"20260502064847","ttl":2592000,"transientcontent":false}}});});</script>
+
+</body></html>

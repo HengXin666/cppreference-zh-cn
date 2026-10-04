@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="zh-Hans-CN" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>std::ranges::views::as_input, std::ranges::as_input_view</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRequestId":"bc1df891feaec290c13fd680","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/ranges/as_input_view","wgTitle":"cpp/ranges/as input view","wgCurRevisionId":100813,"wgRevisionId":100813,"wgArticleId":17264,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["无示例的 todo"],"wgPageViewLanguage":"zh-cn","wgPageContentLanguage":"zh-cn","wgPageContentModel":"wikitext","wgRelevantPageName":"cpp/ranges/as_input_view","wgRelevantArticleId":17264,"wgUserVariant":"zh-cn","wgIsProbablyEditable":false,"wgRelevantPageIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgCiteReferencePreviewsActive":true,"wgCheckUserClientHintsHeadersJsApi":["architecture","bitness","brands","fullVersionList","mobile","model","platform","platformVersion"]};
+RLSTATE={"site.styles":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.pygments":"ready","skins.cppreference2.styles":"ready"};RLPAGEMODULES=["ext.pygments.view","site","mediawiki.page.ready","mediawiki.toc","skins.cppreference2.js","ext.checkUser.clientHints","ext.gadget.MathJax","ext.gadget.ColiruCompiler"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});mw.user.options.set({"language":"zh-cn","variant":"zh-cn"});
+}];});});</script>
+<link rel="stylesheet" href="../../../common/ext.css">
+<script async="" src="../../../common/startup_scripts.js"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<meta name="generator" content="MediaWiki 1.43.8">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=1120">
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-cpp_ranges_as_input_view rootpage-cpp skin-cppreference2 action-view cpp-navbar"><!-- header -->
+<!-- /header -->
+
+<!-- content -->
+<div id="cpp-content-base">
+    <div id="content" class="mw-body">
+        <a id="top"></a>
+        <div id="mw-js-message" style="display:none;" lang="zh-Hans-CN" dir="ltr"></div>
+        <!-- firstHeading -->
+        <h1 id="firstHeading" class="firstHeading"><span style="font-size:0.8em; line-height:125%">std::ranges::</span><span style="font-size:0.8em; line-height:125%">views::</span>as_input, <span style="font-size:0.8em; line-height:125%">std::ranges::</span>as_input_view</h1>
+        <!-- /firstHeading -->
+        <!-- bodyContent -->
+        <div id="bodyContent" class="mw-body-content">
+            <!-- tagline -->
+            <div id="siteSub">来自cppreference.com</div>
+            <!-- /tagline -->
+            <!-- subtitle -->
+            <div id="contentSub" lang="zh-Hans-CN" dir="ltr"><div id="mw-content-subtitle" lang="zh-Hans-CN" dir="ltr"><div class="subpages">&lt; <bdi dir="ltr"><a href="../../cpp.html" title="cpp">cpp</a></bdi> | <bdi dir="ltr"><a href="../ranges.html" title="cpp/ranges">ranges</a></bdi></div></div></div>
+            <!-- /subtitle -->
+            <!-- bodycontent -->
+            <div id="mw-content-text"><div class="mw-content-ltr mw-parser-output" lang="zh-Hans-CN" dir="ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tbody><tr class="t-nv"><td colspan="5"><a href="../compiler_support.html" title="cpp/compiler support">编译器支持</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../freestanding.html" title="cpp/freestanding">自立实现与有宿主实现</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../language.html" title="cpp/language">语言</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../standard_library.html" title="cpp/standard library">标准库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../header.html" title="cpp/header">标准库标头</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../named_req.html" title="cpp/named req">具名要求</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../feature_test.html" title="cpp/feature test">功能特性测试宏</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81" title="cpp/utility">语言支持库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../concepts.html" title="cpp/concepts">概念库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../error.html" title="cpp/error">诊断库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../memory.html" title="cpp/memory">内存管理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../meta.html" title="cpp/meta">元编程库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../utility.html" title="cpp/utility">通用工具库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../container.html" title="cpp/container">容器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../iterator.html" title="cpp/iterator">迭代器库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../ranges.html" title="cpp/ranges">范围库</a> <span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../algorithm.html" title="cpp/algorithm">算法库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../string.html" title="cpp/string">字符串库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../text.html" title="cpp/text">文本处理库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../numeric.html" title="cpp/numeric">数值库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../chrono.html" title="cpp/chrono">日期和时间库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../io.html" title="cpp/io">输入/输出库</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../filesystem.html" title="cpp/filesystem">文件系统库</a> <span class="t-mark-rev t-since-cxx17" style="white-space: nowrap;">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../thread.html" title="cpp/thread">并发支持库</a> <span class="t-mark-rev t-since-cxx11" style="white-space: nowrap;">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../execution.html" title="cpp/execution">执行控制库</a> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../experimental.html" title="cpp/experimental">技术规范</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../symbol_index.html" title="cpp/symbol index">符号索引</a></td></tr>
+<tr class="t-nv"><td colspan="5"><a href="../links/libs.html" title="cpp/links/libs">外部库</a></td></tr>
+</tbody></table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../ranges.html" title="cpp/ranges"> 范围库</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E8%AE%BF%E9%97%AE" title="cpp/ranges">范围访问</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="begin.html" title="cpp/ranges/begin"><span class="t-lines"><span>begin</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="cbegin.html" title="cpp/ranges/cbegin"><span class="t-lines"><span>cbegin</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;"> </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="end.html" title="cpp/ranges/end"><span class="t-lines"><span>end</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="cend.html" title="cpp/ranges/cend"><span class="t-lines"><span>cend</span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rbegin.html" title="cpp/ranges/rbegin"><span class="t-lines"><span>rbegin</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="crbegin.html" title="cpp/ranges/crbegin"><span class="t-lines"><span>crbegin</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;"> </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rend.html" title="cpp/ranges/rend"><span class="t-lines"><span>rend</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="crend.html" title="cpp/ranges/crend"><span class="t-lines"><span>crend</span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="size.html" title="cpp/ranges/size"><span class="t-lines"><span>size</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ssize.html" title="cpp/ranges/ssize"><span class="t-lines"><span>ssize</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;"> </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="data.html" title="cpp/ranges/data"><span class="t-lines"><span>data</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="cdata.html" title="cpp/ranges/cdata"><span class="t-lines"><span>cdata</span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="reserve_hint.html" title="cpp/ranges/reserve hint"><span class="t-lines"><span>reserve_hint</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="empty.html" title="cpp/ranges/empty"><span class="t-lines"><span>empty</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E8%BD%AC%E6%8D%A2" title="cpp/ranges">范围转换</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="from_range.html" title="cpp/ranges/from range"><span class="t-lines"><span>std::from_range_t<br>std::from_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">    </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="to.html" title="cpp/ranges/to"><span class="t-lines"><span>to</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E6%82%AC%E5%9E%82%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%A4%84%E7%90%86" title="cpp/ranges">悬垂迭代器处理</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="dangling.html" title="cpp/ranges/dangling"><span class="t-lines"><span>dangling</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="borrowed_iterator_t.html" title="cpp/ranges/borrowed iterator t"><span class="t-lines"><span>borrowed_iterator_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="borrowed_iterator_t.html" title="cpp/ranges/borrowed iterator t"><span class="t-lines"><span>borrowed_subrange_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E5%8E%9F%E8%AF%AD" title="cpp/ranges">范围原语</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="range_size_t.html" title="cpp/ranges/range size t"><span class="t-lines"><span>range_size_t</span><span>range_difference_t</span><span>range_value_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="elements_of.html" title="cpp/ranges/elements of"><span class="t-lines"><span>elements_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iterator_t.html" title="cpp/ranges/iterator t"><span class="t-lines"><span>iterator_t</span><span>const_iterator_t</span><span>sentinel_t</span><span>const_sentinel_t</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="range_reference_t.html" title="cpp/ranges/range reference t"><span class="t-lines"><span>range_reference_t</span><span>range_const_reference_t</span><span>range_rvalue_reference_t</span><span>range_common_reference_t</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E6%A6%82%E5%BF%B5" title="cpp/ranges">范围概念</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="range.html" title="cpp/ranges/range"><span class="t-lines"><span>range</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="borrowed_range.html" title="cpp/ranges/borrowed range"><span class="t-lines"><span>borrowed_range</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="common_range.html" title="cpp/ranges/common range"><span class="t-lines"><span>common_range</span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sized_range.html" title="cpp/ranges/sized range"><span class="t-lines"><span>sized_range</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="viewable_range.html" title="cpp/ranges/viewable range"><span class="t-lines"><span>viewable_range</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="view.html" title="cpp/ranges/view"><span class="t-lines"><span>view</span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="input_range.html" title="cpp/ranges/input range"><span class="t-lines"><span>input_range</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="output_range.html" title="cpp/ranges/output range"><span class="t-lines"><span>output_range</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="forward_range.html" title="cpp/ranges/forward range"><span class="t-lines"><span>forward_range</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="bidirectional_range.html" title="cpp/ranges/bidirectional range"><span class="t-lines"><span>bidirectional_range</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="random_access_range.html" title="cpp/ranges/random access range"><span class="t-lines"><span>random_access_range</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="contiguous_range.html" title="cpp/ranges/contiguous range"><span class="t-lines"><span>contiguous_range</span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="approximately_sized_range.html" title="cpp/ranges/approximately sized range"><span class="t-lines"><span>approximately_sized_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="constant_range.html" title="cpp/ranges/constant range"><span class="t-lines"><span>constant_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%A7%86%E5%9B%BE" title="cpp/ranges">视图</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="view_interface.html" title="cpp/ranges/view interface"><span class="t-lines"><span>view_interface</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="subrange.html" title="cpp/ranges/subrange"><span class="t-lines"><span>subrange</span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E5%B7%A5%E5%8E%82" title="cpp/ranges">范围工厂</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="empty_view.html" title="cpp/ranges/empty view"><span class="t-lines"><span>empty_view</span><span>views::empty</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="single_view.html" title="cpp/ranges/single view"><span class="t-lines"><span>single_view</span><span>views::single</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="basic_istream_view.html" title="cpp/ranges/basic istream view"><span class="t-lines"><span>basic_istream_view</span><span>views::istream</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="iota_view.html" title="cpp/ranges/iota view"><span class="t-lines"><span>iota_view</span><span>views::iota</span></span></a></div><div><span class="t-lines"><span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="repeat_view.html" title="cpp/ranges/repeat view"><span class="t-lines"><span>repeat_view</span><span>views::repeat</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E9%80%82%E9%85%8D%E5%99%A8" title="cpp/ranges">范围适配器</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="all_view.html" title="cpp/ranges/all view"><span class="t-lines"><span>views::all_t</span><span>views::all</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="as_rvalue_view.html" title="cpp/ranges/as rvalue view"><span class="t-lines"><span>as_rvalue_view</span><span>views::as_rvalue</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="filter_view.html" title="cpp/ranges/filter view"><span class="t-lines"><span>filter_view</span><span>views::filter</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="transform_view.html" title="cpp/ranges/transform view"><span class="t-lines"><span>transform_view</span><span>views::transform</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="take_view.html" title="cpp/ranges/take view"><span class="t-lines"><span>take_view</span><span>views::take</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="take_while_view.html" title="cpp/ranges/take while view"><span class="t-lines"><span>take_while_view</span><span>views::take_while</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="common_view.html" title="cpp/ranges/common view"><span class="t-lines"><span>common_view</span><span>views::common</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="view_counted.html" title="cpp/ranges/view counted"><span class="t-lines"><span>views::counted</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="to_input_view.html" title="cpp/ranges/to input view"><span class="t-lines"><span>to_input_view</span><span>views::to_input</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ref_view.html" title="cpp/ranges/ref view"><span class="t-lines"><span>ref_view</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="drop_view.html" title="cpp/ranges/drop view"><span class="t-lines"><span>drop_view</span><span>views::drop</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="drop_while_view.html" title="cpp/ranges/drop while view"><span class="t-lines"><span>drop_while_view</span><span>views::drop_while</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lazy_split_view.html" title="cpp/ranges/lazy split view"><span class="t-lines"><span>lazy_split_view</span><span>views::lazy_split</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="split_view.html" title="cpp/ranges/split view"><span class="t-lines"><span>split_view</span><span>views::split</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="join_view.html" title="cpp/ranges/join view"><span class="t-lines"><span>join_view</span><span>views::join</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="join_with_view.html" title="cpp/ranges/join with view"><span class="t-lines"><span>join_with_view</span><span>views::join_with</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="concat_view.html" title="cpp/ranges/concat view"><span class="t-lines"><span>concat_view</span><span>views::concat</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="cache_latest_view.html" title="cpp/ranges/cache latest view"><span class="t-lines"><span>cache_latest_view</span><span>views::cache_latest</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span></span><span><span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="owning_view.html" title="cpp/ranges/owning view"><span class="t-lines"><span>owning_view</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="reverse_view.html" title="cpp/ranges/reverse view"><span class="t-lines"><span>reverse_view</span><span>views::reverse</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="as_const_view.html" title="cpp/ranges/as const view"><span class="t-lines"><span>as_const_view</span><span>views::as_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="elements_view.html" title="cpp/ranges/elements view"><span class="t-lines"><span>elements_view</span><span>views::elements</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="keys_view.html" title="cpp/ranges/keys view"><span class="t-lines"><span>keys_view</span><span>views::keys</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="values_view.html" title="cpp/ranges/values view"><span class="t-lines"><span>values_view</span><span>views::values</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="enumerate_view.html" title="cpp/ranges/enumerate view"><span class="t-lines"><span>enumerate_view</span><span>views::enumerate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="zip_view.html" title="cpp/ranges/zip view"><span class="t-lines"><span>zip_view</span><span>views::zip</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="zip_transform_view.html" title="cpp/ranges/zip transform view"><span class="t-lines"><span>zip_transform_view</span><span>views::zip_transform</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="adjacent_view.html" title="cpp/ranges/adjacent view"><span class="t-lines"><span>adjacent_view</span><span>views::adjacent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="adjacent_view.html" title="cpp/ranges/adjacent view"><span class="t-lines"><span>views::pairwise</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="adjacent_transform_view.html" title="cpp/ranges/adjacent transform view"><span class="t-lines"><span>adjacent_transform_view</span><span>views::adjacent_transform</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="adjacent_transform_view.html" title="cpp/ranges/adjacent transform view"><span class="t-lines"><span>views::pairwise_transform</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="chunk_view.html" title="cpp/ranges/chunk view"><span class="t-lines"><span>chunk_view</span><span>views::chunk</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="slide_view.html" title="cpp/ranges/slide view"><span class="t-lines"><span>slide_view</span><span>views::slide</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="chunk_by_view.html" title="cpp/ranges/chunk by view"><span class="t-lines"><span>chunk_by_view</span><span>views::chunk_by</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stride_view.html" title="cpp/ranges/stride view"><span class="t-lines"><span>stride_view</span><span>views::stride</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="cartesian_product_view.html" title="cpp/ranges/cartesian product view"><span class="t-lines"><span>cartesian_product_view</span><span>views::cartesian_product</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E7%94%9F%E6%88%90%E5%99%A8" title="cpp/ranges">范围生成器</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../coroutine/generator.html" title="cpp/coroutine/generator"><span class="t-lines"><span>std::generator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">    </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E9%80%82%E9%85%8D%E5%99%A8%E9%97%AD%E5%8C%85%E5%AF%B9%E8%B1%A1" title="cpp/ranges">范围适配器闭包对象</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="range_adaptor_closure.html" title="cpp/ranges/range adaptor closure"><span class="t-lines"><span>range_adaptor_closure</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">    </code></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%8C%83%E5%9B%B4%E9%80%82%E9%85%8D%E5%99%A8%E5%AF%B9%E8%B1%A1" title="cpp/ranges">范围适配器对象</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div>
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h2"><td colspan="5"><a href="../ranges.html#%E8%BE%85%E5%8A%A9%E9%A1%B9" title="cpp/ranges">辅助项</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="copyable_wrapper.html" title="cpp/ranges/copyable wrapper"><span class="t-lines"><span><i>copyable-box</i><br><i>movable-box</i></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-cxx23" style="white-space: nowrap;">(C++23 前)</span><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">  </code></span><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ranges.html#%E8%BE%85%E5%8A%A9%E6%A6%82%E5%BF%B5" title="cpp/ranges"><span class="t-lines"><span><i>simple-view</i></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="non-propagating-cache.html" title="cpp/ranges/non-propagating-cache"><span class="t-lines"><span><i>non-propagating-cache</i></span></span></a></div></div></td></tr>
+</tbody></table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</tbody></table></div></td></tr>
+</tbody></table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a class="mw-selflink selflink"><tt>std::ranges::as_input_view</tt></a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tbody><tr class="t-nv-h1"><td colspan="5"><a class="mw-selflink-fragment" href="as_input_view.html#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">成员函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a class="mw-selflink-fragment" href="as_input_view.html#ctor"><span class="t-lines"><span>as_input_view::as_input_view</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a class="mw-selflink-fragment" href="as_input_view.html#base_fun"><span class="t-lines"><span>as_input_view::base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a class="mw-selflink-fragment" href="as_input_view.html#begin"><span class="t-lines"><span>as_input_view::begin</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a class="mw-selflink-fragment" href="as_input_view.html#end"><span class="t-lines"><span>as_input_view::end</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a class="mw-selflink-fragment" href="as_input_view.html#size"><span class="t-lines"><span>as_input_view::size</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a class="mw-selflink-fragment" href="as_input_view.html#%E6%8E%A8%E5%AF%BC%E6%8C%87%E5%BC%95">推导指引</a></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）">Iterator</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）">成员函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>as_input_view::<i>iterator</i>::<i>iterator</i></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>as_input_view::<i>iterator</i>::base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>as_input_view::<i>iterator</i>::operator*</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>as_input_view::<i>iterator</i>::operator++<br>as_input_view::<i>iterator</i>::operator++<span class="t-dsc-small">(int)</span></span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）">非成员函数</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>operator==<span class="t-dsc-small">(as_input_view::<i>iterator</i>)</span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>operator-<span class="t-dsc-small">(as_input_view::<i>iterator</i>)</span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>iter_move<span class="t-dsc-small">(as_input_view::<i>iterator</i>)</span></span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"><span class="t-lines"><span>iter_swap<span class="t-dsc-small">(as_input_view::<i>iterator</i>)</span></span></span></a></div></div></td></tr>
+</tbody></table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dsc-header">
+<td> <div>在标头 <code><a href="../header/ranges.html" title="cpp/header/ranges">&lt;ranges&gt;</a></code> 定义
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 136 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">input_range</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">requires</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">view</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">as_input_view</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">view_interface</span><span class="o">&lt;</span><span class="n">as_input_view</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;&gt;</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 72 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">views</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="cm">/* 未指明 */</span><span class="w"> </span><span class="n">as_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* 未指明 */</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-h">
+<td> <div>调用签名</div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 112 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">viewable_range</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">requires</span><span class="w"> </span><span class="cm">/* see below */</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">view</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">as_input</span><span class="p">(</span><span class="w"> </span><span class="n">R</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="p">);</span>
+</pre></div></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 一个范围适配器，用于将底层 <a href="view.html" title="cpp/ranges/view"><code>view</code></a> 表示为仅支持 <a href="input_range.html" title="cpp/ranges/input range"><code>input_range</code></a> 而非 <a href="common_range.html" title="cpp/ranges/common range"><code>common_range</code></a> 的视图。</div>
+<div class="t-li1"><span class="t-li">2)</span> <a href="../named_req/RangeAdaptorObject.html" title="cpp/named req/RangeAdaptorObject"><span style="font-style:italic">范围适配器对象</span> <span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">(RangeAdaptorObject)</span> </a>。令 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">e</span></code></span> 为某个子表达式，并令 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">T</span></code></span> 为 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">decltype</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></code></span>。则表达式 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">views</span><span class="o">::</span><span class="n">as_input</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></code></span> 与以下表达式<a href="../language/expressions.html#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AD%89%E4%BB%B7" title="cpp/language/expressions">表达式等价</a>：
+<ul><li><span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">views</span><span class="o">::</span><span class="n">all</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></code></span>，如果该表达式是良构的，并且以下所有条件均为 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="nb">true</span></code></span>：
+<ul><li><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">T</code> 实现 <a href="input_range.html" title="cpp/ranges/input range"><code>input_range</code></a>，</li>
+<li><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">T</code> 不满足 <a href="common_range.html" title="cpp/ranges/common range"><code>common_range</code></a>，且</li>
+<li><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">T</code> 不满足 <a href="forward_range.html" title="cpp/ranges/forward range"><code>forward_range</code></a>。</li></ul></li>
+<li>否则，与 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">as_input_view</span><span class="p">{</span><span class="n">e</span><span class="p">}</span></code></span> 表达式等价。</li></ul></div>
+<p>因此，<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">as_input_view</code> 永远不会实现比 <a href="input_range.html" title="cpp/ranges/input range"><code>input_range</code></a> 更强的范围概念。具体而言，它不实现以下任何概念：
+</p>
+<ul><li><a href="forward_range.html" title="cpp/ranges/forward range"><code>forward_range</code></a></li>
+<li><a href="bidirectional_range.html" title="cpp/ranges/bidirectional range"><code>bidirectional_range</code></a></li>
+<li><a href="random_access_range.html" title="cpp/ranges/random access range"><code>random_access_range</code></a></li>
+<li><a href="contiguous_range.html" title="cpp/ranges/contiguous range"><code>contiguous_range</code></a></li></ul>
+<p>此外，<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">as_input_view</code> 也不实现 <a href="common_range.html" title="cpp/ranges/common range"><code>common_range</code></a>。不过，当底层视图 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">V</code> 实现 <a href="borrowed_range.html" title="cpp/ranges/borrowed range"><code>borrowed_range</code></a>、<a href="constant_range.html" title="cpp/ranges/constant range"><code>constant_range</code></a> 和 <a href="sized_range.html" title="cpp/ranges/sized range"><code>sized_range</code></a> 时，它也实现相应概念。
+</p>
+<h3><span id=".E6.95.B0.E6.8D.AE.E6.88.90.E5.91.98"></span><span class="mw-headline" id="数据成员">数据成员</span></h3>
+<table class="t-dsc-begin">
+
+<tbody><tr class="t-dsc-hitem">
+<td>成员
+</td>
+<td>描述
+</td></tr>
+
+
+<tr class="t-dsc">
+<td><span id="base"></span><span class="t-dsc-small"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">V</code></span> <code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><i>base_</i></code> <span class="t-mark" style="white-space: nowrap;">(私有)</span>
+</td>
+<td>底层迭代器<br><span class="t-mark t-mark-expos" style="white-space: nowrap;">(<span title="此定义仅用于展示。实现不需要通过这种方式定义实体。此实体的名字未指定。">仅用于阐述的成员对象*</span>)</span>
+</td></tr>
+
+</tbody></table>
+<h3><span id=".E6.88.90.E5.91.98.E5.87.BD.E6.95.B0"></span><span class="mw-headline" id="成员函数">成员函数</span></h3>
+<table class="t-dsc-begin">
+
+<tbody><tr class="t-dsc">
+<td><div class="t-dsc-member-div t-dsc-member-nobold-div"><div><a class="mw-selflink-fragment" href="as_input_view.html#ctor"> <span class="t-lines"><span>(构造函数)</span></span></a></div></div>
+</td>
+<td>构造一个 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">as_input_view</code> <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a class="mw-selflink-fragment" href="as_input_view.html#base_fun"> <span class="t-lines"><span>base</span></span></a></div></div>
+</td>
+<td>返回底层（所适配的）视图的副本 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a class="mw-selflink-fragment" href="as_input_view.html#begin"> <span class="t-lines"><span>begin</span></span></a></div></div>
+</td>
+<td>返回指向开头的迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a class="mw-selflink-fragment" href="as_input_view.html#end"> <span class="t-lines"><span>end</span></span></a></div></div>
+</td>
+<td>返回指向末尾的迭代器或哨位 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a class="mw-selflink-fragment" href="as_input_view.html#size"> <span class="t-lines"><span>size</span></span></a></div></div>
+</td>
+<td>返回元素数量。仅当底层（所适配的）范围满足 <a href="sized_range.html" title="cpp/ranges/sized range"><code>sized_range</code></a> 时提供。 <br> <span class="t-mark" style="white-space: nowrap;">(公开成员函数)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"><h5><span id=".E7.BB.A7.E6.89.BF.E8.87.AA_ranges::view_interface"></span><span class="mw-headline" id="继承自_ranges::view_interface">  继承自 <span class="t-lc">ranges::view_interface</span>  </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/empty.html" title="cpp/ranges/view interface/empty"> <span class="t-lines"><span>empty</span></span></a></div></div>
+</td>
+<td>返回视图是否为空，仅当视图满足 <a href="forward_range.html" title="cpp/ranges/forward range"><code>forward_range</code></a> 时提供 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/cbegin.html" title="cpp/ranges/view interface/cbegin"> <span class="t-lines"><span>cbegin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>返回指向范围起始的常量迭代器 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/cend.html" title="cpp/ranges/view interface/cend"> <span class="t-lines"><span>cend</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23" style="white-space: nowrap;">(C++23)</span></span></span></div></div>
+</td>
+<td>返回对应于范围常量迭代器的哨位 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/operator_bool.html" title="cpp/ranges/view interface/operator bool"> <span class="t-lines"><span>operator bool</span></span></a></div></div>
+</td>
+<td>返回派生视图是否为非空，仅当 <span class="t-lc">ranges::empty</span> 可应用于它时提供 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/data.html" title="cpp/ranges/view interface/data"> <span class="t-lines"><span>data</span></span></a></div></div>
+</td>
+<td>返回派生视图的数据的地址，仅当视图的迭代器类型满足 <a href="../iterator/contiguous_iterator.html" title="cpp/iterator/contiguous iterator"><code>contiguous_iterator</code></a> 时提供 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/front.html" title="cpp/ranges/view interface/front"> <span class="t-lines"><span>front</span></span></a></div></div>
+</td>
+<td>返回派生视图中的首元素，仅当视图满足 <a href="forward_range.html" title="cpp/ranges/forward range"><code>forward_range</code></a> 时提供 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/back.html" title="cpp/ranges/view interface/back"> <span class="t-lines"><span>back</span></span></a></div></div>
+</td>
+<td>返回派生视图中的末元素，仅当视图满足 <a href="bidirectional_range.html" title="cpp/ranges/bidirectional range"><code>bidirectional_range</code></a> 与 <a href="common_range.html" title="cpp/ranges/common range"><code>common_range</code></a> 时提供 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="view_interface/operator_at.html" title="cpp/ranges/view interface/operator at"> <span class="t-lines"><span>operator[]</span></span></a></div></div>
+</td>
+<td>返回派生视图中的第 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;">n</code> 个元素，仅当视图满足 <a href="random_access_range.html" title="cpp/ranges/random access range"><code>random_access_range</code></a> 时提供 <br> <span class="t-mark" style="white-space: nowrap;">(<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::view_interface&lt;D&gt;</code> 的公开成员函数)</span> </td></tr>
+</tbody></table>
+<p><span id="ctor"></span>
+</p>
+<div class="t-member">
+<h2><span class="mw-headline" id="std::ranges::as_input_view::as_input_view"><span style="font-size:0.8em; line-height:125%">std::ranges::as_input_view::</span>as_input_view</span></h2>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 65 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="n">as_input_view</span><span class="p">()</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">default_initializable</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 43 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">as_input_view</span><span class="p">(</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="p">);</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 以默认成员初始化器（<span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">()</span></code></span>）对 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><i>base_</i></code> 值初始化。</div>
+<div class="t-li1"><span class="t-li">2)</span> 以 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">base</span><span class="p">)</span></code></span> 初始化 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;"><i>base_</i></code>。</div>
+<h3><span id=".E5.8F.82.E6.95.B0"></span><span class="mw-headline" id="参数">参数</span></h3>
+<table class="t-par-begin">
+
+
+<tbody><tr class="t-par">
+<td>base
+</td>
+<td>-
+</td>
+<td>a view
+</td></tr></tbody></table>
+</div>
+<p><span id="base_fun"></span>
+</p>
+<div class="t-member">
+<h2><span class="mw-headline" id="std::ranges::as_input_view::base"><span style="font-size:0.8em; line-height:125%">std::ranges::as_input_view::</span>base</span></h2>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 62 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="nf">base</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">copy_constructible</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 22 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="nf">base</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 从底层视图进行复制构造。等价于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">return</span><span class="w"> </span><span class="n">base_</span><span class="p">;</span></code></span>。</div>
+<div class="t-li1"><span class="t-li">2)</span> 从底层视图进行移动构造。等价于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">base_</span><span class="p">);</span></code></span>。</div>
+</div>
+<p><span id="begin"></span>
+</p>
+<div class="t-member">
+<h2><span class="mw-headline" id="std::ranges::as_input_view::begin"><span style="font-size:0.8em; line-height:125%">std::ranges::as_input_view::</span>begin</span></h2>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 52 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">__simple_view</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 61 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> 等价于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">return</span><span class="w"> </span><span class="cm">/*iterator*/</span><span class="o">&lt;</span><span class="nb">false</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ranges</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">base_</span><span class="p">));</span></code></span></div>
+<div class="t-li1"><span class="t-li">2)</span> 等价于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">return</span><span class="w"> </span><span class="cm">/*iterator*/</span><span class="o">&lt;</span><span class="nb">true</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ranges</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">base_</span><span class="p">));</span></code></span></div>
+</div>
+<p><span id="end"></span>
+</p>
+<div class="t-member">
+<h2><span class="mw-headline" id="std::ranges::as_input_view::end"><span style="font-size:0.8em; line-height:125%">std::ranges::as_input_view::</span>end</span></h2>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 50 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">__simple_view</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 59 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1,2)</span> 等价于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">return</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">base_</span><span class="p">);</span></code></span></div>
+</div>
+<p><span id="size"></span>
+</p>
+<div class="t-member">
+<h2><span class="mw-headline" id="std::ranges::as_input_view::size"><span style="font-size:0.8em; line-height:125%">std::ranges::as_input_view::</span>size</span></h2>
+<table class="t-dcl-begin">
+<tbody><tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 54 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">sized_range</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 66 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">requires</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">sized_range</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1,2)</span> 等价于 <span class="t-c"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="k">return</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">size</span><span class="p">(</span><span class="n">base_</span><span class="p">);</span></code></span></div>
+</div>
+<h3><span id=".E6.8E.A8.E5.88.B0.E6.8C.87.E5.BC.95"></span><span class="mw-headline" id="推到指引">推到指引</span></h3>
+<table class="t-dcl-begin">
+
+<tbody><tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 75 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">R</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="n">as_input_view</span><span class="p">(</span><span class="w"> </span><span class="n">R</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">as_input_view</span><span class="o">&lt;</span><span class="n">views</span><span class="o">::</span><span class="n">all_t</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</pre></div></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<h3><span id=".E5.B5.8C.E5.A5.97.E7.B1.BB"></span><span class="mw-headline" id="嵌套类">嵌套类</span></h3>
+<table class="t-dsc-begin">
+
+<tbody><tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="../../../zh.cppreference.com/index.php" class="new" title="cpp/ranges/as input view/iterator（页面不存在）"> <i><span class="t-lines"><span>iterator</span></span></i></a></div></div>
+</td>
+<td>迭代器类型 <br> <span class="t-mark t-mark-expos" style="white-space: nowrap;">(<span title="此定义仅用于展示。实现不需要通过这种方式定义实体。此实体的名字未指定。">仅用于阐述的成员类模板*</span>)</span>
+</td></tr>
+
+</tbody></table>
+<h3><span id=".E8.BE.85.E5.8A.A9.E6.A8.A1.E6.9D.BF"></span><span class="mw-headline" id="辅助模板">辅助模板</span></h3>
+<table class="t-dcl-begin">
+
+<tbody><tr class="t-dcl t-since-cxx26">
+<td> <div><div style="max-width: min(calc(7.68332px * 127 + 27.1px), 47em); overflow-x: hidden; border-radius: 5px; border-right: 1px solid silver;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enable_borrowed_range</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">as_input_view</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">ranges</span><span class="o">::</span><span class="n">enable_borrowed_range</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx26" style="white-space: nowrap;">(C++26 起)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>这个 <code style="white-space: pre; padding: 0; border: none; background-color: transparent;" class="mw-highlight mw-highlight-lang-cpp mw-content-ltr" dir="ltr"><span class="n">std</span><span class="o">::</span><span class="n">ranges</span><span class="o">::</span><span class="n">enable_borrowed_range</span></code> 的特化使得当底层视图满足 <a href="borrowed_range.html" title="cpp/ranges/borrowed range"><code>borrowed_range</code></a> 时，<code style="white-space: pre; padding: 0; border: none; background-color: transparent;">as_input_view</code> 也满足该概念。
+</p>
+<h3><span id=".E6.B3.A8.E8.A7.A3"></span><span class="mw-headline" id="注解">注解</span></h3>
+<p><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">as_input_view</code> 可用于避免为了支持更强大迭代器所需的操作而带来的开销。
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th><a href="../utility/feature_test.html" title="cpp/utility/feature test">功能特性测试</a>宏
+</th>
+<th><abbr title="采纳该特性的年/月。每个值下面的链接指向编译期支持页面中给定功能特性的条目。">值</abbr>
+</th>
+<th><abbr title="引入该特性的标准；DR 意为针对该修订版的缺陷报告">标准</abbr>
+</th>
+<th>功能特性
+</th></tr>
+<tr>
+<td><a href="../feature_test.html#cpp_lib_ranges_as_input" title="cpp/feature test"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">__cpp_lib_ranges_as_input</code></a></td>
+<td><a href="../compiler_support/26.html#cpp_lib_ranges_as_input_202502L" title="cpp/compiler support/26"><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">202502L</code></a></td>
+<td><span class="t-mark" style="white-space: nowrap;">(C++26)</span></td>
+<td><code style="white-space: pre; padding: 0; border: none; background-color: transparent;">std::ranges::as_input_view</code>
+</td></tr></tbody></table>
+<h3><span id=".E7.A4.BA.E4.BE.8B"></span><span class="mw-headline" id="示例">示例</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tbody><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">本节未完成<br>原因：暂无示例 </td></tr></tbody></table>
+<h3><span id=".E5.8F.82.E9.98.85"></span><span class="mw-headline" id="参阅">参阅</span></h3>
+<table class="t-dsc-begin">
+
+<tbody><tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="input_range.html" title="cpp/ranges/input range"> <span class="t-lines"><span>ranges::input_range</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>指定范围的迭代器类型满足 <a href="../iterator/input_iterator.html" title="cpp/iterator/input iterator"><code>input_iterator</code></a> <br> <span class="t-mark" style="white-space: nowrap;">(概念)</span> </td></tr>
+
+<tr class="t-dsc">
+<td><div class="t-dsc-member-div"><div><a href="common_view.html" title="cpp/ranges/common view"> <span class="t-lines"><span>ranges::common_view</span><span>views::common</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20" style="white-space: nowrap;">(C++20)</span></span></span></div></div>
+</td>
+<td>转换 <a href="view.html" title="cpp/ranges/view"><code>view</code></a> 为 <a href="common_range.html" title="cpp/ranges/common range"><code>common_range</code></a>  <br> <span class="t-mark" style="white-space: nowrap;">(类模板)</span> <span class="t-mark" style="white-space: nowrap;">(范围适配器对象)</span> </td></tr>
+</tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260501184044
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.363 seconds
+Real time usage: 5.653 seconds
+Preprocessor visited node count: 18776/1000000
+Post‐expand include size: 467388/4194304 bytes
+Template argument size: 101063/4194304 bytes
+Highest expansion depth: 42/100
+Expensive parser function count: 31/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 17654/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 4374.694      1 -total
+ 31.50% 1377.906      1 Template:cpp/ranges/as_input_view/navbar
+ 31.16% 1363.145      1 Template:navbar
+ 24.29% 1062.713      1 Template:cpp/ranges/navbar_content
+ 21.18%  926.766     15 Template:dcl
+ 20.39%  892.019     98 Template:nv_ln
+ 15.65%  684.658    126 Template:nv
+ 13.79%  603.247     10 Template:dsc_inc
+ 13.20%  577.426     17 Template:dsc
+ 11.36%  496.825      1 Template:cpp/ranges/view_interface/inherit
+-->
+
+<!-- Saved in parser cache with key zh:pcache:idhash:17264-0!canonical!zh-cn and timestamp 20260501184044 and revision id 100813. Rendering was triggered because: page-view
+ -->
+</div></div>
+            <!-- /bodycontent -->
+            <!-- catlinks -->
+            <!-- /catlinks -->
+            <div class="visualClear"></div>
+            <!-- debughtml -->
+                        <!-- /debughtml -->
+        </div>
+        <!-- /bodyContent -->
+    </div>
+</div>
+<!-- /content -->
+
+<!-- footer -->
+<div id="cpp-footer-base" class="noprint">
+    <div id="footer" lang="zh-Hans-CN" dir="ltr">
+        <div id="cpp-navigation">
+            <h5>导航</h5>
+            <ul><li><a href="../../../zh.cppreference.com/w/cpp/ranges/as_input_view">Online version</a></li><li>Offline version retrieved 2026-05-02 15:56.</li></ul></div>
+        </div>
+</div>
+<!-- /footer -->
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":6731,"wgPageParseReport":{"limitreport":{"cputime":"0.363","walltime":"5.653","ppvisitednodes":{"value":18776,"limit":1000000},"postexpandincludesize":{"value":467388,"limit":4194304},"templateargumentsize":{"value":101063,"limit":4194304},"expansiondepth":{"value":42,"limit":100},"expensivefunctioncount":{"value":31,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":17654,"limit":5000000},"timingprofile":["100.00% 4374.694      1 -total"," 31.50% 1377.906      1 Template:cpp/ranges/as_input_view/navbar"," 31.16% 1363.145      1 Template:navbar"," 24.29% 1062.713      1 Template:cpp/ranges/navbar_content"," 21.18%  926.766     15 Template:dcl"," 20.39%  892.019     98 Template:nv_ln"," 15.65%  684.658    126 Template:nv"," 13.79%  603.247     10 Template:dsc_inc"," 13.20%  577.426     17 Template:dsc"," 11.36%  496.825      1 Template:cpp/ranges/view_interface/inherit"]},"cachereport":{"timestamp":"20260501184044","ttl":2592000,"transientcontent":false}}});});</script>
+</body>
+</html>
