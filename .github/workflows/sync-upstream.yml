@@ -1,22 +1,30 @@
 name: sync-upstream
 
-# 定时把上游 myfreeer/cppreference2mshelp 的中文 html-book 同步进本仓库。
+# 每周把上游 myfreeer/cppreference2mshelp 的中文 html-book 同步进本仓库。
 #
 # 这里刻意不把 Actions 写成"通知/开 PR"流程: 上游每次发布是一个 8~9MB 的整包,
 # 内容近乎全量重写 (实测 2025.04 -> 2026.05: 6734 个文件里 6653 个内容变化),
 # 逐文件 diff 没有审阅价值, 所以直接以"整包替换"的形式提交与发布。
 #
-# 幂等闸门: .github/sync-state.json 里存上游资产的 sha256。身份未变 -> 秒退, 不写任何文件。
-# 因此定时跑不会产生空提交, 也不需要在仓库里堆积镜像副本。
+# 幂等闸门: .github/sync-state.json 里存上游资产的 sha256。身份未变 -> 不下载不替换。
+#
+# 保活 (为什么每周跑还不够):
+#   GitHub 对公开仓库的 scheduled workflow 有"60 天无仓库活动即自动停用"的规则,
+#   而且判据是仓库活动(提交之类), 不是"workflow 有没有跑"。
+#   所以"每周触发 + 上游没变就零提交"照样会被停用 —— 上游历史上一年才发 1~3 次,
+#   中间几个月仓库就会零提交。解法是每次运行都刷新 README 状态块里的"最后检查"日期,
+#   于是每周必有一次真实提交。详见 .github/scripts/sync-upstream.sh 文件头。
 
 on:
   schedule:
-    # 上游历史上是一年 1~3 次发布 (2024.09 / 2025.04 / 2026.05), 日检足够。
-    - cron: '17 4 * * *'
+    # 每周一 UTC 04:17 = 北京时间 12:17。
+    # 上游一年只发 1~3 次 (2024.09 / 2025.04 / 2026.05), 跑得再勤也不会更快拿到新包;
+    # 每周跑的实际价值是"让仓库保持有活动", 避开上面的 60 天停用规则。
+    - cron: '17 4 * * 1'
   workflow_dispatch:
     inputs:
       force:
-        description: '忽略版本身份, 强制重新同步一次'
+        description: '忽略版本身份, 强制重新同步一次 (仍会刷新状态块)'
         type: boolean
         default: false
 
@@ -55,6 +63,7 @@ jobs:
         env:
           TAG: ${{ steps.sync.outputs.tag }}
           ASSET: ${{ steps.sync.outputs.asset }}
+          CONTENT_CHANGED: ${{ steps.sync.outputs.content_changed }}
         run: |
           set -euo pipefail
 
@@ -63,17 +72,26 @@ jobs:
           git config user.name  'Heng_Xin'
           git config user.email '103022267+HengXin666@users.noreply.github.com'
 
-          revision="$(
-            python3 -c 'import json;print(json.load(open(".github/sync-state.json"))["content_revision"])'
-          )"
-          # 只提交镜像内容与版本身份, 不把工作区里其它改动 (如个人编辑的 README) 卷进来。
-          git add -A -- zh common .github/sync-state.json
-          git commit -m "[sync] 同步上游中文镜像 ${revision}" \
-                     -m "上游: ${ASSET} (release ${TAG})"
+          # 只提交镜像内容、版本身份与 README 状态块, 不把工作区里其它改动卷进来。
+          git add -A -- zh common .github/sync-state.json README.md
+
+          if [ "$CONTENT_CHANGED" = "true" ]; then
+            revision="$(
+              python3 -c 'import json;print(json.load(open(".github/sync-state.json"))["content_revision"])'
+            )"
+            git commit -m "[sync] 同步上游中文镜像 ${revision}" \
+                       -m "上游: ${ASSET} (release ${TAG})"
+          else
+            # 上游无更新: 这次提交只为刷新 README 的"最后检查"时间戳,
+            # 兼作 scheduled workflow 保活 (避免仓库 60 天无活动被停用)。
+            git commit -m "[sync] 例行检查上游 (无更新)" \
+                       -m "仅刷新 README 状态块的检查时间戳, 兼作 scheduled workflow 保活。"
+          fi
+
           # 显式推到默认分支: schedule 恒在默认分支触发, 手动触发时也不会误推到别的分支。
           git push origin "HEAD:${{ github.event.repository.default_branch }}"
           echo "pushed $(git rev-parse --short HEAD) -> ${{ github.event.repository.default_branch }}"
 
       - name: Nothing to do
         if: steps.sync.outputs.changed != 'true'
-        run: echo "上游内容未变化, 本次无需提交。"
+        run: echo "上游内容与 README 状态块均未变化, 本次无需提交。"
