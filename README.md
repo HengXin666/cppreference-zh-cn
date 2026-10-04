@@ -1,17 +1,25 @@
 > [!TIP]
 > ## 时至今日, [cppreference 中文版](https://zh.cppreference.com/%e9%a6%96%e9%a1%b5) 已经复活了!
 
-# cppreference 中文离线镜像 (2025-04-04)
-> 这是 cppreference.com 中文版本的本地离线镜像, 基于 2025年4月4日发布的 html-book 构建。
+# cppreference 中文离线镜像 (2026-05-02)
+> 这是 cppreference.com 中文版本的本地离线镜像, 基于 2026年5月2日发布的 html-book 构建。
+
+<!-- sync-status:begin (由 .github/workflows/sync-upstream.yml 自动维护, 请勿手改) -->
+
+> [!IMPORTANT]
+> - **最后同步**: 2026-05-02 15:55 — 上游 `html-book-20260502.tar.xz` (release [`2026.05`](https://github.com/myfreeer/cppreference2mshelp/releases/tag/2026.05))
+> - **最后检查上游**: 2026-10-05 (Asia/Shanghai)
+
+<!-- sync-status:end -->
 
 ## 👉 点击进入主页: [index](https://hengxin666.github.io/cppreference-zh-cn/zh/)
 
 > [!TIP]
-> 当前项目为个人自用. 为 https://cppreference.com/ 的 20250404 中文镜像。
+> 当前项目为个人自用. 为 https://cppreference.com/ 的 20260502 中文镜像。
 >
 > 仅因为 cppreference 正在维护, 而网络上的要么太旧, 要么广告满天飞, 阅读体验很差。
 >
-> 故, 自己在 [https://linux.do/t/topic/533494](https://linux.do/t/topic/533494) 中获取到了 20250404 中文镜像,
+> 故, 自己在 [https://linux.do/t/topic/533494](https://linux.do/t/topic/533494) 中获取到了 20260502 中文镜像,
 > 为了访问方便, 故上传到 GitHub Pages 中托管。
 
 > [!NOTE]
