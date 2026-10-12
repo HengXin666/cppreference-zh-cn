@@ -8,7 +8,7 @@
 
 > [!IMPORTANT]
 > - **最后同步**: 2026-05-02 15:55 — 上游 `html-book-20260502.tar.xz` (release [`2026.05`](https://github.com/myfreeer/cppreference2mshelp/releases/tag/2026.05))
-> - **最后检查上游**: 2026-10-05 (Asia/Shanghai)
+> - **最后检查上游**: 2026-10-12 (Asia/Shanghai)
 
 <!-- sync-status:end -->
 
